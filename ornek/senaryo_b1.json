@@ -7,20 +7,43 @@
         "Sınav nasıl işliyor?",
         "Puan getiren taktikler",
         "Konuşmada B1 gibi duyulmak",
-        "2 günlük çalışma planı"
+        "2 günlük plan + kendini dene"
       ],
-      "anlatim": "Merhaba! Ben Profesör. Bu videoda İngilizce kurslarının seviye tespit sınavına iki günde nasıl hazırlanacağını anlatacağım. Hedefimiz B1 seviyesi. Önce sınavın nasıl işlediğine bakacağız. Sonra en çok puan getiren taktikleri, konuşma bölümünün sırlarını ve iki günlük çalışma planını göreceğiz. Hazırsan başlayalım!"
+      "anlatim": "Seviye tespit sınavının ilk on sorusunda yapacağın tek bir dikkatsizlik, seni koca bir seviye aşağı düşürebilir. [dur] Ama sınavın mantığını bilirsen, iki günde B1'e hazır olabilirsin. Önce sınavın nasıl işlediğini göreceğiz. Sonra puan getiren taktiklere ve konuşmanın sırlarına geçeceğiz. En sonda da iki günlük planı kuracak ve kendini deneyeceksin.",
+      "goster": [
+        2,
+        3,
+        3,
+        4
+      ],
+      "ton": "merakli"
     },
     {
       "baslik": "Sınav nasıl bir şey?",
-      "maddeler": [
-        "Bilgisayarda, adaptif (akıllı) test",
-        "Süre: yaklaşık 30 dakika",
-        "Gramer, kelime, okuma, dinleme",
-        "Gerekirse konuşma görüşmesi",
-        "B1 = orta seviyenin başı"
+      "anlatim": "Sınav bilgisayarda yapılan akıllı bir test. Doğru cevap verdikçe sorular zorlaşıyor, yanlış yaptıkça kolaylaşıyor. Süre yaklaşık otuz dakika. Bölümler gramer, kelime, okuma ve dinleme. Gerekli görülürse bir de kısa konuşma görüşmesi yapılıyor. Hedefimiz olan B1, orta seviyenin başlangıcı; kabaca IELTS dört ile beş puana denk geliyor.",
+      "tur": "rakam",
+      "kartlar": [
+        {
+          "deger": "30",
+          "birim": "dakika",
+          "etiket": "Bilgisayarda, adaptif (akıllı) test"
+        },
+        {
+          "deger": "4",
+          "birim": "bölüm",
+          "etiket": "Gramer, kelime, okuma, dinleme"
+        },
+        {
+          "deger": "B1",
+          "birim": "hedef",
+          "etiket": "Orta seviyenin başlangıcı"
+        }
       ],
-      "anlatim": "Sınav bilgisayarda yapılan akıllı bir test. Doğru cevap verdikçe sorular zorlaşıyor, yanlış yaptıkça kolaylaşıyor. Süre yaklaşık otuz dakika. Bölümler gramer, kelime, okuma ve dinleme. Gerekli görülürse bir de kısa konuşma görüşmesi yapılıyor. Hedefimiz olan B1, orta seviyenin başlangıcı; kabaca IELTS dört ile beş puana denk geliyor."
+      "goster": [
+        2,
+        3,
+        5
+      ]
     },
     {
       "baslik": "Adaptif sınav taktikleri",
@@ -163,14 +186,38 @@
     },
     {
       "baslik": "Dinleme ve okuma",
-      "maddeler": [
-        "Dinle: önce soruyu ve şıkları oku",
-        "Düzeltme tuzağı: son söylenen doğru",
-        "thirTEEN ≠ THIRty",
-        "Oku: anlamı eşleştir, kelimeyi değil",
-        "always, never, only → şüphelen"
+      "anlatim": "Dinlemede ses başlamadan önce soruyu ve seçenekleri oku, ne dinleyeceğini bil. Konuşmacı önce bir şey söyleyip sonra düzeltirse doğru cevap son söylenendir. Rakamlara dikkat et: on üç ile otuz, on dört ile kırk çok karışır. Okumada önce soruyu oku, sonra metinde sadece ilgili kısmı ara. Kelimeyi değil anlamı eşleştir. Always, never, only gibi mutlak ifadeler içeren seçenekler genellikle yanlıştır.",
+      "tur": "karsilastirma",
+      "sol": {
+        "baslik": "Dinlemede",
+        "renk": "mavi"
+      },
+      "sag": {
+        "baslik": "Okumada",
+        "renk": "yesil"
+      },
+      "satirlar": [
+        [
+          "Önce soruyu ve seçenekleri oku",
+          "Önce soruyu oku, ilgili yeri tara"
+        ],
+        [
+          "Düzeltmeden sonra geleni seç",
+          "Kelimeyi değil anlamı eşleştir"
+        ],
+        [
+          "thirTEEN ≠ THIRty",
+          "always, never, only → şüphelen"
+        ]
       ],
-      "anlatim": "Dinlemede ses başlamadan önce soruyu ve seçenekleri oku, ne dinleyeceğini bil. Konuşmacı önce bir şey söyleyip sonra düzeltirse doğru cevap son söylenendir. Rakamlara dikkat et: on üç ile otuz, on dört ile kırk çok karışır. Okumada önce soruyu oku, sonra metinde sadece ilgili kısmı ara. Kelimeyi değil anlamı eşleştir. Always, never, only gibi mutlak ifadeler içeren seçenekler genellikle yanlıştır."
+      "goster": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
     },
     {
       "baslik": "Konuşmada B1 gibi duyulmak",
@@ -196,14 +243,37 @@
     },
     {
       "baslik": "2 günlük çalışma planı",
-      "maddeler": [
-        "1. Gün: sınav teknikleri + gramer",
-        "1. Gün: kelime + dinleme",
-        "2. Gün: okuma + konuşma provası",
-        "2. Gün: 25 dk deneme sınavı",
-        "Son akşam: yeni konu yok, erken yat"
+      "anlatim": "Planımız şöyle. Birinci gün önce sınav tekniklerini oku, sonra yaklaşık üç saat gramer derslerini ve alıştırmalarını çöz. Ardından kelime listelerini çalış ve dinleme alıştırmalarını telefona okutarak yap. İkinci gün okuma parçalarını çöz ve konuşma cevaplarını kaydederek prova et. Sonra yirmi beş dakikalık deneme sınavını yap ve yanlışlarını gözden geçir. Son akşam yeni konuya başlama, kendini tanıtmayı bir kez daha prova et ve erken yat.",
+      "tur": "zaman",
+      "adimlar": [
+        {
+          "baslik": "1. Gün",
+          "metin": "Sınav teknikleri + 3 saat gramer"
+        },
+        {
+          "baslik": "1. Gün sonu",
+          "metin": "Kelime listeleri + dinleme"
+        },
+        {
+          "baslik": "2. Gün",
+          "metin": "Okuma + konuşma provası"
+        },
+        {
+          "baslik": "2. Gün sonu",
+          "metin": "25 dk deneme sınavı"
+        },
+        {
+          "baslik": "Son akşam",
+          "metin": "Yeni konu yok, erken yat"
+        }
       ],
-      "anlatim": "Planımız şöyle. Birinci gün önce sınav tekniklerini oku, sonra yaklaşık üç saat gramer derslerini ve alıştırmalarını çöz. Ardından kelime listelerini çalış ve dinleme alıştırmalarını telefona okutarak yap. İkinci gün okuma parçalarını çöz ve konuşma cevaplarını kaydederek prova et. Sonra yirmi beş dakikalık deneme sınavını yap ve yanlışlarını gözden geçir. Son akşam yeni konuya başlama, kendini tanıtmayı bir kez daha prova et ve erken yat."
+      "goster": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
     },
     {
       "baslik": "Kendini dene 1/3",
