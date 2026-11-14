@@ -483,21 +483,31 @@ class Sahne:
         d.rectangle(k(648, 553, 674, 561), fill=(250, 230, 120))
         return im
 
+    KURSU = (215, 389, 568, 690)  # x0, x1, üst, alt (taban birimi 1280x720)
+
     def kursu(self):
         """Profesörün önündeki ahşap kürsü (karakterin üstüne çizilir)."""
         k = self.k
         im = Image.new("RGBA", (self.W, self.H), (0, 0, 0, 0))
         d = ImageDraw.Draw(im)
-        x0, x1, ust = 70, 400, 548
-        d.polygon(k(x0 + 18, ust + 22, x1 - 18, ust + 22, x1 - 30, 720, x0 + 30, 720), fill=(118, 78, 48))
-        for i in range(5):  # tahta damarları
-            y = ust + 40 + i * 32
-            d.line(k(x0 + 34, y, x1 - 34, y + 3), fill=(106, 70, 43), width=k(2))
-        d.rounded_rectangle(k(x0 + 70, ust + 60, x1 - 70, ust + 140), radius=k(6), outline=(150, 108, 70), width=k(3))
-        d.rounded_rectangle(k(x0, ust, x1, ust + 26), radius=k(6), fill=(150, 104, 66))
-        d.rectangle(k(x0 + 4, ust + 20, x1 - 4, ust + 26), fill=(96, 62, 38))
+        x0, x1, ust, alt = self.KURSU
+        g = (x1 - x0) / 330  # ölçek
+        # zemindeki gölge
+        go = Image.new("RGBA", (self.W, self.H), (0, 0, 0, 0))
+        ImageDraw.Draw(go).ellipse(k(x0 - 10, alt - 8, x1 + 10, alt + 10), fill=(0, 0, 0, 80))
+        go = go.filter(ImageFilter.GaussianBlur(k(5)))
+        im.alpha_composite(go); d = ImageDraw.Draw(im)
+        d.polygon(k(x0 + 18 * g, ust + 22 * g, x1 - 18 * g, ust + 22 * g, x1 - 30 * g, alt, x0 + 30 * g, alt), fill=(118, 78, 48))
+        n = 4
+        for i in range(n):  # tahta damarları
+            y = ust + 22 * g + (alt - ust - 22 * g) * (i + 1) / (n + 1)
+            d.line(k(x0 + 34 * g, y, x1 - 34 * g, y + 2), fill=(106, 70, 43), width=k(2))
+        d.rounded_rectangle(k(x0 + 70 * g, ust + 50 * g, x1 - 70 * g, ust + 50 * g + (alt - ust) * 0.45), radius=k(4),
+                            outline=(150, 108, 70), width=k(2))
+        d.rounded_rectangle(k(x0, ust, x1, ust + 26 * g), radius=k(5), fill=(150, 104, 66))
+        d.rectangle(k(x0 + 4, ust + 20 * g, x1 - 4, ust + 26 * g), fill=(96, 62, 38))
         sh = Image.new("RGBA", (self.W, self.H), (0, 0, 0, 0))
-        ImageDraw.Draw(sh).rectangle(k(x0 + 20, ust + 26, x1 - 20, ust + 46), fill=(0, 0, 0, 70))
+        ImageDraw.Draw(sh).rectangle(k(x0 + 20 * g, ust + 26 * g, x1 - 20 * g, ust + 40 * g), fill=(0, 0, 0, 70))
         sh = sh.filter(ImageFilter.GaussianBlur(k(6)))
         sh.alpha_composite(im)
         return sh
@@ -645,7 +655,8 @@ def main():
     ap.add_argument("--model-dizini", default=str(Path.home() / ".egitim_video" / "sesler"))
     ap.add_argument("--cozunurluk", type=int, choices=[720, 1080], default=1080)
     ap.add_argument("--sahne", help="sadece bu sahneler, ör. 1-3")
-    ap.add_argument("--muzik-yok", action="store_true")
+    ap.add_argument("--muzik", action="store_true", help="hafif fon müziği ekle (varsayılan: yok)")
+    ap.add_argument("--muzik-yok", action="store_true", help="(eski seçenek; artık varsayılan)")
     ap.add_argument("--altyazi-yok", action="store_true")
     ap.add_argument("--intro-outro-yok", action="store_true")
     args = ap.parse_args()
@@ -739,7 +750,7 @@ def main():
 
     log("[2/4] Ses işleme ve fon müziği...")
     karisim = ses.copy()
-    if not args.muzik_yok:
+    if args.muzik and not args.muzik_yok:
         m = muzik_uret(sure + 0.1)[:len(ses)]
         if len(m) < len(ses):
             m = np.pad(m, (0, len(ses) - len(m)))
@@ -784,7 +795,7 @@ def main():
     if args.karakter != "cizim":
         from karakter_foto import FotoKarakter
         kj = Path(args.karakter)
-        foto = FotoKarakter(kj.with_suffix(".png"), kj, int(H * 0.62))
+        foto = FotoKarakter(kj.with_suffix(".png"), kj, int(H * 0.34))
         kursu = S.kursu()
         log(f"  Karakter: {kj.stem}")
     else:
@@ -855,7 +866,8 @@ def main():
                 b = {0: 0.5, 1: 1.0, 2: 0.5}[min(2, sum(1 for d in (1, 2) if fi - d in kirp))]
             konus = min(1.0, float(np.mean(agiz_s[max(0, fi - 12):fi + 1])) * 3) if fi < len(agiz_s) else 0
             kr, (dx, dy) = foto.poz(foto.kare(a, b), tt, konus)
-            x = k(235) - kr.width // 2 + int(dx); y = k(585) - kr.height + int(dy)
+            kx0, kx1, kust, _ = S.KURSU
+            x = k((kx0 + kx1) / 2) - kr.width // 2 + int(dx); y = k(kust + 20) - kr.height + int(dy)
             im.paste(kr, (x, y), kr)
             im.paste(kursu, (0, 0), kursu)
             return

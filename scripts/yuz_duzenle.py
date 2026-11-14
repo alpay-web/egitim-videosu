@@ -37,8 +37,8 @@ def maske(elipsler, buyut=1.0, yumusak=6):
 
 STIL = "3d pixar style animated character, elderly professor, soft studio lighting, high quality render"
 NEG = "deformed, blurry, ugly, extra teeth, distorted, low quality, realistic photo"
-agiz_m = maske([cfg["agiz"]], 1.0, 5)
-goz_m = maske(cfg["gozler"], 1.0, 3)
+agiz_m = maske([cfg["agiz"]], 1.0, 9)
+goz_m = maske(cfg["gozler"], 1.0, 5)
 
 
 def uygula(resim, m, prompt, neg, tohum, guc):
@@ -52,11 +52,11 @@ def uygula(resim, m, prompt, neg, tohum, guc):
 sonuclar = []
 for i in range(n):
     r = uygula(kirp, agiz_m,
-               "closed mouth, calm neutral serious expression, lips gently closed under a thick white mustache",
-               "smile, grin, teeth, open mouth, laughing", 100 + i, 0.95)
+               "serious thoughtful expression, mouth closed in a straight neutral line, relaxed cheeks, thick white mustache, no smile",
+               "smile, smiling, grin, teeth, open mouth, laughing, raised cheeks, happy", 300 + i, 1.0)
     r = uygula(r, goz_m,
-               "calm natural friendly eyes, normal size, brown iris, relaxed eyelids, looking at the viewer",
-               "bulging eyes, crazy eyes, wide open eyes, cross-eyed, staring", 200 + i, 0.85)
+               "wise calm eyes, normal small size, slightly narrowed, relaxed upper eyelids, brown iris, looking straight at the viewer",
+               "bulging eyes, big eyes, crazy eyes, wide open eyes, cross-eyed, staring, blue eyes", 400 + i, 0.95)
     tam = im.copy()
     tam.paste(r.resize((b, b), Image.LANCZOS), (x0, y0))
     tam.save(cikti / f"aday_{i + 1}.png")
