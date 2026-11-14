@@ -967,9 +967,16 @@ def kapak_gorseli(sen, karakter_png, yol):
     parcalar = [x.strip() for x in re.split(r"\s+[–—-]\s+", baslik) if x.strip()]
     vurgu = parcalar[-1] if len(parcalar) > 1 else baslik
     ust = parcalar[0] if len(parcalar) > 1 else ""
-    fb = font(118, True)
-    satirlar = satir_kir(vurgu.upper(), fb, 640, d)[:3]
-    y = 360 - len(satirlar) * 68
+    buyuk = vurgu.replace("i", "İ").replace("ı", "I").upper()  # Türkçe büyük harf
+    fs_ = 118
+    while fs_ > 60:
+        fb = font(fs_, True)
+        satirlar = satir_kir(buyuk, fb, 600, d)
+        if len(satirlar) <= 3 and all(d.textlength(x, font=fb) <= 600 for x in satirlar):
+            break
+        fs_ -= 6
+    satirlar = satirlar[:3]
+    y = 360 - len(satirlar) * fs_ * 0.56
     if ust:
         fu = font(40, True)
         us = satir_kir(ust, fu, 600, d)[:2]
@@ -978,7 +985,7 @@ def kapak_gorseli(sen, karakter_png, yol):
     for sat in satirlar:
         for ox, oy in ((5, 6),):
             d.text((60 + ox, y + oy), sat, font=fb, fill=(0, 0, 0, 160))
-        d.text((60, y), sat, font=fb, fill=(255, 210, 80)); y += 132
+        d.text((60, y), sat, font=fb, fill=(255, 210, 80)); y += fs_ * 1.12
     d.rectangle((60, y + 8, 360, y + 18), fill=(255, 255, 255))
     im.convert("RGB").save(yol, quality=92)
 
