@@ -1,0 +1,35 @@
+name: Seslendirmeyi denetle
+# Whisper ile seslendirmeyi yazıya döker ve senaryoyla karşılaştırır (yanlış okunan kelimeler).
+on:
+  workflow_dispatch:
+    inputs:
+      senaryo:
+        default: "ornek/senaryo_b1.json"
+      ses_etiketi:
+        description: "sesler.zip'in bulunduğu release"
+        default: "ses-son"
+      model:
+        default: "medium"
+permissions:
+  contents: write
+jobs:
+  denetle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Denetle
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          sudo apt-get -qq install -y ffmpeg > /dev/null
+          pip install -q faster-whisper numpy pillow
+          gh release download "${{ inputs.ses_etiketi }}" -p sesler.zip --repo "$GITHUB_REPOSITORY"
+          mkdir sesler && unzip -q sesler.zip -d sesler
+          python scripts/denetle.py "${{ inputs.senaryo }}" sesler rapor.txt "${{ inputs.model }}"
+          gh release delete "denetim-${{ inputs.ses_etiketi }}" --yes --cleanup-tag --repo "$GITHUB_REPOSITORY" || true
+          gh release create "denetim-${{ inputs.ses_etiketi }}" rapor.txt --prerelease --repo "$GITHUB_REPOSITORY" \
+            --title "Denetim: ${{ inputs.ses_etiketi }}" --notes "Whisper ${{ inputs.model }} ile telaffuz denetimi"
