@@ -215,6 +215,39 @@ class FreyaSes:
         sf.write(str(yol), w, sr)
 
 
+class ChatterboxSes:
+    """Chatterbox Multilingual (Resemble AI, MIT lisansı): doğal tonlamalı Türkçe, referans sesten ses kopyalama.
+    Referans verilmezse Piper 'fahrettin' (CC0) sesinden kısa bir referans üretilir."""
+
+    def __init__(self, referans, dizin, hiz, abarti, cfg):
+        import torch
+        torch.set_num_threads(max(1, os.cpu_count() or 1))
+        from chatterbox.mtl_tts import ChatterboxMultilingualTTS
+        if not referans:
+            referans = Path(dizin) / "referans_fahrettin.wav"
+            if not referans.exists():
+                p = PiperSes("fahrettin", dizin, 0.92)
+                metin = ("Merhaba, ben bugün size İngilizce öğrenmenin en etkili yollarını anlatacağım. "
+                         "Hazırsanız başlayalım, çünkü önümüzde gerçekten keyifli bir yol var.")
+                p.sentezle(metin, referans)
+        self.ref = str(referans)
+        self.m = ChatterboxMultilingualTTS.from_pretrained(device="cpu")
+        self.abarti, self.cfg, self.hiz = abarti, cfg, hiz
+        log(f"  Ses: Chatterbox Multilingual (MIT), referans: {Path(self.ref).name}")
+
+    def sentezle(self, metin, yol):
+        import torchaudio
+        w = self.m.generate(metin, language_id="tr", audio_prompt_path=self.ref,
+                            exaggeration=self.abarti, cfg_weight=self.cfg)
+        tmp = str(yol) + ".tmp.wav"
+        torchaudio.save(tmp, w, self.m.sr)
+        if abs(self.hiz - 1.0) > 0.01:  # perdeyi bozmadan yavaşlat
+            subprocess.run([ffmpeg_bin(), "-v", "error", "-y", "-i", tmp, "-af", f"atempo={self.hiz}", str(yol)], check=True)
+            os.remove(tmp)
+        else:
+            os.replace(tmp, yol)
+
+
 class EdgeSes:
     def __init__(self, ad, hiz):
         import edge_tts  # noqa
@@ -517,7 +550,10 @@ def main():
     ap = argparse.ArgumentParser(description="Senaryodan animasyonlu eğitim videosu (ücretsiz/açık kaynak).")
     ap.add_argument("senaryo")
     ap.add_argument("-o", "--cikti", default="egitim_videosu.mp4")
-    ap.add_argument("--ses", choices=["piper", "edge", "freya", "espeak"], default="piper")
+    ap.add_argument("--ses", choices=["piper", "chatterbox", "freya", "edge", "espeak"], default="piper")
+    ap.add_argument("--referans", help="chatterbox için referans ses dosyası (wav/mp3, 10-20 sn)")
+    ap.add_argument("--abarti", type=float, default=0.45, help="chatterbox duygu/vurgu (0.25-0.7)")
+    ap.add_argument("--cfg", type=float, default=0.4, help="chatterbox tempo/sadakat (düşük = daha sakin)")
     ap.add_argument("--ses-dizini", help="hazır cümle sesleri (SS_CC.mp3/wav) bu klasörden alınır")
     ap.add_argument("--sadece-ses", metavar="KLASOR", help="video üretmeden sadece cümle seslerini bu klasöre yaz")
     ap.add_argument("--karakter", default=str(Path(__file__).resolve().parent.parent / "karakter" / "profesor.json"),
@@ -553,6 +589,8 @@ def main():
     if not args.ses_dizini:
         motor = (PiperSes(args.piper_ses, args.model_dizini, args.hiz) if args.ses == "piper"
                  else EdgeSes(args.edge_ses, args.hiz) if args.ses == "edge"
+                 else ChatterboxSes(args.referans, args.model_dizini, args.hiz, args.abarti, args.cfg)
+                 if args.ses == "chatterbox"
                  else FreyaSes(Path(args.model_dizini).parent, args.hiz,
                                tuple(float(x) for x in args.freya_erkek.split(",")) if args.freya_erkek else None,
                                32, None) if args.ses == "freya"

@@ -1,0 +1,55 @@
+name: Seslendirme üret
+# Claude ortamı Hugging Face'e erişemediği için ağır ses modelleri GitHub Actions'ta çalışır.
+# Çıktı: cümle başına ses dosyaları (SS_CC.wav) -> release içinde zip.
+on:
+  workflow_dispatch:
+    inputs:
+      senaryo:
+        description: "Senaryo JSON yolu"
+        default: "ornek/senaryo_b1.json"
+      motor:
+        description: "chatterbox | piper | freya"
+        default: "chatterbox"
+      sahne:
+        description: "ör. 1-3 (boş = hepsi)"
+        default: ""
+      ekstra:
+        description: "ek argümanlar, ör. --abarti 0.4 --cfg 0.35"
+        default: ""
+      etiket:
+        description: "sonucun yükleneceği release etiketi"
+        default: "ses-son"
+permissions:
+  contents: write
+jobs:
+  ses:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Kurulum
+        run: |
+          sudo apt-get -qq install -y ffmpeg > /dev/null
+          pip install -q -r requirements.txt
+          if [ "${{ inputs.motor }}" = "chatterbox" ]; then pip install -q chatterbox-tts; fi
+      - name: Seslendir
+        run: |
+          SAHNE=""; [ -n "${{ inputs.sahne }}" ] && SAHNE="--sahne ${{ inputs.sahne }}"
+          python scripts/video_uret.py "${{ inputs.senaryo }}" --sadece-ses sesler --ses "${{ inputs.motor }}" $SAHNE ${{ inputs.ekstra }} 2>&1 | tee seslendirme.log
+          ls sesler | head
+          # dinlemek için hepsini tek dosyada birleştir
+          ls sesler/*.wav | sort | sed "s/^/file '/; s/$/'/" > liste.txt
+          ffmpeg -v error -f concat -safe 0 -i liste.txt -af "apad=pad_dur=0.3" -b:a 160k onizleme.mp3
+          cd sesler && zip -q -r ../sesler.zip . && cd ..
+      - name: Yayınla
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete "${{ inputs.etiket }}" --yes --cleanup-tag --repo "$GITHUB_REPOSITORY" || true
+          gh release create "${{ inputs.etiket }}" sesler.zip onizleme.mp3 seslendirme.log --prerelease \
+            --repo "$GITHUB_REPOSITORY" --title "Seslendirme: ${{ inputs.etiket }}" \
+            --notes "motor=${{ inputs.motor }} senaryo=${{ inputs.senaryo }} sahne=${{ inputs.sahne }} ${{ inputs.ekstra }}"
