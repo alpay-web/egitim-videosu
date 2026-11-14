@@ -1,25 +1,28 @@
-name: Ses modellerini GitHub'a kopyala
+name: Modelleri GitHub'a kopyala
+# Claude ortamı Hugging Face'e erişemez; gereken model dosyaları bu repodaki release'lere kopyalanır.
 on:
-  push:
-    paths: ['.github/workflows/modeller.yml']
   workflow_dispatch:
 permissions:
   contents: write
 jobs:
-  kopyala:
+  chatterbox:
     runs-on: ubuntu-latest
     steps:
-      - name: Modelleri indir ve release'e yükle
+      - name: Chatterbox Multilingual (MIT) dosyalarını kopyala
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -e
-          curl -fsSL -o freya-model.safetensors https://huggingface.co/freyavoice/freya-tts/resolve/main/model.safetensors
-          curl -fsSL -o freya-config.json https://huggingface.co/freyavoice/freya-tts/resolve/main/config.json
-          curl -fsSL -o freya-LICENSE https://huggingface.co/freyavoice/freya-tts/resolve/main/README.md
-          curl -fsSL -o voxcpm2-audiovae.pth https://huggingface.co/openbmb/VoxCPM2/resolve/main/audiovae.pth
+          mkdir m && cd m
+          B=https://huggingface.co/ResembleAI/chatterbox/resolve/main
+          for f in ve.pt t3_mtl23ls_v2.safetensors s3gen.pt grapheme_mtl_merged_expanded_v1.json conds.pt Cangjie5_TC.json; do
+            curl -fsSL -o "$f" "$B/$f"
+          done
+          # GitHub release dosya sınırı 2 GB: büyük dosyaları parçala
+          for f in *; do
+            if [ $(stat -c%s "$f") -gt 1900000000 ]; then split -b 1800M -d "$f" "$f.parca"; rm "$f"; fi
+          done
           ls -la
-          gh release delete modeller-v1 --yes --cleanup-tag --repo "$GITHUB_REPOSITORY" || true
-          gh release create modeller-v1 freya-model.safetensors freya-config.json freya-LICENSE voxcpm2-audiovae.pth \
-            --repo "$GITHUB_REPOSITORY" --title "Ses modelleri" \
-            --notes "FreyaTTS-small (Apache-2.0, freyavoice/freya-tts) ve VoxCPM2 AudioVAE (Apache-2.0, openbmb/VoxCPM2) kopyaları. Claude ortamı Hugging Face'e erişemediği için burada barındırılıyor."
+          gh release delete modeller-chatterbox --yes --cleanup-tag --repo "$GITHUB_REPOSITORY" || true
+          gh release create modeller-chatterbox * --repo "$GITHUB_REPOSITORY" --title "Chatterbox Multilingual modeli" \
+            --notes "ResembleAI/chatterbox (MIT lisansı) dosyalarının kopyası. Claude ortamı Hugging Face'e erişemediği için burada barındırılıyor."
