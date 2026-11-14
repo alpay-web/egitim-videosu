@@ -1,0 +1,35 @@
+name: Karakter yüzünü düzenle
+# Açık kaynak inpainting (DreamShaper 8, SD1.5) ile ağız ve gözleri yeniden çizer; adayları release'e koyar.
+on:
+  workflow_dispatch:
+    inputs:
+      girdi:
+        default: "karakter/profesor_orijinal.png"
+      yuz:
+        default: "karakter/profesor_yuz.json"
+      aday:
+        default: "4"
+      etiket:
+        default: "karakter-adaylar"
+permissions:
+  contents: write
+jobs:
+  duzenle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Kurulum
+        run: pip install -q torch --index-url https://download.pytorch.org/whl/cpu && pip install -q diffusers transformers accelerate pillow numpy
+      - name: Düzenle
+        run: python scripts/yuz_duzenle.py "${{ inputs.girdi }}" "${{ inputs.yuz }}" adaylar "${{ inputs.aday }}"
+      - name: Yayınla
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete "${{ inputs.etiket }}" --yes --cleanup-tag --repo "$GITHUB_REPOSITORY" || true
+          gh release create "${{ inputs.etiket }}" adaylar/* --prerelease --repo "$GITHUB_REPOSITORY" \
+            --title "Karakter adayları" --notes "Inpainting ile düzenlenmiş yüz adayları"
