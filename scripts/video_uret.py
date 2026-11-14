@@ -149,10 +149,20 @@ def sahne_ogeleri(sh):
             }.get(tur, lambda: sh.get("maddeler", []))()
 
 
+def yumusat(x, giris=0.015, cikis=0.06):
+    """Cümle kliplerinin kenarlarında tık/sürtme sesi olmasın: kısa fade-in/out + DC temizliği."""
+    x = x - np.mean(x) if len(x) else x
+    a, b = min(len(x) // 4, int(giris * SR)), min(len(x) // 4, int(cikis * SR))
+    if a: x[:a] *= np.sin(np.linspace(0, np.pi / 2, a)) ** 2
+    if b: x[-b:] *= np.cos(np.linspace(0, np.pi / 2, b)) ** 2
+    return x.astype(np.float32)
+
+
 def efekt_tik():
     n = int(0.05 * SR); t = np.arange(n) / SR
-    x = (np.sin(2 * np.pi * 1800 * t) * 0.6 + np.random.RandomState(1).randn(n) * 0.15) * np.exp(-t * 90)
-    return (x * 0.035).astype(np.float32)
+    # gürültüsüz, yumuşak atak: 'mikrofon sürtmesi' gibi duyulmaz
+    x = np.sin(2 * np.pi * 1200 * t) * np.exp(-t * 70) * np.minimum(1, t / 0.004)
+    return (x * 0.02).astype(np.float32)
 
 
 def efekt_ding():
@@ -1015,6 +1025,7 @@ def main():
     ap.add_argument("--sahne", help="sadece bu sahneler, ör. 1-3")
     ap.add_argument("--kamera-yok", action="store_true", help="sahnelerdeki yavaş yakınlaşmayı kapat")
     ap.add_argument("--efekt-yok", action="store_true", help="tık/ding ses efektlerini kapat")
+    ap.add_argument("--tik", action="store_true", help="madde belirirken hafif 'tık' sesi (varsayılan kapalı; konuşma üstünde sürtme gibi duyulabiliyor)")
     ap.add_argument("--storyboard", metavar="PNG", help="ses/video üretmeden her sahnenin son halini tek görselde göster")
     ap.add_argument("--kontrol", action="store_true", help="sadece senaryo çeşitlilik/uzunluk kontrolü yap")
     ap.add_argument("--muzik", action="store_true", help="hafif fon müziği ekle (varsayılan: yok)")
@@ -1124,7 +1135,8 @@ def main():
             x = oku_24k(yol)
             nz = np.nonzero(np.abs(x) > 0.01)[0]       # baş/son sessizliği kırp
             if len(nz):
-                x = x[max(0, nz[0] - 600): nz[-1] + 1200]
+                x = x[max(0, nz[0] - 600): nz[-1] + 1200].copy()
+            x = yumusat(x)
             cz.append((t, t + len(x) / SR, temiz(c)))
             dur_ = duraklama(c)
             parcalar += [x, np.zeros(int(dur_ * SR), np.float32)]
@@ -1155,7 +1167,7 @@ def main():
     if not args.efekt_yok:  # ölçülü ses efektleri: öğe belirirken "tık", doğru cevapta "ding"
         tik, ding = efekt_tik(), efekt_ding()
         for si, sh in enumerate(sahneler):
-            for x_ in madde_t[si]:
+            for x_ in (madde_t[si] if args.tik else []):
                 i0 = int(x_ * SR); karisim[i0:i0 + len(tik)] += tik[:max(0, len(karisim) - i0)]
             if "_acilis" in sh:
                 i0 = int(sh["_acilis"] * SR) - int(0.15 * SR); karisim[i0:i0 + len(ding)] += ding[:max(0, len(karisim) - i0)]
@@ -1176,7 +1188,7 @@ def main():
         wf.setnchannels(1); wf.setsampwidth(2); wf.setframerate(SR)
         wf.writeframes((np.clip(karisim, -1, 1) * 32767).astype(np.int16).tobytes())
     son_ses = tmp / "son.wav"
-    zincir = "highpass=f=70,equalizer=f=3000:t=q:w=1.2:g=2,acompressor=threshold=-20dB:ratio=3:attack=10:release=200"
+    zincir = "highpass=f=80,adeclick,afftdn=nf=-45:nr=8,deesser=i=0.3,equalizer=f=3000:t=q:w=1.2:g=2,acompressor=threshold=-20dB:ratio=3:attack=10:release=200"
     olc = subprocess.run([ffmpeg_bin(), "-hide_banner", "-i", str(ham), "-af",
                           zincir + ",loudnorm=I=-16:TP=-1.5:LRA=11:print_format=json", "-f", "null", "-"],
                          capture_output=True, text=True).stderr
