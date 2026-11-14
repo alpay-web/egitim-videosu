@@ -1,11 +1,11 @@
 ---
 name: egitim-videosu
-description: Bir eğitim dokümanından (docx, pdf, md, txt, Claude Doc) anlatımlı, animasyonlu, altyazılı 1080p YouTube eğitim videosu (uzun dokümanlarda video serisi) ve kapak görseli üretir. Doğal Türkçe ses (Chatterbox, MIT), tablo/rakam/zaman çizelgesi/karşılaştırma/soru sahneleri, otomatik kalite denetimi. Ücretsiz ve açık kaynak. "bu dokümanı anlatan video yap", "eğitim videosu", "ders videosu", "YouTube videosu" isteklerinde kullan.
+description: Bir eğitim dokümanından (docx, pdf, md, txt, Claude Doc) anlatımlı, animasyonlu, altyazılı 1080p YouTube eğitim videosu (uzun dokümanlarda da tek, bölümlere ayrılmış video) ve kapak görseli üretir. Doğal Türkçe ses (Chatterbox, MIT), tablo/rakam/zaman çizelgesi/karşılaştırma/soru sahneleri, otomatik kalite denetimi. Ücretsiz ve açık kaynak. "bu dokümanı anlatan video yap", "eğitim videosu", "ders videosu", "YouTube videosu" isteklerinde kullan.
 ---
 
 # Eğitim Videosu Üretici
 
-Doküman → kapsam haritası → (seri) planı → senaryo → kapsam testi → storyboard → seslendirme → video → denetim → teslim.
+Doküman → kapsam haritası → plan → senaryo → kapsam testi → storyboard → seslendirme → video → denetim → teslim.
 GPU ve ücretli API gerekmez. Kod: https://github.com/alpay-web/egitim-videosu
 
 ## 0. Hazırlık
@@ -21,12 +21,14 @@ Başlık başlık kelime sayısını çıkar (tablo: bölüm · kelime · tür: 
 Konuşma hızı ≈ 130 kelime/dk; tahmini anlatım süresi = içerik kelimesi ÷ 130 × 0.6 (özetleme payı).
 
 ## 2. Plan ve onay (pahalı adımlardan önce)
-- **Tahmini süre > 9 dk ya da doküman > ~2.500 kelime → VİDEO SERİSİ öner**: her video 5–8 dk, tek bir
-  öğrenme hedefi. Örnek: 1) Strateji ve taktikler 2–4) Gramer dersleri (3–4 ders/video) 5) Kelime 6) Okuma
-  7) Dinleme (metinler seslendirilir) 8) Konuşma modelleri 9) Deneme sınavı (soru sahneleriyle). Hangi bölümün
-  hangi videoya gittiğini ve dışarıda kalanı açıkça yaz; hiçbir bölüm sessizce atlanmaz.
-- Kullanıcıya kısa bir teklif sun: video listesi, her birinin süresi, sahne listesi ve türleri, ilk video önerisi.
-  Onay gelmeden seslendirmeye geçme.
+- **Varsayılan: dokümanın TAMAMI TEK VİDEODA** (kullanıcı bunu tercih ediyor). Uzun dokümanda 30–40 dk olabilir;
+  YouTube bölüm (chapter) zaman damgaları ile gezinilir. Sıra: kanca + yol haritası → strateji → konu dersleri
+  (her ders: kural sahnesi + "Kendini dene" sorusu) → kelime → okuma/dinleme/konuşma örnekleri → deneme → kapanış.
+  Alıştırmaların hepsi okunmaz; her bloktan 1–2 temsili soru seçilir, gerisi için "rehberdeki alıştırmalar" denir.
+- Seri (5–8 dk'lık videolar) yalnızca kullanıcı isterse. Önceki videoların sesleri yeniden kullanılabilir:
+  `SS_CC.wav` dosyalarını yeni sahne numarasıyla kopyala, yalnızca yeni sahneleri seslendir.
+- Kullanıcıya kısa bir plan sun (bölümler, tahmini süre, sahne türleri) ve hiçbir başlığın sessizce atlanmadığını
+  göster. Onay gelmeden seslendirmeye geçme (kullanıcı "devam et" dediyse doğrudan ilerle).
 
 ## 3. Senaryo yaz → `senaryo.json` (örnek: `$R/ornek/senaryo_b1.json`)
 **Senaryo sanatı (zorunlu):**
@@ -56,7 +58,7 @@ Konuşma hızı ≈ 130 kelime/dk; tahmini anlatım süresi = içerik kelimesi �
   `goster` = sol satırlar + sağ satırlar sırasıyla). **zaman:** adımlar/plan/süreç (≥4 adımda dikey). **ipucu:**
   tek vurucu mesaj. **soru:** alıştırmalardan; anlatımda soruyu okuma ("Ekrandaki soruyu oku"), `cevap_cumle` =
   "Doğru cevap…" cümlesinin indeksi; öncesinde geri sayım, sonra doğru seçenek yeşil + "ding".
-- `goster`: her öğenin hangi cümlede (0'dan) açılacağı; o an işaretçi öğeye kayar ve "tık" sesi çalar.
+- `goster`: her öğenin hangi cümlede (0'dan) açılacağı; o an işaretçi öğeye kayar (`--tik` verilirse hafif tık sesi).
 - `telaffuz`: kısaltma/seviye adları Türkçe harfle ("B1": "be bir", "C1": "se bir", "IELTS": "ay elts", "A": "a",
   "B": "be"); sorunlu İngilizce kelimeler ("had": "hed", "Enjoy": "inçoy"). `telaffuz_kok`: {"fiil": "fiyil"}.
   Chatterbox'ın zorlandığı "şık" yerine "seçenek" yaz.
@@ -64,7 +66,7 @@ Konuşma hızı ≈ 130 kelime/dk; tahmini anlatım süresi = içerik kelimesi �
 ## 4. Kapsam testi (PresentQuiz fikri)
 Kaynaktan, video kapsamındaki bölümlerden 8–10 kritik soru çıkar (yalnızca dokümana dayalı). Her birinin cevabı
 senaryoda geçiyor mu, tek tek işaretle. Cevapsız kalan kritik konu varsa senaryoya ekle ya da bilinçli olarak
-serinin başka videosuna bırak ve bunu teslimde söyle.
+dışarıda bıraktığını teslimde açıkça söyle.
 
 ## 5. Storyboard + kontrol (onay kapısı)
 ```bash
@@ -90,8 +92,10 @@ curl -fsSL -o sesler.zip https://github.com/alpay-web/egitim-videosu/releases/do
 ```bash
 python $R/scripts/video_uret.py senaryo.json -o video.mp4 --ses-dizini sesler     # 1080p + video_kapak.jpg
 ```
-Varsayılan: sade çizim profesör (kürsüde), yavaş kamera, işaretçi, tık/ding efektleri, müzik yok.
-Seçenekler: `--muzik`, `--efekt-yok`, `--kamera-yok`, `--altyazi-yok`, `--karakter yol.json` (fotoğraf karakter),
+Varsayılan: sade çizim profesör (kürsüde), yavaş kamera, işaretçi, yalnızca doğru cevapta "ding", müzik yok.
+**Temiz ses (mikrofon sürtmesi/tık yok):** cümle klipleri yumuşak fade-in/out ile birleşir; zincirde `adeclick`,
+`afftdn` (hafif gürültü azaltma) ve `deesser` var; konuşma üstündeki "tık" efekti varsayılan kapalı.
+Seçenekler: `--tik`, `--muzik`, `--efekt-yok`, `--kamera-yok`, `--altyazi-yok`, `--karakter yol.json` (fotoğraf karakter),
 `--sahne 2-3 --cozunurluk 720` (hızlı deneme).
 
 ## 8. Denetim (teslimden önce zorunlu, en fazla 2 düzeltme turu)
@@ -103,5 +107,5 @@ Kare tablosuna bak. Bulguları ciddiyetle yaz (kritik / öneri) ve her birine so
 Kritikleri düzelt, yeniden üret; 2 turdan sonra kalanları teslimde açıkça söyle.
 
 ## 9. Teslim
-MP4 + kapak görselini gönder. Ver: süre, sahne sayısı, kapsadığı bölümler (ve serinin kalanı), önerilen YouTube
+MP4 + kapak görselini gönder. Ver: süre, sahne sayısı, kapsadığı bölümler, önerilen YouTube
 başlığı, sahne başlıklarından zaman damgalı bölümler, "Seslendirme yapay zekâ ile üretilmiştir" notu.
