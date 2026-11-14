@@ -560,29 +560,37 @@ class Sahne:
         tb = sh["tablo"]; bas = tb.get("basliklar", []); sat = tb["satirlar"]; stil = tb.get("stil")
         nk = max(len(bas), max(len(r) for r in sat))
         x0, x1 = 568, 1212
-        gen = (x1 - x0) / nk
-        fs = 32
-        while fs > 20:
-            f_ = font(k(fs))
-            ok = all(d.textlength(("✗ " if stil else "") + str(c), font=f_) <= k(gen - 24) for r in sat for c in r)
+        on = "✗ " if stil else ""
+        # sütun genişlikleri içeriğe orantılı
+        f0 = font(30)
+        enk = [max([d.textlength(on + str(r[j]), font=f0) for r in sat if j < len(r)] +
+                   ([d.textlength(bas[j], font=font(30, True))] if j < len(bas) else [0])) + 30 for j in range(nk)]
+        gens = [e / sum(enk) * (x1 - x0) for e in enk]
+        xs_ = [x0 + sum(gens[:j]) for j in range(nk)]
+        fs = 34
+        while fs > 18:
+            f_, fh_ = font(k(fs)), font(k(fs), True)
+            ok = all(d.textlength(on + str(c), font=f_) <= k(gens[j] - 20) for r in sat for j, c in enumerate(r))
+            ok = ok and all(d.textlength(b_, font=fh_) <= k(gens[j] - 20) for j, b_ in enumerate(bas))
             yuk = (len(sat) + (1 if bas else 0)) * fs * 1.75
             if ok and y0 + yuk <= 515:
                 break
             fs -= 1
+        gen = None
         f_, fh = font(k(fs)), font(k(fs), True)
         rh = fs * 1.75
         y = y0
         if bas:
             for j, b_ in enumerate(bas):
                 renk = (255, 140, 130) if stil == "yanlis-dogru" and j == 0 else (150, 225, 160) if stil == "yanlis-dogru" and j == 1 else (255, 224, 115)
-                d.text(k(x0 + j * gen + 10, y + fs * 0.3), b_, font=fh, fill=renk)
+                d.text(k(xs_[j] + 10, y + fs * 0.3), b_, font=fh, fill=renk)
             y += rh
             d.line(k(x0, y - 4, x1, y - 4), fill=(190, 205, 195), width=k(2))
         for i, r in enumerate(sat[:gorunen]):
             if i == gorunen - 1:
                 d.rounded_rectangle(k(x0 - 6, y + 2, x1 + 6, y + rh - 4), radius=k(8), fill=(52, 98, 80))
             for j, c in enumerate(r):
-                tx = k(x0 + j * gen + 10); ty = k(y + fs * 0.3)
+                tx = k(xs_[j] + 10); ty = k(y + fs * 0.3)
                 if stil == "yanlis-dogru" and j == 0:
                     metin = "✗ " + c; d.text((tx, ty), metin, font=f_, fill=(255, 150, 140))
                     w_ = d.textlength(metin, font=f_)
