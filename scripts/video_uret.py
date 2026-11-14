@@ -15,6 +15,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 FPS, SR = 25, 24000
+KAR_OLCEK = 0.52  # çizim karakterin boyutu (1 = eski tam boy)
 CUMLE_ARASI, SAHNE_ARASI = 0.35, 1.0
 INTRO_SN, OUTRO_SN = 4.0, 4.5
 GECIS = 0.5        # sahne geçişi (sn)
@@ -512,7 +513,12 @@ class Sahne:
         sh.alpha_composite(im)
         return sh
 
-    def tahta(self, taban, sh, gorunen, no, toplam, ust):
+    def tahta(self, taban, sh, gorunen, no, toplam, ust, acik=False):
+        tur = sh.get("tur", "maddeler")
+        if tur == "tablo":
+            return self.tahta_tablo(taban, sh, gorunen, no, toplam, ust), []
+        if tur == "soru":
+            return self.tahta_soru(taban, sh, acik, no, toplam, ust), []
         im = taban.copy(); d = ImageDraw.Draw(im); k = self.k
         fb, fk = font(k(40), True), font(k(16))
         y = 66
@@ -533,6 +539,97 @@ class Sahne:
         d.text(k(1238 - 52, 528), f"{no}/{toplam}", font=fk, fill=(160, 185, 172))
         d.text(k(558, 528), ust, font=fk, fill=(160, 185, 172))
         return im, konumlar
+
+    def _cerceve(self, taban, baslik, no, toplam, ust):
+        im = taban.copy(); d = ImageDraw.Draw(im); k = self.k
+        fb, fk = font(k(40), True), font(k(16))
+        y = 66
+        for s_ in satir_kir(baslik, fb, k(640), d)[:2]:
+            d.text(k(568, y), s_, font=fb, fill=(255, 224, 115)); y += 48
+        d.line(k(568, y + 6, 1210, y + 6), fill=(190, 205, 195), width=k(2))
+        d.text(k(1238 - 52, 528), f"{no}/{toplam}", font=fk, fill=(160, 185, 172))
+        d.text(k(558, 528), ust, font=fk, fill=(160, 185, 172))
+        return im, d, y + 28
+
+    def tahta_tablo(self, taban, sh, gorunen, no, toplam, ust):
+        im, d, y0 = self._cerceve(taban, sh["baslik"], no, toplam, ust)
+        k = self.k
+        tb = sh["tablo"]; bas = tb.get("basliklar", []); sat = tb["satirlar"]; stil = tb.get("stil")
+        nk = max(len(bas), max(len(r) for r in sat))
+        x0, x1 = 568, 1212
+        gen = (x1 - x0) / nk
+        fs = 32
+        while fs > 20:
+            f_ = font(k(fs))
+            ok = all(d.textlength(("✗ " if stil else "") + str(c), font=f_) <= k(gen - 24) for r in sat for c in r)
+            yuk = (len(sat) + (1 if bas else 0)) * fs * 1.75
+            if ok and y0 + yuk <= 515:
+                break
+            fs -= 1
+        f_, fh = font(k(fs)), font(k(fs), True)
+        rh = fs * 1.75
+        y = y0
+        if bas:
+            for j, b_ in enumerate(bas):
+                renk = (255, 140, 130) if stil == "yanlis-dogru" and j == 0 else (150, 225, 160) if stil == "yanlis-dogru" and j == 1 else (255, 224, 115)
+                d.text(k(x0 + j * gen + 10, y + fs * 0.3), b_, font=fh, fill=renk)
+            y += rh
+            d.line(k(x0, y - 4, x1, y - 4), fill=(190, 205, 195), width=k(2))
+        for i, r in enumerate(sat[:gorunen]):
+            if i == gorunen - 1:
+                d.rounded_rectangle(k(x0 - 6, y + 2, x1 + 6, y + rh - 4), radius=k(8), fill=(52, 98, 80))
+            for j, c in enumerate(r):
+                tx = k(x0 + j * gen + 10); ty = k(y + fs * 0.3)
+                if stil == "yanlis-dogru" and j == 0:
+                    metin = "✗ " + c; d.text((tx, ty), metin, font=f_, fill=(255, 150, 140))
+                    w_ = d.textlength(metin, font=f_)
+                    d.line((tx + d.textlength("✗ ", font=f_), ty + k(fs * 0.62), tx + w_, ty + k(fs * 0.62)), fill=(255, 150, 140), width=k(2))
+                elif stil == "yanlis-dogru" and j == 1:
+                    d.text((tx, ty), "✓ " + c, font=f_, fill=(165, 235, 170))
+                else:
+                    d.text((tx, ty), c, font=f_, fill=(255, 255, 255) if i == gorunen - 1 else (205, 220, 210))
+            y += rh
+            d.line(k(x0, y - 2, x1, y - 2), fill=(60, 100, 84), width=k(1))
+        return im
+
+    def tahta_soru(self, taban, sh, acik, no, toplam, ust):
+        im, d, y0 = self._cerceve(taban, sh["baslik"], no, toplam, ust)
+        k = self.k
+        q = sh["soru"]
+        fq = font(k(34), True)
+        y = y0 + 6
+        for s_ in satir_kir(q["metin"], fq, k(630), d)[:3]:
+            d.text(k(578, y), s_, font=fq, fill=(255, 255, 255)); y += 46
+        y += 18
+        fo = font(k(31))
+        for i, o in enumerate(q["secenekler"]):
+            dogru = i == q["dogru"]
+            if acik and dogru:
+                kutu, yazi, harf = (58, 150, 92), (255, 255, 255), (255, 255, 255)
+            elif acik:
+                kutu, yazi, harf = (40, 78, 63), (140, 165, 150), (140, 165, 150)
+            else:
+                kutu, yazi, harf = (48, 92, 74), (235, 242, 238), (255, 210, 90)
+            d.rounded_rectangle(k(578, y, 1150, y + 58), radius=k(12), fill=kutu)
+            d.ellipse(k(592, y + 10, 630, y + 48), outline=harf, width=k(3))
+            ht = "ABC"[i] if i < 3 else str(i + 1)
+            tw = d.textlength(ht, font=font(k(24), True))
+            d.text((k(611) - tw / 2, k(y + 14)), ht, font=font(k(24), True), fill=harf)
+            d.text(k(648, y + 11), o, font=fo, fill=yazi)
+            if acik and dogru:
+                d.text(k(1108, y + 9), "✓", font=font(k(34), True), fill=(255, 255, 255))
+            y += 72
+        return im
+
+    def geri_sayim(self, im, kalan, oran):
+        """Soru sahnesinde düşünme süresi göstergesi."""
+        d = ImageDraw.Draw(im); k = self.k
+        cx, cy, r = 1170, 110, 34
+        d.ellipse(k(cx - r, cy - r, cx + r, cy + r), outline=(80, 120, 100), width=k(7))
+        d.arc(k(cx - r, cy - r, cx + r, cy + r), -90, -90 + 360 * (1 - oran), fill=(255, 196, 80), width=k(7))
+        t_ = str(max(1, math.ceil(kalan)))
+        f_ = font(k(30), True); tw = d.textlength(t_, font=f_)
+        d.text((k(cx) - tw / 2, k(cy - 19)), t_, font=f_, fill=(255, 255, 255))
 
     def madde_yuk(self, m, d):
         return (len(satir_kir(m, font(self.k(self.fs)), self.k(600), d)) * self.fs * 1.3 + self.fs * 0.6)
@@ -607,7 +704,10 @@ def kapak_gorseli(sen, karakter_png, yol):
     for _ in range(14):
         x, y = rnd.randint(0, 700), rnd.randint(0, 680)
         d.arc((x, y, x + rnd.randint(120, 300), y + rnd.randint(40, 120)), 0, rnd.randint(120, 300), fill=(40, 90, 75), width=5)
-    if karakter_png and Path(karakter_png).exists():
+    if karakter_png is None:
+        k = karakter_ciz(0, False, 1.0, False, 1.45)
+        im.alpha_composite(k, (W - k.width + 40, H - k.height + 70))
+    elif Path(karakter_png).exists():
         k = Image.open(karakter_png).convert("RGBA")
         s = 780 / k.height
         k = k.resize((int(k.width * s), 780), Image.LANCZOS)
@@ -647,7 +747,7 @@ def main():
     ap.add_argument("--esik", type=float, default=0.9, help="kalite kapısı kabul eşiği (0-1)")
     ap.add_argument("--cumleler", help="sadece bu cümleleri üret, ör. 02_03,05_00")
     ap.add_argument("--taban-ses", help="--sadece-ses ile: önce bu klasördeki mevcut sesleri kopyala")
-    ap.add_argument("--karakter", default=str(Path(__file__).resolve().parent.parent / "karakter" / "profesor.json"),
+    ap.add_argument("--karakter", default="cizim",
                     help="karakter JSON'u (yanında aynı adlı .png) ya da 'cizim'")
     ap.add_argument("--piper-ses", default="fahrettin", choices=list(PIPER_SESLER))
     ap.add_argument("--edge-ses", default="tr-TR-AhmetNeural")
@@ -655,6 +755,7 @@ def main():
     ap.add_argument("--model-dizini", default=str(Path.home() / ".egitim_video" / "sesler"))
     ap.add_argument("--cozunurluk", type=int, choices=[720, 1080], default=1080)
     ap.add_argument("--sahne", help="sadece bu sahneler, ör. 1-3")
+    ap.add_argument("--kamera-yok", action="store_true", help="sahnelerdeki yavaş yakınlaşmayı kapat")
     ap.add_argument("--muzik", action="store_true", help="hafif fon müziği ekle (varsayılan: yok)")
     ap.add_argument("--muzik-yok", action="store_true", help="(eski seçenek; artık varsayılan)")
     ap.add_argument("--altyazi-yok", action="store_true")
@@ -725,6 +826,11 @@ def main():
     for si, sh in enumerate(sahneler):
         bas = t; cz = []
         for ci, c in enumerate(cumlelere_bol(sh["anlatim"])):
+            if sh.get("tur") == "soru" and ci == sh["soru"].get("cevap_cumle", -1):
+                bek = float(sh["soru"].get("bekle", 4))
+                sh["_bekle"] = (t, t + bek)
+                parcalar.append(np.zeros(int(bek * SR), np.float32)); t += bek
+                sh["_acilis"] = t
             if args.ses_dizini:
                 adaylar = sorted(Path(args.ses_dizini).glob(f"{ilk + si:02d}_{ci:02d}.*"))
                 if not adaylar:
@@ -799,7 +905,8 @@ def main():
         kursu = S.kursu()
         log(f"  Karakter: {kj.stem}")
     else:
-        kar = {(a, g, kk, i): karakter_ciz(a, g, kk, i, S.S)
+        kursu = S.kursu()
+        kar = {(a, g, kk, i): karakter_ciz(a, g, kk, i, S.S * KAR_OLCEK)
                for a in range(5) for g in (False, True) for kk in (0.0, 1.0) for i in (False, True)}
     golge = Image.new("RGBA", k(520, 50), (0, 0, 0, 0))
     ImageDraw.Draw(golge).ellipse(k(60, 8, 360, 40), fill=(0, 0, 0, 70))
@@ -813,19 +920,23 @@ def main():
     # madde zamanları: cümlelere orantılı dağıt
     madde_t = []
     for si, sh in enumerate(sahneler):
-        cz = zc[si][2]; mm = sh.get("maddeler", []); nc = max(1, len(cz)); ts = []
+        cz = zc[si][2]; nc = max(1, len(cz)); ts = []
+        mm = sh["tablo"]["satirlar"] if sh.get("tur") == "tablo" else ([] if sh.get("tur") == "soru" else sh.get("maddeler", []))
         for j in range(len(mm)):
-            ci = min(len(cz) - 1, int(math.floor(j * nc / max(1, len(mm)))))
+            if sh.get("goster") and j < len(sh["goster"]):
+                ci = min(len(cz) - 1, sh["goster"][j])
+            else:
+                ci = min(len(cz) - 1, int(math.floor(j * nc / max(1, len(mm)))))
             ts.append(cz[ci][0] if cz else zc[si][0])
         madde_t.append(ts)
 
     tahta_c, alt_c, madde_c = {}, {}, {}
-    def tahta(si, g):
-        if (si, g) not in tahta_c:
+    def tahta(si, g, acik=False):
+        if (si, g, acik) not in tahta_c:
             if len(tahta_c) > 30:
                 tahta_c.clear()
-            tahta_c[(si, g)] = S.tahta(taban, sahneler[si], g, ilk + si, toplam, ust)
-        return tahta_c[(si, g)]
+            tahta_c[(si, g, acik)] = S.tahta(taban, sahneler[si], g, ilk + si, toplam, ust, acik)
+        return tahta_c[(si, g, acik)]
 
     def altyazi(si, ci):
         if (si, ci) not in alt_c:
@@ -836,9 +947,23 @@ def main():
         bas, bit, cz = zc[si]
         ts = madde_t[si]
         g = sum(1 for x in ts if tt >= x)
-        im, konum = tahta(si, max(0, g - 1) if (g and tt - ts[g - 1] < MADDE_ANIM) else g)
-        im = im.copy()
-        if g and tt - ts[g - 1] < MADDE_ANIM:  # yeni madde kayarak belirir
+        sh_ = sahneler[si]; tur = sh_.get("tur", "maddeler")
+        if tur != "maddeler":
+            acik = tur == "soru" and tt >= sh_.get("_acilis", 1e9)
+            im = tahta(si, g, acik)[0]
+            if g and tt - ts[g - 1] < MADDE_ANIM:          # yeni tablo satırı yumuşakça belirir
+                im = Image.blend(tahta(si, g - 1, acik)[0], im, (tt - ts[g - 1]) / MADDE_ANIM)
+            elif acik and tt - sh_["_acilis"] < MADDE_ANIM:  # doğru cevap açılışı
+                im = Image.blend(tahta(si, g, False)[0], im, (tt - sh_["_acilis"]) / MADDE_ANIM)
+            else:
+                im = im.copy()
+            if tur == "soru" and "_bekle" in sh_ and sh_["_bekle"][0] <= tt < sh_["_bekle"][1]:
+                b0, b1 = sh_["_bekle"]
+                S.geri_sayim(im, b1 - tt, (tt - b0) / (b1 - b0))
+        else:
+          im, konum = tahta(si, max(0, g - 1) if (g and tt - ts[g - 1] < MADDE_ANIM) else g)
+          im = im.copy()
+        if tur == "maddeler" and g and tt - ts[g - 1] < MADDE_ANIM:  # yeni madde kayarak belirir
             p = (tt - ts[g - 1]) / MADDE_ANIM; e = 1 - (1 - p) ** 3
             key = (si, g - 1)
             if key not in madde_c:
@@ -874,9 +999,10 @@ def main():
         a = int(agiz[fi]) if fi < len(agiz) else 0
         kas = 1.0 if (a >= 3 and (fi // 10) % 6 == 0) else 0.0
         kr = kar[(a, fi in kirp, kas, isaret)]
-        sal = int(k(4) * math.sin(tt * 2.0)) + (k(2) if a >= 3 else 0)
-        im.paste(golge, k(20, 632), golge)
-        im.paste(kr, (k(20), k(105) + sal), kr)
+        sal = int(k(2) * math.sin(tt * 2.0)) + (k(1) if a >= 3 else 0)
+        kx0, kx1, kust, _ = S.KURSU
+        im.paste(kr, (k((kx0 + kx1) / 2 - 210 * KAR_OLCEK), k(kust + 28) - kr.height + sal), kr)
+        im.paste(kursu, (0, 0), kursu)
 
     log(f"[4/4] Video kodlanıyor: {W}x{H}, {n_kare} kare ({sure:.0f} sn)...")
     cikti = Path(args.cikti).resolve()
@@ -913,6 +1039,13 @@ def main():
                 bos = taban.copy(); karakter_yapistir(bos, tt, fi)
                 kare = (Image.blend(kare, bos, p * 2) if p < 0.5
                         else Image.blend(bos, sahne_karesi(si + 1, zc[si + 1][0], fi), (p - 0.5) * 2))
+            if not args.kamera_yok:  # yavaş kamera: sahne ortasında %3 yakınlaş, sonda geri dön
+                bas_, bit_ = zc[si][0], zc[si][1]
+                pr = min(1.0, max(0.0, (tt - bas_) / max(0.1, bit_ - bas_)))
+                z = 1 + 0.03 * math.sin(math.pi * pr)
+                cx_, cy_ = W * 0.66, H * 0.44
+                bw, bh = W / z, H / z
+                kare = kare.resize((W, H), Image.BILINEAR, box=(cx_ - bw * 0.66, cy_ - bh * 0.44, cx_ + bw * 0.34, cy_ + bh * 0.56))
             # ilerleme çubuğu
             d = ImageDraw.Draw(kare)
             d.rectangle((0, H - k(5), int(W * (tt - intro) / max(1, sure - intro - outro)), H), fill=(255, 196, 80))
