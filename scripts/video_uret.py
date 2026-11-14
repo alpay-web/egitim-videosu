@@ -414,8 +414,11 @@ def karakter_ciz(agiz, goz_kapali, kas, isaret, S):
         d.rectangle(P(210 - gen * .7, my - 4, 210 + gen * .7, my + 2), fill=(250, 250, 250))
     for cx, cy, rr in [(170, 294, 22), (192, 288, 22), (228, 288, 22), (250, 294, 22), (150, 302, 16), (270, 302, 16)]:
         d.ellipse(P(cx - rr, cy - rr * .65, cx + rr, cy + rr * .65), fill=(222, 222, 218))
+    yanak = Image.new("RGBA", im.size, (0, 0, 0, 0)); dy_ = ImageDraw.Draw(yanak)
     for cx in (120, 300):
-        d.ellipse(P(cx - 22, 262, cx + 22, 290), fill=(250, 170, 160, 90))
+        dy_.ellipse(P(cx - 22, 262, cx + 22, 290), fill=(250, 150, 140, 70))
+    im.alpha_composite(yanak.filter(ImageFilter.GaussianBlur(4 * s)))
+    d = ImageDraw.Draw(im)
 
     if isaret:  # tahtayı gösteren kol + çubuk
         d.line(P(330, 450, 425, 352), fill=HIRKA_G, width=L(62))
@@ -705,8 +708,8 @@ def kapak_gorseli(sen, karakter_png, yol):
         x, y = rnd.randint(0, 700), rnd.randint(0, 680)
         d.arc((x, y, x + rnd.randint(120, 300), y + rnd.randint(40, 120)), 0, rnd.randint(120, 300), fill=(40, 90, 75), width=5)
     if karakter_png is None:
-        k = karakter_ciz(0, False, 1.0, False, 1.45)
-        im.alpha_composite(k, (W - k.width + 40, H - k.height + 70))
+        k = karakter_ciz(0, False, 1.0, False, 1.15)
+        im.alpha_composite(k, (W - k.width + 20, H - k.height + 40))
     elif Path(karakter_png).exists():
         k = Image.open(karakter_png).convert("RGBA")
         s = 780 / k.height
@@ -718,12 +721,13 @@ def kapak_gorseli(sen, karakter_png, yol):
     vurgu = parcalar[-1] if len(parcalar) > 1 else baslik
     ust = parcalar[0] if len(parcalar) > 1 else ""
     fb = font(118, True)
-    satirlar = satir_kir(vurgu.upper(), fb, 700, d)[:3]
+    satirlar = satir_kir(vurgu.upper(), fb, 640, d)[:3]
     y = 360 - len(satirlar) * 68
     if ust:
         fu = font(40, True)
-        for sat in satir_kir(ust, fu, 680, d)[:2]:
-            d.text((60, y - 70), sat, font=fu, fill=(205, 230, 218)); y += 0
+        us = satir_kir(ust, fu, 600, d)[:2]
+        for i_, sat in enumerate(us):
+            d.text((60, y - 70 - (len(us) - 1 - i_) * 50), sat, font=fu, fill=(205, 230, 218))
     for sat in satirlar:
         for ox, oy in ((5, 6),):
             d.text((60 + ox, y + oy), sat, font=fb, fill=(0, 0, 0, 160))

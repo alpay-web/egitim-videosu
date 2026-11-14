@@ -22,23 +22,34 @@ pip install -q -r $R/requirements.txt 2>/dev/null || pip install -q --break-syst
 docx: `pandoc dosya.docx -t plain`, pdf: `pdftotext -layout`. Ana fikirleri çıkar. Marka/kurum adı istenmiyorsa kullanma.
 
 ## 2. Senaryoyu yaz → `senaryo.json`  (örnek: `$R/ornek/senaryo_b1.json`)
+Önce kullanıcıya 1 paragraflık bir **plan** sun (sahne listesi, süre, soru sayısı); onay gelirse yaz.
 ```json
 {
   "baslik": "Ana başlık – Vurgulu kısa başlık",
-  "alt_baslik": "Profesör anlatıyor",
-  "kapanis": "Başarılar!",
-  "telaffuz": {"B1": "be bir", "yesterday": "yesterdey"},
+  "alt_baslik": "Profesör anlatıyor", "kapanis": "Başarılar!",
+  "telaffuz": {"B1": "be bir"}, "telaffuz_kok": {"fiil": "fiyil"},
   "sahneler": [
-    {"baslik": "Sahne başlığı", "maddeler": ["tahtaya kısa madde"], "anlatim": "Anlatım. Cümleler noktayla biter."}
+    {"baslik": "Madde sahnesi", "maddeler": ["kısa madde", "..."], "anlatim": "..."},
+    {"baslik": "Tablo sahnesi", "tur": "tablo", "goster": [2, 3, 4],
+     "tablo": {"basliklar": ["Görürsen", "Cevap"], "satirlar": [["yesterday", "V2"], ["since", "have + V3"], ["if + past", "would"]]},
+     "anlatim": "..."},
+    {"baslik": "Kendini dene 1/3", "tur": "soru",
+     "soru": {"metin": "Yes, ___.", "secenekler": ["I'm", "I am", "I do"], "dogru": 1, "cevap_cumle": 2, "bekle": 4},
+     "anlatim": "Kendini deneme zamanı. Ekrandaki soruyu oku ve düşün. Doğru cevap B: I am. Açıklama..."}
   ]
 }
 ```
-- 8–14 sahne, her biri 60–110 kelime; toplam 5–8 dk. İlk sahne karşılama + içerik, son sahne özet + motivasyon.
-- `maddeler`: sahne başına 3–6, ≤ 40 karakter, anlatım sırasıyla (cümleler ilerledikçe sırayla belirir).
+Sahne türleri — içeriğe göre seç, tekdüze madde listesinden kaçın:
+- **maddeler** (varsayılan): 3–6 kısa madde; anlatım ilerledikçe sırayla kayarak belirir.
+- **tablo**: dokümandaki tablolar, karşılaştırmalar, "görürsen → cevap" listeleri. `stil: "yanlis-dogru"` ile
+  ✗ üstü çizili / ✓ yeşil sütunlar. `goster`: her satırın hangi cümle indeksinde (0'dan) açılacağı.
+- **soru**: dokümandaki alıştırmalardan 2–4 soru, sona doğru "Kendini dene". `cevap_cumle` = "Doğru cevap…" cümlesinin
+  indeksi; ondan önce `bekle` saniye geri sayım olur, sonra doğru seçenek yeşil yanar. Soruyu anlatımda okuma
+  ("Ekrandaki soruyu oku"), ekranda göster.
+Genel: 10–16 sahne, sahne başına 60–110 kelime, toplam 5–8 dk. İlk sahne karşılama + içerik, son sahne özet + motivasyon.
 - `anlatim`: konuşma dili, "sen" hitabı, kısa cümleler; sembol kullanma. Başlıktaki "–" sonrası kapakta büyük yazılır.
-- `telaffuz`: Seviye adları ve kısaltmalar Türkçe harfle ("B1": "be bir", "C1": "se bir", "IELTS": "ay elts").
-  İngilizce kelimelerin çoğunu Chatterbox doğru okur; sorunlu çıkanlar için örnekler: "had": "hed", "Enjoy": "inçoy",
-  "agree": "ıgrii". `will`/`would` olduğu gibi kalsın. `telaffuz_kok` ekli kelimelerde kök değiştirir ({"fiil": "fiyil"}).
+- `telaffuz`: Seviye adları ve kısaltmalar Türkçe harfle ("B1": "be bir", "C1": "se bir", "IELTS": "ay elts",
+  seçenek harfleri "A": "a", "B": "be"). Sorunlu çıkan İngilizce kelimeler: "had": "hed", "Enjoy": "inçoy".
 - Chatterbox'ın zorlandığı Türkçe kelimelerden kaçın: "şık" yerine "seçenek" yaz (tahtada "şık" kalabilir).
 
 ## 3. Seslendirme (Chatterbox) — iki yol
@@ -70,7 +81,8 @@ python $R/scripts/video_uret.py senaryo.json -o deneme.mp4 --ses-dizini sesler -
 Uzun işleri arka planda çalıştır. 2–3 kare çıkarıp kontrol et (`ffmpeg -ss 30 -i video.mp4 -frames:v 1 k.png`).
 Çıktılar: `video.mp4` + `video_kapak.jpg` (1280x720 YouTube kapağı).
 
-Seçenekler: `--karakter yol/karakter.json` (ya da `cizim`), `--abarti 0.5 --cfg 0.5` (Chatterbox vurgu/tempo),
+Varsayılan: sade çizim profesör (kürsü arkasında), müzik yok, yavaş kamera açık.
+Seçenekler: `--karakter yol/karakter.json` (fotoğraf tabanlı karakter), `--muzik`, `--kamera-yok`, `--abarti 0.5 --cfg 0.5` (Chatterbox vurgu/tempo),
 `--referans ses.wav` (sesi bu kayıttan kopyala; yalnızca izinli ses), `--muzik-yok`, `--altyazi-yok`, `--intro-outro-yok`.
 
 ## 5. Yeni karakter (isteğe bağlı)
@@ -78,6 +90,13 @@ Kullanıcı bir portre verirse: `python -c "import sys;sys.path.insert(0,'$R/scr
 Sonra görseli 10 px ızgarayla büyütüp bak ve `karakterler/ad.json` yaz:
 `{"agiz":[cx, cy(üst dişlerin alt sınırı), yarı_genişlik, gülüş_eğrisi_px], "cene_alt": y, "gozler":[[cx,cy,rx,ry],[...]] (göz akı elipsleri), "boyun": y}`.
 Kısa bir deneme render'ında ağız/göz kırpmayı kontrol et.
+
+## 5b. Kendi kendini denetle (teslimden önce zorunlu)
+- `ffmpeg -i video.mp4 -vf "fps=1/15,scale=426:240,tile=5x5" -frames:v 1 sheet.png` ile kare tablosu çıkar ve **bak**:
+  taşan yazı, boş tahta, üst üste binen öğe, yanlış sahne türü var mı?
+- Seslendirme için `kalite_raporu.txt`'teki en düşük puanlı cümleleri incele; yanlış okunanı `telaffuz` ile düzelt ve
+  `--cumleler` ile yalnızca onları yeniden üret.
+- Senaryodaki bilgileri kaynak dokümanla karşılaştır (uydurma bilgi yok).
 
 ## 6. Teslim
 MP4 ve kapak görselini gönder; süre, sahne sayısı ve önerilen YouTube başlığı + açıklamasını (sahne başlıklarından
