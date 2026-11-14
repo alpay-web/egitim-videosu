@@ -36,11 +36,18 @@ docx: `pandoc dosya.docx -t plain`, pdf: `pdftotext -layout`. Ana fikirleri çı
 - 8–14 sahne, her biri 60–110 kelime; toplam 5–8 dk. İlk sahne karşılama + içerik, son sahne özet + motivasyon.
 - `maddeler`: sahne başına 3–6, ≤ 40 karakter, anlatım sırasıyla (cümleler ilerledikçe sırayla belirir).
 - `anlatim`: konuşma dili, "sen" hitabı, kısa cümleler; sembol kullanma. Başlıktaki "–" sonrası kapakta büyük yazılır.
-- `telaffuz`: anlatımdaki **her** İngilizce kelime / kısaltma için Türkçe okunuş. Seviye adları Türkçe harfle:
-  "A2": "a iki", "B1": "be bir", "B2": "be iki", "C1": "se bir"; "IELTS": "ayelts". Altyazıda orijinal görünür.
+- `telaffuz`: Seviye adları ve kısaltmalar Türkçe harfle ("B1": "be bir", "C1": "se bir", "IELTS": "ay elts").
+  İngilizce kelimelerin çoğunu Chatterbox doğru okur; sorunlu çıkanlar için örnekler: "had": "hed", "Enjoy": "inçoy",
+  "agree": "ıgrii". `will`/`would` olduğu gibi kalsın. `telaffuz_kok` ekli kelimelerde kök değiştirir ({"fiil": "fiyil"}).
+- Chatterbox'ın zorlandığı Türkçe kelimelerden kaçın: "şık" yerine "seçenek" yaz (tahtada "şık" kalabilir).
 
 ## 3. Seslendirme (Chatterbox) — iki yol
-**A) GitHub Actions (hızlı, ~10-15 dk, önerilen; repoya yazma erişimi gerekir):**
+Her iki yolda da `--kalite 3` (Actions'ta varsayılan) Whisper kalite kapısını açar: her cümle yazıya dökülüp metinle
+karşılaştırılır, uymazsa yeniden üretilir; `kalite_raporu.txt` en düşük puanlı cümleleri gösterir. Sorunlu birkaç cümleyi
+yeniden üretmek için `--cumleler 04_05,06_07` kullan ve yeni dosyaları ses klasörüne kopyala.
+Bitmiş seslendirmeyi denetlemek için: Actions → "Seslendirmeyi denetle" (`scripts/denetle.py`).
+
+**A) GitHub Actions (hızlı, ~15-30 dk, önerilen; repoya yazma erişimi gerekir):**
 senaryoyu repoya `senaryolar/<ad>.json` olarak commit'le ve iş akışını başlat:
 ```bash
 curl -X POST -H "Accept: application/vnd.github+json" -H "Content-Type: application/json" \

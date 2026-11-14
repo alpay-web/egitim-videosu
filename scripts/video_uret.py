@@ -504,12 +504,15 @@ class Sahne:
 
     def tahta(self, taban, sh, gorunen, no, toplam, ust):
         im = taban.copy(); d = ImageDraw.Draw(im); k = self.k
-        fb, fk = font(k(38), True), font(k(16))
+        fb, fk = font(k(40), True), font(k(16))
         y = 66
         for s in satir_kir(sh["baslik"], fb, k(640), d)[:2]:
             d.text(k(568, y), s, font=fb, fill=(255, 224, 115)); y += 48
         d.line(k(568, y + 6, 1210, y + 6), fill=(190, 205, 195), width=k(2))
         self.madde_y0 = y + 28
+        self.fs = 34
+        while self.fs > 24 and self.madde_y0 + sum(self.madde_yuk(m, d) for m in sh.get("maddeler", [])) > 515:
+            self.fs -= 1
         yy = self.madde_y0
         konumlar = []
         for i, m in enumerate(sh.get("maddeler", [])):
@@ -522,15 +525,16 @@ class Sahne:
         return im, konumlar
 
     def madde_yuk(self, m, d):
-        return (len(satir_kir(m, font(self.k(29)), self.k(600), d)) * 38 + 14)
+        return (len(satir_kir(m, font(self.k(self.fs)), self.k(600), d)) * self.fs * 1.3 + self.fs * 0.6)
 
     def madde_ciz(self, d, m, y, vurgu, dx=0):
         k = self.k
-        fm = font(k(29))
+        fm = font(k(self.fs))
         renk = (255, 255, 255) if vurgu else (200, 216, 206)
-        d.ellipse((k(570) + dx, k(y + 12), k(584) + dx, k(y + 26)), fill=(255, 196, 80))
+        r = self.fs * 0.24; cy_ = y + self.fs * 0.62
+        d.ellipse((k(578 - r) + dx, k(cy_ - r), k(578 + r) + dx, k(cy_ + r)), fill=(255, 196, 80))
         for s in satir_kir(m, fm, k(600), d):
-            d.text((k(600) + dx, k(y)), s, font=fm, fill=renk); y += 38
+            d.text((k(600) + dx, k(y)), s, font=fm, fill=renk); y += self.fs * 1.3
 
     def madde_katmani(self, m, y):
         im = Image.new("RGBA", (self.W, self.H), (0, 0, 0, 0))
