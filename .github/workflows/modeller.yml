@@ -1,0 +1,25 @@
+name: Ses modellerini GitHub'a kopyala
+on:
+  push:
+    paths: ['.github/workflows/modeller.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  kopyala:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Modelleri indir ve release'e yükle
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          curl -fsSL -o freya-model.safetensors https://huggingface.co/freyavoice/freya-tts/resolve/main/model.safetensors
+          curl -fsSL -o freya-config.json https://huggingface.co/freyavoice/freya-tts/resolve/main/config.json
+          curl -fsSL -o freya-LICENSE https://huggingface.co/freyavoice/freya-tts/resolve/main/README.md
+          curl -fsSL -o voxcpm2-audiovae.pth https://huggingface.co/openbmb/VoxCPM2/resolve/main/audiovae.pth
+          ls -la
+          gh release delete modeller-v1 --yes --cleanup-tag --repo "$GITHUB_REPOSITORY" || true
+          gh release create modeller-v1 freya-model.safetensors freya-config.json freya-LICENSE voxcpm2-audiovae.pth \
+            --repo "$GITHUB_REPOSITORY" --title "Ses modelleri" \
+            --notes "FreyaTTS-small (Apache-2.0, freyavoice/freya-tts) ve VoxCPM2 AudioVAE (Apache-2.0, openbmb/VoxCPM2) kopyaları. Claude ortamı Hugging Face'e erişemediği için burada barındırılıyor."
