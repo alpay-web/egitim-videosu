@@ -209,7 +209,8 @@
   "I work ya da I'm working": "ay vörk ya da aym vörking",
   "she is an engineer": "şi iz en encinir",
   "a ya da an": "ı ya da en",
-  "for three years": "for tri yiırs",
+  "for three years": "for, tri yiırs",
+  "s takısını": "se takısını",
   "I went home": "ay vent houm",
   "Well ya da Let me think": "vel ya da let mi sink",
   "A1 ile A2": "a bir ile a iki",
@@ -1099,7 +1100,7 @@
      "would like + to"
     ]
    ],
-   "anlatim": "Sekizinci ders: fiilden sonra ing mi gelir, to mu? Enjoy, finish, avoid ve mind fiillerinden sonra ing gelir. Suggest, keep ve practise de öyle. Look forward to kalıbında to bir edattır, bu yüzden ardından da ing gelir. Want, decide ve plan fiillerinden sonra ise to ve fiilin yalın hali gelir. Hope, promise ve agree de böyle. Would like da to alır.",
+   "anlatim": "Sekizinci ders: fiilden sonra ing mi gelir, to mu? Enjoy, finish, avoid ve mind fiillerinden sonra ing gelir. Suggest, keep ve practise de öyle. Look forward to kalıbında to bir edattır, bu yüzden ardından da ing gelir. Want, decide ve plan fiillerinden sonra ise to ve fiilin yalın hali gelir. Hope, promise ve agree de böyle. Would like kalıbı da to alır.",
    "goster": [
     1,
     2,
@@ -1846,7 +1847,7 @@
     "he works: -s'yi unutma",
     "Sessizlik yok: Well… Let me think…"
    ],
-   "anlatim": "Kaydını dinlerken şu listeyle kendini puanla. Her cevap en az üç dört cümle mi? En az iki bağlaç kullandın mı? En az iki farklı zaman kullandın mı? Geçmiş olaylarda fiilin ikinci halini kullandın mı? Üçüncü tekil kişide s takısını unutmadın mı? Uzun sessizlik olursa Well ya da Let me think diyerek boşluğu doldur.",
+   "anlatim": "Kaydını dinlerken şu listeyle kendini puanla. Her cevap en az üç dört cümle mi? En az iki bağlaç kullandın mı? En az iki farklı zaman kullandın mı? Geçmiş olaylarda fiilin ikinci halini kullandın mı? Üçüncü tekil kişide fiile gelen s takısını unutmadın mı? Uzun sessizlik olursa Well ya da Let me think diyerek boşluğu doldur.",
    "goster": [
     1,
     2,
@@ -1951,7 +1952,7 @@
     "bekle": 4,
     "cevap_cumle": 2
    },
-   "anlatim": "Ve son deneme sorusu bir anons. Tren saat kaçta kalkar? Doğru cevap B: dokuz elli beş. Forty, yani kırk dakika; fourteen ile karıştırma."
+   "anlatim": "Ve son deneme sorusu bir anons. Tren saat kaçta kalkar? Doğru cevap B: dokuz elli beş. Forty kırk demektir; fourteen ile karıştırma."
   },
   {
    "baslik": "Sınav günü",
