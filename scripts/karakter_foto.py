@@ -52,41 +52,37 @@ class FotoKarakter:
 
     # ------------------------------------------------------------ ağız
     def _agiz_ac(self, arr, D):
-        if D <= 0.5:
+        """Alt dudağı aşağı indirir (çene çok az izler), açılan boşluğu koyu ağız içiyle doldurur."""
+        if D <= 0.3:
             return arr
         H, W, _ = arr.shape
         cx, cy, yg, egri = self.agiz
         x0, x1 = int(cx - yg - 4), int(cx + yg + 5)
-        y_alt = int(min(H - 1, self.cene + (self.cene - cy) * 1.2))
+        L = max(8.0, (self.cene - cy) * 1.1)              # hareketin söndüğü mesafe (dudaktan aşağı)
+        y_alt = int(min(H - 1, cy + L + 4))
         xs = np.arange(x0, x1)
         u = np.clip(1 - ((xs - cx) / yg) ** 2, 0, 1)
-        d = D * u ** 0.9                                      # dudak açıklık profili
-        y0 = cy - egri * (1 - u)                              # gülüş eğrisi (köşeler yukarıda)
-        ys = np.arange(int(cy - egri - 2), y_alt)[:, None]
-        # çeneye kadar tam, sonra boyuna doğru sönen kaydırma
-        f = np.clip(1 - (ys - self.cene) / max(1, (y_alt - self.cene)), 0, 1)
-        f = np.where(ys < self.cene, 1.0, f ** 1.5)
+        d = D * u ** 1.3                                      # dudak açıklık profili (köşelerde sıfır)
+        y0 = cy - egri * (1 - u) ** 2                         # gülüş eğrisi
+        ys = np.arange(int(cy - egri - 2), y_alt)[:, None].astype(np.float32)
+        f = np.clip(1 - (ys - y0[None, :]) / L, 0, 1) ** 0.7  # dudakta 1, çenede ~0.3, aşağıda 0
         kay = d[None, :] * f
-        kaynak = ys - kay
-        alt = (ys > y0[None, :])
-        kaynak = np.where(alt, kaynak, ys)
-        bosluk = alt & (kaynak < y0[None, :])               # ağzın içi
+        alt = ys > y0[None, :]
+        kaynak = np.where(alt, ys - kay, ys)
+        bosluk = alt & (kaynak < y0[None, :])
         kaynak_c = np.clip(kaynak, 0, H - 1)
         y_lo = np.floor(kaynak_c).astype(int)
         y_hi = np.minimum(y_lo + 1, H - 1)
         w = (kaynak_c - y_lo)[..., None]
         bolge = arr[y_lo, xs[None, :]] * (1 - w) + arr[y_hi, xs[None, :]] * w
-        # ağız içi: koyu kırmızı -> alt kısımda dil
-        derin = np.clip((ys - y0[None, :]) / np.maximum(kay, 1), 0, 1)[..., None]
-        derin = derin ** 2.2
-        ic = np.array([48, 14, 20, 255], np.float32) * (1 - derin) + np.array([150, 62, 72, 255], np.float32) * derin
-        ic[..., :3] *= (0.75 + 0.25 * u[None, :, None])
-        # kenar yumuşatma
-        mask = Image.fromarray((bosluk * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(1.2))
+        # ağız içi: üstte koyu, dipte çok hafif dil tonu
+        derin = np.clip((ys - y0[None, :]) / np.maximum(d[None, :], 1), 0, 1)[..., None] ** 2.5
+        ic = np.array([34, 10, 14, 255], np.float32) * (1 - derin) + np.array([110, 42, 50, 255], np.float32) * derin
+        mask = Image.fromarray((bosluk * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(0.9))
         m = (np.asarray(mask).astype(np.float32) / 255)[..., None]
         bolge = bolge * (1 - m) + ic * m
         out = arr.copy()
-        out[ys[0, 0]:ys[-1, 0] + 1, x0:x1] = bolge
+        out[int(ys[0, 0]):int(ys[-1, 0]) + 1, x0:x1] = bolge
         return out
 
     # ------------------------------------------------------------ göz kırpma
@@ -128,7 +124,7 @@ class FotoKarakter:
         b = round(kirp * 4) / 4
         k = (a, b)
         if k not in self.cache:
-            D = a * self.agiz[2] * 0.5
+            D = a * self.agiz[2] * 0.3
             arr = self._agiz_ac(self.arr, D)
             im = Image.fromarray(np.clip(arr, 0, 255).astype(np.uint8), "RGBA")
             self.cache[k] = self._kirp(im, b)
@@ -136,10 +132,10 @@ class FotoKarakter:
 
     def poz(self, im, t, konusuyor):
         """Hafif baş/gövde hareketi: nefes + yavaş salınım; konuşurken biraz daha canlı."""
-        aci = 0.9 * math.sin(t * 0.7) + 0.5 * math.sin(t * 1.9 + 1) * konusuyor
+        aci = 0.35 * math.sin(t * 0.6) + 0.25 * math.sin(t * 1.7 + 1) * konusuyor
         if abs(aci) < 0.05:
             return im, (0, 0)
         merkez = (im.width / 2, self.boyun)
         r = im.rotate(aci, resample=Image.BICUBIC, center=merkez)
-        dy = 2.5 * math.sin(t * 1.3)
+        dy = 1.5 * math.sin(t * 1.1)
         return r, (0, dy)

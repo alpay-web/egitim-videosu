@@ -31,7 +31,7 @@
         "Cümlenin tamamını oku",
         "Bir soruya en fazla 1 dakika"
       ],
-      "anlatim": "Şimdi en çok puan getiren kısma geldik. İlk sekiz on soruya maksimum özen göster, çünkü seviyenin kaba aralığını bu sorular belirler. Hızlı değil, doğru ol. Hiçbir soruyu boş bırakma; bilmiyorsan yanlış şıkları ele ve tahmin et. Sorular zorlaşıyorsa panik yapma, bu doğru gittiğin anlamına gelir. Cümlenin tamamını oku, çünkü boşluktan sonraki kelimeler cevabı çoğu zaman ele verir. Ve bir soruya bir dakikadan fazla takılma."
+      "anlatim": "Şimdi en çok puan getiren kısma geldik. İlk sekiz on soruya maksimum özen göster, çünkü seviyenin kaba aralığını bu sorular belirler. Hızlı değil, doğru ol. Hiçbir soruyu boş bırakma; bilmiyorsan yanlış seçenekleri ele ve tahmin et. Sorular zorlaşıyorsa panik yapma, bu doğru gittiğin anlamına gelir. Cümlenin tamamını oku, çünkü boşluktan sonraki kelimeler cevabı çoğu zaman ele verir. Ve bir soruya bir dakikadan fazla takılma."
     },
     {
       "baslik": "Sinyal kelimeler",
@@ -43,7 +43,7 @@
         "enjoy, finish, avoid → -ing",
         "want, decide, plan → to + V1"
       ],
-      "anlatim": "Gramer sorularını saniyeler içinde çözmenin sırrı sinyal kelimelerdir. Önce cümlede ipucu kelimeyi ara, sonra şıklara bak. Yesterday ya da ago görüyorsan cevap büyük ihtimalle geçmiş zaman. Since, for, yet, already varsa have ve fiilin üçüncü hali gelir. By the time ve geçmiş zaman varsa had ile üçüncü hal. If ve geçmiş zaman gördüysen sonuç kısmında would kullanılır. Enjoy, finish, avoid gibi fiillerden sonra ing gelir. Want, decide, plan gibi fiillerden sonra ise to ve fiilin yalın hali."
+      "anlatim": "Gramer sorularını saniyeler içinde çözmenin sırrı sinyal kelimelerdir. Önce cümlede ipucu kelimeyi ara, sonra seçeneklere bak. Yesterday ya da ago görüyorsan cevap büyük ihtimalle geçmiş zaman. Since, for, yet, already varsa have ve fiilin üçüncü hali gelir. By the time ve geçmiş zaman varsa had ile üçüncü hal. If ve geçmiş zaman gördüysen sonuç kısmında would kullanılır. Enjoy, finish, avoid gibi fiillerden sonra ing gelir. Want, decide, plan gibi fiillerden sonra ise to ve fiilin yalın hali."
     },
     {
       "baslik": "Şık okuma hileleri",
@@ -53,7 +53,7 @@
         "Okuma: aynı kelime = tuzak",
         "Dinleme: but, actually'den sonrası doğru"
       ],
-      "anlatim": "Şimdi birkaç şık okuma hilesi. Neredeyse aynı olan iki şık varsa, doğru cevap genellikle bu ikisinden biridir. Kulak testini kullan: cümleyi her şıkla içinden sesli oku, hazır kalıpları beynin hemen tanır. Okuma bölümünde metindeki kelimeyi aynen tekrar eden şık çoğu zaman tuzaktır; doğru cevap aynı anlamı başka kelimelerle verir. Dinlemede ise but, actually, sorry ya da instead kelimelerinden sonra gelen bilgi neredeyse her zaman doğru cevaptır."
+      "anlatim": "Şimdi seçenekleri okurken işine yarayacak birkaç hileye bakalım. Neredeyse aynı olan iki seçenek varsa, doğru cevap genellikle bu ikisinden biridir. Kulak testini kullan: cümleyi her seçenekle içinden sesli oku, hazır kalıpları beynin hemen tanır. Okuma bölümünde metindeki kelimeyi aynen tekrar eden seçenek çoğu zaman tuzaktır; doğru cevap aynı anlamı başka kelimelerle verir. Dinlemede ise but, actually, sorry ya da instead kelimelerinden sonra gelen bilgi neredeyse her zaman doğru cevaptır."
     },
     {
       "baslik": "Uydurma yapı kara listesi",
@@ -65,7 +65,7 @@
         "more better → better",
         "If I will go → If I go"
       ],
-      "anlatim": "İngilizcede hiçbir zaman doğru olmayan yapılar var. Bunları şıklarda görürsen düşünmeden ele. Did ya da didn't varsa fiil yalın kalır, yani didn't stopped yanlıştır. Modal fiillerden sonra to gelmez, must to go değil, must go. Will'den sonra da fiil yalın kalır. I am agree diye bir yapı yok, doğrusu I agree. More better gibi çift karşılaştırma da yanlış. Ve unutma: if'li tarafta asla will ya da would olmaz."
+      "anlatim": "İngilizcede hiçbir zaman doğru olmayan yapılar var. Bunları seçeneklerde görürsen düşünmeden ele. Did ya da didn't varsa fiil yalın kalır, yani didn't stopped yanlıştır. Modal fiillerden sonra to gelmez, must to go değil, must go. Will'den sonra da fiil yalın kalır. I am agree diye bir yapı yok, doğrusu I agree. More better gibi çift karşılaştırma da yanlış. Ve unutma: if'li tarafta asla will ya da would olmaz."
     },
     {
       "baslik": "Online deneme testinden dersler",
@@ -76,7 +76,7 @@
         "Kısa cevap: Yes, he is. (he's değil)",
         "Son sorularda panik yok"
       ],
-      "anlatim": "Kursun kendi kısa online deneme testi bize sınavın mantığını gösteriyor. Her soruda üç şık ve bir de I don't know seçeneği var. En az bir şıkkı eleyebiliyorsan I don't know'a basma, tahmin et. Sorular kolaydan zora sıralı ve B1 için kabaca ilk on iki on dört soruyu doğru yapman yeterli. Kısa cevap kuralını unutma: soru hangi yardımcı fiille sorulduysa cevap da onunla verilir ve olumlu kısa cevapta kısaltma yapılmaz. Son sorularda bilmediğin yapılar görürsen panik yapma, bu B1'i zaten geçtiğin anlamına gelir."
+      "anlatim": "Kursun kendi kısa online deneme testi bize sınavın mantığını gösteriyor. Her soruda üç seçenek ve bir de I don't know seçeneği var. En az bir seçeneği eleyebiliyorsan I don't know'a basma, tahmin et. Sorular kolaydan zora sıralı ve B1 için kabaca ilk on iki on dört soruyu doğru yapman yeterli. Kısa cevap kuralını unutma: soru hangi yardımcı fiille sorulduysa cevap da onunla verilir ve olumlu kısa cevapta kısaltma yapılmaz. Son sorularda bilmediğin yapılar görürsen panik yapma, bu B1'i zaten geçtiğin anlamına gelir."
     },
     {
       "baslik": "Dinleme ve okuma",
@@ -87,7 +87,7 @@
         "Oku: anlamı eşleştir, kelimeyi değil",
         "always, never, only → şüphelen"
       ],
-      "anlatim": "Dinlemede ses başlamadan önce soruyu ve şıkları oku, ne dinleyeceğini bil. Konuşmacı önce bir şey söyleyip sonra düzeltirse doğru cevap son söylenendir. Rakamlara dikkat et: on üç ile otuz, on dört ile kırk çok karışır. Okumada önce soruyu oku, sonra metinde sadece ilgili kısmı ara. Kelimeyi değil anlamı eşleştir. Always, never, only gibi mutlak ifadeler içeren şıklar genellikle yanlıştır."
+      "anlatim": "Dinlemede ses başlamadan önce soruyu ve seçenekleri oku, ne dinleyeceğini bil. Konuşmacı önce bir şey söyleyip sonra düzeltirse doğru cevap son söylenendir. Rakamlara dikkat et: on üç ile otuz, on dört ile kırk çok karışır. Okumada önce soruyu oku, sonra metinde sadece ilgili kısmı ara. Kelimeyi değil anlamı eşleştir. Always, never, only gibi mutlak ifadeler içeren seçenekler genellikle yanlıştır."
     },
     {
       "baslik": "Konuşmada B1 gibi duyulmak",
@@ -148,7 +148,7 @@
     "If": "if",
     "would": "vud",
     "will": "vil",
-    "Enjoy": "encoy",
+    "Enjoy": "incoy",
     "finish": "finiş",
     "avoid": "evoyd",
     "Want": "vont",
@@ -166,19 +166,24 @@
     "Modal": "modal",
     "must to go": "mast tu go",
     "must go": "mast go",
-    "I am agree": "ay em egri",
-    "I agree": "ay egri",
+    "I am agree": "ay em ıgrii",
+    "I agree": "ay ıgrii",
     "More better": "mor beter",
     "I don't know": "ay dont nou",
     "Always": "olveyz",
     "never": "never",
-    "only": "onli",
+    "only": "onlii",
     "Have you ever": "hev yu ever",
     "Yes, I have": "yes, ay hev",
     "To be honest": "tu bi onest",
     "it depends on": "it dipends on",
     "online": "onlayn",
-    "IELTS": "ayelts",
-    "I don't know'a": "ay dont nou'ya"
+    "IELTS": "ay elts",
+    "I don't know'a": "ay dont nou'ya",
+    "had": "hed",
+    "stopped": "stopt"
+  },
+  "telaffuz_kok": {
+    "fiil": "fiyil"
   }
 }

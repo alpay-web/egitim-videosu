@@ -103,8 +103,10 @@ def sayi_yazi(n):
     return " ".join(p)
 
 
-def seslendirme_metni(metin, telaffuz):
+def seslendirme_metni(metin, telaffuz, kok=None):
     t = metin
+    for k, v in (kok or {}).items():  # kelime başı eşleşmesi (ekleriyle birlikte), ör. fiil -> fiyil
+        t = re.sub(r"(?<![\wçğıöşüÇĞİÖŞÜ])" + re.escape(k), v, t, flags=re.I)
     for k in sorted(telaffuz, key=len, reverse=True):
         t = re.sub(r"(?<![\wçğıöşüÇĞİÖŞÜ])" + re.escape(k) + r"(?![\wçğıöşüÇĞİÖŞÜ])", telaffuz[k], t, flags=re.I)
     t = re.sub(r"%\s?(\d+)", lambda m: "yüzde " + sayi_yazi(int(m.group(1))), t)
@@ -122,6 +124,29 @@ def oku_24k(yol):
     out = subprocess.run([ffmpeg_bin(), "-v", "error", "-i", str(yol), "-f", "s16le", "-ac", "1", "-ar", str(SR), "-"],
                          capture_output=True, check=True).stdout
     return np.frombuffer(out, dtype=np.int16).astype(np.float32) / 32768.0
+
+
+# ================================================================ Whisper kalite kapısı
+def _norm_kelimeler(t):
+    import unicodedata
+    t = unicodedata.normalize("NFC", t).replace("İ", "i").replace("I", "ı").lower()
+    t = re.sub(r"\d+", lambda m: " " + sayi_yazi(int(m.group(0))) + " ", t)
+    t = re.sub(r"[^\wçğıöşü ]+", " ", t)
+    return t.split()
+
+
+class Denetci:
+    """Üretilen cümleyi Whisper ile dinler; metinle benzerliği (0-1) döndürür. faster-whisper gerekir."""
+
+    def __init__(self, model="medium"):
+        from faster_whisper import WhisperModel
+        self.m = WhisperModel(model, device="cpu", compute_type="int8")
+
+    def puan(self, yol, metin):
+        import difflib
+        segs, _ = self.m.transcribe(str(yol), language="tr", beam_size=5)
+        duyulan = " ".join(x.text.strip() for x in segs)
+        return difflib.SequenceMatcher(a=_norm_kelimeler(metin), b=_norm_kelimeler(duyulan)).ratio(), duyulan
 
 
 # ================================================================ seslendirme motorları
@@ -444,14 +469,38 @@ class Sahne:
         d.rounded_rectangle(k(520, 28, 1256, 572), radius=k(14), fill=(120, 80, 50))
         d.rectangle(k(538, 46, 1238, 554), fill=(36, 72, 57))
         rnd = random.Random(5)
-        for _ in range(9):  # tebeşir izi dokusu
-            x, y = rnd.randint(570, 1150), rnd.randint(80, 520)
-            d.arc(k(x, y, x + rnd.randint(80, 220), y + rnd.randint(30, 90)), rnd.randint(0, 180), rnd.randint(190, 360),
-                  fill=(48, 86, 70), width=k(6))
+        iz = Image.new("RGBA", im.size, (0, 0, 0, 0)); di = ImageDraw.Draw(iz)
+        for _ in range(9):  # tebeşir izi dokusu (yalnızca tahtanın içinde)
+            x, y = rnd.randint(560, 1080), rnd.randint(70, 470)
+            di.arc(k(x, y, x + rnd.randint(80, 150), y + rnd.randint(30, 80)), rnd.randint(0, 180), rnd.randint(190, 360),
+                   fill=(48, 86, 70, 255), width=k(6))
+        maske = Image.new("L", im.size, 0); ImageDraw.Draw(maske).rectangle(k(538, 46, 1238, 554), fill=255)
+        iz.putalpha(Image.fromarray(np.minimum(np.asarray(iz.getchannel("A")), np.asarray(maske))))
+        im.paste(iz, (0, 0), iz)
+        d = ImageDraw.Draw(im)
         d.rectangle(k(528, 560, 1248, 578), fill=(140, 96, 62))
         d.rectangle(k(588, 553, 628, 561), fill=(250, 250, 245))
         d.rectangle(k(648, 553, 674, 561), fill=(250, 230, 120))
         return im
+
+    def kursu(self):
+        """Profesörün önündeki ahşap kürsü (karakterin üstüne çizilir)."""
+        k = self.k
+        im = Image.new("RGBA", (self.W, self.H), (0, 0, 0, 0))
+        d = ImageDraw.Draw(im)
+        x0, x1, ust = 70, 400, 548
+        d.polygon(k(x0 + 18, ust + 22, x1 - 18, ust + 22, x1 - 30, 720, x0 + 30, 720), fill=(118, 78, 48))
+        for i in range(5):  # tahta damarları
+            y = ust + 40 + i * 32
+            d.line(k(x0 + 34, y, x1 - 34, y + 3), fill=(106, 70, 43), width=k(2))
+        d.rounded_rectangle(k(x0 + 70, ust + 60, x1 - 70, ust + 140), radius=k(6), outline=(150, 108, 70), width=k(3))
+        d.rounded_rectangle(k(x0, ust, x1, ust + 26), radius=k(6), fill=(150, 104, 66))
+        d.rectangle(k(x0 + 4, ust + 20, x1 - 4, ust + 26), fill=(96, 62, 38))
+        sh = Image.new("RGBA", (self.W, self.H), (0, 0, 0, 0))
+        ImageDraw.Draw(sh).rectangle(k(x0 + 20, ust + 26, x1 - 20, ust + 46), fill=(0, 0, 0, 70))
+        sh = sh.filter(ImageFilter.GaussianBlur(k(6)))
+        sh.alpha_composite(im)
+        return sh
 
     def tahta(self, taban, sh, gorunen, no, toplam, ust):
         im = taban.copy(); d = ImageDraw.Draw(im); k = self.k
@@ -496,7 +545,11 @@ class Sahne:
             return None
         d = ImageDraw.Draw(im)
         fnt = font(k(24))
-        sat = satir_kir(metin, fnt, k(690), d)[:3]
+        sat = satir_kir(metin, fnt, k(690), d)
+        if len(sat) > 1:  # satırları dengele (tek kelimelik dul satır olmasın)
+            toplam = d.textlength(metin, font=fnt)
+            sat = satir_kir(metin, fnt, min(k(690), toplam / len(sat) * 1.08 + k(30)), d)
+        sat = sat[:3]
         h = 14 + 31 * len(sat)
         y0 = 590 + (3 - len(sat)) * 10
         d.rounded_rectangle(k(520, y0, 1256, y0 + h), radius=k(12), fill=(18, 20, 26, 215))
@@ -576,6 +629,10 @@ def main():
     ap.add_argument("--cfg", type=float, default=0.5, help="chatterbox tempo/sadakat (düşük = daha sakin)")
     ap.add_argument("--ses-dizini", help="hazır cümle sesleri (SS_CC.mp3/wav) bu klasörden alınır")
     ap.add_argument("--sadece-ses", metavar="KLASOR", help="video üretmeden sadece cümle seslerini bu klasöre yaz")
+    ap.add_argument("--kalite", type=int, default=0, help="Whisper kalite kapısı: cümle başına en fazla N deneme")
+    ap.add_argument("--esik", type=float, default=0.9, help="kalite kapısı kabul eşiği (0-1)")
+    ap.add_argument("--cumleler", help="sadece bu cümleleri üret, ör. 02_03,05_00")
+    ap.add_argument("--taban-ses", help="--sadece-ses ile: önce bu klasördeki mevcut sesleri kopyala")
     ap.add_argument("--karakter", default=str(Path(__file__).resolve().parent.parent / "karakter" / "profesor.json"),
                     help="karakter JSON'u (yanında aynı adlı .png) ya da 'cizim'")
     ap.add_argument("--piper-ses", default="fahrettin", choices=list(PIPER_SESLER))
@@ -598,6 +655,7 @@ def main():
         a, _, b = args.sahne.partition("-"); ilk = int(a)
         sahneler = tum[int(a) - 1:int(b or a)]
     telaffuz = sen.get("telaffuz", {})
+    kok = sen.get("telaffuz_kok", {})
     ust = sen.get("baslik", "")
     intro = 0 if args.intro_outro_yok else INTRO_SN
     outro = 0 if args.intro_outro_yok else OUTRO_SN
@@ -613,11 +671,37 @@ def main():
                  else EspeakSes())
     if args.sadece_ses:
         hedef = Path(args.sadece_ses); hedef.mkdir(parents=True, exist_ok=True)
+        if args.taban_ses:
+            for f in Path(args.taban_ses).glob("*.wav"):
+                if not (hedef / f.name).exists():
+                    shutil.copy(f, hedef / f.name)
+        secili = set(args.cumleler.split(",")) if args.cumleler else None
+        den = Denetci() if args.kalite else None
+        rapor = []
         for si, sh in enumerate(sahneler):
             for ci, c in enumerate(cumlelere_bol(sh["anlatim"])):
-                yol = hedef / f"{ilk + si:02d}_{ci:02d}.wav"
-                motor.sentezle(seslendirme_metni(c, telaffuz), yol)
+                ad = f"{ilk + si:02d}_{ci:02d}"
+                if secili is not None and ad not in secili:
+                    continue
+                yol = hedef / f"{ad}.wav"
+                en_iyi = None
+                for deneme in range(max(1, args.kalite)):
+                    aday = hedef / f"{ad}.aday{deneme}.wav"
+                    motor.sentezle(seslendirme_metni(c, telaffuz, kok), aday)
+                    if not den:
+                        en_iyi = (1.0, aday, ""); break
+                    p, duyulan = den.puan(aday, c)
+                    log(f"   {ad} deneme {deneme + 1}: {p:.2f}  «{duyulan[:70]}»")
+                    if en_iyi is None or p > en_iyi[0]:
+                        en_iyi = (p, aday, duyulan)
+                    if p >= args.esik:
+                        break
+                os.replace(en_iyi[1], yol)
+                for f in hedef.glob(f"{ad}.aday*.wav"):
+                    f.unlink()
+                rapor.append(f"{ad}\t{en_iyi[0]:.2f}\t{c}\t|\t{en_iyi[2]}")
                 log(f"   {yol.name}: {c[:60]}")
+        (hedef / "kalite_raporu.txt").write_text("\n".join(rapor), encoding="utf-8")
         log("TAMAM ✔ sesler: " + str(hedef))
         return
 
@@ -633,7 +717,7 @@ def main():
                 yol = adaylar[0]
             else:
                 yol = tmp / f"s{si}_{ci}.wav"
-                motor.sentezle(seslendirme_metni(c, telaffuz), yol)
+                motor.sentezle(seslendirme_metni(c, telaffuz, kok), yol)
             x = oku_24k(yol)
             nz = np.nonzero(np.abs(x) > 0.01)[0]       # baş/son sessizliği kırp
             if len(nz):
@@ -696,7 +780,8 @@ def main():
     if args.karakter != "cizim":
         from karakter_foto import FotoKarakter
         kj = Path(args.karakter)
-        foto = FotoKarakter(kj.with_suffix(".png"), kj, int(H * 0.8))
+        foto = FotoKarakter(kj.with_suffix(".png"), kj, int(H * 0.62))
+        kursu = S.kursu()
         log(f"  Karakter: {kj.stem}")
     else:
         kar = {(a, g, kk, i): karakter_ciz(a, g, kk, i, S.S)
@@ -766,8 +851,9 @@ def main():
                 b = {0: 0.5, 1: 1.0, 2: 0.5}[min(2, sum(1 for d in (1, 2) if fi - d in kirp))]
             konus = min(1.0, float(np.mean(agiz_s[max(0, fi - 12):fi + 1])) * 3) if fi < len(agiz_s) else 0
             kr, (dx, dy) = foto.poz(foto.kare(a, b), tt, konus)
-            x = k(-75) + int(dx); y = H - kr.height + k(10) + int(dy)
+            x = k(235) - kr.width // 2 + int(dx); y = k(585) - kr.height + int(dy)
             im.paste(kr, (x, y), kr)
+            im.paste(kursu, (0, 0), kursu)
             return
         a = int(agiz[fi]) if fi < len(agiz) else 0
         kas = 1.0 if (a >= 3 and (fi // 10) % 6 == 0) else 0.0

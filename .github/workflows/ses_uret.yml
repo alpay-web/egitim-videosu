@@ -19,6 +19,9 @@ on:
       etiket:
         description: "sonucun yükleneceği release etiketi"
         default: "ses-son"
+      kalite:
+        description: "Whisper kalite kapısı: cümle başına en fazla deneme (0 = kapalı)"
+        default: "3"
 permissions:
   contents: write
 jobs:
@@ -40,11 +43,13 @@ jobs:
           sudo apt-get -qq install -y ffmpeg > /dev/null
           pip install -q -r requirements.txt
           if [ "${{ inputs.motor }}" = "chatterbox" ]; then pip install -q chatterbox-tts; fi
+          if [ "${{ inputs.kalite }}" != "0" ]; then pip install -q faster-whisper; fi
       - name: Seslendir
         run: |
           python scripts/video_uret.py "${{ inputs.senaryo }}" --sadece-ses sesler --ses "${{ inputs.motor }}" \
-            --sahne "${{ matrix.sahne }}" ${{ inputs.ekstra }} 2>&1 | grep -v -E "it/s\]|s/it\]" | tee "log_${{ matrix.sahne }}.txt"
+            --sahne "${{ matrix.sahne }}" --kalite "${{ inputs.kalite }}" ${{ inputs.ekstra }} 2>&1 | grep -v -E "it/s\]|s/it\]" | tee "log_${{ matrix.sahne }}.txt"
           cp "log_${{ matrix.sahne }}.txt" sesler/
+          mv sesler/kalite_raporu.txt "sesler/kalite_${{ matrix.sahne }}.txt" 2>/dev/null || true
       - uses: actions/upload-artifact@v4
         with:
           name: sesler-${{ matrix.sahne }}
@@ -63,10 +68,11 @@ jobs:
         run: |
           sudo apt-get -qq install -y ffmpeg > /dev/null
           mkdir -p sesler && mv parcalar/*.wav sesler/ && cat parcalar/log_*.txt > seslendirme.log || true
+          cat parcalar/kalite_*.txt > kalite_raporu.txt 2>/dev/null || touch kalite_raporu.txt
           ls sesler/*.wav | sort | sed "s/^/file '/; s/$/'/" > liste.txt
           ffmpeg -v error -f concat -safe 0 -i liste.txt -b:a 160k onizleme.mp3
           cd sesler && zip -q -r ../sesler.zip . && cd ..
           gh release delete "${{ inputs.etiket }}" --yes --cleanup-tag --repo "$GITHUB_REPOSITORY" || true
-          gh release create "${{ inputs.etiket }}" sesler.zip onizleme.mp3 seslendirme.log --prerelease \
+          gh release create "${{ inputs.etiket }}" sesler.zip onizleme.mp3 seslendirme.log kalite_raporu.txt --prerelease \
             --repo "$GITHUB_REPOSITORY" --title "Seslendirme: ${{ inputs.etiket }}" \
             --notes "motor=${{ inputs.motor }} senaryo=${{ inputs.senaryo }} ${{ inputs.ekstra }}"
