@@ -1,15 +1,12 @@
 ---
 name: egitim-videosu
-description: Bir eğitim dokümanından (docx, pdf, md, txt) konuşan animasyonlu karakterli (varsayılan: beyaz saçlı profesör), doğal Türkçe sesli, fon müzikli, altyazılı 1080p YouTube videosu ve kapak görseli üretir. Tamamen ücretsiz ve açık kaynak (Chatterbox TTS, MIT). "bu dokümanı anlatan video yap", "eğitim videosu", "ders videosu", "YouTube videosu" isteklerinde kullan.
+description: Bir eğitim dokümanından (docx, pdf, md, txt, Claude Doc) anlatımlı, animasyonlu, altyazılı 1080p YouTube eğitim videosu (uzun dokümanlarda video serisi) ve kapak görseli üretir. Doğal Türkçe ses (Chatterbox, MIT), tablo/rakam/zaman çizelgesi/karşılaştırma/soru sahneleri, otomatik kalite denetimi. Ücretsiz ve açık kaynak. "bu dokümanı anlatan video yap", "eğitim videosu", "ders videosu", "YouTube videosu" isteklerinde kullan.
 ---
 
 # Eğitim Videosu Üretici
 
-Doküman → senaryo (JSON) → doğal Türkçe seslendirme → konuşan karakter + kara tahta + altyazı → 1080p MP4 + YouTube kapağı.
-Ücretli API, API anahtarı, GPU gerekmez. Ses: Chatterbox Multilingual (Resemble AI, **MIT** – ticari/YouTube kullanımı serbest).
-
-Kod ve modeller: https://github.com/alpay-web/egitim-videosu (Hugging Face'e erişilemeyen ortamlar için
-model dosyaları bu reponun release'lerinde kopyalı).
+Doküman → kapsam haritası → (seri) planı → senaryo → kapsam testi → storyboard → seslendirme → video → denetim → teslim.
+GPU ve ücretli API gerekmez. Kod: https://github.com/alpay-web/egitim-videosu
 
 ## 0. Hazırlık
 ```bash
@@ -18,86 +15,92 @@ R=/tmp/egitim-videosu
 pip install -q -r $R/requirements.txt 2>/dev/null || pip install -q --break-system-packages -r $R/requirements.txt
 ```
 
-## 1. Dokümanı oku
-docx: `pandoc dosya.docx -t plain`, pdf: `pdftotext -layout`. Ana fikirleri çıkar. Marka/kurum adı istenmiyorsa kullanma.
+## 1. Dokümanı anla → kapsam haritası
+docx: `pandoc dosya.docx -t markdown`, pdf: `pdftotext -layout`, Claude Doc: docs araçlarıyla oku.
+Başlık başlık kelime sayısını çıkar (tablo: bölüm · kelime · tür: kavram / tablo / liste / alıştırma / metin).
+Konuşma hızı ≈ 130 kelime/dk; tahmini anlatım süresi = içerik kelimesi ÷ 130 × 0.6 (özetleme payı).
 
-## 2. Senaryoyu yaz → `senaryo.json`  (örnek: `$R/ornek/senaryo_b1.json`)
-Önce kullanıcıya 1 paragraflık bir **plan** sun (sahne listesi, süre, soru sayısı); onay gelirse yaz.
+## 2. Plan ve onay (pahalı adımlardan önce)
+- **Tahmini süre > 9 dk ya da doküman > ~2.500 kelime → VİDEO SERİSİ öner**: her video 5–8 dk, tek bir
+  öğrenme hedefi. Örnek: 1) Strateji ve taktikler 2–4) Gramer dersleri (3–4 ders/video) 5) Kelime 6) Okuma
+  7) Dinleme (metinler seslendirilir) 8) Konuşma modelleri 9) Deneme sınavı (soru sahneleriyle). Hangi bölümün
+  hangi videoya gittiğini ve dışarıda kalanı açıkça yaz; hiçbir bölüm sessizce atlanmaz.
+- Kullanıcıya kısa bir teklif sun: video listesi, her birinin süresi, sahne listesi ve türleri, ilk video önerisi.
+  Onay gelmeden seslendirmeye geçme.
+
+## 3. Senaryo yaz → `senaryo.json` (örnek: `$R/ornek/senaryo_b1.json`)
+**Senaryo sanatı (zorunlu):**
+- **Kanca ile aç (ilk 5 sn):** şaşırtıcı bir gerçek, risk ya da soru. YASAK açılışlar: "Merhaba, bu videoda…",
+  "Bugün … öğreneceğiz". Kanca → neden önemli → yol haritası.
+- **Yapı:** kanca → kurulum (neden umursamalı) → gelişme → doruk ("aha" anı) → kapanış (tek cümle özet + harekete
+  geçirici). Sahneler arası "ve sonra" değil, "bu yüzden / ama" bağıyla geç.
+- **Kelime bütçesi:** ~130 kelime/dk; sahne başına 50–110 kelime. Kısa cümleler, "sen" hitabı, konuşma dili.
+- **Her 8–10 sn'de görsel bir olay:** yeni madde/satır/kart/adım ya da soru.
+- **Ses performansı:** sahneye `"ton"`: `"merakli"` (giriş), `"canli"` (taktik), `"ciddi"` (uyarı), `"sakin"`
+  (kapanış). Önemli bir cümleden sonra `[dur]` (0.9 sn sessizlik). Soru/ünlem cümleleri kendiliğinden uzun durur.
+- **Sadakat:** yalnızca dokümandaki bilgiler; sayı/kural uydurma.
+
+**Sahne türleri — içeriğin şekline göre seç (aynı türü art arda 3 kez kullanma):**
 ```json
-{
-  "baslik": "Ana başlık – Vurgulu kısa başlık",
-  "alt_baslik": "Profesör anlatıyor", "kapanis": "Başarılar!",
-  "telaffuz": {"B1": "be bir"}, "telaffuz_kok": {"fiil": "fiyil"},
-  "sahneler": [
-    {"baslik": "Madde sahnesi", "maddeler": ["kısa madde", "..."], "anlatim": "..."},
-    {"baslik": "Tablo sahnesi", "tur": "tablo", "goster": [2, 3, 4],
-     "tablo": {"basliklar": ["Görürsen", "Cevap"], "satirlar": [["yesterday", "V2"], ["since", "have + V3"], ["if + past", "would"]]},
-     "anlatim": "..."},
-    {"baslik": "Kendini dene 1/3", "tur": "soru",
-     "soru": {"metin": "Yes, ___.", "secenekler": ["I'm", "I am", "I do"], "dogru": 1, "cevap_cumle": 2, "bekle": 4},
-     "anlatim": "Kendini deneme zamanı. Ekrandaki soruyu oku ve düşün. Doğru cevap B: I am. Açıklama..."}
-  ]
-}
+{"baslik": "...", "maddeler": ["≤40 karakter", "..."], "anlatim": "...", "goster": [0, 2, 3]}
+{"baslik": "...", "tur": "tablo", "tablo": {"basliklar": ["Görürsen", "Cevap"], "satirlar": [["since", "have + V3"]], "stil": "yanlis-dogru"}}
+{"baslik": "...", "tur": "rakam", "kartlar": [{"deger": "30", "birim": "dakika", "etiket": "Sınav süresi"}]}
+{"baslik": "...", "tur": "karsilastirma", "sol": {"baslik": "Dinlemede", "renk": "mavi"}, "sag": {"baslik": "Okumada", "renk": "yesil"}, "satirlar": [["sol", "sağ"]]}
+{"baslik": "...", "tur": "zaman", "adimlar": [{"baslik": "1. Gün", "metin": "Gramer"}]}
+{"baslik": "...", "tur": "ipucu", "ipucu": {"tip": "ipucu|uyari|not", "metin": "Tek güçlü mesaj"}}
+{"baslik": "Kendini dene 1/3", "tur": "soru", "soru": {"metin": "Yes, ___.", "secenekler": ["I'm", "I am", "I do"], "dogru": 1, "cevap_cumle": 2, "bekle": 4}}
 ```
-Sahne türleri — içeriğe göre seç, tekdüze madde listesinden kaçın:
-- **maddeler** (varsayılan): 3–6 kısa madde; anlatım ilerledikçe sırayla kayarak belirir.
-- **tablo**: dokümandaki tablolar, karşılaştırmalar, "görürsen → cevap" listeleri. `stil: "yanlis-dogru"` ile
-  ✗ üstü çizili / ✓ yeşil sütunlar. `goster`: her satırın hangi cümle indeksinde (0'dan) açılacağı.
-- **soru**: dokümandaki alıştırmalardan 2–4 soru, sona doğru "Kendini dene". `cevap_cumle` = "Doğru cevap…" cümlesinin
-  indeksi; ondan önce `bekle` saniye geri sayım olur, sonra doğru seçenek yeşil yanar. Soruyu anlatımda okuma
-  ("Ekrandaki soruyu oku"), ekranda göster.
-Genel: 10–16 sahne, sahne başına 60–110 kelime, toplam 5–8 dk. İlk sahne karşılama + içerik, son sahne özet + motivasyon.
-- `anlatim`: konuşma dili, "sen" hitabı, kısa cümleler; sembol kullanma. Başlıktaki "–" sonrası kapakta büyük yazılır.
-- `telaffuz`: Seviye adları ve kısaltmalar Türkçe harfle ("B1": "be bir", "C1": "se bir", "IELTS": "ay elts",
-  seçenek harfleri "A": "a", "B": "be"). Sorunlu çıkan İngilizce kelimeler: "had": "hed", "Enjoy": "inçoy".
-- Chatterbox'ın zorlandığı Türkçe kelimelerden kaçın: "şık" yerine "seçenek" yaz (tahtada "şık" kalabilir).
+- **maddeler:** liste/özet. **tablo:** dokümandaki tablolar, "görürsen → cevap", yanlış/doğru listeleri.
+  **rakam:** 1–3 çarpıcı sayı (süre, puan, adet). **karsilastirma:** iki yan (önce sol sütun, sonra sağ açılır;
+  `goster` = sol satırlar + sağ satırlar sırasıyla). **zaman:** adımlar/plan/süreç (≥4 adımda dikey). **ipucu:**
+  tek vurucu mesaj. **soru:** alıştırmalardan; anlatımda soruyu okuma ("Ekrandaki soruyu oku"), `cevap_cumle` =
+  "Doğru cevap…" cümlesinin indeksi; öncesinde geri sayım, sonra doğru seçenek yeşil + "ding".
+- `goster`: her öğenin hangi cümlede (0'dan) açılacağı; o an işaretçi öğeye kayar ve "tık" sesi çalar.
+- `telaffuz`: kısaltma/seviye adları Türkçe harfle ("B1": "be bir", "C1": "se bir", "IELTS": "ay elts", "A": "a",
+  "B": "be"); sorunlu İngilizce kelimeler ("had": "hed", "Enjoy": "inçoy"). `telaffuz_kok`: {"fiil": "fiyil"}.
+  Chatterbox'ın zorlandığı "şık" yerine "seçenek" yaz.
 
-## 3. Seslendirme (Chatterbox) — iki yol
-Her iki yolda da `--kalite 3` (Actions'ta varsayılan) Whisper kalite kapısını açar: her cümle yazıya dökülüp metinle
-karşılaştırılır, uymazsa yeniden üretilir; `kalite_raporu.txt` en düşük puanlı cümleleri gösterir. Sorunlu birkaç cümleyi
-yeniden üretmek için `--cumleler 04_05,06_07` kullan ve yeni dosyaları ses klasörüne kopyala.
-Bitmiş seslendirmeyi denetlemek için: Actions → "Seslendirmeyi denetle" (`scripts/denetle.py`).
+## 4. Kapsam testi (PresentQuiz fikri)
+Kaynaktan, video kapsamındaki bölümlerden 8–10 kritik soru çıkar (yalnızca dokümana dayalı). Her birinin cevabı
+senaryoda geçiyor mu, tek tek işaretle. Cevapsız kalan kritik konu varsa senaryoya ekle ya da bilinçli olarak
+serinin başka videosuna bırak ve bunu teslimde söyle.
 
-**A) GitHub Actions (hızlı, ~15-30 dk, önerilen; repoya yazma erişimi gerekir):**
-senaryoyu repoya `senaryolar/<ad>.json` olarak commit'le ve iş akışını başlat:
+## 5. Storyboard + kontrol (onay kapısı)
+```bash
+python $R/scripts/video_uret.py senaryo.json --kontrol                    # tekdüzelik/uzunluk uyarıları
+python $R/scripts/video_uret.py senaryo.json --storyboard storyboard.png  # her sahnenin son hali, tek görsel
+```
+Storyboard'a **bak**: taşma, üst üste binme, boş tahta, yanlış tür. Düzelt, kullanıcıya göster, onay al.
+
+## 6. Seslendirme (Chatterbox, MIT) — `--kalite 3` Whisper kapısı her cümleyi doğrular
+**A) GitHub Actions (hızlı, paralel; repoya yazma erişimi gerekir):** senaryoyu `senaryolar/<ad>.json`
+olarak commit'le, sonra:
 ```bash
 curl -X POST -H "Accept: application/vnd.github+json" -H "Content-Type: application/json" \
   https://api.github.com/repos/alpay-web/egitim-videosu/actions/workflows/ses_uret.yml/dispatches \
-  -d '{"ref":"main","inputs":{"senaryo":"senaryolar/<ad>.json","etiket":"ses-<ad>","parcalar":"[\"1-3\",\"4-6\",\"7-9\",\"10-12\"]"}}'
-# bitince:
+  -d '{"ref":"main","inputs":{"senaryo":"senaryolar/<ad>.json","etiket":"ses-<ad>","parcalar":"[\"1-3\",\"4-6\",\"7-9\",\"10-12\",\"13-15\"]"}}'
 curl -fsSL -o sesler.zip https://github.com/alpay-web/egitim-videosu/releases/download/ses-<ad>/sesler.zip && unzip -q sesler.zip -d sesler
 ```
-**B) Bu ortamda (erişim yoksa; yavaş: 2 çekirdekte ~1 dk video ≈ 10 dk):** arka planda çalıştır, log'u izle.
+**B) Bu ortamda (yavaş, ~10 dk/1 dk video):** `python $R/scripts/video_uret.py senaryo.json --sadece-ses sesler --ses chatterbox --kalite 3`
+(arka planda çalıştır). `kalite_raporu.txt`'te puanı < 0.8 olan cümlelerde telaffuzu düzelt ve yalnızca onları
+`--cumleler 04_05,06_07` ile yeniden üret.
+
+## 7. Video
 ```bash
-python $R/scripts/video_uret.py senaryo.json --sadece-ses sesler --ses chatterbox
+python $R/scripts/video_uret.py senaryo.json -o video.mp4 --ses-dizini sesler     # 1080p + video_kapak.jpg
 ```
-İlk çalıştırmada ~3 GB model GitHub kopyasından iner. Taslak için `--ses piper` hızlıdır ama robotiktir.
+Varsayılan: sade çizim profesör (kürsüde), yavaş kamera, işaretçi, tık/ding efektleri, müzik yok.
+Seçenekler: `--muzik`, `--efekt-yok`, `--kamera-yok`, `--altyazi-yok`, `--karakter yol.json` (fotoğraf karakter),
+`--sahne 2-3 --cozunurluk 720` (hızlı deneme).
 
-## 4. Video
+## 8. Denetim (teslimden önce zorunlu, en fazla 2 düzeltme turu)
 ```bash
-python $R/scripts/video_uret.py senaryo.json -o video.mp4 --ses-dizini sesler            # 1080p, ~1 dk video/1 dk
-python $R/scripts/video_uret.py senaryo.json -o deneme.mp4 --ses-dizini sesler --sahne 1-2 --cozunurluk 720
+python $R/scripts/kalite_raporu.py video.mp4      # süre, LUFS/tepe, sessizlik, siyah/donmuş kare + kare tablosu
 ```
-Uzun işleri arka planda çalıştır. 2–3 kare çıkarıp kontrol et (`ffmpeg -ss 30 -i video.mp4 -frames:v 1 k.png`).
-Çıktılar: `video.mp4` + `video_kapak.jpg` (1280x720 YouTube kapağı).
+Kare tablosuna bak. Bulguları ciddiyetle yaz (kritik / öneri) ve her birine somut düzeltme koy
+("Sahne 6 tablo başlıkları üst üste → başlıkları kısalt"); "biraz uzun olabilir" gibi belirsiz bulgu yazma.
+Kritikleri düzelt, yeniden üret; 2 turdan sonra kalanları teslimde açıkça söyle.
 
-Varsayılan: sade çizim profesör (kürsü arkasında), müzik yok, yavaş kamera açık.
-Seçenekler: `--karakter yol/karakter.json` (fotoğraf tabanlı karakter), `--muzik`, `--kamera-yok`, `--abarti 0.5 --cfg 0.5` (Chatterbox vurgu/tempo),
-`--referans ses.wav` (sesi bu kayıttan kopyala; yalnızca izinli ses), `--muzik-yok`, `--altyazi-yok`, `--intro-outro-yok`.
-
-## 5. Yeni karakter (isteğe bağlı)
-Kullanıcı bir portre verirse: `python -c "import sys;sys.path.insert(0,'$R/scripts');from karakter_foto import arka_plan_sil;arka_plan_sil('girdi.png','karakterler/ad.png')"`
-Sonra görseli 10 px ızgarayla büyütüp bak ve `karakterler/ad.json` yaz:
-`{"agiz":[cx, cy(üst dişlerin alt sınırı), yarı_genişlik, gülüş_eğrisi_px], "cene_alt": y, "gozler":[[cx,cy,rx,ry],[...]] (göz akı elipsleri), "boyun": y}`.
-Kısa bir deneme render'ında ağız/göz kırpmayı kontrol et.
-
-## 5b. Kendi kendini denetle (teslimden önce zorunlu)
-- `ffmpeg -i video.mp4 -vf "fps=1/15,scale=426:240,tile=5x5" -frames:v 1 sheet.png` ile kare tablosu çıkar ve **bak**:
-  taşan yazı, boş tahta, üst üste binen öğe, yanlış sahne türü var mı?
-- Seslendirme için `kalite_raporu.txt`'teki en düşük puanlı cümleleri incele; yanlış okunanı `telaffuz` ile düzelt ve
-  `--cumleler` ile yalnızca onları yeniden üret.
-- Senaryodaki bilgileri kaynak dokümanla karşılaştır (uydurma bilgi yok).
-
-## 6. Teslim
-MP4 ve kapak görselini gönder; süre, sahne sayısı ve önerilen YouTube başlığı + açıklamasını (sahne başlıklarından
-zaman damgalı bölümlerle) kısa ver. Video yapay zekâ sesiyle üretildiği için açıklamaya bunu belirtmeyi öner.
+## 9. Teslim
+MP4 + kapak görselini gönder. Ver: süre, sahne sayısı, kapsadığı bölümler (ve serinin kalanı), önerilen YouTube
+başlığı, sahne başlıklarından zaman damgalı bölümler, "Seslendirme yapay zekâ ile üretilmiştir" notu.

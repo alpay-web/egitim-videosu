@@ -5,12 +5,18 @@
 Bir eğitim dokümanı ver; Claude onu sahnelere böler, doğal bir Türkçe sesle seslendirir ve konuşan animasyonlu
 bir profesörle 1080p video + YouTube kapak görseli üretir.
 
-- 🗣️ **Doğal Türkçe ses:** [Chatterbox Multilingual](https://github.com/resemble-ai/chatterbox) (MIT – ticari kullanım serbest)
-- 👨‍🏫 **Konuşan karakter:** portre görselinden otomatik arka plan silme, sese göre çene hareketi, göz kırpma, baş hareketi
-- 🧑‍🏫 Kara tahtada anlatımla eşzamanlı beliren maddeler, altyazı, intro/outro, sahne geçişleri, ilerleme çubuğu
-- 🎵 Kodla sentezlenen telifsiz fon müziği (konuşmada otomatik kısılır), EBU R128 ses seviyesi
-- 🖼️ Otomatik YouTube kapak görseli
+- 🗣️ **Doğal Türkçe ses:** [Chatterbox Multilingual](https://github.com/resemble-ai/chatterbox) (MIT) + her cümleyi Whisper ile doğrulayan kalite kapısı
+- 🎬 **Sahne türleri:** madde, tablo (yanlış ✗ / doğru ✓), rakam kartı, karşılaştırma, zaman çizelgesi, ipucu kutusu, geri sayımlı soru
+- 👉 **İşaretçi:** anlatılan madde/satır tam o cümlede vurgulanır; ölçülü "tık / ding" efektleri
+- ✍️ **Senaryo sanatı:** kancalı açılış, kanca→kurulum→gelişme→doruk→kapanış yapısı, sahne bazında ses tonu ve duraklamalar
+- 📚 **Uzun dokümanlar:** kapsam haritası ve video serisi planı; kapsam testiyle hiçbir bölüm sessizce atlanmaz
+- 🧪 **Öz-denetim:** tekdüzelik kontrolü, storyboard onayı, otomatik kalite raporu (LUFS, sessizlik, siyah/donmuş kare, kare tablosu)
+- 👨‍🏫 Sade çizim profesör (kürsüde), yavaş kamera, altyazı, intro/outro, YouTube kapağı
 - 💸 API anahtarı yok, GPU yok, ücret yok
+
+Esinlenilen projeler (yalnızca fikirler; kod kopyalanmadı): [Paper2Video](https://github.com/showlab/Paper2Video) (imleç),
+[Code2Video](https://github.com/showlab/Code2Video) (etkin satır vurgusu), [OpenMontage](https://github.com/OpenMontageInc/OpenMontage)
+(sahne şablonları, slayt-gösterisi riski, öz-denetim, senaryo yapısı).
 
 ## Nasıl çalışır
 | Adım | Nerede |
