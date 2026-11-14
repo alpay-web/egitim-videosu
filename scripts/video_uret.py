@@ -237,8 +237,21 @@ class ChatterboxSes:
 
     def sentezle(self, metin, yol):
         import torchaudio
-        w = self.m.generate(metin, language_id="tr", audio_prompt_path=self.ref,
-                            exaggeration=self.abarti, cfg_weight=self.cfg)
+        tahmin = max(1.5, len(metin) / 14.0)  # ~14 karakter/sn
+        en_iyi = None
+        for deneme in range(3):  # model bazen cümle sonuna fazladan ses ekler: süre kontrolü
+            w = self.m.generate(metin, language_id="tr", audio_prompt_path=self.ref,
+                                exaggeration=self.abarti, cfg_weight=self.cfg)
+            x = w.squeeze().numpy()
+            nz = np.nonzero(np.abs(x) > 0.02)[0]
+            sure = (nz[-1] - nz[0]) / self.m.sr if len(nz) else 0
+            sapma = abs(sure - tahmin) / tahmin
+            if en_iyi is None or sapma < en_iyi[0]:
+                en_iyi = (sapma, w)
+            if 0.55 * tahmin <= sure <= 1.6 * tahmin + 0.6:
+                break
+            log(f"   ! süre şüpheli ({sure:.1f} sn, beklenen ~{tahmin:.1f}), yeniden deneniyor")
+        w = en_iyi[1]
         tmp = str(yol) + ".tmp.wav"
         torchaudio.save(tmp, w, self.m.sr)
         if abs(self.hiz - 1.0) > 0.01:  # perdeyi bozmadan yavaşlat
@@ -636,7 +649,9 @@ def main():
     log("[2/4] Ses işleme ve fon müziği...")
     karisim = ses.copy()
     if not args.muzik_yok:
-        m = muzik_uret(sure)
+        m = muzik_uret(sure + 0.1)[:len(ses)]
+        if len(m) < len(ses):
+            m = np.pad(m, (0, len(ses) - len(m)))
         zarf = ses_zarfi(ses, 0.4)
         konusma = np.clip(zarf / 0.02, 0, 1)
         konusma = tek_kutuplu_lp(konusma, 1.5)  # yumuşak ducking

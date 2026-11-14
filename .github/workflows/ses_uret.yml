@@ -1,6 +1,6 @@
 name: Seslendirme üret
 # Claude ortamı Hugging Face'e erişemediği için ağır ses modelleri GitHub Actions'ta çalışır.
-# Çıktı: cümle başına ses dosyaları (SS_CC.wav) -> release içinde zip.
+# Sahne grupları paralel işlenir. Çıktı: cümle başına ses dosyaları (SS_CC.wav) -> release içinde zip.
 on:
   workflow_dispatch:
     inputs:
@@ -10,12 +10,12 @@ on:
       motor:
         description: "chatterbox | piper | freya"
         default: "chatterbox"
-      sahne:
-        description: "ör. 1-3 (boş = hepsi)"
-        default: ""
+      parcalar:
+        description: 'Paralel sahne grupları (JSON liste), ör. ["1-3","4-6","7-9","10-12"]'
+        default: '["1-3","4-6","7-9","10-12"]'
       ekstra:
-        description: "ek argümanlar, ör. --abarti 0.4 --cfg 0.35"
-        default: ""
+        description: "ek argümanlar"
+        default: "--abarti 0.5 --cfg 0.5 --hiz 1.0"
       etiket:
         description: "sonucun yükleneceği release etiketi"
         default: "ses-son"
@@ -25,6 +25,10 @@ jobs:
   ses:
     runs-on: ubuntu-latest
     timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      matrix:
+        sahne: ${{ fromJSON(inputs.parcalar) }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -38,18 +42,31 @@ jobs:
           if [ "${{ inputs.motor }}" = "chatterbox" ]; then pip install -q chatterbox-tts; fi
       - name: Seslendir
         run: |
-          SAHNE=""; [ -n "${{ inputs.sahne }}" ] && SAHNE="--sahne ${{ inputs.sahne }}"
-          python scripts/video_uret.py "${{ inputs.senaryo }}" --sadece-ses sesler --ses "${{ inputs.motor }}" $SAHNE ${{ inputs.ekstra }} 2>&1 | tee seslendirme.log
-          ls sesler | head
-          # dinlemek için hepsini tek dosyada birleştir
-          ls sesler/*.wav | sort | sed "s/^/file '/; s/$/'/" > liste.txt
-          ffmpeg -v error -f concat -safe 0 -i liste.txt -af "apad=pad_dur=0.3" -b:a 160k onizleme.mp3
-          cd sesler && zip -q -r ../sesler.zip . && cd ..
+          python scripts/video_uret.py "${{ inputs.senaryo }}" --sadece-ses sesler --ses "${{ inputs.motor }}" \
+            --sahne "${{ matrix.sahne }}" ${{ inputs.ekstra }} 2>&1 | grep -v -E "it/s\]|s/it\]" | tee "log_${{ matrix.sahne }}.txt"
+          cp "log_${{ matrix.sahne }}.txt" sesler/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sesler-${{ matrix.sahne }}
+          path: sesler/
+  yayinla:
+    needs: ses
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: parcalar
+          merge-multiple: true
       - name: Yayınla
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          sudo apt-get -qq install -y ffmpeg > /dev/null
+          mkdir -p sesler && mv parcalar/*.wav sesler/ && cat parcalar/log_*.txt > seslendirme.log || true
+          ls sesler/*.wav | sort | sed "s/^/file '/; s/$/'/" > liste.txt
+          ffmpeg -v error -f concat -safe 0 -i liste.txt -b:a 160k onizleme.mp3
+          cd sesler && zip -q -r ../sesler.zip . && cd ..
           gh release delete "${{ inputs.etiket }}" --yes --cleanup-tag --repo "$GITHUB_REPOSITORY" || true
           gh release create "${{ inputs.etiket }}" sesler.zip onizleme.mp3 seslendirme.log --prerelease \
             --repo "$GITHUB_REPOSITORY" --title "Seslendirme: ${{ inputs.etiket }}" \
-            --notes "motor=${{ inputs.motor }} senaryo=${{ inputs.senaryo }} sahne=${{ inputs.sahne }} ${{ inputs.ekstra }}"
+            --notes "motor=${{ inputs.motor }} senaryo=${{ inputs.senaryo }} ${{ inputs.ekstra }}"
