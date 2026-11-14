@@ -1,0 +1,184 @@
+{
+  "baslik": "İngilizce Seviye Tespit Sınavı – 2 Günde B1",
+  "sahneler": [
+    {
+      "baslik": "2 Günde B1'e Hazırlık",
+      "maddeler": [
+        "Sınav nasıl işliyor?",
+        "Puan getiren taktikler",
+        "Konuşmada B1 gibi duyulmak",
+        "2 günlük çalışma planı"
+      ],
+      "anlatim": "Merhaba! Ben Profesör. Bu videoda İngilizce kurslarının seviye tespit sınavına iki günde nasıl hazırlanacağını anlatacağım. Hedefimiz B1 seviyesi. Önce sınavın nasıl işlediğine bakacağız. Sonra en çok puan getiren taktikleri, konuşma bölümünün sırlarını ve iki günlük çalışma planını göreceğiz. Hazırsan başlayalım!"
+    },
+    {
+      "baslik": "1. Sınav nasıl bir şey?",
+      "maddeler": [
+        "Bilgisayarda, adaptif (akıllı) test",
+        "Süre: yaklaşık 30 dakika",
+        "Gramer, kelime, okuma, dinleme",
+        "Gerekirse konuşma görüşmesi",
+        "B1 = orta seviyenin başı"
+      ],
+      "anlatim": "Sınav bilgisayarda yapılan akıllı bir test. Doğru cevap verdikçe sorular zorlaşıyor, yanlış yaptıkça kolaylaşıyor. Süre yaklaşık otuz dakika. Bölümler gramer, kelime, okuma ve dinleme. Gerekli görülürse bir de kısa konuşma görüşmesi yapılıyor. Hedefimiz olan B1, orta seviyenin başlangıcı; kabaca IELTS dört ile beş puana denk geliyor."
+    },
+    {
+      "baslik": "2. Adaptif sınav taktikleri",
+      "maddeler": [
+        "İlk 8–10 soruya maksimum özen",
+        "Asla boş bırakma, ele ve tahmin et",
+        "Sorular zorlaşıyorsa: iyi işaret!",
+        "Cümlenin tamamını oku",
+        "Bir soruya en fazla 1 dakika"
+      ],
+      "anlatim": "Şimdi en çok puan getiren kısma geldik. İlk sekiz on soruya maksimum özen göster, çünkü seviyenin kaba aralığını bu sorular belirler. Hızlı değil, doğru ol. Hiçbir soruyu boş bırakma; bilmiyorsan yanlış şıkları ele ve tahmin et. Sorular zorlaşıyorsa panik yapma, bu doğru gittiğin anlamına gelir. Cümlenin tamamını oku, çünkü boşluktan sonraki kelimeler cevabı çoğu zaman ele verir. Ve bir soruya bir dakikadan fazla takılma."
+    },
+    {
+      "baslik": "Sinyal kelimeler",
+      "maddeler": [
+        "yesterday, ago, in 2019 → V2",
+        "since, for, yet, already → have + V3",
+        "by the time + geçmiş → had + V3",
+        "If + past → would",
+        "enjoy, finish, avoid → -ing",
+        "want, decide, plan → to + V1"
+      ],
+      "anlatim": "Gramer sorularını saniyeler içinde çözmenin sırrı sinyal kelimelerdir. Önce cümlede ipucu kelimeyi ara, sonra şıklara bak. Yesterday ya da ago görüyorsan cevap büyük ihtimalle geçmiş zaman. Since, for, yet, already varsa have ve fiilin üçüncü hali gelir. By the time ve geçmiş zaman varsa had ile üçüncü hal. If ve geçmiş zaman gördüysen sonuç kısmında would kullanılır. Enjoy, finish, avoid gibi fiillerden sonra ing gelir. Want, decide, plan gibi fiillerden sonra ise to ve fiilin yalın hali."
+    },
+    {
+      "baslik": "Şık okuma hileleri",
+      "maddeler": [
+        "İkiz şık kuralı",
+        "Kulak testi: içinden sesli oku",
+        "Okuma: aynı kelime = tuzak",
+        "Dinleme: but, actually'den sonrası doğru"
+      ],
+      "anlatim": "Şimdi birkaç şık okuma hilesi. Neredeyse aynı olan iki şık varsa, doğru cevap genellikle bu ikisinden biridir. Kulak testini kullan: cümleyi her şıkla içinden sesli oku, hazır kalıpları beynin hemen tanır. Okuma bölümünde metindeki kelimeyi aynen tekrar eden şık çoğu zaman tuzaktır; doğru cevap aynı anlamı başka kelimelerle verir. Dinlemede ise but, actually, sorry ya da instead kelimelerinden sonra gelen bilgi neredeyse her zaman doğru cevaptır."
+    },
+    {
+      "baslik": "Uydurma yapı kara listesi",
+      "maddeler": [
+        "didn't stopped → didn't stop",
+        "must to go → must go",
+        "will went → will go",
+        "I am agree → I agree",
+        "more better → better",
+        "If I will go → If I go"
+      ],
+      "anlatim": "İngilizcede hiçbir zaman doğru olmayan yapılar var. Bunları şıklarda görürsen düşünmeden ele. Did ya da didn't varsa fiil yalın kalır, yani didn't stopped yanlıştır. Modal fiillerden sonra to gelmez, must to go değil, must go. Will'den sonra da fiil yalın kalır. I am agree diye bir yapı yok, doğrusu I agree. More better gibi çift karşılaştırma da yanlış. Ve unutma: if'li tarafta asla will ya da would olmaz."
+    },
+    {
+      "baslik": "Online deneme testinden dersler",
+      "maddeler": [
+        "3 şık + \"I don't know\"",
+        "Bir şıkkı eleyebiliyorsan tahmin et",
+        "B1 için ilk 12–14 soru yeterli",
+        "Kısa cevap: Yes, he is. (he's değil)",
+        "Son sorularda panik yok"
+      ],
+      "anlatim": "Kursun kendi kısa online deneme testi bize sınavın mantığını gösteriyor. Her soruda üç şık ve bir de I don't know seçeneği var. En az bir şıkkı eleyebiliyorsan I don't know'a basma, tahmin et. Sorular kolaydan zora sıralı ve B1 için kabaca ilk on iki on dört soruyu doğru yapman yeterli. Kısa cevap kuralını unutma: soru hangi yardımcı fiille sorulduysa cevap da onunla verilir ve olumlu kısa cevapta kısaltma yapılmaz. Son sorularda bilmediğin yapılar görürsen panik yapma, bu B1'i zaten geçtiğin anlamına gelir."
+    },
+    {
+      "baslik": "Dinleme ve okuma",
+      "maddeler": [
+        "Dinle: önce soruyu ve şıkları oku",
+        "Düzeltme tuzağı: son söylenen doğru",
+        "thirTEEN ≠ THIRty",
+        "Oku: anlamı eşleştir, kelimeyi değil",
+        "always, never, only → şüphelen"
+      ],
+      "anlatim": "Dinlemede ses başlamadan önce soruyu ve şıkları oku, ne dinleyeceğini bil. Konuşmacı önce bir şey söyleyip sonra düzeltirse doğru cevap son söylenendir. Rakamlara dikkat et: on üç ile otuz, on dört ile kırk çok karışır. Okumada önce soruyu oku, sonra metinde sadece ilgili kısmı ara. Kelimeyi değil anlamı eşleştir. Always, never, only gibi mutlak ifadeler içeren şıklar genellikle yanlıştır."
+    },
+    {
+      "baslik": "Konuşmada B1 gibi duyulmak",
+      "maddeler": [
+        "PREP: Point → Reason → Example → Point",
+        "Soruyu geri söyleyerek zaman kazan",
+        "Sorunun zamanını aynala",
+        "Güçlü kalıplar: To be honest…",
+        "İlk 30 saniye: kusursuz tanıtım"
+      ],
+      "anlatim": "Konuşma bölümünde PREP formülünü kullan. Önce cevabını söyle, sonra nedenini, ardından bir örnek ver ve cevabını tekrar et. Dört cümle, otuz kırk saniyelik düzenli bir cevap eder. Soruyu geri söyleyerek birkaç saniye düşünme süresi kazanabilirsin. Sorunun zamanını aynala: Have you ever diye sorulursa Yes, I have diyerek başla. To be honest, it depends on gibi güçlü kalıpları cevaplarına serpiştir. Ve en önemlisi, kendini tanıttığın ilk otuz saniye kusursuz ve akıcı olsun."
+    },
+    {
+      "baslik": "Beyin taktikleri",
+      "maddeler": [
+        "Tekrar okuma, kendini test et",
+        "Konuları karıştır",
+        "Uyku ezberi pekiştirir",
+        "Shadowing: günde 10 dakika",
+        "25 dk odak / 5 dk mola"
+      ],
+      "anlatim": "İki günde daha çok akılda tutmak için birkaç beyin taktiği. Bir dersi okuduktan sonra kitabı kapat ve kuralı otuz saniyede sesli anlat; geri çağırmak tekrar okumaktan çok daha kalıcıdır. Konuları karıştırarak çalış, çünkü sınavda da karışık gelecekler. Yatmadan önce hata listeni oku ve telefona bakmadan uyu. Günde on dakika gölge konuşma yap: dinleme metinlerini yarım saniye geriden sesli tekrarla. Ve yirmi beş dakika tam odak, beş dakika mola şeklinde çalış."
+    },
+    {
+      "baslik": "2 günlük çalışma planı",
+      "maddeler": [
+        "1. Gün: sınav teknikleri + gramer",
+        "1. Gün: kelime + dinleme",
+        "2. Gün: okuma + konuşma provası",
+        "2. Gün: 25 dk deneme sınavı",
+        "Son akşam: yeni konu yok, erken yat"
+      ],
+      "anlatim": "Planımız şöyle. Birinci gün önce sınav tekniklerini oku, sonra yaklaşık üç saat gramer derslerini ve alıştırmalarını çöz. Ardından kelime listelerini çalış ve dinleme alıştırmalarını telefona okutarak yap. İkinci gün okuma parçalarını çöz ve konuşma cevaplarını kaydederek prova et. Sonra yirmi beş dakikalık deneme sınavını yap ve yanlışlarını gözden geçir. Son akşam yeni konuya başlama, kendini tanıtmayı bir kez daha prova et ve erken yat."
+    },
+    {
+      "baslik": "Sınav günü",
+      "maddeler": [
+        "İyi uyu, 15 dk erken git",
+        "Kulaklık sesini kontrol et",
+        "Beynini İngilizceye ısıt",
+        "Kutu nefesi: 4–4–4–4",
+        "Gülümse, uzun cevap ver"
+      ],
+      "anlatim": "Sınav günü iyi uyu, hafif bir kahvaltı yap ve on beş dakika erken git. Başlamadan önce kulaklık sesini kontrol et. Yolda kendini tanıtmayı içinden prova ederek beynini İngilizceye ısıt. Stres olursan kutu nefesi yap: dört saniye nefes al, dört saniye tut, dört saniye ver, dört saniye bekle. Görüşmede gülümse, uzun cevaplar ver ve bağlaç kullan. Unutma, amaç seni sana en uygun sınıfa yerleştirmek. Başarılar, sen bunu yaparsın!"
+    }
+  ],
+  "alt_baslik": "Profesör anlatıyor",
+  "kapanis": "Başarılar! Sen bunu yaparsın.",
+  "telaffuz": {
+    "B1": "be bir",
+    "PREP": "prep",
+    "yesterday": "yesterdey",
+    "ago": "egou",
+    "since": "sins",
+    "already": "olredi",
+    "yet": "yet",
+    "By the time": "bay dı taym",
+    "If": "if",
+    "would": "vud",
+    "will": "vil",
+    "Enjoy": "encoy",
+    "finish": "finiş",
+    "avoid": "evoyd",
+    "Want": "vont",
+    "decide": "disayd",
+    "plan": "plen",
+    "ing": "ing",
+    "to": "tu",
+    "but": "bat",
+    "actually": "ekçuali",
+    "sorry": "sori",
+    "instead": "insted",
+    "did": "did",
+    "didn't": "didınt",
+    "didn't stopped": "didınt stopt",
+    "Modal": "modal",
+    "must to go": "mast tu go",
+    "must go": "mast go",
+    "I am agree": "ay em egri",
+    "I agree": "ay egri",
+    "More better": "mor beter",
+    "I don't know": "ay dont nou",
+    "Always": "olveyz",
+    "never": "never",
+    "only": "onli",
+    "Have you ever": "hev yu ever",
+    "Yes, I have": "yes, ay hev",
+    "To be honest": "tu bi onest",
+    "it depends on": "it dipends on",
+    "online": "onlayn",
+    "IELTS": "ayelts",
+    "I don't know'a": "ay dont nou'ya"
+  }
+}
