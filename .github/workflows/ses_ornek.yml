@@ -1,0 +1,51 @@
+name: Ses ornekleri
+on:
+  push:
+    paths: ['.github/workflows/ses_ornek.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  ornek:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      METIN: "Şimdi en çok puan getiren kısma geldik. İlk sekiz on soruya maksimum özen göster, çünkü seviyenin kaba aralığını bu sorular belirler. Hızlı değil, doğru ol. Hedefimiz be bir seviyesi."
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Edge sesleri
+        run: |
+          pip install -q edge-tts
+          mkdir -p cikti
+          edge-tts --voice tr-TR-AhmetNeural --rate=-8% --text "$METIN" --write-media cikti/ornek_ahmet.mp3
+          edge-tts --voice tr-TR-EmelNeural --rate=-8% --text "$METIN" --write-media cikti/ornek_emel.mp3
+      - name: Chatterbox (referans ses ile)
+        continue-on-error: true
+        run: |
+          sudo apt-get -qq install -y ffmpeg > /dev/null
+          pip install -q piper-tts chatterbox-tts
+          python -m piper.download_voices tr_TR-fahrettin-medium || true
+          python - <<'PY'
+          import wave, os
+          from piper import PiperVoice, SynthesisConfig
+          v = PiperVoice.load("tr_TR-fahrettin-medium.onnx")
+          ref = "Merhaba, ben bugün size İngilizce öğrenmenin en etkili yollarını anlatacağım. Hazırsanız başlayalım, çünkü önümüzde çok güzel bir yol var."
+          with wave.open("ref.wav", "wb") as wf:
+              v.synthesize_wav(ref, wf, syn_config=SynthesisConfig(length_scale=1.08))
+          import torch, torchaudio
+          from chatterbox.mtl_tts import ChatterboxMultilingualTTS
+          m = ChatterboxMultilingualTTS.from_pretrained(device="cpu")
+          for ad, ex, cfg in [("chatterbox_a", 0.5, 0.5), ("chatterbox_b", 0.4, 0.3)]:
+              w = m.generate(os.environ["METIN"], language_id="tr", audio_prompt_path="ref.wav", exaggeration=ex, cfg_weight=cfg)
+              torchaudio.save(f"{ad}.wav", w, m.sr)
+              os.system(f"ffmpeg -v error -y -i {ad}.wav -b:a 192k cikti/ornek_{ad}.mp3")
+          PY
+      - name: Yayınla
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          ls -la cikti
+          gh release delete ses-ornekleri --yes --cleanup-tag --repo "$GITHUB_REPOSITORY" || true
+          gh release create ses-ornekleri cikti/* --repo "$GITHUB_REPOSITORY" --title "Ses örnekleri" --notes "Karşılaştırma için ses örnekleri" --prerelease
