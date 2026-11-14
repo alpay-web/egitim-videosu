@@ -30,7 +30,8 @@ Konuşma hızı ≈ 130 kelime/dk; tahmini anlatım süresi = içerik kelimesi �
 
 ## 3. Senaryo yaz → `senaryo.json` (örnek: `$R/ornek/senaryo_b1.json`)
 **Senaryo sanatı (zorunlu):**
-- **Kanca ile aç (ilk 5 sn):** şaşırtıcı bir gerçek, risk ya da soru. YASAK açılışlar: "Merhaba, bu videoda…",
+- **Kanca ile aç (ilk 5 sn):** şaşırtıcı bir gerçek, risk ya da soru; ilk sahneye `"kanca": "kısa vurucu cümle"`
+  ekle — ilk madde gelene kadar tahtada büyük yazılır (tahta boş kalmaz). YASAK açılışlar: "Merhaba, bu videoda…",
   "Bugün … öğreneceğiz". Kanca → neden önemli → yol haritası.
 - **Yapı:** kanca → kurulum (neden umursamalı) → gelişme → doruk ("aha" anı) → kapanış (tek cümle özet + harekete
   geçirici). Sahneler arası "ve sonra" değil, "bu yüzden / ama" bağıyla geç.

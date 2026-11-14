@@ -611,6 +611,14 @@ class Sahne:
             konumlar.append(yy)
             self._nokta.append((556, yy + self.fs * 0.62))
             yy += self.madde_yuk(m, d)
+        if gorunen == 0 and sh.get("kanca"):  # ilk madde gelene kadar büyük kanca cümlesi
+            fs = 46
+            while fs > 28 and len(satir_kir(sh["kanca"], font(k(fs), True), k(600), d)) * fs * 1.3 > k(330):
+                fs -= 2
+            yy = 150 + max(0, (330 - len(satir_kir(sh["kanca"], font(k(fs), True), k(600), d)) * fs * 1.3) / 2)
+            for t_ in satir_kir(sh["kanca"], font(k(fs), True), k(600), d):
+                tw = d.textlength(t_, font=font(k(fs), True))
+                d.text((k(888) - tw / 2, k(yy)), t_, font=font(k(fs), True), fill=(255, 255, 255)); yy += fs * 1.3
         for i in range(gorunen):
             self.madde_ciz(d, sh["maddeler"][i], konumlar[i], vurgu=(i == gorunen - 1))
         d.text(k(1238 - 52, 528), f"{no}/{toplam}", font=fk, fill=(160, 185, 172))
