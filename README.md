@@ -1,44 +1,40 @@
 # 🎓 egitim-videosu
 
-**Dokümandan animasyonlu eğitim videosu üreten, tamamen ücretsiz ve açık kaynak bir Claude skill'i.**
+**Dokümandan YouTube'a hazır, animasyonlu eğitim videosu üreten, tamamen ücretsiz ve açık kaynak bir Claude skill'i.**
 
-Bir eğitim dokümanı ver; Claude onu sahnelere böler, Türkçe nöral sesle seslendirir ve konuşan animasyonlu
-bir profesör karakteriyle 1080p MP4 video üretir.
+Bir eğitim dokümanı ver; Claude onu sahnelere böler, doğal bir Türkçe sesle seslendirir ve konuşan animasyonlu
+bir profesörle 1080p video + YouTube kapak görseli üretir.
 
-- 🗣️ Türkçe nöral ses: [Piper](https://github.com/rhasspy/piper) — `fahrettin` sesi (CC0, ticari kullanım serbest)
-- 👨‍🏫 Özgün, kodla çizilen "Profesör Bilgin": sese göre ağız hareketi, göz kırpma, tahtayı gösteren kol
-- 🧑‍🏫 Kara tahta: maddeler anlatımla eşzamanlı kayarak belirir
-- 💬 Altyazı, intro/outro kartları, sahne geçişleri, ilerleme çubuğu
-- 🎵 Kodla sentezlenen telifsiz fon müziği, konuşmada otomatik kısılır (ducking); EBU R128 ses normalizasyonu
+- 🗣️ **Doğal Türkçe ses:** [Chatterbox Multilingual](https://github.com/resemble-ai/chatterbox) (MIT – ticari kullanım serbest)
+- 👨‍🏫 **Konuşan karakter:** portre görselinden otomatik arka plan silme, sese göre çene hareketi, göz kırpma, baş hareketi
+- 🧑‍🏫 Kara tahtada anlatımla eşzamanlı beliren maddeler, altyazı, intro/outro, sahne geçişleri, ilerleme çubuğu
+- 🎵 Kodla sentezlenen telifsiz fon müziği (konuşmada otomatik kısılır), EBU R128 ses seviyesi
+- 🖼️ Otomatik YouTube kapak görseli
 - 💸 API anahtarı yok, GPU yok, ücret yok
 
+## Nasıl çalışır
+| Adım | Nerede |
+|---|---|
+| Senaryo yazımı | Claude |
+| Seslendirme (Chatterbox) | GitHub Actions (paralel, ~10-15 dk) **ya da** doğrudan Claude ortamında (yavaş) |
+| Animasyon + video | Claude ortamı (Pillow + ffmpeg) |
+
+Claude'un ortamı Hugging Face'e erişemediği için model dosyaları bu reponun release'lerine kopyalanır
+(`Modelleri GitHub'a kopyala` iş akışı).
+
 ## Claude'da kullanım
-
-**claude.ai / Claude uygulaması:** Ayarlar → Capabilities → Skills → bu reponun zip'ini yükle
-(ya da sadece `SKILL.md`'yi; kod gerekince repodan otomatik klonlanır). Sonra:
-> "Ekteki dokümandan eğitim videosu yap."
-
-**Claude Code:**
-```bash
-git clone https://github.com/alpay-web/egitim-videosu ~/.claude/skills/egitim-videosu
-```
+- **claude.ai:** Ayarlar → Capabilities → Skills → bu repodaki `SKILL.md`'yi (ya da repo zip'ini) yükle. Sonra:
+  > "Ekteki dokümandan eğitim videosu yap."
+- **Claude Code:** `git clone https://github.com/alpay-web/egitim-videosu ~/.claude/skills/egitim-videosu`
 
 ## Elle kullanım
 ```bash
-pip install -r requirements.txt
-python scripts/video_uret.py ornek/senaryo_wse_b1.json -o video.mp4
-python scripts/video_uret.py ornek/senaryo_wse_b1.json -o deneme.mp4 --sahne 1-2 --cozunurluk 720
+pip install -r requirements.txt chatterbox-tts
+python scripts/video_uret.py ornek/senaryo_b1.json --sadece-ses sesler          # seslendirme
+python scripts/video_uret.py ornek/senaryo_b1.json -o video.mp4 --ses-dizini sesler
 ```
+GitHub'da: Actions → **Seslendirme üret** → Run workflow → release'ten `sesler.zip`.
 
-| Seçenek | Açıklama |
-|---|---|
-| `--piper-ses fahrettin\|fettah\|dfki` | Ses (dfki ticari kullanıma kapalı) |
-| `--hiz 0.95` | Konuşma hızı |
-| `--ses edge` | İnternet varsa Microsoft'un ücretsiz nöral sesi (`--edge-ses tr-TR-EmelNeural`) |
-| `--muzik-yok` / `--altyazi-yok` / `--intro-outro-yok` | İlgili öğeyi kapatır |
-| `--cozunurluk 720` | Daha hızlı render |
-
-Senaryo formatı ve yazım kuralları için `SKILL.md`'ye bak.
-
-## Lisans
-Kod: MIT. Ses modelleri kendi lisanslarıyla (fahrettin/fettah: CC0) çalışma anında indirilir.
+## Lisanslar
+Kod: MIT. Chatterbox: MIT. Piper fahrettin sesi (referans): CC0. Karakter görseli: repo sahibine aittir.
+YouTube açıklamasında sesin yapay zekâ ile üretildiğini belirtmeniz önerilir.

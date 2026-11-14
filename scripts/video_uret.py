@@ -148,71 +148,42 @@ class PiperSes:
             self.v.synthesize_wav(metin, wf, syn_config=self.cfg)
 
 
-FREYA_URL = "https://github.com/alpay-web/egitim-videosu/releases/download/modeller-v1/{}"
-FREYA_KOD = "https://github.com/freyavoiceai/FreyaTTS"
+CHATTERBOX_URL = "https://github.com/alpay-web/egitim-videosu/releases/download/modeller-chatterbox/{}"
+CHATTERBOX_DOSYALAR = ["ve.pt", "t3_mtl23ls_v2.safetensors", "s3gen.pt", "grapheme_mtl_merged_expanded_v1.json",
+                       "conds.pt", "Cangjie5_TC.json"]
 
 
-class FreyaSes:
-    """FreyaTTS-small (Apache-2.0): doğal Türkçe nöral ses. İsteğe bağlı Praat ile erkek sesine dönüşüm."""
-
-    def __init__(self, dizin, hiz, erkek, adim, tohum):
-        import torch
-        torch.set_num_threads(max(1, os.cpu_count() or 1))
-        dizin = Path(dizin) / "freya"; dizin.mkdir(parents=True, exist_ok=True)
-        for f in ("freya-model.safetensors", "freya-config.json", "voxcpm2-audiovae.pth"):
-            if not (dizin / f).exists():
-                log(f"  Model indiriliyor (tek seferlik): {f}")
-                indir(FREYA_URL.format(f), dizin / (f + ".part")); (dizin / (f + ".part")).rename(dizin / f)
-        kod = dizin / "FreyaTTS"
-        if not (kod / "freyatts").exists():
-            subprocess.run(["git", "clone", "-q", "--depth", "1", FREYA_KOD, str(kod)], check=True)
-        sys.path.insert(0, str(kod))
-        os.environ["HF_HUB_OFFLINE"] = "1"
-        import freyatts.pipeline as fp
-
-        def yerel_vae(device="cpu", token=None):
-            from voxcpm.modules.audiovae import AudioVAEV2, AudioVAEConfigV2
-            vae = AudioVAEV2(AudioVAEConfigV2())
-            ck = torch.load(dizin / "voxcpm2-audiovae.pth", map_location="cpu", weights_only=True)
-            vae.load_state_dict(ck.get("state_dict", ck), strict=False)
-            vae = vae.float().eval()
-            for p_ in vae.parameters():
-                p_.requires_grad = False
-            return vae
-        fp.load_audio_vae = yerel_vae
-        md = dizin / "model"; md.mkdir(exist_ok=True)
-        for a, b in (("freya-config.json", "config.json"), ("freya-model.safetensors", "model.safetensors")):
-            if not (md / b).exists():
-                os.symlink(dizin / a, md / b)
-        self.fp = fp
-        self.tts = fp.FreyaTTS.from_pretrained(str(md), device="cpu")
-        self.tts.t_floor = 8
-        self.hiz, self.erkek, self.adim = hiz, erkek, adim
-        self.tohum = fp.LEYLA_SEED if tohum is None else tohum
-        # süre tahminini yavaşlatmak için orijinal fonksiyonu sarmala
-        orj = self.tts.model.dur
-        carpan = 1.0 / hiz
-
-        class Yavas(torch.nn.Module):
-            def __init__(s2, m):
-                super().__init__(); s2.m = m
-            def forward(s2, x):
-                return s2.m(x) + math.log(carpan)
-        self.tts.model.dur = Yavas(orj)
-        log(f"  Ses: FreyaTTS-small (Apache-2.0){' + erkek dönüşümü' if erkek else ''}, hız x{hiz}")
-
-    def sentezle(self, metin, yol):
-        import soundfile as sf
-        w = self.tts.synthesize(metin, steps=self.adim, seed=self.tohum)
-        sr = self.tts.sample_rate
-        if self.erkek:
-            import parselmouth
-            from parselmouth.praat import call
-            snd = parselmouth.Sound(w.astype(np.float64), sr)
-            f, p = self.erkek
-            snd = call(snd, "Change gender", 75, 600, f, p, 1.0, 1.0)
-            w, sr = snd.values[0], int(snd.sampling_frequency)
-        sf.write(str(yol), w, sr)
+def chatterbox_yukle(d):
+    """Önce yerel kopya, sonra Hugging Face, o da yoksa GitHub kopyası (parçalı dosyaları birleştirerek)."""
+    from chatterbox.mtl_tts import ChatterboxMultilingualTTS
+    d = Path(d)
+    if not all((d / f).exists() for f in CHATTERBOX_DOSYALAR):
+        try:
+            return ChatterboxMultilingualTTS.from_pretrained(device="cpu")
+        except Exception:
+            log("  Hugging Face'e erişilemedi; model GitHub kopyasından indiriliyor (tek seferlik, ~3 GB)...")
+        d.mkdir(parents=True, exist_ok=True)
+        for f in CHATTERBOX_DOSYALAR:
+            if (d / f).exists():
+                continue
+            try:
+                indir(CHATTERBOX_URL.format(f), d / (f + ".part"))
+                (d / (f + ".part")).rename(d / f)
+            except subprocess.CalledProcessError:
+                parcalar, i = [], 0
+                while True:
+                    hedef = d / f"{f}.parca{i:02d}"
+                    try:
+                        indir(CHATTERBOX_URL.format(hedef.name), hedef)
+                    except subprocess.CalledProcessError:
+                        break
+                    parcalar.append(hedef); i += 1
+                if not parcalar:
+                    raise
+                with open(d / f, "wb") as out:
+                    for p_ in parcalar:
+                        out.write(p_.read_bytes()); p_.unlink()
+    return ChatterboxMultilingualTTS.from_local(d, "cpu")
 
 
 class ChatterboxSes:
@@ -231,7 +202,7 @@ class ChatterboxSes:
                          "Hazırsanız başlayalım, çünkü önümüzde gerçekten keyifli bir yol var.")
                 p.sentezle(metin, referans)
         self.ref = str(referans)
-        self.m = ChatterboxMultilingualTTS.from_pretrained(device="cpu")
+        self.m = chatterbox_yukle(Path(dizin) / "chatterbox")
         self.abarti, self.cfg, self.hiz = abarti, cfg, hiz
         log(f"  Ses: Chatterbox Multilingual (MIT), referans: {Path(self.ref).name}")
 
@@ -558,23 +529,58 @@ class Sahne:
         return im
 
 
+# ================================================================ YouTube kapak görseli
+def kapak_gorseli(sen, karakter_png, yol):
+    W, H = 1280, 720
+    t = np.linspace(0, 1, W)[None, :, None]
+    a, b = np.array([20, 62, 52]), np.array([10, 28, 32])
+    im = Image.fromarray(np.broadcast_to(a * (1 - t) + b * t, (H, W, 3)).astype(np.uint8).copy()).convert("RGBA")
+    d = ImageDraw.Draw(im)
+    rnd = random.Random(9)
+    for _ in range(14):
+        x, y = rnd.randint(0, 700), rnd.randint(0, 680)
+        d.arc((x, y, x + rnd.randint(120, 300), y + rnd.randint(40, 120)), 0, rnd.randint(120, 300), fill=(40, 90, 75), width=5)
+    if karakter_png and Path(karakter_png).exists():
+        k = Image.open(karakter_png).convert("RGBA")
+        s = 780 / k.height
+        k = k.resize((int(k.width * s), 780), Image.LANCZOS)
+        im.alpha_composite(k, (W - k.width + 130, H - k.height + 60))
+    d = ImageDraw.Draw(im)
+    baslik = sen.get("kapak_baslik") or sen.get("baslik", "")
+    parcalar = [x.strip() for x in re.split(r"\s+[–—-]\s+", baslik) if x.strip()]
+    vurgu = parcalar[-1] if len(parcalar) > 1 else baslik
+    ust = parcalar[0] if len(parcalar) > 1 else ""
+    fb = font(118, True)
+    satirlar = satir_kir(vurgu.upper(), fb, 700, d)[:3]
+    y = 360 - len(satirlar) * 68
+    if ust:
+        fu = font(40, True)
+        for sat in satir_kir(ust, fu, 680, d)[:2]:
+            d.text((60, y - 70), sat, font=fu, fill=(205, 230, 218)); y += 0
+    for sat in satirlar:
+        for ox, oy in ((5, 6),):
+            d.text((60 + ox, y + oy), sat, font=fb, fill=(0, 0, 0, 160))
+        d.text((60, y), sat, font=fb, fill=(255, 210, 80)); y += 132
+    d.rectangle((60, y + 8, 360, y + 18), fill=(255, 255, 255))
+    im.convert("RGB").save(yol, quality=92)
+
+
 # ================================================================ ana akış
 def main():
     ap = argparse.ArgumentParser(description="Senaryodan animasyonlu eğitim videosu (ücretsiz/açık kaynak).")
     ap.add_argument("senaryo")
     ap.add_argument("-o", "--cikti", default="egitim_videosu.mp4")
-    ap.add_argument("--ses", choices=["piper", "chatterbox", "freya", "edge", "espeak"], default="piper")
+    ap.add_argument("--ses", choices=["chatterbox", "piper", "edge", "espeak"], default="chatterbox")
     ap.add_argument("--referans", help="chatterbox için referans ses dosyası (wav/mp3, 10-20 sn)")
-    ap.add_argument("--abarti", type=float, default=0.45, help="chatterbox duygu/vurgu (0.25-0.7)")
-    ap.add_argument("--cfg", type=float, default=0.4, help="chatterbox tempo/sadakat (düşük = daha sakin)")
+    ap.add_argument("--abarti", type=float, default=0.5, help="chatterbox duygu/vurgu (0.25-0.7)")
+    ap.add_argument("--cfg", type=float, default=0.5, help="chatterbox tempo/sadakat (düşük = daha sakin)")
     ap.add_argument("--ses-dizini", help="hazır cümle sesleri (SS_CC.mp3/wav) bu klasörden alınır")
     ap.add_argument("--sadece-ses", metavar="KLASOR", help="video üretmeden sadece cümle seslerini bu klasöre yaz")
     ap.add_argument("--karakter", default=str(Path(__file__).resolve().parent.parent / "karakter" / "profesor.json"),
                     help="karakter JSON'u (yanında aynı adlı .png) ya da 'cizim'")
-    ap.add_argument("--freya-erkek", help="FreyaTTS sesine erkek dönüşümü: 'formant,perde' ör. 0.84,118")
     ap.add_argument("--piper-ses", default="fahrettin", choices=list(PIPER_SESLER))
     ap.add_argument("--edge-ses", default="tr-TR-AhmetNeural")
-    ap.add_argument("--hiz", type=float, default=0.95, help="konuşma hızı çarpanı (1.0 = normal)")
+    ap.add_argument("--hiz", type=float, default=1.0, help="konuşma hızı çarpanı (1.0 = normal)")
     ap.add_argument("--model-dizini", default=str(Path.home() / ".egitim_video" / "sesler"))
     ap.add_argument("--cozunurluk", type=int, choices=[720, 1080], default=1080)
     ap.add_argument("--sahne", help="sadece bu sahneler, ör. 1-3")
@@ -604,9 +610,6 @@ def main():
                  else EdgeSes(args.edge_ses, args.hiz) if args.ses == "edge"
                  else ChatterboxSes(args.referans, args.model_dizini, args.hiz, args.abarti, args.cfg)
                  if args.ses == "chatterbox"
-                 else FreyaSes(Path(args.model_dizini).parent, args.hiz,
-                               tuple(float(x) for x in args.freya_erkek.split(",")) if args.freya_erkek else None,
-                               32, None) if args.ses == "freya"
                  else EspeakSes())
     if args.sadece_ses:
         hedef = Path(args.sadece_ses); hedef.mkdir(parents=True, exist_ok=True)
@@ -818,7 +821,9 @@ def main():
     shutil.rmtree(tmp, ignore_errors=True)
     if ff.returncode:
         sys.exit("ffmpeg hata verdi.")
-    log(f"\nTAMAM ✔  {cikti}  ({sure / 60:.1f} dk)")
+    kapak = cikti.with_name(cikti.stem + "_kapak.jpg")
+    kapak_gorseli(sen, None if args.karakter == "cizim" else Path(args.karakter).with_suffix(".png"), kapak)
+    log(f"\nTAMAM ✔  {cikti}  ({sure / 60:.1f} dk)  + kapak: {kapak.name}")
 
 
 if __name__ == "__main__":
