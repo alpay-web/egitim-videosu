@@ -37,7 +37,8 @@ Claude'un ortamı Hugging Face'e erişemediği için model dosyaları bu reponun
 ```bash
 pip install -r requirements.txt chatterbox-tts
 python scripts/video_uret.py ornek/senaryo_b1.json --sadece-ses sesler          # seslendirme
-python scripts/video_uret.py ornek/senaryo_b1.json -o video.mp4 --ses-dizini sesler
+python scripts/video_uret.py ornek/senaryo_b1.json --onizleme -o video.mp4 --ses-dizini sesler  # önce 1-2 dk önizleme
+python scripts/video_uret.py ornek/senaryo_b1.json -o video.mp4 --ses-dizini sesler            # onaydan sonra tam video
 ```
 GitHub'da: Actions → **Seslendirme üret** → Run workflow → release'ten `sesler.zip`.
 
@@ -56,6 +57,12 @@ YouTube açıklamasında sesin yapay zekâ ile üretildiğini belirtmeniz öneri
 | 5 ölçütlü değerlendirme | TheoremExplainAgent (MIT) | Denetim adımında doğruluk/görsel ilgi/akış/yerleşim/tutarlılık puanı |
 | Sahne türleri, tekdüzelik kontrolü, senaryo kuralları | OpenMontage (AGPL — yalnızca fikir) | Rakam/karşılaştırma/ipucu/zaman, `cesitlilik_raporu` |
 | İmleç / etkin öğe | Paper2Video, Code2Video (MIT) | İşaretçi + vurgu |
+| Önizleme onay kapısı | anything2explainer, vox-director, frametell, OpenMontage | `--onizleme`: uzun videodan önce 1–2 dk temsili seçki |
+| −14 LUFS + son dosya denetimi | cinecode, ffmpeg-skill, explainroo | `--lufs`, `_denetim.json` |
+| Gömülü bölümler, sesli kitap | abogen | MP4 chapter, `--sesli-kitap` (.m4a) |
+| Genel telaffuz sözlüğü | video-podcast-maker, ThioJoe dubs | `telaffuz.json` |
+
+En çok yıldızlı 100 benzer deponun tam analizi: [`docs/benzer_projeler.md`](docs/benzer_projeler.md).
 
 ## Uzun süreli kullanım
 - **Sürüm:** `VERSION` + `CHANGELOG.md`; kararlı sürümler `v1.0.0` gibi etiketlenir.

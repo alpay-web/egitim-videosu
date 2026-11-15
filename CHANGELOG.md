@@ -2,6 +2,18 @@
 
 Sürümleme: `ANA.ARA.YAMA` — ANA: senaryo biçimi geriye uyumsuz değişirse; ARA: yeni özellik; YAMA: düzeltme.
 
+## 2.1.0 — 2026-11-16
+**Önizleme kapısı ve 100 benzer deponun analizi** (`docs/benzer_projeler.md`).
+- `--onizleme [SN]`: uzun videodan önce ~90 sn'lik temsili önizleme (açılış + her sahne türünden en kısa sahne +
+  İngilizce geçişli sahne). `--onizleme-yaz` seçkiyi ayrı senaryoya yazar (yalnız o cümleler seslendirilir; tam
+  videoda önbellekten gelir). SKILL.md kural 6b: kullanıcı onayı olmadan uzun video üretilmez.
+- Ses yüksekliği YouTube standardına çekildi: −14 LUFS (`--lufs`), gerçek tepe ≤ −1.5 dBFS.
+- Render sonunda yayın denetimi (`_denetim.json`): LUFS, tepe, beklenmedik uzun sessizlik (giriş/kapanış/soru
+  bekleme hariç).
+- Bölümler MP4'e chapter olarak gömülür; `--sesli-kitap` bölümlü `.m4a` anlatım üretir.
+- Depo kökünde genel telaffuz sözlüğü `telaffuz.json` (senaryo sözlüğü onu ezer; `--genel-telaffuz-yok`).
+- 2 yeni test (toplam 13).
+
 ## 2.0.0 — 2026-11-16
 **Belgenin tamamı videoda (kesin kural).** `belge_senaryo.py` belgeyi eksiksiz sahnelere çevirir: her madde, her
 tablonun tüm satır ve sütunları, her alıştırmanın her sorusu (soru + seçenekler okunur, geri sayım, doğru cevap,

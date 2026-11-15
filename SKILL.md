@@ -145,6 +145,19 @@ Eski (dizin.json'suz) klasörü etiketlemek için: `--dizin-olustur KLASOR` (o k
 (arka planda çalıştır). `kalite_raporu.txt`'te puanı < 0.8 olan cümlelerde telaffuzu düzelt ve yalnızca onları
 `--cumleler 04_05,06_07` ile yeniden üret.
 
+## 6b. ÖNİZLEME KAPISI (kesin kural — uzun videodan önce)
+Uzun (≳3 dk) videoyu **asla doğrudan üretme**. Önce 1–2 dakikalık temsili önizleme üret, kullanıcıya gönder,
+**açık onay** gelmeden uzun versiyona geçme (anything2explainer "ilk 30 sn", vox-director/frametell onay kapıları).
+```bash
+python $R/scripts/video_uret.py senaryo.json --onizleme-yaz senaryolar/<ad>_onizleme.json   # seçkiyi göster
+# yalnızca önizleme cümlelerinin sesini üret (workflow: senaryo=senaryolar/<ad>_onizleme.json, etiket=ses-<ad>-onizleme)
+python $R/scripts/video_uret.py senaryo.json --onizleme --ses-dizini sesler_onizleme -o video.mp4  # → video_onizleme.mp4
+```
+Seçki: açılış sahnesi + her sahne türünden (tablo, soru, metin, maddeler…) en kısa temsilci + en az bir İngilizce
+geçişli sahne; ~90 sn (`--onizleme 120` ile değişir). Önizlemeyi gönderirken kullanıcıya **neye bakacağını** söyle:
+ses/telaffuz, hız, işaretçi, yerleşim. Geri bildirimi uygula, gerekirse yeni önizleme yap.
+Onaydan sonra tam seslendirmede workflow'a `"taban":"ses-<ad>-onizleme"` ver: önizlemedeki cümleler yeniden üretilmez.
+
 ## 7. Video
 ```bash
 python $R/scripts/video_uret.py senaryo.json -o video.mp4 --ses-dizini sesler     # 1080p + video_kapak.jpg
@@ -162,6 +175,11 @@ Kapatmak: `--temizleme-yok`.
 **Dudak senkronu:** çizim profesörün ağzı yalnızca açılıp kapanmaz; sesin formant bantlarından her kare için
 'a' (açık), 'o' (yuvarlak) ve 'i' (yayvan, dişler görünür) biçimi seçilir. Model gerektirmez, render süresini
 etkilemez. (SadTalker/Wav2Lip/LivePortrait gibi gerçekçi konuşan yüzler GPU ister ve üretimi çok yavaşlatır.)
+**Ses yüksekliği:** YouTube standardı `-14 LUFS`, gerçek tepe ≤ −1.5 dBFS (`--lufs` ile değişir). Render sonunda
+otomatik **yayın denetimi** (`video_denetim.json`): LUFS/tepe ölçümü ve giriş/kapanış/soru bekleme dışındaki
+beklenmedik sessizlikler. Bölümler MP4'e **chapter** olarak gömülür; `--sesli-kitap` bölümlü `.m4a` anlatım da verir.
+**Genel telaffuz sözlüğü:** depo kökündeki `telaffuz.json` her senaryoya uygulanır (A1–C2, IELTS, vb., örn. …);
+senaryonun `telaffuz` alanı onu ezer. Bir kelime her videoda yanlış okunuyorsa oraya ekle.
 Seçenekler: `--tik`, `--muzik`, `--efekt-yok`, `--kamera-yok`, `--altyazi-yok`, `--karakter yol.json` (fotoğraf karakter),
 `--sahne 2-3 --cozunurluk 720` (hızlı deneme).
 

@@ -1791,6 +1791,97 @@ def yayin_paketi(cikti, sen, sahneler, zc, bolum_adi):
     if len(sen.get("youtube_baslik", sen.get("baslik", ""))) > 100:
         log("  ⚠ YouTube başlığı 100 karakteri aşıyor; 'youtube_baslik' alanını kısalt.")
     log(f"  Yayın paketi: {cikti.with_suffix('.srt').name}, {cikti.stem}_youtube.txt ({len(temiz_bol)} bölüm)")
+    return temiz_bol
+
+
+def bolumleri_gom(cikti, bolumler, sure):
+    """MP4'e bölüm işaretleri (chapter) gömer: VLC/oynatıcılarda bölüm menüsü (abogen M4B bölümleri)."""
+    if len(bolumler) < 2:
+        return
+    md = [";FFMETADATA1"]
+    for i, (t, ad) in enumerate(bolumler):
+        son = bolumler[i + 1][0] if i + 1 < len(bolumler) else sure
+        ad_ = str(ad).replace("=", "\\=").replace(";", "\\;").replace("#", "\\#").replace("\n", " ")
+        md += ["[CHAPTER]", "TIMEBASE=1/1000", f"START={int(t * 1000)}", f"END={int(son * 1000)}", f"title={ad_}"]
+    mdf = cikti.with_name(cikti.stem + ".ffmeta")
+    mdf.write_text("\n".join(md) + "\n", encoding="utf-8")
+    gecici = cikti.with_name(cikti.stem + ".bolumlu.mp4")
+    r = subprocess.run([ffmpeg_bin(), "-v", "error", "-y", "-i", str(cikti), "-i", str(mdf), "-map", "0",
+                        "-map_metadata", "1", "-map_chapters", "1", "-c", "copy", "-movflags", "+faststart", str(gecici)])
+    mdf.unlink(missing_ok=True)
+    if r.returncode == 0 and gecici.exists():
+        gecici.replace(cikti); log(f"  {len(bolumler)} bölüm işareti MP4'e gömüldü")
+    else:
+        gecici.unlink(missing_ok=True)
+
+
+def yayin_denetimi(cikti, hedef_lufs=-14.0, beklenen=()):
+    """Son dosyayı ölçer (explainroo/ffmpeg-skill 'check'): ses yüksekliği, tepe, uzun sessizlik, çözünürlük."""
+    sonuc, uyari = {}, []
+    o = subprocess.run([ffmpeg_bin(), "-hide_banner", "-i", str(cikti), "-af",
+                        "ebur128=peak=true,silencedetect=n=-45dB:d=3", "-f", "null", "-"],
+                       capture_output=True, text=True).stderr
+    m = re.findall(r"I:\s+(-?[\d.]+) LUFS", o); tp = re.findall(r"Peak:\s+(-?[\d.]+) dBFS", o)
+    sessiz = []
+    for b_, d_ in re.findall(r"silence_end: ([\d.]+) \| silence_duration: ([\d.]+)", o):
+        bit_, d_ = float(b_), float(d_); bas_ = bit_ - d_
+        ortak = sum(max(0.0, min(bit_, y) - max(bas_, x)) for x, y in beklenen)
+        if d_ - ortak > 2.5:      # giriş/kapanış/soru bekleme dışında kalan sessizlik
+            sessiz.append(round(bas_, 1))
+    if m:
+        sonuc["lufs"] = float(m[-1])
+        if abs(sonuc["lufs"] - hedef_lufs) > 1.5:
+            uyari.append(f"ses yüksekliği {sonuc['lufs']:.1f} LUFS (hedef {hedef_lufs})")
+    if tp:
+        sonuc["tepe_dbfs"] = float(tp[-1])
+        if sonuc["tepe_dbfs"] > -1.0:
+            uyari.append(f"gerçek tepe {sonuc['tepe_dbfs']:.1f} dBFS (> -1, kırpılma riski)")
+    sonuc["beklenmedik_sessizlik_sn"] = sessiz
+    if sessiz:
+        uyari.append("beklenmedik uzun sessizlik: " + ", ".join(_sn(x, False) for x in sessiz[:8]))
+    sonuc["uyarilar"] = uyari
+    cikti.with_name(cikti.stem + "_denetim.json").write_text(json.dumps(sonuc, ensure_ascii=False, indent=1), encoding="utf-8")
+    log("  Yayın denetimi: " + (" · ".join(uyari) if uyari else
+        f"ses {sonuc.get('lufs', '?')} LUFS, tepe {sonuc.get('tepe_dbfs', '?')} dBFS ✔"))
+    return sonuc
+
+
+def sahne_suresi_tahmin(sh, tempo=0.9):
+    """Bir sahnenin yaklaşık süresi (sn): ~2.3 kelime/sn, tempo ve cümle/sahne araları dahil."""
+    cs = cumlelere_bol(sh.get("anlatim", ""))
+    return sum(len(temiz(c).split()) / 2.3 + 0.3 for c in cs) / max(0.5, tempo) + len(cs) * CUMLE_ARASI + SAHNE_ARASI
+
+
+def onizleme_sec(sahneler, hedef_sn=90, tempo=0.9):
+    """Uzun videodan önce onay için 1-2 dk'lık temsili seçki (anything2explainer 'ilk 30 sn',
+    vox-director/frametell onay kapıları). Açılış sahnesi + her sahne türünden en kısa temsilci,
+    belge sırasıyla; hedef süre dolana kadar. Dönen: seçilen sahne indisleri (0 tabanlı)."""
+    if not sahneler:
+        return []
+    sec = [0]; top = sahne_suresi_tahmin(sahneler[0], tempo)
+    turler = {}
+    for i, sh in enumerate(sahneler[1:], 1):
+        turler.setdefault(sh.get("tur", "maddeler"), []).append(i)
+    adaylar = []
+    for tur, ix in turler.items():   # her türün en kısa (ama boş olmayan) sahnesi
+        ix = sorted(ix, key=lambda i: sahne_suresi_tahmin(sahneler[i], tempo))
+        adaylar.append(ix[0])
+    adaylar.sort(key=lambda i: sahne_suresi_tahmin(sahneler[i], tempo))
+    for i in adaylar:
+        d = sahne_suresi_tahmin(sahneler[i], tempo)
+        if top + d <= hedef_sn * 1.35 or len(sec) < 3:
+            sec.append(i); top += d
+    # İngilizce geçişli (code-switch) bir sahne mutlaka olsun: telaffuz en çok orada bozuluyor
+    if not any("{" in sahneler[i].get("anlatim", "") for i in sec):
+        ing = [i for i in range(1, len(sahneler)) if "{" in sahneler[i].get("anlatim", "")]
+        if ing:
+            i = min(ing, key=lambda i: sahne_suresi_tahmin(sahneler[i], tempo)); sec.append(i)
+            top += sahne_suresi_tahmin(sahneler[i], tempo)
+    if top < hedef_sn * 0.6:          # kısa kaldıysa aynı türlerden ikinci örnekler
+        for i in sorted(range(1, len(sahneler)), key=lambda i: sahne_suresi_tahmin(sahneler[i], tempo)):
+            if i not in sec and top + sahne_suresi_tahmin(sahneler[i], tempo) <= hedef_sn * 1.2:
+                sec.append(i); top += sahne_suresi_tahmin(sahneler[i], tempo)
+    return sorted(sec)
 
 
 def main():
@@ -1835,6 +1926,13 @@ def main():
     ap.add_argument("--muzik-yok", action="store_true", help="(eski seçenek; artık varsayılan)")
     ap.add_argument("--altyazi-yok", action="store_true")
     ap.add_argument("--intro-outro-yok", action="store_true")
+    ap.add_argument("--onizleme", nargs="?", const=90.0, type=float, metavar="SN",
+                    help="uzun videodan önce onay için ~SN saniyelik (varsayılan 90) temsili önizleme üret")
+    ap.add_argument("--onizleme-yaz", metavar="JSON",
+                    help="önizleme sahnelerini ayrı senaryo dosyasına yaz (ses üretimi/iş akışı için) ve çık")
+    ap.add_argument("--lufs", type=float, default=-14.0, help="hedef ses yüksekliği (YouTube: -14 LUFS)")
+    ap.add_argument("--sesli-kitap", action="store_true", help="ayrıca bölümlü .m4a sesli anlatım dosyası üret")
+    ap.add_argument("--genel-telaffuz-yok", action="store_true", help="depo kökündeki telaffuz.json'u kullanma")
     args = ap.parse_args()
 
     H = args.cozunurluk; W = H * 16 // 9
@@ -1845,8 +1943,28 @@ def main():
     if args.sahne:
         a, _, b = args.sahne.partition("-"); ilk = int(a)
         sahneler = tum[int(a) - 1:int(b or a)]
-    telaffuz = sen.get("telaffuz", {})
-    kok = sen.get("telaffuz_kok", {})
+    if args.onizleme or args.onizleme_yaz:
+        idx = onizleme_sec(sahneler, args.onizleme or 90.0, args.tempo)
+        sahneler = [sahneler[i] for i in idx]
+        tahmin = sum(sahne_suresi_tahmin(sh, args.tempo) for sh in sahneler)
+        log(f"Önizleme: {len(sahneler)} sahne ({', '.join(str(ilk + i) for i in idx)}) · tahmini {tahmin:.0f} sn")
+        for i in idx:
+            log(f"   {ilk + i:3d}. [{tum[ilk - 1 + i].get('tur', 'maddeler')}] {tum[ilk - 1 + i].get('baslik', '')[:60]}")
+        if args.onizleme_yaz:
+            yeni = {k: v for k, v in sen.items() if k != "sahneler"}
+            yeni["onizleme_kaynak"] = [ilk + i for i in idx]
+            yeni["sahneler"] = sahneler
+            Path(args.onizleme_yaz).write_text(json.dumps(yeni, ensure_ascii=False, indent=1), encoding="utf-8")
+            log(f"Önizleme senaryosu → {args.onizleme_yaz}"); return
+        ilk, toplam = 1, len(sahneler)
+        if args.cikti == "egitim_videosu.mp4" or not args.cikti.endswith("_onizleme.mp4"):
+            args.cikti = str(Path(args.cikti).with_name(Path(args.cikti).stem + "_onizleme.mp4"))
+    genel = {}
+    gt = Path(__file__).resolve().parent.parent / "telaffuz.json"
+    if gt.exists() and not args.genel_telaffuz_yok:
+        genel = json.loads(gt.read_text(encoding="utf-8"))
+    telaffuz = {**genel.get("telaffuz", {}), **sen.get("telaffuz", {})}
+    kok = {**genel.get("telaffuz_kok", {}), **sen.get("telaffuz_kok", {})}
     ust = sen.get("baslik", "")
     # bölümler: sahnedeki "bolum" alanı yeni bölüm başlatır (YouTube bölümleri + tahta alt bilgisi)
     bolum_adi, b_ = [], None
@@ -2119,16 +2237,16 @@ def main():
     # agate: kelime aralarında kalan kısık hışırtıyı 24 dB'e kadar bastırır (konuşma eşiğin çok üstünde)
     zincir = "highpass=f=80,afftdn=nf=-45:nr=8,agate=threshold=0.008:ratio=3:range=0.06:attack=3:release=120,deesser=i=0.3,equalizer=f=3000:t=q:w=1.2:g=2,acompressor=threshold=-20dB:ratio=3:attack=10:release=200"
     olc = subprocess.run([ffmpeg_bin(), "-hide_banner", "-i", str(ham), "-af",
-                          zincir + ",loudnorm=I=-16:TP=-1.5:LRA=11:print_format=json", "-f", "null", "-"],
+                          zincir + f",loudnorm=I={args.lufs}:TP=-1.5:LRA=11:print_format=json", "-f", "null", "-"],
                          capture_output=True, text=True).stderr
     try:
         m = json.loads(olc[olc.rindex("{"):olc.rindex("}") + 1])
         if not all(math.isfinite(float(m[x])) for x in ("input_i", "input_tp", "target_offset")):
             raise ValueError("sessiz ses")             # tamamen sessiz taslak: ölçüm yapılamaz
-        ln = (f"loudnorm=I=-16:TP=-1.5:LRA=11:measured_I={m['input_i']}:measured_TP={m['input_tp']}:"
+        ln = (f"loudnorm=I={args.lufs}:TP=-1.5:LRA=11:measured_I={m['input_i']}:measured_TP={m['input_tp']}:"
               f"measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true")
     except Exception:
-        ln = "loudnorm=I=-16:TP=-1.5:LRA=11" if "input_i" in olc and "-inf" not in olc else "anull"
+        ln = f"loudnorm=I={args.lufs}:TP=-1.5:LRA=11" if "input_i" in olc and "-inf" not in olc else "anull"
     subprocess.run([ffmpeg_bin(), "-v", "error", "-y", "-i", str(ham), "-af", zincir + "," + ln,
                     "-ar", "48000", "-ac", "2", str(son_ses)], check=True)
 
@@ -2317,7 +2435,19 @@ def main():
     shutil.rmtree(tmp, ignore_errors=True)
     if ff.returncode:
         sys.exit("ffmpeg hata verdi.")
-    yayin_paketi(cikti, sen, sahneler, zc, bolum_adi)
+    bolumler = yayin_paketi(cikti, sen, sahneler, zc, bolum_adi)
+    bolumleri_gom(cikti, bolumler, sure)
+    beklenen = [(0, intro + 0.6), (sure - outro - 1.5, sure + 1)] + [
+        sh_["_bekle"] for sh_ in sahneler if "_bekle" in sh_]
+    yayin_denetimi(cikti, args.lufs, beklenen)
+    if args.sesli_kitap:     # abogen/Pandrator: dinlemek için bölümlü sesli anlatım
+        m4a = cikti.with_suffix(".m4a")
+        subprocess.run([ffmpeg_bin(), "-v", "error", "-y", "-i", str(cikti), "-vn", "-map_chapters", "0",
+                        "-c:a", "copy", str(m4a)], check=False)
+        if m4a.exists():
+            log(f"  Sesli anlatım: {m4a.name}")
+    if args.onizleme:
+        log("\nÖNİZLEME hazır. Kullanıcı onaylamadan uzun videoya geçme (SKILL.md kural 0).")
     kapak = cikti.with_name(cikti.stem + "_kapak.jpg")
     kapak_gorseli(sen, None if args.karakter == "cizim" else Path(args.karakter).with_suffix(".png"), kapak)
     log(f"\nTAMAM ✔  {cikti}  ({sure / 60:.1f} dk)  + kapak: {kapak.name}")

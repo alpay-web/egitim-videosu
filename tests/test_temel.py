@@ -84,3 +84,22 @@ def test_kapsam_okunmayani_bulur():
 def test_gomulu_ingilizce_okunusla_bagimsiz_alintiyla():
     t = v.seslendirme_metni("Had better kalıbından sonra {to} gelmez: {You'd better hurry up now}.", {})
     assert "{You'd better hurry up now}" in t and "{to}" not in t and "tu gelmez" in t
+
+
+def test_onizleme_secimi_temsili_ve_kisa():
+    sen = json.loads((KOK / "senaryolar/b1_tam_belge.json").read_text(encoding="utf-8"))
+    sh = sen["sahneler"]
+    idx = v.onizleme_sec(sh, 90, 0.9)
+    assert idx[0] == 0 and idx == sorted(idx)
+    turler = {sh[i].get("tur", "maddeler") for i in idx}
+    assert {"soru", "tablo", "metin"} <= turler
+    assert any("{" in sh[i]["anlatim"] for i in idx)
+    sure = sum(v.sahne_suresi_tahmin(sh[i], 0.9) for i in idx)
+    assert 45 <= sure <= 130
+
+
+def test_genel_telaffuz_dosyasi_gecerli():
+    g = json.loads((KOK / "telaffuz.json").read_text(encoding="utf-8"))
+    assert g["telaffuz"]["B1"] == "be, bir"
+    m = v.seslendirme_metni("vb. konular", g["telaffuz"])
+    assert "ve benzeri" in m

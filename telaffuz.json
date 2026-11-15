@@ -1,0 +1,9 @@
+{
+ "_aciklama": "Tüm senaryolarda geçerli genel telaffuz sözlüğü (video-podcast-maker 'global + proje' fonem sözlüğü fikri). Senaryodaki 'telaffuz' alanı bunu ezer. Değiştirirsen o kelimeyi içeren cümlelerin önbellek sesi yeniden üretilir.",
+ "telaffuz": {
+  "A1": "a, bir", "A2": "a, iki", "B1": "be, bir", "B1+": "be, bir artı", "B2": "be, iki",
+  "C1": "ce, bir", "C2": "ce, iki", "CEFR": "si i ef ar", "IELTS": "ay elts", "TOEFL": "tofıl",
+  "vb.": "ve benzeri", "vs.": "vesaire", "örn.": "örneğin", "bkz.": "bakınız"
+ },
+ "telaffuz_kok": {}
+}
