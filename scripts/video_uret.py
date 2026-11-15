@@ -16,7 +16,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 FPS, SR = 25, 24000
 KAR_OLCEK = 0.52  # çizim karakterin boyutu (1 = eski tam boy)
-CUMLE_ARASI, SAHNE_ARASI = 0.35, 1.0
+CUMLE_ARASI, SAHNE_ARASI = 0.45, 1.2
 INTRO_SN, OUTRO_SN = 4.0, 4.5
 GECIS = 0.5        # sahne geçişi (sn)
 MADDE_ANIM = 0.6   # madde belirme animasyonu (sn)
@@ -317,6 +317,13 @@ def duraklama(c):
     return CUMLE_ARASI
 
 
+def tempo_uygula(x, tempo):
+    p_ = subprocess.run([ffmpeg_bin(), "-v", "error", "-f", "f32le", "-ar", str(SR), "-ac", "1", "-i", "-",
+                         "-af", f"atempo={tempo}", "-f", "f32le", "-"], input=x.astype(np.float32).tobytes(),
+                        capture_output=True, check=True)
+    return np.frombuffer(p_.stdout, dtype=np.float32).copy()
+
+
 def oku_24k(yol):
     out = subprocess.run([ffmpeg_bin(), "-v", "error", "-i", str(yol), "-f", "s16le", "-ac", "1", "-ar", str(SR), "-"],
                          capture_output=True, check=True).stdout
@@ -326,7 +333,7 @@ def oku_24k(yol):
 def sahne_ogeleri(sh):
     tur = sh.get("tur", "maddeler")
     return {"tablo": lambda: sh["tablo"]["satirlar"], "soru": lambda: [], "rakam": lambda: sh["kartlar"],
-            "karsilastirma": lambda: sh["satirlar"] * 2, "ipucu": lambda: [1], "zaman": lambda: sh["adimlar"]
+            "karsilastirma": lambda: sh["satirlar"] * 2, "ipucu": lambda: [1], "metin": lambda: [1], "zaman": lambda: sh["adimlar"]
             }.get(tur, lambda: sh.get("maddeler", []))()
 
 
@@ -403,7 +410,9 @@ def ekran_ogeleri(sh):
     if tur == "ipucu":
         return [sh["ipucu"]["metin"]]
     if tur == "soru":
-        q = sh["soru"]; return [q["metin"]] + list(q["secenekler"])
+        q = sh["soru"]; return [q["metin"]] + list(q.get("secenekler") or []) + ([q["cevap"]] if q.get("cevap") else [])
+    if tur == "metin":
+        return [sh["metin"]]
     return list(sh.get("maddeler", []))
 
 
@@ -422,7 +431,7 @@ def okunmayanlar(sh, esik=0.6):
 
 def oto_goster(sh, cumleler):
     """goster verilmemişse: her öğe, onu en iyi okuyan (önceki öğeden sonraki) cümlede açılır."""
-    ogeler = ekran_ogeleri(sh) if sh.get("tur") not in ("soru", "ipucu") else []
+    ogeler = ekran_ogeleri(sh) if sh.get("tur") not in ("soru", "ipucu", "metin") else []
     n = len(cumleler); out, onceki = [], 0
     for j, o in enumerate(ogeler):
         en, en_ci = 0.0, None
@@ -437,7 +446,7 @@ def oto_goster(sh, cumleler):
 
 
 # ================================================================ senaryo doğrulama
-TURLER = {"maddeler", "tablo", "soru", "rakam", "karsilastirma", "ipucu", "zaman"}
+TURLER = {"maddeler", "tablo", "soru", "rakam", "karsilastirma", "ipucu", "zaman", "metin"}
 
 
 def senaryo_dogrula(sen):
@@ -461,8 +470,10 @@ def senaryo_dogrula(sen):
                 assert sh["tablo"]["satirlar"], "tablo.satirlar boş"
             elif tur == "soru":
                 q = sh["soru"]
-                assert q.get("metin") and len(q.get("secenekler", [])) >= 2, "soru.metin ve en az 2 seçenek gerekli"
-                assert 0 <= q["dogru"] < len(q["secenekler"]), "soru.dogru seçenek sırası dışında"
+                assert q.get("metin") and (len(q.get("secenekler") or []) >= 2 or q.get("cevap")), \
+                    "soru.metin ve en az 2 seçenek ya da 'cevap' (boşluk doldurma) gerekli"
+                if q.get("secenekler"):
+                    assert 0 <= q["dogru"] < len(q["secenekler"]), "soru.dogru seçenek sırası dışında"
                 cc = q.get("cevap_cumle", -1)
                 assert -1 <= cc < nc, f"soru.cevap_cumle={cc} ama anlatımda {nc} cümle var"
             elif tur == "rakam":
@@ -472,6 +483,8 @@ def senaryo_dogrula(sen):
                 assert all(len(r) == 2 for r in sh["satirlar"]), "her satır [sol, sağ] olmalı"
             elif tur == "ipucu":
                 assert sh["ipucu"].get("metin"), "ipucu.metin gerekli"
+            elif tur == "metin":
+                assert str(sh.get("metin", "")).strip(), "metin gerekli"
             elif tur == "zaman":
                 assert sh["adimlar"] and all("baslik" in a for a in sh["adimlar"]), "adimlar[].baslik gerekli"
         except (KeyError, TypeError, AssertionError) as e:
@@ -560,7 +573,7 @@ def senkron_raporu(sahneler, ilk, sureler):
             ts = sorted(bas[min(len(cs) - 1, int(float(str(g).split(":")[0])))] for g in gos)
         else:   # goster yoksa video öğeleri onları okuyan cümlede açar
             ts = [bas[min(len(cs) - 1, c_)] for c_ in oto_goster(sh, cumlelere_bol(sh["anlatim"]))] or []
-        if sh.get("tur") in ("soru", "ipucu"):
+        if sh.get("tur") in ("soru", "ipucu", "metin"):
             continue
         if ts and ts[0] > 4 and not sh.get("kanca"):
             out.append(f"sahne {ilk + si}: ilk öğe {ts[0]:.0f} sn sonra (giriş yazısı otomatik gösterilir)")
@@ -1243,7 +1256,7 @@ class Sahne:
             return self.tahta_tablo(taban, sh, gorunen, no, toplam, ust), []
         if tur == "soru":
             return self.tahta_soru(taban, sh, acik, no, toplam, ust), []
-        if tur in ("rakam", "karsilastirma", "ipucu", "zaman"):
+        if tur in ("rakam", "karsilastirma", "ipucu", "zaman", "metin"):
             return getattr(self, "tahta_" + tur)(taban, sh, gorunen, no, toplam, ust), []
         im = taban.copy(); d = ImageDraw.Draw(im); k = self.k
         fb, fk = font(k(40), True), font(k(16))
@@ -1289,94 +1302,148 @@ class Sahne:
         return im, d, y + 28
 
     def tahta_tablo(self, taban, sh, gorunen, no, toplam, ust):
+        """Tablo: tüm sütunlar; uzun hücreler satır içinde alt satıra kayar, yazı sığana kadar küçülür."""
         im, d, y0 = self._cerceve(taban, sh["baslik"], no, toplam, ust)
         k = self.k
         tb = sh["tablo"]; bas = tb.get("basliklar", []); sat = tb["satirlar"]; stil = tb.get("stil")
         nk = max(len(bas), max(len(r) for r in sat))
+        sat = [list(r) + [""] * (nk - len(r)) for r in sat]
         x0, x1 = 568, 1212
         on = "✗ " if stil else ""
-        # sütun genişlikleri içeriğe orantılı
         f0 = font(30)
-        enk = [max([d.textlength(on + str(r[j]), font=f0) for r in sat if j < len(r)] +
-                   ([d.textlength(bas[j], font=font(30, True))] if j < len(bas) else [0])) + 30 for j in range(nk)]
+        enk = []
+        for j in range(nk):
+            uz = max([d.textlength(on + str(r[j]), font=f0) for r in sat] + ([d.textlength(bas[j], font=font(30, True))] if j < len(bas) else [0]))
+            enk.append(min(uz, 520) + 40)
         gens = [e / sum(enk) * (x1 - x0) for e in enk]
+        gens = [max(g_, (x1 - x0) * 0.16) for g_ in gens]
+        gens = [g_ / sum(gens) * (x1 - x0) for g_ in gens]
         xs_ = [x0 + sum(gens[:j]) for j in range(nk)]
-        fs = 34
-        while fs > 18:
-            f_, fh_ = font(k(fs)), font(k(fs), True)
-            ok = all(d.textlength(on + str(c), font=f_) <= k(gens[j] - 20) for r in sat for j, c in enumerate(r))
-            ok = ok and all(d.textlength(b_, font=fh_) <= k(gens[j] - 20) for j, b_ in enumerate(bas))
-            yuk = (len(sat) + (1 if bas else 0)) * fs * 1.75
-            if ok and y0 + yuk <= 515:
+        for fs in range(32, 15, -1):
+            f_, fh = font(k(fs)), font(k(fs), True)
+            hucre = [[satir_kir((on if (stil and j == 0) else "") + str(c), f_, k(gens[j] - 18), d) or [""]
+                      for j, c in enumerate(r)] for r in sat]
+            bas_s = [satir_kir(b_, fh, k(gens[j] - 18), d) or [""] for j, b_ in enumerate(bas)]
+            lh = fs * 1.28
+            rh = [max(len(x) for x in r) * lh + fs * 0.55 for r in hucre]
+            bh = (max(len(x) for x in bas_s) * lh + fs * 0.45) if bas else 0
+            if y0 + bh + sum(rh) <= 515:
                 break
-            fs -= 1
-        if fs <= 18:
+        else:
             self._u("tablo sığmıyor: hücre metnini kısalt ya da satırları ikiye böl")
-        elif fs < 20:
+        if fs < 20:
             self._u(f"tablo yazısı küçük ({int(fs * 1.5)} px @1080p, en az 30 px önerilir)")
-        gen = None
-        f_, fh = font(k(fs)), font(k(fs), True)
-        rh = fs * 1.75
         y = y0
         if bas:
-            for j, b_ in enumerate(bas):
+            for j, b_ in enumerate(bas_s):
                 renk = (255, 140, 130) if stil == "yanlis-dogru" and j == 0 else (150, 225, 160) if stil == "yanlis-dogru" and j == 1 else (255, 224, 115)
-                d.text(k(xs_[j] + 10, y + fs * 0.3), b_, font=fh, fill=renk)
-            y += rh
+                yy = y + fs * 0.2
+                for t_ in b_:
+                    d.text((k(xs_[j] + 9), k(yy)), t_, font=fh, fill=renk); yy += lh
+            y += bh
             d.line(k(x0, y - 4, x1, y - 4), fill=(190, 205, 195), width=k(2))
         y_ = y
-        for r in sat:
-            self._nokta.append((x0 - 14, y_ + rh / 2 - 2)); y_ += rh
+        for i_, r in enumerate(sat):
+            self._nokta.append((x0 - 14, y_ + min(rh[i_], lh * 1.2) / 2)); y_ += rh[i_]
         for i, r in enumerate(sat[:gorunen]):
+            h = rh[i]
             if i == gorunen - 1:
-                d.rounded_rectangle(k(x0 - 6, y + 2, x1 + 6, y + rh - 4), radius=k(8), fill=(52, 98, 80))
+                d.rounded_rectangle(k(x0 - 6, y + 2, x1 + 6, y + h - 3), radius=k(8), fill=(52, 98, 80))
             for j, c in enumerate(r):
-                tx = k(xs_[j] + 10); ty = k(y + fs * 0.3)
-                if stil == "yanlis-dogru" and j == 0:
-                    metin = "✗ " + c; d.text((tx, ty), metin, font=f_, fill=(255, 150, 140))
-                    w_ = d.textlength(metin, font=f_)
-                    d.line((tx + d.textlength("✗ ", font=f_), ty + k(fs * 0.62), tx + w_, ty + k(fs * 0.62)), fill=(255, 150, 140), width=k(2))
-                elif stil == "yanlis-dogru" and j == 1:
-                    d.text((tx, ty), "✓ " + c, font=f_, fill=(165, 235, 170))
-                else:
-                    d.text((tx, ty), c, font=f_, fill=(255, 255, 255) if i == gorunen - 1 else (205, 220, 210))
-            y += rh
+                yy = y + fs * 0.25
+                for t_ in hucre[i][j]:
+                    tx = k(xs_[j] + 9)
+                    if stil == "yanlis-dogru" and j == 0:
+                        d.text((tx, k(yy)), t_, font=f_, fill=(255, 150, 140))
+                        w_ = d.textlength(t_, font=f_)
+                        d.line((tx, k(yy + fs * 0.62), tx + w_, k(yy + fs * 0.62)), fill=(255, 150, 140), width=k(2))
+                    elif stil == "yanlis-dogru" and j == 1:
+                        d.text((tx, k(yy)), t_, font=f_, fill=(165, 235, 170))
+                    else:
+                        d.text((tx, k(yy)), t_, font=f_, fill=(255, 255, 255) if i == gorunen - 1 else (205, 220, 210))
+                    yy += lh
+            y += h
             d.line(k(x0, y - 2, x1, y - 2), fill=(60, 100, 84), width=k(1))
         return im
 
     def tahta_soru(self, taban, sh, acik, no, toplam, ust):
+        """Çoktan seçmeli (2-4 seçenek) ya da boşluk doldurma (secenekler yok, "cevap" var). Yazılar sığacak
+        şekilde küçülür; boşluk doldurmada doğru cevap açılınca yeşil kutuda belirir."""
         im, d, y0 = self._cerceve(taban, sh["baslik"], no, toplam, ust)
         k = self.k
-        q = sh["soru"]
-        fq = font(k(34), True)
+        q = sh["soru"]; sec = q.get("secenekler") or []
+        alt = 512
+        for fs in range(34, 17, -1):
+            fq = font(k(fs), True); fo = font(k(max(18, fs - 3)))
+            sat = satir_kir(q["metin"], fq, k(630), d)
+            kutu_h = max(40, fs * 1.55)
+            sec_sat = [satir_kir(o, fo, k(1140 - 652), d) for o in sec]
+            yuk = 6 + len(sat) * fs * 1.35 + 16 + sum(max(kutu_h, len(x) * (fs - 3) * 1.3 + 14) + 10 for x in sec_sat)
+            if not sec:
+                yuk += kutu_h + 20
+            if y0 + yuk <= alt:
+                break
+        else:
+            self._u("soru ve seçenekler tahtaya sığmıyor")
+        if fs < 20:
+            self._u(f"soru yazısı küçük ({int(fs * 1.5)} px)")
         y = y0 + 6
-        if len(satir_kir(q["metin"], fq, k(630), d)) > 3:
-            self._u("soru metni 3 satırı aşıyor (kesildi)")
-        if 18 + y0 + min(3, len(satir_kir(q["metin"], fq, k(630), d))) * 46 + 72 * len(q["secenekler"]) > 520:
-            self._u("seçenekler tahtadan taşıyor")
-        if any(d.textlength(o, font=font(k(31))) > k(1100 - 648) for o in q["secenekler"]):
-            self._u("bir seçenek kutusuna sığmıyor")
-        for s_ in satir_kir(q["metin"], fq, k(630), d)[:3]:
-            d.text(k(578, y), s_, font=fq, fill=(255, 255, 255)); y += 46
-        y += 18
-        fo = font(k(31))
-        for i, o in enumerate(q["secenekler"]):
-            dogru = i == q["dogru"]
+        for s_ in sat:
+            d.text(k(578, y), s_, font=fq, fill=(255, 255, 255)); y += fs * 1.35
+        y += 16
+        harfler = "ABCD"
+        for i, o in enumerate(sec):
+            dogru = i == q.get("dogru")
             if acik and dogru:
                 kutu, yazi, harf = (58, 150, 92), (255, 255, 255), (255, 255, 255)
             elif acik:
                 kutu, yazi, harf = (40, 78, 63), (140, 165, 150), (140, 165, 150)
             else:
                 kutu, yazi, harf = (48, 92, 74), (235, 242, 238), (255, 210, 90)
-            d.rounded_rectangle(k(578, y, 1150, y + 58), radius=k(12), fill=kutu)
-            d.ellipse(k(592, y + 10, 630, y + 48), outline=harf, width=k(3))
-            ht = "ABC"[i] if i < 3 else str(i + 1)
-            tw = d.textlength(ht, font=font(k(24), True))
-            d.text((k(611) - tw / 2, k(y + 14)), ht, font=font(k(24), True), fill=harf)
-            d.text(k(648, y + 11), o, font=fo, fill=yazi)
+            h = max(kutu_h, len(sec_sat[i]) * (fs - 3) * 1.3 + 14)
+            d.rounded_rectangle(k(578, y, 1180, y + h), radius=k(10), fill=kutu)
+            r = min(19, kutu_h / 2 - 5)
+            d.ellipse(k(611 - r, y + h / 2 - r, 611 + r, y + h / 2 + r), outline=harf, width=k(3))
+            ht = harfler[i] if i < 4 else str(i + 1)
+            fh = font(k(max(16, fs - 10)), True); tw = d.textlength(ht, font=fh)
+            d.text((k(611) - tw / 2, k(y + h / 2) - k(max(16, fs - 10)) * 0.6), ht, font=fh, fill=harf)
+            yy = y + (h - len(sec_sat[i]) * (fs - 3) * 1.3) / 2
+            for t_ in sec_sat[i]:
+                d.text(k(648, yy), t_, font=fo, fill=yazi); yy += (fs - 3) * 1.3
             if acik and dogru:
-                d.text(k(1108, y + 9), "✓", font=font(k(34), True), fill=(255, 255, 255))
-            y += 72
+                d.text(k(1148, y + h / 2 - 18), "✓", font=font(k(30), True), fill=(255, 255, 255))
+            y += h + 10
+        if not sec and q.get("cevap"):
+            if acik:
+                fc = font(k(fs), True)
+                d.rounded_rectangle(k(578, y, 1180, y + kutu_h + 8), radius=k(10), fill=(58, 150, 92))
+                d.text(k(600, y + 6), "✓  " + q["cevap"], font=fc, fill=(255, 255, 255))
+            else:
+                d.rounded_rectangle(k(578, y, 1180, y + kutu_h + 8), radius=k(10), outline=(90, 130, 112), width=k(2))
+                d.text(k(600, y + 6), "?", font=font(k(fs), True), fill=(150, 180, 165))
+        return im
+
+    def tahta_metin(self, taban, sh, gorunen, no, toplam, ust):
+        """Okuma parçası / dinleme metni / model cevap: {"tur": "metin", "metin": "..."} (sığacak kadar küçülür)."""
+        im, d, y0 = self._cerceve(taban, sh["baslik"], no, toplam, ust)
+        k = self.k
+        paragraflar = [p_ for p_ in str(sh["metin"]).split("\n") if p_.strip()]
+        for fs in range(30, 15, -1):
+            f_ = font(k(fs))
+            satirlar = [satir_kir(p_, f_, k(630), d) for p_ in paragraflar]
+            yuk = sum(len(x) for x in satirlar) * fs * 1.32 + (len(paragraflar) - 1) * fs * 0.5
+            if y0 + yuk <= 512:
+                break
+        else:
+            self._u("metin tahtaya sığmıyor: daha kısa parçalara böl")
+        if fs < 18:
+            self._u(f"metin yazısı küçük ({int(fs * 1.5)} px)")
+        y = y0
+        for x in satirlar:
+            for t_ in x:
+                d.text(k(578, y), t_, font=f_, fill=(240, 246, 242)); y += fs * 1.32
+            y += fs * 0.5
+        self._nokta.append((566, y0 + 10))
         return im
 
     def tahta_rakam(self, taban, sh, gorunen, no, toplam, ust):
@@ -1759,6 +1826,8 @@ def main():
     ap.add_argument("--dizin-olustur", metavar="KLASOR", help="eski ses klasörüne bu senaryoya göre dizin.json yaz (göç)")
     ap.add_argument("--ingilizce-isaretle", action="store_true",
                     help="anlatımdaki İngilizce öbekleri {…} ile işaretleyip senaryoya yaz (wordfreq gerekir); sonra gözden geçir")
+    ap.add_argument("--tempo", type=float, default=0.9,
+                    help="anlatım hızı çarpanı (perdeyi bozmadan; 0.9 = %%10 daha yavaş). Ses yeniden üretilmez")
     ap.add_argument("--tik", action="store_true", help="madde belirirken hafif 'tık' sesi (varsayılan kapalı; konuşma üstünde sürtme gibi duyulabiliyor)")
     ap.add_argument("--storyboard", metavar="PNG", help="ses/video üretmeden her sahnenin son halini tek görselde göster")
     ap.add_argument("--kontrol", action="store_true", help="sadece senaryo çeşitlilik/uzunluk kontrolü yap")
@@ -1961,6 +2030,8 @@ def main():
                 yol = tmp / f"s{si}_{ci}.wav"
                 motor_al().sentezle(seslendirme_metni(c, telaffuz, kok), yol)
             x = oku_24k(yol)
+            if abs(args.tempo - 1.0) > 0.005:          # yavaşlat (perde aynı kalır)
+                x = tempo_uygula(x, args.tempo)
             nz = np.nonzero(np.abs(x) > 0.01)[0]       # baş/son sessizliği kırp
             ofs = max(0, nz[0] - 600) / SR if len(nz) else 0.0
             if len(nz):
@@ -2139,7 +2210,7 @@ def main():
             lay2 = lay.copy(); lay2.putalpha(lay.getchannel("A").point(lambda v: int(v * e)))
             im.paste(lay2, (bb[0] - int(k(30) * (1 - e)), bb[1]), lay2)
         # giriş yazısı: tahta boşken konuşma başladıysa (ölü hava önleme)
-        if ts and tur not in ("soru", "ipucu") and not sh_.get("kanca") and ts[0] - bas > 2.5 and not args.giris_yok:
+        if ts and tur not in ("soru", "ipucu", "metin") and not sh_.get("kanca") and ts[0] - bas > 2.5 and not args.giris_yok:
             gorunurluk = 1.0 if g == 0 else max(0.0, 1 - (tt - ts[0]) / MADDE_ANIM) if g == 1 else 0.0
             gorunurluk *= min(1.0, (tt - bas) / 0.4)
             if gorunurluk > 0:
@@ -2159,7 +2230,7 @@ def main():
                 im.paste(r[0], r[1][:2], r[0])
         # işaretçi: anlatılan öğeye kayar (Paper2Video'nun imleç fikri)
         nk = noktalar.get(si) or []
-        if g and tur not in ("soru", "ipucu") and nk and g - 1 < len(nk):
+        if g and tur not in ("soru", "ipucu", "metin") and nk and g - 1 < len(nk):
             hedef = nk[g - 1]
             onceki = nk[g - 2] if g >= 2 and g - 2 < len(nk) else (hedef[0], hedef[1] - 40)
             p_ = min(1.0, (tt - ts[g - 1]) / ISARETCI_SURE)

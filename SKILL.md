@@ -29,6 +29,19 @@ Claude Doc / artifact linki: docs araçlarıyla oku, metni `.md` olarak kaydet v
 Haritadaki **her satır** ya bir sahneye eşlenir ya da "dışarıda bırakıldı: neden" diye not edilir.
 Konuşma hızı ≈ 130 kelime/dk; tahmini anlatım süresi = içerik kelimesi ÷ 130 × 0.6 (özetleme payı).
 
+## 1b. BELGENİN TAMAMI (kesin kural)
+Belgede ne varsa videoda olur: her başlık, her madde, her tablonun HER satırı ve HER sütunu, her alıştırmanın
+HER sorusu (soru + seçenekler okunur, geri sayım, doğru cevap, kısa açıklama), okuma parçaları ve dinleme metinleri
+(İngilizce okunur), model cevaplar. "Birkaç örnek çözüp gerisini atlamak" YASAK. Taslağı otomatik üret:
+```bash
+python $R/scripts/belge_senaryo.py belge.md ayar.json -o senaryo.json   # örnek ayar: senaryolar/ayar/b1_tam_belge.json
+```
+`ayar.json`: cevaplar (cevap anahtarından, blok adına göre), açıklamalar (her soru için tek cümle — sen yaz),
+`on_degistir` (ör. kurum adını çıkarmak), `metin_bolumleri` (okuma/dinleme metinleri), `once_metin` (dinlemede önce
+metin sonra sorular), `liste_olarak` (cevapsız soru listeleri), `yerine` (ör. cevap anahtarı bölümü zaten sorularla
+çözüldüyse kısa bir özet sahnesi). Sonra `--kontrol`: "okunmuyor" ve yerleşim uyarısı kalmamalı. Uzun belgede video
+1–2 saat sürebilir; bu normaldir, bölümler (chapter) ile gezilir.
+
 ## 2. Plan ve onay (pahalı adımlardan önce)
 - **Varsayılan: dokümanın TAMAMI TEK VİDEODA** (kullanıcı bunu tercih ediyor). Uzun dokümanda 30–40 dk olabilir;
   YouTube bölüm (chapter) zaman damgaları ile gezinilir. Sıra: kanca + yol haritası → strateji → konu dersleri
