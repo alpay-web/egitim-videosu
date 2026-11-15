@@ -12,6 +12,7 @@ GPU ve ücretli API gerekmez. Kod: https://github.com/alpay-web/egitim-videosu
 Sürüm: `cat $R/VERSION` (değişiklikler `CHANGELOG.md`'de). Her push'ta `Test` işi (birim testleri + kısa video)
 çalışır; kırmızıysa önce onu düzelt. Senaryo hataları (yanlış tür, `goster` taşması, `cevap_cumle` dışı) her
 komutta render'dan önce yakalanır.
+Pakete kalıcı bir iyileştirme yapınca: `VERSION` ve `CHANGELOG.md`'yi güncelle, push et, `surum.yml` işini çalıştır.
 ```bash
 [ -d /tmp/egitim-videosu ] || git clone --depth 1 https://github.com/alpay-web/egitim-videosu /tmp/egitim-videosu
 R=/tmp/egitim-videosu
