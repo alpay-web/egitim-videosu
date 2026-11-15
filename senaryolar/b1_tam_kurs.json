@@ -229,7 +229,11 @@
   "Forty": "forti",
   "fourteen": "fortiin",
   "lend": "lend",
-  "Mert'in": "mert'in"
+  "Mert'in": "mert'in",
+  "Yes, I am": "yes, ay em",
+  "Yes, I'm": "yes, aym",
+  "had left": "hed left",
+  "does": "daz"
  },
  "telaffuz_kok": {
   "fiil": "fiyil"
@@ -512,6 +516,20 @@
    "ton": "sakin"
   },
   {
+   "baslik": "Alıştırma X: testin tarzında 15 soru",
+   "tur": "ipucu",
+   "ipucu": {
+    "tip": "not",
+    "metin": "15 soru, cevapları rehberde. 1. günün sonunda, gramer derslerinden sonra çöz; yanlışları hata listene yaz."
+   },
+   "anlatim": "Rehberde online testin tarzında on beş soruluk bir alıştırma var. Birinci günün sonunda, gramer derslerinden sonra çöz. Yanlışlarını hata listene yaz. Şimdi bunlardan birkaçını birlikte çözelim.",
+   "goster": [
+    1
+   ],
+   "ton": "canli",
+   "bolum": "Alıştırma X"
+  },
+  {
    "baslik": "Kendini dene: soru eki",
    "tur": "soru",
    "soru": {
@@ -526,6 +544,54 @@
     "cevap_cumle": 2
    },
    "anlatim": "Kısa bir soru. Ekrandaki soru ekini tamamla. Doğru cevap B: aren't I. I am ile kurulan olumlu cümlede soru eki her zaman aren't I olur."
+  },
+  {
+   "baslik": "Alıştırma X: kısa cevap",
+   "tur": "soru",
+   "soru": {
+    "metin": "“Are you a student?” “Yes, ___.”",
+    "secenekler": [
+     "I'm",
+     "I am",
+     "I do"
+    ],
+    "dogru": 1,
+    "bekle": 4,
+    "cevap_cumle": 2
+   },
+   "anlatim": "Sıradaki soru. Kısa cevapta hangisi doğru? Doğru cevap B: Yes, I am. Kısa cevabın sonunda kısaltma kullanılmaz; Yes, I'm denmez."
+  },
+  {
+   "baslik": "Alıştırma X: üçüncü tip if",
+   "tur": "soru",
+   "soru": {
+    "metin": "If we ___ earlier, we wouldn't have missed the train.",
+    "secenekler": [
+     "left",
+     "had left",
+     "would leave"
+    ],
+    "dogru": 1,
+    "bekle": 4,
+    "cevap_cumle": 2
+   },
+   "anlatim": "Bir soru daha. Boşluğa hangisi gelir? Doğru cevap B: had left. Geçmişe dair bir pişmanlık var; üçüncü tip if cümlesinde if tarafına had ve fiilin üçüncü hali gelir."
+  },
+  {
+   "baslik": "Alıştırma X: do business",
+   "tur": "soru",
+   "soru": {
+    "metin": "Our company ___ a lot of business with Germany.",
+    "secenekler": [
+     "makes",
+     "does",
+     "runs"
+    ],
+    "dogru": 1,
+    "bekle": 4,
+    "cevap_cumle": 2
+   },
+   "anlatim": "Bu bloğun son sorusu. Business ile hangi fiil kullanılır? Doğru cevap B: does. Business, ödev ve iyilik do ile kullanılır."
   },
   {
    "baslik": "Dinleme ve okuma",
@@ -669,7 +735,7 @@
     "cevap_cumle": 2,
     "bekle": 4
    },
-   "anlatim": "Son soru. Uydurma yapıları hatırla. Doğru cevap A: had better. Had better'dan sonra to gelmez, would better diye bir yapı da yoktur."
+   "anlatim": "Son soru. Uydurma yapıları hatırla. Doğru cevap A. Bu kalıptan sonra to gelmez; would ile kurulan bir biçimi de yoktur."
   },
   {
    "baslik": "Çalışma kitabı",

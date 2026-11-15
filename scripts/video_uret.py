@@ -358,9 +358,9 @@ def klip_temizle(x):
         return x, 0.0
     a = max(0, i0 - 3) * w; b = min(len(x), (i1 + 4) * w)
     y = x[a:b].copy()
-    # iç kısım: ≥150 ms süren, tiz ağırlıklı, düşük seviyeli bölgeler (nefes/hışırtı) → -24 dB
+    # iç kısım: ≥150 ms süren düşük seviyeli bölgeler (nefes, hışırtı, mırıltı) → -24 dB
     d2, m2 = dusuk[max(0, i0 - 3):i1 + 4], merkez[max(0, i0 - 3):i1 + 4]
-    hedef = d2 & (m2 > 2500)
+    hedef = d2.copy()   # tiz nefes ya da alçak mırıltı fark etmez: konuşmanın 24 dB altı ve ≥150 ms ise kıs
     kaz = np.ones(len(hedef))
     j = 0
     while j < len(hedef):
