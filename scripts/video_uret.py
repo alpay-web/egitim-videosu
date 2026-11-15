@@ -105,11 +105,95 @@ def sayi_yazi(n):
     return " ".join(p)
 
 
+# ---- İngilizce → Türkçe okunuş (CMU Pronouncing Dictionary, BSD; ARPAbet → Türk harfleri)
+_ARPA = {"AA": "a", "AE": "e", "AH": "a", "AO": "o", "AW": "au", "AY": "ay", "EH": "e", "ER": "ör", "EY": "ey",
+         "IH": "i", "IY": "i", "OW": "ou", "OY": "oy", "UH": "u", "UW": "u", "B": "b", "CH": "ç", "D": "d",
+         "DH": "d", "F": "f", "G": "g", "HH": "h", "JH": "c", "K": "k", "L": "l", "M": "m", "N": "n", "NG": "ng",
+         "P": "p", "R": "r", "S": "s", "SH": "ş", "T": "t", "TH": "t", "V": "v", "W": "v", "Y": "y", "Z": "z", "ZH": "j"}
+_CMU = {}
+
+
+def _cmu():
+    if not _CMU:
+        yol = Path.home() / ".egitim_video" / "cmudict.dict"
+        if not yol.exists():
+            yol.parent.mkdir(parents=True, exist_ok=True)
+            indir("https://raw.githubusercontent.com/cmusphinx/cmudict/master/cmudict.dict", yol)
+        for satir in yol.read_text(encoding="utf-8", errors="ignore").splitlines():
+            p = satir.split("#")[0].split()
+            if p and "(" not in p[0]:
+                _CMU[p[0]] = p[1:]
+    return _CMU
+
+
+def _en_sayi(n):
+    b = "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen " \
+        "seventeen eighteen nineteen".split()
+    o = "_ _ twenty thirty forty fifty sixty seventy eighty ninety".split()
+    if n < 20:
+        return b[n]
+    if n < 100:
+        return o[n // 10] + ("" if n % 10 == 0 else " " + b[n % 10])
+    if 1100 <= n < 2100 and n % 100:                     # yıllar: 1890 → eighteen ninety
+        return _en_sayi(n // 100) + " " + _en_sayi(n % 100)
+    if n < 1000:
+        return b[n // 100] + " hundred" + ("" if n % 100 == 0 else " " + _en_sayi(n % 100))
+    return _en_sayi(n // 1000) + " thousand" + ("" if n % 1000 == 0 else " " + _en_sayi(n % 1000))
+
+
+def ingilizce_okunus(metin):
+    """'had better' → 'hed betır': Türkçe motorun İngilizceyi doğru vurgu ve akışla, cümleden kopmadan okuması için.
+    Sözlükte olmayan kelime olduğu gibi kalır."""
+    d = _cmu()
+    metin = re.sub(r"\d+", lambda m: _en_sayi(int(m.group(0))), metin)
+
+    def kelime(m):
+        w = m.group(0); fon = d.get(w.lower().replace("’", "'"))
+        if not fon:
+            return w
+        out = []
+        for i, f in enumerate(fon):
+            ana, vurgu = re.match(r"([A-Z]+)(\d?)", f).groups()
+            if ana == "AH" and vurgu == "0":
+                out.append("ı")
+            elif ana == "ER" and vurgu == "0":
+                out.append("ır")
+            else:
+                out.append(_ARPA.get(ana, ""))
+        return "".join(out)
+    return re.sub(r"[A-Za-z][A-Za-z'’]*", kelime, metin)
+
+
+def _bagimsiz_mi(once, sonra, parca):
+    """Örnek cümle gibi uzun (≥4 kelime) ve noktalamayla ayrılmış öbek ayrı İngilizce söylenir (alıntı gibi, doğal
+    duraklamayla); kısa terimler Türkçe cümlenin içinde İngilizce okunuşuyla söylenir (dil geçişi kopukluğu olmaz)."""
+    sol = once.rstrip()[-1:] if once.strip() else ""
+    sag = sonra.lstrip()[:1]
+    kelime_say = len(re.findall(r"[A-Za-z0-9']+", parca))
+    return kelime_say >= 4 and (sol == "" or sol in ":;,—–(\"“") and (sag == "" or sag in ".,;:?!—–)\"”")
+
+
 def seslendirme_metni(metin, telaffuz, kok=None):
-    """TTS'e giden metin. {İngilizce} parçalara dokunulmaz (motor onları İngilizce okur)."""
+    """TTS'e giden metin. Bağımsız {İngilizce} öbekler parantezde kalır (motor İngilizce okur);
+    cümle içine gömülü olanlar İngilizce okunuşlarıyla Türkçe metne katılır."""
     if "{" in metin:
-        return re.sub(r"[^{}]+(?=\{|$)|(?<=\})[^{}]+", lambda m: _tr_metin(m.group(0), telaffuz, kok),
-                      metin.replace("[dur]", "").strip())
+        m_ = metin.replace("[dur]", "").strip()
+        parcalar, son = [], 0
+        for m in re.finditer(r"\{([^{}]*)\}", m_):
+            parcalar.append(("tr", m_[son:m.start()]))
+            once, sonra = m_[:m.start()], m_[m.end():]
+            parcalar.append(("en" if _bagimsiz_mi(once, sonra, m.group(1)) else "ici", m.group(1)))
+            son = m.end()
+        parcalar.append(("tr", m_[son:]))
+        out = ""
+        for tur, t in parcalar:
+            if tur == "tr":
+                out += _tr_metin(t, telaffuz, kok)
+            elif tur == "ici":
+                out += ingilizce_okunus(t)
+            else:
+                out += "{" + t + "}"
+        return out
     return _tr_metin(temiz(metin), telaffuz, kok)
 
 
@@ -778,7 +862,7 @@ class ChatterboxSes:
             # kod geçişi: her parça kendi diliyle, aynı referans sesle; ses seviyeleri eşitlenir
             sesler = [self._uret(t, d) for d, t in parcalar]
             hedef = np.median([np.sqrt(np.mean(x ** 2)) + 1e-9 for x in sesler])
-            bosluk = np.zeros(int(0.07 * self.m.sr), np.float32)
+            bosluk = np.zeros(int(0.28 * self.m.sr), np.float32)   # alıntı öncesi/sonrası doğal virgül duraklaması
             birlesik = []
             for i, x in enumerate(sesler):
                 x = x * min(2.0, hedef / (np.sqrt(np.mean(x ** 2)) + 1e-9))

@@ -79,3 +79,8 @@ def test_kapsam_okunmayani_bulur():
           "tablo": {"satirlar": [["borrow", "ödünç almak"], ["lend", "ödünç vermek"]]}}
     assert v.okunmayanlar(sh) == ["lend ödünç vermek"]
     assert v.oto_goster(sh, ["Borrow ödünç almak.", "Lend ise ödünç vermek."]) == [0, 1]
+
+
+def test_gomulu_ingilizce_okunusla_bagimsiz_alintiyla():
+    t = v.seslendirme_metni("Had better kalıbından sonra {to} gelmez: {You'd better hurry up now}.", {})
+    assert "{You'd better hurry up now}" in t and "{to}" not in t and "tu gelmez" in t
