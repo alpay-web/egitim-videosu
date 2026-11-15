@@ -2,6 +2,16 @@
 
 Sürümleme: `ANA.ARA.YAMA` — ANA: senaryo biçimi geriye uyumsuz değişirse; ARA: yeni özellik; YAMA: düzeltme.
 
+## 2.0.0 — 2026-11-16
+**Belgenin tamamı videoda (kesin kural).** `belge_senaryo.py` belgeyi eksiksiz sahnelere çevirir: her madde, her
+tablonun tüm satır ve sütunları, her alıştırmanın her sorusu (soru + seçenekler okunur, geri sayım, doğru cevap,
+açıklama), okuma parçaları ve dinleme metinleri (İngilizce), model cevaplar. Cevap ve açıklamalar `ayar.json`'dan.
+- Yeni sahne türü `metin` (okuma/dinleme metni); `soru` artık 2–4 seçenek ya da boşluk doldurma (`cevap`).
+- Tablo hücreleri satır içinde kayar; tahta başlıkları kısaltılır.
+- Anlatım hızı `--tempo 0.9` (ses yeniden üretilmeden), cümle arası 0,45 sn.
+- "B1" artık "be, bir" (Whisper testinde "be bir" birleşip "bebir" okunuyordu); A1/A2/B2/C1 aynı.
+- Ses zincirinden `adeclick` kaldırıldı (uzun videoda dakikalarca sürüyordu).
+
 ## 1.2.0 — 2026-11-15
 - **Doğal dil geçişi:** kısa İngilizce terimler Türkçe cümle içinde İngilizce okunuşla (CMU Pronouncing Dictionary,
   BSD → Türk harfleri); yalnızca ≥4 kelimelik örnek cümleler ayrı İngilizce ve 0,28 sn duraklamayla. Parça parça
