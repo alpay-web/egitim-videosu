@@ -369,7 +369,7 @@ def klip_temizle(x):
             while k_ < len(hedef) and (hedef[k_] or (k_ + 1 < len(hedef) and hedef[k_ + 1])):
                 k_ += 1
             if k_ - j >= 15:
-                kaz[j:k_] = 0.06
+                kaz[j + 2:k_ - 2] = 0.06      # kenarlarda 20 ms pay: geçiş konuşmayı kırpmasın
             j = k_
         else:
             j += 1
