@@ -64,3 +64,18 @@ def test_agiz_bicimleri_uc_tur_uretir():
                           0.3 * np.sin(2 * np.pi * 2500 * t[:spf * 20])]).astype(np.float32)  # tiz → i
     b = v.agiz_bicimleri(ses, n, spf)
     assert set(b) == {"a", "o", "i"}
+
+
+def test_ingilizce_parcalar_ve_bolme():
+    c = v.cumlelere_bol("Soru: {I'm late, aren't I?} Doğru cevap B: {aren't I}. Bitti.")
+    assert c == ["Soru: {I'm late, aren't I?}", "Doğru cevap B: {aren't I}.", "Bitti."]
+    p = v.parcalara_ayir(v.seslendirme_metni(c[1], {"B": "be"}))
+    assert p == [("tr", "Doğru cevap be:"), ("en", "aren't I.")]
+    assert v.temiz(c[1]) == "Doğru cevap B: aren't I."
+
+
+def test_kapsam_okunmayani_bulur():
+    sh = {"tur": "tablo", "anlatim": "Borrow ödünç almak demektir.",
+          "tablo": {"satirlar": [["borrow", "ödünç almak"], ["lend", "ödünç vermek"]]}}
+    assert v.okunmayanlar(sh) == ["lend ödünç vermek"]
+    assert v.oto_goster(sh, ["Borrow ödünç almak.", "Lend ise ödünç vermek."]) == [0, 1]

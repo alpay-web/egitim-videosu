@@ -20,6 +20,7 @@ CUMLE_ARASI, SAHNE_ARASI = 0.35, 1.0
 INTRO_SN, OUTRO_SN = 4.0, 4.5
 GECIS = 0.5        # sahne geçişi (sn)
 MADDE_ANIM = 0.45  # madde belirme animasyonu (sn)
+MIN_OGE_ARALIK = 1.2  # ardışık iki öğenin belirmesi arasında en az (sn): okunmadan geçmesin
 
 PIPER_SESLER = {  # GitHub (k2-fsa/sherpa-onnx) üzerinde barınan Piper sesleri
     "fahrettin": ("vits-piper-tr_TR-fahrettin-medium", "tr_TR-fahrettin-medium", "CC0"),
@@ -105,7 +106,14 @@ def sayi_yazi(n):
 
 
 def seslendirme_metni(metin, telaffuz, kok=None):
-    t = temiz(metin)
+    """TTS'e giden metin. {İngilizce} parçalara dokunulmaz (motor onları İngilizce okur)."""
+    if "{" in metin:
+        return re.sub(r"[^{}]+(?=\{|$)|(?<=\})[^{}]+", lambda m: _tr_metin(m.group(0), telaffuz, kok),
+                      metin.replace("[dur]", "").strip())
+    return _tr_metin(temiz(metin), telaffuz, kok)
+
+
+def _tr_metin(t, telaffuz, kok=None):
     for k, v in (kok or {}).items():  # kelime başı eşleşmesi (ekleriyle birlikte), ör. fiil -> fiyil
         t = re.sub(r"(?<![\wçğıöşüÇĞİÖŞÜ])" + re.escape(k), v, t, flags=re.I)
     for k in sorted(telaffuz, key=len, reverse=True):
@@ -118,13 +126,99 @@ def seslendirme_metni(metin, telaffuz, kok=None):
 
 
 def cumlelere_bol(metin):
-    """Cümlelere böler. '[dur]' işareti bir cümle sonu sayılır ve sonrasına uzun duraklama ekler."""
+    """Cümlelere böler. '[dur]' işareti bir cümle sonu sayılır ve sonrasına uzun duraklama ekler.
+    {İngilizce parça} içindeki noktalama cümleyi bölmez."""
     metin = re.sub(r"([.!?…])\s*\[dur\]", r"\1[dur]", metin.strip())
-    return [p.strip() for p in re.split(r"(?<=[.!?…])\s+|(?<=\[dur\])\s*", metin) if p.strip()]
+    out, cur, derin, i = [], "", 0, 0
+    while i < len(metin):
+        ch = metin[i]; cur += ch
+        derin += (ch == "{") - (ch == "}")
+        son_bosluk = i + 1 == len(metin) or metin[i + 1].isspace()
+        if derin == 0:
+            if cur.endswith("[dur]") or (ch in ".!?…" and son_bosluk) or (
+                    ch == "}" and len(cur) > 1 and cur[-2] in ".!?…" and son_bosluk):
+                if ch in ".!?…" and i + 1 < len(metin) and metin[i + 1] in ".!?…":
+                    i += 1; continue
+                out.append(cur.strip()); cur = ""
+        i += 1
+    if cur.strip():
+        out.append(cur.strip())
+    return [p for p in out if p]
 
 
 def temiz(c):
-    return c.replace("[dur]", "").strip()
+    """Ekranda/altyazıda görünen metin: [dur] ve {İngilizce} işaretleri olmadan."""
+    return c.replace("[dur]", "").replace("{", "").replace("}", "").strip()
+
+
+# ================================================================ İngilizce parçalar (kod geçişi)
+# Chatterbox tek çağrıda dil değiştiremiyor (resemble-ai/chatterbox#346). Çözüm: cümleyi {İngilizce} ve Türkçe
+# parçalara ayırıp her parçayı kendi diliyle, AYNI referans sesle üretmek ve birleştirmek.
+_EN_KISALTMA = {"t", "s", "re", "m", "ll", "ve", "d"}
+
+
+def ingilizce_isaretle(metin):
+    """Metindeki İngilizce kelime öbeklerini {…} içine alır (wordfreq: İngilizce/Türkçe kelime sıklığı)."""
+    from wordfreq import zipf_frequency as z
+    if "{" in metin:
+        return metin
+    parca = re.findall(r"\[dur\]|[\wçğıöşüÇĞİÖŞÜ]+(?:['’][\wçğıöşüÇĞİÖŞÜ]+)?|\s+|[^\s\w]", metin)
+
+    def sinif(t):
+        if not re.match(r"^[A-Za-z]+(?:['’][A-Za-z]+)?$", t):
+            return "tr" if re.match(r"[\wçğıöşüÇĞİÖŞÜ]", t) else "isaret"
+        if "'" in t or "’" in t:
+            kok, ek = re.split(r"['’]", t, maxsplit=1)
+            if ek.lower() not in _EN_KISALTMA:
+                return "tr"                                      # better'dan: Türkçe ek → işaretleme
+        w = t.lower()
+        if len(w) == 1 and t not in ("I",):
+            return "tr"                                          # A/B/C şıkları
+        fark = z(w.replace("’", "'"), "en") - z(w.replace("’", "'"), "tr")
+        if fark >= 1.5 and len(w) >= 2 or t == "I":
+            return "guclu" if t != "I" else "zayif"
+        if fark >= 0.5:
+            return "zayif"
+        return "tr"
+    sin = [sinif(t) for t in parca]
+    out, i, n = [], 0, len(parca)
+    while i < n:
+        if sin[i] in ("guclu", "zayif"):
+            j = i; guclu = False; son_kelime = i
+            while j < n and (sin[j] in ("guclu", "zayif") or parca[j].isspace()
+                             or (sin[j] == "isaret" and parca[j] in ",'’?!-")):
+                if sin[j] in ("guclu", "zayif"):
+                    son_kelime = j; guclu = guclu or sin[j] == "guclu"
+                j += 1
+            bit = son_kelime + 1
+            if bit < n and parca[bit] in "?!":                  # soru tonlaması İngilizce parçada kalsın
+                bit += 1
+            if guclu:
+                out.append("{" + "".join(parca[i:bit]) + "}")
+            else:
+                out.append("".join(parca[i:bit]))
+            i = bit
+        else:
+            out.append(parca[i]); i += 1
+    return "".join(out)
+
+
+def parcalara_ayir(metin_tts):
+    """'Doğru cevap {was built}. Müze…' → [("tr", "Doğru cevap"), ("en", "was built"), ("tr", ". Müze…")]"""
+    out = []
+    for m in re.finditer(r"\{([^{}]*)\}|[^{}]+", metin_tts):
+        if m.group(1) is not None:
+            out.append(("en", m.group(1).strip()))
+        elif m.group(0).strip():
+            out.append(("tr", m.group(0).strip()))
+    # harf içermeyen parçaları (yalnızca noktalama) bir öncekine yapıştır
+    birlesik = []
+    for dil, t in out:
+        if not re.search(r"[\wçğıöşü]", t, flags=re.I) and birlesik:
+            birlesik[-1] = (birlesik[-1][0], birlesik[-1][1] + t)
+        else:
+            birlesik.append((dil, t))
+    return birlesik
 
 
 def duraklama(c):
@@ -194,6 +288,65 @@ class SesDeposu:
                 if (k / f"{ad}{uz}").exists():
                     return k / f"{ad}{uz}"
         return None
+
+
+# ================================================================ ekran ↔ anlatım kapsamı
+def _kelimeler(t):
+    t = re.sub(r"\d+", lambda m: " " + sayi_yazi(int(m.group(0))) + " ", str(t))
+    t = t.replace("İ", "i").lower().replace("ı", "i")      # büyük/küçük ve noktalı/noktasız i farkı yok
+    return [w for w in re.findall(r"[\wçğıöşü']+", t) if len(w) >= 3 or w.isdigit()]
+
+
+def _var(w, havuz):
+    k = w[:5]
+    return any(h.startswith(k) or w.startswith(h[:5]) and len(h) >= 4 for h in havuz)
+
+
+def ekran_ogeleri(sh):
+    """Görsel öğe başına ekranda yazan metin (tablo: satırın tüm hücreleri)."""
+    tur = sh.get("tur", "maddeler")
+    if tur == "tablo":
+        return [" ".join(map(str, r)) for r in sh["tablo"]["satirlar"]]
+    if tur == "karsilastirma":
+        n = sh["satirlar"]; return [r[0] for r in n] + [r[1] for r in n]
+    if tur == "zaman":
+        return [f"{a['baslik'] if len(a['baslik']) > 2 else ''} {a.get('metin', '')}" for a in sh["adimlar"]]
+    if tur == "rakam":
+        return [f"{c['deger']} {c.get('birim', '')} {c.get('etiket', '')}" for c in sh["kartlar"]]
+    if tur == "ipucu":
+        return [sh["ipucu"]["metin"]]
+    if tur == "soru":
+        q = sh["soru"]; return [q["metin"]] + list(q["secenekler"])
+    return list(sh.get("maddeler", []))
+
+
+def kapsam_orani(oge, metin):
+    kw = _kelimeler(oge.replace("___", " "))
+    if not kw:
+        return 1.0
+    havuz = set(_kelimeler(temiz(metin)))
+    return sum(_var(w, havuz) for w in kw) / len(kw)
+
+
+def okunmayanlar(sh, esik=0.6):
+    """Ekranda olup anlatımda okunmayan metinler: 'ekrandaki her şey okunmalı' kuralı."""
+    return [o for o in ekran_ogeleri(sh) if kapsam_orani(o, sh.get("anlatim", "")) < esik]
+
+
+def oto_goster(sh, cumleler):
+    """goster verilmemişse: her öğe, onu en iyi okuyan (önceki öğeden sonraki) cümlede açılır."""
+    ogeler = ekran_ogeleri(sh) if sh.get("tur") not in ("soru", "ipucu") else []
+    n = len(cumleler); out, onceki = [], 0
+    for j, o in enumerate(ogeler):
+        en, en_ci = 0.0, None
+        for ci in range(onceki, n):
+            r = kapsam_orani(o, cumleler[ci])
+            if r > en + 1e-9:
+                en, en_ci = r, ci
+        if en_ci is None or en < 0.3:
+            en_ci = max(onceki, min(n - 1, int(j * n / max(1, len(ogeler)))))
+        out.append(en_ci); onceki = en_ci
+    return out
 
 
 # ================================================================ senaryo doğrulama
@@ -318,8 +471,8 @@ def senkron_raporu(sahneler, ilk, sureler):
         n_oge = len(sahne_ogeleri(sh))
         if gos:
             ts = sorted(bas[min(len(cs) - 1, int(float(str(g).split(":")[0])))] for g in gos)
-        else:   # goster yoksa video öğeleri cümlelere orantılı dağıtır
-            ts = [bas[min(len(cs) - 1, int(j * len(cs) / max(1, n_oge)))] for j in range(n_oge)]
+        else:   # goster yoksa video öğeleri onları okuyan cümlede açar
+            ts = [bas[min(len(cs) - 1, c_)] for c_ in oto_goster(sh, cumlelere_bol(sh["anlatim"]))] or []
         if sh.get("tur") in ("soru", "ipucu"):
             continue
         if ts and ts[0] > 4 and not sh.get("kanca"):
@@ -474,6 +627,7 @@ class PiperSes:
         self.cfg = SynthesisConfig(length_scale=1.0 / hiz, noise_scale=0.55, noise_w_scale=0.7)
 
     def sentezle(self, metin, yol):
+        metin = metin.replace("{", "").replace("}", "")   # bu motor dil değiştiremez
         with wave.open(str(yol), "wb") as wf:
             self.v.synthesize_wav(metin, wf, syn_config=self.cfg)
 
@@ -550,8 +704,52 @@ class ChatterboxSes:
             self.abarti, self.cfg = self._varsayilan
         log(f"  Ses: Chatterbox Multilingual (MIT), referans: {Path(self.ref).name}")
 
+    def _uret(self, metin, dil):
+        """Tek dilli bir parça; süre kontrolüyle (model bazen sona fazladan ses ekler)."""
+        tahmin = max(0.7 if dil == "en" else 1.5, len(metin) / (13.0 if dil == "en" else 14.0))
+        en_iyi = None
+        for deneme in range(3):
+            w = self.m.generate(metin, language_id=dil, audio_prompt_path=self.ref,
+                                exaggeration=self.abarti, cfg_weight=self.cfg)
+            x = w.squeeze().numpy()
+            nz = np.nonzero(np.abs(x) > 0.02)[0]
+            sure = (nz[-1] - nz[0]) / self.m.sr if len(nz) else 0
+            sapma = abs(sure - tahmin) / tahmin
+            if en_iyi is None or sapma < en_iyi[0]:
+                en_iyi = (sapma, x, nz)
+            if 0.5 * tahmin <= sure <= 1.6 * tahmin + 0.6:
+                break
+            log(f"   ! [{dil}] süre şüpheli ({sure:.1f} sn, beklenen ~{tahmin:.1f}), yeniden")
+        _, x, nz = en_iyi
+        if len(nz):
+            x = x[max(0, nz[0] - int(0.02 * self.m.sr)): nz[-1] + int(0.06 * self.m.sr)]
+        return x.astype(np.float32)
+
     def sentezle(self, metin, yol):
-        import torchaudio
+        import torch, torchaudio
+        parcalar = parcalara_ayir(metin) if "{" in metin else [("tr", metin)]
+        if len(parcalar) > 1 or parcalar[0][0] == "en":
+            # kod geçişi: her parça kendi diliyle, aynı referans sesle; ses seviyeleri eşitlenir
+            sesler = [self._uret(t, d) for d, t in parcalar]
+            hedef = np.median([np.sqrt(np.mean(x ** 2)) + 1e-9 for x in sesler])
+            bosluk = np.zeros(int(0.07 * self.m.sr), np.float32)
+            birlesik = []
+            for i, x in enumerate(sesler):
+                x = x * min(2.0, hedef / (np.sqrt(np.mean(x ** 2)) + 1e-9))
+                f = min(len(x) // 4, int(0.01 * self.m.sr))
+                if f:
+                    x[:f] *= np.linspace(0, 1, f); x[-f:] *= np.linspace(1, 0, f)
+                birlesik += ([bosluk] if i else []) + [x]
+            w = torch.from_numpy(np.concatenate(birlesik)).unsqueeze(0)
+            tmp = str(yol) + ".tmp.wav"
+            torchaudio.save(tmp, w, self.m.sr)
+            if abs(self.hiz - 1.0) > 0.01:
+                subprocess.run([ffmpeg_bin(), "-v", "error", "-y", "-i", tmp, "-af", f"atempo={self.hiz}", str(yol)], check=True)
+                os.remove(tmp)
+            else:
+                os.replace(tmp, yol)
+            return
+        metin = parcalar[0][1]
         tahmin = max(1.5, len(metin) / 14.0)  # ~14 karakter/sn
         en_iyi = None
         for deneme in range(3):  # model bazen cümle sonuna fazladan ses ekler: süre kontrolü
@@ -583,6 +781,7 @@ class EdgeSes:
         log(f"  Ses: edge-tts '{ad}'")
 
     def sentezle(self, metin, yol):
+        metin = metin.replace("{", "").replace("}", "")   # bu motor dil değiştiremez
         import edge_tts
         mp3 = str(yol) + ".mp3"
         asyncio.run(edge_tts.Communicate(metin, self.ad, rate=self.hiz).save(mp3))
@@ -596,6 +795,7 @@ class SessizSes:
         log("  Ses: sessiz taslak (önizleme)")
 
     def sentezle(self, metin, yol):
+        metin = metin.replace("{", "").replace("}", "")   # bu motor dil değiştiremez
         n = int(SR * (0.3 + len(metin.split()) / 2.3))
         with wave.open(str(yol), "wb") as wf:
             wf.setnchannels(1); wf.setsampwidth(2); wf.setframerate(SR)
@@ -608,6 +808,7 @@ class EspeakSes:
         log("  Ses: espeak-ng (robotik yedek)")
 
     def sentezle(self, metin, yol):
+        metin = metin.replace("{", "").replace("}", "")   # bu motor dil değiştiremez
         if not self.cli:
             sys.exit("espeak-ng kurulu değil.")
         subprocess.run([self.cli, "-v", "tr", "-s", "150", "-w", str(yol), metin], check=True)
@@ -1423,6 +1624,8 @@ def main():
     ap.add_argument("--temizleme-yok", action="store_true", help="cümle başı/sonu nefes-hışırtı temizliğini kapat")
     ap.add_argument("--eksik", action="store_true", help="--ses-dizini'nde sesi olmayan cümleleri ve seslendirme parametrelerini yaz")
     ap.add_argument("--dizin-olustur", metavar="KLASOR", help="eski ses klasörüne bu senaryoya göre dizin.json yaz (göç)")
+    ap.add_argument("--ingilizce-isaretle", action="store_true",
+                    help="anlatımdaki İngilizce öbekleri {…} ile işaretleyip senaryoya yaz (wordfreq gerekir); sonra gözden geçir")
     ap.add_argument("--tik", action="store_true", help="madde belirirken hafif 'tık' sesi (varsayılan kapalı; konuşma üstünde sürtme gibi duyulabiliyor)")
     ap.add_argument("--storyboard", metavar="PNG", help="ses/video üretmeden her sahnenin son halini tek görselde göster")
     ap.add_argument("--kontrol", action="store_true", help="sadece senaryo çeşitlilik/uzunluk kontrolü yap")
@@ -1450,6 +1653,15 @@ def main():
     intro = 0 if args.intro_outro_yok else INTRO_SN
     outro = 0 if args.intro_outro_yok else OUTRO_SN
 
+    if args.ingilizce_isaretle:
+        n_ = 0
+        for sh in tum:
+            yeni = " ".join(c if "{" in c else ingilizce_isaretle(c) for c in cumlelere_bol(sh["anlatim"]))
+            if yeni != sh["anlatim"]:
+                n_ += 1; log(f"  {sh.get('baslik', '')}: {yeni[:110]}")
+                sh["anlatim"] = yeni
+        Path(args.senaryo).write_text(json.dumps(sen, ensure_ascii=False, indent=1), encoding="utf-8")
+        log(f"{n_} sahnede İngilizce öbek işaretlendi → {args.senaryo}. Yanlış işaretleri elle düzelt."); return
     hatalar = senaryo_dogrula(sen)
     if hatalar:
         sys.exit("Senaryo hataları:\n  " + "\n  ".join(hatalar))
@@ -1462,6 +1674,10 @@ def main():
             S0.tahta(tb0, sh, len(sahne_ogeleri(sh)), ilk + si, toplam, ust, True)
             for u in S0.uyari:
                 log(f"  ⚠ yerleşim · sahne {ilk + si} «{sh.get('baslik', '')}»: {u}"); sorun += 1
+        # kapsam: ekranda yazan her şey anlatımda okunuyor mu?
+        for si, sh in enumerate(sahneler):
+            for o in okunmayanlar(sh):
+                log(f"  ⚠ okunmuyor · sahne {ilk + si} «{sh.get('baslik', '')}»: {o[:70]}"); sorun += 1
         # senkron raporu: gerçek ses varsa onun süreleri, yoksa tahmin (~2.3 kelime/sn)
         depo0 = SesDeposu(args.ses_dizini) if args.ses_dizini else None
         sureler = []
@@ -1553,6 +1769,10 @@ def main():
                         shutil.copy(eski, yol)
                         if Path(eski).with_suffix(".json").exists():
                             shutil.copy(Path(eski).with_suffix(".json"), yol.with_suffix(".json"))
+                        tk = Path(eski).parent / "temizlendi.txt"   # zaten temizlenmişse tekrar temizlenmesin
+                        if tk.exists() and Path(eski).name in tk.read_text().split():
+                            with open(hedef / "temizlendi.txt", "a") as f_:
+                                f_.write(yol.name + "\n")
                     dizin[ad] = {"anahtar": anahtar, "metin": c}
                     log(f"   {ad}: önbellekten"); continue
                 en_iyi = None
@@ -1632,9 +1852,12 @@ def main():
     for si, sh in enumerate(sahneler):
         cz = zc[si][2]; nc = max(1, len(cz)); ts = []
         mm = sahne_ogeleri(sh)
+        oto = None if sh.get("goster") else oto_goster(sh, [c_[2] for c_ in cz])
         for j in range(len(mm)):
             capa = None
-            if sh.get("goster") and j < len(sh["goster"]):
+            if oto is not None and j < len(oto):
+                ci = min(len(cz) - 1, oto[j]); capa = None if args.kelime_senkron_yok else oge_metni(sh, j)
+            elif sh.get("goster") and j < len(sh["goster"]):
                 gj = sh["goster"][j]
                 if isinstance(gj, str) and ":" in gj:      # "3:kelime" → 3. cümlede o kelimede
                     a_, _, capa = gj.partition(":"); ci = min(len(cz) - 1, int(a_))
@@ -1656,8 +1879,8 @@ def main():
                 elif r_ and r_[1] > 0.15:
                     zaman_ = a_ + (b_ - a_) * r_[1] - 0.15
             ts.append(min(b_, zaman_))
-        for j in range(1, len(ts)):                         # sıra bozulmasın
-            ts[j] = max(ts[j], ts[j - 1] + 0.25)
+        for j in range(1, len(ts)):                         # sıra bozulmasın; öğeler arası en az 1,2 sn
+            ts[j] = max(ts[j], ts[j - 1] + MIN_OGE_ARALIK)
         madde_t.append(ts)
 
     log("[2/4] Ses işleme, efektler" + (" ve fon müziği..." if args.muzik else "..."))
@@ -1686,7 +1909,8 @@ def main():
         wf.setnchannels(1); wf.setsampwidth(2); wf.setframerate(SR)
         wf.writeframes((np.clip(karisim, -1, 1) * 32767).astype(np.int16).tobytes())
     son_ses = tmp / "son.wav"
-    zincir = "highpass=f=80,adeclick,afftdn=nf=-45:nr=8,deesser=i=0.3,equalizer=f=3000:t=q:w=1.2:g=2,acompressor=threshold=-20dB:ratio=3:attack=10:release=200"
+    # agate: kelime aralarında kalan kısık hışırtıyı 24 dB'e kadar bastırır (konuşma eşiğin çok üstünde)
+    zincir = "highpass=f=80,adeclick,afftdn=nf=-45:nr=8,agate=threshold=0.008:ratio=3:range=0.06:attack=3:release=120,deesser=i=0.3,equalizer=f=3000:t=q:w=1.2:g=2,acompressor=threshold=-20dB:ratio=3:attack=10:release=200"
     olc = subprocess.run([ffmpeg_bin(), "-hide_banner", "-i", str(ham), "-af",
                           zincir + ",loudnorm=I=-16:TP=-1.5:LRA=11:print_format=json", "-f", "null", "-"],
                          capture_output=True, text=True).stderr

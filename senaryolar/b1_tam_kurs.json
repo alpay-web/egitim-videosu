@@ -61,7 +61,7 @@
   "A": "a",
   "visiting": "viziting",
   "museum": "miuziyım",
-  "C": "se",
+  "C": "ce",
   "Past Simple": "past simpıl",
   "Present Perfect": "prezınt pörfekt",
   "Past Continuous": "past kıntinyuıs",
@@ -233,7 +233,11 @@
   "Yes, I am": "yes, ay em",
   "Yes, I'm": "yes, aym",
   "had left": "hed left",
-  "does": "daz"
+  "does": "daz",
+  "G-A": "ge a",
+  "G-B": "ge be",
+  "G-D": "ge de",
+  "G-F": "ge fe"
  },
  "telaffuz_kok": {
   "fiil": "fiyil"
@@ -249,20 +253,13 @@
     "Deneme sınavı ve sınav günü"
    ],
    "anlatim": "Seviye tespit sınavının ilk on sorusunda yapacağın tek bir dikkatsizlik, seni koca bir seviye aşağı düşürebilir. [dur] Ama sınavın mantığını bilirsen, iki günde B1'e hazır olabilirsin. Bu videoda rehberin tamamını baştan sona işliyoruz. Önce sınavın mantığını ve puan getiren taktikleri göreceğiz. Sonra on üç gramer dersini tek tek çalışacağız. Ardından kelimeler ve kalıplar gelecek. Okuma, dinleme ve konuşmayı örneklerle çalışacağız. En sonda deneme sınavı ve sınav günü var. Videoyu bölüm bölüm izleyebilir, her bölümden sonra durdurup defterine not alabilirsin.",
-   "goster": [
-    3,
-    4,
-    5,
-    6,
-    7
-   ],
    "ton": "merakli",
    "kanca": "İlk 10 soruda tek dikkatsizlik = bir seviye aşağı",
    "bolum": "Giriş"
   },
   {
    "baslik": "Sınav nasıl bir şey?",
-   "anlatim": "Sınav bilgisayarda yapılan akıllı bir test. Doğru cevap verdikçe sorular zorlaşıyor, yanlış yaptıkça kolaylaşıyor. Süre yaklaşık otuz dakika. Bölümler gramer, kelime, okuma ve dinleme. Gerekli görülürse bir de kısa konuşma görüşmesi yapılıyor. Hedefimiz olan B1, orta seviyenin başlangıcı; kabaca IELTS dört ile beş puana denk geliyor.",
+   "anlatim": "Sınav bilgisayarda yapılan adaptif, yani akıllı bir test. Doğru cevap verdikçe sorular zorlaşıyor, yanlış yaptıkça kolaylaşıyor. Süre yaklaşık otuz dakika. Dört bölüm var: gramer, kelime, okuma ve dinleme. Gerekli görülürse bir de kısa konuşma görüşmesi yapılıyor. Hedefimiz B1, yani orta seviyenin başlangıcı; kabaca {IELTS} sınavında dört ile beş puana denk geliyor.",
    "tur": "rakam",
    "kartlar": [
     {
@@ -281,11 +278,6 @@
      "etiket": "Orta seviyenin başlangıcı"
     }
    ],
-   "goster": [
-    2,
-    3,
-    5
-   ],
    "bolum": "Sınav nasıl bir şey?"
   },
   {
@@ -297,7 +289,7 @@
     "Cümlenin tamamını oku",
     "Bir soruya en fazla 1 dakika"
    ],
-   "anlatim": "Şimdi en çok puan getiren kısma geldik. İlk sekiz on soruya maksimum özen göster, çünkü seviyenin kaba aralığını bu sorular belirler. Hızlı değil, doğru ol. Hiçbir soruyu boş bırakma; bilmiyorsan yanlış seçenekleri ele ve tahmin et. Sorular zorlaşıyorsa panik yapma, bu doğru gittiğin anlamına gelir. Cümlenin tamamını oku, çünkü boşluktan sonraki kelimeler cevabı çoğu zaman ele verir. Ve bir soruya bir dakikadan fazla takılma.",
+   "anlatim": "Şimdi en çok puan getiren kısma geldik. İlk sekiz on soruya maksimum özen göster, çünkü seviyenin kaba aralığını bu sorular belirler. Asla boş bırakma; bilmiyorsan yanlış seçenekleri ele ve tahmin et. Sorular zorlaşıyorsa panik yapma, bu iyi bir işaret: doğru gidiyorsun. Cümlenin tamamını oku, çünkü boşluktan sonraki kelimeler cevabı çoğu zaman ele verir. Ve bir soruya en fazla bir dakika ayır.",
    "bolum": "Adaptif sınav taktikleri"
   },
   {
@@ -310,7 +302,7 @@
     "enjoy, finish, avoid → -ing",
     "want, decide, plan → to + V1"
    ],
-   "anlatim": "Gramer sorularını saniyeler içinde çözmenin sırrı sinyal kelimelerdir. Önce cümlede ipucu kelimeyi ara, sonra seçeneklere bak. Yesterday ya da ago görüyorsan cevap büyük ihtimalle geçmiş zaman. Since, for, yet, already varsa have ve fiilin üçüncü hali gelir. By the time ve geçmiş zaman varsa had ile üçüncü hal. If ve geçmiş zaman gördüysen sonuç kısmında would kullanılır. Enjoy, finish, avoid gibi fiillerden sonra ing gelir. Want, decide, plan gibi fiillerden sonra ise to ve fiilin yalın hali.",
+   "anlatim": "Gramer sorularını saniyeler içinde çözmenin sırrı sinyal kelimelerdir. Önce cümlede ipucu kelimeyi ara, sonra seçeneklere bak. {Yesterday}, {ago} ya da {in 2019} görüyorsan fiilin ikinci hali gelir: {went}, {saw}. {Since, for, yet} ya da {already} varsa {have} ya da {has} ve fiilin üçüncü hali. {By the time} ve geçmiş zaman varsa {had} ve üçüncü hal. {If} ve {past}, yani geçmiş zaman gördüysen sonuçta {would} gelir. {Enjoy, finish, avoid} gibi fiillerden sonra fiil ing takısı alır. {Want, decide, plan} gibi fiillerden sonra ise {to} ve fiilin yalın hali.",
    "tur": "tablo",
    "tablo": {
     "basliklar": [
@@ -344,14 +336,6 @@
      ]
     ]
    },
-   "goster": [
-    2,
-    3,
-    4,
-    5,
-    6,
-    7
-   ],
    "bolum": "Sinyal kelimeler"
   },
   {
@@ -362,7 +346,7 @@
     "Okuma: aynı kelime = tuzak",
     "Dinleme: but, actually'den sonrası doğru"
    ],
-   "anlatim": "Şimdi seçenekleri okurken işine yarayacak birkaç hileye bakalım. Neredeyse aynı olan iki seçenek varsa, doğru cevap genellikle bu ikisinden biridir. Kulak testini kullan: cümleyi her seçenekle içinden sesli oku, hazır kalıpları beynin hemen tanır. Okuma bölümünde metindeki kelimeyi aynen tekrar eden seçenek çoğu zaman tuzaktır; doğru cevap aynı anlamı başka kelimelerle verir. Dinlemede ise but, actually, sorry ya da instead kelimelerinden sonra gelen bilgi neredeyse her zaman doğru cevaptır.",
+   "anlatim": "Şimdi seçenekleri okurken işine yarayacak birkaç hileye bakalım. Birincisi ikiz şık kuralı: neredeyse aynı olan iki seçenek varsa, doğru cevap genellikle bu ikisinden biridir. İkincisi kulak testi: cümleyi her seçenekle içinden sesli oku, hazır kalıpları beynin hemen tanır. Okumada metindeki kelimeyi aynen tekrar eden seçenek çoğu zaman tuzaktır; doğru cevap aynı anlamı başka kelimelerle verir. Dinlemede ise {but}, {actually}, {sorry} ya da {instead} kelimelerinden sonra gelen bilgi neredeyse her zaman doğrudur.",
    "bolum": "Şık okuma hileleri"
   },
   {
@@ -375,7 +359,7 @@
     "more better → better",
     "If I will go → If I go"
    ],
-   "anlatim": "İngilizcede hiçbir zaman doğru olmayan yapılar var. Bunları seçeneklerde görürsen düşünmeden ele. Did ya da didn't varsa fiil yalın kalır, yani didn't stopped yanlıştır. Modal fiillerden sonra to gelmez, must to go değil, must go. Will'den sonra da fiil yalın kalır. I am agree diye bir yapı yok, doğrusu I agree. More better gibi çift karşılaştırma da yanlış. Ve unutma: if'li tarafta asla will ya da would olmaz.",
+   "anlatim": "İngilizcede hiçbir zaman doğru olmayan yapılar var; bunları seçeneklerde görürsen düşünmeden ele. {Did} ya da {didn't} varsa fiil yalın kalır: {didn't stopped} yanlış, doğrusu {didn't stop}. Modal fiillerden sonra {to} gelmez: {must to go} değil, {must go}. {Will} kelimesinden sonra da fiil yalın kalır: {will went} değil, {will go}. {I am agree} diye bir yapı yok, doğrusu {I agree}. {More better} gibi çift karşılaştırma da yanlış, sadece {better}. Ve {if} tarafında asla {will} olmaz: {If I will go} değil, {If I go}.",
    "tur": "tablo",
    "tablo": {
     "basliklar": [
@@ -410,26 +394,18 @@
      ]
     ]
    },
-   "goster": [
-    2,
-    3,
-    4,
-    5,
-    6,
-    7
-   ],
    "bolum": "Uydurma yapı kara listesi"
   },
   {
    "baslik": "Online deneme testinden dersler",
    "maddeler": [
-    "3 şık + \"I don't know\"",
-    "Bir şıkkı eleyebiliyorsan tahmin et",
+    "3 seçenek + \"I don't know\"",
+    "Birini eleyebiliyorsan tahmin et",
     "B1 için ilk 12–14 soru yeterli",
     "Kısa cevap: Yes, he is. (he's değil)",
     "Son sorularda panik yok"
    ],
-   "anlatim": "Kursun kendi kısa online deneme testi bize sınavın mantığını gösteriyor. Her soruda üç seçenek ve bir de I don't know seçeneği var. En az bir seçeneği eleyebiliyorsan I don't know'a basma, tahmin et. Sorular kolaydan zora sıralı ve B1 için kabaca ilk on iki on dört soruyu doğru yapman yeterli. Kısa cevap kuralını unutma: soru hangi yardımcı fiille sorulduysa cevap da onunla verilir ve olumlu kısa cevapta kısaltma yapılmaz. Son sorularda bilmediğin yapılar görürsen panik yapma, bu B1'i zaten geçtiğin anlamına gelir.",
+   "anlatim": "Kursun kendi kısa online deneme testi sınavın mantığını gösteriyor. Her soruda üç seçenek ve bir de {I don't know} seçeneği var. Bir seçeneği bile eleyebiliyorsan bu seçeneğe basma, tahmin et. Sorular kolaydan zora sıralı; B1 için ilk on iki on dört soruyu doğru yapman yeterli. Kısa cevapta kısaltma yapılmaz: {Yes, he is} denir, {he's} denmez. Son sorularda bilmediğin yapılar görürsen panik yok; bu, B1'i zaten geçtiğin anlamına gelir.",
    "bolum": "Online deneme testinden dersler"
   },
   {
@@ -463,14 +439,7 @@
      ]
     ]
    },
-   "anlatim": "Online testte çıkan ve bilmen gereken birkaç konu daha var. Like, gibi anlamında benzetme yapar; as ise olarak demektir, yani bir görev ya da rol. Had better, yapsan iyi olur demektir ve ondan sonra to gelmez. Worth kalıbından sonra fiil ing alır: gezmeye değer. Soru eklerinde olumlu cümleye olumsuz ek gelir; I am ile başlayan cümlede ek aren't I olur. Business, ödev ve iyilik ile do kullanılır; bilerek, kasten demek için de on purpose denir.",
-   "goster": [
-    1,
-    2,
-    3,
-    4,
-    5
-   ],
+   "anlatim": "Online testte çıkan ve bilmen gereken birkaç konu daha var. {Like} gibi, {as} ise olarak demektir: {like a star}, yıldız gibi; {as a nurse}, hemşire olarak. {Had better} yapsan iyi olur demektir ve ondan sonra {to} gelmez: {You'd better hurry}. {Worth} kalıbından sonra fiil ing alır: {It's worth visiting}. {Question tag}, yani soru ekinde, {I am} ile başlayan cümlenin eki {aren't I} olur: {I'm late, aren't I?} {Business} ile {do} kullanılır, kasten demek için de {on purpose} denir: {He did it on purpose}.",
    "ton": "canli",
    "bolum": "Testte çıkan ek konular"
   },
@@ -505,14 +474,7 @@
      ]
     ]
    },
-   "anlatim": "Biraz daha ileri seviye yapılar da var. Past Perfect, geçmişteki bir olaydan daha önce olanı anlatır: had ve fiilin üçüncü hali. Üçüncü tip if cümlesi geçmişe dair pişmanlıktır: if tarafında had ve üçüncü hal, sonuç tarafında would have ve üçüncü hal. Could have ise geçmişte mümkün olan ama olmayan şeydir. By ile gelecekte bir zaman söylenirse will have ve üçüncü hal kullanılır. Son olarak scenery bir yerin güzel görüntüsü, nature ise doğanın kendisidir; pop out da günlük dilde kısa bir süreliğine dışarı çıkmak demektir. Bu yapılar B1'in biraz üstünde; yanlış yapsan da dert etme.",
-   "goster": [
-    1,
-    2,
-    3,
-    4,
-    5
-   ],
+   "anlatim": "Biraz daha ileri seviye yapılar da var. {Past Perfect}, geçmişteki bir olaydan daha önce olanı anlatır; {had} ve fiilin üçüncü hali: {I had already seen it}. Üçüncü tip {if} cümlesi geçmişe dair pişmanlıktır; {if} tarafında {had} ve üçüncü hal, sonuçta {would have} ve üçüncü hal: {I would have come}. {Could have} ise mümkün olan ama olmayan şeydir: {She could have been a doctor}. Belli bir zamana kadar bitecek işler için {will have} ve üçüncü hal: {We'll have finished}. Son olarak {scenery} manzara demektir; {pop out} ise kısa süreliğine dışarı çıkmak: {I'll pop out for bread}. Bu yapılar B1'in biraz üstünde; yanlış yapsan da dert etme.",
    "ton": "sakin"
   },
   {
@@ -522,7 +484,7 @@
     "tip": "not",
     "metin": "15 soru, cevapları rehberde. 1. günün sonunda, gramer derslerinden sonra çöz; yanlışları hata listene yaz."
    },
-   "anlatim": "Rehberde online testin tarzında on beş soruluk bir alıştırma var. Birinci günün sonunda, gramer derslerinden sonra çöz. Yanlışlarını hata listene yaz. Şimdi bunlardan birkaçını birlikte çözelim.",
+   "anlatim": "Rehberde online testin tarzında on beş soruluk bir alıştırma var; cevapları da rehberde. Birinci günün sonunda, gramer derslerinden sonra çöz. Yanlışlarını hata listene yaz. Şimdi bunlardan birkaçını birlikte çözelim.",
    "goster": [
     1
    ],
@@ -541,25 +503,25 @@
     ],
     "dogru": 1,
     "bekle": 4,
-    "cevap_cumle": 2
+    "cevap_cumle": 3
    },
-   "anlatim": "Kısa bir soru. Ekrandaki soru ekini tamamla. Doğru cevap B: aren't I. I am ile kurulan olumlu cümlede soru eki her zaman aren't I olur."
+   "anlatim": "Kısa bir soru. {I'm late,} boşluk? Seçenekler: A, {am I not}; B, {aren't I}; C, {isn't I}. Doğru cevap B: {aren't I}. {I am} ile kurulan olumlu cümlede soru eki her zaman {aren't I} olur."
   },
   {
-   "baslik": "Alıştırma X: kısa cevap",
+   "baslik": "Alıştırma X: turn down",
    "tur": "soru",
    "soru": {
-    "metin": "“Are you a student?” “Yes, ___.”",
+    "metin": "The music is too loud. Please turn it ___.",
     "secenekler": [
-     "I'm",
-     "I am",
-     "I do"
+     "up",
+     "down",
+     "on"
     ],
     "dogru": 1,
     "bekle": 4,
-    "cevap_cumle": 2
+    "cevap_cumle": 3
    },
-   "anlatim": "Sıradaki soru. Kısa cevapta hangisi doğru? Doğru cevap B: Yes, I am. Kısa cevabın sonunda kısaltma kullanılmaz; Yes, I'm denmez."
+   "anlatim": "Sıradaki soru. {The music is too loud. Please turn it} boşluk. Seçenekler: A, {up}; B, {down}; C, {on}. Doğru cevap B: {down}. {Turn down} sesi kısmak, {turn up} ise sesi açmak demektir."
   },
   {
    "baslik": "Alıştırma X: üçüncü tip if",
@@ -573,9 +535,9 @@
     ],
     "dogru": 1,
     "bekle": 4,
-    "cevap_cumle": 2
+    "cevap_cumle": 3
    },
-   "anlatim": "Bir soru daha. Boşluğa hangisi gelir? Doğru cevap B: had left. Geçmişe dair bir pişmanlık var; üçüncü tip if cümlesinde if tarafına had ve fiilin üçüncü hali gelir."
+   "anlatim": "Bir soru daha. {If we} boşluk {earlier, we wouldn't have missed the train}. Seçenekler: A, {left}; B, {had left}; C, {would leave}. Doğru cevap B: {had left}. Geçmişe dair bir pişmanlık var; üçüncü tip {if} cümlesinde {if} tarafına {had} ve fiilin üçüncü hali gelir."
   },
   {
    "baslik": "Alıştırma X: do business",
@@ -589,13 +551,13 @@
     ],
     "dogru": 1,
     "bekle": 4,
-    "cevap_cumle": 2
+    "cevap_cumle": 3
    },
-   "anlatim": "Bu bloğun son sorusu. Business ile hangi fiil kullanılır? Doğru cevap B: does. Business, ödev ve iyilik do ile kullanılır."
+   "anlatim": "Bu bloğun son sorusu. {Our company} boşluk {a lot of business with Germany}. Seçenekler: A, {makes}; B, {does}; C, {runs}. Doğru cevap B: {does}. {Business}, ödev ve iyilik {do} ile kullanılır."
   },
   {
    "baslik": "Dinleme ve okuma",
-   "anlatim": "Dinlemede ses başlamadan önce soruyu ve seçenekleri oku, ne dinleyeceğini bil. Konuşmacı önce bir şey söyleyip sonra düzeltirse doğru cevap son söylenendir. Rakamlara dikkat et: on üç ile otuz, on dört ile kırk çok karışır. Okumada önce soruyu oku, sonra metinde sadece ilgili kısmı ara. Kelimeyi değil anlamı eşleştir. Always, never, only gibi mutlak ifadeler içeren seçenekler genellikle yanlıştır.",
+   "anlatim": "Dinlemede ses başlamadan önce soruyu ve seçenekleri oku, ne dinleyeceğini bil. Konuşmacı önce bir şey söyleyip sonra düzeltirse, düzeltmeden sonra geleni seç. Rakamlara dikkat et: {thirteen} kelimesinde vurgu sondadır, {thirty} kelimesinde baştadır. Okumada da önce soruyu oku, sonra metinde ilgili yeri tara. Kelimeyi değil anlamı eşleştir. {Always}, {never} ya da {only} gibi mutlak kelimeler içeren seçeneklerden şüphelen.",
    "tur": "karsilastirma",
    "sol": {
     "baslik": "Dinlemede",
@@ -619,14 +581,6 @@
      "always, never, only → şüphelen"
     ]
    ],
-   "goster": [
-    0,
-    1,
-    2,
-    3,
-    4,
-    5
-   ],
    "bolum": "Dinleme ve okuma teknikleri"
   },
   {
@@ -638,7 +592,7 @@
     "Güçlü kalıplar: To be honest…",
     "İlk 30 saniye: kusursuz tanıtım"
    ],
-   "anlatim": "Konuşma bölümünde PREP formülünü kullan. Önce cevabını söyle, sonra nedenini, ardından bir örnek ver ve cevabını tekrar et. Dört cümle, otuz kırk saniyelik düzenli bir cevap eder. Soruyu geri söyleyerek birkaç saniye düşünme süresi kazanabilirsin. Sorunun zamanını aynala: Have you ever diye sorulursa Yes, I have diyerek başla. To be honest, it depends on gibi güçlü kalıpları cevaplarına serpiştir. Ve en önemlisi, kendini tanıttığın ilk otuz saniye kusursuz ve akıcı olsun.",
+   "anlatim": "Konuşma bölümünde {PREP} formülünü kullan: {Point, Reason, Example, Point}. Yani önce cevabını söyle, sonra nedenini, ardından bir örnek ver ve cevabını tekrar et. Soruyu geri söyleyerek birkaç saniye zaman kazan. Sorunun zamanını aynala: {Have you ever} diye sorulursa {Yes, I have} diyerek başla. {To be honest} ya da {it depends on} gibi güçlü kalıpları cevaplarına serpiştir. Ve kendini tanıttığın ilk otuz saniye kusursuz bir tanıtım olsun.",
    "bolum": "Konuşmada B1 gibi duyulmak"
   },
   {
@@ -650,12 +604,12 @@
     "Shadowing: günde 10 dakika",
     "25 dk odak / 5 dk mola"
    ],
-   "anlatim": "İki günde daha çok akılda tutmak için birkaç beyin taktiği. Bir dersi okuduktan sonra kitabı kapat ve kuralı otuz saniyede sesli anlat; geri çağırmak tekrar okumaktan çok daha kalıcıdır. Konuları karıştırarak çalış, çünkü sınavda da karışık gelecekler. Yatmadan önce hata listeni oku ve telefona bakmadan uyu. Günde on dakika gölge konuşma yap: dinleme metinlerini yarım saniye geriden sesli tekrarla. Ve yirmi beş dakika tam odak, beş dakika mola şeklinde çalış.",
+   "anlatim": "İki günde daha çok akılda tutmak için birkaç beyin taktiği. Tekrar okuma yerine kendini test et: kitabı kapat ve kuralı otuz saniyede sesli anlat. Konuları karıştırarak çalış, çünkü sınavda da karışık gelecekler. Uyku ezberi pekiştirir: yatmadan önce hata listeni oku ve telefona bakmadan uyu. Günde on dakika {shadowing}, yani gölge konuşma yap: dinleme metinlerini yarım saniye geriden sesli tekrarla. Ve yirmi beş dakika odak, beş dakika mola şeklinde çalış.",
    "bolum": "Beyin taktikleri"
   },
   {
    "baslik": "2 günlük çalışma planı",
-   "anlatim": "Planımız şöyle. Birinci gün önce sınav tekniklerini oku, sonra yaklaşık üç saat gramer derslerini ve alıştırmalarını çöz. Ardından kelime listelerini çalış ve dinleme alıştırmalarını telefona okutarak yap. İkinci gün okuma parçalarını çöz ve konuşma cevaplarını kaydederek prova et. Sonra yirmi beş dakikalık deneme sınavını yap ve yanlışlarını gözden geçir. Son akşam yeni konuya başlama, kendini tanıtmayı bir kez daha prova et ve erken yat.",
+   "anlatim": "Planımız şöyle. Birinci gün sınav tekniklerini oku, sonra yaklaşık üç saat gramer çalış. Birinci günün sonunda kelime listelerini çalış ve dinleme alıştırmalarını yap. İkinci gün okuma parçalarını çöz ve konuşma provası yap, cevaplarını kaydet. İkinci günün sonunda yirmi beş dakikalık deneme sınavını çöz. Son akşam yeni konu yok; kendini tanıtmayı bir kez daha prova et ve erken yat.",
    "tur": "zaman",
    "adimlar": [
     {
@@ -679,13 +633,6 @@
      "metin": "Yeni konu yok, erken yat"
     }
    ],
-   "goster": [
-    1,
-    2,
-    3,
-    4,
-    5
-   ],
    "bolum": "2 günlük çalışma planı"
   },
   {
@@ -699,10 +646,10 @@
      "I do"
     ],
     "dogru": 1,
-    "cevap_cumle": 2,
+    "cevap_cumle": 3,
     "bekle": 4
    },
-   "anlatim": "Şimdi kendini deneme zamanı. Ekrandaki soruyu oku ve doğru seçeneği düşün. Doğru cevap B: I am. Olumlu kısa cevapta kısaltma yapılmaz, bu yüzden Yes, I'm diyemeyiz.",
+   "anlatim": "Şimdi kendini deneme zamanı. {Are you a student? Yes,} boşluk. Seçenekler: A, {I'm}; B, {I am}; C, {I do}. Doğru cevap B: {I am}. Olumlu kısa cevapta kısaltma yapılmaz, bu yüzden {Yes, I'm} diyemeyiz.",
    "bolum": "Kendini dene: taktikler"
   },
   {
@@ -716,10 +663,10 @@
      "visit"
     ],
     "dogru": 1,
-    "cevap_cumle": 2,
+    "cevap_cumle": 3,
     "bekle": 4
    },
-   "anlatim": "İkinci soru. Boşluğa hangisi gelmeli? Doğru cevap B: visiting. Worth kalıbından sonra fiil ing takısı alır."
+   "anlatim": "İkinci soru. {That museum is really worth} boşluk. Seçenekler: A, {to visit}; B, {visiting}; C, {visit}. Doğru cevap B: {visiting}. {Worth} kalıbından sonra fiil ing takısı alır."
   },
   {
    "baslik": "Kendini dene: taktikler 3/3",
@@ -732,10 +679,10 @@
      "would better"
     ],
     "dogru": 0,
-    "cevap_cumle": 2,
+    "cevap_cumle": 3,
     "bekle": 4
    },
-   "anlatim": "Son soru. Uydurma yapıları hatırla. Doğru cevap A. Bu kalıptan sonra to gelmez; would ile kurulan bir biçimi de yoktur."
+   "anlatim": "Son soru; uydurma yapıları hatırla. {You} boşluk {take an umbrella. It's going to rain}. Seçenekler: A, {had better}; B, {had better to}; C, {would better}. Doğru cevap A: {had better}. {Had better} kalıbından sonra {to} gelmez; {would better} diye bir yapı da yoktur."
   },
   {
    "baslik": "Çalışma kitabı",
@@ -770,16 +717,7 @@
      "metin": "Hata listesi: doğrusu + nedeni"
     }
    ],
-   "anlatim": "Şimdi rehberin çalışma kitabı kısmına geçiyoruz. Başka kaynağa ihtiyacın yok, sadece bir defter ve kalem al. Önce on üç gramer dersini göreceğiz. Sonra kelime ve kalıp listeleri. Ardından okuma parçaları ve dinleme metinleri. Sonra konuşma için model cevaplar. En sonda otuz soruluk deneme sınavı. Her yanlışını defterine hata listem başlığıyla yaz: doğrusunu ve nedenini. Bir konuda beş sorudan iki ya da daha fazla yanlışın varsa, o kuralı tekrar oku ve ertesi gün yeniden çöz.",
-   "goster": [
-    2,
-    3,
-    4,
-    4,
-    5,
-    6,
-    7
-   ],
+   "anlatim": "Şimdi rehberin çalışma kitabı kısmına geçiyoruz. Başka kaynağa ihtiyacın yok, sadece bir defter ve kalem al. Önce on üç gramer dersini göreceğiz. Sonra kelime ve kalıp listeleri. Ardından okuma parçaları ve dinleme metinleri. Sonra konuşma provası için model cevaplar. En sonda otuz soruluk deneme sınavı. Her yanlışını hata listesi başlığıyla deftere yaz: doğrusunu ve nedenini. Bir konuda beş sorudan iki ya da daha fazla yanlışın varsa, o kuralı tekrar oku ve ertesi gün yeniden çöz.",
    "ton": "canli",
    "bolum": "Çalışma kitabı"
   },
@@ -809,15 +747,7 @@
      "I have been to Paris twice."
     ]
    ],
-   "anlatim": "İlk ders. Past Simple, geçmişte bitmiş ve zamanı belli olan olaylar içindir. Yesterday, last year, ago ya da in 2020 gibi ifadeler bunun işaretidir. Örneğin: I went to Paris last year. Present Perfect ise zamanı belli olmayan deneyimler ve hâlâ devam eden durumlar içindir. Ever, never, already, yet, since ve for onun işaretleri. Örneğin: I have been to Paris twice.",
-   "goster": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6
-   ],
+   "anlatim": "İlk ders. {Past Simple}, geçmişte bitmiş ve zamanı belli olan olaylar içindir. {Yesterday}, {ago} ya da {in 2020} gibi ifadeler bunun işaretidir. Örneğin: {I went to Paris last year}. {Present Perfect} ise zamanı belirsiz deneyimler ve hâlâ süren durumlar içindir. {Ever}, {already}, {since} ve {for} onun işaretleri. Örneğin: {I have been to Paris twice}.",
    "bolum": "Gramer 1: Past Simple / Present Perfect"
   },
   {
@@ -828,9 +758,9 @@
     "tip": "ipucu",
     "metin": "since + başlangıç noktası (2019, Monday) · for + süre (3 years, two weeks)"
    },
-   "anlatim": "Since ve for çok karışır, ama kural basit. Since'ten sonra bir başlangıç noktası gelir: since 2019, since Monday. For'dan sonra ise bir süre gelir: for three years, for two weeks. Yani since two weeks diye bir şey yoktur.",
+   "anlatim": "{Since} ve {for} çok karışır, ama kural basit. {Since} kelimesinden sonra bir başlangıç noktası gelir: {since 2019}, {since Monday}. {For} kelimesinden sonra ise bir süre gelir: {for three years}, {for two weeks}. Yani {since two weeks} diye bir şey yoktur.",
    "goster": [
-    0
+    1
    ]
   },
   {
@@ -845,9 +775,9 @@
     ],
     "dogru": 2,
     "bekle": 4,
-    "cevap_cumle": 2
+    "cevap_cumle": 3
    },
-   "anlatim": "Hemen deneyelim. Ekrandaki cümlede boşluğa hangisi gelmeli? Doğru cevap C: have lived. Since gördüğün an Present Perfect düşün."
+   "anlatim": "Hemen deneyelim. {I} boşluk {in Ankara since 2019}. Seçenekler: A, {live}; B, {lived}; C, {have lived}. Doğru cevap C: {have lived}. {Since} gördüğün an {Present Perfect} düşün."
   },
   {
    "baslik": "Past Continuous",
@@ -877,13 +807,7 @@
      ]
     ]
    },
-   "anlatim": "İkinci ders: Past Continuous. Geçmişte devam etmekte olan bir arka plan eylemi anlatıyorsan was ya da were ile fiilin ing halini kullanırsın. O sırada araya giren kısa eylem ise Past Simple olur. While ile genelde continuous, when ile genelde simple gelir. Örneğin: I was cooking when the phone rang.",
-   "goster": [
-    1,
-    2,
-    3,
-    3
-   ],
+   "anlatim": "İkinci ders: {Past Continuous}. Arka plan eylemi, yani geçmişte devam etmekte olan bir eylem için {was} ya da {were} ve fiilin ing hali kullanılır. Araya giren kısa eylem ise {Past Simple} olur. {While} ile genelde {continuous} gelir. {When} ile ise genelde {simple} gelir. Örneğin: {I was cooking when the phone rang}.",
    "bolum": "Gramer 2: Past Continuous"
   },
   {
@@ -898,9 +822,9 @@
     ],
     "dogru": 1,
     "bekle": 4,
-    "cevap_cumle": 2
+    "cevap_cumle": 3
    },
-   "anlatim": "Sıra sende. Telefon çaldığında ne yapıyordun? Doğru cevap B: was cooking. Yemek pişirmek arka plandaki uzun eylem, telefonun çalması ise araya giren kısa eylem."
+   "anlatim": "Sıra sende. {I} boşluk {when the phone rang}. Seçenekler: A, {cooked}; B, {was cooking}; C, {am cooking}. Doğru cevap B: {was cooking}. Yemek pişirmek arka plandaki uzun eylem, telefonun çalması ise araya giren kısa eylem."
   },
   {
    "baslik": "Gelecek zamanın 3 yolu",
@@ -923,12 +847,7 @@
      "etiket": "I'm meeting the doctor at 4."
     }
    ],
-   "anlatim": "Üçüncü ders: gelecek zaman. Will, o an verilen kararlar, sözler ve tahminler içindir. Hava soğuk mu? I'll close the window. Going to ise önceden yapılmış planlar ve gözünün önündeki kanıta dayanan tahminler içindir. Present Continuous ise saati ayarlanmış randevular için kullanılır: I'm meeting the doctor at four.",
-   "goster": [
-    1,
-    4,
-    5
-   ],
+   "anlatim": "Üçüncü ders: gelecek zaman. {Will}, anlık kararlar, sözler ve tahminler içindir: {I'll close the window}. {Going to} ise önceden yapılmış planlar ve gözünün önündeki kanıtlar içindir: {Look at those clouds! It's going to rain}. Fiilin ing hali, yani {Present Continuous} ise saati belli randevular içindir: {I'm meeting the doctor at 4}.",
    "bolum": "Gramer 3: Gelecek zaman"
   },
   {
@@ -942,9 +861,9 @@
     ],
     "dogru": 1,
     "bekle": 4,
-    "cevap_cumle": 2
+    "cevap_cumle": 3
    },
-   "anlatim": "Kara bulutlara bak. Hangisi doğru? Doğru cevap B: is going to. Gözünün önünde bir kanıt varsa going to kullanılır."
+   "anlatim": "Kara bulutlara bak. {Look at those dark clouds! It} boşluk {rain}. Seçenekler: A, {will}; B, {is going to}. Doğru cevap B: {is going to}. Gözünün önünde bir kanıt varsa {going to} kullanılır."
   },
   {
    "baslik": "If cümleleri: 0, 1, 2",
@@ -970,12 +889,7 @@
      ]
     ]
    },
-   "anlatim": "Son ders: if cümleleri. Sıfırıncı tip genel gerçekler içindir: buzu ısıtırsan erir. Birinci tip gerçek bir ihtimal anlatır; if tarafı Present, sonuç tarafı will olur. İkinci tip ise hayali durumlar içindir; if tarafı Past, sonuç tarafı would olur.",
-   "goster": [
-    1,
-    2,
-    3
-   ],
+   "anlatim": "Dördüncü ders: {if} cümleleri. Sıfırıncı tipte iki taraf da {Present} olur ve genel gerçekleri anlatır: {If you heat ice, it melts}. Birinci tip gerçek bir ihtimaldir; {if} tarafı {Present}, sonuç tarafı {will}: {If it rains, I'll stay home}. İkinci tip hayali durumlar içindir; {if} tarafı {Past}, sonuç tarafı {would}: {If I had money, I'd travel}.",
    "bolum": "Gramer 4: If cümleleri"
   },
   {
@@ -986,9 +900,9 @@
     "tip": "uyari",
     "metin": "if tarafında asla will / would olmaz. Tip 2'de: If I were you…"
    },
-   "anlatim": "Şimdi altın kural. [dur] If ile başlayan tarafta asla will ya da would olmaz. Bir de şunu unutma: ikinci tipte I, he ve she ile bile were kullanılır. Yani If I were you.",
+   "anlatim": "Şimdi altın kural. [dur] {If} tarafında asla {will} ya da {would} olmaz. Tip iki cümlelerde {I}, {he} ve {she} ile bile {were} kullanılır: {If I were you}.",
    "goster": [
-    0
+    1
    ]
   },
   {
@@ -1003,9 +917,9 @@
     ],
     "dogru": 1,
     "bekle": 4,
-    "cevap_cumle": 2
+    "cevap_cumle": 3
    },
-   "anlatim": "Son soru. Boşluğa ne gelmeli? Doğru cevap B: were. Hayali durum, ikinci tip; ve if tarafında I ile bile were kullanılır."
+   "anlatim": "Son soru. {If I} boşluk {you, I would take that job}. Seçenekler: A, {am}; B, {were}; C, {will be}. Doğru cevap B: {were}. Hayali bir durum, ikinci tip; ve {if} tarafında {I} ile bile {were} kullanılır."
   },
   {
    "baslik": "Passive: edilgen yapı",
@@ -1034,13 +948,7 @@
      ]
     ]
    },
-   "anlatim": "Beşinci ders: edilgen yapı. İşi kimin yaptığı önemli değilse ya da bilinmiyorsa edilgen kullanırız. Kalıp hep aynı: be fiili ve ana fiilin üçüncü hali. Geniş zamanda am, is, are gelir: burada İngilizce konuşulur. Geçmişte was ya da were gelir: müze bin sekiz yüz doksanda yapıldı. Gelecekte will be, modallarla da must be gibi kalıplar kullanılır. Kimin yaptığını söylemek istersen by eklersin.",
-   "goster": [
-    3,
-    4,
-    5,
-    5
-   ],
+   "anlatim": "Beşinci ders: edilgen yapı. İşi kimin yaptığı önemli değilse edilgen kullanırız; kalıp hep aynı: {be} fiili ve ana fiilin üçüncü hali. Geniş zamanda {am, is} ya da {are}: {English is spoken here}. Geçmişte {was} ya da {were}: {The museum was built in 1890}. Gelecekte {will be}: {The results will be announced tomorrow}. Modallarla da {must be}: {The report must be finished by Friday}. Kimin yaptığını söylemek istersen {by} eklersin.",
    "ton": "canli",
    "bolum": "Gramer 5: Passive"
   },
@@ -1056,9 +964,9 @@
     ],
     "dogru": 1,
     "bekle": 4,
-    "cevap_cumle": 2
+    "cevap_cumle": 3
    },
-   "anlatim": "Deneyelim. Boşluğa hangisi gelir? Doğru cevap B: was built. Müze kendini yapmadı, birileri yaptı; bu yüzden edilgen ve geçmiş zaman."
+   "anlatim": "Deneyelim. {The museum} boşluk {in 1890}. Seçenekler: A, {built}; B, {was built}; C, {has built}. Doğru cevap B: {was built}. Müze kendini yapmadı, birileri yaptı; bu yüzden edilgen ve geçmiş zaman."
   },
   {
    "baslik": "Modals",
@@ -1095,15 +1003,7 @@
      ]
     ]
    },
-   "anlatim": "Altıncı ders: modal fiiller. Must ve have to zorunluluk anlatır. Mustn't ise yasaktır: yapmamalısın. Don't have to ise bambaşka: gerek yok, istersen yaparsın. Should tavsiye verir. Might ve may bir ihtimali anlatır. Can't ise bir şeyin imkânsız olduğu sonucuna vardığımızda kullanılır: o olamaz. Ve unutma, modallardan sonra to gelmez, fiil yalın kalır.",
-   "goster": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6
-   ],
+   "anlatim": "Altıncı ders: modal fiiller. {Must} ve {have to} zorunluluk anlatır. {Mustn't} ise yasaktır: yapmamalısın. {Don't have to} ise gerek yok demektir: istersen yaparsın. {Should} tavsiye verir. {Might} ve {may} bir ihtimali anlatır. {Can't} ise imkânsız bir çıkarımdır: o olamaz. Ve unutma, modallardan sonra {to} gelmez, fiil yalın kalır.",
    "ton": "ciddi",
    "bolum": "Gramer 6: Modals"
   },
@@ -1119,9 +1019,9 @@
     ],
     "dogru": 1,
     "bekle": 4,
-    "cevap_cumle": 2
+    "cevap_cumle": 3
    },
-   "anlatim": "Soru zamanı. Konser ücretsizse ne demeliyiz? Doğru cevap B: don't have to. Ödemen yasak değil, sadece gerek yok."
+   "anlatim": "Soru zamanı. {You} boşluk {pay. The concert is free}. Seçenekler: A, {mustn't}; B, {don't have to}; C, {can't}. Doğru cevap B: {don't have to}. Ödemen yasak değil, sadece gerek yok."
   },
   {
    "baslik": "used to mı, be used to mu?",
@@ -1148,15 +1048,7 @@
      "get used to = alışmak"
     ]
    ],
-   "anlatim": "Yedinci ders: used to. Used to ve fiilin yalın hali, eskiden yaptığın ama artık yapmadığın şeyleri anlatır. Örneğin: eskiden futbol oynardım. Soru ve olumsuzda did geldiği için used değil use to yazılır. Be used to ise alışkın olmak demektir ve ardından fiil ing alır. Örneğin: geç saate kadar çalışmaya alışkınım. Get used to ise yavaş yavaş alışmak demektir.",
-   "goster": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6
-   ],
+   "anlatim": "Yedinci ders. {Used to} ve fiilin yalın hali, eskiden yapıp artık yapmadığın şeyleri anlatır: eskiden yapardım, artık değil. Örneğin: {I used to play football}. Soru ve olumsuzda {did} geldiği için {use to} yazılır: {did you use to}, {didn't use to}. {Be used to} ise alışkınım demektir ve ardından fiil ing alır. Örneğin: {I'm used to working late}. {Get used to} ise alışmak demektir.",
    "ton": "canli",
    "bolum": "Gramer 7: used to"
   },
@@ -1172,9 +1064,9 @@
     ],
     "dogru": 1,
     "bekle": 4,
-    "cevap_cumle": 2
+    "cevap_cumle": 3
    },
-   "anlatim": "Hadi deneyelim. Boşluğa hangisi gelmeli? Doğru cevap B: used to. Artık yapmadığın eski bir alışkanlık anlatılıyor."
+   "anlatim": "Hadi deneyelim. {I} boşluk {play tennis, but now I prefer swimming}. Seçenekler: A, {use to}; B, {used to}; C, {am used to}. Doğru cevap B: {used to}. Artık yapmadığın eski bir alışkanlık anlatılıyor."
   },
   {
    "baslik": "-ing mi, to mu?",
@@ -1201,15 +1093,7 @@
      "would like + to"
     ]
    ],
-   "anlatim": "Sekizinci ders: fiilden sonra ing mi gelir, to mu? Enjoy, finish, avoid ve mind fiillerinden sonra ing gelir. Suggest, keep ve practise de öyle. Look forward to kalıbında to bir edattır, bu yüzden ardından da ing gelir. Want, decide ve plan fiillerinden sonra ise to ve fiilin yalın hali gelir. Hope, promise ve agree de böyle. Would like kalıbı da to alır.",
-   "goster": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6
-   ],
+   "anlatim": "Sekizinci ders: fiilden sonra ing mi gelir, {to} mu? {Enjoy, finish, avoid} ve {mind} fiillerinden sonra ing gelir. {Suggest, keep} ve {practise} de öyle. {Look forward to} kalıbında {to} bir edattır, bu yüzden ardından da ing gelir. {Want, decide} ve {plan} fiillerinden sonra ise {to} ve fiilin yalın hali gelir. {Hope, promise} ve {agree} de böyle. {Would like} kalıbı da {to} alır.",
    "ton": "canli",
    "bolum": "Gramer 8: -ing / to"
   },
@@ -1220,7 +1104,7 @@
     "tip": "uyari",
     "metin": "stop smoking = sigarayı bıraktı · stop to smoke = sigara içmek için durdu · Don't forget to lock the door."
    },
-   "anlatim": "Dikkat: bazı fiillerde anlam değişir. Stop smoking, sigarayı bırakmak demektir. Stop to smoke ise sigara içmek için durmaktır. Don't forget to lock the door gibi cümlelerde de to gelir: kapıyı kilitlemeyi unutma.",
+   "anlatim": "Dikkat: bazı fiillerde anlam değişir. {Stop smoking}, sigarayı bıraktı demektir. {Stop to smoke} ise sigara içmek için durdu demektir. {Remember} ve {forget} ile de {to} gelir: {Don't forget to lock the door}, kapıyı kilitlemeyi unutma.",
    "goster": [
     1
    ],
@@ -1238,9 +1122,9 @@
     ],
     "dogru": 1,
     "bekle": 4,
-    "cevap_cumle": 2
+    "cevap_cumle": 3
    },
-   "anlatim": "Deneme zamanı. Suggest fiilinden sonra ne gelir? Doğru cevap B: taking. Suggest, ing alan fiillerden."
+   "anlatim": "Deneme zamanı. {He suggested} boşluk {a taxi}. Seçenekler: A, {to take}; B, {taking}; C, {take}. Doğru cevap B: {taking}. {Suggest}, ing alan fiillerden."
   },
   {
    "baslik": "Relative clauses",
@@ -1269,13 +1153,7 @@
      ]
     ]
    },
-   "anlatim": "Dokuzuncu ders: ilgi zamirleri. İnsandan bahsediyorsan who kullanırsın. Eşya ya da hayvan için which, günlük dilde ise çoğu zaman that. Bir yerden bahsediyorsan where. Sahiplik varsa, yani kimin olduğunu söylüyorsan whose: arabası çalınan adam.",
-   "goster": [
-    1,
-    2,
-    3,
-    4
-   ],
+   "anlatim": "Dokuzuncu ders: ilgi zamirleri. İnsan için {who}: {the woman who called}. Şey için {which} ya da {that}: {the book which I bought}. Yer için {where}: {the town where I grew up}. Sahiplik varsa {whose}: {the man whose car was stolen}.",
    "ton": "canli",
    "bolum": "Gramer 9: Relative clauses"
   },
@@ -1291,9 +1169,9 @@
     ],
     "dogru": 2,
     "bekle": 4,
-    "cevap_cumle": 2
+    "cevap_cumle": 3
    },
-   "anlatim": "Bir soru daha. Boşluğa hangisi gelir? Doğru cevap C: whose. Araba adama ait, yani sahiplik var."
+   "anlatim": "Bir soru daha. {The man} boşluk {car was stolen called the police}. Seçenekler: A, {who}; B, {which}; C, {whose}. Doğru cevap C: {whose}. Araba adama ait, yani sahiplik var."
   },
   {
    "baslik": "Karşılaştırma",
@@ -1322,13 +1200,7 @@
      ]
     ]
    },
-   "anlatim": "Onuncu ders: karşılaştırma. Kısa sıfatlara er takısı eklenir, en üstün derece için the ve est. Uzun sıfatlarda more ve the most kullanılır. Good ve bad düzensizdir: better ve the best, worse ve the worst. Eşitlik için as ve as arasına sıfat koyarız. Ve hatırla: more better diye bir şey yok.",
-   "goster": [
-    1,
-    2,
-    3,
-    4
-   ],
+   "anlatim": "Onuncu ders: karşılaştırma. Kısa sıfatlara er takısı gelir, en üstün derece için {the} ve est: {bigger}, {the biggest}. Uzun sıfatlarda {more} ve {the most}: {more useful}, {the most useful}. Düzensiz olanlar: {better}, {the best} ve {worse}. Eşitlik için iki {as} arasına sıfat koyarız: {as fast as}, {not as tall as}. Ve hatırla: {more better} diye bir şey yok.",
    "ton": "sakin",
    "bolum": "Gramer 10: Karşılaştırma"
   },
@@ -1363,14 +1235,7 @@
      ]
     ]
    },
-   "anlatim": "On birinci ders: miktar ifadeleri. Sayılamayan isimlerle much kullanılır: zaman, para gibi. Sayılabilen isimlerle many. Biraz demek için sayılamayanlarda a little, sayılabilenlerde a few. Olumlu cümlede genelde some, soru ve olumsuzda any gelir. Ve sesli harf sesiyle başlayan kelimeden önce a değil an kullanılır: an hour, an apple.",
-   "goster": [
-    1,
-    2,
-    3,
-    4,
-    5
-   ],
+   "anlatim": "On birinci ders: miktar ifadeleri. Sayılamayan isimlerle {much}: {much time}, {much money}. Sayılabilen isimlerle {many}: {many people}. Biraz demek için {a little} ve {a few}: {a little sugar}, {a few friends}. Olumlu cümlede {some}, soru ve olumsuzda {any} gelir. Ve sesli harf sesinden önce {an} kullanılır: {an hour}, {an apple}.",
    "ton": "canli",
    "bolum": "Gramer 11: Miktar ve article"
   },
@@ -1386,9 +1251,9 @@
     ],
     "dogru": 1,
     "bekle": 4,
-    "cevap_cumle": 2
+    "cevap_cumle": 3
    },
-   "anlatim": "Soru zamanı. Boşluğa hangisi gelir? Doğru cevap B: much. Time sayılamayan bir isimdir."
+   "anlatim": "Soru zamanı. {I don't have} boşluk {time, so let's be quick}. Seçenekler: A, {many}; B, {much}; C, {a few}. Doğru cevap B: {much}. {Time} sayılamayan bir isimdir."
   },
   {
    "baslik": "Edatlar: in · on · at",
@@ -1417,13 +1282,7 @@
      ]
     ]
    },
-   "anlatim": "On ikinci ders: edatlar. Aylar, yıllar ve mevsimler için in kullanılır. Günler ve tarihler için on. Saatler için at; İngiliz İngilizcesinde hafta sonu da at the weekend olur. Bazı kalıpları ise ezberlemen gerekir: interested in, good at, afraid of ve depend on.",
-   "goster": [
-    1,
-    2,
-    3,
-    4
-   ],
+   "anlatim": "On ikinci ders: edatlar. Ay, yıl ve mevsimler için {in}: {in May}, {in 2020}. Gün ve tarihler için {on}: {on Monday}, {on 5 May}. Saatler için {at}: {at 7 o'clock}; İngiliz İngilizcesinde hafta sonu da {at the weekend} olur. Bazı kalıpları ise ezberlemen gerekir: {interested in}, {good at}, {afraid of} ve {depend on}.",
    "ton": "sakin",
    "bolum": "Gramer 12: Edatlar"
   },
@@ -1452,15 +1311,7 @@
      "too hot to drink · old enough to drive"
     ]
    ],
-   "anlatim": "Son gramer dersi: aktarılan söz ve too ile enough. Birinin sözünü aktarırken zaman bir adım geriye kayar: am ya da is, was olur. Will de would olur. Örneğin: yorgun olduğunu söyledi. Too, sıfattan önce gelir ve fazla demektir. Enough ise sıfattan sonra gelir ve yeterince demektir. Örneğin: içilemeyecek kadar sıcak, araba sürecek kadar büyük.",
-   "goster": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6
-   ],
+   "anlatim": "Son gramer dersi: aktarılan söz ve {too} ile {enough}. Birinin sözünü aktarırken zaman bir adım geriye kayar: {am} ya da {is}, {was} olur. {Will} de {would} olur. Örneğin: {He said he was tired}. {Too} sıfattan önce gelir ve fazla demektir. {Enough} ise sıfattan sonra gelir ve yeterince demektir. Örneğin: {too hot to drink}, {old enough to drive}.",
    "ton": "canli",
    "bolum": "Gramer 13: Reported speech, too/enough"
   },
@@ -1476,9 +1327,9 @@
     ],
     "dogru": 1,
     "bekle": 4,
-    "cevap_cumle": 2
+    "cevap_cumle": 3
    },
-   "anlatim": "Gramerin son sorusu. Boşluğa ne gelir? Doğru cevap B: enough. Enough sıfattan sonra gelir."
+   "anlatim": "Gramerin son sorusu. {He isn't tall} boşluk {to play basketball}. Seçenekler: A, {too}; B, {enough}; C, {so}. Doğru cevap B: {enough}. {Enough} sıfattan sonra gelir."
   },
   {
    "baslik": "Karıştırılan çiftler 1/2",
@@ -1511,14 +1362,7 @@
      ]
     ]
    },
-   "anlatim": "Şimdi kelimelere geçiyoruz. Seviye sınavlarında en çok karıştırılan çiftlerle başlayalım. Borrow ödünç almak, lend ise ödünç vermektir. Say'den sonra söylenen şey gelir, tell'den sonra ise kişi: she told me. Ed ile biten sıfat hisseden kişiyi, ing ile biten ise hissettiren şeyi anlatır: ben sıkıldım, film sıkıcı. Remember hatırlamak, remind ise birine hatırlatmaktır. Lose kaybetmek demektir; miss ise otobüsü kaçırmak ya da birini özlemektir.",
-   "goster": [
-    2,
-    3,
-    4,
-    5,
-    6
-   ],
+   "anlatim": "Şimdi kelimelere geçiyoruz; en çok karıştırılan çiftlerle başlayalım. {Borrow} ödünç almak, {lend} ise ödünç vermek. {Say} kelimesinden sonra söylenen şey, {tell} kelimesinden sonra ise kişi gelir. {Bored} hisseden kişiyi, {boring} ise hissettiren şeyi anlatır. {Remember} hatırlamak, {remind} ise hatırlatmak. {Lose} kaybetmek; {miss} ise kaçırmak ya da özlemek demektir.",
    "ton": "canli",
    "bolum": "Kelime: karıştırılan çiftler"
   },
@@ -1553,14 +1397,7 @@
      ]
     ]
    },
-   "anlatim": "Devam edelim. Win bir yarışı ya da ödülü kazanmaktır, earn ise para kazanmak. Rob'dan sonra kişi ya da yer gelir, steal'den sonra ise çalınan eşya. Actually aslında demektir; şu anda demek istiyorsan currently kullan. Fun eğlenceli, funny ise komik demektir. Job sayılabilir, work sayılamaz; yani a work diyemezsin.",
-   "goster": [
-    1,
-    2,
-    3,
-    4,
-    5
-   ],
+   "anlatim": "Devam edelim. {Win} yarış kazanmak, {earn} ise para kazanmak. {Rob} kelimesinden sonra kişi ya da yer, {steal} kelimesinden sonra ise eşya gelir. {Actually} aslında, {currently} ise şu anda demektir. {Fun} eğlenceli, {funny} ise komik. {Job} sayılabilir, {work} sayılamaz: {a job} denir, {a work} denmez.",
    "ton": "sakin"
   },
   {
@@ -1575,9 +1412,9 @@
     ],
     "dogru": 1,
     "bekle": 4,
-    "cevap_cumle": 2
+    "cevap_cumle": 3
    },
-   "anlatim": "Kelime sorusu. Boşluğa hangisi gelir? Doğru cevap B: lend. Parayı veren kişi lend kullanır."
+   "anlatim": "Kelime sorusu. {Could you} boşluk {me 50 lira until Friday?} Seçenekler: A, {borrow}; B, {lend}; C, {take}. Doğru cevap B: {lend}. Parayı veren kişi {lend} kullanır."
   },
   {
    "baslik": "make · do · take · have",
@@ -1587,13 +1424,7 @@
     "take: a photo, a break, a taxi, an exam",
     "have: breakfast, a good time, a shower"
    ],
-   "anlatim": "Sırada birlikte kullanılan kalıplar var. Make ile hata, karar, para ve arkadaş edinmek söylenir. Do ile ödev, alışveriş, iş ve iyilik yapmak söylenir. Take ile fotoğraf çekmek, mola vermek, taksiye binmek ve sınava girmek söylenir; bir şeyin ne kadar sürdüğünü de it takes ile anlatırız. Have ile kahvaltı yapmak, iyi vakit geçirmek ve duş almak söylenir.",
-   "goster": [
-    1,
-    2,
-    3,
-    4
-   ],
+   "anlatim": "Sırada birlikte kullanılan kalıplar var. {Make} ile hata, karar, para ve arkadaş: {make a mistake}, {a decision}, {money}, {friends}. {Do} ile ödev, alışveriş, iş ve iyilik: {do homework}, {the shopping}, {business}, {a favour}. {Take} ile fotoğraf, mola, taksi ve sınav: {take a photo}, {a break}, {a taxi}, {an exam}. {Have} ile kahvaltı, iyi vakit ve duş: {have breakfast}, {a good time}, {a shower}.",
    "ton": "canli",
    "bolum": "Kelime: make/do/take/have"
   },
@@ -1640,17 +1471,7 @@
      ]
     ]
    },
-   "anlatim": "Şimdi B1'de en çok çıkan deyimsel fiiller. Look for aramak, look after ise birine bakmak demektir. Give up bırakmak ya da vazgeçmektir. Find out bir şeyi öğrenmek, keşfetmektir. Turn down hem reddetmek hem de sesi kısmak anlamına gelir. Run out of bir şeyin tükenmesidir. Get on with biriyle iyi geçinmek demektir. Pick up birini arabayla almak, fill in ise form doldurmaktır. Son olarak break down arabanın bozulması, carry on ise devam etmektir.",
-   "goster": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8
-   ],
+   "anlatim": "Şimdi B1'de en çok çıkan deyimsel fiiller. {Look for} aramak, {look after} ise birine bakmak demektir. {Give up} bırakmak ya da vazgeçmektir. {Find out} öğrenmek, keşfetmektir. {Turn down} hem reddetmek hem de sesi kısmak demektir. {Run out of} tükenmek demektir. {Get on with} biriyle iyi geçinmektir. {Pick up} birini almak, {fill in} ise form doldurmaktır. Son olarak {break down} bozulmak, {carry on} ise devam etmektir.",
    "ton": "sakin",
    "bolum": "Kelime: phrasal verb'ler"
   },
@@ -1663,14 +1484,7 @@
     "Sıralama: first, then, finally",
     "Örnek: for example, such as"
    ],
-   "anlatim": "Konuşmada seni B1 gibi gösterecek bağlaçlar da var. Ekleme yaparken also ya da in addition de. Zıtlık için but, however ya da although kullan. Sebep ve sonuç için because, so ya da that's why. Sıralama yaparken first, then ve finally. Örnek verirken de for example ya da such as.",
-   "goster": [
-    1,
-    2,
-    3,
-    4,
-    5
-   ],
+   "anlatim": "Konuşmada seni B1 gibi gösterecek bağlaçlar da var. Ekleme için {also, in addition} ya da {as well}. Zıtlık için {but, however} ya da {although}. Sebep ve sonuç için {because, so} ya da {that's why}. Sıralama için {first, then} ve {finally}. Örnek verirken de {for example} ya da {such as}.",
    "ton": "canli",
    "bolum": "Kelime: bağlaçlar"
   },
@@ -1686,9 +1500,9 @@
     ],
     "dogru": 1,
     "bekle": 4,
-    "cevap_cumle": 2
+    "cevap_cumle": 3
    },
-   "anlatim": "Bir kelime sorusu daha. Boşluğa hangisi gelir? Doğru cevap B: missed. Treni, otobüsü kaçırmak için miss kullanılır."
+   "anlatim": "Bir kelime sorusu daha. {I} boşluk {the train, so I was late}. Seçenekler: A, {lost}; B, {missed}; C, {stole}. Doğru cevap B: {missed}. Treni ya da otobüsü kaçırmak için {miss} kullanılır."
   },
   {
    "baslik": "Okuma yöntemi",
@@ -1711,13 +1525,7 @@
      "metin": "Metin başına en fazla 6 dk"
     }
    ],
-   "anlatim": "Okuma bölümüne geçiyoruz. Yöntem basit. Önce soruları oku. Sonra metinde sadece cevabın olduğu yeri ara. Seçenekleri metindeki kelimeyle değil, anlamla eşleştir. Ve her metne en fazla altı dakika ver.",
-   "goster": [
-    2,
-    3,
-    4,
-    5
-   ],
+   "anlatim": "Okuma bölümüne geçiyoruz. Yöntem basit. Önce soruları oku. Sonra metinde cevabın yerini ara. Anlamı eşleştir, kelimeyi değil. Ve metin başına en fazla altı dakika ayır.",
    "ton": "sakin",
    "bolum": "Okuma"
   },
@@ -1733,9 +1541,9 @@
     ],
     "dogru": 1,
     "bekle": 4,
-    "cevap_cumle": 3
+    "cevap_cumle": 4
    },
-   "anlatim": "Rehberdeki ilk okuma parçası bir e-posta. Selin önce perşembeyi öneriyor, sonra fikrini değiştiriyor. Sence en sonunda hangi gün buluşuyorlar? Doğru cevap B: Friday. Tıpkı dinlemede olduğu gibi, düzeltmeden sonra gelen bilgi geçerlidir."
+   "anlatim": "Rehberdeki ilk okuma parçası bir e-posta. Selin önce perşembeyi öneriyor, sonra şöyle yazıyor: {Actually, what about Friday instead?} Soru: {When do they meet?} Seçenekler: A, {Thursday}; B, {Friday}; C, {Saturday}. Doğru cevap B: {Friday}. Düzeltmeden sonra gelen bilgi geçerlidir."
   },
   {
    "baslik": "Okuma 2: makale",
@@ -1751,7 +1559,7 @@
     "bekle": 4,
     "cevap_cumle": 4
    },
-   "anlatim": "İkinci parça evden çalışma üzerine bir makale. Metne göre en büyük avantaj yolda zaman kaybetmemek; ama çalışanların neredeyse yarısı haftada en az bir kez yalnız hissediyor. Kelime sorularında bağlama bak. Bu cümlede suit ne anlama geliyor? Doğru cevap A: uygun olmak. Takım elbise anlamı burada bir tuzak."
+   "anlatim": "İkinci parça evden çalışma üzerine bir makale: en büyük avantaj yolda zaman kaybetmemek, ama çalışanların neredeyse yarısı haftada en az bir kez yalnız hissediyor. Metinde şu cümle var: {it may not suit every job}. Soru: {Here, suit means}. Seçenekler: A, {be right for}; B, {wear}; C, {pay for}. Doğru cevap A: {be right for}, yani uygun olmak. Giymek anlamı burada bir tuzak."
   },
   {
    "baslik": "Okuma 3: duyuru",
@@ -1767,7 +1575,7 @@
     "bekle": 4,
     "cevap_cumle": 4
    },
-   "anlatim": "Üçüncü parça bir spor merkezi duyurusu ve mantık tuzakları içeriyor. Ücretsiz deneme dersi altı Aralık cumartesi. En az iki gün önceden kayıt gerekiyor. En geç hangi gün kayıt yaptırmalısın? Doğru cevap B: dört Aralık perşembe. At least two days before, en az iki gün önce demektir; cuma artık geç."
+   "anlatim": "Üçüncü parça bir spor merkezi duyurusu. Ücretsiz deneme dersi altı Aralık cumartesi ve duyuruda şöyle yazıyor: {Book at least two days before}. Soru: en geç hangi gün kayıt yaptırmalısın? Seçenekler: A, {Friday the 5th}; B, {Thursday the 4th}; C, {Saturday the 6th}. Doğru cevap B: {Thursday the 4th}, yani dört Aralık perşembe. En az iki gün önce demek, cuma artık geç demektir."
   },
   {
    "baslik": "Dinleme: telefonla çalış",
@@ -1794,14 +1602,7 @@
      "metin": "Metni oku, kaçırdığını bul"
     }
    ],
-   "anlatim": "Ses kaydın yoksa dinlemeyi telefonunla çalışabilirsin. iPhone'da erişilebilirlik ayarlarından Seçimi Seslendir özelliğini, Android'de ise Sesli Seç özelliğini aç ve İngilizce bir ses seç. Önce otuz saniye soruları oku. Sonra metni bir kez dinle ve cevapla. Emin olamadıkların için bir kez daha dinle. Ardından cevap anahtarına bak. En son metni okuyarak kaçırdığın yeri bul.",
-   "goster": [
-    2,
-    3,
-    4,
-    5,
-    6
-   ],
+   "anlatim": "Ses kaydın yoksa dinlemeyi telefonunla çalışabilirsin: {iPhone} ayarlarında Seçimi Seslendir, {Android} cihazlarda Sesli Seç özelliğini aç ve İngilizce bir ses seç. Önce otuz saniye soruları oku. Sonra bir kez dinle ve cevapla. Emin olamadığını tekrar dinle. Ardından cevap anahtarına bak. En son metni oku ve kaçırdığını bul.",
    "ton": "sakin",
    "bolum": "Dinleme"
   },
@@ -1836,14 +1637,7 @@
      ]
     ]
    },
-   "anlatim": "Rehberdeki dinleme metinleri tam da sınavdaki tuzaklarla dolu. Diş hekimi randevusunda adam salıyı reddediyor, randevu çarşamba. Önce dört elli diyor, sonra on buçukta karar kılıyor; geçerli olan son söylenendir. Rehber turunda süre önce iki saat, sonra sorry diyerek iki buçuk saat oluyor. Telefon numarasının sonu thirteen, yani on üç; otuz değil. Kırk pound'dan on beş pound indirim düşünce cevap yirmi beş pound oluyor.",
-   "goster": [
-    1,
-    2,
-    3,
-    4,
-    5
-   ],
+   "anlatim": "Rehberdeki dinleme metinleri sınavdaki tuzaklarla dolu. Diş hekimi randevusunda adam şöyle diyor: {Tuesday? Not great. Wednesday?} Yani randevu {Wednesday}, çarşamba. Saat için önce {four fifty} diyor, sonra {no, let's say ten thirty}; geçerli olan son söylenen, yani on buçuk. Turun süresi: {two hours, sorry, two and a half}; yani iki buçuk saat. Telefon numarasının sonu {six oh, thirteen}; yani on üç, otuz değil. {Forty pounds, fifteen pounds off}: kırk pound'dan on beş düşünce yirmi beş pound.",
    "ton": "canli"
   },
   {
@@ -1858,9 +1652,9 @@
     ],
     "dogru": 1,
     "bekle": 4,
-    "cevap_cumle": 3
+    "cevap_cumle": 4
    },
-   "anlatim": "Üçüncü dinleme iki arkadaşın sohbeti. Biletler altmış dolar, ama Mert kırk, belki kırk beş dolara bulabilirmiş. Mert'in biletleri en fazla kaç dolar olabilir? Doğru cevap B: kırk beş dolar. Soru en yüksek fiyatı soruyor, dikkat."
+   "anlatim": "Üçüncü dinleme iki arkadaşın sohbeti. Biletler altmış dolar, ama Mert şöyle diyor: {Forty, I think. Maybe forty-five.} Soru: {Highest possible price?} Seçenekler: A, kırk dolar; B, kırk beş dolar; C, altmış dolar. Doğru cevap B: kırk beş dolar. Soru en yüksek fiyatı soruyor, dikkat."
   },
   {
    "baslik": "Konuşma: model cevaplar",
@@ -1893,14 +1687,7 @@
      ]
     ]
    },
-   "anlatim": "Konuşma bölümünde rehberdeki model cevapları kendine göre doldur, deftere yaz ve telefona kaydederek kendi kelimelerinle söyle. Her cevap kırk beş ile altmış saniye sürsün. Kendini tanıtırken adını, nerede yaşadığını, işini ve hobilerini söyle. Neden İngilizce öğrendiğin sorulursa bir neden, bir örnek ve bir hedef ver. Geçmişi anlatırken Past Simple ve Past Continuous kullan. Gelecek planlarında going to ve if cümleleri kullan. Fikir sorularında görüşünü söyle, iki neden ver, karşı tarafı da kabul et ve sonuca bağla.",
-   "goster": [
-    2,
-    3,
-    4,
-    5,
-    6
-   ],
+   "anlatim": "Konuşma bölümünde rehberdeki model cevapları kendine göre doldur ve telefona kaydederek prova et; her cevap kırk beş ile altmış saniye sürsün. Kendini tanıtırken, yani {About yourself} sorusunda: {My name is}, {I work as}. Neden İngilizce, yani {Why English?} sorusunda: {I need it for my job}. Son tatil, {Last holiday}: {Last summer I went to}. Gelecek planları, {Future plans}: {Next year I'm going to}. Şehir mi köy mü, {City or country?} sorusunda {In my opinion} diye başla, iki neden ver ve sonuca bağla.",
    "ton": "canli",
    "bolum": "Konuşma"
   },
@@ -1940,15 +1727,7 @@
     ],
     "stil": "yanlis-dogru"
    },
-   "anlatim": "Türkçe konuşanların en sık yaptığı hatalara bakalım. I am agree değil, I agree. I am work değil, I work ya da I'm working. Meslekten önce a ya da an unutma: she is an engineer. Süre için since değil for: for three years. Eve gitmek I went home; to kullanılmaz. Şu anda demek istiyorsan actually değil currently de.",
-   "goster": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6
-   ],
+   "anlatim": "Türkçe konuşanların en sık yaptığı hatalara bakalım. {I am agree} değil, {I agree}. {I am work} değil, {I work} ya da {I'm working}. {She is engineer} değil, {she is an engineer}. {Since 3 years} değil, {for 3 years}. {I went to home} değil, {I went home}. Şu anda demek istiyorsan {Actually I live in} değil, {Currently I live in}.",
    "ton": "ciddi"
   },
   {
@@ -1958,18 +1737,10 @@
     "En az 2 bağlaç",
     "En az 2 farklı zaman",
     "Geçmişte V2: went",
-    "he works: -s'yi unutma",
+    "he works: s takısını unutma",
     "Sessizlik yok: Well… Let me think…"
    ],
-   "anlatim": "Kaydını dinlerken şu listeyle kendini puanla. Her cevap en az üç dört cümle mi? En az iki bağlaç kullandın mı? En az iki farklı zaman kullandın mı? Geçmiş olaylarda fiilin ikinci halini kullandın mı? Üçüncü tekil kişide fiile gelen s takısını unutmadın mı? Uzun sessizlik olursa Well ya da Let me think diyerek boşluğu doldur.",
-   "goster": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6
-   ],
+   "anlatim": "Kaydını dinlerken şu listeyle kendini puanla. Her cevap en az üç dört cümle mi? En az iki bağlaç kullandın mı? En az iki farklı zaman kullandın mı? Geçmişte fiilin ikinci halini kullandın mı, örneğin {went}? {He works} derken s takısını unutma. Sessizlik yok: takılırsan {Well, let me think} diyerek boşluğu doldur.",
    "ton": "sakin"
   },
   {
@@ -1993,12 +1764,7 @@
      "etiket": "B1 hedefindesin"
     }
    ],
-   "anlatim": "İkinci günün sonunda rehberdeki otuz soruluk deneme sınavını çöz. Süreyi yirmi beş dakikaya ayarla, gerçek sınavdaki gibi geri dönme ve boş bırakma. Yirmi ile yirmi altı arası doğru yaparsan B1 hedefindesin.",
-   "goster": [
-    0,
-    1,
-    2
-   ],
+   "anlatim": "İkinci günün sonunda rehberdeki otuz soruluk deneme sınavını çöz; sorular kolaydan zora gidiyor. Süreyi yirmi beş dakikaya ayarla, süre tut ve gerçek sınavdaki gibi geri dönme. Yirmi ve üstü doğru yaparsan B1 hedefindesin.",
    "bolum": "Deneme sınavı"
   },
   {
@@ -2028,13 +1794,7 @@
      ]
     ]
    },
-   "anlatim": "Puanını şöyle yorumla; bu resmi değil, kaba bir ölçüm. On iki ve altı A1 ile A2 demektir; temel zaman derslerini ve modalları bir kez daha çalış. On üç ile on dokuz arası A2 ile B1 sınırıdır; yanlış yaptığın konuların derslerini tekrar oku. Yirmi ile yirmi altı arası B1 demek; artık sınav tekniklerine ve konuşmaya odaklan. Yirmi yedi ve üstü B2'ye yakınsın; ilk sorularda dikkatli olman yeter.",
-   "goster": [
-    1,
-    2,
-    3,
-    4
-   ],
+   "anlatim": "Puanını şöyle yorumla; bu resmi değil, kaba bir ölçüm. Sıfır ile on iki arası A1 ile A2 demektir: G-A, G-B, G-D ve G-F derslerini tekrar çalış. On üç ile on dokuz arası A2 ile B1 sınırı: yanlış yaptığın konuları tekrar oku. Yirmi ile yirmi altı arası B1: tekniklere ve konuşmaya odaklan. Yirmi yedi ile otuz arası B1'in üstü: ilk sorularda dikkatli ol, yeter.",
    "ton": "sakin"
   },
   {
@@ -2049,9 +1809,9 @@
     ],
     "dogru": 1,
     "bekle": 4,
-    "cevap_cumle": 2
+    "cevap_cumle": 3
    },
-   "anlatim": "Denemeden zor bir soru. By the time ve geçmiş zaman görüyorsan ne gelir? Doğru cevap B: had already started. Önce film başladı, sonra biz vardık."
+   "anlatim": "Denemeden zor bir soru. {By the time we arrived, the film} boşluk. Seçenekler: A, {already started}; B, {had already started}; C, {has already started}. Doğru cevap B: {had already started}. Önce film başladı, sonra biz vardık."
   },
   {
    "baslik": "Denemeden: anons",
@@ -2065,9 +1825,9 @@
     ],
     "dogru": 1,
     "bekle": 4,
-    "cevap_cumle": 2
+    "cevap_cumle": 3
    },
-   "anlatim": "Ve son deneme sorusu bir anons. Tren saat kaçta kalkar? Doğru cevap B: dokuz elli beş. Forty kırk demektir; fourteen ile karıştırma."
+   "anlatim": "Ve son deneme sorusu bir anons: {The 9:15 train to Izmir has been delayed by forty minutes.} Soru: {When will it leave?} Seçenekler: A, dokuz kırk; B, dokuz elli beş; C, on on beş. Doğru cevap B: dokuz elli beş. {Forty} kırk demektir; {fourteen} ile karıştırma."
   },
   {
    "baslik": "Sınav günü",
@@ -2088,7 +1848,7 @@
     "tip": "not",
     "metin": "Amaç seni doğru sınıfa yerleştirmek. B1 sınırında çıkarsan danışmanla hangi seviyeden başlayacağını konuş."
    },
-   "anlatim": "Son olarak küçük ama önemli bir not. Bu teknikler gerçek bilgini en iyi şekilde göstermene yardım eder. Ama gerçek seviyenin çok üstüne yerleşirsen dersler seni zorlayabilir. B1 sınırında çıkarsan, hangi seviyeden başlamanın mantıklı olduğunu danışmanınla konuşmaktan çekinme.",
+   "anlatim": "Son olarak küçük ama önemli bir not. Amaç seni doğru sınıfa yerleştirmek. Bu teknikler gerçek bilgini en iyi şekilde göstermene yardım eder; ama gerçek seviyenin çok üstüne yerleşirsen dersler seni zorlayabilir. B1 sınırında çıkarsan, hangi seviyeden başlayacağını danışmanınla konuş.",
    "goster": [
     1
    ],
@@ -2104,14 +1864,7 @@
     "Düzeltmeden sonra geleni seç",
     "Konuşmada PREP ve bağlaçlar"
    ],
-   "anlatim": "Hepsini toparlayalım. İlk on soruya maksimum özen göster. Her soruda önce sinyal kelimeyi bul, uydurma yapıları hemen ele. On üç gramer dersini çalış ve her yanlışını hata listene yaz. Dinleme ve okumada düzeltmeden sonra geleni seç. Konuşmada PREP formülünü ve bağlaçları kullan. İki gün yeter; başarılar, sen bunu yaparsın!",
-   "goster": [
-    1,
-    2,
-    3,
-    4,
-    5
-   ],
+   "anlatim": "Hepsini toparlayalım. İlk on soruya maksimum özen göster. Her soruda önce sinyal kelimeyi bul, uydurma yapıları hemen ele. On üç gramer dersini çalış ve her yanlışını hata listene yaz. Dinleme ve okumada düzeltmeden sonra geleni seç. Konuşmada {PREP} formülünü ve bağlaçları kullan. İki gün yeter; başarılar, sen bunu yaparsın!",
    "ton": "sakin"
   }
  ]
