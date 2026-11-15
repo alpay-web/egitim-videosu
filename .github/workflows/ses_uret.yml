@@ -67,7 +67,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           sudo apt-get -qq install -y ffmpeg > /dev/null
-          mkdir -p sesler && mv parcalar/*.wav sesler/ && cat parcalar/log_*.txt > seslendirme.log || true
+          mkdir -p sesler && mv parcalar/*.wav sesler/ && (mv parcalar/*.json sesler/ 2>/dev/null || true) && cat parcalar/log_*.txt > seslendirme.log || true
           cat parcalar/kalite_*.txt > kalite_raporu.txt 2>/dev/null || touch kalite_raporu.txt
           ls sesler/*.wav | sort | sed "s/^/file '/; s/$/'/" > liste.txt
           ffmpeg -v error -f concat -safe 0 -i liste.txt -b:a 160k onizleme.mp3
