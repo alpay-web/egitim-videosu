@@ -9,6 +9,9 @@ Doküman → kapsam haritası → plan → senaryo → kapsam testi → storyboa
 GPU ve ücretli API gerekmez. Kod: https://github.com/alpay-web/egitim-videosu
 
 ## 0. Hazırlık
+Sürüm: `cat $R/VERSION` (değişiklikler `CHANGELOG.md`'de). Her push'ta `Test` işi (birim testleri + kısa video)
+çalışır; kırmızıysa önce onu düzelt. Senaryo hataları (yanlış tür, `goster` taşması, `cevap_cumle` dışı) her
+komutta render'dan önce yakalanır.
 ```bash
 [ -d /tmp/egitim-videosu ] || git clone --depth 1 https://github.com/alpay-web/egitim-videosu /tmp/egitim-videosu
 R=/tmp/egitim-videosu
@@ -16,8 +19,13 @@ pip install -q -r $R/requirements.txt 2>/dev/null || pip install -q --break-syst
 ```
 
 ## 1. Dokümanı anla → kapsam haritası
-docx: `pandoc dosya.docx -t markdown`, pdf: `pdftotext -layout`, Claude Doc: docs araçlarıyla oku.
-Başlık başlık kelime sayısını çıkar (tablo: bölüm · kelime · tür: kavram / tablo / liste / alıştırma / metin).
+```bash
+python $R/scripts/belge_oku.py belge.pdf -o belge.md     # PDF/Word/PowerPoint/Excel/HTML/EPUB → belge.md + belge_harita.md
+```
+Okuyucu sırası: markitdown (MIT) → pandoc → pdftotext. `belge_harita.md` her başlığın kelime sayısını, tablo
+sayısını ve sahne önerisini verir; taranmış PDF'i (sayfa başına çok az metin) uyarır — o zaman OCR iste, uydurma.
+Claude Doc / artifact linki: docs araçlarıyla oku, metni `.md` olarak kaydet ve aynı komutu çalıştır.
+Haritadaki **her satır** ya bir sahneye eşlenir ya da "dışarıda bırakıldı: neden" diye not edilir.
 Konuşma hızı ≈ 130 kelime/dk; tahmini anlatım süresi = içerik kelimesi ÷ 130 × 0.6 (özetleme payı).
 
 ## 2. Plan ve onay (pahalı adımlardan önce)
@@ -25,8 +33,8 @@ Konuşma hızı ≈ 130 kelime/dk; tahmini anlatım süresi = içerik kelimesi �
   YouTube bölüm (chapter) zaman damgaları ile gezinilir. Sıra: kanca + yol haritası → strateji → konu dersleri
   (her ders: kural sahnesi + "Kendini dene" sorusu) → kelime → okuma/dinleme/konuşma örnekleri → deneme → kapanış.
   Alıştırmaların hepsi okunmaz; her bloktan 1–2 temsili soru seçilir, gerisi için "rehberdeki alıştırmalar" denir.
-- Seri (5–8 dk'lık videolar) yalnızca kullanıcı isterse. Önceki videoların sesleri yeniden kullanılabilir:
-  `SS_CC.wav` dosyalarını yeni sahne numarasıyla kopyala, yalnızca yeni sahneleri seslendir.
+- Seri (5–8 dk'lık videolar) yalnızca kullanıcı isterse. Önceki seslendirmeler **otomatik** yeniden kullanılır
+  (aşağıda "Ses önbelleği").
 - Kullanıcıya kısa bir plan sun (bölümler, tahmini süre, sahne türleri) ve hiçbir başlığın sessizce atlanmadığını
   göster. Onay gelmeden seslendirmeye geçme (kullanıcı "devam et" dediyse doğrudan ilerle).
 
@@ -96,6 +104,16 @@ curl -X POST -H "Accept: application/vnd.github+json" -H "Content-Type: applicat
   -d '{"ref":"main","inputs":{"senaryo":"senaryolar/<ad>.json","etiket":"ses-<ad>","parcalar":"[\"1-3\",\"4-6\",\"7-9\",\"10-12\",\"13-15\"]"}}'
 curl -fsSL -o sesler.zip https://github.com/alpay-web/egitim-videosu/releases/download/ses-<ad>/sesler.zip && unzip -q sesler.zip -d sesler
 ```
+**Ses önbelleği (içerik adresli, manim-voiceover fikri):** her ses klasöründe `dizin.json` cümle → metin özeti
+eşlemesi tutar. Sahne eklemek/silmek/sırasını değiştirmek eski sesleri boşa çıkarmaz; metni değişen cümle ise asla
+eski sesle çalmaz. Akış:
+```bash
+python $R/scripts/video_uret.py senaryo.json --eksik --ses-dizini eski1,eski2   # hangi cümleler eksik? parcalar + --cumleler verir
+```
+Workflow'a `"taban":"ses-b1-tam-kurs,ses-<ad>"` girdisi ver: o release'lerde aynı metin varsa kopyalanır, yalnızca
+yeni/değişen cümleler sentezlenir. Render'da birden çok klasör verilebilir: `--ses-dizini sesler,eski_sesler`.
+Eski (dizin.json'suz) klasörü etiketlemek için: `--dizin-olustur KLASOR` (o klasörün bu senaryoya ait olduğundan eminsen).
+**Taslak:** seslendirmeyi beklemeden zamanlama/görsel kontrolü için `--ses sessiz` ile 720p taslak video çıkar.
 **B) Bu ortamda (yavaş, ~10 dk/1 dk video):** `python $R/scripts/video_uret.py senaryo.json --sadece-ses sesler --ses chatterbox --kalite 3`
 (arka planda çalıştır). `kalite_raporu.txt`'te puanı < 0.8 olan cümlelerde telaffuzu düzelt ve yalnızca onları
 `--cumleler 04_05,06_07` ile yeniden üret.

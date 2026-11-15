@@ -56,3 +56,10 @@ YouTube açıklamasında sesin yapay zekâ ile üretildiğini belirtmeniz öneri
 | 5 ölçütlü değerlendirme | TheoremExplainAgent (MIT) | Denetim adımında doğruluk/görsel ilgi/akış/yerleşim/tutarlılık puanı |
 | Sahne türleri, tekdüzelik kontrolü, senaryo kuralları | OpenMontage (AGPL — yalnızca fikir) | Rakam/karşılaştırma/ipucu/zaman, `cesitlilik_raporu` |
 | İmleç / etkin öğe | Paper2Video, Code2Video (MIT) | İşaretçi + vurgu |
+
+## Uzun süreli kullanım
+- **Sürüm:** `VERSION` + `CHANGELOG.md`; kararlı sürümler `v1.0.0` gibi etiketlenir.
+- **Test:** `python -m pytest tests` ve GitHub'daki `Test` işi (her push'ta ve ayda bir) paketin hâlâ çalıştığını doğrular.
+- **Belge okuma:** `scripts/belge_oku.py` — PDF, Word, PowerPoint, Excel, HTML, EPUB.
+- **Ses önbelleği:** aynı cümle bir kez seslendirilir; `dizin.json` + workflow `taban` girdisi.
+- **Taslak:** `--ses sessiz` ile seslendirme beklemeden görsel/zamanlama kontrolü.

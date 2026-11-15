@@ -586,6 +586,19 @@ class EdgeSes:
         os.replace(mp3, yol)
 
 
+class SessizSes:
+    """Taslak/önizleme için: konuşma süresi kadar sessizlik (kelime başına ~0,43 sn). Seslendirme beklemeden
+    zamanlamayı ve görselleri kontrol etmeye yarar; testlerde de kullanılır."""
+    def __init__(self):
+        log("  Ses: sessiz taslak (önizleme)")
+
+    def sentezle(self, metin, yol):
+        n = int(SR * (0.3 + len(metin.split()) / 2.3))
+        with wave.open(str(yol), "wb") as wf:
+            wf.setnchannels(1); wf.setsampwidth(2); wf.setframerate(SR)
+            wf.writeframes(np.zeros(n, np.int16).tobytes())
+
+
 class EspeakSes:
     def __init__(self):
         self.cli = shutil.which("espeak-ng") or shutil.which("espeak")
@@ -1380,7 +1393,8 @@ def main():
     ap = argparse.ArgumentParser(description="Senaryodan animasyonlu eğitim videosu (ücretsiz/açık kaynak).")
     ap.add_argument("senaryo")
     ap.add_argument("-o", "--cikti", default="egitim_videosu.mp4")
-    ap.add_argument("--ses", choices=["chatterbox", "piper", "edge", "espeak"], default="chatterbox")
+    ap.add_argument("--ses", choices=["chatterbox", "piper", "edge", "espeak", "sessiz"], default="chatterbox",
+                    help="sessiz = seslendirmesiz hızlı taslak (zamanlama ve görsel kontrolü)")
     ap.add_argument("--referans", help="chatterbox için referans ses dosyası (wav/mp3, 10-20 sn)")
     ap.add_argument("--abarti", type=float, default=0.5, help="chatterbox duygu/vurgu (0.25-0.7)")
     ap.add_argument("--cfg", type=float, default=0.5, help="chatterbox tempo/sadakat (düşük = daha sakin)")
@@ -1514,7 +1528,7 @@ def main():
             _motor.append(PiperSes(args.piper_ses, args.model_dizini, args.hiz) if args.ses == "piper"
                           else EdgeSes(args.edge_ses, args.hiz) if args.ses == "edge"
                           else ChatterboxSes(args.referans, args.model_dizini, args.hiz, args.abarti, args.cfg)
-                          if args.ses == "chatterbox" else EspeakSes())
+                          if args.ses == "chatterbox" else SessizSes() if args.ses == "sessiz" else EspeakSes())
         return _motor[0]
     if args.sadece_ses:
         hedef = Path(args.sadece_ses); hedef.mkdir(parents=True, exist_ok=True)
@@ -1675,10 +1689,12 @@ def main():
                          capture_output=True, text=True).stderr
     try:
         m = json.loads(olc[olc.rindex("{"):olc.rindex("}") + 1])
+        if not all(math.isfinite(float(m[x])) for x in ("input_i", "input_tp", "target_offset")):
+            raise ValueError("sessiz ses")             # tamamen sessiz taslak: ölçüm yapılamaz
         ln = (f"loudnorm=I=-16:TP=-1.5:LRA=11:measured_I={m['input_i']}:measured_TP={m['input_tp']}:"
               f"measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true")
     except Exception:
-        ln = "loudnorm=I=-16:TP=-1.5:LRA=11"
+        ln = "loudnorm=I=-16:TP=-1.5:LRA=11" if "input_i" in olc and "-inf" not in olc else "anull"
     subprocess.run([ffmpeg_bin(), "-v", "error", "-y", "-i", str(ham), "-af", zincir + "," + ln,
                     "-ar", "48000", "-ac", "2", str(son_ses)], check=True)
 

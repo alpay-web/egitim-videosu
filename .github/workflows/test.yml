@@ -1,0 +1,37 @@
+name: Test
+# Her değişiklikte paketin çalıştığını doğrular: birim testleri, senaryo kontrolleri, kısa bir video ve belge okuma.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 4 1 * *"   # ayda bir: bağımlılıklar güncellenince bozulma olursa haber verir
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Kurulum
+        run: |
+          sudo apt-get -qq update && sudo apt-get -qq install -y ffmpeg espeak-ng pandoc poppler-utils fonts-dejavu > /dev/null
+          pip install -q -r requirements.txt pytest
+      - name: Birim testleri
+        run: python -m pytest -q tests
+      - name: Senaryo kontrolleri
+        run: for f in senaryolar/*.json ornek/*.json; do python scripts/video_uret.py "$f" --kontrol; done
+      - name: Duman testi (2 sahne, espeak sesi, 720p)
+        run: |
+          python scripts/video_uret.py ornek/senaryo_b1.json --sahne 1-2 --ses espeak --cozunurluk 720 -o /tmp/t.mp4
+          python scripts/kalite_raporu.py /tmp/t.mp4
+          test -s /tmp/t.srt && test -s /tmp/t_youtube.txt && test -s /tmp/t_kapak.jpg
+      - name: Belge okuma
+        run: |
+          printf '# Deneme\n\n## Bölüm 1\n\nPresent perfect deneyimleri anlatır. %.0s' {1..20} > /tmp/b.md
+          pandoc /tmp/b.md -o /tmp/b.docx && python scripts/belge_oku.py /tmp/b.docx -o /tmp/b_cikti.md
+          grep -q "Bölüm 1" /tmp/b_cikti_harita.md
