@@ -1,0 +1,38 @@
+name: Sesleri temizle (DeepFilterNet)
+# Bir ses release'indeki tüm cümle seslerini DeepFilterNet3 ile temizleyip "<etiket>-temiz" olarak yayınlar.
+on:
+  workflow_dispatch:
+    inputs:
+      etiket:
+        description: "Temizlenecek ses release etiketi"
+        required: true
+      sinir:
+        description: "En fazla bastırma (dB)"
+        default: "30"
+permissions:
+  contents: write
+jobs:
+  temizle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: DeepFilterNet kur
+        run: |
+          python -m venv /tmp/df
+          /tmp/df/bin/pip install -q torch==2.1.2 torchaudio==2.1.2 --index-url https://download.pytorch.org/whl/cpu
+          /tmp/df/bin/pip install -q deepfilternet==0.5.6 soundfile "numpy<2"
+      - name: İndir, temizle, yayınla
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -eo pipefail
+          gh release download "${{ inputs.etiket }}" -p 'sesler.zip' -R "${{ github.repository }}"
+          mkdir sesler && unzip -q sesler.zip -d sesler && rm sesler.zip
+          /tmp/df/bin/python scripts/ses_temizle.py sesler --sinir "${{ inputs.sinir }}"
+          (cd sesler && zip -q -r ../sesler.zip .)
+          gh release create "${{ inputs.etiket }}-temiz" sesler.zip --prerelease -R "${{ github.repository }}" \
+            --title "Temizlenmiş ses: ${{ inputs.etiket }}" --notes "DeepFilterNet3, en fazla ${{ inputs.sinir }} dB bastırma."
