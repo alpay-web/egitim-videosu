@@ -72,9 +72,12 @@ Konuşma hızı ≈ 130 kelime/dk; tahmini anlatım süresi = içerik kelimesi �
   etiketi de, soru ve seçenekler de anlatımda geçmeli. Her öğeye ayrı bir cümle ayır (madde temposu). `--kontrol`
   "okunmuyor" uyarısı verirse anlatımı düzelt. `goster` yazma: video her öğeyi onu okuyan cümlede, o kelime
   söylenirken açar (`oto_goster`); ardışık iki öğe arasında en az 1,2 sn olur.
-- **İngilizce `{süslü parantez}` içinde (zorunlu):** "{had better}", "{I'm late, aren't I?}". Parantez içi Chatterbox'ta
-  İngilizce (en) üretilir, dışı Türkçe; aynı referans ses, seviyeler eşitlenir (Chatterbox tek çağrıda dil
-  değiştiremiyor: resemble-ai/chatterbox#346). İngilizce kelimeye Türkçe ek koyma ("{had better}'dan" değil,
+- **İngilizce `{süslü parantez}` içinde (zorunlu):** "{had better}", "{I'm late, aren't I?}". Chatterbox tek çağrıda
+  dil değiştiremiyor (resemble-ai/chatterbox#346) ve parça parça birleştirmek kopuk duyuluyor. Bu yüzden:
+  kısa terimler (≤3 kelime ya da Türkçeye yapışık) Türkçe cümlenin İÇİNDE, CMU sözlüğünden çıkarılan İngilizce
+  okunuşla ("had better" → "hed betır") tek seferde okunur; ≥4 kelimelik ve noktalamayla ayrılmış örnek cümleler
+  ayrı İngilizce (en) üretilir, önüne/arkasına virgül uzunluğunda duraklama konur. İngilizce örnek cümleleri
+  ":" ile ayır ki alıntı gibi okunsun. İngilizce kelimeye Türkçe ek koyma ("{had better}'dan" değil,
   "{had better} kalıbından"). Taslağı otomatik işaretlemek için `--ingilizce-isaretle` (wordfreq), sonra gözden geçir:
   Türkçe "not", "on" gibi kelimeler yanlış işaretlenebilir; tek başına "{at}", "{I am}" gibi kısa öbekleri elle ekle.
 - `goster`: her öğenin hangi cümlede (0'dan) açılacağı; o an işaretçi öğeye kayar (`--tik` verilirse hafif tık sesi).

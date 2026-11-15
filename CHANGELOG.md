@@ -2,6 +2,13 @@
 
 Sürümleme: `ANA.ARA.YAMA` — ANA: senaryo biçimi geriye uyumsuz değişirse; ARA: yeni özellik; YAMA: düzeltme.
 
+## 1.2.0 — 2026-11-15
+- **Doğal dil geçişi:** kısa İngilizce terimler Türkçe cümle içinde İngilizce okunuşla (CMU Pronouncing Dictionary,
+  BSD → Türk harfleri); yalnızca ≥4 kelimelik örnek cümleler ayrı İngilizce ve 0,28 sn duraklamayla. Parça parça
+  birleştirmenin kopukluğu giderildi.
+- İşaretçi satırlar arasında 0,9 sn yumuşak (ease-in-out) kayıyor; madde belirmesi 0,6 sn.
+- İngilizce parçalar kendi dilinde Whisper ile denetleniyor (5 denemeye kadar).
+
 ## 1.1.0 — 2026-11-15
 **İngilizce doğru okunuyor:** anlatımdaki `{İngilizce}` parçalar Chatterbox'ta İngilizce (en), geri kalanı Türkçe
 üretilip aynı referans sesle birleştiriliyor (kod geçişi). `--ingilizce-isaretle` taslağı otomatik işaretler.
