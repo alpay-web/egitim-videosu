@@ -45,7 +45,7 @@ jobs:
         run: |
           sudo apt-get -qq install -y ffmpeg > /dev/null
           pip install -q -r requirements.txt
-          if [ "${{ inputs.motor }}" = "chatterbox" ]; then pip install -q chatterbox-tts==0.1.7; fi
+          if [ "${{ inputs.motor }}" = "chatterbox" ]; then pip install -q chatterbox-tts==0.1.7 piper-tts==1.8.0; fi
           if [ "${{ inputs.kalite }}" != "0" ]; then pip install -q faster-whisper==1.2.1; fi
       - name: Önbellek (önceki sesler)
         env:
@@ -60,11 +60,13 @@ jobs:
           echo "TABAN=${TABAN#,}" >> "$GITHUB_ENV"
       - name: Seslendir
         run: |
+          set -o pipefail
           python scripts/video_uret.py "${{ inputs.senaryo }}" --sadece-ses sesler --ses "${{ inputs.motor }}" \
             --sahne "${{ matrix.sahne }}" --kalite "${{ inputs.kalite }}" ${TABAN:+--taban-ses "$TABAN"} ${{ inputs.ekstra }} 2>&1 | grep -v -E "it/s\]|s/it\]" | tee "log_${{ matrix.sahne }}.txt"
           cp "log_${{ matrix.sahne }}.txt" sesler/
           mv sesler/kalite_raporu.txt "sesler/kalite_${{ matrix.sahne }}.txt" 2>/dev/null || true
           mv sesler/dizin.json "sesler/dizin_${{ matrix.sahne }}.json" 2>/dev/null || true
+          cp ~/.egitim_video/sesler/referans_fahrettin.wav sesler/_referans.wav 2>/dev/null || true
       - uses: actions/upload-artifact@v4
         with:
           name: sesler-${{ matrix.sahne }}
@@ -82,13 +84,15 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           sudo apt-get -qq install -y ffmpeg > /dev/null
-          mkdir -p sesler && mv parcalar/*.wav sesler/ && cat parcalar/log_*.txt > seslendirme.log || true
+          mkdir -p sesler && mv parcalar/[0-9]*.wav sesler/ && (mv parcalar/_referans.wav sesler/ 2>/dev/null || true) && cat parcalar/log_*.txt > seslendirme.log || true
           python3 -c "import json,glob,os,shutil; d={}
           [d.update(json.load(open(f))) for f in glob.glob('parcalar/**/dizin*.json', recursive=True)]
           json.dump(d, open('sesler/dizin.json','w'), ensure_ascii=False)
           [shutil.move(f, 'sesler/') for f in glob.glob('parcalar/[0-9]*.json')]"
-          cat parcalar/kalite_*.txt > kalite_raporu.txt 2>/dev/null || touch kalite_raporu.txt
-          ls sesler/*.wav | sort | sed "s/^/file '/; s/$/'/" > liste.txt
+          cat parcalar/kalite_*.txt > kalite_raporu.txt 2>/dev/null || true
+          [ -s kalite_raporu.txt ] || echo "(kalite kapısı kapalı ya da tüm cümleler önbellekten geldi)" > kalite_raporu.txt
+          [ -s seslendirme.log ] || echo "(log yok)" > seslendirme.log
+          ls sesler/[0-9]*.wav | sort | sed "s/^/file '/; s/$/'/" > liste.txt
           ffmpeg -v error -f concat -safe 0 -i liste.txt -b:a 160k onizleme.mp3
           cd sesler && zip -q -r ../sesler.zip . && cd ..
           gh release delete "${{ inputs.etiket }}" --yes --cleanup-tag --repo "$GITHUB_REPOSITORY" || true

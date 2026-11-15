@@ -524,6 +524,9 @@ class ChatterboxSes:
         import torch
         torch.set_num_threads(max(1, os.cpu_count() or 1))
         from chatterbox.mtl_tts import ChatterboxMultilingualTTS
+        sabit = Path(__file__).resolve().parents[1] / "ses" / "referans_fahrettin.wav"
+        if not referans and sabit.exists():      # repodaki sabit referans: ses kimliği yıllarca aynı kalır
+            referans = sabit
         if not referans:
             referans = Path(dizin) / "referans_fahrettin.wav"
             if not referans.exists():
