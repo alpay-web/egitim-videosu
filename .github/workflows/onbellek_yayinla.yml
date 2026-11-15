@@ -1,0 +1,28 @@
+name: Ses önbelleğini release yap
+# Claude oturumu release oluşturamaz; büyük ses arşivini geçici bir dala parça parça iter, bu iş release'e çevirir.
+on:
+  workflow_dispatch:
+    inputs:
+      dal:
+        description: "Parçaların olduğu geçici dal"
+        default: "gecici-ses"
+      etiket:
+        description: "Oluşturulacak release etiketi"
+        default: "ses-onbellek"
+permissions:
+  contents: write
+jobs:
+  yayinla:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.dal }}
+      - name: Birleştir ve yayınla
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cat parca_* > sesler.zip && unzip -tq sesler.zip
+          gh release create "${{ inputs.etiket }}" sesler.zip --prerelease -R "${{ github.repository }}" \
+            --title "Ses önbelleği: ${{ inputs.etiket }}" --notes "Cümle sesleri + dizin.json (içerik anahtarları). ses_uret.yml 'taban' girdisiyle yeniden kullanılır."
+          git push origin --delete "${{ inputs.dal }}"

@@ -149,6 +149,107 @@ def sahne_ogeleri(sh):
             }.get(tur, lambda: sh.get("maddeler", []))()
 
 
+# ================================================================ ses önbelleği (içerik adresli)
+# manim-voiceover'ın yaklaşımı: ses dosyası, seslendirilen metnin özetiyle (hash) eşlenir. Sahne eklemek,
+# silmek ya da sırasını değiştirmek eski sesleri boşa çıkarmaz; değişen cümle de asla eski sesle çalmaz.
+def ses_anahtari(metin_tts, ton):
+    import hashlib
+    veri = json.dumps({"m": metin_tts, "t": ton}, ensure_ascii=False, sort_keys=True)
+    return hashlib.sha1(veri.encode("utf-8")).hexdigest()[:12]
+
+
+def dizin_oku(d):
+    f = Path(d) / "dizin.json"
+    try:
+        return json.loads(f.read_text(encoding="utf-8")) if f.exists() else None
+    except Exception:
+        return None
+
+
+class SesDeposu:
+    """Bir ya da daha çok ses klasöründe (virgülle) cümle sesini bulur: önce anahtar (içerik), sonra eski usul
+    SS_CC adı — o klasörün dizin.json'ı bu ada farklı bir metin yazmışsa eski ses KULLANILMAZ."""
+
+    def __init__(self, klasorler, ad_ile=True):
+        self.ad_ile = ad_ile                  # False: yalnızca içerik anahtarı (önbellek için güvenli)
+        self.klasorler = [Path(k) for k in str(klasorler or "").split(",") if k]
+        self.anahtar = {}; self.dizinler = {}
+        for k in self.klasorler:
+            dz = dizin_oku(k); self.dizinler[k] = dz
+            for ad, bilgi in (dz or {}).items():
+                y = k / f"{ad}.wav"
+                if y.exists():
+                    self.anahtar.setdefault(bilgi["anahtar"], y)
+
+    def bul(self, ad, anahtar):
+        if anahtar in self.anahtar:
+            return self.anahtar[anahtar]
+        for k in (self.klasorler if self.ad_ile else []):
+            dz = self.dizinler[k]
+            if dz is not None and ad in dz and dz[ad]["anahtar"] != anahtar:
+                continue                      # metin değişmiş: eski ses bu cümleye ait değil
+            if dz is not None and ad not in dz:
+                continue
+            for uz in (".wav", ".mp3", ".flac", ".ogg"):
+                if (k / f"{ad}{uz}").exists():
+                    return k / f"{ad}{uz}"
+        return None
+
+
+# ================================================================ senaryo doğrulama
+TURLER = {"maddeler", "tablo", "soru", "rakam", "karsilastirma", "ipucu", "zaman"}
+
+
+def senaryo_dogrula(sen):
+    """Yazım hatalarını render'dan ÖNCE yakalar (saatlerce süren üretim boşa gitmesin)."""
+    h = []
+    sah = sen.get("sahneler")
+    if not isinstance(sah, list) or not sah:
+        return ["'sahneler' listesi yok ya da boş"]
+    for i, sh in enumerate(sah, 1):
+        yer = f"sahne {i} «{sh.get('baslik', '?')}»"
+        tur = sh.get("tur", "maddeler")
+        if tur not in TURLER:
+            h.append(f"{yer}: bilinmeyen tur '{tur}' (geçerli: {', '.join(sorted(TURLER))})"); continue
+        if not sh.get("baslik"):
+            h.append(f"{yer}: 'baslik' yok")
+        if not str(sh.get("anlatim", "")).strip():
+            h.append(f"{yer}: 'anlatim' boş"); continue
+        nc = len(cumlelere_bol(sh["anlatim"]))
+        try:
+            if tur == "tablo":
+                assert sh["tablo"]["satirlar"], "tablo.satirlar boş"
+            elif tur == "soru":
+                q = sh["soru"]
+                assert q.get("metin") and len(q.get("secenekler", [])) >= 2, "soru.metin ve en az 2 seçenek gerekli"
+                assert 0 <= q["dogru"] < len(q["secenekler"]), "soru.dogru seçenek sırası dışında"
+                cc = q.get("cevap_cumle", -1)
+                assert -1 <= cc < nc, f"soru.cevap_cumle={cc} ama anlatımda {nc} cümle var"
+            elif tur == "rakam":
+                assert 1 <= len(sh["kartlar"]) <= 3, "kartlar 1-3 adet olmalı"
+            elif tur == "karsilastirma":
+                assert sh["sol"].get("baslik") and sh["sag"].get("baslik"), "sol/sag başlığı gerekli"
+                assert all(len(r) == 2 for r in sh["satirlar"]), "her satır [sol, sağ] olmalı"
+            elif tur == "ipucu":
+                assert sh["ipucu"].get("metin"), "ipucu.metin gerekli"
+            elif tur == "zaman":
+                assert sh["adimlar"] and all("baslik" in a for a in sh["adimlar"]), "adimlar[].baslik gerekli"
+        except (KeyError, TypeError, AssertionError) as e:
+            h.append(f"{yer}: {e if isinstance(e, AssertionError) else 'eksik alan ' + str(e)}"); continue
+        g = sh.get("goster") or []
+        n_oge = len(sahne_ogeleri(sh))
+        if len(g) > n_oge and tur != "ipucu":
+            h.append(f"{yer}: goster {len(g)} öğe veriyor ama sahnede {n_oge} öğe var")
+        for x in g:
+            try:
+                ci = int(float(str(x).split(":")[0]))
+            except ValueError:
+                h.append(f"{yer}: goster değeri anlaşılmadı: {x!r}"); continue
+            if not 0 <= ci < nc:
+                h.append(f"{yer}: goster {x!r} → anlatımda {nc} cümle var (0–{nc - 1})")
+    return h
+
+
 def oge_metni(sh, j):
     """j. görsel öğenin metni (kelime senkronu için çapa aranır)."""
     tur = sh.get("tur", "maddeler")
@@ -1283,12 +1384,12 @@ def main():
     ap.add_argument("--referans", help="chatterbox için referans ses dosyası (wav/mp3, 10-20 sn)")
     ap.add_argument("--abarti", type=float, default=0.5, help="chatterbox duygu/vurgu (0.25-0.7)")
     ap.add_argument("--cfg", type=float, default=0.5, help="chatterbox tempo/sadakat (düşük = daha sakin)")
-    ap.add_argument("--ses-dizini", help="hazır cümle sesleri (SS_CC.mp3/wav) bu klasörden alınır")
+    ap.add_argument("--ses-dizini", help="hazır cümle sesleri; virgülle birden çok klasör. Önce içerik anahtarıyla (dizin.json), sonra SS_CC adıyla aranır")
     ap.add_argument("--sadece-ses", metavar="KLASOR", help="video üretmeden sadece cümle seslerini bu klasöre yaz")
     ap.add_argument("--kalite", type=int, default=0, help="Whisper kalite kapısı: cümle başına en fazla N deneme")
     ap.add_argument("--esik", type=float, default=0.9, help="kalite kapısı kabul eşiği (0-1)")
     ap.add_argument("--cumleler", help="sadece bu cümleleri üret, ör. 02_03,05_00")
-    ap.add_argument("--taban-ses", help="--sadece-ses ile: önce bu klasördeki mevcut sesleri kopyala")
+    ap.add_argument("--taban-ses", help="--sadece-ses ile: bu klasör(ler)de aynı metnin sesi varsa yeniden üretmeden kopyala (önbellek)")
     ap.add_argument("--karakter", default="cizim",
                     help="karakter JSON'u (yanında aynı adlı .png) ya da 'cizim'")
     ap.add_argument("--piper-ses", default="fahrettin", choices=list(PIPER_SESLER))
@@ -1303,6 +1404,8 @@ def main():
                     help="öğeleri cümle başında aç (varsayılan: öğenin anahtar kelimesi söylenirken)")
     ap.add_argument("--giris-yok", action="store_true", help="boş tahtada otomatik giriş yazısını kapat")
     ap.add_argument("--temizleme-yok", action="store_true", help="cümle başı/sonu nefes-hışırtı temizliğini kapat")
+    ap.add_argument("--eksik", action="store_true", help="--ses-dizini'nde sesi olmayan cümleleri ve seslendirme parametrelerini yaz")
+    ap.add_argument("--dizin-olustur", metavar="KLASOR", help="eski ses klasörüne bu senaryoya göre dizin.json yaz (göç)")
     ap.add_argument("--tik", action="store_true", help="madde belirirken hafif 'tık' sesi (varsayılan kapalı; konuşma üstünde sürtme gibi duyulabiliyor)")
     ap.add_argument("--storyboard", metavar="PNG", help="ses/video üretmeden her sahnenin son halini tek görselde göster")
     ap.add_argument("--kontrol", action="store_true", help="sadece senaryo çeşitlilik/uzunluk kontrolü yap")
@@ -1330,6 +1433,9 @@ def main():
     intro = 0 if args.intro_outro_yok else INTRO_SN
     outro = 0 if args.intro_outro_yok else OUTRO_SN
 
+    hatalar = senaryo_dogrula(sen)
+    if hatalar:
+        sys.exit("Senaryo hataları:\n  " + "\n  ".join(hatalar))
     for u in cesitlilik_raporu(sahneler):
         log("  ⚠ " + u)
     if args.kontrol:
@@ -1340,12 +1446,14 @@ def main():
             for u in S0.uyari:
                 log(f"  ⚠ yerleşim · sahne {ilk + si} «{sh.get('baslik', '')}»: {u}"); sorun += 1
         # senkron raporu: gerçek ses varsa onun süreleri, yoksa tahmin (~2.3 kelime/sn)
+        depo0 = SesDeposu(args.ses_dizini) if args.ses_dizini else None
         sureler = []
         for si, sh in enumerate(sahneler):
             cs = []
             for ci, c in enumerate(cumlelere_bol(sh.get("anlatim", ""))):
-                y_ = Path(args.ses_dizini or "/yok") / f"{ilk + si:02d}_{ci:02d}.wav"
-                if y_.exists():
+                y_ = depo0.bul(f"{ilk + si:02d}_{ci:02d}",
+                               ses_anahtari(seslendirme_metni(c, telaffuz, kok), sh.get("ton"))) if depo0 else None
+                if y_:
                     cs.append(len(klip_temizle(oku_24k(y_))[0]) / SR)
                 else:
                     cs.append(len(temiz(c).split()) / 2.3 + 0.3)
@@ -1369,21 +1477,49 @@ def main():
             sb.paste(im0, ((i % sut) * 640, (i // sut) * 360))
         sb.save(args.storyboard); log(f"Storyboard: {args.storyboard}"); return
 
+    if args.dizin_olustur:   # eski usul (dizin.json'suz) ses klasörünü bu senaryoya göre etiketle
+        d_ = Path(args.dizin_olustur); dz = dizin_oku(d_) or {}; n_ = 0
+        for si, sh in enumerate(sahneler):
+            for ci, c in enumerate(cumlelere_bol(sh["anlatim"])):
+                ad = f"{ilk + si:02d}_{ci:02d}"
+                if (d_ / f"{ad}.wav").exists():
+                    dz[ad] = {"anahtar": ses_anahtari(seslendirme_metni(c, telaffuz, kok), sh.get("ton")), "metin": c}; n_ += 1
+        (d_ / "dizin.json").write_text(json.dumps(dz, ensure_ascii=False, indent=0), encoding="utf-8")
+        log(f"dizin.json yazıldı: {n_} cümle → {d_}"); return
+    if args.eksik:           # hangi cümlelerin sesi yok? → seslendirme için hazır parametreler
+        depo = SesDeposu(args.ses_dizini); eksik = []; sahne_eksik = set()
+        for si, sh in enumerate(sahneler):
+            for ci, c in enumerate(cumlelere_bol(sh["anlatim"])):
+                ad = f"{ilk + si:02d}_{ci:02d}"
+                if not depo.bul(ad, ses_anahtari(seslendirme_metni(c, telaffuz, kok), sh.get("ton"))):
+                    eksik.append(ad); sahne_eksik.add(ilk + si)
+        if not eksik:
+            log("Tüm cümlelerin sesi hazır ✔"); return
+        ss = sorted(sahne_eksik); gr = []
+        for x in ss:
+            if gr and x == gr[-1][1] + 1 and x - gr[-1][0] < 3:
+                gr[-1][1] = x
+            else:
+                gr.append([x, x])
+        log(f"{len(eksik)} cümlenin sesi yok ({len(ss)} sahne).")
+        log("parcalar = " + json.dumps([f"{a}-{b}" for a, b in gr]))
+        log("ekstra  += --cumleler " + ",".join(eksik)); return
+
     tmp = Path(tempfile.mkdtemp(prefix="egitim_video_"))
     log("[1/4] Seslendirme...")
-    motor = None
-    if not args.ses_dizini:
-        motor = (PiperSes(args.piper_ses, args.model_dizini, args.hiz) if args.ses == "piper"
-                 else EdgeSes(args.edge_ses, args.hiz) if args.ses == "edge"
-                 else ChatterboxSes(args.referans, args.model_dizini, args.hiz, args.abarti, args.cfg)
-                 if args.ses == "chatterbox"
-                 else EspeakSes())
+    _motor = []
+
+    def motor_al():          # ses motoru yalnızca gerçekten sentez gerekince yüklenir
+        if not _motor:
+            _motor.append(PiperSes(args.piper_ses, args.model_dizini, args.hiz) if args.ses == "piper"
+                          else EdgeSes(args.edge_ses, args.hiz) if args.ses == "edge"
+                          else ChatterboxSes(args.referans, args.model_dizini, args.hiz, args.abarti, args.cfg)
+                          if args.ses == "chatterbox" else EspeakSes())
+        return _motor[0]
     if args.sadece_ses:
         hedef = Path(args.sadece_ses); hedef.mkdir(parents=True, exist_ok=True)
-        if args.taban_ses:
-            for f in Path(args.taban_ses).glob("*.wav"):
-                if not (hedef / f.name).exists():
-                    shutil.copy(f, hedef / f.name)
+        taban = SesDeposu(args.taban_ses, ad_ile=False) if args.taban_ses else None
+        dizin = dizin_oku(hedef) or {}
         secili = set(args.cumleler.split(",")) if args.cumleler else None
         den = Denetci() if args.kalite else None
         rapor = []
@@ -1393,7 +1529,17 @@ def main():
                 if secili is not None and ad not in secili:
                     continue
                 yol = hedef / f"{ad}.wav"
+                anahtar = ses_anahtari(seslendirme_metni(c, telaffuz, kok), sh.get("ton"))
+                eski = taban.bul(ad, anahtar) if (taban and secili is None) else None
+                if eski:                                   # aynı metin daha önce seslendirilmiş: kopyala
+                    if Path(eski).resolve() != yol.resolve():
+                        shutil.copy(eski, yol)
+                        if Path(eski).with_suffix(".json").exists():
+                            shutil.copy(Path(eski).with_suffix(".json"), yol.with_suffix(".json"))
+                    dizin[ad] = {"anahtar": anahtar, "metin": c}
+                    log(f"   {ad}: önbellekten"); continue
                 en_iyi = None
+                motor = motor_al()
                 for deneme in range(max(1, args.kalite)):
                     aday = hedef / f"{ad}.aday{deneme}.wav"
                     if hasattr(motor, "ton"):
@@ -1414,14 +1560,17 @@ def main():
                     os.replace(kz, yol.with_suffix(".json"))
                 for f in list(hedef.glob(f"{ad}.aday*.wav")) + list(hedef.glob(f"{ad}.aday*.json")):
                     f.unlink()
+                dizin[ad] = {"anahtar": anahtar, "metin": c}
                 rapor.append(f"{ad}\t{en_iyi[0]:.2f}\t{c}\t|\t{en_iyi[2]}")
                 log(f"   {yol.name}: {c[:60]}")
         (hedef / "kalite_raporu.txt").write_text("\n".join(rapor), encoding="utf-8")
+        (hedef / "dizin.json").write_text(json.dumps(dizin, ensure_ascii=False, indent=0), encoding="utf-8")
         log("TAMAM ✔ sesler: " + str(hedef))
         return
 
     parcalar = [np.zeros(int(intro * SR), np.float32)]
     t = intro; zc = []; kelime_z = {}
+    depo = SesDeposu(args.ses_dizini) if args.ses_dizini else None
     for si, sh in enumerate(sahneler):
         bas = t; cz = []
         for ci, c in enumerate(cumlelere_bol(sh["anlatim"])):
@@ -1431,13 +1580,13 @@ def main():
                 parcalar.append(np.zeros(int(bek * SR), np.float32)); t += bek
                 sh["_acilis"] = t
             if args.ses_dizini:
-                adaylar = sorted(Path(args.ses_dizini).glob(f"{ilk + si:02d}_{ci:02d}.*"))
-                if not adaylar:
-                    sys.exit(f"HATA: {args.ses_dizini} içinde {ilk + si:02d}_{ci:02d} sesi yok")
-                yol = adaylar[0]
+                yol = depo.bul(f"{ilk + si:02d}_{ci:02d}", ses_anahtari(seslendirme_metni(c, telaffuz, kok), sh.get("ton")))
+                if not yol:
+                    sys.exit(f"HATA: {ilk + si:02d}_{ci:02d} cümlesinin sesi yok ya da metni değişmiş: «{c[:60]}»\n"
+                             f"  Eksikleri görmek için: --eksik --ses-dizini {args.ses_dizini}")
             else:
                 yol = tmp / f"s{si}_{ci}.wav"
-                motor.sentezle(seslendirme_metni(c, telaffuz, kok), yol)
+                motor_al().sentezle(seslendirme_metni(c, telaffuz, kok), yol)
             x = oku_24k(yol)
             nz = np.nonzero(np.abs(x) > 0.01)[0]       # baş/son sessizliği kırp
             ofs = max(0, nz[0] - 600) / SR if len(nz) else 0.0
