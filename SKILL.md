@@ -107,6 +107,13 @@ python $R/scripts/video_uret.py senaryo.json -o video.mp4 --ses-dizini sesler   
 Varsayılan: sade çizim profesör (kürsüde), yavaş kamera, işaretçi, yalnızca doğru cevapta "ding", müzik yok.
 **Temiz ses (mikrofon sürtmesi/tık yok):** cümle klipleri yumuşak fade-in/out ile birleşir; zincirde `adeclick`,
 `afftdn` (hafif gürültü azaltma) ve `deesser` var; konuşma üstündeki "tık" efekti varsayılan kapalı.
+**Nefes/hışırtı temizliği (varsayılan):** Chatterbox bazı cümlelerin sonuna 0,5–2 sn'lik düşük seviyeli, tiz
+(4–7 kHz) bir nefes/sürtme kuyruğu ekliyor; `klip_temizle` konuşma tepesinin 24 dB altındaki tonsuz kuyrukları
+keser, cümle içindeki ≥150 ms'lik nefesleri 24 dB kısar. Sondaki "s/ş" gibi sesler daha yüksek olduğu için korunur.
+Kapatmak: `--temizleme-yok`.
+**Dudak senkronu:** çizim profesörün ağzı yalnızca açılıp kapanmaz; sesin formant bantlarından her kare için
+'a' (açık), 'o' (yuvarlak) ve 'i' (yayvan, dişler görünür) biçimi seçilir. Model gerektirmez, render süresini
+etkilemez. (SadTalker/Wav2Lip/LivePortrait gibi gerçekçi konuşan yüzler GPU ister ve üretimi çok yavaşlatır.)
 Seçenekler: `--tik`, `--muzik`, `--efekt-yok`, `--kamera-yok`, `--altyazi-yok`, `--karakter yol.json` (fotoğraf karakter),
 `--sahne 2-3 --cozunurluk 720` (hızlı deneme).
 

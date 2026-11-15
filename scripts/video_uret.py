@@ -230,6 +230,55 @@ def senkron_raporu(sahneler, ilk, sureler):
     return out
 
 
+def klip_temizle(x):
+    """Chatterbox'ın cümle başı/sonundaki nefes ve 'hışırtı' seslerini temizler.
+    Ölçüm: hışırtı = konuşma tepesinin ~25 dB altında, 4-7 kHz ağırlıklı, sesiz (unvoiced) uzun kuyruk.
+    Konuşmanın sonundaki 's/ş' gibi sürtünmeli sesler daha yüksek ve kısa olduğu için korunur.
+    Döner: (temiz ses, baştan kırpılan saniye)."""
+    if len(x) < SR // 5:
+        return x, 0.0
+    w = SR // 100                                   # 10 ms
+    n = len(x) // w
+    fr = x[:n * w].reshape(n, w)
+    db = 20 * np.log10(np.sqrt((fr ** 2).mean(1)) + 1e-9)
+    F = np.abs(np.fft.rfft(fr * np.hanning(w), axis=1)); f = np.fft.rfftfreq(w, 1 / SR)
+    merkez = (F * f).sum(1) / (F.sum(1) + 1e-9)
+    tepe = np.percentile(db, 95)
+    # düşük seviye; ama tepeye 30 dB'den yakın ve tonlu (düşük frekanslı) kare konuşmadır, korunur
+    dusuk = (db < tepe - 24) & ~((db > tepe - 30) & (merkez < 1500))
+    # baş ve son: düşük seviyeli kuyrukları at
+    i0 = 0
+    while i0 < n and dusuk[i0]:
+        i0 += 1
+    i1 = n
+    while i1 > i0 and dusuk[i1 - 1]:
+        i1 -= 1
+    if i1 <= i0:
+        return x, 0.0
+    a = max(0, i0 - 3) * w; b = min(len(x), (i1 + 4) * w)
+    y = x[a:b].copy()
+    # iç kısım: ≥150 ms süren, tiz ağırlıklı, düşük seviyeli bölgeler (nefes/hışırtı) → -24 dB
+    d2, m2 = dusuk[max(0, i0 - 3):i1 + 4], merkez[max(0, i0 - 3):i1 + 4]
+    hedef = d2 & (m2 > 2500)
+    kaz = np.ones(len(hedef))
+    j = 0
+    while j < len(hedef):
+        if hedef[j]:
+            k_ = j
+            while k_ < len(hedef) and (hedef[k_] or (k_ + 1 < len(hedef) and hedef[k_ + 1])):
+                k_ += 1
+            if k_ - j >= 15:
+                kaz[j:k_] = 0.06
+            j = k_
+        else:
+            j += 1
+    if (kaz < 1).any():
+        g = np.repeat(kaz, w)
+        g = np.convolve(np.pad(g, (w, w), mode="edge"), np.ones(w * 2) / (w * 2), mode="same")[w:-w]
+        y[:len(g)] *= g[:len(y)]
+    return y, a / SR
+
+
 def yumusat(x, giris=0.015, cikis=0.06):
     """Cümle kliplerinin kenarlarında tık/sürtme sesi olmasın: kısa fade-in/out + DC temizliği."""
     x = x - np.mean(x) if len(x) else x
@@ -501,7 +550,30 @@ def ses_zarfi(x, pencere=0.05):
 
 
 # ================================================================ karakter
-def karakter_ciz(agiz, goz_kapali, kas, isaret, S):
+def agiz_bicimleri(ses, n_kare, spf):
+    """Her kare için ağız biçimi: 'a' (açık), 'o' (yuvarlak: o/u/ö/ü), 'i' (yayvan: i/e, s/ş).
+    Formant bantlarının enerji oranından; hiçbir model gerekmez (Rhubarb/Wav2Lip yerine maliyetsiz)."""
+    f = np.fft.rfftfreq(spf, 1 / SR); pen = np.hanning(spf)
+    b1, b2, b3 = (f >= 200) & (f < 550), (f >= 550) & (f < 1100), (f >= 1700) & (f < 3300)
+    r13 = np.zeros(n_kare); r12 = np.zeros(n_kare); kon = np.zeros(n_kare, bool)
+    for i in range(n_kare):
+        v = ses[i * spf:(i + 1) * spf]
+        if len(v) < spf or np.sqrt(np.mean(v ** 2)) < 0.02:
+            continue
+        F = np.abs(np.fft.rfft(v * pen)) ** 2
+        e1, e2, e3 = F[b1].sum() + 1e-9, F[b2].sum() + 1e-9, F[b3].sum() + 1e-9
+        r13[i], r12[i], kon[i] = e3 / (e1 + e2), e1 / e2, True
+    # eşikler sesin kendisine göre (konuşan kişiden bağımsız): ~%25 'i', ~%20 'o', gerisi 'a'
+    ei = np.percentile(r13[kon], 75) if kon.any() else 1
+    eo = np.percentile(r12[kon], 80) if kon.any() else 1e9
+    out = ["i" if kon[i] and r13[i] >= ei else "o" if kon[i] and r12[i] >= eo else "a" for i in range(n_kare)]
+    for i in range(1, len(out) - 1):            # tek karelik titremeyi süz
+        if out[i - 1] == out[i + 1] != out[i]:
+            out[i] = out[i - 1]
+    return out
+
+
+def karakter_ciz(agiz, goz_kapali, kas, isaret, S, bicim="a"):
     """Özgün 'Profesör' karakteri. S: son boyut ölçeği. Tuval taban: 520x560."""
     s = 2 * S
     Wc, Hc = int(520 * s), int(560 * s)
@@ -572,11 +644,20 @@ def karakter_ciz(agiz, goz_kapali, kas, isaret, S):
     if acik == 0:
         d.arc(P(178, my - 12, 242, my + 12), 15, 165, fill=(130, 60, 60), width=L(4))
     else:
-        gen = 26 + acik * 0.4
-        d.ellipse(P(210 - gen, my - 4, 210 + gen, my + acik), fill=(110, 35, 45))
-        if acik > 12:
-            d.ellipse(P(210 - gen * .6, my + acik * .45, 210 + gen * .6, my + acik - 1), fill=(220, 100, 110))
-        d.rectangle(P(210 - gen * .7, my - 4, 210 + gen * .7, my + 2), fill=(250, 250, 250))
+        if bicim == "o":     # yuvarlak dudak
+            gen = 13 + acik * 0.35; yuk = acik * 0.9 + 6
+            d.ellipse(P(210 - gen - 4, my - 7, 210 + gen + 4, my + yuk + 4), fill=(170, 80, 85))
+            d.ellipse(P(210 - gen, my - 3, 210 + gen, my + yuk), fill=(105, 32, 42))
+        elif bicim == "i":   # yayvan, dişler görünür
+            gen = 32 + acik * 0.3; yuk = max(5, acik * 0.55)
+            d.ellipse(P(210 - gen, my - 4, 210 + gen, my + yuk), fill=(110, 35, 45))
+            d.rectangle(P(210 - gen * .75, my - 4, 210 + gen * .75, my + min(5, yuk * .5)), fill=(250, 250, 250))
+        else:                # açık 'a'
+            gen = 26 + acik * 0.4
+            d.ellipse(P(210 - gen, my - 4, 210 + gen, my + acik), fill=(110, 35, 45))
+            if acik > 12:
+                d.ellipse(P(210 - gen * .6, my + acik * .45, 210 + gen * .6, my + acik - 1), fill=(220, 100, 110))
+            d.rectangle(P(210 - gen * .7, my - 4, 210 + gen * .7, my + 2), fill=(250, 250, 250))
     for cx, cy, rr in [(170, 294, 22), (192, 288, 22), (228, 288, 22), (250, 294, 22), (150, 302, 16), (270, 302, 16)]:
         d.ellipse(P(cx - rr, cy - rr * .65, cx + rr, cy + rr * .65), fill=(222, 222, 218))
     yanak = Image.new("RGBA", im.size, (0, 0, 0, 0)); dy_ = ImageDraw.Draw(yanak)
@@ -1221,6 +1302,7 @@ def main():
     ap.add_argument("--kelime-senkron-yok", action="store_true",
                     help="öğeleri cümle başında aç (varsayılan: öğenin anahtar kelimesi söylenirken)")
     ap.add_argument("--giris-yok", action="store_true", help="boş tahtada otomatik giriş yazısını kapat")
+    ap.add_argument("--temizleme-yok", action="store_true", help="cümle başı/sonu nefes-hışırtı temizliğini kapat")
     ap.add_argument("--tik", action="store_true", help="madde belirirken hafif 'tık' sesi (varsayılan kapalı; konuşma üstünde sürtme gibi duyulabiliyor)")
     ap.add_argument("--storyboard", metavar="PNG", help="ses/video üretmeden her sahnenin son halini tek görselde göster")
     ap.add_argument("--kontrol", action="store_true", help="sadece senaryo çeşitlilik/uzunluk kontrolü yap")
@@ -1264,8 +1346,7 @@ def main():
             for ci, c in enumerate(cumlelere_bol(sh.get("anlatim", ""))):
                 y_ = Path(args.ses_dizini or "/yok") / f"{ilk + si:02d}_{ci:02d}.wav"
                 if y_.exists():
-                    x_ = oku_24k(y_); nz_ = np.nonzero(np.abs(x_) > 0.01)[0]
-                    cs.append((nz_[-1] - nz_[0]) / SR + 0.075 if len(nz_) else 0.5)
+                    cs.append(len(klip_temizle(oku_24k(y_))[0]) / SR)
                 else:
                     cs.append(len(temiz(c).split()) / 2.3 + 0.3)
             sureler.append(cs)
@@ -1362,6 +1443,8 @@ def main():
             ofs = max(0, nz[0] - 600) / SR if len(nz) else 0.0
             if len(nz):
                 x = x[max(0, nz[0] - 600): nz[-1] + 1200].copy()
+            if not args.temizleme_yok:                   # nefes / hışırtı kuyrukları
+                x, ofs2 = klip_temizle(x); ofs += ofs2
             kj = Path(yol).with_suffix(".json")
             kelime_z[(si, ci)] = ([dict(w, s=w["s"] - ofs) for w in json.loads(kj.read_text())]
                                   if kj.exists() else None)
@@ -1470,8 +1553,10 @@ def main():
         log(f"  Karakter: {kj.stem}")
     else:
         kursu = S.kursu()
-        kar = {(a, g, kk, i): karakter_ciz(a, g, kk, i, S.S * KAR_OLCEK)
-               for a in range(5) for g in (False, True) for kk in (0.0, 1.0) for i in (False, True)}
+        kar = {(a, g, kk, i, b): karakter_ciz(a, g, kk, i, S.S * KAR_OLCEK, b)
+               for a in range(5) for g in (False, True) for kk in (0.0, 1.0) for i in (False, True)
+               for b in ("a", "o", "i")}
+        bicimler = agiz_bicimleri(ses, n_kare, spf)
     golge = Image.new("RGBA", k(520, 50), (0, 0, 0, 0))
     ImageDraw.Draw(golge).ellipse(k(60, 8, 360, 40), fill=(0, 0, 0, 70))
     golge = golge.filter(ImageFilter.GaussianBlur(k(6)))
@@ -1570,7 +1655,7 @@ def main():
             return
         a = int(agiz[fi]) if fi < len(agiz) else 0
         kas = 1.0 if (a >= 3 and (fi // 10) % 6 == 0) else 0.0
-        kr = kar[(a, fi in kirp, kas, isaret)]
+        kr = kar[(a, fi in kirp, kas, isaret, bicimler[fi] if fi < len(bicimler) else "a")]
         sal = int(k(2) * math.sin(tt * 2.0)) + (k(1) if a >= 3 else 0)
         kx0, kx1, kust, _ = S.KURSU
         im.paste(kr, (k((kx0 + kx1) / 2 - 210 * KAR_OLCEK), k(kust + 28) - kr.height + sal), kr)
