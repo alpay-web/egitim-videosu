@@ -596,6 +596,21 @@ class Denetci:
         from faster_whisper import WhisperModel
         self.m = WhisperModel(model, device="cpu", compute_type="int8")
 
+    def puan_parca(self, x, sr, metin, dil):
+        """Tek bir parçayı (numpy, sr) kendi dilinde dinler: İngilizce parça 'en' ile, Türkçe 'tr' ile.
+        Tüm cümleyi 'tr' ile dinlemek İngilizceyi Türkçeye çevirip yanıltıyordu."""
+        import difflib
+        n = int(len(x) * 16000 / sr)
+        x16 = np.interp(np.linspace(0, len(x) - 1, n), np.arange(len(x)), x).astype(np.float32)
+        segs, _ = self.m.transcribe(x16, language=dil, beam_size=5)
+        duyulan = " ".join(s_.text.strip() for s_ in segs)
+        if dil == "en":
+            a = re.findall(r"[a-z0-9']+", metin.lower()); b = re.findall(r"[a-z0-9']+", duyulan.lower())
+            b = [re.sub(r"\d+", lambda m: m.group(0), w) for w in b]
+        else:
+            a, b = _norm_kelimeler(metin), _norm_kelimeler(duyulan)
+        return difflib.SequenceMatcher(a=a, b=b).ratio(), duyulan
+
     def puan(self, yol, metin):
         import difflib
         segs, _ = self.m.transcribe(str(yol), language="tr", beam_size=5, word_timestamps=True)
@@ -721,7 +736,22 @@ class ChatterboxSes:
         log(f"  Ses: Chatterbox Multilingual (MIT), referans: {Path(self.ref).name}")
 
     def _uret(self, metin, dil):
-        """Tek dilli bir parça; süre kontrolüyle (model bazen sona fazladan ses ekler)."""
+        """Tek dilli bir parça. Denetçi bağlıysa (kod geçişli cümlelerde) her İngilizce parça kendi dilinde
+        Whisper ile dinlenir; anlaşılır okunana kadar (en fazla 5 deneme) yeniden üretilir."""
+        if getattr(self, "denetci", None) is not None and dil == "en":
+            en, en_x = -1, None
+            for d_ in range(5):
+                x = self._uret_ham(metin, dil)
+                p, duyulan = self.denetci.puan_parca(x, self.m.sr, metin, dil)
+                log(f"     [en] «{metin[:40]}» deneme {d_ + 1}: {p:.2f} «{duyulan[:40]}»")
+                if p > en:
+                    en, en_x = p, x
+                if p >= 0.85:
+                    break
+            return en_x
+        return self._uret_ham(metin, dil)
+
+    def _uret_ham(self, metin, dil):
         tahmin = max(0.7 if dil == "en" else 1.5, len(metin) / (13.0 if dil == "en" else 14.0))
         en_iyi = None
         for deneme in range(3):
@@ -1772,6 +1802,7 @@ def main():
         secili = set(args.cumleler.split(",")) if args.cumleler else None
         den = Denetci() if args.kalite else None
         rapor = []
+        _ilk_motor = [True]
         for si, sh in enumerate(sahneler):
             for ci, c in enumerate(cumlelere_bol(sh["anlatim"])):
                 ad = f"{ilk + si:02d}_{ci:02d}"
@@ -1793,6 +1824,8 @@ def main():
                     log(f"   {ad}: önbellekten"); continue
                 en_iyi = None
                 motor = motor_al()
+                if den is not None and _ilk_motor[0]:
+                    motor.denetci = den; _ilk_motor[0] = False
                 for deneme in range(max(1, args.kalite)):
                     aday = hedef / f"{ad}.aday{deneme}.wav"
                     if hasattr(motor, "ton"):
