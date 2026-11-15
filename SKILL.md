@@ -59,6 +59,15 @@ Konuşma hızı ≈ 130 kelime/dk; tahmini anlatım süresi = içerik kelimesi �
   tek vurucu mesaj. **soru:** alıştırmalardan; anlatımda soruyu okuma ("Ekrandaki soruyu oku"), `cevap_cumle` =
   "Doğru cevap…" cümlesinin indeksi; öncesinde geri sayım, sonra doğru seçenek yeşil + "ding".
 - `goster`: her öğenin hangi cümlede (0'dan) açılacağı; o an işaretçi öğeye kayar (`--tik` verilirse hafif tık sesi).
+  **Kelime senkronu (varsayılan):** öğe, cümlenin başında değil, öğenin ilk anlamlı kelimesi söylenirken açılır
+  (Whisper kelime zamanı `SS_CC.json` varsa saniyesi saniyesine, yoksa cümle içindeki konumuna göre). Elle çapa:
+  `"3:enough"` (3. cümlede "enough" kelimesinde) ya da `2.5` (2. cümlenin ortası). Kapatmak: `--kelime-senkron-yok`.
+- **Ekran sesin önünde gider** (explainer-video kuralı): konuşma boş tahtada başlamasın, 14 sn'den uzun süre tahtada
+  yeni bir şey olmasın. İlk öğe geç geliyorsa video ilk cümleyi tahtada büyük **giriş yazısı** olarak gösterir
+  (metni `"giris"` alanıyla ver; kapatmak: `--giris-yok`).
+- `bolum`: bölüm başlatan sahneye `"bolum": "Gramer 5: Passive"` yaz. Tahtanın alt bilgisinde görünür, ilerleme
+  çubuğuna bölüm çizgisi düşer ve YouTube bölüm listesi otomatik çıkar. Senaryoya `youtube_baslik` (≤100 karakter)
+  ve `etiketler` de ekle.
 - `telaffuz`: kısaltma/seviye adları Türkçe harfle ("B1": "be bir", "C1": "se bir", "IELTS": "ay elts", "A": "a",
   "B": "be"); sorunlu İngilizce kelimeler ("had": "hed", "Enjoy": "inçoy"). `telaffuz_kok`: {"fiil": "fiyil"}.
   Chatterbox'ın zorlandığı "şık" yerine "seçenek" yaz.
@@ -70,9 +79,12 @@ dışarıda bıraktığını teslimde açıkça söyle.
 
 ## 5. Storyboard + kontrol (onay kapısı)
 ```bash
-python $R/scripts/video_uret.py senaryo.json --kontrol                    # tekdüzelik/uzunluk uyarıları
+python $R/scripts/video_uret.py senaryo.json --kontrol [--ses-dizini sesler]  # tekdüzelik + YERLEŞİM + SENKRON raporu
 python $R/scripts/video_uret.py senaryo.json --storyboard storyboard.png  # her sahnenin son hali, tek görsel
 ```
+`--kontrol` raporları: **yerleşim** (taşan/kesilen metin, 30 px'ten küçük yazı, sığmayan seçenek/kart) ve
+**senkron** (ölü hava: konuşma başladı ama tahta boş; donuk ekran: 14 sn+ yeni öğe yok). Ses üretildikten sonra
+`--ses-dizini` ile gerçek sürelerle tekrar çalıştır. Yerleşim uyarısı bırakma.
 Storyboard'a **bak**: taşma, üst üste binme, boş tahta, yanlış tür. Düzelt, kullanıcıya göster, onay al.
 
 ## 6. Seslendirme (Chatterbox, MIT) — `--kalite 3` Whisper kapısı her cümleyi doğrular
@@ -104,8 +116,13 @@ python $R/scripts/kalite_raporu.py video.mp4      # süre, LUFS/tepe, sessizlik,
 ```
 Kare tablosuna bak. Bulguları ciddiyetle yaz (kritik / öneri) ve her birine somut düzeltme koy
 ("Sahne 6 tablo başlıkları üst üste → başlıkları kısalt"); "biraz uzun olabilir" gibi belirsiz bulgu yazma.
+Kare tablosunu TheoremExplainAgent'in 5 ölçütüyle 1–5 puanla: **doğruluk** (dokümana sadık mı), **görsel ilgi**
+(tahta anlatılanı mı gösteriyor), **akış** (konular mantıklı sırada mı), **yerleşim** (taşma/üst üste binme var mı),
+**tutarlılık** (renk, yazı, stil aynı mı). 4'ün altındaki her ölçüt için somut düzeltme yap.
 Kritikleri düzelt, yeniden üret; 2 turdan sonra kalanları teslimde açıkça söyle.
 
 ## 9. Teslim
-MP4 + kapak görselini gönder. Ver: süre, sahne sayısı, kapsadığı bölümler, önerilen YouTube
-başlığı, sahne başlıklarından zaman damgalı bölümler, "Seslendirme yapay zekâ ile üretilmiştir" notu.
+Video her render'da yayın paketini de yazar: `video.srt` (YouTube altyazısı; ≤2 satır × 42 karakter) ve
+`video_youtube.txt` (başlık, bölümlü açıklama, etiketler, yapay zekâ notu). MP4 + kapak + .srt + youtube.txt'yi
+gönder; süreyi, sahne sayısını ve kapsadığı bölümleri söyle. SRT'nin YouTube Studio > Altyazılar'a
+yükleneceğini ve "değiştirilmiş/yapay içerik" kutusunun işaretleneceğini hatırlat.

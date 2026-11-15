@@ -1,5 +1,14 @@
 {
  "baslik": "İngilizce Seviye Tespit Sınavı – 2 Günde B1 · Tam Kurs",
+ "youtube_baslik": "İngilizce Seviye Tespit Sınavı: 2 Günde B1 – Tam Kurs (Gramer, Kelime, Okuma, Dinleme)",
+ "etiketler": [
+  "ingilizce seviye tespit sınavı",
+  "B1 ingilizce",
+  "ingilizce gramer",
+  "placement test",
+  "ingilizce sınav taktikleri",
+  "ingilizce kelime"
+ ],
  "alt_baslik": "Rehberin tamamı tek videoda",
  "kapanis": "Başarılar! Sen bunu yaparsın.",
  "telaffuz": {
@@ -244,7 +253,8 @@
     7
    ],
    "ton": "merakli",
-   "kanca": "İlk 10 soruda tek dikkatsizlik = bir seviye aşağı"
+   "kanca": "İlk 10 soruda tek dikkatsizlik = bir seviye aşağı",
+   "bolum": "Giriş"
   },
   {
    "baslik": "Sınav nasıl bir şey?",
@@ -271,7 +281,8 @@
     2,
     3,
     5
-   ]
+   ],
+   "bolum": "Sınav nasıl bir şey?"
   },
   {
    "baslik": "Adaptif sınav taktikleri",
@@ -282,7 +293,8 @@
     "Cümlenin tamamını oku",
     "Bir soruya en fazla 1 dakika"
    ],
-   "anlatim": "Şimdi en çok puan getiren kısma geldik. İlk sekiz on soruya maksimum özen göster, çünkü seviyenin kaba aralığını bu sorular belirler. Hızlı değil, doğru ol. Hiçbir soruyu boş bırakma; bilmiyorsan yanlış seçenekleri ele ve tahmin et. Sorular zorlaşıyorsa panik yapma, bu doğru gittiğin anlamına gelir. Cümlenin tamamını oku, çünkü boşluktan sonraki kelimeler cevabı çoğu zaman ele verir. Ve bir soruya bir dakikadan fazla takılma."
+   "anlatim": "Şimdi en çok puan getiren kısma geldik. İlk sekiz on soruya maksimum özen göster, çünkü seviyenin kaba aralığını bu sorular belirler. Hızlı değil, doğru ol. Hiçbir soruyu boş bırakma; bilmiyorsan yanlış seçenekleri ele ve tahmin et. Sorular zorlaşıyorsa panik yapma, bu doğru gittiğin anlamına gelir. Cümlenin tamamını oku, çünkü boşluktan sonraki kelimeler cevabı çoğu zaman ele verir. Ve bir soruya bir dakikadan fazla takılma.",
+   "bolum": "Adaptif sınav taktikleri"
   },
   {
    "baslik": "Sinyal kelimeler",
@@ -335,7 +347,8 @@
     5,
     6,
     7
-   ]
+   ],
+   "bolum": "Sinyal kelimeler"
   },
   {
    "baslik": "Şık okuma hileleri",
@@ -345,7 +358,8 @@
     "Okuma: aynı kelime = tuzak",
     "Dinleme: but, actually'den sonrası doğru"
    ],
-   "anlatim": "Şimdi seçenekleri okurken işine yarayacak birkaç hileye bakalım. Neredeyse aynı olan iki seçenek varsa, doğru cevap genellikle bu ikisinden biridir. Kulak testini kullan: cümleyi her seçenekle içinden sesli oku, hazır kalıpları beynin hemen tanır. Okuma bölümünde metindeki kelimeyi aynen tekrar eden seçenek çoğu zaman tuzaktır; doğru cevap aynı anlamı başka kelimelerle verir. Dinlemede ise but, actually, sorry ya da instead kelimelerinden sonra gelen bilgi neredeyse her zaman doğru cevaptır."
+   "anlatim": "Şimdi seçenekleri okurken işine yarayacak birkaç hileye bakalım. Neredeyse aynı olan iki seçenek varsa, doğru cevap genellikle bu ikisinden biridir. Kulak testini kullan: cümleyi her seçenekle içinden sesli oku, hazır kalıpları beynin hemen tanır. Okuma bölümünde metindeki kelimeyi aynen tekrar eden seçenek çoğu zaman tuzaktır; doğru cevap aynı anlamı başka kelimelerle verir. Dinlemede ise but, actually, sorry ya da instead kelimelerinden sonra gelen bilgi neredeyse her zaman doğru cevaptır.",
+   "bolum": "Şık okuma hileleri"
   },
   {
    "baslik": "Uydurma yapı kara listesi",
@@ -399,7 +413,8 @@
     5,
     6,
     7
-   ]
+   ],
+   "bolum": "Uydurma yapı kara listesi"
   },
   {
    "baslik": "Online deneme testinden dersler",
@@ -410,7 +425,8 @@
     "Kısa cevap: Yes, he is. (he's değil)",
     "Son sorularda panik yok"
    ],
-   "anlatim": "Kursun kendi kısa online deneme testi bize sınavın mantığını gösteriyor. Her soruda üç seçenek ve bir de I don't know seçeneği var. En az bir seçeneği eleyebiliyorsan I don't know'a basma, tahmin et. Sorular kolaydan zora sıralı ve B1 için kabaca ilk on iki on dört soruyu doğru yapman yeterli. Kısa cevap kuralını unutma: soru hangi yardımcı fiille sorulduysa cevap da onunla verilir ve olumlu kısa cevapta kısaltma yapılmaz. Son sorularda bilmediğin yapılar görürsen panik yapma, bu B1'i zaten geçtiğin anlamına gelir."
+   "anlatim": "Kursun kendi kısa online deneme testi bize sınavın mantığını gösteriyor. Her soruda üç seçenek ve bir de I don't know seçeneği var. En az bir seçeneği eleyebiliyorsan I don't know'a basma, tahmin et. Sorular kolaydan zora sıralı ve B1 için kabaca ilk on iki on dört soruyu doğru yapman yeterli. Kısa cevap kuralını unutma: soru hangi yardımcı fiille sorulduysa cevap da onunla verilir ve olumlu kısa cevapta kısaltma yapılmaz. Son sorularda bilmediğin yapılar görürsen panik yapma, bu B1'i zaten geçtiğin anlamına gelir.",
+   "bolum": "Online deneme testinden dersler"
   },
   {
    "baslik": "Testte çıkan ek konular 1/2",
@@ -451,7 +467,8 @@
     4,
     5
    ],
-   "ton": "canli"
+   "ton": "canli",
+   "bolum": "Testte çıkan ek konular"
   },
   {
    "baslik": "Testte çıkan ek konular 2/2",
@@ -543,7 +560,8 @@
     3,
     4,
     5
-   ]
+   ],
+   "bolum": "Dinleme ve okuma teknikleri"
   },
   {
    "baslik": "Konuşmada B1 gibi duyulmak",
@@ -554,7 +572,8 @@
     "Güçlü kalıplar: To be honest…",
     "İlk 30 saniye: kusursuz tanıtım"
    ],
-   "anlatim": "Konuşma bölümünde PREP formülünü kullan. Önce cevabını söyle, sonra nedenini, ardından bir örnek ver ve cevabını tekrar et. Dört cümle, otuz kırk saniyelik düzenli bir cevap eder. Soruyu geri söyleyerek birkaç saniye düşünme süresi kazanabilirsin. Sorunun zamanını aynala: Have you ever diye sorulursa Yes, I have diyerek başla. To be honest, it depends on gibi güçlü kalıpları cevaplarına serpiştir. Ve en önemlisi, kendini tanıttığın ilk otuz saniye kusursuz ve akıcı olsun."
+   "anlatim": "Konuşma bölümünde PREP formülünü kullan. Önce cevabını söyle, sonra nedenini, ardından bir örnek ver ve cevabını tekrar et. Dört cümle, otuz kırk saniyelik düzenli bir cevap eder. Soruyu geri söyleyerek birkaç saniye düşünme süresi kazanabilirsin. Sorunun zamanını aynala: Have you ever diye sorulursa Yes, I have diyerek başla. To be honest, it depends on gibi güçlü kalıpları cevaplarına serpiştir. Ve en önemlisi, kendini tanıttığın ilk otuz saniye kusursuz ve akıcı olsun.",
+   "bolum": "Konuşmada B1 gibi duyulmak"
   },
   {
    "baslik": "Beyin taktikleri",
@@ -565,7 +584,8 @@
     "Shadowing: günde 10 dakika",
     "25 dk odak / 5 dk mola"
    ],
-   "anlatim": "İki günde daha çok akılda tutmak için birkaç beyin taktiği. Bir dersi okuduktan sonra kitabı kapat ve kuralı otuz saniyede sesli anlat; geri çağırmak tekrar okumaktan çok daha kalıcıdır. Konuları karıştırarak çalış, çünkü sınavda da karışık gelecekler. Yatmadan önce hata listeni oku ve telefona bakmadan uyu. Günde on dakika gölge konuşma yap: dinleme metinlerini yarım saniye geriden sesli tekrarla. Ve yirmi beş dakika tam odak, beş dakika mola şeklinde çalış."
+   "anlatim": "İki günde daha çok akılda tutmak için birkaç beyin taktiği. Bir dersi okuduktan sonra kitabı kapat ve kuralı otuz saniyede sesli anlat; geri çağırmak tekrar okumaktan çok daha kalıcıdır. Konuları karıştırarak çalış, çünkü sınavda da karışık gelecekler. Yatmadan önce hata listeni oku ve telefona bakmadan uyu. Günde on dakika gölge konuşma yap: dinleme metinlerini yarım saniye geriden sesli tekrarla. Ve yirmi beş dakika tam odak, beş dakika mola şeklinde çalış.",
+   "bolum": "Beyin taktikleri"
   },
   {
    "baslik": "2 günlük çalışma planı",
@@ -599,7 +619,8 @@
     3,
     4,
     5
-   ]
+   ],
+   "bolum": "2 günlük çalışma planı"
   },
   {
    "baslik": "Kendini dene: taktikler 1/3",
@@ -615,7 +636,8 @@
     "cevap_cumle": 2,
     "bekle": 4
    },
-   "anlatim": "Şimdi kendini deneme zamanı. Ekrandaki soruyu oku ve doğru seçeneği düşün. Doğru cevap B: I am. Olumlu kısa cevapta kısaltma yapılmaz, bu yüzden Yes, I'm diyemeyiz."
+   "anlatim": "Şimdi kendini deneme zamanı. Ekrandaki soruyu oku ve doğru seçeneği düşün. Doğru cevap B: I am. Olumlu kısa cevapta kısaltma yapılmaz, bu yüzden Yes, I'm diyemeyiz.",
+   "bolum": "Kendini dene: taktikler"
   },
   {
    "baslik": "Kendini dene: taktikler 2/3",
@@ -676,6 +698,10 @@
     {
      "baslik": "T",
      "metin": "30 soruluk deneme"
+    },
+    {
+     "baslik": "✎",
+     "metin": "Hata listesi: doğrusu + nedeni"
     }
    ],
    "anlatim": "Şimdi rehberin çalışma kitabı kısmına geçiyoruz. Başka kaynağa ihtiyacın yok, sadece bir defter ve kalem al. Önce on üç gramer dersini göreceğiz. Sonra kelime ve kalıp listeleri. Ardından okuma parçaları ve dinleme metinleri. Sonra konuşma için model cevaplar. En sonda otuz soruluk deneme sınavı. Her yanlışını defterine hata listem başlığıyla yaz: doğrusunu ve nedenini. Bir konuda beş sorudan iki ya da daha fazla yanlışın varsa, o kuralı tekrar oku ve ertesi gün yeniden çöz.",
@@ -685,9 +711,11 @@
     4,
     4,
     5,
-    6
+    6,
+    7
    ],
-   "ton": "canli"
+   "ton": "canli",
+   "bolum": "Çalışma kitabı"
   },
   {
    "baslik": "Past Simple mı, Present Perfect mi?",
@@ -723,7 +751,8 @@
     4,
     5,
     6
-   ]
+   ],
+   "bolum": "Gramer 1: Past Simple / Present Perfect"
   },
   {
    "baslik": "since mi, for mu?",
@@ -788,7 +817,8 @@
     2,
     3,
     3
-   ]
+   ],
+   "bolum": "Gramer 2: Past Continuous"
   },
   {
    "baslik": "Kendini dene: zamanlar 2/4",
@@ -832,7 +862,8 @@
     1,
     4,
     5
-   ]
+   ],
+   "bolum": "Gramer 3: Gelecek zaman"
   },
   {
    "baslik": "Kendini dene: zamanlar 3/4",
@@ -878,7 +909,8 @@
     1,
     2,
     3
-   ]
+   ],
+   "bolum": "Gramer 4: If cümleleri"
   },
   {
    "baslik": "Altın kural",
@@ -943,7 +975,8 @@
     5,
     5
    ],
-   "ton": "canli"
+   "ton": "canli",
+   "bolum": "Gramer 5: Passive"
   },
   {
    "baslik": "Kendini dene: passive",
@@ -1005,7 +1038,8 @@
     5,
     6
    ],
-   "ton": "ciddi"
+   "ton": "ciddi",
+   "bolum": "Gramer 6: Modals"
   },
   {
    "baslik": "Kendini dene: modals",
@@ -1057,7 +1091,8 @@
     5,
     6
    ],
-   "ton": "canli"
+   "ton": "canli",
+   "bolum": "Gramer 7: used to"
   },
   {
    "baslik": "Kendini dene: used to",
@@ -1109,7 +1144,8 @@
     5,
     6
    ],
-   "ton": "canli"
+   "ton": "canli",
+   "bolum": "Gramer 8: -ing / to"
   },
   {
    "baslik": "Anlam değişirse",
@@ -1174,7 +1210,8 @@
     3,
     4
    ],
-   "ton": "canli"
+   "ton": "canli",
+   "bolum": "Gramer 9: Relative clauses"
   },
   {
    "baslik": "Kendini dene: who / which / whose",
@@ -1226,7 +1263,8 @@
     3,
     4
    ],
-   "ton": "sakin"
+   "ton": "sakin",
+   "bolum": "Gramer 10: Karşılaştırma"
   },
   {
    "baslik": "Miktar ve article",
@@ -1267,7 +1305,8 @@
     4,
     5
    ],
-   "ton": "canli"
+   "ton": "canli",
+   "bolum": "Gramer 11: Miktar ve article"
   },
   {
    "baslik": "Kendini dene: much / many",
@@ -1319,7 +1358,8 @@
     3,
     4
    ],
-   "ton": "sakin"
+   "ton": "sakin",
+   "bolum": "Gramer 12: Edatlar"
   },
   {
    "baslik": "Aktarılan söz · too / enough",
@@ -1355,7 +1395,8 @@
     5,
     6
    ],
-   "ton": "canli"
+   "ton": "canli",
+   "bolum": "Gramer 13: Reported speech, too/enough"
   },
   {
    "baslik": "Kendini dene: too / enough",
@@ -1412,7 +1453,8 @@
     5,
     6
    ],
-   "ton": "canli"
+   "ton": "canli",
+   "bolum": "Kelime: karıştırılan çiftler"
   },
   {
    "baslik": "Karıştırılan çiftler 2/2",
@@ -1486,7 +1528,8 @@
     3,
     4
    ],
-   "ton": "canli"
+   "ton": "canli",
+   "bolum": "Kelime: make/do/take/have"
   },
   {
    "baslik": "B1 phrasal verb'ler",
@@ -1542,7 +1585,8 @@
     7,
     8
    ],
-   "ton": "sakin"
+   "ton": "sakin",
+   "bolum": "Kelime: phrasal verb'ler"
   },
   {
    "baslik": "Konuşmada bağlaçlar",
@@ -1561,7 +1605,8 @@
     4,
     5
    ],
-   "ton": "canli"
+   "ton": "canli",
+   "bolum": "Kelime: bağlaçlar"
   },
   {
    "baslik": "Kendini dene: kelime 2/2",
@@ -1607,7 +1652,8 @@
     4,
     5
    ],
-   "ton": "sakin"
+   "ton": "sakin",
+   "bolum": "Okuma"
   },
   {
    "baslik": "Okuma 1: e-posta",
@@ -1690,7 +1736,8 @@
     5,
     6
    ],
-   "ton": "sakin"
+   "ton": "sakin",
+   "bolum": "Dinleme"
   },
   {
    "baslik": "Dinleme tuzakları",
@@ -1788,7 +1835,8 @@
     5,
     6
    ],
-   "ton": "canli"
+   "ton": "canli",
+   "bolum": "Konuşma"
   },
   {
    "baslik": "Türk konuşanların sık hataları",
@@ -1884,7 +1932,8 @@
     0,
     1,
     2
-   ]
+   ],
+   "bolum": "Deneme sınavı"
   },
   {
    "baslik": "Puanını yorumla",
@@ -1963,7 +2012,8 @@
     "Kutu nefesi: 4–4–4–4",
     "Gülümse, uzun cevap ver"
    ],
-   "anlatim": "Sınav günü iyi uyu, hafif bir kahvaltı yap ve on beş dakika erken git. Başlamadan önce kulaklık sesini kontrol et. Yolda kendini tanıtmayı içinden prova ederek beynini İngilizceye ısıt. Stres olursan kutu nefesi yap: dört saniye nefes al, dört saniye tut, dört saniye ver, dört saniye bekle. Görüşmede gülümse, uzun cevaplar ver ve bağlaç kullan. Unutma, amaç seni sana en uygun sınıfa yerleştirmek. Başarılar, sen bunu yaparsın!"
+   "anlatim": "Sınav günü iyi uyu, hafif bir kahvaltı yap ve on beş dakika erken git. Başlamadan önce kulaklık sesini kontrol et. Yolda kendini tanıtmayı içinden prova ederek beynini İngilizceye ısıt. Stres olursan kutu nefesi yap: dört saniye nefes al, dört saniye tut, dört saniye ver, dört saniye bekle. Görüşmede gülümse, uzun cevaplar ver ve bağlaç kullan. Unutma, amaç seni sana en uygun sınıfa yerleştirmek. Başarılar, sen bunu yaparsın!",
+   "bolum": "Sınav günü"
   },
   {
    "baslik": "Küçük ama önemli bir not",
@@ -1976,7 +2026,8 @@
    "goster": [
     1
    ],
-   "ton": "sakin"
+   "ton": "sakin",
+   "bolum": "Son not ve özet"
   },
   {
    "baslik": "Özet",

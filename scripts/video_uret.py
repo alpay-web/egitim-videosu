@@ -149,6 +149,87 @@ def sahne_ogeleri(sh):
             }.get(tur, lambda: sh.get("maddeler", []))()
 
 
+def oge_metni(sh, j):
+    """j. görsel öğenin metni (kelime senkronu için çapa aranır)."""
+    tur = sh.get("tur", "maddeler")
+    try:
+        if tur == "tablo":
+            return str(sh["tablo"]["satirlar"][j][0])
+        if tur == "karsilastirma":
+            n = len(sh["satirlar"]); return str(sh["satirlar"][j % n][j // n])
+        if tur == "zaman":
+            a = sh["adimlar"][j]; return a.get("metin") if len(a["baslik"]) <= 2 else a["baslik"]
+        if tur == "rakam":
+            return str(sh["kartlar"][j].get("etiket", ""))
+        if tur == "maddeler":
+            return str(sh["maddeler"][j]).split(":")[-1]
+    except (KeyError, IndexError):
+        pass
+    return ""
+
+
+def _kok(w):
+    w = w.replace("İ", "i").replace("I", "ı").lower()
+    return re.sub(r"[^\wçğıöşü]", "", w)
+
+
+def capa_orani(cumle, oge, kelimeler=None):
+    """Öğenin ilk anlamlı kelimesi cümlede nerede söyleniyor? (0-1 oran ya da Whisper saniyesi)
+    manim-voiceover'ın 'bookmark' ve explainer-video'nun [köşeli parantez] fikri, işaretlemesiz hâli."""
+    adaylar = [_kok(w) for w in re.split(r"[\s/·,()+=→]+", oge) if len(_kok(w)) >= 3]
+    if not adaylar:
+        return None
+    hedef = adaylar[0]
+    if kelimeler:
+        for w in kelimeler:
+            k_ = _kok(w["w"])
+            if k_ and (k_.startswith(hedef[:5]) or hedef.startswith(k_[:5])) and len(k_) >= 3:
+                return ("sn", w["s"])
+    c = cumle.replace("İ", "i").replace("I", "ı").lower()
+    m = re.search(r"(?<![\wçğıöşü])" + re.escape(hedef[:6]), c)
+    if not m:
+        return None
+    return ("oran", m.start() / max(1, len(c)))
+
+
+def giris_metni(sh):
+    """Tahta boşken söylenen ilk cümle; 'ölü hava'yı (konuşma + boş ekran) önler."""
+    if sh.get("giris"):
+        return sh["giris"]
+    c = temiz(cumlelere_bol(sh.get("anlatim", ""))[0]) if sh.get("anlatim") else ""
+    c = c.rstrip(".!? ")
+    if len(c) > 70:
+        c = c[:70].rsplit(" ", 1)[0] + "…"
+    return c
+
+
+def senkron_raporu(sahneler, ilk, sureler):
+    """explainer-video'nun sync_report fikri: ölü hava ve donuk ekran.
+    sureler[si] = [cümle süresi, ...] (gerçek ses ya da tahmin)."""
+    out = []
+    for si, sh in enumerate(sahneler):
+        cs = sureler[si]
+        if not cs:
+            continue
+        bas = [sum(cs[:i]) + i * 0.4 for i in range(len(cs))]
+        son = bas[-1] + cs[-1]
+        gos = sh.get("goster") or []
+        n_oge = len(sahne_ogeleri(sh))
+        if gos:
+            ts = sorted(bas[min(len(cs) - 1, int(float(str(g).split(":")[0])))] for g in gos)
+        else:   # goster yoksa video öğeleri cümlelere orantılı dağıtır
+            ts = [bas[min(len(cs) - 1, int(j * len(cs) / max(1, n_oge)))] for j in range(n_oge)]
+        if sh.get("tur") in ("soru", "ipucu"):
+            continue
+        if ts and ts[0] > 4 and not sh.get("kanca"):
+            out.append(f"sahne {ilk + si}: ilk öğe {ts[0]:.0f} sn sonra (giriş yazısı otomatik gösterilir)")
+        olaylar = ([] if sh.get("kanca") else [0]) + ts + [son]
+        bosluk = max(b - a for a, b in zip(olaylar, olaylar[1:]))
+        if bosluk > 14:
+            out.append(f"sahne {ilk + si}: {bosluk:.0f} sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl")
+    return out
+
+
 def yumusat(x, giris=0.015, cikis=0.06):
     """Cümle kliplerinin kenarlarında tık/sürtme sesi olmasın: kısa fade-in/out + DC temizliği."""
     x = x - np.mean(x) if len(x) else x
@@ -214,8 +295,12 @@ class Denetci:
 
     def puan(self, yol, metin):
         import difflib
-        segs, _ = self.m.transcribe(str(yol), language="tr", beam_size=5)
+        segs, _ = self.m.transcribe(str(yol), language="tr", beam_size=5, word_timestamps=True)
+        segs = list(segs)
         duyulan = " ".join(x.text.strip() for x in segs)
+        # kelime zamanları: video, tahtadaki öğeyi tam o kelime söylenirken açar
+        self.kelimeler = [{"w": w.word.strip(), "s": round(w.start, 3), "e": round(w.end, 3)}
+                          for x in segs for w in (x.words or [])]
         return difflib.SequenceMatcher(a=_norm_kelimeler(metin), b=_norm_kelimeler(duyulan)).ratio(), duyulan
 
 
@@ -596,9 +681,32 @@ class Sahne:
         sh.alpha_composite(im)
         return sh
 
+    def _u(self, m):
+        if m not in self.uyari:
+            self.uyari.append(m)
+
+    def giris_katmani(self, metin):
+        """Tahta boşken büyük giriş yazısı (yarı saydam panel üstünde)."""
+        k = self.k
+        im = Image.new("RGBA", (self.W, self.H), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
+        fs = 40
+        while fs > 26 and len(satir_kir(metin, font(k(fs), True), k(560), d)) * fs * 1.35 > 230:
+            fs -= 2
+        sat = satir_kir(metin, font(k(fs), True), k(560), d)[:4]
+        h = len(sat) * fs * 1.35 + 50
+        y0 = 335 - h / 2
+        d.rounded_rectangle(k(590, y0, 1190, y0 + h), radius=k(18), fill=(40, 78, 62, 235), outline=(255, 196, 80, 200), width=k(2))
+        y = y0 + 25
+        for t_ in sat:
+            tw = d.textlength(t_, font=font(k(fs), True))
+            d.text((k(890) - tw / 2, k(y)), t_, font=font(k(fs), True), fill=(255, 255, 255)); y += fs * 1.35
+        return im
+
     def tahta(self, taban, sh, gorunen, no, toplam, ust, acik=False):
         tur = sh.get("tur", "maddeler")
-        self._nokta = []
+        self._nokta = []; self.uyari = []
+        if len(satir_kir(sh.get("baslik", ""), font(self.k(40), True), self.k(640), ImageDraw.Draw(taban))) > 2:
+            self._u("başlık 2 satıra sığmıyor (kesildi)")
         if tur == "tablo":
             return self.tahta_tablo(taban, sh, gorunen, no, toplam, ust), []
         if tur == "soru":
@@ -615,6 +723,8 @@ class Sahne:
         self.fs = 34
         while self.fs > 24 and self.madde_y0 + sum(self.madde_yuk(m, d) for m in sh.get("maddeler", [])) > 515:
             self.fs -= 1
+        if self.madde_y0 + sum(self.madde_yuk(m, d) for m in sh.get("maddeler", [])) > 515:
+            self._u("maddeler tahtaya sığmıyor (taşma)")
         yy = self.madde_y0
         konumlar = []
         for i, m in enumerate(sh.get("maddeler", [])):
@@ -668,6 +778,10 @@ class Sahne:
             if ok and y0 + yuk <= 515:
                 break
             fs -= 1
+        if fs <= 18:
+            self._u("tablo sığmıyor: hücre metnini kısalt ya da satırları ikiye böl")
+        elif fs < 20:
+            self._u(f"tablo yazısı küçük ({int(fs * 1.5)} px @1080p, en az 30 px önerilir)")
         gen = None
         f_, fh = font(k(fs)), font(k(fs), True)
         rh = fs * 1.75
@@ -704,6 +818,12 @@ class Sahne:
         q = sh["soru"]
         fq = font(k(34), True)
         y = y0 + 6
+        if len(satir_kir(q["metin"], fq, k(630), d)) > 3:
+            self._u("soru metni 3 satırı aşıyor (kesildi)")
+        if 18 + y0 + min(3, len(satir_kir(q["metin"], fq, k(630), d))) * 46 + 72 * len(q["secenekler"]) > 520:
+            self._u("seçenekler tahtadan taşıyor")
+        if any(d.textlength(o, font=font(k(31))) > k(1100 - 648) for o in q["secenekler"]):
+            self._u("bir seçenek kutusuna sığmıyor")
         for s_ in satir_kir(q["metin"], fq, k(630), d)[:3]:
             d.text(k(578, y), s_, font=fq, fill=(255, 255, 255)); y += 46
         y += 18
@@ -744,9 +864,11 @@ class Sahne:
             vurgu = i == gorunen - 1
             d.rounded_rectangle(k(cx0, yk0, cx0 + gen, yk1), radius=k(16), fill=(50, 96, 78) if vurgu else (44, 84, 68))
             fs = 96
-            while fs > 40 and d.textlength(c["deger"], font=font(k(fs), True)) > k(gen - 30):
+            while fs > 28 and d.textlength(c["deger"], font=font(k(fs), True)) > k(gen - 30):
                 fs -= 4
             fv = font(k(fs), True)
+            if d.textlength(c["deger"], font=fv) > k(gen - 30):
+                self._u(f"rakam kartı '{c['deger']}' sığmıyor")
             tw = d.textlength(c["deger"], font=fv)
             d.text((k(cx0 + gen / 2) - tw / 2, k(yk0 + 40)), c["deger"], font=fv, fill=(255, 210, 90))
             if c.get("birim"):
@@ -776,6 +898,8 @@ class Sahne:
             if y0 + 70 + satir_say * fs * 1.35 + len(sat) * 18 <= 512:
                 break
             fs -= 1
+        else:
+            self._u("karşılaştırma kartları taşıyor: satır metinlerini kısalt")
         f_ = font(k(fs))
         for j, (yan, xa, xb) in enumerate(((sol, x0, ort - 12), (sag, ort + 12, x1))):
             r = renkler.get(yan.get("renk", "sari" if j == 0 else "yesil"), (255, 210, 90))
@@ -816,6 +940,8 @@ class Sahne:
             if y0 + 120 + len(ls_) * fs * 1.3 <= 495:
                 break
             fs -= 2
+        else:
+            self._u("ipucu metni kutudan taşıyor")
         y = y0 + 120
         for t_ in satir_kir(ip["metin"], font(k(fs), True), k(560), d):
             d.text(k(610, y), t_, font=font(k(fs), True), fill=(255, 255, 255)); y += fs * 1.3
@@ -846,6 +972,8 @@ class Sahne:
                     bw = d.textlength(a["baslik"], font=fb_)
                     kalan = k(1205) - (k(xl + 30) + bw + k(18))
                     metin = satir_kir(a.get("metin", ""), f_, kalan, d)
+                    if len(metin) > 1:
+                        self._u(f"zaman adımı '{a['baslik']}' metni tek satıra sığmıyor (kesildi)")
                     d.text((k(xl + 30) + bw + k(18), k(yc_ - 18)), metin[0] if metin else "", font=f_,
                            fill=(255, 255, 255) if vurgu else (205, 220, 210))
             return im
@@ -869,6 +997,8 @@ class Sahne:
             for t_ in satir_kir(a["baslik"], fb_, k(gen - 10), d)[:2]:
                 tw = d.textlength(t_, font=fb_)
                 d.text((k(cx) - tw / 2, k(yy)), t_, font=fb_, fill=(255, 224, 115)); yy += 30
+            if len(satir_kir(a.get("metin", ""), f_, k(gen - 10), d)) > 6 or len(satir_kir(a["baslik"], fb_, k(gen - 10), d)) > 2:
+                self._u(f"zaman adımı '{a['baslik']}' kesildi")
             for t_ in satir_kir(a.get("metin", ""), f_, k(gen - 10), d)[:6]:
                 tw = d.textlength(t_, font=f_)
                 d.text((k(cx) - tw / 2, k(yy)), t_, font=f_, fill=(255, 255, 255) if vurgu else (205, 220, 210)); yy += 27
@@ -1001,6 +1131,69 @@ def kapak_gorseli(sen, karakter_png, yol):
 
 
 # ================================================================ ana akış
+def _sn(t, srt=True):
+    h, m, s_ = int(t // 3600), int(t % 3600 // 60), t % 60
+    return f"{h:02d}:{m:02d}:{s_:06.3f}".replace(".", ",") if srt else (f"{h}:{m:02d}:{int(s_):02d}" if h else f"{m:02d}:{int(s_):02d}")
+
+
+def yayin_paketi(cikti, sen, sahneler, zc, bolum_adi):
+    """YouTube'a hazır paket: .srt altyazı + bölümlü açıklama (explainer-video .srt, MoneyPrinterTurbo altyazı)."""
+    # 1) SRT: uzun cümleler ≤ 2 satır × 42 karakterlik parçalara bölünür, süre karakterle orantılı
+    girdiler = []
+    for bas, bit, cz in zc:
+        for a, b, metin in cz:
+            parca, cur = [], ""
+            for w in metin.split():
+                if len(cur) + len(w) + 1 > 84 and cur:
+                    parca.append(cur); cur = w
+                else:
+                    cur = (cur + " " + w).strip()
+            if cur:
+                parca.append(cur)
+            top = sum(len(x) for x in parca) or 1; t0 = a
+            for x in parca:
+                t1 = t0 + (b - a) * len(x) / top
+                if len(x) > 42:   # iki satıra dengeli böl
+                    ks = x.split(); yarim = len(x) / 2; acc, i_ = 0, 0
+                    for i_, w in enumerate(ks):
+                        acc += len(w) + 1
+                        if acc >= yarim:
+                            break
+                    x = " ".join(ks[:i_ + 1]) + "\n" + " ".join(ks[i_ + 1:])
+                girdiler.append((t0, t1, x)); t0 = t1
+    srt = "\n".join(f"{i + 1}\n{_sn(a)} --> {_sn(b)}\n{x}\n" for i, (a, b, x) in enumerate(girdiler))
+    cikti.with_suffix(".srt").write_text(srt, encoding="utf-8")
+    # 2) Bölümler: "bolum" alanı varsa onlar; yoksa soru olmayan sahne başlıkları (en az 10 sn arayla)
+    bol = []
+    if any(sh.get("bolum") for sh in sahneler):
+        for i, sh in enumerate(sahneler):
+            if sh.get("bolum"):
+                bol.append([zc[i][0] if i else 0.0, sh["bolum"]])
+    else:
+        for i, sh in enumerate(sahneler):
+            if sh.get("tur") != "soru":
+                bol.append([zc[i][0] if i else 0.0, sh.get("baslik", "")])
+    temiz_bol = []
+    for t, ad in bol:
+        if temiz_bol and t - temiz_bol[-1][0] < 10:
+            continue
+        temiz_bol.append([t, ad])
+    if temiz_bol:
+        temiz_bol[0][0] = 0.0
+    aciklama = [sen.get("alt_baslik", ""), ""]
+    if len(temiz_bol) >= 3:
+        aciklama += ["Bölümler:"] + [f"{_sn(t, False)} {ad}" for t, ad in temiz_bol] + [""]
+    aciklama += ["Seslendirme ve animasyon açık kaynak araçlarla, yapay zekâ desteğiyle üretilmiştir."]
+    paket = (f"BAŞLIK:\n{sen.get('youtube_baslik', sen.get('baslik', ''))}\n\nAÇIKLAMA:\n" + "\n".join(aciklama) +
+             "\n\nETİKETLER:\n" + ", ".join(sen.get("etiketler", [])) +
+             "\n\nNOT: YouTube Studio > Altyazılar bölümüne " + cikti.with_suffix(".srt").name +
+             " dosyasını yükleyin; 'Değiştirilmiş veya yapay içerik' kutusunu işaretleyin.\n")
+    cikti.with_name(cikti.stem + "_youtube.txt").write_text(paket, encoding="utf-8")
+    if len(sen.get("youtube_baslik", sen.get("baslik", ""))) > 100:
+        log("  ⚠ YouTube başlığı 100 karakteri aşıyor; 'youtube_baslik' alanını kısalt.")
+    log(f"  Yayın paketi: {cikti.with_suffix('.srt').name}, {cikti.stem}_youtube.txt ({len(temiz_bol)} bölüm)")
+
+
 def main():
     ap = argparse.ArgumentParser(description="Senaryodan animasyonlu eğitim videosu (ücretsiz/açık kaynak).")
     ap.add_argument("senaryo")
@@ -1025,6 +1218,9 @@ def main():
     ap.add_argument("--sahne", help="sadece bu sahneler, ör. 1-3")
     ap.add_argument("--kamera-yok", action="store_true", help="sahnelerdeki yavaş yakınlaşmayı kapat")
     ap.add_argument("--efekt-yok", action="store_true", help="tık/ding ses efektlerini kapat")
+    ap.add_argument("--kelime-senkron-yok", action="store_true",
+                    help="öğeleri cümle başında aç (varsayılan: öğenin anahtar kelimesi söylenirken)")
+    ap.add_argument("--giris-yok", action="store_true", help="boş tahtada otomatik giriş yazısını kapat")
     ap.add_argument("--tik", action="store_true", help="madde belirirken hafif 'tık' sesi (varsayılan kapalı; konuşma üstünde sürtme gibi duyulabiliyor)")
     ap.add_argument("--storyboard", metavar="PNG", help="ses/video üretmeden her sahnenin son halini tek görselde göster")
     ap.add_argument("--kontrol", action="store_true", help="sadece senaryo çeşitlilik/uzunluk kontrolü yap")
@@ -1045,13 +1241,38 @@ def main():
     telaffuz = sen.get("telaffuz", {})
     kok = sen.get("telaffuz_kok", {})
     ust = sen.get("baslik", "")
+    # bölümler: sahnedeki "bolum" alanı yeni bölüm başlatır (YouTube bölümleri + tahta alt bilgisi)
+    bolum_adi, b_ = [], None
+    for sh in sahneler:
+        b_ = sh.get("bolum", b_); bolum_adi.append(b_)
     intro = 0 if args.intro_outro_yok else INTRO_SN
     outro = 0 if args.intro_outro_yok else OUTRO_SN
 
     for u in cesitlilik_raporu(sahneler):
         log("  ⚠ " + u)
     if args.kontrol:
-        log("Kontrol bitti."); return
+        # yerleşim raporu (explainer-video layout_report / TheoremExplainAgent 'element layout')
+        S0 = Sahne(1280, 720); tb0 = S0.arka_plan(); sorun = 0
+        for si, sh in enumerate(sahneler):
+            S0.tahta(tb0, sh, len(sahne_ogeleri(sh)), ilk + si, toplam, ust, True)
+            for u in S0.uyari:
+                log(f"  ⚠ yerleşim · sahne {ilk + si} «{sh.get('baslik', '')}»: {u}"); sorun += 1
+        # senkron raporu: gerçek ses varsa onun süreleri, yoksa tahmin (~2.3 kelime/sn)
+        sureler = []
+        for si, sh in enumerate(sahneler):
+            cs = []
+            for ci, c in enumerate(cumlelere_bol(sh.get("anlatim", ""))):
+                y_ = Path(args.ses_dizini or "/yok") / f"{ilk + si:02d}_{ci:02d}.wav"
+                if y_.exists():
+                    x_ = oku_24k(y_); nz_ = np.nonzero(np.abs(x_) > 0.01)[0]
+                    cs.append((nz_[-1] - nz_[0]) / SR + 0.075 if len(nz_) else 0.5)
+                else:
+                    cs.append(len(temiz(c).split()) / 2.3 + 0.3)
+            sureler.append(cs)
+        for u in senkron_raporu(sahneler, ilk, sureler):
+            log("  ⚠ senkron · " + u); sorun += 1
+        top = sum(map(sum, sureler)) + len(sahneler) * 1.4
+        log(f"Kontrol bitti: {sorun} yerleşim/senkron uyarısı · tahmini süre {top / 60:.1f} dk."); return
     if args.storyboard:
         S0 = Sahne(1280, 720); tb0 = S0.arka_plan(); kareler = []
         for si, sh in enumerate(sahneler):
@@ -1100,13 +1321,17 @@ def main():
                     if not den:
                         en_iyi = (1.0, aday, ""); break
                     p, duyulan = den.puan(aday, temiz(c))
+                    aday.with_suffix(".json").write_text(json.dumps(den.kelimeler, ensure_ascii=False))
                     log(f"   {ad} deneme {deneme + 1}: {p:.2f}  «{duyulan[:70]}»")
                     if en_iyi is None or p > en_iyi[0]:
                         en_iyi = (p, aday, duyulan)
                     if p >= args.esik:
                         break
                 os.replace(en_iyi[1], yol)
-                for f in hedef.glob(f"{ad}.aday*.wav"):
+                kz = en_iyi[1].with_suffix(".json")
+                if kz.exists():
+                    os.replace(kz, yol.with_suffix(".json"))
+                for f in list(hedef.glob(f"{ad}.aday*.wav")) + list(hedef.glob(f"{ad}.aday*.json")):
                     f.unlink()
                 rapor.append(f"{ad}\t{en_iyi[0]:.2f}\t{c}\t|\t{en_iyi[2]}")
                 log(f"   {yol.name}: {c[:60]}")
@@ -1115,7 +1340,7 @@ def main():
         return
 
     parcalar = [np.zeros(int(intro * SR), np.float32)]
-    t = intro; zc = []
+    t = intro; zc = []; kelime_z = {}
     for si, sh in enumerate(sahneler):
         bas = t; cz = []
         for ci, c in enumerate(cumlelere_bol(sh["anlatim"])):
@@ -1134,8 +1359,12 @@ def main():
                 motor.sentezle(seslendirme_metni(c, telaffuz, kok), yol)
             x = oku_24k(yol)
             nz = np.nonzero(np.abs(x) > 0.01)[0]       # baş/son sessizliği kırp
+            ofs = max(0, nz[0] - 600) / SR if len(nz) else 0.0
             if len(nz):
                 x = x[max(0, nz[0] - 600): nz[-1] + 1200].copy()
+            kj = Path(yol).with_suffix(".json")
+            kelime_z[(si, ci)] = ([dict(w, s=w["s"] - ofs) for w in json.loads(kj.read_text())]
+                                  if kj.exists() else None)
             x = yumusat(x)
             cz.append((t, t + len(x) / SR, temiz(c)))
             dur_ = duraklama(c)
@@ -1155,11 +1384,31 @@ def main():
         cz = zc[si][2]; nc = max(1, len(cz)); ts = []
         mm = sahne_ogeleri(sh)
         for j in range(len(mm)):
+            capa = None
             if sh.get("goster") and j < len(sh["goster"]):
-                ci = min(len(cz) - 1, sh["goster"][j])
+                gj = sh["goster"][j]
+                if isinstance(gj, str) and ":" in gj:      # "3:kelime" → 3. cümlede o kelimede
+                    a_, _, capa = gj.partition(":"); ci = min(len(cz) - 1, int(a_))
+                elif isinstance(gj, float):                  # 2.5 → 2. cümlenin ortası
+                    ci = min(len(cz) - 1, int(gj))
+                    ts.append(cz[ci][0] + (cz[ci][1] - cz[ci][0]) * (gj - int(gj)) if cz else zc[si][0]); continue
+                else:
+                    ci = min(len(cz) - 1, int(gj)); capa = None if args.kelime_senkron_yok else oge_metni(sh, j)
             else:
                 ci = min(len(cz) - 1, int(math.floor(j * nc / max(1, len(mm)))))
-            ts.append(cz[ci][0] if cz else zc[si][0])
+            if not cz:
+                ts.append(zc[si][0]); continue
+            a_, b_, metin_ = cz[ci]
+            zaman_ = a_
+            if capa and sh.get("tur") != "soru":
+                r_ = capa_orani(metin_, capa, kelime_z.get((si, ci)))
+                if r_ and r_[0] == "sn":
+                    zaman_ = a_ + max(0.0, r_[1] - 0.12)
+                elif r_ and r_[1] > 0.15:
+                    zaman_ = a_ + (b_ - a_) * r_[1] - 0.15
+            ts.append(min(b_, zaman_))
+        for j in range(1, len(ts)):                         # sıra bozulmasın
+            ts[j] = max(ts[j], ts[j - 1] + 0.25)
         madde_t.append(ts)
 
     log("[2/4] Ses işleme, efektler" + (" ve fon müziği..." if args.muzik else "..."))
@@ -1233,12 +1482,13 @@ def main():
         kirp.update({f, f + 1, f + 2}); f += rnd.randint(int(FPS * 2.5), int(FPS * 5))
 
 
-    tahta_c, alt_c, madde_c, noktalar = {}, {}, {}, {}
+    tahta_c, alt_c, madde_c, noktalar, giris_c = {}, {}, {}, {}, {}
     def tahta(si, g, acik=False):
         if (si, g, acik) not in tahta_c:
             if len(tahta_c) > 30:
                 tahta_c.clear()
-            tahta_c[(si, g, acik)] = S.tahta(taban, sahneler[si], g, ilk + si, toplam, ust, acik)
+            tahta_c[(si, g, acik)] = S.tahta(taban, sahneler[si], g, ilk + si, toplam,
+                                             bolum_adi[si] if bolum_adi[si] else ust, acik)
             noktalar[si] = S._nokta
         return tahta_c[(si, g, acik)]
 
@@ -1275,6 +1525,17 @@ def main():
             lay, bb = madde_c[key]
             lay2 = lay.copy(); lay2.putalpha(lay.getchannel("A").point(lambda v: int(v * e)))
             im.paste(lay2, (bb[0] - int(k(30) * (1 - e)), bb[1]), lay2)
+        # giriş yazısı: tahta boşken konuşma başladıysa (ölü hava önleme)
+        if ts and tur not in ("soru", "ipucu") and not sh_.get("kanca") and ts[0] - bas > 2.5 and not args.giris_yok:
+            gorunurluk = 1.0 if g == 0 else max(0.0, 1 - (tt - ts[0]) / MADDE_ANIM) if g == 1 else 0.0
+            gorunurluk *= min(1.0, (tt - bas) / 0.4)
+            if gorunurluk > 0:
+                if si not in giris_c:
+                    giris_c[si] = S.giris_katmani(giris_metni(sh_))
+                lay = giris_c[si]
+                if gorunurluk < 1:
+                    lay = lay.copy(); lay.putalpha(lay.getchannel("A").point(lambda v: int(v * gorunurluk)))
+                im.paste(lay, (0, 0), lay)
         ci = None
         for j, (a, b, _) in enumerate(cz):
             if a - 0.05 <= tt < b + CUMLE_ARASI:
@@ -1315,6 +1576,8 @@ def main():
         im.paste(kr, (k((kx0 + kx1) / 2 - 210 * KAR_OLCEK), k(kust + 28) - kr.height + sal), kr)
         im.paste(kursu, (0, 0), kursu)
 
+    bolum_x = [int(W * (zc[i][0] - intro) / max(1, sure - intro - outro))
+               for i in range(1, len(sahneler)) if sahneler[i].get("bolum")]
     log(f"[4/4] Video kodlanıyor: {W}x{H}, {n_kare} kare ({sure:.0f} sn)...")
     cikti = Path(args.cikti).resolve()
     ff = subprocess.Popen([ffmpeg_bin(), "-y", "-v", "error",
@@ -1360,6 +1623,8 @@ def main():
             # ilerleme çubuğu
             d = ImageDraw.Draw(kare)
             d.rectangle((0, H - k(5), int(W * (tt - intro) / max(1, sure - intro - outro)), H), fill=(255, 196, 80))
+            for x_ in bolum_x:   # bölüm sınırları
+                d.rectangle((x_ - 1, H - k(5), x_ + 1, H), fill=(30, 30, 30))
         ff.stdin.write(kare.tobytes())
         if fi % (FPS * 60) == 0:
             log(f"   {tt:5.0f} / {sure:.0f} sn")
@@ -1367,6 +1632,7 @@ def main():
     shutil.rmtree(tmp, ignore_errors=True)
     if ff.returncode:
         sys.exit("ffmpeg hata verdi.")
+    yayin_paketi(cikti, sen, sahneler, zc, bolum_adi)
     kapak = cikti.with_name(cikti.stem + "_kapak.jpg")
     kapak_gorseli(sen, None if args.karakter == "cizim" else Path(args.karakter).with_suffix(".png"), kapak)
     log(f"\nTAMAM ✔  {cikti}  ({sure / 60:.1f} dk)  + kapak: {kapak.name}")

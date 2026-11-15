@@ -44,3 +44,15 @@ GitHub'da: Actions → **Seslendirme üret** → Run workflow → release'ten `s
 ## Lisanslar
 Kod: MIT. Chatterbox: MIT. Piper fahrettin sesi (referans): CC0. Karakter görseli: repo sahibine aittir.
 YouTube açıklamasında sesin yapay zekâ ile üretildiğini belirtmeniz önerilir.
+
+### Benzer projelerden alınan fikirler (yalnızca fikir; kod kopyalanmadı)
+| Fikir | Kaynak (lisans) | Bizde |
+|---|---|---|
+| Animasyonu kelimeye bağlama | manim-voiceover "bookmark" (MIT), explainer-video [köşeli parantez] (MIT) | Öğe, anahtar kelimesi söylenirken açılır; Whisper kelime zamanları `SS_CC.json` |
+| "Ekran sesin önünde" + senkron raporu | explainer-video (MIT) | Ölü hava / donuk ekran uyarısı, otomatik giriş yazısı |
+| Yerleşim raporu | explainer-video (MIT), TheoremExplainAgent "element layout" (MIT) | Taşan/kesilen metin, küçük yazı uyarıları (`--kontrol`) |
+| .srt teslimi | explainer-video, MoneyPrinterTurbo (MIT) | Her render'da `video.srt` |
+| Bölüm başlıkları | explainer-video `SECTIONS`, Remotion/Manim header | `bolum` alanı → tahta alt bilgisi, ilerleme çizgisi, YouTube bölümleri |
+| 5 ölçütlü değerlendirme | TheoremExplainAgent (MIT) | Denetim adımında doğruluk/görsel ilgi/akış/yerleşim/tutarlılık puanı |
+| Sahne türleri, tekdüzelik kontrolü, senaryo kuralları | OpenMontage (AGPL — yalnızca fikir) | Rakam/karşılaştırma/ipucu/zaman, `cesitlilik_raporu` |
+| İmleç / etkin öğe | Paper2Video, Code2Video (MIT) | İşaretçi + vurgu |
