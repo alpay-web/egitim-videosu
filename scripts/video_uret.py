@@ -2117,7 +2117,7 @@ def main():
         wf.writeframes((np.clip(karisim, -1, 1) * 32767).astype(np.int16).tobytes())
     son_ses = tmp / "son.wav"
     # agate: kelime aralarında kalan kısık hışırtıyı 24 dB'e kadar bastırır (konuşma eşiğin çok üstünde)
-    zincir = "highpass=f=80,adeclick,afftdn=nf=-45:nr=8,agate=threshold=0.008:ratio=3:range=0.06:attack=3:release=120,deesser=i=0.3,equalizer=f=3000:t=q:w=1.2:g=2,acompressor=threshold=-20dB:ratio=3:attack=10:release=200"
+    zincir = "highpass=f=80,afftdn=nf=-45:nr=8,agate=threshold=0.008:ratio=3:range=0.06:attack=3:release=120,deesser=i=0.3,equalizer=f=3000:t=q:w=1.2:g=2,acompressor=threshold=-20dB:ratio=3:attack=10:release=200"
     olc = subprocess.run([ffmpeg_bin(), "-hide_banner", "-i", str(ham), "-af",
                           zincir + ",loudnorm=I=-16:TP=-1.5:LRA=11:print_format=json", "-f", "null", "-"],
                          capture_output=True, text=True).stderr
