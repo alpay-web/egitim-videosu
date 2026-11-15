@@ -65,8 +65,18 @@ Konuşma hızı ≈ 130 kelime/dk; tahmini anlatım süresi = içerik kelimesi �
 - **maddeler:** liste/özet. **tablo:** dokümandaki tablolar, "görürsen → cevap", yanlış/doğru listeleri.
   **rakam:** 1–3 çarpıcı sayı (süre, puan, adet). **karsilastirma:** iki yan (önce sol sütun, sonra sağ açılır;
   `goster` = sol satırlar + sağ satırlar sırasıyla). **zaman:** adımlar/plan/süreç (≥4 adımda dikey). **ipucu:**
-  tek vurucu mesaj. **soru:** alıştırmalardan; anlatımda soruyu okuma ("Ekrandaki soruyu oku"), `cevap_cumle` =
-  "Doğru cevap…" cümlesinin indeksi; öncesinde geri sayım, sonra doğru seçenek yeşil + "ding".
+  tek vurucu mesaj. **soru:** alıştırmalardan; soruyu ve seçenekleri SESLİ OKU ("{The museum} boşluk {in 1890}.
+  Seçenekler: A, {built}; B, {was built}; C, {has built}."), `cevap_cumle` = "Doğru cevap…" cümlesinin indeksi;
+  öncesinde geri sayım, sonra doğru seçenek yeşil + "ding".
+- **EKRANDA YAZAN HER ŞEY OKUNUR (zorunlu):** tablonun iki sütunu da, karşılaştırmanın iki yanı da, rakam kartının
+  etiketi de, soru ve seçenekler de anlatımda geçmeli. Her öğeye ayrı bir cümle ayır (madde temposu). `--kontrol`
+  "okunmuyor" uyarısı verirse anlatımı düzelt. `goster` yazma: video her öğeyi onu okuyan cümlede, o kelime
+  söylenirken açar (`oto_goster`); ardışık iki öğe arasında en az 1,2 sn olur.
+- **İngilizce `{süslü parantez}` içinde (zorunlu):** "{had better}", "{I'm late, aren't I?}". Parantez içi Chatterbox'ta
+  İngilizce (en) üretilir, dışı Türkçe; aynı referans ses, seviyeler eşitlenir (Chatterbox tek çağrıda dil
+  değiştiremiyor: resemble-ai/chatterbox#346). İngilizce kelimeye Türkçe ek koyma ("{had better}'dan" değil,
+  "{had better} kalıbından"). Taslağı otomatik işaretlemek için `--ingilizce-isaretle` (wordfreq), sonra gözden geçir:
+  Türkçe "not", "on" gibi kelimeler yanlış işaretlenebilir; tek başına "{at}", "{I am}" gibi kısa öbekleri elle ekle.
 - `goster`: her öğenin hangi cümlede (0'dan) açılacağı; o an işaretçi öğeye kayar (`--tik` verilirse hafif tık sesi).
   **Kelime senkronu (varsayılan):** öğe, cümlenin başında değil, öğenin ilk anlamlı kelimesi söylenirken açılır
   (Whisper kelime zamanı `SS_CC.json` varsa saniyesi saniyesine, yoksa cümle içindeki konumuna göre). Elle çapa:
@@ -78,7 +88,7 @@ Konuşma hızı ≈ 130 kelime/dk; tahmini anlatım süresi = içerik kelimesi �
   çubuğuna bölüm çizgisi düşer ve YouTube bölüm listesi otomatik çıkar. Senaryoya `youtube_baslik` (≤100 karakter)
   ve `etiketler` de ekle.
 - `telaffuz`: kısaltma/seviye adları Türkçe harfle ("B1": "be bir", "C1": "se bir", "IELTS": "ay elts", "A": "a",
-  "B": "be"); sorunlu İngilizce kelimeler ("had": "hed", "Enjoy": "inçoy"). `telaffuz_kok`: {"fiil": "fiyil"}.
+  "B": "be"). İngilizce kelimeler için telaffuz YAZMA, `{…}` kullan. `telaffuz_kok`: {"fiil": "fiyil"}.
   Chatterbox'ın zorlandığı "şık" yerine "seçenek" yaz.
 
 ## 4. Kapsam testi (PresentQuiz fikri)
@@ -126,6 +136,9 @@ python $R/scripts/video_uret.py senaryo.json -o video.mp4 --ses-dizini sesler   
 Varsayılan: sade çizim profesör (kürsüde), yavaş kamera, işaretçi, yalnızca doğru cevapta "ding", müzik yok.
 **Temiz ses (mikrofon sürtmesi/tık yok):** cümle klipleri yumuşak fade-in/out ile birleşir; zincirde `adeclick`,
 `afftdn` (hafif gürültü azaltma) ve `deesser` var; konuşma üstündeki "tık" efekti varsayılan kapalı.
+**Gürültü (genel çözüm, katmanlı):** (1) seslendirme işi her cümleyi **DeepFilterNet3** ile temizler
+(`scripts/ses_temizle.py`, en fazla 30 dB bastırma; eski sesler için `ses_temizle.yml`), (2) `klip_temizle` cümle
+başı/sonu kuyruklarını ve uzun kısık bölgeleri keser, (3) render zincirinde `agate` kelime aralarındaki artığı bastırır.
 **Nefes/hışırtı temizliği (varsayılan):** Chatterbox bazı cümlelerin sonuna 0,5–2 sn'lik düşük seviyeli, tiz
 (4–7 kHz) bir nefes/sürtme kuyruğu ekliyor; `klip_temizle` konuşma tepesinin 24 dB altındaki tonsuz kuyrukları
 keser, cümle içindeki ≥150 ms'lik nefesleri 24 dB kısar. Sondaki "s/ş" gibi sesler daha yüksek olduğu için korunur.

@@ -2,6 +2,15 @@
 
 Sürümleme: `ANA.ARA.YAMA` — ANA: senaryo biçimi geriye uyumsuz değişirse; ARA: yeni özellik; YAMA: düzeltme.
 
+## 1.1.0 — 2026-11-15
+**İngilizce doğru okunuyor:** anlatımdaki `{İngilizce}` parçalar Chatterbox'ta İngilizce (en), geri kalanı Türkçe
+üretilip aynı referans sesle birleştiriliyor (kod geçişi). `--ingilizce-isaretle` taslağı otomatik işaretler.
+**Ekrandaki her şey okunuyor:** `--kontrol` okunmayan tahta metnini bildirir; `goster` gerekmez (`oto_goster`),
+öğeler aralarında en az 1,2 sn ile, kendilerini okuyan kelimede açılır. Sorular ve seçenekler sesli okunur.
+**Gürültü:** DeepFilterNet3 seslendirme işine eklendi (+ `ses_temizle.yml`), render zincirine `agate`.
+**Düzeltmeler:** Chatterbox'ın 5 belirteçten kısa metinde çökmesine koruma; parça çökse de başarılı sesler yayınlanır;
+`{…}` içindeki noktalama cümle bölmez.
+
 ## 1.0.1 — 2026-11-15
 **Düzeltmeler**
 - Seslendirme işi Chatterbox referansı için gereken `piper-tts`'i kurmuyordu; sabitlendi (1.8.0). İş artık `pipefail`
