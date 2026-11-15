@@ -289,7 +289,11 @@ def donustur(md, ayar):
             ad = ekran(b[2])
             for a, x in ayar.get("degistir", {}).items():
                 ad = ad.replace(a, x)
-            alt_baslik = ad; ex_ad = None; atla_bolum = False
+            alt_baslik = ad; ex_ad = None
+            if b[1] <= 2 or not atla_bolum:                   # "yerine" ile değişen bölümün alt başlıkları da atlanır
+                atla_bolum = False
+            elif atla_bolum:
+                i += 1; continue
             if b[1] <= 3:
                 bekleyen_bolum = ad
             if ad in yerine:                              # bu bölüm elle yazılmış sahnelerle değişir
