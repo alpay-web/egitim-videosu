@@ -81,6 +81,7 @@ jobs:
           path: sesler/
   yayinla:
     needs: ses
+    if: ${{ !cancelled() }}   # bir parça çökse bile başarılı parçaların sesleri yayınlansın (önbelleğe girer)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4

@@ -690,6 +690,22 @@ class ChatterboxSes:
                 p.sentezle(metin, referans)
         self.ref = str(referans)
         self.m = chatterbox_yukle(Path(dizin) / "chatterbox")
+        # Chatterbox 0.1.7 hatası: 5 belirteçten kısa metinde (ör. "so", "on") hizalama denetçisi IndexError atıyor.
+        # Denetçiyi o adımda atla; süre kontrolü kaçak üretimi zaten yakalar.
+        try:
+            from chatterbox.models.t3.inference import alignment_stream_analyzer as _asa
+            if not getattr(_asa.AlignmentStreamAnalyzer.step, "_guvenli", False):
+                _asil = _asa.AlignmentStreamAnalyzer.step
+
+                def _guvenli(self_, logits, *a, **k):
+                    try:
+                        return _asil(self_, logits, *a, **k)
+                    except IndexError:
+                        return logits
+                _guvenli._guvenli = True
+                _asa.AlignmentStreamAnalyzer.step = _guvenli
+        except Exception:
+            pass
         self.abarti, self.cfg, self.hiz = abarti, cfg, hiz
         self._varsayilan = (abarti, cfg)
 
