@@ -1,0 +1,48 @@
+{
+ "baslik": "B1 testi",
+ "telaffuz": {},
+ "sahneler": [
+  {
+   "baslik": "Varyant 1",
+   "anlatim": "Hedefimiz be bir seviyesi. Kabaca be bir düzeyinde konuşursun.",
+   "maddeler": [
+    "x"
+   ]
+  },
+  {
+   "baslik": "Varyant 2",
+   "anlatim": "Hedefimiz Be Bir seviyesi. Kabaca Be Bir düzeyinde konuşursun.",
+   "maddeler": [
+    "x"
+   ]
+  },
+  {
+   "baslik": "Varyant 3",
+   "anlatim": "Hedefimiz beh bir seviyesi. Kabaca beh bir düzeyinde konuşursun.",
+   "maddeler": [
+    "x"
+   ]
+  },
+  {
+   "baslik": "Varyant 4",
+   "anlatim": "Hedefimiz be, bir seviyesi. Kabaca be, bir düzeyinde konuşursun.",
+   "maddeler": [
+    "x"
+   ]
+  },
+  {
+   "baslik": "Varyant 5",
+   "anlatim": "Hedefimiz bé bir seviyesi. Kabaca bé bir düzeyinde konuşursun.",
+   "maddeler": [
+    "x"
+   ]
+  },
+  {
+   "baslik": "Varyant 6",
+   "anlatim": "Hedefimiz bı bir seviyesi. Kabaca bı bir düzeyinde konuşursun.",
+   "maddeler": [
+    "x"
+   ]
+  }
+ ]
+}
