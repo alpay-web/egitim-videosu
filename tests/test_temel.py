@@ -70,7 +70,7 @@ def test_ingilizce_parcalar_ve_bolme():
     c = v.cumlelere_bol("Soru: {I'm late, aren't I?} Doğru cevap B: {aren't I}. Bitti.")
     assert c == ["Soru: {I'm late, aren't I?}", "Doğru cevap B: {aren't I}.", "Bitti."]
     p = v.parcalara_ayir(v.seslendirme_metni(c[1], {"B": "be"}))
-    assert p == [("tr", "Doğru cevap be: arınt ay.")]          # kısa öbek cümle içinde okunuşuyla
+    assert p == [("tr", "Doğru cevap be: arnt ay.")]          # kısa öbek cümle içinde okunuşuyla
     assert v.temiz(c[1]) == "Doğru cevap B: aren't I."
 
 

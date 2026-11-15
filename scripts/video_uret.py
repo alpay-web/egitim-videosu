@@ -19,7 +19,8 @@ KAR_OLCEK = 0.52  # çizim karakterin boyutu (1 = eski tam boy)
 CUMLE_ARASI, SAHNE_ARASI = 0.35, 1.0
 INTRO_SN, OUTRO_SN = 4.0, 4.5
 GECIS = 0.5        # sahne geçişi (sn)
-MADDE_ANIM = 0.45  # madde belirme animasyonu (sn)
+MADDE_ANIM = 0.6   # madde belirme animasyonu (sn)
+ISARETCI_SURE = 0.9   # işaretçinin bir satırdan diğerine kayma süresi (sn)
 MIN_OGE_ARALIK = 1.2  # ardışık iki öğenin belirmesi arasında en az (sn): okunmadan geçmesin
 
 PIPER_SESLER = {  # GitHub (k2-fsa/sherpa-onnx) üzerinde barınan Piper sesleri
@@ -145,6 +146,8 @@ def ingilizce_okunus(metin):
     """'had better' → 'hed betır': Türkçe motorun İngilizceyi doğru vurgu ve akışla, cümleden kopmadan okuması için.
     Sözlükte olmayan kelime olduğu gibi kalır."""
     d = _cmu()
+    ozel = {"aren't": "arnt", "worth": "vörs"}          # Whisper denetiminde zayıf çıkanlar
+    metin = re.sub(r"[A-Za-z][A-Za-z'’]*", lambda m: ozel.get(m.group(0).lower(), m.group(0)), metin)
     metin = re.sub(r"\d+", lambda m: _en_sayi(int(m.group(0))), metin)
 
     def kelime(m):
@@ -2159,7 +2162,8 @@ def main():
         if g and tur not in ("soru", "ipucu") and nk and g - 1 < len(nk):
             hedef = nk[g - 1]
             onceki = nk[g - 2] if g >= 2 and g - 2 < len(nk) else (hedef[0], hedef[1] - 40)
-            p_ = min(1.0, (tt - ts[g - 1]) / 0.35); e_ = 1 - (1 - p_) ** 3
+            p_ = min(1.0, (tt - ts[g - 1]) / ISARETCI_SURE)
+            e_ = 4 * p_ ** 3 if p_ < 0.5 else 1 - (-2 * p_ + 2) ** 3 / 2      # yumuşak başla, yumuşak dur
             S.isaretci(im, onceki[0] + (hedef[0] - onceki[0]) * e_, onceki[1] + (hedef[1] - onceki[1]) * e_, tt)
         if karakter:
             karakter_yapistir(im, tt, fi, any(0 <= tt - x < 1.8 for x in ts))
