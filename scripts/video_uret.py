@@ -244,6 +244,10 @@ def temiz(c):
 _EN_KISALTMA = {"t", "s", "re", "m", "ll", "ve", "d"}
 
 
+TURKCE_ZORLA = set()      # İngilizce sayılmayacak kelimeler (küçük harf): senaryo ayarındaki 'turkce' + telaffuz anahtarları
+KISALTMA_TURKCE = False   # True: SQL, API gibi büyük harf kısaltmalar Türkçe harf okunuşuyla (telaffuz sözlüğünden)
+
+
 def ingilizce_isaretle(metin):
     """Metindeki İngilizce kelime öbeklerini {…} içine alır (wordfreq: İngilizce/Türkçe kelime sıklığı)."""
     from wordfreq import zipf_frequency as z
@@ -259,6 +263,8 @@ def ingilizce_isaretle(metin):
             if ek.lower() not in _EN_KISALTMA:
                 return "tr"                                      # better'dan: Türkçe ek → işaretleme
         w = t.lower()
+        if w in TURKCE_ZORLA or (KISALTMA_TURKCE and len(t) >= 2 and t.isupper()):
+            return "tr"
         if len(w) == 1 and t not in ("I",):
             return "tr"                                          # A/B/C şıkları
         fark = z(w.replace("’", "'"), "en") - z(w.replace("’", "'"), "tr")

@@ -73,6 +73,7 @@ def ekran(t):
     for a, b in SEMBOL:
         t = t.replace(a, b)
     t = re.sub(r"~~(.+?)~~", r"\1 ✗", t)
+    t = re.sub(r"\[([^\]]+)\]\((?:https?:|www\.)[^)]+\)", r"\1", t)     # bağlantı: yalnız metni
     t = t.replace("***", "").replace("**", "").replace("*", "")
     t = re.sub(r"_{2,}", "___", t)
     return re.sub(r"\s+", " ", t).strip()
@@ -271,8 +272,11 @@ def soru_sahneleri(blok, sorular, ayar, baslik):
     return out
 
 
-def metin_sahneleri(baslik, paragraflar, ayar, kelime_siniri=70):
+def metin_sahneleri(baslik, paragraflar, ayar, kelime_siniri=70, oku_baslik=False):
     """Uzun metin (okuma parçası, dinleme metni, model cevap) → okunabilir parçalara bölünmüş 'metin' sahneleri."""
+    toplam = sum(len(ekran(p).split()) for p in paragraflar)
+    if toplam > kelime_siniri:                                # dengeli böl: 72 + 3 kelimelik artık sahne olmasın
+        kelime_siniri = -(-toplam // -(-toplam // kelime_siniri)) + 8
     out, kova, say = [], [], 0
     for p in paragraflar:
         e_ = ekran(p)
@@ -293,13 +297,74 @@ def metin_sahneleri(baslik, paragraflar, ayar, kelime_siniri=70):
         okunus = anlatim(metin.replace("\n", " "), ayar)
         sahneler.append({"baslik": baslik + (f" ({i}/{len(out)})" if len(out) > 1 else ""), "tur": "metin",
                          "metin": metin, "anlatim": okunus})
-    if sahneler and v.kapsam_orani(baslik, sahneler[0]["anlatim"]) < 0.6:   # başlık ekranda: okunmalı
+    if oku_baslik and sahneler and v.kapsam_orani(baslik, sahneler[0]["anlatim"]) < 0.6:   # başlık ekranda: okunmalı
         sahneler[0]["anlatim"] = anlatim(baslik, ayar).rstrip(".") + ". " + sahneler[0]["anlatim"]
+    return sahneler
+
+
+def soru_cevap_sahneleri(no, soru, cevap_p, ayar, kelime_siniri=75):
+    """Mülakat/SSS kalıbı: "**12. Soru?**" + cevap paragrafı (çoğu tırnak içinde, ardından not).
+    Tahtada: başlık "Soru 12", üstte soru, altında cevap; anlatım soruyu, sonra cevabı okur.
+    Cevaptan sonra gelen not (tırnak dışı) ayrı bir not sahnesi olur; köşeli parantezli yönerge cevaba aittir."""
+    soru_e = ekran(soru)
+    p = cevap_p.strip()
+    cevap, not_ = p, ""
+    if p.startswith('"') and p.count('"') >= 2:
+        k = p.rfind('"')
+        cevap, kalan = p[:k + 1], p[k + 1:].strip()
+        while kalan.startswith("["):                       # "..." [Varsa somut sonuç ekle.] → cevaba ait
+            j = kalan.find("]")
+            if j < 0:
+                break
+            cevap += " " + kalan[:j + 1]; kalan = kalan[j + 1:].strip()
+        not_ = kalan
+    # STAR etiketleri tahtada ayrı satır
+    cevap = re.sub(r"\s*\*\*(Durum|Görev|Aksiyon|Sonuç):\*\*\s*", r"\n**\1:** ", cevap).strip()
+    cevap = re.sub(r'^"\n', '"', cevap)
+    cumleler = re.split(r"(?<=[.!?\]])\s+|\n", ekran(cevap.replace("\n", " ¶ ")).replace(" ¶ ", "\n"))
+    cumleler = [c for c in cumleler if c.strip()]
+    toplam = sum(len(c.split()) for c in cumleler)
+    n = max(1, -(-toplam // kelime_siniri)); hedef = toplam / n
+    parcalar, kova, say = [], [], 0
+    for c in cumleler:
+        if kova and say + len(c.split()) > hedef + 10 and len(parcalar) < n - 1:
+            parcalar.append(kova); kova, say = [], 0
+        kova.append(c); say += len(c.split())
+    if kova:
+        parcalar.append(kova)
+    sahneler = []
+    for j, k in enumerate(parcalar):
+        satir = []
+        for x in k:                                        # STAR: yalnız etiketle başlayan cümle yeni satır açar
+            if satir and not re.match(r'^"?\*?\*?(Durum|Görev|Aksiyon|Sonuç):', x.strip()):
+                satir[-1] += " " + x.strip()
+            else:
+                satir.append(x.strip())
+        govde = "\n".join(satir)
+        govde = govde.replace("**", "")
+        ad = f"Soru {no}" + (f" ({j + 1}/{len(parcalar)})" if len(parcalar) > 1 else "")
+        okunus = anlatim(govde.replace("\n", " "), ayar)
+        if j == 0:
+            metin = soru_e + "\n\n" + govde
+            okunus = f"Soru {no}. " + anlatim(soru_e, ayar).rstrip() + " " + okunus
+        else:
+            metin = govde
+        sahneler.append({"baslik": ad, "tur": "metin", "metin": metin, "anlatim": okunus, "soru_baslik": j == 0})
+    if not_:
+        e_ = ekran(not_)
+        if len(e_.split()) > 24 or len(e_) > 170:
+            sahneler += metin_sahneleri(f"Soru {no} · Not", [not_], ayar)
+        else:
+            sahneler.append({"baslik": f"Soru {no} · Not", "tur": "ipucu", "ipucu": {"tip": "not", "metin": e_},
+                             "anlatim": anlatim(not_, ayar), "goster": [0]})
     return sahneler
 
 
 # ------------------------------------------------------------------ ana akış
 def donustur(md, ayar):
+    v.TURKCE_ZORLA = {w.lower() for w in ayar.get("turkce", [])} | {
+        k.lower() for k in ayar.get("telaffuz", {}) if re.fullmatch(r"[\w.]+", k)}
+    v.KISALTMA_TURKCE = bool(ayar.get("kisaltma_turkce"))
     bl = bloklar(md)
     atla = set(ayar.get("atla_satir", []))
     sahneler, bolum, alt_baslik, bekleyen_bolum = [], "", "", None
@@ -342,7 +407,7 @@ def donustur(md, ayar):
                 t = bl[i][1]
                 if re.fullmatch(r"\*\*[^*]{1,12}\*\*", t):
                     if paragraflar:
-                        yeni = metin_sahneleri(baslik_, paragraflar, ayar)
+                        yeni = metin_sahneleri(baslik_, paragraflar, ayar, oku_baslik=True)
                         if bekleyen_bolum:
                             yeni[0]["bolum"] = bekleyen_bolum; bekleyen_bolum = None
                         sahneler += yeni; paragraflar = []
@@ -351,17 +416,21 @@ def donustur(md, ayar):
                     paragraflar.append(t)
                 i += 1
             if paragraflar:
-                yeni = metin_sahneleri(baslik_, paragraflar, ayar)
+                yeni = metin_sahneleri(baslik_, paragraflar, ayar, oku_baslik=True)
                 if bekleyen_bolum:
                     yeni[0]["bolum"] = bekleyen_bolum; bekleyen_bolum = None
                 sahneler += yeni
             continue
         yeni = []
         if b[0] == "paragraf":
-            if b[1] in atla:
+            if any(a and (b[1] == a or b[1].startswith(a)) for a in atla):
                 i += 1; continue
             m = re.match(r"^\*\*(Alıştırma [^*]+|[A-Z]-bonus)\*\*\s*(.*)", b[1])
-            if m:                                        # alıştırma başlığı paragrafı
+            sc = re.fullmatch(r"\*\*(\d+)\.\s*(.+?)\*\*", b[1].strip())
+            if sc and i + 1 < len(bl) and bl[i + 1][0] == "paragraf" and not ayar.get("soru_cevap_kapali"):
+                yeni = soru_cevap_sahneleri(int(sc.group(1)), sc.group(2), bl[i + 1][1], ayar)
+                i += 1
+            elif m:                                        # alıştırma başlığı paragrafı
                 ex_ad = ekran(m.group(1)); talimat = m.group(2)
                 if talimat:
                     yeni = [{"baslik": ex_ad, "tur": "ipucu", "ipucu": {"tip": "not", "metin": ekran(talimat)},
@@ -370,7 +439,7 @@ def donustur(md, ayar):
                 i += 1; continue                         # cevaplar sorularla birlikte okunuyor
             else:
                 metin = ekran(b[1])
-                if len(metin.split()) > 28:
+                if len(metin.split()) > 24 or len(metin) > 170:
                     yeni = metin_sahneleri(alt_baslik, [b[1]], ayar)
                 else:
                     yeni = [{"baslik": alt_baslik, "tur": "ipucu", "ipucu": {"tip": "not", "metin": metin},
@@ -437,6 +506,9 @@ def main():
         ek_ = (" " + m_.group(1)) if m_ else ""
         govde_ = s_["baslik"][:m_.start()] if m_ else s_["baslik"]
         s_["baslik"] = kisa_baslik(govde_, 40 - len(ek_)) + ek_
+    for s_ in sahneler:
+        if not s_.get("baslik"):
+            s_["baslik"] = kisa_baslik(ayar.get("baslik", "Giriş"), 40)
     sen = {"baslik": ayar.get("baslik", "Eğitim videosu"), "alt_baslik": ayar.get("alt_baslik", ""),
            "youtube_baslik": ayar.get("youtube_baslik", ""), "etiketler": ayar.get("etiketler", []),
            "kapanis": ayar.get("kapanis", "Başarılar!"), "telaffuz": ayar.get("telaffuz", {}),
