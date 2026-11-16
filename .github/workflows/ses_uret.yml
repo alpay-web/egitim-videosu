@@ -22,6 +22,9 @@ on:
       kalite:
         description: "Whisper kalite kapısı: cümle başına en fazla deneme (0 = kapalı)"
         default: "3"
+      ham_sakla:
+        description: "Temizlik öncesi ham sesleri de sakla (sesler/ham/, karşılaştırma için)"
+        default: "false"
       taban:
         description: "Önceki ses release etiketleri (virgülle). Aynı metnin sesi varsa yeniden üretilmez."
         default: ""
@@ -75,6 +78,7 @@ jobs:
           python -m venv /tmp/df
           /tmp/df/bin/pip install -q torch==2.1.2 torchaudio==2.1.2 --index-url https://download.pytorch.org/whl/cpu
           /tmp/df/bin/pip install -q deepfilternet==0.5.6 soundfile "numpy<2"
+          if [ "${{ inputs.ham_sakla }}" = "true" ]; then mkdir -p sesler/ham && cp sesler/[0-9]*.wav sesler/ham/ 2>/dev/null || true; fi
           /tmp/df/bin/python scripts/ses_temizle.py sesler --sinir 30
           mv sesler/temizlendi.txt "sesler/temizlendi_${{ matrix.sahne }}.txt" 2>/dev/null || true
       - name: Ses kalitesi puanı (DNSMOS)
