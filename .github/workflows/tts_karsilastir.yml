@@ -63,7 +63,8 @@ jobs:
       - env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          ls -la c
+          ls -la c 2>/dev/null || true
+          if [ -z "$(ls -A c 2>/dev/null)" ]; then echo "Yayınlanacak ses yok (tüm modeller başarısız)"; exit 0; fi
           gh release view tts-karsilastirma -R ${{ github.repository }} >/dev/null 2>&1 || \
             gh release create tts-karsilastirma -R ${{ github.repository }} --title "TTS karşılaştırma" --notes "Aynı paragraf, aynı referans ses" --prerelease
           gh release upload tts-karsilastirma -R ${{ github.repository }} --clobber c/*
