@@ -351,9 +351,16 @@ def sahne_ogeleri(sh):
 # ================================================================ ses önbelleği (içerik adresli)
 # manim-voiceover'ın yaklaşımı: ses dosyası, seslendirilen metnin özetiyle (hash) eşlenir. Sahne eklemek,
 # silmek ya da sırasını değiştirmek eski sesleri boşa çıkarmaz; değişen cümle de asla eski sesle çalmaz.
+SES_MODELI = "v3"   # Chatterbox Multilingual sürümü; senaryodaki "ses_modeli" alanı ya da --ses-modeli ile değişir
+
+
 def ses_anahtari(metin_tts, ton):
+    """Önbellek anahtarı. v2 (eski) seslerin anahtarı değişmez; yeni modelin sesi eski modelinkiyle karışmaz."""
     import hashlib
-    veri = json.dumps({"m": metin_tts, "t": ton}, ensure_ascii=False, sort_keys=True)
+    d = {"m": metin_tts, "t": ton}
+    if SES_MODELI != "v2":
+        d["s"] = SES_MODELI
+    veri = json.dumps(d, ensure_ascii=False, sort_keys=True)
     return hashlib.sha1(veri.encode("utf-8")).hexdigest()[:12]
 
 
@@ -798,17 +805,20 @@ class PiperSes:
 
 
 CHATTERBOX_URL = "https://github.com/alpay-web/egitim-videosu/releases/download/modeller-chatterbox/{}"
-CHATTERBOX_DOSYALAR = ["ve.pt", "t3_mtl23ls_v2.safetensors", "s3gen.pt", "grapheme_mtl_merged_expanded_v1.json",
-                       "conds.pt", "Cangjie5_TC.json"]
+CHATTERBOX_ORTAK = ["ve.pt", "s3gen.pt", "grapheme_mtl_merged_expanded_v1.json", "conds.pt", "Cangjie5_TC.json"]
 
 
-def chatterbox_yukle(d):
-    """Önce yerel kopya, sonra Hugging Face, o da yoksa GitHub kopyası (parçalı dosyaları birleştirerek)."""
+def chatterbox_yukle(d, surum=None):
+    """Önce yerel kopya, sonra Hugging Face, o da yoksa GitHub kopyası (parçalı dosyaları birleştirerek).
+    surum: "v2" (chatterbox-tts 0.1.7) ya da "v3" (Multilingual V3: daha doğal, daha az uydurma/tekrar)."""
     from chatterbox.mtl_tts import ChatterboxMultilingualTTS
+    surum = surum or SES_MODELI
+    CHATTERBOX_DOSYALAR = CHATTERBOX_ORTAK + [f"t3_mtl23ls_{surum}.safetensors"]
+    ek = {} if surum == "v2" else {"t3_model": surum}      # 0.1.7 t3_model parametresini tanımaz
     d = Path(d)
     if not all((d / f).exists() for f in CHATTERBOX_DOSYALAR):
         try:
-            return ChatterboxMultilingualTTS.from_pretrained(device="cpu")
+            return ChatterboxMultilingualTTS.from_pretrained(device="cpu", **ek)
         except Exception:
             log("  Hugging Face'e erişilemedi; model GitHub kopyasından indiriliyor (tek seferlik, ~3 GB)...")
         d.mkdir(parents=True, exist_ok=True)
@@ -835,7 +845,7 @@ def chatterbox_yukle(d):
                         with open(p_, "rb") as g:
                             shutil.copyfileobj(g, out, 16 << 20)
                         p_.unlink()
-    return ChatterboxMultilingualTTS.from_local(d, "cpu")
+    return ChatterboxMultilingualTTS.from_local(d, "cpu", **ek)
 
 
 class ChatterboxSes:
@@ -1970,8 +1980,11 @@ def main():
     ap.add_argument("--dizin-olustur", metavar="KLASOR", help="eski ses klasörüne bu senaryoya göre dizin.json yaz (göç)")
     ap.add_argument("--ingilizce-isaretle", action="store_true",
                     help="anlatımdaki İngilizce öbekleri {…} ile işaretleyip senaryoya yaz (wordfreq gerekir); sonra gözden geçir")
-    ap.add_argument("--tempo", type=float, default=0.9,
-                    help="anlatım hızı çarpanı (perdeyi bozmadan; 0.9 = %%10 daha yavaş). Ses yeniden üretilmez")
+    ap.add_argument("--tempo", type=float, default=None,
+                    help="anlatım hızı çarpanı (perdeyi bozmadan; 0.9 = %%10 daha yavaş). Ses yeniden üretilmez. "
+                         "Varsayılan: v3 sesi 1.0 (zaten ~%%10 daha sakin), v2 sesi 0.9")
+    ap.add_argument("--ses-modeli", choices=["v2", "v3"],
+                    help="Chatterbox Multilingual sürümü (varsayılan: senaryodaki 'ses_modeli', yoksa v3)")
     ap.add_argument("--tik", action="store_true", help="madde belirirken hafif 'tık' sesi (varsayılan kapalı; konuşma üstünde sürtme gibi duyulabiliyor)")
     ap.add_argument("--storyboard", metavar="PNG", help="ses/video üretmeden her sahnenin son halini tek görselde göster")
     ap.add_argument("--kontrol", action="store_true", help="sadece senaryo çeşitlilik/uzunluk kontrolü yap")
@@ -1992,6 +2005,11 @@ def main():
 
     H = args.cozunurluk; W = H * 16 // 9
     sen = json.loads(Path(args.senaryo).read_text(encoding="utf-8"))
+    global SES_MODELI
+    SES_MODELI = args.ses_modeli or sen.get("ses_modeli", "v3")
+    if args.tempo is None:
+        args.tempo = 1.0 if SES_MODELI != "v2" else 0.9
+    log(f"Ses modeli: Chatterbox Multilingual {SES_MODELI} · tempo {args.tempo}")
     tum = sen["sahneler"]; toplam = len(tum)
     ilk = 1
     sahneler = tum

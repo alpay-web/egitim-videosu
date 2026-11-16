@@ -509,7 +509,8 @@ def main():
     for s_ in sahneler:
         if not s_.get("baslik"):
             s_["baslik"] = kisa_baslik(ayar.get("baslik", "Giriş"), 40)
-    sen = {"baslik": ayar.get("baslik", "Eğitim videosu"), "alt_baslik": ayar.get("alt_baslik", ""),
+    sen = {**({"ses_modeli": ayar["ses_modeli"]} if ayar.get("ses_modeli") else {}),
+           "baslik": ayar.get("baslik", "Eğitim videosu"), "alt_baslik": ayar.get("alt_baslik", ""),
            "youtube_baslik": ayar.get("youtube_baslik", ""), "etiketler": ayar.get("etiketler", []),
            "kapanis": ayar.get("kapanis", "Başarılar!"), "telaffuz": ayar.get("telaffuz", {}),
            "telaffuz_kok": ayar.get("telaffuz_kok", {}), "sahneler": sahneler}

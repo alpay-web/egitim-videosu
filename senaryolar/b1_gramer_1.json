@@ -1,349 +1,350 @@
 {
-  "baslik": "B1 Gramer · Bölüm 2 – Zamanlar ve If Cümleleri",
-  "alt_baslik": "2 Günde B1 serisi · Bölüm 2",
-  "kapanis": "Sıradaki: Passive, Modals, used to",
-  "telaffuz": {
-    "B1": "be bir",
-    "PREP": "prep",
-    "yesterday": "yesterdey",
-    "ago": "egou",
-    "since": "sins",
-    "already": "olredi",
-    "yet": "yet",
-    "By the time": "bay dı taym",
-    "If": "if",
-    "would": "wud",
-    "will": "wil",
-    "Enjoy": "inçoy",
-    "finish": "finiş",
-    "avoid": "evoyd",
-    "Want": "vont",
-    "decide": "disayd",
-    "plan": "plen",
-    "ing": "ing",
-    "to": "tu",
-    "but": "bat",
-    "actually": "ekçuali",
-    "sorry": "sori",
-    "instead": "insted",
-    "did": "did",
-    "didn't": "didınt",
-    "didn't stopped": "didınt stopt",
-    "Modal": "modal",
-    "must to go": "mast tu go",
-    "must go": "mast go",
-    "I am agree": "ay em ıgrii",
-    "I agree": "ay ıgrii",
-    "More better": "mor beter",
-    "I don't know": "ay dont nou",
-    "Always": "olveyz",
-    "never": "never",
-    "only": "onlii",
-    "Have you ever": "hev yu ever",
-    "Yes, I have": "yes, ay hev",
-    "To be honest": "tu bi onest",
-    "it depends on": "it dipends on",
-    "online": "onlayn",
-    "IELTS": "ay elts",
-    "I don't know'a": "ay dont nou'ya",
-    "had": "hed",
-    "stopped": "stopt",
-    "B": "be",
-    "A": "a",
-    "visiting": "viziting",
-    "museum": "miuziyım",
-    "C": "se",
-    "Past Simple": "past simpıl",
-    "Present Perfect": "prezınt pörfekt",
-    "Past Continuous": "past kıntinyuıs",
-    "Present Continuous": "prezınt kıntinyuıs",
-    "Present": "prezınt",
-    "Past": "past",
-    "going to": "goinq tu",
-    "ever": "evır",
-    "for": "for",
-    "were": "vör",
-    "was": "voz",
-    "Since": "sins",
-    "Paris": "Peris",
-    "twice": "tvays",
-    "I went to Paris last year": "ay vent tu Peris last yiır",
-    "I have been to Paris twice": "ay hev bin tu Peris tvays",
-    "I'll close the window": "ayl klouz dı vindou",
-    "I'm meeting the doctor at four": "aym miting dı doktır et for",
-    "I was cooking when the phone rang": "ay voz kuking ven dı foun reng",
-    "If I were you": "if ay vör yu",
-    "have lived": "hev livd",
-    "was cooking": "voz kuking",
-    "is going to": "iz goinq tu",
-    "Monday": "mandey",
-    "since 2019": "sins iki bin on dokuz",
-    "in 2019": "in iki bin on dokuz",
-    "three years": "tri yiırs",
-    "two weeks": "tu viiks",
-    "last year": "last yiır",
-    "in 2020": "in iki bin yirmi"
+ "ses_modeli": "v2",
+ "baslik": "B1 Gramer · Bölüm 2 – Zamanlar ve If Cümleleri",
+ "alt_baslik": "2 Günde B1 serisi · Bölüm 2",
+ "kapanis": "Sıradaki: Passive, Modals, used to",
+ "telaffuz": {
+  "B1": "be bir",
+  "PREP": "prep",
+  "yesterday": "yesterdey",
+  "ago": "egou",
+  "since": "sins",
+  "already": "olredi",
+  "yet": "yet",
+  "By the time": "bay dı taym",
+  "If": "if",
+  "would": "wud",
+  "will": "wil",
+  "Enjoy": "inçoy",
+  "finish": "finiş",
+  "avoid": "evoyd",
+  "Want": "vont",
+  "decide": "disayd",
+  "plan": "plen",
+  "ing": "ing",
+  "to": "tu",
+  "but": "bat",
+  "actually": "ekçuali",
+  "sorry": "sori",
+  "instead": "insted",
+  "did": "did",
+  "didn't": "didınt",
+  "didn't stopped": "didınt stopt",
+  "Modal": "modal",
+  "must to go": "mast tu go",
+  "must go": "mast go",
+  "I am agree": "ay em ıgrii",
+  "I agree": "ay ıgrii",
+  "More better": "mor beter",
+  "I don't know": "ay dont nou",
+  "Always": "olveyz",
+  "never": "never",
+  "only": "onlii",
+  "Have you ever": "hev yu ever",
+  "Yes, I have": "yes, ay hev",
+  "To be honest": "tu bi onest",
+  "it depends on": "it dipends on",
+  "online": "onlayn",
+  "IELTS": "ay elts",
+  "I don't know'a": "ay dont nou'ya",
+  "had": "hed",
+  "stopped": "stopt",
+  "B": "be",
+  "A": "a",
+  "visiting": "viziting",
+  "museum": "miuziyım",
+  "C": "se",
+  "Past Simple": "past simpıl",
+  "Present Perfect": "prezınt pörfekt",
+  "Past Continuous": "past kıntinyuıs",
+  "Present Continuous": "prezınt kıntinyuıs",
+  "Present": "prezınt",
+  "Past": "past",
+  "going to": "goinq tu",
+  "ever": "evır",
+  "for": "for",
+  "were": "vör",
+  "was": "voz",
+  "Since": "sins",
+  "Paris": "Peris",
+  "twice": "tvays",
+  "I went to Paris last year": "ay vent tu Peris last yiır",
+  "I have been to Paris twice": "ay hev bin tu Peris tvays",
+  "I'll close the window": "ayl klouz dı vindou",
+  "I'm meeting the doctor at four": "aym miting dı doktır et for",
+  "I was cooking when the phone rang": "ay voz kuking ven dı foun reng",
+  "If I were you": "if ay vör yu",
+  "have lived": "hev livd",
+  "was cooking": "voz kuking",
+  "is going to": "iz goinq tu",
+  "Monday": "mandey",
+  "since 2019": "sins iki bin on dokuz",
+  "in 2019": "in iki bin on dokuz",
+  "three years": "tri yiırs",
+  "two weeks": "tu viiks",
+  "last year": "last yiır",
+  "in 2020": "in iki bin yirmi"
+ },
+ "telaffuz_kok": {
+  "fiil": "fiyil"
+ },
+ "sahneler": [
+  {
+   "baslik": "Bu videoda 4 gramer dersi",
+   "ton": "merakli",
+   "kanca": "since 2019 mu, in 2019 mu? Tek kelime sınavda seni ya yükseltir ya düşürür.",
+   "maddeler": [
+    "Present Perfect mi, Past Simple mı?",
+    "Past Continuous: arka plan eylemi",
+    "Gelecek: will, going to, -ing",
+    "If cümleleri: 0, 1, 2"
+   ],
+   "anlatim": "Since 2019 mu, in 2019 mu? [dur] Sınavda bu tek kelimelik fark seni bir seviye yukarı ya da aşağı taşıyabilir. Bu videoda B1 için en çok sorulan dört gramer konusunu çözüyoruz. Önce Present Perfect ile Past Simple farkı. Sonra Past Continuous. Ardından gelecek zamanın üç yolu. En sonda da if cümleleri. Her dersten sonra kendini deneyeceksin.",
+   "goster": [
+    3,
+    4,
+    5,
+    6
+   ]
   },
-  "telaffuz_kok": {
-    "fiil": "fiyil"
+  {
+   "baslik": "Past Simple mı, Present Perfect mi?",
+   "tur": "karsilastirma",
+   "ton": "canli",
+   "sol": {
+    "baslik": "Past Simple",
+    "renk": "mavi"
+   },
+   "sag": {
+    "baslik": "Present Perfect",
+    "renk": "yesil"
+   },
+   "satirlar": [
+    [
+     "Bitmiş, zamanı belli",
+     "Zamanı belirsiz ya da hâlâ süren"
+    ],
+    [
+     "yesterday, ago, in 2020",
+     "ever, already, since, for"
+    ],
+    [
+     "I went to Paris last year.",
+     "I have been to Paris twice."
+    ]
+   ],
+   "anlatim": "İlk ders. Past Simple, geçmişte bitmiş ve zamanı belli olan olaylar içindir. Yesterday, last year, ago ya da in 2020 gibi ifadeler bunun işaretidir. Örneğin: I went to Paris last year. Present Perfect ise zamanı belli olmayan deneyimler ve hâlâ devam eden durumlar içindir. Ever, never, already, yet, since ve for onun işaretleri. Örneğin: I have been to Paris twice.",
+   "goster": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ]
   },
-  "sahneler": [
+  {
+   "baslik": "since mi, for mu?",
+   "tur": "ipucu",
+   "ton": "ciddi",
+   "ipucu": {
+    "tip": "ipucu",
+    "metin": "since + başlangıç noktası (2019, Monday) · for + süre (3 years, two weeks)"
+   },
+   "anlatim": "Since ve for çok karışır, ama kural basit. Since'ten sonra bir başlangıç noktası gelir: since 2019, since Monday. For'dan sonra ise bir süre gelir: for three years, for two weeks. Yani since two weeks diye bir şey yoktur.",
+   "goster": [
+    0
+   ]
+  },
+  {
+   "baslik": "Kendini dene 1/4",
+   "tur": "soru",
+   "soru": {
+    "metin": "I ___ in Ankara since 2019.",
+    "secenekler": [
+     "live",
+     "lived",
+     "have lived"
+    ],
+    "dogru": 2,
+    "bekle": 4,
+    "cevap_cumle": 2
+   },
+   "anlatim": "Hemen deneyelim. Ekrandaki cümlede boşluğa hangisi gelmeli? Doğru cevap C: have lived. Since gördüğün an Present Perfect düşün."
+  },
+  {
+   "baslik": "Past Continuous",
+   "tur": "tablo",
+   "ton": "canli",
+   "tablo": {
+    "basliklar": [
+     "Ne anlatıyorsun?",
+     "Ne kullan?"
+    ],
+    "satirlar": [
+     [
+      "Arka plan eylemi",
+      "was / were + -ing"
+     ],
+     [
+      "Araya giren eylem",
+      "Past Simple"
+     ],
+     [
+      "while ile",
+      "genelde continuous"
+     ],
+     [
+      "when ile",
+      "genelde simple"
+     ]
+    ]
+   },
+   "anlatim": "İkinci ders: Past Continuous. Geçmişte devam etmekte olan bir arka plan eylemi anlatıyorsan was ya da were ile fiilin ing halini kullanırsın. O sırada araya giren kısa eylem ise Past Simple olur. While ile genelde continuous, when ile genelde simple gelir. Örneğin: I was cooking when the phone rang.",
+   "goster": [
+    1,
+    2,
+    3,
+    3
+   ]
+  },
+  {
+   "baslik": "Kendini dene 2/4",
+   "tur": "soru",
+   "soru": {
+    "metin": "I ___ when the phone rang.",
+    "secenekler": [
+     "cooked",
+     "was cooking",
+     "am cooking"
+    ],
+    "dogru": 1,
+    "bekle": 4,
+    "cevap_cumle": 2
+   },
+   "anlatim": "Sıra sende. Telefon çaldığında ne yapıyordun? Doğru cevap B: was cooking. Yemek pişirmek arka plandaki uzun eylem, telefonun çalması ise araya giren kısa eylem."
+  },
+  {
+   "baslik": "Gelecek zamanın 3 yolu",
+   "tur": "rakam",
+   "ton": "canli",
+   "kartlar": [
     {
-      "baslik": "Bu videoda 4 gramer dersi",
-      "ton": "merakli",
-      "kanca": "since 2019 mu, in 2019 mu? Tek kelime sınavda seni ya yükseltir ya düşürür.",
-      "maddeler": [
-        "Present Perfect mi, Past Simple mı?",
-        "Past Continuous: arka plan eylemi",
-        "Gelecek: will, going to, -ing",
-        "If cümleleri: 0, 1, 2"
-      ],
-      "anlatim": "Since 2019 mu, in 2019 mu? [dur] Sınavda bu tek kelimelik fark seni bir seviye yukarı ya da aşağı taşıyabilir. Bu videoda B1 için en çok sorulan dört gramer konusunu çözüyoruz. Önce Present Perfect ile Past Simple farkı. Sonra Past Continuous. Ardından gelecek zamanın üç yolu. En sonda da if cümleleri. Her dersten sonra kendini deneyeceksin.",
-      "goster": [
-        3,
-        4,
-        5,
-        6
-      ]
+     "deger": "will",
+     "birim": "anlık karar",
+     "etiket": "Söz ve tahmin: I'll close the window."
     },
     {
-      "baslik": "Past Simple mı, Present Perfect mi?",
-      "tur": "karsilastirma",
-      "ton": "canli",
-      "sol": {
-        "baslik": "Past Simple",
-        "renk": "mavi"
-      },
-      "sag": {
-        "baslik": "Present Perfect",
-        "renk": "yesil"
-      },
-      "satirlar": [
-        [
-          "Bitmiş, zamanı belli",
-          "Zamanı belirsiz ya da hâlâ süren"
-        ],
-        [
-          "yesterday, ago, in 2020",
-          "ever, already, since, for"
-        ],
-        [
-          "I went to Paris last year.",
-          "I have been to Paris twice."
-        ]
-      ],
-      "anlatim": "İlk ders. Past Simple, geçmişte bitmiş ve zamanı belli olan olaylar içindir. Yesterday, last year, ago ya da in 2020 gibi ifadeler bunun işaretidir. Örneğin: I went to Paris last year. Present Perfect ise zamanı belli olmayan deneyimler ve hâlâ devam eden durumlar içindir. Ever, never, already, yet, since ve for onun işaretleri. Örneğin: I have been to Paris twice.",
-      "goster": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6
-      ]
+     "deger": "going to",
+     "birim": "plan / kanıt",
+     "etiket": "Look at those clouds! It's going to rain."
     },
     {
-      "baslik": "since mi, for mu?",
-      "tur": "ipucu",
-      "ton": "ciddi",
-      "ipucu": {
-        "tip": "ipucu",
-        "metin": "since + başlangıç noktası (2019, Monday) · for + süre (3 years, two weeks)"
-      },
-      "anlatim": "Since ve for çok karışır, ama kural basit. Since'ten sonra bir başlangıç noktası gelir: since 2019, since Monday. For'dan sonra ise bir süre gelir: for three years, for two weeks. Yani since two weeks diye bir şey yoktur.",
-      "goster": [
-        0
-      ]
-    },
-    {
-      "baslik": "Kendini dene 1/4",
-      "tur": "soru",
-      "soru": {
-        "metin": "I ___ in Ankara since 2019.",
-        "secenekler": [
-          "live",
-          "lived",
-          "have lived"
-        ],
-        "dogru": 2,
-        "bekle": 4,
-        "cevap_cumle": 2
-      },
-      "anlatim": "Hemen deneyelim. Ekrandaki cümlede boşluğa hangisi gelmeli? Doğru cevap C: have lived. Since gördüğün an Present Perfect düşün."
-    },
-    {
-      "baslik": "Past Continuous",
-      "tur": "tablo",
-      "ton": "canli",
-      "tablo": {
-        "basliklar": [
-          "Ne anlatıyorsun?",
-          "Ne kullan?"
-        ],
-        "satirlar": [
-          [
-            "Arka plan eylemi",
-            "was / were + -ing"
-          ],
-          [
-            "Araya giren eylem",
-            "Past Simple"
-          ],
-          [
-            "while ile",
-            "genelde continuous"
-          ],
-          [
-            "when ile",
-            "genelde simple"
-          ]
-        ]
-      },
-      "anlatim": "İkinci ders: Past Continuous. Geçmişte devam etmekte olan bir arka plan eylemi anlatıyorsan was ya da were ile fiilin ing halini kullanırsın. O sırada araya giren kısa eylem ise Past Simple olur. While ile genelde continuous, when ile genelde simple gelir. Örneğin: I was cooking when the phone rang.",
-      "goster": [
-        1,
-        2,
-        3,
-        3
-      ]
-    },
-    {
-      "baslik": "Kendini dene 2/4",
-      "tur": "soru",
-      "soru": {
-        "metin": "I ___ when the phone rang.",
-        "secenekler": [
-          "cooked",
-          "was cooking",
-          "am cooking"
-        ],
-        "dogru": 1,
-        "bekle": 4,
-        "cevap_cumle": 2
-      },
-      "anlatim": "Sıra sende. Telefon çaldığında ne yapıyordun? Doğru cevap B: was cooking. Yemek pişirmek arka plandaki uzun eylem, telefonun çalması ise araya giren kısa eylem."
-    },
-    {
-      "baslik": "Gelecek zamanın 3 yolu",
-      "tur": "rakam",
-      "ton": "canli",
-      "kartlar": [
-        {
-          "deger": "will",
-          "birim": "anlık karar",
-          "etiket": "Söz ve tahmin: I'll close the window."
-        },
-        {
-          "deger": "going to",
-          "birim": "plan / kanıt",
-          "etiket": "Look at those clouds! It's going to rain."
-        },
-        {
-          "deger": "-ing",
-          "birim": "randevu",
-          "etiket": "I'm meeting the doctor at 4."
-        }
-      ],
-      "anlatim": "Üçüncü ders: gelecek zaman. Will, o an verilen kararlar, sözler ve tahminler içindir. Hava soğuk mu? I'll close the window. Going to ise önceden yapılmış planlar ve gözünün önündeki kanıta dayanan tahminler içindir. Present Continuous ise saati ayarlanmış randevular için kullanılır: I'm meeting the doctor at four.",
-      "goster": [
-        1,
-        4,
-        5
-      ]
-    },
-    {
-      "baslik": "Kendini dene 3/4",
-      "tur": "soru",
-      "soru": {
-        "metin": "Look at those dark clouds! It ___ rain.",
-        "secenekler": [
-          "will",
-          "is going to"
-        ],
-        "dogru": 1,
-        "bekle": 4,
-        "cevap_cumle": 2
-      },
-      "anlatim": "Kara bulutlara bak. Hangisi doğru? Doğru cevap B: is going to. Gözünün önünde bir kanıt varsa going to kullanılır."
-    },
-    {
-      "baslik": "If cümleleri: 0, 1, 2",
-      "tur": "tablo",
-      "ton": "canli",
-      "tablo": {
-        "basliklar": [
-          "Tür",
-          "Örnek"
-        ],
-        "satirlar": [
-          [
-            "0 · Present + Present",
-            "If you heat ice, it melts."
-          ],
-          [
-            "1 · Present + will",
-            "If it rains, I'll stay home."
-          ],
-          [
-            "2 · Past + would",
-            "If I had money, I'd travel."
-          ]
-        ]
-      },
-      "anlatim": "Son ders: if cümleleri. Sıfırıncı tip genel gerçekler içindir: buzu ısıtırsan erir. Birinci tip gerçek bir ihtimal anlatır; if tarafı Present, sonuç tarafı will olur. İkinci tip ise hayali durumlar içindir; if tarafı Past, sonuç tarafı would olur.",
-      "goster": [
-        1,
-        2,
-        3
-      ]
-    },
-    {
-      "baslik": "Altın kural",
-      "tur": "ipucu",
-      "ton": "ciddi",
-      "ipucu": {
-        "tip": "uyari",
-        "metin": "if tarafında asla will / would olmaz. Tip 2'de: If I were you…"
-      },
-      "anlatim": "Şimdi altın kural. [dur] If ile başlayan tarafta asla will ya da would olmaz. Bir de şunu unutma: ikinci tipte I, he ve she ile bile were kullanılır. Yani If I were you.",
-      "goster": [
-        0
-      ]
-    },
-    {
-      "baslik": "Kendini dene 4/4",
-      "tur": "soru",
-      "soru": {
-        "metin": "If I ___ you, I would take that job.",
-        "secenekler": [
-          "am",
-          "were",
-          "will be"
-        ],
-        "dogru": 1,
-        "bekle": 4,
-        "cevap_cumle": 2
-      },
-      "anlatim": "Son soru. Boşluğa ne gelmeli? Doğru cevap B: were. Hayali durum, ikinci tip; ve if tarafında I ile bile were kullanılır."
-    },
-    {
-      "baslik": "Özet",
-      "ton": "sakin",
-      "maddeler": [
-        "Zamanı belli → Past Simple",
-        "since / for / ever → Present Perfect",
-        "Arka plan → was / were + -ing",
-        "Kanıt ya da plan → going to",
-        "if tarafında will / would yok"
-      ],
-      "anlatim": "Özetleyelim. Zamanı belliyse Past Simple. Since, for ya da ever görüyorsan Present Perfect. Arka plandaki uzun eylem için was ya da were ile fiilin ing hali. Plan ya da kanıt varsa going to. Ve if tarafında asla will ya da would yok. Sıradaki videoda edilgen yapıya, modallara ve used to kalıbına geçiyoruz.",
-      "goster": [
-        1,
-        2,
-        3,
-        4,
-        5
-      ]
+     "deger": "-ing",
+     "birim": "randevu",
+     "etiket": "I'm meeting the doctor at 4."
     }
-  ]
+   ],
+   "anlatim": "Üçüncü ders: gelecek zaman. Will, o an verilen kararlar, sözler ve tahminler içindir. Hava soğuk mu? I'll close the window. Going to ise önceden yapılmış planlar ve gözünün önündeki kanıta dayanan tahminler içindir. Present Continuous ise saati ayarlanmış randevular için kullanılır: I'm meeting the doctor at four.",
+   "goster": [
+    1,
+    4,
+    5
+   ]
+  },
+  {
+   "baslik": "Kendini dene 3/4",
+   "tur": "soru",
+   "soru": {
+    "metin": "Look at those dark clouds! It ___ rain.",
+    "secenekler": [
+     "will",
+     "is going to"
+    ],
+    "dogru": 1,
+    "bekle": 4,
+    "cevap_cumle": 2
+   },
+   "anlatim": "Kara bulutlara bak. Hangisi doğru? Doğru cevap B: is going to. Gözünün önünde bir kanıt varsa going to kullanılır."
+  },
+  {
+   "baslik": "If cümleleri: 0, 1, 2",
+   "tur": "tablo",
+   "ton": "canli",
+   "tablo": {
+    "basliklar": [
+     "Tür",
+     "Örnek"
+    ],
+    "satirlar": [
+     [
+      "0 · Present + Present",
+      "If you heat ice, it melts."
+     ],
+     [
+      "1 · Present + will",
+      "If it rains, I'll stay home."
+     ],
+     [
+      "2 · Past + would",
+      "If I had money, I'd travel."
+     ]
+    ]
+   },
+   "anlatim": "Son ders: if cümleleri. Sıfırıncı tip genel gerçekler içindir: buzu ısıtırsan erir. Birinci tip gerçek bir ihtimal anlatır; if tarafı Present, sonuç tarafı will olur. İkinci tip ise hayali durumlar içindir; if tarafı Past, sonuç tarafı would olur.",
+   "goster": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "baslik": "Altın kural",
+   "tur": "ipucu",
+   "ton": "ciddi",
+   "ipucu": {
+    "tip": "uyari",
+    "metin": "if tarafında asla will / would olmaz. Tip 2'de: If I were you…"
+   },
+   "anlatim": "Şimdi altın kural. [dur] If ile başlayan tarafta asla will ya da would olmaz. Bir de şunu unutma: ikinci tipte I, he ve she ile bile were kullanılır. Yani If I were you.",
+   "goster": [
+    0
+   ]
+  },
+  {
+   "baslik": "Kendini dene 4/4",
+   "tur": "soru",
+   "soru": {
+    "metin": "If I ___ you, I would take that job.",
+    "secenekler": [
+     "am",
+     "were",
+     "will be"
+    ],
+    "dogru": 1,
+    "bekle": 4,
+    "cevap_cumle": 2
+   },
+   "anlatim": "Son soru. Boşluğa ne gelmeli? Doğru cevap B: were. Hayali durum, ikinci tip; ve if tarafında I ile bile were kullanılır."
+  },
+  {
+   "baslik": "Özet",
+   "ton": "sakin",
+   "maddeler": [
+    "Zamanı belli → Past Simple",
+    "since / for / ever → Present Perfect",
+    "Arka plan → was / were + -ing",
+    "Kanıt ya da plan → going to",
+    "if tarafında will / would yok"
+   ],
+   "anlatim": "Özetleyelim. Zamanı belliyse Past Simple. Since, for ya da ever görüyorsan Present Perfect. Arka plandaki uzun eylem için was ya da were ile fiilin ing hali. Plan ya da kanıt varsa going to. Ve if tarafında asla will ya da would yok. Sıradaki videoda edilgen yapıya, modallara ve used to kalıbına geçiyoruz.",
+   "goster": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ]
+  }
+ ]
 }

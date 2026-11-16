@@ -1,0 +1,18 @@
+{
+ "baslik": "V3 deneme",
+ "alt_baslik": "Ses modeli testi",
+ "sahneler": [
+  {
+   "baslik": "Kendinizden bahseder misiniz?",
+   "tur": "metin",
+   "metin": "Kısa ve net bir hikâye: şu anki iş, en önemli başarı, neden bu pozisyon.",
+   "anlatim": "Merhaba! Bugün iş görüşmelerinde en sık sorulan sorulardan birine bakacağız: Kendinizden bahseder misiniz? Bu soruda amaç, kısa ve net bir hikâye anlatmak. Önce şu anki işinizi, sonra en önemli başarınızı, en son da neden bu pozisyona başvurduğunuzu söyleyin."
+  },
+  {
+   "baslik": "Örnek cevap",
+   "tur": "metin",
+   "metin": "\"Yaklaşık beş yıldır iş analisti olarak çalışıyorum; en büyük projemde müşteri bekleme süresini %30 azalttık.\"",
+   "anlatim": "Mesela şöyle diyebilirsiniz: Yaklaşık beş yıldır iş analisti olarak çalışıyorum ve en büyük projemde müşteri bekleme süresini yüzde otuz azalttık. Gördüğünüz gibi, hepsi bu kadar basit. Bir de İngilizce bir ifade: {Tell me about yourself.}"
+  }
+ ]
+}

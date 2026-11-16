@@ -158,6 +158,15 @@ geçişli sahne; ~90 sn (`--onizleme 120` ile değişir). Önizlemeyi gönderirk
 ses/telaffuz, hız, işaretçi, yerleşim. Geri bildirimi uygula, gerekirse yeni önizleme yap.
 Onaydan sonra tam seslendirmede workflow'a `"taban":"ses-<ad>-onizleme"` ver: önizlemedeki cümleler yeniden üretilmez.
 
+## 6c. Ses modeli
+Varsayılan: **Chatterbox Multilingual V3** (MIT, 0,5 B): V2'ye göre daha doğal, daha az uydurma/tekrar
+(17 Kasım 2026 kör karşılaştırmasında kullanıcı seçti; VoxCPM2 ve FireRedTTS3 ile birlikte denendi:
+`tts_karsilastir.yml`). Senaryodaki `"ses_modeli": "v2"` eski videoların önbellek seslerini korur; yeni senaryolar
+alan olmadan V3 kullanır. Önbellek anahtarı modele göre ayrıdır: V2 ve V3 sesi aynı videoda karışmaz.
+V3 doğal olarak ~%10 daha sakin konuşur; bu yüzden tempo varsayılanı V3'te 1.0 (V2'de 0.9).
+**Gürültü katmanları modelden bağımsızdır** ve V3'te aynen çalışır: DeepFilterNet, nefes/hışırtı kırpma,
+uzun sessizlik + tık temizliği, ses zinciri, DNSMOS ve Whisper kapıları. Yeni modele geçince yeniden ayar gerekmez.
+
 ## 7. Video
 ```bash
 python $R/scripts/video_uret.py senaryo.json -o video.mp4 --ses-dizini sesler     # 1080p + video_kapak.jpg

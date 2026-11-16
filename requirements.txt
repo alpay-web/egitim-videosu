@@ -4,6 +4,6 @@ numpy>=1.26,<3
 imageio-ffmpeg>=0.5,<1
 markitdown[pdf,docx,pptx,xlsx]>=0.1,<0.2
 # Seslendirme (GitHub Actions'ta kurulur; sürümler ses_uret.yml'de sabit):
-# chatterbox-tts==0.1.7   faster-whisper==1.2.1
+# chatterbox-tts @ git+https://github.com/resemble-ai/chatterbox@ab55923 (Multilingual V3)   faster-whisper==1.2.1
 # Yedek sesler (isteğe bağlı): piper-tts>=1.3,<2
 # Yeni karakter görseli (isteğe bağlı): rembg[cpu]

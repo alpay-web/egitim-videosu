@@ -47,7 +47,7 @@ jobs:
         run: |
           sudo apt-get -qq install -y ffmpeg > /dev/null
           pip install -q -r requirements.txt
-          if [ "${{ inputs.motor }}" = "chatterbox" ]; then pip install -q chatterbox-tts==0.1.7 piper-tts==1.8.0; fi
+          if [ "${{ inputs.motor }}" = "chatterbox" ]; then pip install -q "chatterbox-tts @ git+https://github.com/resemble-ai/chatterbox@ab55923c27757c90cfcc407baa57dc25a7d25217" piper-tts==1.8.0; fi
           if [ "${{ inputs.kalite }}" != "0" ]; then pip install -q faster-whisper==1.2.1; fi
       - name: Önbellek (önceki sesler)
         env:

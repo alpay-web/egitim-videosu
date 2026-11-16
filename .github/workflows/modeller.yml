@@ -15,7 +15,7 @@ jobs:
           set -e
           mkdir m && cd m
           B=https://huggingface.co/ResembleAI/chatterbox/resolve/main
-          for f in ve.pt t3_mtl23ls_v2.safetensors s3gen.pt grapheme_mtl_merged_expanded_v1.json conds.pt Cangjie5_TC.json; do
+          for f in ve.pt t3_mtl23ls_v2.safetensors t3_mtl23ls_v3.safetensors s3gen.pt grapheme_mtl_merged_expanded_v1.json conds.pt Cangjie5_TC.json; do
             curl -fsSL -o "$f" "$B/$f"
           done
           # GitHub release dosya sınırı 2 GB: büyük dosyaları parçala
