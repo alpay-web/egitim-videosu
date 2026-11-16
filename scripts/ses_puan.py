@@ -15,6 +15,7 @@ import numpy as np
 MODEL_DIZ = Path.home() / ".egitim_video" / "dnsmos"
 KAYNAK = "https://raw.githubusercontent.com/microsoft/DNS-Challenge/master/DNSMOS/DNSMOS/"
 SR, PENCERE = 16000, 9.01
+ESIK_BAK, ESIK_OVRL = 3.2, 2.0      # B1 belgesinin 1270 cümlesiyle kalibre edildi (~%2 işaretlenir)
 
 
 def modeller():
@@ -67,7 +68,7 @@ def puanla(ses, sr, oturum):
             "ovrl": round(float(np.mean(o_)), 2), "p808": round(float(np.mean(p_)), 2)}
 
 
-def rapor_yaz(klasor, sonuc, esik_bak=3.2, esik_ovrl=2.0):
+def rapor_yaz(klasor, sonuc, esik_bak=ESIK_BAK, esik_ovrl=ESIK_OVRL):
     kotu = sorted([k for k, v in sonuc.items() if v["bak"] < esik_bak or v["ovrl"] < esik_ovrl],
                   key=lambda k: sonuc[k]["bak"])
     ozet = {}
@@ -81,7 +82,7 @@ def rapor_yaz(klasor, sonuc, esik_bak=3.2, esik_ovrl=2.0):
     return rapor
 
 
-def klasor_puanla(klasor, esik_bak=3.2, esik_ovrl=2.0, sessiz=False, sadece=None):
+def klasor_puanla(klasor, esik_bak=ESIK_BAK, esik_ovrl=ESIK_OVRL, sessiz=False, sadece=None):
     import soundfile as sf
     oturum = modeller(); sonuc = {}
     eski = Path(klasor) / "ses_puan.json"          # önceden puanlanmış (önbellekten gelen) cümleler tekrar puanlanmaz

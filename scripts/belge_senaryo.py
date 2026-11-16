@@ -139,6 +139,7 @@ def anlatim(t, ayar):
         if t2 == t:
             t = t.replace("⟦", "").replace("⟧", ""); break
         t = t2
+    t = re.sub(r"\s+([,.;:!?])", r"\1", t); t = re.sub(r"\s{2,}", " ", t).strip()
     if t and t[-1] not in ".!?…}":
         t += "."
     return t

@@ -61,38 +61,57 @@ def kapisi(senaryo, belge=None, ayar=None, ses_dizini=None, video=None, ses_puan
     else:
         uyari.append("Kaynak belge verilmedi: sadakat/bilgi kirliliği denetimi yapılamadı (--belge).")
 
-    # --- ses
+    # --- ses: yalnızca bu videoda GERÇEKTEN kullanılan cümle sesleri değerlendirilir (önbellekte eskisi kalabilir)
     if ses_dizini:
-        for d in ses_dizini.split(","):
-            d = Path(d)
+        depo = v.SesDeposu(ses_dizini)
+        genel = json.loads((BURASI.parent / "telaffuz.json").read_text(encoding="utf-8")) \
+            if (BURASI.parent / "telaffuz.json").exists() else {}
+        tel = {**genel.get("telaffuz", {}), **sen.get("telaffuz", {})}
+        kok = {**genel.get("telaffuz_kok", {}), **sen.get("telaffuz_kok", {})}
+        puan, whisper = {}, {}
+        for d in depo.klasorler:
             sp = d / "ses_puan.json"
             if ses_puanla and not sp.exists():
                 import ses_puan
                 ses_puan.klasor_puanla(d, sessiz=True)
             if sp.exists():
                 p = json.loads(sp.read_text(encoding="utf-8"))
-                olcum.setdefault("ses_puan", {})[d.name] = p["ozet"]
-                kotu = p["yeniden_uret"]; n = max(1, len(p["cumleler"]))
-                msg = (f"Ses ({d.name}): {len(kotu)}/{n} cümle gürültü/kalite eşiğinin altında "
-                       f"(BAK<{p['esik']['bak']} ya da OVRL<{p['esik']['ovrl']}): {', '.join(kotu[:12])}")
-                if kotu:
-                    (kritik if len(kotu) / n > ESIK["ses_kotu_oran"] else uyari).append(msg)
-            else:
-                uyari.append(f"Ses ({d.name}): ses_puan.json yok — `python scripts/ses_puan.py {d}` çalıştır.")
+                for k_, v_ in p.get("cumleler", {}).items():
+                    puan[str(d / k_)] = v_
             kr = d / "kalite_raporu.txt"
             if kr.exists():
-                dusuk = []
                 for ln in kr.read_text(encoding="utf-8").splitlines():
                     pr = ln.split("\t")
-                    if len(pr) > 2:
-                        try:
-                            if float(pr[1]) < ESIK["whisper"]:
-                                dusuk.append(f"{pr[0]} ({pr[1]})")
-                        except ValueError:
-                            pass
-                if dusuk:
-                    uyari.append(f"Telaffuz (Whisper < {ESIK['whisper']}): {', '.join(dusuk[:15])}")
-                    hakem.append("Whisper puanı düşük cümleleri dinle: " + ", ".join(dusuk[:15]))
+                    try:
+                        whisper[str(d / pr[0])] = float(pr[1])
+                    except (ValueError, IndexError):
+                        pass
+        import ses_puan as sp_
+        kullanilan, puansiz, kotu, dusuk = 0, 0, [], []
+        for si, sh in enumerate(sen["sahneler"], 1):
+            for ci, c in enumerate(v.cumlelere_bol(sh.get("anlatim", ""))):
+                ad = f"{si:02d}_{ci:02d}"
+                y = depo.bul(ad, v.ses_anahtari(v.seslendirme_metni(c, tel, kok), sh.get("ton")))
+                if not y:
+                    kritik.append(f"Ses yok: {ad} «{c[:50]}»"); continue
+                kullanilan += 1; anah = str(Path(y).with_suffix(""))
+                pu = puan.get(anah)
+                if pu is None:
+                    puansiz += 1
+                elif pu["bak"] < sp_.ESIK_BAK or pu["ovrl"] < sp_.ESIK_OVRL:
+                    kotu.append(f"{ad} (BAK {pu['bak']}, OVRL {pu['ovrl']})")
+                if anah in whisper and whisper[anah] < ESIK["whisper"]:
+                    dusuk.append(f"{ad} ({whisper[anah]:.2f})")
+        olcum["ses"] = {"kullanilan": kullanilan, "puanlanmamis": puansiz, "esik_alti": len(kotu), "whisper_dusuk": len(dusuk)}
+        if kotu:
+            msg = f"Ses: {len(kotu)}/{kullanilan} cümle gürültü/kalite eşiğinin altında: {', '.join(kotu[:12])}"
+            (kritik if len(kotu) / max(1, kullanilan) > ESIK["ses_kotu_oran"] else uyari).append(msg)
+            hakem.append("Eşik altı sesleri dinle (kısa cümlelerde DNSMOS yanılabilir): " + ", ".join(kotu[:12]))
+        if puansiz:
+            uyari.append(f"Ses: {puansiz} cümle puanlanmamış — `python scripts/ses_puan.py <klasör>` çalıştır.")
+        if dusuk:
+            uyari.append(f"Telaffuz (Whisper < {ESIK['whisper']}): {', '.join(dusuk[:15])}")
+            hakem.append("Whisper puanı düşük cümleleri dinle: " + ", ".join(dusuk[:15]))
 
     # --- video
     if video:
