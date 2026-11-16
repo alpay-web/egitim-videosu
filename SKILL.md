@@ -153,7 +153,7 @@ python $R/scripts/video_uret.py senaryo.json --onizleme-yaz senaryolar/<ad>_oniz
 # yalnızca önizleme cümlelerinin sesini üret (workflow: senaryo=senaryolar/<ad>_onizleme.json, etiket=ses-<ad>-onizleme)
 python $R/scripts/video_uret.py senaryo.json --onizleme --ses-dizini sesler_onizleme -o video.mp4  # → video_onizleme.mp4
 ```
-Seçki: açılış sahnesi + her sahne türünden (tablo, soru, metin, maddeler…) en kısa temsilci + en az bir İngilizce
+Belirli sahneleri göstermek için (ör. düzeltilen yerler): `--onizleme-sec 1,6,7,241`. Otomatik seçki: açılış sahnesi + her sahne türünden (tablo, soru, metin, maddeler…) en kısa temsilci + en az bir İngilizce
 geçişli sahne; ~90 sn (`--onizleme 120` ile değişir). Önizlemeyi gönderirken kullanıcıya **neye bakacağını** söyle:
 ses/telaffuz, hız, işaretçi, yerleşim. Geri bildirimi uygula, gerekirse yeni önizleme yap.
 Onaydan sonra tam seslendirmede workflow'a `"taban":"ses-<ad>-onizleme"` ver: önizlemedeki cümleler yeniden üretilmez.

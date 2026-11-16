@@ -1934,6 +1934,8 @@ def main():
     ap.add_argument("--intro-outro-yok", action="store_true")
     ap.add_argument("--onizleme", nargs="?", const=90.0, type=float, metavar="SN",
                     help="uzun videodan önce onay için ~SN saniyelik (varsayılan 90) temsili önizleme üret")
+    ap.add_argument("--onizleme-sec", metavar="LISTE",
+                    help="önizleme sahnelerini elle seç, ör. 1,8,142 (değişen yerleri göstermek için)")
     ap.add_argument("--onizleme-yaz", metavar="JSON",
                     help="önizleme sahnelerini ayrı senaryo dosyasına yaz (ses üretimi/iş akışı için) ve çık")
     ap.add_argument("--lufs", type=float, default=-14.0, help="hedef ses yüksekliği (YouTube: -14 LUFS)")
@@ -1949,8 +1951,11 @@ def main():
     if args.sahne:
         a, _, b = args.sahne.partition("-"); ilk = int(a)
         sahneler = tum[int(a) - 1:int(b or a)]
+    if args.onizleme_sec and not args.onizleme_yaz:
+        args.onizleme = args.onizleme or 90.0
     if args.onizleme or args.onizleme_yaz:
-        idx = onizleme_sec(sahneler, args.onizleme or 90.0, args.tempo)
+        idx = ([int(x) - ilk for x in args.onizleme_sec.split(",")] if args.onizleme_sec
+               else onizleme_sec(sahneler, args.onizleme or 90.0, args.tempo))
         sahneler = [sahneler[i] for i in idx]
         tahmin = sum(sahne_suresi_tahmin(sh, args.tempo) for sh in sahneler)
         log(f"Önizleme: {len(sahneler)} sahne ({', '.join(str(ilk + i) for i in idx)}) · tahmini {tahmin:.0f} sn")
