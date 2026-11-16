@@ -29,7 +29,7 @@ jobs:
           case "${{ matrix.model }}" in
             chatterbox_v2) pip install -q chatterbox-tts==0.1.7 ;;
             chatterbox_v3) pip install -q "chatterbox-tts @ git+https://github.com/resemble-ai/chatterbox" ;;
-            voxcpm2_*) pip install -q voxcpm ;;
+            voxcpm2_*) pip install -q "voxcpm @ git+https://github.com/OpenBMB/VoxCPM" ;;
             fireredtts3)
               git clone -q --depth 1 https://github.com/FireRedTeam/FireRedTTS3 fr
               grep -v -E "flash_attn|torchcodec" fr/requirements.txt > fr/req.txt
@@ -41,6 +41,7 @@ jobs:
           pip install -q soundfile numpy
       - name: Seslendir
         run: |
+          set -o pipefail
           export PYTHONPATH=$PWD/fr:$PYTHONPATH
           python scripts/tts_karsilastir.py ${{ matrix.model }} cikti 2>&1 | tail -40
       - uses: actions/upload-artifact@v4
@@ -61,5 +62,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           ls -la c
-          gh release delete tts-karsilastirma -R ${{ github.repository }} -y --cleanup-tag 2>/dev/null || true
-          gh release create tts-karsilastirma -R ${{ github.repository }} --title "TTS karşılaştırma" --notes "Aynı paragraf, aynı referans ses" --prerelease c/*
+          gh release view tts-karsilastirma -R ${{ github.repository }} >/dev/null 2>&1 || \
+            gh release create tts-karsilastirma -R ${{ github.repository }} --title "TTS karşılaştırma" --notes "Aynı paragraf, aynı referans ses" --prerelease
+          gh release upload tts-karsilastirma -R ${{ github.repository }} --clobber c/*

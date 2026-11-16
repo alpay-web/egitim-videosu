@@ -25,7 +25,8 @@ TARIF = "orta yaşlı erkek öğretmen, sıcak ve samimi, sakin tempoda, net anl
 def uretici(model):
     if model.startswith("chatterbox"):
         from chatterbox.mtl_tts import ChatterboxMultilingualTTS
-        m = ChatterboxMultilingualTTS.from_pretrained(device="cpu", t3_model=model.split("_")[1])
+        m = (ChatterboxMultilingualTTS.from_pretrained(device="cpu") if model == "chatterbox_v2"   # 0.1.7 = V2
+             else ChatterboxMultilingualTTS.from_pretrained(device="cpu", t3_model="v3"))
         return lambda t: (m.generate(t, language_id="tr", audio_prompt_path=REF).squeeze(0).numpy(), m.sr)
     if model.startswith("voxcpm2"):
         from voxcpm import VoxCPM
@@ -33,9 +34,9 @@ def uretici(model):
         sr = m.tts_model.sample_rate
         if model == "voxcpm2_klon":      # en sadık klon: referans ses + yazılı dökümü
             return lambda t: (m.generate(text=t, prompt_wav_path=REF, prompt_text=REF_METIN,
-                                         reference_wav_path=REF, cfg_value=2.0, inference_timesteps=10, seed=42), sr)
+                                         reference_wav_path=REF, cfg_value=2.0, inference_timesteps=10), sr)
         return lambda t: (m.generate(text=f"({TARIF}){t}", reference_wav_path=REF,
-                                     cfg_value=2.0, inference_timesteps=10, seed=42), sr)
+                                     cfg_value=2.0, inference_timesteps=10), sr)
     if model == "fireredtts3":
         import torchaudio
         from fireredtts3.core import FireRedTTS3
