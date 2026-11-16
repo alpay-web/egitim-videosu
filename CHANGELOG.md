@@ -2,6 +2,17 @@
 
 Sürümleme: `ANA.ARA.YAMA` — ANA: senaryo biçimi geriye uyumsuz değişirse; ARA: yeni özellik; YAMA: düzeltme.
 
+## 2.3.0 — 2026-11-17
+**Ses modeli: Chatterbox Multilingual V3.** Açık kaynak TTS araştırması (VoxCPM2, FireRedTTS3, Chatterbox V2/V3;
+`tts_karsilastir.yml` ile aynı paragraf, aynı referans ses) sonrası kullanıcı V3'ü seçti.
+- Varsayılan model V3 (`--ses-modeli`, senaryoda `"ses_modeli"`); eski senaryolar `v2` olarak işaretlendi, önbellek
+  sesleri geçerli kalır. Önbellek anahtarı modele göre ayrı: iki modelin sesi karışmaz.
+- Tempo varsayılanı modele göre: V3 1.0 (zaten daha sakin), V2 0.9.
+- Gürültü katmanları değişmeden V3'te çalışıyor (DeepFilterNet, klip temizliği, DNSMOS, Whisper); deneme
+  sahnelerinde BAK 4,14, kalite kapısı GEÇTİ.
+- `modeller.yml` V3 ağırlığını da yedekler; `tts_karsilastir.yml` yeni modelleri denemek için kalıcı.
+- Klip temizliği: uzun sessizlik + sondaki tık atılır (cümle sonlarında 0,5–2,7 sn yapay boşluk).
+
 ## 2.2.0 — 2026-11-16
 **Kalite kapısı: karar mercii, ses denetçisi, sadakat ve bilgi kirliliği kontrolü** (`docs/kalite_denetim_arastirmasi.md`).
 - `scripts/ses_puan.py`: DNSMOS (CPU, ~1 MB ONNX) ile cümle başına SIG/BAK/OVRL/P808; gürültülü cümleler listelenir.
