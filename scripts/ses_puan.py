@@ -67,7 +67,7 @@ def puanla(ses, sr, oturum):
             "ovrl": round(float(np.mean(o_)), 2), "p808": round(float(np.mean(p_)), 2)}
 
 
-def rapor_yaz(klasor, sonuc, esik_bak=3.5, esik_ovrl=2.5):
+def rapor_yaz(klasor, sonuc, esik_bak=3.2, esik_ovrl=2.0):
     kotu = sorted([k for k, v in sonuc.items() if v["bak"] < esik_bak or v["ovrl"] < esik_ovrl],
                   key=lambda k: sonuc[k]["bak"])
     ozet = {}
@@ -81,7 +81,7 @@ def rapor_yaz(klasor, sonuc, esik_bak=3.5, esik_ovrl=2.5):
     return rapor
 
 
-def klasor_puanla(klasor, esik_bak=3.5, esik_ovrl=2.5, sessiz=False, sadece=None):
+def klasor_puanla(klasor, esik_bak=3.2, esik_ovrl=2.0, sessiz=False, sadece=None):
     import soundfile as sf
     oturum = modeller(); sonuc = {}
     eski = Path(klasor) / "ses_puan.json"          # önceden puanlanmış (önbellekten gelen) cümleler tekrar puanlanmaz
@@ -102,8 +102,8 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("klasor")
     ap.add_argument("--birlestir", nargs="+", metavar="JSON", help="parça ses_puan json'larını klasörde birleştir")
-    ap.add_argument("--esik-bak", type=float, default=3.5)
-    ap.add_argument("--esik-ovrl", type=float, default=2.5)
+    ap.add_argument("--esik-bak", type=float, default=3.2)
+    ap.add_argument("--esik-ovrl", type=float, default=2.0)
     a = ap.parse_args()
     if a.birlestir:
         c = {}

@@ -27,7 +27,7 @@ tarandı; ~20'si elle okundu.
 
 ## Uyguladıklarımız (v2.2.0)
 1. **`scripts/ses_puan.py`: DNSMOS ses denetçisi.** Microsoft'un ~1 MB ONNX modelleri (kod MIT, model CC-BY-4.0),
-   yalnızca CPU. Her cümle için SIG/BAK/OVRL/P808; BAK < 3,5 ya da OVRL < 2,5 olan cümleler "yeniden üret" listesine
+   yalnızca CPU. Her cümle için SIG/BAK/OVRL/P808; BAK < 3,2 ya da OVRL < 2,0 olan cümleler "yeniden üret" listesine
    girer. Seslendirme iş akışı artık her cümleyi puanlar ve `ses_puan.json`'u yayına ekler; önbellekten gelen
    cümleler tekrar puanlanmaz.
 2. **`scripts/sadakat.py`: belgeye sadakat ve bilgi kirliliği.** EKSİK (belge satırı videoda yok), UYDURMA

@@ -85,6 +85,7 @@ def anlatim(t, ayar):
     for a, b in ayar.get("degistir", {}).items():
         t = t.replace(a, b)
     t = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", t)                         # bağlantılar
+    t = re.sub(r"\[([^\]]+)\]", r"⟦\1⟧", t)            # [yer], [kimle]: şablon boşluğu Türkçedir, İngilizce öbeğe girmez
     t = re.sub(r"~~(.+?)~~", r"\1 ⟦değil⟧", t)
     t = t.replace("***", "*")                                              # kalın-italik → italik
     t = re.sub(r"\*\*(.+?)\*\*", r"\1", t)                                 # kalın → düz
@@ -102,14 +103,13 @@ def anlatim(t, ayar):
                       if re.search(r"[a-zçğıöşü]", b) else b)
     # Türkçe karşılıklar ({…} İngilizce öbeğinin içine düşmüşse) öbeğin dışına çıkar: aksi halde İngilizce okunur
     t = re.sub(r"\{([^{}]*)\}", lambda m: "{" + re.sub(r"\s*⟦([^⟧]*)⟧\s*", r"} \1 {", m.group(1)) + "}", t)
-    t = re.sub(r"⟦([^⟧]*)⟧", r"\1", t)
     t = re.sub(r"\{[\s,;:]*\}", " ", t)
     t = re.sub(r"\{\s*([,;:]?)\s*", r"{", t); t = re.sub(r"\s*\}", "}", t)
     t = re.sub(r"\s+", " ", t).strip()
     # parantez dışındaki İngilizceyi işaretle (wordfreq)
     try:
-        parca = re.split(r"(\{[^}]*\})", t)
-        t = "".join(p if p.startswith("{") else v.ingilizce_isaretle(p) for p in parca)
+        parca = re.split(r"(\{[^}]*\}|⟦[^⟧]*⟧)", t)
+        t = "".join(p if p.startswith(("{", "⟦")) else v.ingilizce_isaretle(p) for p in parca)
     except Exception:
         pass
     t = re.sub(r"\s*\(\}", "} (", t); t = re.sub(r"\{\)", ") {", t)               # öbek sınırında kalan parantez
@@ -129,11 +129,16 @@ def anlatim(t, ayar):
         en = sum(len(re.findall(r"[A-Za-z]", x)) for x in re.findall(r"\{([^}]*)\}", c))
         disari = re.sub(r"\{[^}]*\}", " ", c)
         tr_kelime = (re.findall(r"(?<![{\w])[\wçğıöşüÇĞİÖŞÜ]*[çğıöşüÇĞİÖŞÜ][\wçğıöşüÇĞİÖŞÜ]*", disari) +
-                     re.findall(r"\b(?:ve|ya da|veya|yani|değil|ile|gibi)\b", disari))
+                     re.findall(r"\b(?:ve|ya da|veya|yani|değil|ile|gibi)\b|⟦", disari))
         if harf and en / harf >= 0.6 and not tr_kelime:
             c = "{" + c.replace("{", "").replace("}", "") + "}"
         yeni.append(c)
     t = " ".join(yeni)
+    while "⟦" in t:
+        t2 = re.sub(r"⟦([^⟦⟧]*)⟧", r"\1", t)
+        if t2 == t:
+            t = t.replace("⟦", "").replace("⟧", ""); break
+        t = t2
     if t and t[-1] not in ".!?…}":
         t += "."
     return t
