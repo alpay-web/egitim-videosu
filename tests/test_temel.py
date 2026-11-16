@@ -124,3 +124,15 @@ def test_donusturucu_turkceyi_ingilizce_obekten_ayirir():
     for obek in re.findall(r"\{([^}]*)\}", t):
         assert not re.search(r"[çğıöşü]|\b(ve|değil)\b", obek), t
     assert "değil" in t and "ing" in t
+
+
+def test_sessizlik_sonrasi_tik_atilir():
+    import numpy as np
+    sr = v.SR
+    konusma = (0.3 * np.sin(np.arange(int(1.5 * sr)) * 0.05)).astype(np.float32)
+    tik = (0.05 * np.ones(int(0.1 * sr))).astype(np.float32)
+    x = np.concatenate([konusma, np.zeros(2 * sr, np.float32), tik])
+    y = v._sessizlik_kisalt(x)
+    assert len(y) / sr < 1.7                       # 2 sn boşluk + tık atıldı
+    ic = np.concatenate([konusma, np.zeros(int(0.6 * sr), np.float32), konusma])
+    assert len(v._sessizlik_kisalt(ic)) == len(ic)  # doğal 0,6 sn duraklama korunur

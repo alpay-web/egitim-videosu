@@ -601,6 +601,38 @@ def senkron_raporu(sahneler, ilk, sureler):
     return out
 
 
+def _sessizlik_kisalt(x, esik_db=-48, uzun=0.5, birak=0.5, ic_uzun=1.0):
+    """Model bazen cümle sonunda (ör. '".' ile biten metin) saniyelerce tam sessizlik + kısa bir tık üretir.
+    Sondaki ≥0,5 sn sessizlikten sonra gelen <0,5 sn'lik artık (tık) atılır; ≥1 sn'lik iç sessizlik 0,5 sn'ye iner."""
+    w = SR // 20                                   # 50 ms kareler: tek tük kıpırtı koşuyu bölmesin
+    n = len(x) // w
+    if n < 4:
+        return x
+    db = 20 * np.log10(np.sqrt((x[:n * w].reshape(n, w) ** 2).mean(1)) + 1e-12)
+    sessiz = db < esik_db
+    kosu, j = [], 0
+    while j < n:
+        if sessiz[j]:
+            k = j
+            while k < n and sessiz[k]:
+                k += 1
+            if (k - j) * w >= uzun * SR and j > 0:
+                kosu.append((j, k))
+            j = k
+        else:
+            j += 1
+    if not kosu:
+        return x
+    if (n - kosu[-1][1]) * w < uzun * SR:          # son sessizlikten sonra yalnızca kısa artık var: at
+        x = x[:kosu[-1][0] * w + int(0.05 * SR)]
+        kosu = kosu[:-1]
+    for j, k in reversed(kosu):                    # iç sessizlik yalnız ≥1 sn ise 0,5 sn'ye iner (doğal virgül duraklaması kalır)
+        if (k - j) * w < ic_uzun * SR:
+            continue
+        x = np.concatenate([x[:j * w + int(birak * SR)], x[k * w:]])
+    return x
+
+
 def klip_temizle(x):
     """Chatterbox'ın cümle başı/sonundaki nefes ve 'hışırtı' seslerini temizler.
     Ölçüm: hışırtı = konuşma tepesinin ~25 dB altında, 4-7 kHz ağırlıklı, sesiz (unvoiced) uzun kuyruk.
@@ -608,6 +640,7 @@ def klip_temizle(x):
     Döner: (temiz ses, baştan kırpılan saniye)."""
     if len(x) < SR // 5:
         return x, 0.0
+    x = _sessizlik_kisalt(x)
     w = SR // 100                                   # 10 ms
     n = len(x) // w
     fr = x[:n * w].reshape(n, w)
