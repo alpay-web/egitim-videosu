@@ -34,7 +34,7 @@ jobs:
               git clone -q --depth 1 https://github.com/FireRedTeam/FireRedTTS3 fr
               grep -v -E "flash_attn|torchcodec" fr/requirements.txt > fr/req.txt
               grep -rl "flash_attention_2" fr --include=*.py | xargs -r sed -i 's/flash_attention_2/sdpa/g'
-              grep -rl '"cuda"' fr/fireredtts3 --include=*.py | xargs -r sed -i 's/"cuda"/"cpu"/g'
+              grep -rlE "cuda" fr/fireredtts3 --include=*.py | xargs -r sed -i -E "s/torch\.device\(['\"]cuda['\"]\)/torch.device('cpu')/g; s/['\"]cuda(:0)?['\"]/'cpu'/g; s/\.cuda\(\)/.cpu()/g"
               pip install -q --extra-index-url https://download.pytorch.org/whl/cpu -r fr/req.txt
               pip install -q -e fr || pip install -q fr || true
               pip install -q "huggingface_hub[cli]"
