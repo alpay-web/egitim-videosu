@@ -351,6 +351,14 @@ def sahne_ogeleri(sh):
 # ================================================================ ses önbelleği (içerik adresli)
 # manim-voiceover'ın yaklaşımı: ses dosyası, seslendirilen metnin özetiyle (hash) eşlenir. Sahne eklemek,
 # silmek ya da sırasını değiştirmek eski sesleri boşa çıkarmaz; değişen cümle de asla eski sesle çalmaz.
+SES_ZINCIRI = {
+    # V2 için: hışırtı/uğultu bastırma + parlaklık (V2 sesi gürültülü ve boğuktu)
+    "tam": "highpass=f=80,afftdn=nf=-45:nr=8,agate=threshold=0.008:ratio=3:range=0.06:attack=3:release=120,"
+           "deesser=i=0.3,equalizer=f=3000:t=q:w=1.2:g=2,acompressor=threshold=-20dB:ratio=3:attack=10:release=200",
+    # V3 için: model sesi zaten temiz; yalnız alçak uğultu kesilir ve hafif dengelenir (tını bozulmaz)
+    "hafif": "highpass=f=60",
+    "yok": "anull",
+}
 SES_MODELI = "v3"   # Chatterbox Multilingual sürümü; senaryodaki "ses_modeli" alanı ya da --ses-modeli ile değişir
 
 
@@ -640,6 +648,9 @@ def _sessizlik_kisalt(x, esik_db=-48, uzun=0.5, birak=0.5, ic_uzun=1.0):
     return x
 
 
+KLIP_IC_KISMA = True   # iç düşük seviyeli bölgeleri (nefes/hışırtı) kıs; temiz modellerde ("hafif" işleme) kapalı
+
+
 def klip_temizle(x):
     """Chatterbox'ın cümle başı/sonundaki nefes ve 'hışırtı' seslerini temizler.
     Ölçüm: hışırtı = konuşma tepesinin ~25 dB altında, 4-7 kHz ağırlıklı, sesiz (unvoiced) uzun kuyruk.
@@ -670,7 +681,7 @@ def klip_temizle(x):
     y = x[a:b].copy()
     # iç kısım: ≥150 ms süren düşük seviyeli bölgeler (nefes, hışırtı, mırıltı) → -24 dB
     d2, m2 = dusuk[max(0, i0 - 3):i1 + 4], merkez[max(0, i0 - 3):i1 + 4]
-    hedef = d2.copy()   # tiz nefes ya da alçak mırıltı fark etmez: konuşmanın 24 dB altı ve ≥150 ms ise kıs
+    hedef = d2.copy() if KLIP_IC_KISMA else np.zeros_like(d2)   # tiz nefes ya da alçak mırıltı fark etmez: konuşmanın 24 dB altı ve ≥150 ms ise kıs
     kaz = np.ones(len(hedef))
     j = 0
     while j < len(hedef):
@@ -1983,6 +1994,8 @@ def main():
     ap.add_argument("--tempo", type=float, default=None,
                     help="anlatım hızı çarpanı (perdeyi bozmadan; 0.9 = %%10 daha yavaş). Ses yeniden üretilmez. "
                          "Varsayılan: v3 sesi 1.0 (zaten ~%%10 daha sakin), v2 sesi 0.9")
+    ap.add_argument("--ses-isleme", choices=["tam", "hafif", "yok"],
+                    help="render ses zinciri (varsayılan: v2 → tam, v3 → hafif)")
     ap.add_argument("--ses-modeli", choices=["v2", "v3"],
                     help="Chatterbox Multilingual sürümü (varsayılan: senaryodaki 'ses_modeli', yoksa v3)")
     ap.add_argument("--tik", action="store_true", help="madde belirirken hafif 'tık' sesi (varsayılan kapalı; konuşma üstünde sürtme gibi duyulabiliyor)")
@@ -2009,6 +2022,10 @@ def main():
     SES_MODELI = args.ses_modeli or sen.get("ses_modeli", "v3")
     if args.tempo is None:
         args.tempo = 1.0 if SES_MODELI != "v2" else 0.9
+    if args.ses_isleme is None:
+        args.ses_isleme = "tam" if SES_MODELI == "v2" else "hafif"
+    global KLIP_IC_KISMA
+    KLIP_IC_KISMA = args.ses_isleme == "tam"
     log(f"Ses modeli: Chatterbox Multilingual {SES_MODELI} · tempo {args.tempo}")
     tum = sen["sahneler"]; toplam = len(tum)
     ilk = 1
@@ -2311,7 +2328,7 @@ def main():
         wf.writeframes((np.clip(karisim, -1, 1) * 32767).astype(np.int16).tobytes())
     son_ses = tmp / "son.wav"
     # agate: kelime aralarında kalan kısık hışırtıyı 24 dB'e kadar bastırır (konuşma eşiğin çok üstünde)
-    zincir = "highpass=f=80,afftdn=nf=-45:nr=8,agate=threshold=0.008:ratio=3:range=0.06:attack=3:release=120,deesser=i=0.3,equalizer=f=3000:t=q:w=1.2:g=2,acompressor=threshold=-20dB:ratio=3:attack=10:release=200"
+    zincir = SES_ZINCIRI[args.ses_isleme]
     olc = subprocess.run([ffmpeg_bin(), "-hide_banner", "-i", str(ham), "-af",
                           zincir + f",loudnorm=I={args.lufs}:TP=-1.5:LRA=11:print_format=json", "-f", "null", "-"],
                          capture_output=True, text=True).stderr
@@ -2463,7 +2480,7 @@ def main():
                            "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
                            "-i", str(son_ses),
                            "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p",
-                           "-c:a", "aac", "-b:a", "160k", "-shortest", "-movflags", "+faststart", str(cikti)],
+                           "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", str(cikti)],
                           stdin=subprocess.PIPE)
     sahne_bas = intro
     siyah = Image.new("RGB", (W, H), (0, 0, 0))

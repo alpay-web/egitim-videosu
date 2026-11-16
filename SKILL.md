@@ -164,8 +164,10 @@ Varsayılan: **Chatterbox Multilingual V3** (MIT, 0,5 B): V2'ye göre daha doğa
 `tts_karsilastir.yml`). Senaryodaki `"ses_modeli": "v2"` eski videoların önbellek seslerini korur; yeni senaryolar
 alan olmadan V3 kullanır. Önbellek anahtarı modele göre ayrıdır: V2 ve V3 sesi aynı videoda karışmaz.
 V3 doğal olarak ~%10 daha sakin konuşur; bu yüzden tempo varsayılanı V3'te 1.0 (V2'de 0.9).
-**Gürültü katmanları modelden bağımsızdır** ve V3'te aynen çalışır: DeepFilterNet, nefes/hışırtı kırpma,
-uzun sessizlik + tık temizliği, ses zinciri, DNSMOS ve Whisper kapıları. Yeni modele geçince yeniden ayar gerekmez.
+**Gürültü katmanları:** DeepFilterNet, uzun sessizlik + tık temizliği, DNSMOS ve Whisper kapıları her modelde aynen
+çalışır. Render ses zinciri modele göre seçilir (`--ses-isleme`): V2 → `tam` (hışırtı bastırma + 3 kHz parlatma +
+kompresör + iç nefes kısma; V2 sesi gürültülü ve boğuktu), V3 → `hafif` (yalnız 60 Hz altı kesilir). V3'e `tam`
+uygulamak 3–9 kHz'i ~4 dB yükseltip sesi sert/teneke yapıyordu (17 Kasım 2026, kullanıcı fark etti).
 
 ## 7. Video
 ```bash

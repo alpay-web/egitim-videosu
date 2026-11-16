@@ -11,6 +11,8 @@ Sürümleme: `ANA.ARA.YAMA` — ANA: senaryo biçimi geriye uyumsuz değişirse;
 - Gürültü katmanları değişmeden V3'te çalışıyor (DeepFilterNet, klip temizliği, DNSMOS, Whisper); deneme
   sahnelerinde BAK 4,14, kalite kapısı GEÇTİ.
 - `modeller.yml` V3 ağırlığını da yedekler; `tts_karsilastir.yml` yeni modelleri denemek için kalıcı.
+- Render ses zinciri modele göre (`--ses-isleme tam|hafif|yok`): V3'te `hafif` (V2 için kurulan parlatma/
+  kompresör V3 sesini sertleştiriyordu); AAC 192 kbps. `ses_uret.yml`: `ham_sakla` (temizlik öncesi sesler).
 - Klip temizliği: uzun sessizlik + sondaki tık atılır (cümle sonlarında 0,5–2,7 sn yapay boşluk).
 
 ## 2.2.0 — 2026-11-16
