@@ -75,6 +75,11 @@ jobs:
           /tmp/df/bin/pip install -q deepfilternet==0.5.6 soundfile "numpy<2"
           /tmp/df/bin/python scripts/ses_temizle.py sesler --sinir 30
           mv sesler/temizlendi.txt "sesler/temizlendi_${{ matrix.sahne }}.txt" 2>/dev/null || true
+      - name: Ses kalitesi puanı (DNSMOS)
+        run: |
+          pip install -q onnxruntime librosa soundfile
+          python scripts/ses_puan.py sesler || echo "DNSMOS puanlanamadı"
+          mv sesler/ses_puan.json "sesler/ses_puan_${{ matrix.sahne }}.json" 2>/dev/null || true
       - uses: actions/upload-artifact@v4
         with:
           name: sesler-${{ matrix.sahne }}
@@ -84,6 +89,7 @@ jobs:
     if: ${{ !cancelled() }}   # bir parça çökse bile başarılı parçaların sesleri yayınlansın (önbelleğe girer)
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
         with:
           path: parcalar
@@ -99,6 +105,9 @@ jobs:
           json.dump(d, open('sesler/dizin.json','w'), ensure_ascii=False)
           [shutil.move(f, 'sesler/') for f in glob.glob('parcalar/[0-9]*.json')]
           open('sesler/temizlendi.txt','w').write(''.join(open(f).read() for f in glob.glob('parcalar/temizlendi_*.txt')))"
+          pip install -q numpy
+          python3 scripts/ses_puan.py sesler --birlestir parcalar/ses_puan_*.json || true
+          cp sesler/ses_puan.json ses_puan.json 2>/dev/null || echo '{}' > ses_puan.json
           cat parcalar/kalite_*.txt > kalite_raporu.txt 2>/dev/null || true
           [ -s kalite_raporu.txt ] || echo "(kalite kapısı kapalı ya da tüm cümleler önbellekten geldi)" > kalite_raporu.txt
           [ -s seslendirme.log ] || echo "(log yok)" > seslendirme.log
@@ -106,6 +115,6 @@ jobs:
           ffmpeg -v error -f concat -safe 0 -i liste.txt -b:a 160k onizleme.mp3
           cd sesler && zip -q -r ../sesler.zip . && cd ..
           gh release delete "${{ inputs.etiket }}" --yes --cleanup-tag --repo "$GITHUB_REPOSITORY" || true
-          gh release create "${{ inputs.etiket }}" sesler.zip onizleme.mp3 seslendirme.log kalite_raporu.txt --prerelease \
+          gh release create "${{ inputs.etiket }}" sesler.zip onizleme.mp3 seslendirme.log kalite_raporu.txt ses_puan.json --prerelease \
             --repo "$GITHUB_REPOSITORY" --title "Seslendirme: ${{ inputs.etiket }}" \
             --notes "motor=${{ inputs.motor }} senaryo=${{ inputs.senaryo }} ${{ inputs.ekstra }}"

@@ -416,7 +416,13 @@ def ekran_ogeleri(sh):
     return list(sh.get("maddeler", []))
 
 
+EKRAN_OKUNUS = [("V-ing", "fiilin ing hali"), ("-ing", "ing takısı"), ("V1", "fiilin yalın hali"),
+                ("V2", "fiilin ikinci hali"), ("V3", "fiilin üçüncü hali"), ("BrE", "İngiliz İngilizcesi")]
+
+
 def kapsam_orani(oge, metin):
+    for a, b in EKRAN_OKUNUS:               # ekrandaki kısaltma, anlatımda açılımıyla okunur
+        oge = oge.replace(a, b)
     kw = _kelimeler(oge.replace("___", " "))
     if not kw:
         return 1.0

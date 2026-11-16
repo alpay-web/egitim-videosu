@@ -103,3 +103,24 @@ def test_genel_telaffuz_dosyasi_gecerli():
     assert g["telaffuz"]["B1"] == "be, bir"
     m = v.seslendirme_metni("vb. konular", g["telaffuz"])
     assert "ve benzeri" in m
+
+
+def test_sadakat_uydurma_ve_telaffuz_yakalar():
+    import sadakat
+    belge = "## Zamanlar\n\nPast Simple: *I went home yesterday.* Sınav 45 dakika sürer ve 3 bölümden oluşur.\n"
+    sen = {"sahneler": [{"baslik": "Zamanlar", "maddeler": ["Sınav 90 dakika"],
+                         "anlatim": "Sınav 90 dakika sürer. {I went home yesterday.} {She is a doctor.} {If ve present}."}]}
+    r = sadakat.denetle(sen, belge)
+    assert any(u["deger"] == "90" for u in r["uydurma"])
+    assert any("doctor" in u["deger"] for u in r["uydurma"])
+    assert not any("went home" in u["deger"] for u in r["uydurma"])
+    assert r["telaffuz"] and r["telaffuz"][0]["turkce"] == ["ve"]
+
+
+def test_donusturucu_turkceyi_ingilizce_obekten_ayirir():
+    import belge_senaryo as b
+    t = b.anlatim("*was/were + V-ing* ve *a job, ~~a work~~*", {})
+    import re
+    for obek in re.findall(r"\{([^}]*)\}", t):
+        assert not re.search(r"[çğıöşü]|\b(ve|değil)\b", obek), t
+    assert "değil" in t and "ing" in t

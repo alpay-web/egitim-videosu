@@ -183,6 +183,33 @@ senaryonun `telaffuz` alanı onu ezer. Bir kelime her videoda yanlış okunuyors
 Seçenekler: `--tik`, `--muzik`, `--efekt-yok`, `--kamera-yok`, `--altyazi-yok`, `--karakter yol.json` (fotoğraf karakter),
 `--sahne 2-3 --cozunurluk 720` (hızlı deneme).
 
+## 8a. KALİTE KAPISI (teslim kararını araçlar verir)
+```bash
+python $R/scripts/sadakat.py senaryo.json belge.md --ayar ayar.json        # belgeye sadakat / bilgi kirliliği
+python $R/scripts/ses_puan.py sesler                                        # DNSMOS: gürültü (BAK) ve kalite puanı
+python $R/scripts/kalite_kapisi.py senaryo.json --belge belge.md --ayar ayar.json --ses-dizini sesler --video video.mp4
+```
+`kalite_kapisi.py` tek karar verir: **GEÇTİ / KALDI** (`senaryo_karar.md`). Kritikler: belgeden eksik satır,
+belgede olmayan sayı/İngilizce örnek (uydurma), `{İngilizce}` öbeğine düşmüş Türkçe kelime (yanlış aksanla okunur),
+ekranda olup okunmayan metin, yerleşim taşması, eşik altı gürültülü cümle (>%2), video ses/sessizlik hatası.
+**KALDI ise teslim yok:** düzelt (senaryo/ayar/telaffuz ya da `--cumleler` ile yeniden seslendirme) ve kapıyı
+tekrar çalıştır. Senaryo aşamasında (ses/video olmadan) da çalıştır: sorunları seslendirmeden önce yakala.
+İlke (reverify, FActScore, RefChecker): ölçülebilen her iddia araçla belgeye karşı doğrulanır; modelin
+"doğru görünüyor" demesi kanıt sayılmaz.
+
+## 8b. HAKEM (bağımsız gözden geçirme — anlam doğruluğu)
+Karar raporundaki **"Hakem için"** listesi araçların ölçemediği şeylerdir: bizim eklediğimiz açıklamalar,
+belgede geçmeyen adlar, Whisper puanı düşük cümleler. Bunları **videoyu üretmemiş bağımsız bir gözden geçirici**
+denetler (alt ajan aracı varsa ona ver; yoksa kendin, üretim notlarına bakmadan, yalnız belge + senaryo ile).
+Puanlama (Prometheus/G-Eval tarzı 1–5, her puan için kanıt zorunlu):
+1. **Doğruluk** — açıklama ve cevaplar dil bilgisi/olgu olarak doğru mu? (yanlış bir cevap = 1)
+2. **Belgeye sadakat** — belgenin söylemediği bir şey eklenmiş mi, anlamı değişmiş mi?
+3. **Eksiksizlik** — belgedeki her bölüm, her soru, her tablo satırı videoda mı?
+4. **Telaffuz/anlatım** — İngilizce doğru okunuyor mu, Türkçe doğal mı, hız uygun mu?
+5. **Pedagojik netlik** — öğrenci anlayabilir mi, sıra mantıklı mı?
+Her bulgu: sahne no + belgedeki kanıt (satır alıntısı) + somut düzeltme. 4'ün altı ölçüt varsa düzelt, kapıyı
+yeniden çalıştır. Hakem "emin değilim" diyorsa o öğe kullanıcıya sorulur; tahminle teslim edilmez.
+
 ## 8. Denetim (teslimden önce zorunlu, en fazla 2 düzeltme turu)
 ```bash
 python $R/scripts/kalite_raporu.py video.mp4      # süre, LUFS/tepe, sessizlik, siyah/donmuş kare + kare tablosu

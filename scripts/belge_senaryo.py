@@ -85,11 +85,12 @@ def anlatim(t, ayar):
     for a, b in ayar.get("degistir", {}).items():
         t = t.replace(a, b)
     t = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", t)                         # bağlantılar
-    t = re.sub(r"~~(.+?)~~", r"*\1* değil", t)
+    t = re.sub(r"~~(.+?)~~", r"\1 ⟦değil⟧", t)
     t = t.replace("***", "*")                                              # kalın-italik → italik
     t = re.sub(r"\*\*(.+?)\*\*", r"\1", t)                                 # kalın → düz
     t = re.sub(r"\*\s+\*", " ", t)                                         # bitişik italik parçaları birleştir
-    t = re.sub(r"\*([^*]+)\*", lambda m: "{" + m.group(1).strip() + "}", t)
+    t = re.sub(r"\*([^*]+)\*", lambda m: m.group(1) if re.search(r"[çğıöşüÇĞİÖŞÜ]", m.group(1))
+               else "{" + m.group(1).strip() + "}", t)              # italik Türkçe vurgu İngilizce değildir
     t = t.replace("*", "")
     t = re.sub(r"_{2,}", " boşluk ", t)
     rep = [(" → ", ", "), ("→", ", "), (" · ", ", "), ("·", ", "), (" ≠ ", " değil, "), (" = ", ", yani "),
@@ -97,8 +98,13 @@ def anlatim(t, ayar):
            ("V1", "fiilin yalın hali"), ("V2", "fiilin ikinci hali"), ("V3", "fiilin üçüncü hali"), ("-ing", "ing takısı"),
            (" + ", " ve "), ("(a)", "a,"), ("(b)", "be,"), ("(c)", "ce,"), ("(d)", "de,")]
     for a, b in rep:
-        t = t.replace(a, b)
-    t = re.sub(r"\{\s*\}", "", t)
+        t = t.replace(a, (" " if a.startswith(" ") else "") + f"⟦{b.strip()}⟧" + (" " if a.endswith(" ") else "")
+                      if re.search(r"[a-zçğıöşü]", b) else b)
+    # Türkçe karşılıklar ({…} İngilizce öbeğinin içine düşmüşse) öbeğin dışına çıkar: aksi halde İngilizce okunur
+    t = re.sub(r"\{([^{}]*)\}", lambda m: "{" + re.sub(r"\s*⟦([^⟧]*)⟧\s*", r"} \1 {", m.group(1)) + "}", t)
+    t = re.sub(r"⟦([^⟧]*)⟧", r"\1", t)
+    t = re.sub(r"\{[\s,;:]*\}", " ", t)
+    t = re.sub(r"\{\s*([,;:]?)\s*", r"{", t); t = re.sub(r"\s*\}", "}", t)
     t = re.sub(r"\s+", " ", t).strip()
     # parantez dışındaki İngilizceyi işaretle (wordfreq)
     try:
@@ -106,7 +112,11 @@ def anlatim(t, ayar):
         t = "".join(p if p.startswith("{") else v.ingilizce_isaretle(p) for p in parca)
     except Exception:
         pass
-    t = re.sub(r"\}(\s*)\{", r"\1", t)                                    # {a} {b} → {a b}
+    t = re.sub(r"\s*\(\}", "} (", t); t = re.sub(r"\{\)", ") {", t)               # öbek sınırında kalan parantez
+    t = re.sub(r"(?<![{\w])(in|on|at|by|for|since)(?= ve )", r"{\1}", t)       # "on ve gün": on = İngilizce edat
+    t = re.sub(r"\{([^\w{}]*)\}", r"\1", t)                                # yalnızca noktalama içeren öbek
+    t = re.sub(r"\}(\s*)\{(?=(ing|ed|es|s|er|est|ly|n't)\b)", "", t)       # smok{ing} → smoking (kelime içi vurgu)
+    t = re.sub(r"\}(\s*)\{", lambda m: m.group(1) or ", ", t)              # {a} {b} → {a b}; {a}{b} → {a, b}
     t = re.sub(r"\}(\s+)(\d[\d:.,]*)(?![\wçğıöşü'])", r"\1\2}", t)             # {in} 2019 → {in 2019}
     t = re.sub(r"\{([^}]*)\}", lambda m: "{" + m.group(1).replace(" / ", ", ").replace("/", ", ") + "}", t)
     t = t.replace(" / ", " ya da ")
@@ -117,7 +127,9 @@ def anlatim(t, ayar):
     for c in cumleler:
         harf = len(re.findall(r"[A-Za-zÇĞİÖŞÜçğıöşü]", c))
         en = sum(len(re.findall(r"[A-Za-z]", x)) for x in re.findall(r"\{([^}]*)\}", c))
-        tr_kelime = re.findall(r"(?<![{\w])[\wçğıöşüÇĞİÖŞÜ]*[çğıöşüÇĞİÖŞÜ][\wçğıöşüÇĞİÖŞÜ]*", re.sub(r"\{[^}]*\}", " ", c))
+        disari = re.sub(r"\{[^}]*\}", " ", c)
+        tr_kelime = (re.findall(r"(?<![{\w])[\wçğıöşüÇĞİÖŞÜ]*[çğıöşüÇĞİÖŞÜ][\wçğıöşüÇĞİÖŞÜ]*", disari) +
+                     re.findall(r"\b(?:ve|ya da|veya|yani|değil|ile|gibi)\b", disari))
         if harf and en / harf >= 0.6 and not tr_kelime:
             c = "{" + c.replace("{", "").replace("}", "") + "}"
         yeni.append(c)
@@ -165,9 +177,16 @@ def madde_sahneleri(baslik, liste, ayar, numarali=False):
 def tablo_sahneleri(baslik, bas, satirlar, ayar):
     out = []
     n_ = 4 if len(bas) <= 2 else 3                          # çok sütunlu tablolarda sahne başına 3 satır
-    for k in range(0, len(satirlar), n_):
-        parca = satirlar[k:k + n_]
-        ad = baslik + (f" ({k // n_ + 1}/{(len(satirlar) + n_ - 1) // n_})" if len(satirlar) > n_ else "")
+    gruplar, g, uz = [], [], 0
+    for r in satirlar:                                      # uzun hücreli satırlar daha az satırla: yazı küçülmesin
+        L = sum(len(ekran(x)) for x in r)
+        if g and (len(g) >= n_ or uz + L > 230):
+            gruplar.append(g); g, uz = [], 0
+        g.append(r); uz += L
+    if g:
+        gruplar.append(g)
+    for gi, parca in enumerate(gruplar):
+        ad = baslik + (f" ({gi + 1}/{len(gruplar)})" if len(gruplar) > 1 else "")
         cumleler = []
         for r in parca:
             r = r + [""] * (len(bas) - len(r))
@@ -268,6 +287,8 @@ def metin_sahneleri(baslik, paragraflar, ayar, kelime_siniri=70):
         okunus = anlatim(metin.replace("\n", " "), ayar)
         sahneler.append({"baslik": baslik + (f" ({i}/{len(out)})" if len(out) > 1 else ""), "tur": "metin",
                          "metin": metin, "anlatim": okunus})
+    if sahneler and v.kapsam_orani(baslik, sahneler[0]["anlatim"]) < 0.6:   # başlık ekranda: okunmalı
+        sahneler[0]["anlatim"] = anlatim(baslik, ayar).rstrip(".") + ". " + sahneler[0]["anlatim"]
     return sahneler
 
 
@@ -280,6 +301,8 @@ def donustur(md, ayar):
     yerine = ayar.get("yerine", {})
     metin_b = set(ayar.get("metin_bolumleri", []))
     atla_bolum = False
+    ust_basliklar = []          # (## başlık, o başlıktan sonraki ilk sahnenin sırası): ekranda görünen başlık okunmalı
+    bekleyen_ust = False
     i = 0
     while i < len(bl):
         b = bl[i]
@@ -289,13 +312,16 @@ def donustur(md, ayar):
             ad = ekran(b[2])
             for a, x in ayar.get("degistir", {}).items():
                 ad = ad.replace(a, x)
+            if b[1] == 2:
+                ust_basliklar.append((ad, len(sahneler)))
             alt_baslik = ad; ex_ad = None
             if b[1] <= 2 or not atla_bolum:                   # "yerine" ile değişen bölümün alt başlıkları da atlanır
                 atla_bolum = False
             elif atla_bolum:
                 i += 1; continue
-            if b[1] <= 3:
-                bekleyen_bolum = ad
+            if b[1] <= 3 and not (b[1] == 3 and bekleyen_ust and bekleyen_bolum):
+                bekleyen_bolum = ad              # ## hemen ardından ### gelirse bölüm adı ## kalır
+            bekleyen_ust = b[1] == 2
             if ad in yerine:                              # bu bölüm elle yazılmış sahnelerle değişir
                 yeni = [dict(x) for x in yerine[ad]]
                 yeni[0]["bolum"] = bekleyen_bolum or ad; bekleyen_bolum = None
@@ -370,6 +396,12 @@ def donustur(md, ayar):
                 bekleyen_bolum = None
             sahneler += yeni
         i += 1
+    # ## başlığı videoda okunmuyorsa bölümün ilk sahnesine eklenir ("ekrandaki/belgedeki her şey okunur")
+    for ad, k in ust_basliklar:
+        if k < len(sahneler) and v.kapsam_orani(ad, sahneler[k].get("anlatim", "")) < 0.6 \
+                and not (k > 0 and v.kapsam_orani(ad, sahneler[k - 1].get("anlatim", "")) >= 0.6):
+            sahneler[k]["anlatim"] = anlatim(ad, ayar).rstrip(".") + ". " + sahneler[k].get("anlatim", "")
+
     return sahneler
 
 
