@@ -1,0 +1,65 @@
+name: TTS karşılaştırma
+on:
+  workflow_dispatch:
+    inputs:
+      modeller:
+        description: "JSON liste"
+        default: '["chatterbox_v2","chatterbox_v3","voxcpm2_klon","voxcpm2_tarif","fireredtts3"]'
+permissions:
+  contents: write
+jobs:
+  sentez:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        model: ${{ fromJSON(inputs.modeller) }}
+    steps:
+      - name: Disk alanı aç
+        run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL || true; df -h /; nproc; free -g
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Kur
+        run: |
+          set -e
+          pip install -q --upgrade pip
+          case "${{ matrix.model }}" in
+            chatterbox_v2) pip install -q chatterbox-tts==0.1.7 ;;
+            chatterbox_v3) pip install -q "chatterbox-tts @ git+https://github.com/resemble-ai/chatterbox" ;;
+            voxcpm2_*) pip install -q voxcpm ;;
+            fireredtts3)
+              git clone -q --depth 1 https://github.com/FireRedTeam/FireRedTTS3 fr
+              grep -v -E "flash_attn|torchcodec" fr/requirements.txt > fr/req.txt
+              pip install -q --extra-index-url https://download.pytorch.org/whl/cpu -r fr/req.txt
+              pip install -q -e fr || pip install -q fr || true
+              pip install -q "huggingface_hub[cli]"
+              hf download FireRedTeam/FireRedTTS3 --local-dir pretrained_models/ ;;
+          esac
+          pip install -q soundfile numpy
+      - name: Seslendir
+        run: |
+          export PYTHONPATH=$PWD/fr:$PYTHONPATH
+          python scripts/tts_karsilastir.py ${{ matrix.model }} cikti 2>&1 | tail -40
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tts-${{ matrix.model }}
+          path: cikti/
+  yayinla:
+    needs: sentez
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: c
+          merge-multiple: true
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          ls -la c
+          gh release delete tts-karsilastirma -R ${{ github.repository }} -y --cleanup-tag 2>/dev/null || true
+          gh release create tts-karsilastirma -R ${{ github.repository }} --title "TTS karşılaştırma" --notes "Aynı paragraf, aynı referans ses" --prerelease c/*
