@@ -62,7 +62,12 @@ YouTube açıklamasında sesin yapay zekâ ile üretildiğini belirtmeniz öneri
 | Gömülü bölümler, sesli kitap | abogen | MP4 chapter, `--sesli-kitap` (.m4a) |
 | Genel telaffuz sözlüğü | video-podcast-maker, ThioJoe dubs | `telaffuz.json` |
 
+| Ses kalitesi puanı (gürültü) | microsoft/DNS-Challenge DNSMOS (kod MIT, model CC-BY-4.0) | `scripts/ses_puan.py` |
+| İddiaları kaynağa karşı doğrulama | FActScore, RefChecker, MiniCheck, reverify | `scripts/sadakat.py` |
+| Eşikli kalite kapısı + kurallı hakem | promptfoo, deepeval, Prometheus-Eval | `scripts/kalite_kapisi.py`, SKILL 8a/8b |
+
 En çok yıldızlı 100 benzer deponun tam analizi: [`docs/benzer_projeler.md`](docs/benzer_projeler.md).
+Kalite/denetim tarafındaki 97 deponun analizi: [`docs/kalite_denetim_arastirmasi.md`](docs/kalite_denetim_arastirmasi.md).
 
 ## Uzun süreli kullanım
 - **Sürüm:** `VERSION` + `CHANGELOG.md`; kararlı sürümler `v1.0.0` gibi etiketlenir.

@@ -2,6 +2,20 @@
 
 Sürümleme: `ANA.ARA.YAMA` — ANA: senaryo biçimi geriye uyumsuz değişirse; ARA: yeni özellik; YAMA: düzeltme.
 
+## 2.2.0 — 2026-11-16
+**Kalite kapısı: karar mercii, ses denetçisi, sadakat ve bilgi kirliliği kontrolü** (`docs/kalite_denetim_arastirmasi.md`).
+- `scripts/ses_puan.py`: DNSMOS (CPU, ~1 MB ONNX) ile cümle başına SIG/BAK/OVRL/P808; gürültülü cümleler listelenir.
+  Seslendirme iş akışı her cümleyi puanlar, `ses_puan.json` yayına eklenir.
+- `scripts/sadakat.py`: belgeden eksik satır, belgede olmayan sayı/İngilizce (uydurma), İngilizce öbeğe düşmüş
+  Türkçe kelime, belgede geçmeyen ad, eklenen açıklamalar.
+- `scripts/kalite_kapisi.py`: tüm denetimleri tek GEÇTİ/KALDI kararında toplar (`*_karar.md`); KALDI ise teslim yok.
+- SKILL.md 8a (kapı) ve 8b (kanıtlı, 5 ölçütlü bağımsız hakem).
+- Dönüştürücü: Türkçe karşılıklar ("ve", "fiilin ikinci hali", "değil", "İngiliz İngilizcesi") artık İngilizce
+  öbeğin dışında (B1 senaryosunda 57 hata → 0); italik Türkçe vurgu İngilizce sayılmaz; kelime içi vurgu
+  (smok*ing*) birleşir; "on/at/in ve …" edatları İngilizce okunur; ## ve okuma bölümü başlıkları okunur;
+  uzun hücreli tablolar daha az satırla bölünür (yazı 30 px altına düşmez).
+- `ayar.json`: `sadakat_yoksay` (bilerek çıkarılan ifadeler). 2 yeni test (toplam 15).
+
 ## 2.1.0 — 2026-11-16
 **Önizleme kapısı ve 100 benzer deponun analizi** (`docs/benzer_projeler.md`).
 - `--onizleme [SN]`: uzun videodan önce ~90 sn'lik temsili önizleme (açılış + her sahne türünden en kısa sahne +
