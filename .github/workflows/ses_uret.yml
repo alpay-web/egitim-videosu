@@ -105,7 +105,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           sudo apt-get -qq install -y ffmpeg > /dev/null
-          mkdir -p sesler && mv parcalar/[0-9]*.wav sesler/ && (mv parcalar/_referans.wav sesler/ 2>/dev/null || true) && cat parcalar/log_*.txt > seslendirme.log || true
+          mkdir -p sesler && mv parcalar/[0-9]*.wav sesler/ && ([ -d parcalar/ham ] && mv parcalar/ham sesler/ || true) && (mv parcalar/_referans.wav sesler/ 2>/dev/null || true) && cat parcalar/log_*.txt > seslendirme.log || true
           python3 -c "import json,glob,os,shutil; d={}
           [d.update(json.load(open(f))) for f in glob.glob('parcalar/**/dizin*.json', recursive=True)]
           json.dump(d, open('sesler/dizin.json','w'), ensure_ascii=False)
