@@ -320,7 +320,12 @@ def duraklama(c):
         return 0.9
     if c.rstrip().endswith(("?", "!")):
         return 0.5
-    return CUMLE_ARASI
+    t = temiz(c).strip()
+    if t.endswith(":") or len(t.split()) <= 3:       # "Soru 1." / "Kurallar:" → kısa geçiş
+        return 0.3
+    # insan konuşmasında cümle araları eşit değildir: cümleye bağlı küçük, tekrarlanabilir sapma (±0,08 sn)
+    import zlib
+    return CUMLE_ARASI - 0.05 + (zlib.crc32(t.encode()) % 17 - 8) / 100
 
 
 def tempo_uygula(x, tempo):
