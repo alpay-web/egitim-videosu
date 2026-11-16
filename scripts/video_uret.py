@@ -791,9 +791,12 @@ def chatterbox_yukle(d):
                     parcalar.append(hedef); i += 1
                 if not parcalar:
                     raise
-                with open(d / f, "wb") as out:
-                    for p_ in parcalar:
-                        out.write(p_.read_bytes()); p_.unlink()
+                parcalar[0].rename(d / f)            # yerinde birleştir: disk iki kat dolmasın
+                with open(d / f, "ab") as out:
+                    for p_ in parcalar[1:]:
+                        with open(p_, "rb") as g:
+                            shutil.copyfileobj(g, out, 16 << 20)
+                        p_.unlink()
     return ChatterboxMultilingualTTS.from_local(d, "cpu")
 
 
