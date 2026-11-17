@@ -53,7 +53,7 @@ metin sonra sorular), `liste_olarak` (cevapsız soru listeleri), `yerine` (ör. 
 - **Varsayılan: dokümanın TAMAMI TEK VİDEODA** (kullanıcı bunu tercih ediyor). Uzun dokümanda 30–40 dk olabilir;
   YouTube bölüm (chapter) zaman damgaları ile gezinilir. Sıra: kanca + yol haritası → strateji → konu dersleri
   (her ders: kural sahnesi + "Kendini dene" sorusu) → kelime → okuma/dinleme/konuşma örnekleri → deneme → kapanış.
-  Alıştırmaların hepsi okunmaz; her bloktan 1–2 temsili soru seçilir, gerisi için "rehberdeki alıştırmalar" denir.
+  Alıştırmaların HEPSİ çözülür (bkz. 1b); hiçbir soru atlanmaz.
 - Seri (5–8 dk'lık videolar) yalnızca kullanıcı isterse. Önceki seslendirmeler **otomatik** yeniden kullanılır
   (aşağıda "Ses önbelleği").
 - Kullanıcıya kısa bir plan sun (bölümler, tahmini süre, sahne türleri) ve hiçbir başlığın sessizce atlanmadığını
@@ -181,8 +181,8 @@ uygulamak 3–9 kHz'i ~4 dB yükseltip sesi sert/teneke yapıyordu (17 Kasım 20
 python $R/scripts/video_uret.py senaryo.json -o video.mp4 --ses-dizini sesler     # 1080p + video_kapak.jpg
 ```
 Varsayılan: sade çizim profesör (kürsüde), yavaş kamera, işaretçi, yalnızca doğru cevapta "ding", müzik yok.
-**Temiz ses (mikrofon sürtmesi/tık yok):** cümle klipleri yumuşak fade-in/out ile birleşir; zincirde `adeclick`,
-`afftdn` (hafif gürültü azaltma) ve `deesser` var; konuşma üstündeki "tık" efekti varsayılan kapalı.
+**Temiz ses (mikrofon sürtmesi/tık yok):** cümle klipleri yumuşak fade-in/out ile birleşir; render zinciri modele
+göre seçilir (bkz. 6c); konuşma üstündeki "tık" efekti varsayılan kapalı.
 **Gürültü (genel çözüm, katmanlı):** (1) seslendirme işi her cümleyi **DeepFilterNet3** ile temizler
 (`scripts/ses_temizle.py`, en fazla 30 dB bastırma; eski sesler için `ses_temizle.yml`), (2) `klip_temizle` cümle
 başı/sonu kuyruklarını ve uzun kısık bölgeleri keser, (3) render zincirinde `agate` kelime aralarındaki artığı bastırır.
