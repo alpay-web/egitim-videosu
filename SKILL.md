@@ -19,6 +19,13 @@ R=/tmp/egitim-videosu
 pip install -q -r $R/requirements.txt 2>/dev/null || pip install -q --break-system-packages -r $R/requirements.txt
 ```
 
+**Kişisel/özel belge** (ad, CV, maaş, üçüncü kişilerin adları, şirket içi bilgi): `alpay-web/egitim-videosu`
+HERKESE AÇIK; senaryoyu oraya gönderme, seslendirmeyi oradan çalıştırma. Gizli kopya `alpay-web/egitim-videosu-ozel`
+kullan: senaryolar `senaryolar/ozel/` altında, iş akışı aynı (`gh workflow run ses_uret.yml -R alpay-web/egitim-videosu-ozel`),
+sesler gizli depo yayınından `gh api .../releases/assets/<id>` ile indirilir. Kod düzeltmesini önce açık depoya,
+sonra gizli depoya çek (`git pull https://github.com/alpay-web/egitim-videosu.git main`); iki depo kodda aynı kalır.
+Emin değilsen sor.
+
 ## 1. Dokümanı anla → kapsam haritası
 ```bash
 python $R/scripts/belge_oku.py belge.pdf -o belge.md     # PDF/Word/PowerPoint/Excel/HTML/EPUB → belge.md + belge_harita.md
