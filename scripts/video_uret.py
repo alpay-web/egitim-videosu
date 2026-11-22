@@ -344,7 +344,8 @@ def oku_24k(yol):
 def sahne_ogeleri(sh):
     tur = sh.get("tur", "maddeler")
     return {"tablo": lambda: sh["tablo"]["satirlar"], "soru": lambda: [], "rakam": lambda: sh["kartlar"],
-            "karsilastirma": lambda: sh["satirlar"] * 2, "ipucu": lambda: [1], "metin": lambda: [1], "zaman": lambda: sh["adimlar"]
+            "karsilastirma": lambda: sh["satirlar"] * 2, "ipucu": lambda: [1], "metin": lambda: [1], "zaman": lambda: sh["adimlar"],
+            "gorsel": lambda: sh.get("odaklar") or []
             }.get(tur, lambda: sh.get("maddeler", []))()
 
 
@@ -439,6 +440,8 @@ def ekran_ogeleri(sh):
         q = sh["soru"]; return [q["metin"]] + list(q.get("secenekler") or []) + ([q["cevap"]] if q.get("cevap") else [])
     if tur == "metin":
         return [sh["metin"]]
+    if tur == "gorsel":     # görselin içindeki yazı OCR'la denetlenmez; odak etiketleri ekranda yazar, okunmalı
+        return [o["etiket"] for o in sh.get("odaklar", []) if o.get("etiket")]
     return list(sh.get("maddeler", []))
 
 
@@ -478,7 +481,8 @@ def oto_goster(sh, cumleler):
 
 
 # ================================================================ senaryo doğrulama
-TURLER = {"maddeler", "tablo", "soru", "rakam", "karsilastirma", "ipucu", "zaman", "metin"}
+TURLER = {"maddeler", "tablo", "soru", "rakam", "karsilastirma", "ipucu", "zaman", "metin", "gorsel"}
+GORSEL_DIZIN = Path(".")     # senaryodaki görsel yolları buna göre çözülür (senaryo dosyasının klasörü)
 
 
 def senaryo_dogrula(sen):
@@ -517,6 +521,11 @@ def senaryo_dogrula(sen):
                 assert sh["ipucu"].get("metin"), "ipucu.metin gerekli"
             elif tur == "metin":
                 assert str(sh.get("metin", "")).strip(), "metin gerekli"
+            elif tur == "gorsel":
+                assert (GORSEL_DIZIN / sh["gorsel"]).exists(), f"görsel yok: {sh['gorsel']}"
+                for o in sh.get("odaklar", []):
+                    x0, y0, x1, y1 = o["kutu"]
+                    assert 0 <= x0 < x1 <= 1 and 0 <= y0 < y1 <= 1, "odak kutusu 0-1 kesirleriyle [x0,y0,x1,y1]"
             elif tur == "zaman":
                 assert sh["adimlar"] and all("baslik" in a for a in sh["adimlar"]), "adimlar[].baslik gerekli"
         except (KeyError, TypeError, AssertionError) as e:
@@ -1330,7 +1339,7 @@ class Sahne:
             return self.tahta_tablo(taban, sh, gorunen, no, toplam, ust), []
         if tur == "soru":
             return self.tahta_soru(taban, sh, acik, no, toplam, ust), []
-        if tur in ("rakam", "karsilastirma", "ipucu", "zaman", "metin"):
+        if tur in ("rakam", "karsilastirma", "ipucu", "zaman", "metin", "gorsel"):
             return getattr(self, "tahta_" + tur)(taban, sh, gorunen, no, toplam, ust), []
         im = taban.copy(); d = ImageDraw.Draw(im); k = self.k
         fb, fk = font(k(40), True), font(k(16))
@@ -1518,6 +1527,56 @@ class Sahne:
                 d.text(k(578, y), t_, font=f_, fill=(240, 246, 242)); y += fs * 1.32
             y += fs * 0.5
         self._nokta.append((566, y0 + 10))
+        return im
+
+    def tahta_gorsel(self, taban, sh, gorunen, no, toplam, ust):
+        """Belgedeki diyagram/ekran görüntüsü, neredeyse tam ekran (profesör kenara çekilir):
+        {"tur": "gorsel", "gorsel": "gorseller/image16.png",
+         "odaklar": [{"kutu": [x0, y0, x1, y1], "etiket": "1-2: başlangıç"}]}  (kutu: görselin 0–1 kesirleri)
+        Odaklar sırayla, onları anlatan cümlede açılır: görsel o bölgeye yakınlaşır (geçiş yumuşak)."""
+        k = self.k; W_, H_ = taban.size
+        im = Image.new("RGB", taban.size, (34, 62, 50)); d = ImageDraw.Draw(im)
+        fb, fk = font(k(30), True), font(k(16))
+        d.text(k(40, 18), satir_kir(sh["baslik"], fb, k(1000), d)[0], font=fb, fill=(255, 224, 115))
+        d.text(k(1238 - 52, 28), f"{no}/{toplam}", font=fk, fill=(160, 185, 172))
+        if not hasattr(self, "_gorsel_c"):
+            self._gorsel_c = {}
+        yol = GORSEL_DIZIN / sh["gorsel"]
+        if yol not in self._gorsel_c:
+            self._gorsel_c[yol] = Image.open(yol).convert("RGB")
+        g = self._gorsel_c[yol]
+        odak = sh.get("odaklar", [])
+        etiket = ""
+        if gorunen and odak:
+            o = odak[min(gorunen, len(odak)) - 1]; etiket = o.get("etiket", "")
+            x0, y0, x1, y1 = o["kutu"]
+            # alan oranını koru: kutuyu çerçeve oranına genişlet
+            cx, cy = (x0 + x1) / 2 * g.width, (y0 + y1) / 2 * g.height
+            bw, bh = (x1 - x0) * g.width, (y1 - y0) * g.height
+            oran = 1200 / 478
+            if bw / bh < oran:
+                bw = bh * oran
+            else:
+                bh = bw / oran
+            bw, bh = min(bw, g.width), min(bh, g.height)
+            cx = min(max(cx, bw / 2), g.width - bw / 2); cy = min(max(cy, bh / 2), g.height - bh / 2)
+            g = g.crop((int(cx - bw / 2), int(cy - bh / 2), int(cx + bw / 2), int(cy + bh / 2)))
+        alan_w, alan_h = k(1200), k(478)          # altta altyazı payı, üstte başlık + etiket
+        o_ = min(alan_w / g.width, alan_h / g.height)
+        gg = g.resize((max(1, int(g.width * o_)), max(1, int(g.height * o_))), Image.LANCZOS)
+        x = (W_ - gg.width) // 2; y = k(112) + (alan_h - gg.height) // 2
+        d.rounded_rectangle((x - k(8), y - k(8), x + gg.width + k(8), y + gg.height + k(8)), radius=k(10),
+                            fill=(250, 250, 247))
+        im.paste(gg, (x, y))
+        if o_ * (1 if not gorunen else 1) < 0.45 and not odak:
+            self._u("görsel çok küçülüyor: okunabilmesi için odaklar ekle")
+        if etiket:
+            fe = font(k(26), True)
+            t_ = satir_kir(etiket, fe, k(1180), d)[0]
+            tw = d.textlength(t_, font=fe)
+            d.rounded_rectangle((k(40) - k(12), k(58), k(40) + tw + k(12), k(98)), radius=k(10), fill=(255, 224, 115))
+            d.text((k(40), k(62)), t_, font=fe, fill=(30, 40, 35))
+        self._nokta.append((640, 360))
         return im
 
     def tahta_rakam(self, taban, sh, gorunen, no, toplam, ust):
@@ -2018,7 +2077,8 @@ def main():
 
     H = args.cozunurluk; W = H * 16 // 9
     sen = json.loads(Path(args.senaryo).read_text(encoding="utf-8"))
-    global SES_MODELI
+    global SES_MODELI, GORSEL_DIZIN
+    GORSEL_DIZIN = Path(args.senaryo).resolve().parent
     SES_MODELI = args.ses_modeli or sen.get("ses_modeli", "v3")
     if args.tempo is None:
         args.tempo = 1.0 if SES_MODELI != "v2" else 0.9
@@ -2421,7 +2481,7 @@ def main():
             lay2 = lay.copy(); lay2.putalpha(lay.getchannel("A").point(lambda v: int(v * e)))
             im.paste(lay2, (bb[0] - int(k(30) * (1 - e)), bb[1]), lay2)
         # giriş yazısı: tahta boşken konuşma başladıysa (ölü hava önleme)
-        if ts and tur not in ("soru", "ipucu", "metin") and not sh_.get("kanca") and ts[0] - bas > 2.5 and not args.giris_yok:
+        if ts and tur not in ("soru", "ipucu", "metin", "gorsel") and not sh_.get("kanca") and ts[0] - bas > 2.5 and not args.giris_yok:
             gorunurluk = 1.0 if g == 0 else max(0.0, 1 - (tt - ts[0]) / MADDE_ANIM) if g == 1 else 0.0
             gorunurluk *= min(1.0, (tt - bas) / 0.4)
             if gorunurluk > 0:
@@ -2441,13 +2501,13 @@ def main():
                 im.paste(r[0], r[1][:2], r[0])
         # işaretçi: anlatılan öğeye kayar (Paper2Video'nun imleç fikri)
         nk = noktalar.get(si) or []
-        if g and tur not in ("soru", "ipucu", "metin") and nk and g - 1 < len(nk):
+        if g and tur not in ("soru", "ipucu", "metin", "gorsel") and nk and g - 1 < len(nk):
             hedef = nk[g - 1]
             onceki = nk[g - 2] if g >= 2 and g - 2 < len(nk) else (hedef[0], hedef[1] - 40)
             p_ = min(1.0, (tt - ts[g - 1]) / ISARETCI_SURE)
             e_ = 4 * p_ ** 3 if p_ < 0.5 else 1 - (-2 * p_ + 2) ** 3 / 2      # yumuşak başla, yumuşak dur
             S.isaretci(im, onceki[0] + (hedef[0] - onceki[0]) * e_, onceki[1] + (hedef[1] - onceki[1]) * e_, tt)
-        if karakter:
+        if karakter and tur != "gorsel":
             karakter_yapistir(im, tt, fi, any(0 <= tt - x < 1.8 for x in ts))
         return im
 
