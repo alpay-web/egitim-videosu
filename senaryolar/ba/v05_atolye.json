@@ -1,0 +1,1964 @@
+{
+ "baslik": "Business Analyst Teknik Rehberi · 5: Diyagram okuma atölyesi",
+ "alt_baslik": "BPMN · sequence · class · state · wireframe: numara numara okuma",
+ "kapanis": "Sıradaki video: SQL",
+ "tema": 5,
+ "youtube_baslik": "Business Analyst Teknik Rehberi 5/14: Diyagram okuma atölyesi (BPMN, sequence, class, state, wireframe)",
+ "etiketler": [
+  "business analyst",
+  "diyagram okuma",
+  "BPMN",
+  "sequence diagram",
+  "class diagram",
+  "wireframe",
+  "iş analisti"
+ ],
+ "ingilizce_mod": "sozluk",
+ "es": 1.0,
+ "cumle_arasi": 0.7,
+ "sahne_arasi": 1.6,
+ "telaffuz": {
+  "UML": "yu em el",
+  "BPMN": "bi pi em en",
+  "OMG": "o em ci",
+  "CMMN": "si em em en",
+  "DMN": "di em en",
+  "KKB": "ka ka be",
+  "KPS": "ka pe se",
+  "MERNİS": "mernis",
+  "MASAK": "masak",
+  "KVKK": "ka ve ka ka",
+  "BDDK": "be de de ka",
+  "ÖBF": "ö be fe",
+  "EFT": "e fe te",
+  "OTP": "o te pe",
+  "SMS": "es em es",
+  "STP": "es ti pi",
+  "XML": "eks em el",
+  "BPMNDI": "bi pi em en di ay",
+  "DMS": "di em es",
+  "CRM": "si ar em",
+  "ELK": "e le ka",
+  "LTV": "el ti vi",
+  "API": "ey pi ay",
+  "SOAP": "soup",
+  "GMY": "genel müdür yardımcısı",
+  "KPI": "key pi ay",
+  "XOR": "eks or",
+  "Camunda": "kamunda",
+  "Portal": "portal",
+  "Portal'da": "portalda",
+  "Portal'dan": "portaldan",
+  "Portal'a": "portala",
+  "Portal'ın": "portalın",
+  "BA": "be a",
+  "SoD": "es o di",
+  "SQL": "es kyu el",
+  "IAM": "ay ey em",
+  "Postman": "post men",
+  "Jira": "cira",
+  "Confluence": "konfluens",
+  "Miro": "miro",
+  "Visio": "vizyo",
+  "Agile": "ecayl",
+  "draw.io": "dro ay o",
+  "diagrams.net": "dayagrams nokta net",
+  "PNG": "pi en ci",
+  "SVG": "es vi ci",
+  "PDF": "pi di ef",
+  "VS Code": "vi es kod",
+  "Notepad++": "notped artı artı",
+  "ISO": "iso",
+  "BR": "be re",
+  "ID": "ay di",
+  "MANUEL_INCELEME": "manuel inceleme",
+  "Ctrl": "kontrol",
+  "Ctrl+S": "kontrol es",
+  "Ctrl+Z": "kontrol zed",
+  "JWT": "cey dabılyu ti",
+  "PII": "pi ay ay",
+  "HTTP": "eyç ti ti pi",
+  "ITIL": "itil",
+  "CR": "si ar",
+  "UAT": "yu ey ti",
+  "US-01": "yu es sıfır bir",
+  "US-10": "yu es on",
+  "B-118790": "be, yüz on sekiz bin yedi yüz doksan",
+  "Basvuru": "başvuru",
+  "Musteri": "müşteri",
+  "KararKaydi": "karar kaydı",
+  "Kullanici": "kullanıcı",
+  "OdemePlani": "ödeme planı",
+  "Arac": "araç",
+  "Kampanya": "kampanya",
+  "Rehin": "rehin",
+  "Kefalet": "kefalet",
+  "Teminat": "teminat",
+  "Taksit": "taksit",
+  "Rol": "rol",
+  "Yetki": "yetki",
+  "Belge": "belge",
+  "Kredi": "kredi",
+  "B01": "be sıfır bir",
+  "B01'de": "be sıfır birde",
+  "B01'te": "be sıfır birte",
+  "B01'deki": "be sıfır birdeki",
+  "B01'teki": "be sıfır birteki",
+  "B01'ye": "be sıfır birye",
+  "B01'ya": "be sıfır birya",
+  "B01'den": "be sıfır birden",
+  "B01'ten": "be sıfır birten",
+  "B01'da": "be sıfır birda",
+  "B01'ta": "be sıfır birta",
+  "B02": "be sıfır iki",
+  "B02'de": "be sıfır ikide",
+  "B02'te": "be sıfır ikite",
+  "B02'deki": "be sıfır ikideki",
+  "B02'teki": "be sıfır ikiteki",
+  "B02'ye": "be sıfır ikiye",
+  "B02'ya": "be sıfır ikiya",
+  "B02'den": "be sıfır ikiden",
+  "B02'ten": "be sıfır ikiten",
+  "B02'da": "be sıfır ikida",
+  "B02'ta": "be sıfır ikita",
+  "B03": "be sıfır üç",
+  "B03'de": "be sıfır üçde",
+  "B03'te": "be sıfır üçte",
+  "B03'deki": "be sıfır üçdeki",
+  "B03'teki": "be sıfır üçteki",
+  "B03'ye": "be sıfır üçye",
+  "B03'ya": "be sıfır üçya",
+  "B03'den": "be sıfır üçden",
+  "B03'ten": "be sıfır üçten",
+  "B03'da": "be sıfır üçda",
+  "B03'ta": "be sıfır üçta",
+  "B08": "be sıfır sekiz",
+  "B08'de": "be sıfır sekizde",
+  "B08'te": "be sıfır sekizte",
+  "B08'deki": "be sıfır sekizdeki",
+  "B08'teki": "be sıfır sekizteki",
+  "B08'ye": "be sıfır sekizye",
+  "B08'ya": "be sıfır sekizya",
+  "B08'den": "be sıfır sekizden",
+  "B08'ten": "be sıfır sekizten",
+  "B08'da": "be sıfır sekizda",
+  "B08'ta": "be sıfır sekizta",
+  "D01": "de sıfır bir",
+  "D01'de": "de sıfır birde",
+  "D01'te": "de sıfır birte",
+  "D01'deki": "de sıfır birdeki",
+  "D01'teki": "de sıfır birteki",
+  "D01'ye": "de sıfır birye",
+  "D01'ya": "de sıfır birya",
+  "D01'den": "de sıfır birden",
+  "D01'ten": "de sıfır birten",
+  "D01'da": "de sıfır birda",
+  "D01'ta": "de sıfır birta",
+  "D03": "de sıfır üç",
+  "D03'de": "de sıfır üçde",
+  "D03'te": "de sıfır üçte",
+  "D03'deki": "de sıfır üçdeki",
+  "D03'teki": "de sıfır üçteki",
+  "D03'ye": "de sıfır üçye",
+  "D03'ya": "de sıfır üçya",
+  "D03'den": "de sıfır üçden",
+  "D03'ten": "de sıfır üçten",
+  "D03'da": "de sıfır üçda",
+  "D03'ta": "de sıfır üçta",
+  "D05": "de sıfır beş",
+  "D05'de": "de sıfır beşde",
+  "D05'te": "de sıfır beşte",
+  "D05'deki": "de sıfır beşdeki",
+  "D05'teki": "de sıfır beşteki",
+  "D05'ye": "de sıfır beşye",
+  "D05'ya": "de sıfır beşya",
+  "D05'den": "de sıfır beşden",
+  "D05'ten": "de sıfır beşten",
+  "D05'da": "de sıfır beşda",
+  "D05'ta": "de sıfır beşta",
+  "D06": "de sıfır altı",
+  "D06'de": "de sıfır altıde",
+  "D06'te": "de sıfır altıte",
+  "D06'deki": "de sıfır altıdeki",
+  "D06'teki": "de sıfır altıteki",
+  "D06'ye": "de sıfır altıye",
+  "D06'ya": "de sıfır altıya",
+  "D06'den": "de sıfır altıden",
+  "D06'ten": "de sıfır altıten",
+  "D06'da": "de sıfır altıda",
+  "D06'ta": "de sıfır altıta",
+  "D07": "de sıfır yedi",
+  "D07'de": "de sıfır yedide",
+  "D07'te": "de sıfır yedite",
+  "D07'deki": "de sıfır yedideki",
+  "D07'teki": "de sıfır yediteki",
+  "D07'ye": "de sıfır yediye",
+  "D07'ya": "de sıfır yediya",
+  "D07'den": "de sıfır yediden",
+  "D07'ten": "de sıfır yediten",
+  "D07'da": "de sıfır yedida",
+  "D07'ta": "de sıfır yedita",
+  "D08": "de sıfır sekiz",
+  "D08'de": "de sıfır sekizde",
+  "D08'te": "de sıfır sekizte",
+  "D08'deki": "de sıfır sekizdeki",
+  "D08'teki": "de sıfır sekizteki",
+  "D08'ye": "de sıfır sekizye",
+  "D08'ya": "de sıfır sekizya",
+  "D08'den": "de sıfır sekizden",
+  "D08'ten": "de sıfır sekizten",
+  "D08'da": "de sıfır sekizda",
+  "D08'ta": "de sıfır sekizta",
+  "D09": "de sıfır dokuz",
+  "D09'de": "de sıfır dokuzde",
+  "D09'te": "de sıfır dokuzte",
+  "D09'deki": "de sıfır dokuzdeki",
+  "D09'teki": "de sıfır dokuzteki",
+  "D09'ye": "de sıfır dokuzye",
+  "D09'ya": "de sıfır dokuzya",
+  "D09'den": "de sıfır dokuzden",
+  "D09'ten": "de sıfır dokuzten",
+  "D09'da": "de sıfır dokuzda",
+  "D09'ta": "de sıfır dokuzta",
+  "F01": "fe sıfır bir",
+  "F01'de": "fe sıfır birde",
+  "F01'te": "fe sıfır birte",
+  "F01'deki": "fe sıfır birdeki",
+  "F01'teki": "fe sıfır birteki",
+  "F01'ye": "fe sıfır birye",
+  "F01'ya": "fe sıfır birya",
+  "F01'den": "fe sıfır birden",
+  "F01'ten": "fe sıfır birten",
+  "F01'da": "fe sıfır birda",
+  "F01'ta": "fe sıfır birta",
+  "F11": "fe bir bir",
+  "F11'de": "fe bir birde",
+  "F11'te": "fe bir birte",
+  "F11'deki": "fe bir birdeki",
+  "F11'teki": "fe bir birteki",
+  "F11'ye": "fe bir birye",
+  "F11'ya": "fe bir birya",
+  "F11'den": "fe bir birden",
+  "F11'ten": "fe bir birten",
+  "F11'da": "fe bir birda",
+  "F11'ta": "fe bir birta",
+  "I01": "ı sıfır bir",
+  "I01'de": "ı sıfır birde",
+  "I01'te": "ı sıfır birte",
+  "I01'deki": "ı sıfır birdeki",
+  "I01'teki": "ı sıfır birteki",
+  "I01'ye": "ı sıfır birye",
+  "I01'ya": "ı sıfır birya",
+  "I01'den": "ı sıfır birden",
+  "I01'ten": "ı sıfır birten",
+  "I01'da": "ı sıfır birda",
+  "I01'ta": "ı sıfır birta",
+  "I03": "ı sıfır üç",
+  "I03'de": "ı sıfır üçde",
+  "I03'te": "ı sıfır üçte",
+  "I03'deki": "ı sıfır üçdeki",
+  "I03'teki": "ı sıfır üçteki",
+  "I03'ye": "ı sıfır üçye",
+  "I03'ya": "ı sıfır üçya",
+  "I03'den": "ı sıfır üçden",
+  "I03'ten": "ı sıfır üçten",
+  "I03'da": "ı sıfır üçda",
+  "I03'ta": "ı sıfır üçta",
+  "I04": "ı sıfır dört",
+  "I04'de": "ı sıfır dörtde",
+  "I04'te": "ı sıfır dörtte",
+  "I04'deki": "ı sıfır dörtdeki",
+  "I04'teki": "ı sıfır dörtteki",
+  "I04'ye": "ı sıfır dörtye",
+  "I04'ya": "ı sıfır dörtya",
+  "I04'den": "ı sıfır dörtden",
+  "I04'ten": "ı sıfır dörtten",
+  "I04'da": "ı sıfır dörtda",
+  "I04'ta": "ı sıfır dörtta",
+  "P01": "pe sıfır bir",
+  "P01'de": "pe sıfır birde",
+  "P01'te": "pe sıfır birte",
+  "P01'deki": "pe sıfır birdeki",
+  "P01'teki": "pe sıfır birteki",
+  "P01'ye": "pe sıfır birye",
+  "P01'ya": "pe sıfır birya",
+  "P01'den": "pe sıfır birden",
+  "P01'ten": "pe sıfır birten",
+  "P01'da": "pe sıfır birda",
+  "P01'ta": "pe sıfır birta",
+  "P02": "pe sıfır iki",
+  "P02'de": "pe sıfır ikide",
+  "P02'te": "pe sıfır ikite",
+  "P02'deki": "pe sıfır ikideki",
+  "P02'teki": "pe sıfır ikiteki",
+  "P02'ye": "pe sıfır ikiye",
+  "P02'ya": "pe sıfır ikiya",
+  "P02'den": "pe sıfır ikiden",
+  "P02'ten": "pe sıfır ikiten",
+  "P02'da": "pe sıfır ikida",
+  "P02'ta": "pe sıfır ikita",
+  "P03": "pe sıfır üç",
+  "P03'de": "pe sıfır üçde",
+  "P03'te": "pe sıfır üçte",
+  "P03'deki": "pe sıfır üçdeki",
+  "P03'teki": "pe sıfır üçteki",
+  "P03'ye": "pe sıfır üçye",
+  "P03'ya": "pe sıfır üçya",
+  "P03'den": "pe sıfır üçden",
+  "P03'ten": "pe sıfır üçten",
+  "P03'da": "pe sıfır üçda",
+  "P03'ta": "pe sıfır üçta",
+  "P04": "pe sıfır dört",
+  "P04'de": "pe sıfır dörtde",
+  "P04'te": "pe sıfır dörtte",
+  "P04'deki": "pe sıfır dörtdeki",
+  "P04'teki": "pe sıfır dörtteki",
+  "P04'ye": "pe sıfır dörtye",
+  "P04'ya": "pe sıfır dörtya",
+  "P04'den": "pe sıfır dörtden",
+  "P04'ten": "pe sıfır dörtten",
+  "P04'da": "pe sıfır dörtda",
+  "P04'ta": "pe sıfır dörtta",
+  "P05": "pe sıfır beş",
+  "P05'de": "pe sıfır beşde",
+  "P05'te": "pe sıfır beşte",
+  "P05'deki": "pe sıfır beşdeki",
+  "P05'teki": "pe sıfır beşteki",
+  "P05'ye": "pe sıfır beşye",
+  "P05'ya": "pe sıfır beşya",
+  "P05'den": "pe sıfır beşden",
+  "P05'ten": "pe sıfır beşten",
+  "P05'da": "pe sıfır beşda",
+  "P05'ta": "pe sıfır beşta",
+  "P06": "pe sıfır altı",
+  "P06'de": "pe sıfır altıde",
+  "P06'te": "pe sıfır altıte",
+  "P06'deki": "pe sıfır altıdeki",
+  "P06'teki": "pe sıfır altıteki",
+  "P06'ye": "pe sıfır altıye",
+  "P06'ya": "pe sıfır altıya",
+  "P06'den": "pe sıfır altıden",
+  "P06'ten": "pe sıfır altıten",
+  "P06'da": "pe sıfır altıda",
+  "P06'ta": "pe sıfır altıta",
+  "P07": "pe sıfır yedi",
+  "P07'de": "pe sıfır yedide",
+  "P07'te": "pe sıfır yedite",
+  "P07'deki": "pe sıfır yedideki",
+  "P07'teki": "pe sıfır yediteki",
+  "P07'ye": "pe sıfır yediye",
+  "P07'ya": "pe sıfır yediya",
+  "P07'den": "pe sıfır yediden",
+  "P07'ten": "pe sıfır yediten",
+  "P07'da": "pe sıfır yedida",
+  "P07'ta": "pe sıfır yedita",
+  "P08": "pe sıfır sekiz",
+  "P08'de": "pe sıfır sekizde",
+  "P08'te": "pe sıfır sekizte",
+  "P08'deki": "pe sıfır sekizdeki",
+  "P08'teki": "pe sıfır sekizteki",
+  "P08'ye": "pe sıfır sekizye",
+  "P08'ya": "pe sıfır sekizya",
+  "P08'den": "pe sıfır sekizden",
+  "P08'ten": "pe sıfır sekizten",
+  "P08'da": "pe sıfır sekizda",
+  "P08'ta": "pe sıfır sekizta",
+  "P09": "pe sıfır dokuz",
+  "P09'de": "pe sıfır dokuzde",
+  "P09'te": "pe sıfır dokuzte",
+  "P09'deki": "pe sıfır dokuzdeki",
+  "P09'teki": "pe sıfır dokuzteki",
+  "P09'ye": "pe sıfır dokuzye",
+  "P09'ya": "pe sıfır dokuzya",
+  "P09'den": "pe sıfır dokuzden",
+  "P09'ten": "pe sıfır dokuzten",
+  "P09'da": "pe sıfır dokuzda",
+  "P09'ta": "pe sıfır dokuzta",
+  "P10": "pe bir sıfır",
+  "P10'de": "pe bir sıfırde",
+  "P10'te": "pe bir sıfırte",
+  "P10'deki": "pe bir sıfırdeki",
+  "P10'teki": "pe bir sıfırteki",
+  "P10'ye": "pe bir sıfırye",
+  "P10'ya": "pe bir sıfırya",
+  "P10'den": "pe bir sıfırden",
+  "P10'ten": "pe bir sıfırten",
+  "P10'da": "pe bir sıfırda",
+  "P10'ta": "pe bir sıfırta",
+  "P11": "pe bir bir",
+  "P11'de": "pe bir birde",
+  "P11'te": "pe bir birte",
+  "P11'deki": "pe bir birdeki",
+  "P11'teki": "pe bir birteki",
+  "P11'ye": "pe bir birye",
+  "P11'ya": "pe bir birya",
+  "P11'den": "pe bir birden",
+  "P11'ten": "pe bir birten",
+  "P11'da": "pe bir birda",
+  "P11'ta": "pe bir birta",
+  "P12": "pe bir iki",
+  "P12'de": "pe bir ikide",
+  "P12'te": "pe bir ikite",
+  "P12'deki": "pe bir ikideki",
+  "P12'teki": "pe bir ikiteki",
+  "P12'ye": "pe bir ikiye",
+  "P12'ya": "pe bir ikiya",
+  "P12'den": "pe bir ikiden",
+  "P12'ten": "pe bir ikiten",
+  "P12'da": "pe bir ikida",
+  "P12'ta": "pe bir ikita",
+  "P13": "pe bir üç",
+  "P13'de": "pe bir üçde",
+  "P13'te": "pe bir üçte",
+  "P13'deki": "pe bir üçdeki",
+  "P13'teki": "pe bir üçteki",
+  "P13'ye": "pe bir üçye",
+  "P13'ya": "pe bir üçya",
+  "P13'den": "pe bir üçden",
+  "P13'ten": "pe bir üçten",
+  "P13'da": "pe bir üçda",
+  "P13'ta": "pe bir üçta",
+  "P14": "pe bir dört",
+  "P14'de": "pe bir dörtde",
+  "P14'te": "pe bir dörtte",
+  "P14'deki": "pe bir dörtdeki",
+  "P14'teki": "pe bir dörtteki",
+  "P14'ye": "pe bir dörtye",
+  "P14'ya": "pe bir dörtya",
+  "P14'den": "pe bir dörtden",
+  "P14'ten": "pe bir dörtten",
+  "P14'da": "pe bir dörtda",
+  "P14'ta": "pe bir dörtta",
+  "P15": "pe bir beş",
+  "P15'de": "pe bir beşde",
+  "P15'te": "pe bir beşte",
+  "P15'deki": "pe bir beşdeki",
+  "P15'teki": "pe bir beşteki",
+  "P15'ye": "pe bir beşye",
+  "P15'ya": "pe bir beşya",
+  "P15'den": "pe bir beşden",
+  "P15'ten": "pe bir beşten",
+  "P15'da": "pe bir beşda",
+  "P15'ta": "pe bir beşta",
+  "S01": "se sıfır bir",
+  "S01'de": "se sıfır birde",
+  "S01'te": "se sıfır birte",
+  "S01'deki": "se sıfır birdeki",
+  "S01'teki": "se sıfır birteki",
+  "S01'ye": "se sıfır birye",
+  "S01'ya": "se sıfır birya",
+  "S01'den": "se sıfır birden",
+  "S01'ten": "se sıfır birten",
+  "S01'da": "se sıfır birda",
+  "S01'ta": "se sıfır birta",
+  "S15": "se bir beş",
+  "S15'de": "se bir beşde",
+  "S15'te": "se bir beşte",
+  "S15'deki": "se bir beşdeki",
+  "S15'teki": "se bir beşteki",
+  "S15'ye": "se bir beşye",
+  "S15'ya": "se bir beşya",
+  "S15'den": "se bir beşden",
+  "S15'ten": "se bir beşten",
+  "S15'da": "se bir beşda",
+  "S15'ta": "se bir beşta",
+  "U01": "u sıfır bir",
+  "U01'de": "u sıfır birde",
+  "U01'te": "u sıfır birte",
+  "U01'deki": "u sıfır birdeki",
+  "U01'teki": "u sıfır birteki",
+  "U01'ye": "u sıfır birye",
+  "U01'ya": "u sıfır birya",
+  "U01'den": "u sıfır birden",
+  "U01'ten": "u sıfır birten",
+  "U01'da": "u sıfır birda",
+  "U01'ta": "u sıfır birta",
+  "U02": "u sıfır iki",
+  "U02'de": "u sıfır ikide",
+  "U02'te": "u sıfır ikite",
+  "U02'deki": "u sıfır ikideki",
+  "U02'teki": "u sıfır ikiteki",
+  "U02'ye": "u sıfır ikiye",
+  "U02'ya": "u sıfır ikiya",
+  "U02'den": "u sıfır ikiden",
+  "U02'ten": "u sıfır ikiten",
+  "U02'da": "u sıfır ikida",
+  "U02'ta": "u sıfır ikita",
+  "U03": "u sıfır üç",
+  "U03'de": "u sıfır üçde",
+  "U03'te": "u sıfır üçte",
+  "U03'deki": "u sıfır üçdeki",
+  "U03'teki": "u sıfır üçteki",
+  "U03'ye": "u sıfır üçye",
+  "U03'ya": "u sıfır üçya",
+  "U03'den": "u sıfır üçden",
+  "U03'ten": "u sıfır üçten",
+  "U03'da": "u sıfır üçda",
+  "U03'ta": "u sıfır üçta",
+  "U04": "u sıfır dört",
+  "U04'de": "u sıfır dörtde",
+  "U04'te": "u sıfır dörtte",
+  "U04'deki": "u sıfır dörtdeki",
+  "U04'teki": "u sıfır dörtteki",
+  "U04'ye": "u sıfır dörtye",
+  "U04'ya": "u sıfır dörtya",
+  "U04'den": "u sıfır dörtden",
+  "U04'ten": "u sıfır dörtten",
+  "U04'da": "u sıfır dörtda",
+  "U04'ta": "u sıfır dörtta",
+  "U05": "u sıfır beş",
+  "U05'de": "u sıfır beşde",
+  "U05'te": "u sıfır beşte",
+  "U05'deki": "u sıfır beşdeki",
+  "U05'teki": "u sıfır beşteki",
+  "U05'ye": "u sıfır beşye",
+  "U05'ya": "u sıfır beşya",
+  "U05'den": "u sıfır beşden",
+  "U05'ten": "u sıfır beşten",
+  "U05'da": "u sıfır beşda",
+  "U05'ta": "u sıfır beşta",
+  "U06": "u sıfır altı",
+  "U06'de": "u sıfır altıde",
+  "U06'te": "u sıfır altıte",
+  "U06'deki": "u sıfır altıdeki",
+  "U06'teki": "u sıfır altıteki",
+  "U06'ye": "u sıfır altıye",
+  "U06'ya": "u sıfır altıya",
+  "U06'den": "u sıfır altıden",
+  "U06'ten": "u sıfır altıten",
+  "U06'da": "u sıfır altıda",
+  "U06'ta": "u sıfır altıta",
+  "U07": "u sıfır yedi",
+  "U07'de": "u sıfır yedide",
+  "U07'te": "u sıfır yedite",
+  "U07'deki": "u sıfır yedideki",
+  "U07'teki": "u sıfır yediteki",
+  "U07'ye": "u sıfır yediye",
+  "U07'ya": "u sıfır yediya",
+  "U07'den": "u sıfır yediden",
+  "U07'ten": "u sıfır yediten",
+  "U07'da": "u sıfır yedida",
+  "U07'ta": "u sıfır yedita",
+  "U08": "u sıfır sekiz",
+  "U08'de": "u sıfır sekizde",
+  "U08'te": "u sıfır sekizte",
+  "U08'deki": "u sıfır sekizdeki",
+  "U08'teki": "u sıfır sekizteki",
+  "U08'ye": "u sıfır sekizye",
+  "U08'ya": "u sıfır sekizya",
+  "U08'den": "u sıfır sekizden",
+  "U08'ten": "u sıfır sekizten",
+  "U08'da": "u sıfır sekizda",
+  "U08'ta": "u sıfır sekizta",
+  "U09": "u sıfır dokuz",
+  "U09'de": "u sıfır dokuzde",
+  "U09'te": "u sıfır dokuzte",
+  "U09'deki": "u sıfır dokuzdeki",
+  "U09'teki": "u sıfır dokuzteki",
+  "U09'ye": "u sıfır dokuzye",
+  "U09'ya": "u sıfır dokuzya",
+  "U09'den": "u sıfır dokuzden",
+  "U09'ten": "u sıfır dokuzten",
+  "U09'da": "u sıfır dokuzda",
+  "U09'ta": "u sıfır dokuzta",
+  "U10": "u bir sıfır",
+  "U10'de": "u bir sıfırde",
+  "U10'te": "u bir sıfırte",
+  "U10'deki": "u bir sıfırdeki",
+  "U10'teki": "u bir sıfırteki",
+  "U10'ye": "u bir sıfırye",
+  "U10'ya": "u bir sıfırya",
+  "U10'den": "u bir sıfırden",
+  "U10'ten": "u bir sıfırten",
+  "U10'da": "u bir sıfırda",
+  "U10'ta": "u bir sıfırta",
+  "U11": "u bir bir",
+  "U11'de": "u bir birde",
+  "U11'te": "u bir birte",
+  "U11'deki": "u bir birdeki",
+  "U11'teki": "u bir birteki",
+  "U11'ye": "u bir birye",
+  "U11'ya": "u bir birya",
+  "U11'den": "u bir birden",
+  "U11'ten": "u bir birten",
+  "U11'da": "u bir birda",
+  "U11'ta": "u bir birta",
+  "U12": "u bir iki",
+  "U12'de": "u bir ikide",
+  "U12'te": "u bir ikite",
+  "U12'deki": "u bir ikideki",
+  "U12'teki": "u bir ikiteki",
+  "U12'ye": "u bir ikiye",
+  "U12'ya": "u bir ikiya",
+  "U12'den": "u bir ikiden",
+  "U12'ten": "u bir ikiten",
+  "U12'da": "u bir ikida",
+  "U12'ta": "u bir ikita",
+  "U13": "u bir üç",
+  "U13'de": "u bir üçde",
+  "U13'te": "u bir üçte",
+  "U13'deki": "u bir üçdeki",
+  "U13'teki": "u bir üçteki",
+  "U13'ye": "u bir üçye",
+  "U13'ya": "u bir üçya",
+  "U13'den": "u bir üçden",
+  "U13'ten": "u bir üçten",
+  "U13'da": "u bir üçda",
+  "U13'ta": "u bir üçta",
+  "U14": "u bir dört",
+  "U14'de": "u bir dörtde",
+  "U14'te": "u bir dörtte",
+  "U14'deki": "u bir dörtdeki",
+  "U14'teki": "u bir dörtteki",
+  "U14'ye": "u bir dörtye",
+  "U14'ya": "u bir dörtya",
+  "U14'den": "u bir dörtden",
+  "U14'ten": "u bir dörtten",
+  "U14'da": "u bir dörtda",
+  "U14'ta": "u bir dörtta",
+  "U15": "u bir beş",
+  "U15'de": "u bir beşde",
+  "U15'te": "u bir beşte",
+  "U15'deki": "u bir beşdeki",
+  "U15'teki": "u bir beşteki",
+  "U15'ye": "u bir beşye",
+  "U15'ya": "u bir beşya",
+  "U15'den": "u bir beşden",
+  "U15'ten": "u bir beşten",
+  "U15'da": "u bir beşda",
+  "U15'ta": "u bir beşta",
+  "U16": "u bir altı",
+  "U16'de": "u bir altıde",
+  "U16'te": "u bir altıte",
+  "U16'deki": "u bir altıdeki",
+  "U16'teki": "u bir altıteki",
+  "U16'ye": "u bir altıye",
+  "U16'ya": "u bir altıya",
+  "U16'den": "u bir altıden",
+  "U16'ten": "u bir altıten",
+  "U16'da": "u bir altıda",
+  "U16'ta": "u bir altıta",
+  "U17": "u bir yedi",
+  "U17'de": "u bir yedide",
+  "U17'te": "u bir yedite",
+  "U17'deki": "u bir yedideki",
+  "U17'teki": "u bir yediteki",
+  "U17'ye": "u bir yediye",
+  "U17'ya": "u bir yediya",
+  "U17'den": "u bir yediden",
+  "U17'ten": "u bir yediten",
+  "U17'da": "u bir yedida",
+  "U17'ta": "u bir yedita",
+  "U18": "u bir sekiz",
+  "U18'de": "u bir sekizde",
+  "U18'te": "u bir sekizte",
+  "U18'deki": "u bir sekizdeki",
+  "U18'teki": "u bir sekizteki",
+  "U18'ye": "u bir sekizye",
+  "U18'ya": "u bir sekizya",
+  "U18'den": "u bir sekizden",
+  "U18'ten": "u bir sekizten",
+  "U18'da": "u bir sekizda",
+  "U18'ta": "u bir sekizta",
+  "W01": "dabılyu sıfır bir",
+  "W01'de": "dabılyu sıfır birde",
+  "W01'te": "dabılyu sıfır birte",
+  "W01'deki": "dabılyu sıfır birdeki",
+  "W01'teki": "dabılyu sıfır birteki",
+  "W01'ye": "dabılyu sıfır birye",
+  "W01'ya": "dabılyu sıfır birya",
+  "W01'den": "dabılyu sıfır birden",
+  "W01'ten": "dabılyu sıfır birten",
+  "W01'da": "dabılyu sıfır birda",
+  "W01'ta": "dabılyu sıfır birta",
+  "W08": "dabılyu sıfır sekiz",
+  "W08'de": "dabılyu sıfır sekizde",
+  "W08'te": "dabılyu sıfır sekizte",
+  "W08'deki": "dabılyu sıfır sekizdeki",
+  "W08'teki": "dabılyu sıfır sekizteki",
+  "W08'ye": "dabılyu sıfır sekizye",
+  "W08'ya": "dabılyu sıfır sekizya",
+  "W08'den": "dabılyu sıfır sekizden",
+  "W08'ten": "dabılyu sıfır sekizten",
+  "W08'da": "dabılyu sıfır sekizda",
+  "W08'ta": "dabılyu sıfır sekizta",
+  "W12": "dabılyu bir iki",
+  "W12'de": "dabılyu bir ikide",
+  "W12'te": "dabılyu bir ikite",
+  "W12'deki": "dabılyu bir ikideki",
+  "W12'teki": "dabılyu bir ikiteki",
+  "W12'ye": "dabılyu bir ikiye",
+  "W12'ya": "dabılyu bir ikiya",
+  "W12'den": "dabılyu bir ikiden",
+  "W12'ten": "dabılyu bir ikiten",
+  "W12'da": "dabılyu bir ikida",
+  "W12'ta": "dabılyu bir ikita"
+ },
+ "sahneler": [
+  {
+   "baslik": "Diyagram okuma atölyesi",
+   "maddeler": [
+    "Çalışma Seti'ndeki gerçek akışlar",
+    "P01 kredi süreci (BPMN) · U04 bayi başvurusu (sequence)",
+    "U07 alan modeli (class) · U08 yaşam döngüsü (state)",
+    "D05 Portal kredi ve kampanya ekranı (wireframe)",
+    "Her görselde kırmızı numaralar → tablo → okunuş → sorular"
+   ],
+   "anlatim": "Bu videoda okuma pratiği yapıyoruz. Firma çalışma setindeki gerçek akışları kullanacağız: P01 kredi süreci, bir BPMN; U04 bayi başvurusu, bir {sequence}; U07 alan modeli, bir {class}; U08 başvuru yaşam döngüsü, bir {state} diyagramı; ve D05 Portal kredi ve kampanya ekranı, bir {wireframe}. Her görselin üzerinde kırmızı numaralar var. Her numaranın ne olduğunu ve ne anlama geldiğini göreceğiz; ardından diyagramın cümle cümle okunuşu, Firma iş kurallarıyla bağlantısı ve bir iş analistinin soracağı sorular gelecek.",
+   "bolum": "Atölye: okuma yöntemi",
+   "kanca": "Bir diyagramı okumak, onu çizmek kadar önemli bir beceri.",
+   "ton": "merakli"
+  },
+  {
+   "baslik": "7 adımlı okuma yöntemi (1/2)",
+   "maddeler": [
+    "1. Türü tanı",
+    "Kulvar + eşkenar dörtgen = BPMN · kutular + inen kesikli çizgi = sequence",
+    "Üç bölmeli kutu + uçta sayılar = class · yuvarlak durum + etiketli ok = state",
+    "Tarayıcı çerçevesi + form = wireframe",
+    "2. Çerçeveyi oku: kimler var, hangi kanal?"
+   ],
+   "anlatim": "Her diyagram için yedi adımlı bir okuma yöntemi var. Birinci adım: türü tanı. Kulvarlı akış ve eşkenar dörtgen kapılar görüyorsan BPMN. Üstte kutular ve aşağı inen kesikli çizgiler görüyorsan {sequence}. Üç bölmeli kutular ve çizgi uçlarında sayılar görüyorsan {class}. Yuvarlak köşeli durum kutuları ve etiketli oklar görüyorsan {state machine}. Tarayıcı çerçevesi ve form alanları görüyorsan {wireframe}. İkinci adım: çerçeveyi oku. Başlık, alt başlık, kulvar ya da katılımcı adları; kimler var, hangi kanal?"
+  },
+  {
+   "baslik": "7 adımlı okuma yöntemi (2/2)",
+   "maddeler": [
+    "3. Başlangıcı bul",
+    "4. Mutlu yolu sonuna kadar izle",
+    "5. Alternatifler: ret, manuel, ek belge, zaman aşımı, bayiye iade",
+    "6. Simgeleri oku: ikonlar, alt/opt, elmas, üçgen, renkler, pasif alanlar",
+    "7. Firma kuralıyla karşılaştır"
+   ],
+   "anlatim": "Üçüncü adım: başlangıcı bul; başlangıç olayı, ilk mesaj, ilk durum noktası ya da ekrandaki adım göstergesi. Dördüncü adım: mutlu yolu izle; onay yolunu sonuna kadar takip et. Beşinci adım: alternatif yolları izle; ret, manuel inceleme, ek belge, zaman aşımı, bayiye iade. Altıncı adım: simgeleri oku; görev ikonları, {alt} ve {opt} kutuları, elmas ve üçgen uçlar, kırmızı ve yeşil durumlar, pasif alanlar. Yedinci adım: Firma kuralıyla karşılaştır."
+  },
+  {
+   "baslik": "Adım 7: Firma kuralları",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Kural",
+     "Değer"
+    ],
+    "satirlar": [
+     [
+      "Vade",
+      "6–60 ay"
+     ],
+     [
+      "Bireysel kredi/değer",
+      "400.000 ₺'ye kadar %70 … 2.000.000 ₺'ye kadar %20; üstü finanse edilmez"
+     ],
+     [
+      "Kurumsal",
+      "Fatura bedelinin %90'ı"
+     ],
+     [
+      "Belgeler tamsa",
+      "Aynı gün onay"
+     ],
+     [
+      "Teminat · erken kapama",
+      "Rehin + kasko · rehin yaklaşık 1 saatte kalkar"
+     ]
+    ]
+   },
+   "anlatim": "Karşılaştıracağın Firma kuralları şunlar. Vade altı ile altmış ay. Bireyselde kademeli kredi değer oranı: dört yüz bin liraya kadar yüzde yetmiş, kademeler düşerek iki milyon liraya kadar yüzde yirmi; iki milyonun üstü finanse edilmez. Kurumsalda fatura bedelinin yüzde doksanı. Belgeler tamsa aynı gün onay. Teminat rehin ve kasko. Erken kapamada da rehin yaklaşık bir saatte kalkar. Her diyagramda şunu sor: bu kuralları nerede uyguluyor?"
+  },
+  {
+   "baslik": "Görsel 1 · P01: kulvarlar ve başlangıç",
+   "tur": "gorsel",
+   "gorsel": "gorseller/g16.png",
+   "odaklar": [
+    {
+     "kutu": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+     ],
+     "etiket": "P01: bayide başvurudan kullandırıma"
+    },
+    {
+     "kutu": [
+      0.0,
+      0.08,
+      0.06,
+      0.95
+     ],
+     "etiket": "1 · Kulvarlar"
+    },
+    {
+     "kutu": [
+      0.02,
+      0.08,
+      0.2,
+      0.36
+     ],
+     "etiket": "2 · Başlangıç: araç seçildi"
+    },
+    {
+     "kutu": [
+      0.06,
+      0.22,
+      0.22,
+      0.4
+     ],
+     "etiket": "3 · Başvuruyu Portal'a gir"
+    }
+   ],
+   "anlatim": "Birinci görsel: P01 kredi başvurusundan kullandırıma, numaralı. Bayide başlayan başvurunun otomatik ya da manuel kararla sözleşmeye, rehne ve bayiye ödemeye kadar uçtan uca akışı. Bir numara kulvarlar: müşteri, bayi ya da Firma temsilcisi, sistem yani kural motoru, tahsis, operasyon ve harici sistemler. Her bant bir rol ya da sistem; adımı kimin yaptığını bulunduğu bant söyler. İki numara başlangıç olayı: araç seçildi, kredi talebi. İnce kenarlı yeşil daire; süreci müşterinin araç seçmesi tetikler. Üç numara: başvuruyu Portal'a gir; müşteri, araç ve kampanya. Bayi temsilcisinin Portal'da yaptığı iş; D03'ten D07'ye ekranlar.",
+   "bolum": "Görsel 1 · P01 (BPMN)"
+  },
+  {
+   "baslik": "P01: sistem ve otomatik karar",
+   "tur": "gorsel",
+   "gorsel": "gorseller/g16.png",
+   "odaklar": [
+    {
+     "kutu": [
+      0.12,
+      0.38,
+      0.28,
+      0.95
+     ],
+     "etiket": "4–5 · KPS & KKB sorgula, SOAP"
+    },
+    {
+     "kutu": [
+      0.2,
+      0.36,
+      0.33,
+      0.52
+     ],
+     "etiket": "6 · Kural & skor değerlendir"
+    },
+    {
+     "kutu": [
+      0.26,
+      0.25,
+      0.36,
+      0.52
+     ],
+     "etiket": "7 · XOR: otomatik karar"
+    },
+    {
+     "kutu": [
+      0.26,
+      0.25,
+      0.36,
+      0.45
+     ],
+     "etiket": "8 · Ret bildirimi"
+    }
+   ],
+   "anlatim": "Dört numara bir {service task}: KPS ve KKB sorgula. Sol üstteki dişli, işi sistemin otomatik yaptığını söyler. KPS kimlik ve adres, KKB kredi raporu verir. Beş numara kesikli ok, üstünde SOAP yazıyor: harici sistemlere giden mesaj. KPS ve KKB entegrasyonu SOAP ile; U04'teki {sequence} bu oku ayrıntılandırır. Altı numara kural ve skor değerlendir: kural motoru kredi değer oranını, vadeyi, kampanya uygunluğunu ve skoru değerlendirir. Yedi numara otomatik karar mı diye soran {XOR} kapısı. Üç çıkışı var: onay, doğrudan ÖBF'ye; ret; ve manuel. Yalnız biri seçilir. Sekiz numara ret bildirimi adlı bitiş olayı: kalın kırmızı daire, bu yol burada biter."
+  },
+  {
+   "baslik": "P01: manuel karar ve sözleşme",
+   "tur": "gorsel",
+   "gorsel": "gorseller/g16.png",
+   "odaklar": [
+    {
+     "kutu": [
+      0.3,
+      0.45,
+      0.45,
+      0.68
+     ],
+     "etiket": "9 · Manuel değerlendirme"
+    },
+    {
+     "kutu": [
+      0.38,
+      0.45,
+      0.48,
+      0.68
+     ],
+     "etiket": "10 · XOR: karar"
+    },
+    {
+     "kutu": [
+      0.36,
+      0.2,
+      0.47,
+      0.6
+     ],
+     "etiket": "11 · Ek belge yükle, geri dönüş"
+    },
+    {
+     "kutu": [
+      0.48,
+      0.2,
+      0.58,
+      0.36
+     ],
+     "etiket": "12 · ÖBF ver, sözleşme bas"
+    },
+    {
+     "kutu": [
+      0.54,
+      0.08,
+      0.64,
+      0.22
+     ],
+     "etiket": "13 · Sözleşmeyi imzala"
+    }
+   ],
+   "anlatim": "Dokuz numara tahsis kulvarında manuel değerlendirme. Kural motorunun karar veremediği başvurular kredi tahsis uzmanına düşer; B01 ve B02 ekranları. On numara karar mı diye soran {XOR}. Üç çıkış: onay ya da şartlı onay ÖBF'ye gider; ek belge bayiye döner. On bir numara ek belge yükle ve geri dönüş: bayi eksik belgeyi yükler, başvuru tekrar manuel değerlendirmeye girer; bu bir döngü. On iki numara ÖBF ver, sözleşme bas. Tüketici kredisinde ön bilgilendirme formu sözleşmeden önce verilir; bu yasal bir zorunluluk. On üç numara müşteri kulvarında kredi ve rehin sözleşmesini imzala. Müşteri kulvarına çıkan ok, işin müşteriye geçtiğini gösterir."
+  },
+  {
+   "baslik": "P01: kullandırım",
+   "tur": "gorsel",
+   "gorsel": "gorseller/g16.png",
+   "odaklar": [
+    {
+     "kutu": [
+      0.6,
+      0.22,
+      0.7,
+      0.36
+     ],
+     "etiket": "14 · Evrak yükle: iki ok"
+    },
+    {
+     "kutu": [
+      0.6,
+      0.78,
+      0.7,
+      0.93
+     ],
+     "etiket": "15 · Rehin tescili"
+    },
+    {
+     "kutu": [
+      0.66,
+      0.66,
+      0.75,
+      0.8
+     ],
+     "etiket": "16 · Kullandırım kontrolü"
+    },
+    {
+     "kutu": [
+      0.74,
+      0.66,
+      0.79,
+      0.82
+     ],
+     "etiket": "17 · Uygun mu?"
+    }
+   ],
+   "anlatim": "On dört numara: evrak yükle, kullandırım talep et. Bayi imzalı evrakı yükler; bu D09. Buradan iki ok çıkar. On beş numara harici sistemlerde rehin tescili; e-Devlet ya da noter. Teminatın tesisi budur. On altı numara operasyonda kullandırım kontrolü, dört göz. Dört göz ilkesi, yani {maker-checker}; B03 ekranı. On yedi numara uygun mu diye soran {XOR}. Hayır ise bayiye iade: evrak eksiği bayiye geri döner."
+  },
+  {
+   "baslik": "P01: ödeme ve bitiş",
+   "tur": "gorsel",
+   "gorsel": "gorseller/g16.png",
+   "odaklar": [
+    {
+     "kutu": [
+      0.78,
+      0.66,
+      0.86,
+      0.8
+     ],
+     "etiket": "18 · Ödeme emri, checker"
+    },
+    {
+     "kutu": [
+      0.78,
+      0.8,
+      0.86,
+      0.93
+     ],
+     "etiket": "19 · Bayiye EFT"
+    },
+    {
+     "kutu": [
+      0.84,
+      0.38,
+      0.92,
+      0.5
+     ],
+     "etiket": "20 · Kredi aktif, plan"
+    },
+    {
+     "kutu": [
+      0.9,
+      0.08,
+      0.98,
+      0.22
+     ],
+     "etiket": "21 · Araç teslim alındı"
+    }
+   ],
+   "anlatim": "On sekiz numara ödeme emri, {checker} onayıyla. Ödemeyi giren ve onaylayan farklı kişidir; bu SoD, yani görevler ayrılığı. On dokuz numara bayiye EFT: kredi tutarı bayiye ödenir. Yirmi numara kredi aktif, plan SMS ya da e-posta: ana sistem, yani {core system}, krediyi aktif eder ve ödeme planı müşteriye gider. Yirmi bir numara araç teslim alındı bitişi: olumlu sonuç."
+  },
+  {
+   "baslik": "P01 cümle cümle (1/2)",
+   "maddeler": [
+    "Müşteri aracı seçer (2) → bayi Portal'a girer (3)",
+    "Sistem KPS/KKB'yi SOAP ile sorgular (4–5), kural ve skor (6)",
+    "Otomatik karar (7): ret → bitiş (8) · manuel → uzman (9–11) · onay → ÖBF (12)",
+    "Müşteri imzalar (13) → bayi evrak + kullandırım talebi (14)"
+   ],
+   "anlatim": "Şimdi P01'i cümle cümle okuyalım. Müşteri aracını seçer, iki numara; bayi temsilcisi başvuruyu Portal'a girer, üç numara. Sistem KPS ve KKB'yi SOAP ile sorgular, dört ve beş; kuralları ve skoru değerlendirir, altı. Otomatik karar üç yoldan birine gider, yedi: ret ise süreç ret bildirimiyle biter, sekiz; manuel ise tahsis uzmanı inceler ve onaylar, şartlı onaylar ya da ek belge ister, dokuz ile on bir arası; onay ise doğrudan ÖBF ve sözleşme adımına geçilir, on iki. Müşteri sözleşmeleri imzalar, on üç; bayi evrakı yükleyip kullandırım talep eder, on dört."
+  },
+  {
+   "baslik": "P01 cümle cümle (2/2)",
+   "maddeler": [
+    "Rehin tescili başlar (15) · operasyon 4 göz kontrolü (16)",
+    "Uygun değilse bayiye iade (17)",
+    "Uygunsa checker onayı (18) → bayiye EFT (19) → kredi aktif, plan (20)",
+    "Müşteri aracı teslim alır (21)"
+   ],
+   "anlatim": "Bu noktada rehin tescili harici sistemde başlatılır, on beş; operasyon dört göz kontrolü yapar, on altı. Evrak uygun değilse bayiye iade edilir, on yedi; uygunsa ödeme emri {checker} tarafından onaylanır, on sekiz; bayiye EFT yapılır, on dokuz; kredi aktifleşir ve plan müşteriye gönderilir, yirmi. Müşteri aracı teslim alır, yirmi bir."
+  },
+  {
+   "baslik": "P01: BA olarak soracağın sorular (1/2)",
+   "maddeler": [
+    "14'ten çıkan iki ok paralel mi? → AND kapısı; EFT'den önce rehin bekleniyor mu?",
+    "KKB 5 sn'de dönmezse? → 4'e hata / zaman aşımı sınır olayı",
+    "\"Aynı gün onay\" nasıl ölçülüyor? → 9'a zamanlayıcı ve eskalasyon"
+   ],
+   "anlatim": "Bir iş analisti olarak bu diyagrama hangi soruları sorarsın? Bir: on dört numaralı görevden çıkan iki ok paralel mi çalışıyor? Paralelse bir {AND} kapısıyla gösterilmeli. Ayrıca EFT'den önce rehin tescilinin tamamlanması bekleniyor mu? Diyagramda birleştirme kapısı yok. İki: KKB beş saniyede yanıt vermezse ne olur? U04'te bu durum manuel incelemeye düşürülüyor; P01'de dört numaralı göreve bir hata ya da zaman aşımı sınır olayı eklenmeli. Üç: belgeler eksiksizse aynı gün onay kuralı nasıl ölçülüyor? Manuel değerlendirme için bir zamanlayıcı ve eskalasyon yok."
+  },
+  {
+   "baslik": "P01: BA olarak soracağın sorular (2/2)",
+   "maddeler": [
+    "Onaydan 30 gün sonra imza yoksa? → event-based: imza geldi / 30 gün doldu",
+    "Kasko ve isteğe bağlı sigortalar (D06) nerede? Dain-i mürtehin kullandırım koşulu mu?",
+    "Ret bildirimi müşteriye de gidiyor mu? Gerekçe kodu bayiye nasıl?"
+   ],
+   "anlatim": "Dört: onaydan sonra otuz gün içinde imza gelmezse ne olur? U08'deki bu kural P01'de görünmüyor; {event-based} kapıyla imza geldi ya da otuz gün doldu ayrımı eklenmeli. Beş: kasko ve isteğe bağlı sigortalar, yani D06, bu akışta nerede? Teminatın parçası olan kasko poliçesinin dain-i mürtehin Firma olarak kesilmesi bir kullandırım koşulu mu? Altı: ret bildirimi müşteriye de gidiyor mu, gerekçe kodu bayiye nasıl gösteriliyor?"
+  },
+  {
+   "baslik": "Bu soruları neden soruyorsun?",
+   "tur": "ipucu",
+   "ipucu": {
+    "tip": "bilgi",
+    "metin": "Her soru bir eksik gereksinimdir: paralellik, zaman aşımı, SLA, 30 gün kuralı, teminat koşulu, bildirim."
+   },
+   "anlatim": "Bu altı sorunun ortak noktası şu: her biri bir eksik gereksinimdir. Paralellik, zaman aşımı, ölçülebilir hizmet süresi, otuz gün kuralı, teminat koşulu ve bildirim. Diyagram okumanın asıl amacı buldukların değil, eksik olanları fark etmektir."
+  },
+  {
+   "baslik": "Görsel 2 · U04: katılımcılar ve ilk mesajlar",
+   "tur": "gorsel",
+   "gorsel": "gorseller/g17.png",
+   "odaklar": [
+    {
+     "kutu": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+     ],
+     "etiket": "U04: P01'in 3–7. adımları, mesaj mesaj"
+    },
+    {
+     "kutu": [
+      0.02,
+      0.09,
+      0.98,
+      0.18
+     ],
+     "etiket": "1 · Katılımcılar (lifeline)"
+    },
+    {
+     "kutu": [
+      0.37,
+      0.09,
+      0.6,
+      0.18
+     ],
+     "etiket": "2 · «ext» KPS (SOAP)"
+    },
+    {
+     "kutu": [
+      0.05,
+      0.15,
+      0.35,
+      0.23
+     ],
+     "etiket": "3 · POST /applications"
+    },
+    {
+     "kutu": [
+      0.3,
+      0.23,
+      0.48,
+      0.32
+     ],
+     "etiket": "4 · Kendine mesaj"
+    }
+   ],
+   "anlatim": "İkinci görsel U04, bayi başvurusu ve otomatik karar. P01'deki üç ile yedi arasındaki adımların sistemler arasında hangi mesajlarla gerçekleştiğini gösterir. Geliştirici bunu {API} tasarımı, test uzmanı entegrasyon testi olarak kullanır. Bir numara katılımcılar, yani {lifeline}'lar. Kutu katılımcı, altındaki kesikli çizgi zamandır. Soldan sağa: bayi Portal arayüzü, {API Gateway}, başvuru servisi, KPS, KKB, kural ve skor motoru, {core system} ve ELK. İki numara: ext KPS, SOAP. ext {stereotype}'ı Firma dışı sistem demek; gri kutular harici, mavi kutular Firma sistemleri. Üç numara ilk mesaj: POST bölü {applications}, JWT ve {correlation-id} ile. Düz ok senkron çağrıdır. JWT kimliği taşır; {correlation-id} tüm logları birbirine bağlar. Dört numara kendine mesaj, yani {self-call}: zorunlu alan ve belge kontrolü. Servis kendi içinde kontrol yapar; ok aynı çizgiye geri döner.",
+   "bolum": "Görsel 2 · U04 (sequence)"
+  },
+  {
+   "baslik": "U04: alt, evaluate, opt",
+   "tur": "gorsel",
+   "gorsel": "gorseller/g17.png",
+   "odaklar": [
+    {
+     "kutu": [
+      0.3,
+      0.32,
+      0.5,
+      0.4
+     ],
+     "etiket": "5 · Dönüş: kimlik + adres"
+    },
+    {
+     "kutu": [
+      0.24,
+      0.37,
+      0.62,
+      0.5
+     ],
+     "etiket": "6 · alt [KKB yanıt verdi]"
+    },
+    {
+     "kutu": [
+      0.24,
+      0.48,
+      0.62,
+      0.55
+     ],
+     "etiket": "7 · [timeout > 5 sn]"
+    },
+    {
+     "kutu": [
+      0.3,
+      0.53,
+      0.7,
+      0.61
+     ],
+     "etiket": "8 · evaluate(...)"
+    },
+    {
+     "kutu": [
+      0.24,
+      0.6,
+      0.86,
+      0.72
+     ],
+     "etiket": "9–10 · opt [ONAY] · createDraftLoan"
+    }
+   ],
+   "anlatim": "Beş numara dönüş mesajı: kimlik ve adres. Kesikli ok yanıttır. Altı numara bir {alt} kutusu; üst bölmesinde koşul: KKB yanıt verdi. Bu bir {if} {else}: KKB yanıt verirse rapor ve skor alınır. Yedi numara {alt} kutusunun alt bölmesi: {timeout} beş saniyeden büyük. {Else} yolu: KKB beş saniyede dönmezse durum MANUEL_INCELEME olur. İki bölmeden yalnızca biri çalışır. Sekiz numara {evaluate}: başvuru, KKB, LTV ve kampanya parametreleriyle kural motoruna gider; LTV kredi değer oranıdır. Dokuz numara bir {opt} kutusu, koşulu karar eşittir ONAY. Tek dallı koşul: yalnızca onayda çalışır. On numara {createDraftLoan}, {core system}'e: onaylanan başvuru için ana sistemde taslak kredi açılır ve {loanId} döner."
+  },
+  {
+   "baslik": "U04: log, yanıt, not",
+   "tur": "gorsel",
+   "gorsel": "gorseller/g17.png",
+   "odaklar": [
+    {
+     "kutu": [
+      0.3,
+      0.72,
+      0.92,
+      0.79
+     ],
+     "etiket": "11 · log(...) → ELK, asenkron"
+    },
+    {
+     "kutu": [
+      0.18,
+      0.77,
+      0.34,
+      0.85
+     ],
+     "etiket": "12 · 201 Created"
+    },
+    {
+     "kutu": [
+      0.68,
+      0.8,
+      0.9,
+      0.93
+     ],
+     "etiket": "13 · Not: correlation-id, Postman"
+    }
+   ],
+   "anlatim": "On bir numara: log, istek ve yanıt, PII maskeli, ELK'ya. Açık uçlu ok asenkron mesajdır; yanıt beklenmez. Kişisel veriler maskelenir. On iki numara: iki yüz bir {Created}, numara ve durum. {API} yanıtı; HTTP iki yüz bir, kayıt oluşturuldu demek. On üç numara bir not: tüm SOAP çağrıları ELK'da {correlation-id} ile aranabilir; Postman koleksiyonuyla tekrar oynatılabilir."
+  },
+  {
+   "baslik": "U04 okunuşu ve bağlantılar",
+   "maddeler": [
+    "Bayi gönderir → gateway kimliği doğrular → başvuru servisi",
+    "Zorunlu alanlar · KPS'den kimlik ve adres",
+    "KKB yanıt → rapor + skor · 5 sn aşılırsa manuel",
+    "Kural motoru karar · onayda core'da taslak kredi",
+    "Her istek/yanıt maskeli ELK'ya · bayiye no + durum"
+   ],
+   "anlatim": "U04'ün okunuşu: bayi başvuruyu gönderir; {gateway} kimliği doğrulayıp başvuru servisine iletir. Servis zorunlu alanları kontrol eder, KPS'den kimlik ve adresi alır. KKB yanıt verirse rapor ve skor alınır; beş saniyeyi aşarsa başvuru manuel incelemeye işaretlenir. Ardından kural motoru karar verir; karar onaysa {core system}'de taslak kredi açılır. Her istek ve yanıt maskelenerek ELK'ya yazılır; bayiye başvuru numarası ve durum döner. Rehberin diğer konularıyla bağlantısı: {correlation-id} ile Kibana'da arama ELK bölümünde; JWT ve kimlik IAM bölümünde; POST {applications} isteğinin Postman testi ve SOAP KPS, KKB çağrıları da Postman bölümünde."
+  },
+  {
+   "baslik": "U04: soracağın sorular",
+   "maddeler": [
+    "KKB timeout olunca başvuru yine de kural motoruna gidiyor mu? (diyagramda evet)",
+    "Kural motoru KKB skoru olmadan nasıl karar veriyor?",
+    "KPS hata verirse ne olur? (alt kutusu yok)",
+    "Ret ve manuel durumlarında bayiye hangi mesaj dönüyor?"
+   ],
+   "anlatim": "U04 için soracağın sorular: KKB {timeout} olunca başvuru yine de kural motoruna gidiyor mu? Diyagramda evet. Peki kural motoru KKB skoru olmadan nasıl karar veriyor? KPS hata verirse ne olur? Bunun için bir {alt} kutusu yok. Ret ve manuel durumlarında bayiye hangi mesaj dönüyor?"
+  },
+  {
+   "baslik": "Görsel 3 · U07: Basvuru sınıfı",
+   "tur": "gorsel",
+   "gorsel": "gorseller/g18.png",
+   "odaklar": [
+    {
+     "kutu": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+     ],
+     "etiket": "U07: Firma'nın çekirdek varlıkları"
+    },
+    {
+     "kutu": [
+      0.19,
+      0.07,
+      0.37,
+      0.25
+     ],
+     "etiket": "1–2 · Basvuru: ad ve nitelikler"
+    },
+    {
+     "kutu": [
+      0.19,
+      0.18,
+      0.37,
+      0.27
+     ],
+     "etiket": "3 · Operasyonlar"
+    },
+    {
+     "kutu": [
+      0.02,
+      0.07,
+      0.24,
+      0.22
+     ],
+     "etiket": "4 · Musteri–Basvuru: 1 borçlu — 0..*"
+    }
+   ],
+   "anlatim": "Üçüncü görsel: U07 alan modeli, numaralı. Yani başvurudan krediye, teminattan sigortaya ve IAM'e Firma'nın çekirdek varlıkları. Bir numara sınıf adı: Basvuru. Kutunun üst bölmesi varlıktır. İki numara nitelikler: kanal bayi, web ya da mobil; alanın alabileceği değerler. Ayrıca talep tutarı, para; vade, tamsayı; ödeme tipi. Üç numara operasyonlar: {simuleEt}, ödeme planı döndürür; ve {degerlendirmeyeGonder}. Dört numara Musteri ile Basvuru arası: bir borçlu, sıfır ya da çok. Bir müşteri sıfır ya da çok başvurunun borçlusu olabilir; her başvurunun bir borçlusu var. Borçlu bir rol adıdır; kefil ayrı bir rol ve Kefalet sınıfında.",
+   "bolum": "Görsel 3 · U07 (class)"
+  },
+  {
+   "baslik": "U07: belge, karar, kampanya, bayi",
+   "tur": "gorsel",
+   "gorsel": "gorseller/g18.png",
+   "odaklar": [
+    {
+     "kutu": [
+      0.02,
+      0.2,
+      0.24,
+      0.38
+     ],
+     "etiket": "5 · Belge ◆ Basvuru"
+    },
+    {
+     "kutu": [
+      0.21,
+      0.24,
+      0.36,
+      0.42
+     ],
+     "etiket": "6 · KararKaydi ◆ Basvuru"
+    },
+    {
+     "kutu": [
+      0.27,
+      0.03,
+      0.72,
+      0.12
+     ],
+     "etiket": "7 · Basvuru–Kampanya: 0..1"
+    },
+    {
+     "kutu": [
+      0.52,
+      0.1,
+      0.72,
+      0.2
+     ],
+     "etiket": "8 · Bayi–Kampanya: çoktan çoğa"
+    },
+    {
+     "kutu": [
+      0.35,
+      0.3,
+      0.9,
+      0.4
+     ],
+     "etiket": "9 · KararKaydi–Kullanici"
+    }
+   ],
+   "anlatim": "Beş numara Belge'den Basvuru'ya dolu elmas, bir ve sıfır ya da çok. {Composition}: belgeler başvuruya aittir; başvuru silinirse belgeler de anlamını yitirir. Altı numara KararKaydi'dan Basvuru'ya dolu elmas: her başvurunun sıfır ya da çok karar kaydı olur; otomatik, manuel, şartlı ya da ek belge. Yedi numara Basvuru ile Kampanya arası: sıfır ya da çok, sıfır ya da bir. Bir başvuruda en fazla bir kampanya kullanılır; kampanya opsiyoneldir. Sekiz numara Bayi ile Kampanya arası: iki uçta da sıfır ya da çok, kapsam. Çoktan çoğa: bir kampanya birçok bayide geçerli, bir bayinin birçok kampanyası olur. Dokuz numara KararKaydi ile Kullanici arası: sıfır ya da çok karar veren, bir. Her karar kaydı tek bir kullanıcıya bağlı; bu denetim izidir."
+  },
+  {
+   "baslik": "U07: kredi, teminat, plan",
+   "tur": "gorsel",
+   "gorsel": "gorseller/g18.png",
+   "odaklar": [
+    {
+     "kutu": [
+      0.21,
+      0.4,
+      0.36,
+      0.5
+     ],
+     "etiket": "10 · onay → dönüşür 0..1"
+    },
+    {
+     "kutu": [
+      0.0,
+      0.52,
+      0.2,
+      0.7
+     ],
+     "etiket": "11–12 · «abstract» Teminat, kalıtım"
+    },
+    {
+     "kutu": [
+      0.34,
+      0.48,
+      0.54,
+      0.6
+     ],
+     "etiket": "13 · Kredi ◆ OdemePlani"
+    },
+    {
+     "kutu": [
+      0.52,
+      0.47,
+      0.72,
+      0.6
+     ],
+     "etiket": "14 · OdemePlani ◆ Taksit"
+    }
+   ],
+   "anlatim": "On numara KararKaydi'dan Kredi'ye: onay, dönüşür, sıfır ya da bir. Onaylanan başvuru en fazla bir krediye, yani sözleşmeye dönüşür. On bir numara boş üçgen, yani kalıtım: Rehin ve Kefalet birer Teminat'tır. On iki numara {abstract} Teminat: soyut sınıf; tek başına nesnesi olmaz, ancak Rehin ya da Kefalet olarak var olur. On üç numara Kredi ile OdemePlani arası dolu elmas, bir ve bir ya da çok, versiyon. Bir kredinin birden çok ödeme planı versiyonu olur: vade değişikliği ya da ara ödeme gibi. On altı numaralı not bunu açıklar. On dört numara OdemePlani ile Taksit arası dolu elmas, bir ve bir ya da çok: taksitler plana aittir. Durum: ödendi, bekliyor ya da gecikmede."
+  },
+  {
+   "baslik": "U07: IAM, not, kredi operasyonları",
+   "tur": "gorsel",
+   "gorsel": "gorseller/g18.png",
+   "odaklar": [
+    {
+     "kutu": [
+      0.75,
+      0.3,
+      0.9,
+      0.68
+     ],
+     "etiket": "15 · Kullanici → Rol → Yetki"
+    },
+    {
+     "kutu": [
+      0.75,
+      0.68,
+      0.95,
+      0.8
+     ],
+     "etiket": "16 · Not: Para, versiyon"
+    },
+    {
+     "kutu": [
+      0.2,
+      0.55,
+      0.36,
+      0.62
+     ],
+     "etiket": "17 · kapamaTutari(tarih), kapat()"
+    }
+   ],
+   "anlatim": "On beş numara Kullanici, Rol ve Yetki: iki ilişkide de sıfır ya da çok. IAM modeli: kullanıcıya rol, role yetki verilir. Rolün {sodGrubu} alanı görevler ayrılığını tutar. On altı numara not: para, tutar artı para birimidir. Plan değişikliğinde yeni versiyon oluşur; eski versiyon pasifleşir, silinmez. On yedi numara kredi operasyonları: {kapamaTutari}, tarih alır ve para döndürür; erken kapama hesabı, yani W08. Bir de {kapat}."
+  },
+  {
+   "baslik": "U07'den çıkan iş kuralları",
+   "maddeler": [
+    "Başvuruda en fazla bir kampanya",
+    "Her kararın bir sahibi var",
+    "Plan değişikliği tarihçeyi silmez",
+    "Teminat: rehin ya da kefalet (ortak araçta biri borçlu biri kefil, çapraz kefalet yok)",
+    "Kredinin 0..* poliçesi; dainiMurtehin: Boolean"
+   ],
+   "anlatim": "Bu modelden çıkan iş kuralları: başvuruda en fazla bir kampanya; her kararın bir sahibi var; ödeme planı değişikliği tarihçeyi silmez. Teminat rehin ya da kefalet olabilir. Firma kuralı: ortak alınan araçta biri borçlu diğeri kefil olur, çapraz kefalet yok. Bir kredinin sıfır ya da çok sigorta poliçesi olur; {dainiMurtehin} adlı {Boolean} alan, kaskoda Firma'nın rehin alacaklısı olduğunu tutar."
+  },
+  {
+   "baslik": "U07: BA incelemesi",
+   "maddeler": [
+    "Arac: faturaBedeli ve kaskoDegeri → kredi/değer hangisine göre?",
+    "Kampanya.maxLTV var; bireysel kademe tablosu (400.000 / 2.000.000 ₺) nerede?",
+    "Kurumsal %90 kuralı Musteri.tip'e mi bağlı?",
+    "Kefalet'teki kefil: Musteri ilişkisi çizgi olarak yok"
+   ],
+   "anlatim": "İş analisti incelemesi: Arac sınıfında {faturaBedeli} ve {kaskoDegeri} var; kredi değer kuralı hangisine göre hesaplanıyor? Kampanya'da {maxLTV} var ama bireysel kademeli LTV tablosu, yani dört yüz bin ve iki milyon lira eşikleri, hangi varlıkta tutuluyor? Kurumsal müşteri için yüzde doksan kuralı Musteri tip alanına mı bağlı? Ve Kefalet'teki kefil, Musteri tipinde bir alan ama bu ilişki çizgi olarak çizilmemiş."
+  },
+  {
+   "baslik": "Görsel 4 · U08: başlangıç ve değerlendirme",
+   "tur": "gorsel",
+   "gorsel": "gorseller/g19.png",
+   "odaklar": [
+    {
+     "kutu": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+     ],
+     "etiket": "U08: başvurunun tüm durumları"
+    },
+    {
+     "kutu": [
+      0.02,
+      0.1,
+      0.3,
+      0.22
+     ],
+     "etiket": "1–2 · Başlangıç, gönder()"
+    },
+    {
+     "kutu": [
+      0.27,
+      0.1,
+      0.42,
+      0.22
+     ],
+     "etiket": "3 · Değerlendirmede"
+    },
+    {
+     "kutu": [
+      0.22,
+      0.19,
+      0.42,
+      0.38
+     ],
+     "etiket": "4 · Ek Belge Bekleniyor"
+    },
+    {
+     "kutu": [
+      0.38,
+      0.09,
+      0.6,
+      0.22
+     ],
+     "etiket": "5–6 · Manuel İnceleme"
+    }
+   ],
+   "anlatim": "Dördüncü görsel: U08 başvuru yaşam döngüsü, numaralı. Yani bir başvurunun alabileceği tüm durumlar ve aralarındaki geçişler. Portal'daki D08 başvurularım ekranı ve {back-office}'teki B01 tahsis kuyruğu bu durumları gösterir. Bir numara dolu siyah nokta: ilk durum noktası. İki numara geçiş etiketi: gönder, köşeli parantezde zorunlu belgeler tam. Olay gönder; koşul köşeli parantezde; belgeler tam değilse gönderilemez. Üç numara değerlendirmede durumu: kural motoru çalışıyor. Dört numara ek belge bekleniyor ve gidiş dönüş okları: ek belge iste ile girilir, belge yüklendi ile değerlendirmede durumuna dönülür. Beş numara: kural uyarısı ya da KKB {timeout}. Manuel incelemeye düşme nedenleri; U04'teki zaman aşımıyla aynı. Altı numara manuel inceleme: tahsis uzmanının kuyruğunda.",
+   "bolum": "Görsel 4 · U08 (state)"
+  },
+  {
+   "baslik": "U08: komite, ret, onay",
+   "tur": "gorsel",
+   "gorsel": "gorseller/g19.png",
+   "odaklar": [
+    {
+     "kutu": [
+      0.58,
+      0.09,
+      0.8,
+      0.22
+     ],
+     "etiket": "7 · [limit dışı] → Komitede"
+    },
+    {
+     "kutu": [
+      0.55,
+      0.25,
+      0.8,
+      0.42
+     ],
+     "etiket": "8 · Şartlı Onay"
+    },
+    {
+     "kutu": [
+      0.8,
+      0.09,
+      1.0,
+      0.32
+     ],
+     "etiket": "9 · Reddedildi"
+    },
+    {
+     "kutu": [
+      0.37,
+      0.22,
+      0.5,
+      0.42
+     ],
+     "etiket": "10 · otomatik onay"
+    },
+    {
+     "kutu": [
+      0.44,
+      0.42,
+      0.6,
+      0.55
+     ],
+     "etiket": "11 · Onaylandı"
+    }
+   ],
+   "anlatim": "Yedi numara: köşeli parantezde limit dışı, komitede. Uzmanın yetki limitini aşan başvuru kredi komitesine gider. Sekiz numara şartlı onay: manuel incelemeden ya da komiteden gelinir. Şartlar kabul edilip plan yeniden hesaplanınca onaylandı durumuna geçer. Dokuz numara reddedildi, pembe, ve son durum. Manuel incelemeden ya da komiteden ret. Pembe olumsuz son demek. On numara otomatik onay: değerlendirmede durumundan doğrudan onaylandı durumuna; manuel adım atlanır. On bir numara onaylandı: ÖBF ve sözleşme aşaması."
+  },
+  {
+   "baslik": "U08: iptal, sözleşme, kullandırım",
+   "tur": "gorsel",
+   "gorsel": "gorseller/g19.png",
+   "odaklar": [
+    {
+     "kutu": [
+      0.02,
+      0.42,
+      0.25,
+      0.55
+     ],
+     "etiket": "12 · İptal / Süresi Doldu"
+    },
+    {
+     "kutu": [
+      0.1,
+      0.22,
+      0.22,
+      0.45
+     ],
+     "etiket": "13 · 30 gün işlem yok"
+    },
+    {
+     "kutu": [
+      0.45,
+      0.58,
+      0.6,
+      0.7
+     ],
+     "etiket": "14 · Sözleşme İmzalandı"
+    },
+    {
+     "kutu": [
+      0.44,
+      0.68,
+      0.62,
+      0.86
+     ],
+     "etiket": "15 · Kullandırım Kontrolde"
+    },
+    {
+     "kutu": [
+      0.6,
+      0.72,
+      0.92,
+      0.86
+     ],
+     "etiket": "16–17 · Kullandırıldı, checker"
+    }
+   ],
+   "anlatim": "On iki numara iptal ya da süresi doldu: onaydan sonra otuz gün geçerse ya da müşteri vazgeçerse. On üç numara otuz gün işlem yok: taslakta otuz gün bekleyen başvuru da iptal olur; bu bir zaman olayı. On dört numara sözleşme imzalandı: imza ve evrak ile girilir. On beş numara kullandırım kontrolde ve bayiye iade, eksik evrak: P01'deki on altı ve on yedinci adımların durum karşılığı. On altı numara kullandırıldı, yeşil: başarılı son. On yedi numara ödeme emri onay, {checker}: kullandırımı tetikleyen olay; dört göz."
+  },
+  {
+   "baslik": "U08 okunuşu",
+   "maddeler": [
+    "Taslak → belgeler tamsa değerlendirme",
+    "Otomatik onay · ek belge · manuel",
+    "Manuel: onay, şartlı, ret, komite",
+    "Onaylandı → İmzalandı → Kontrolde",
+    "İade ya da checker → Kullandırıldı"
+   ],
+   "anlatim": "U08'in okunuşu: başvuru taslak olarak doğar; zorunlu belgeler tamsa gönderilip değerlendirmeye girer. Kural motoru onaylarsa doğrudan onaylandı durumuna geçer; eksik belge varsa ek belge bekleniyor durumunda bekler; kural uyarısı ya da KKB zaman aşımında manuel incelemeye düşer. Manuel incelemede başvuru onaylanır, şartlı onaylanır, reddedilir ya da uzmanın limitini aşıyorsa komiteye gider. Onaylanan başvuru imza ve evrakla sözleşme imzalandı durumuna, kullandırım talebiyle kullandırım kontrolde durumuna geçer. Evrak eksikse bayiye iade edilir; {checker} ödeme emrini onaylayınca kullandırıldı olur."
+  },
+  {
+   "baslik": "Diyagramdan test senaryosu",
+   "tur": "ipucu",
+   "ipucu": {
+    "tip": "bilgi",
+    "metin": "Her ok = pozitif test · ok olmayan her geçiş = negatif test. Reddedildi → Onaylandı ✗ · Taslak → Manuel İnceleme ✗ · Kullandırıldı'dan dönüş ✗"
+   },
+   "anlatim": "Bu diyagramdan test senaryosu yazmanın kolay yolu: her ok bir pozitif testtir; ok olmayan her geçiş bir negatif testtir. Örnek negatif testler: reddedildi durumundan onaylandı durumuna geçilememeli; taslaktan doğrudan manuel incelemeye geçilememeli; kullandırıldı durumundan geri dönülememeli. Soracağın sorular da şunlar: reddedilen başvuruya itiraz ya da yeniden başvuru nasıl işliyor? Ek belge bekleniyor durumunda bir süre sınırı var mı? Komite kararı için SLA ne?"
+  },
+  {
+   "baslik": "Görsel 5 · D05: ekran bağlamı",
+   "tur": "gorsel",
+   "gorsel": "gorseller/g20.png",
+   "odaklar": [
+    {
+     "kutu": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+     ],
+     "etiket": "D05: yeni başvuru, adım 3"
+    },
+    {
+     "kutu": [
+      0.0,
+      0.0,
+      0.5,
+      0.05
+     ],
+     "etiket": "1 · Adres: hangi sayfa"
+    },
+    {
+     "kutu": [
+      0.6,
+      0.03,
+      1.0,
+      0.09
+     ],
+     "etiket": "2 · Bildirim, bayi, kullanıcı"
+    },
+    {
+     "kutu": [
+      0.0,
+      0.09,
+      0.2,
+      0.45
+     ],
+     "etiket": "3 · Sol menü: Yeni Başvuru"
+    },
+    {
+     "kutu": [
+      0.17,
+      0.1,
+      0.65,
+      0.24
+     ],
+     "etiket": "4–5 · Taslak, adım göstergesi"
+    }
+   ],
+   "anlatim": "Beşinci görsel D05: Portal'da yeni başvurunun üçüncü adımı, kredi ve kampanya; bir {wireframe}. Bir ekran taslağı da diyagram gibi okunur: amaç, alanlar, kurallar, aksiyonlar ve mesajlar. Bir numara adres: portal nokta firma nokta com nokta tr, başvuru, yeni, kredi. Hangi kanal ve sayfa: yetkili satıcı portalı. İki numara bildirim, bayi, yani Örnek Oto Kadıköy, ve kullanıcı. Oturum bağlamı: kullanıcı yalnız kendi bayisinin verisini görür; bu IAM. Üç numara sol menü, yeni başvuru seçili. Portalın ana işlevleri; raporlar altında satış performansı ve penetrasyon. Dört numara: taslak B tire yüz on sekiz bin yedi yüz doksan. Başvuru henüz taslak durumunda; U08'deki ilk durum. Beş numara adım göstergesi, adım üç: müşteri tamam, araç tamam, kredi ve kampanya; sonra sigorta, belgeler ve gönder.",
+   "bolum": "Görsel 5 · D05 (wireframe)"
+  },
+  {
+   "baslik": "D05: kredi parametreleri",
+   "tur": "gorsel",
+   "gorsel": "gorseller/g20.png",
+   "odaklar": [
+    {
+     "kutu": [
+      0.19,
+      0.27,
+      0.58,
+      0.35
+     ],
+     "etiket": "6 · Kampanya"
+    },
+    {
+     "kutu": [
+      0.19,
+      0.35,
+      0.58,
+      0.42
+     ],
+     "etiket": "7 · Ödeme tipi: Balon"
+    },
+    {
+     "kutu": [
+      0.19,
+      0.42,
+      0.58,
+      0.49
+     ],
+     "etiket": "8 · Kredi tutarı, vade"
+    },
+    {
+     "kutu": [
+      0.19,
+      0.49,
+      0.58,
+      0.56
+     ],
+     "etiket": "9 · Balon tutarı (%30)"
+    },
+    {
+     "kutu": [
+      0.19,
+      0.56,
+      0.58,
+      0.63
+     ],
+     "etiket": "10 · Faiz: gri alan"
+    }
+   ],
+   "anlatim": "Altı numara kampanya: Model X yüzde sıfır faiz, on iki ay. Bayi kapsamındaki geçerli kampanyalar listelenir. Yedi numara ödeme tipi: balon ödemeli. Firma ürünlerinden biri; diğerleri eşit, kademeli artan, ara ödemeli ve değişken. Sekiz numara kredi tutarı dört yüz otuz bin lira, vade yirmi dört ay. Vade Firma kuralıyla altı ile altmış ay arasında seçilebilir. Dokuz numara balon tutarı, yüzde otuz: yüz yirmi dokuz bin lira. Son taksitte ödenecek tutar; planın son satırında yüz kırk üç bin yüz yirmi lira kırk kuruş olarak görünür. On numara aylık faiz, gri alan. Pasif alan: kullanıcı değiştiremez; kampanya ya da fiyat tablosundan gelir."
+  },
+  {
+   "baslik": "D05: hesap, ihlal, plan",
+   "tur": "gorsel",
+   "gorsel": "gorseller/g20.png",
+   "odaklar": [
+    {
+     "kutu": [
+      0.19,
+      0.63,
+      0.58,
+      0.7
+     ],
+     "etiket": "11 · Ödeme Planını Hesapla"
+    },
+    {
+     "kutu": [
+      0.19,
+      0.7,
+      0.58,
+      0.81
+     ],
+     "etiket": "12 · Kural ihlali"
+    },
+    {
+     "kutu": [
+      0.59,
+      0.25,
+      1.0,
+      0.5
+     ],
+     "etiket": "13 · Ödeme planı önizleme"
+    },
+    {
+     "kutu": [
+      0.59,
+      0.5,
+      1.0,
+      0.6
+     ],
+     "etiket": "14 · Özet"
+    },
+    {
+     "kutu": [
+      0.59,
+      0.64,
+      1.0,
+      0.71
+     ],
+     "etiket": "15–16 · ÖBF yazdır, Devam"
+    }
+   ],
+   "anlatim": "On bir numara ödeme planını hesapla: kural motorunu ve plan hesabını tetikler; U07'deki {simuleEt}. On iki numara kırmızı kural ihlali kutusu: seçilen kampanya balon ödemeli tip ile kullanılamaz; kampanya koşulları eşit ödemeli, on iki ay, en fazla yüzde elli kredi değer. Mesaj hangi kuralın ihlal edildiğini söylüyor; iyi bir hata mesajı budur. On üç numara ödeme planı önizleme: taksit numarası, vade tarihi, taksit ve kalan anapara. On dört numara özet: toplam geri ödeme, yıllık maliyet oranı, toplam faiz ve kredi değer; müşteriye gösterilmesi gereken maliyet bilgileri. On beş numara ön bilgi formu yazdır. Yasal: ÖBF sözleşmeden önce verilir, teslim kaydı başvuruya bağlanır. On altı numara devam: sigorta adımına, yani D06'ya geçer."
+  },
+  {
+   "baslik": "D05: tutarlılık kontrolü",
+   "maddeler": [
+    "İhlal varken plan görünüyor → önizleme gizlenmeli mi, Devam pasif mi?",
+    "Kampanya \"%0 faiz\" ama alan %1,99 · kampanya 12 ay, vade 24 ay",
+    "Kredi/değer %20 → araç ≈ 2.150.000 ₺ → bireysel üst sınır 2.000.000 ₺ aşılır"
+   ],
+   "anlatim": "Ekrandaki tutarlılık kontrolü; iş analistinin yapması gereken iş. Kural ihlali varken ekranda yine de bir ödeme planı görünüyor. İhlal varken önizleme gizlenmeli mi, devam düğmesi pasif mi olmalı? Kampanya yüzde sıfır faiz diyor ama faiz alanı yüzde bir virgül doksan dokuz gösteriyor; kampanyada on iki ay koşulu varken vade yirmi dört ay seçili. Ekran hangi değerin geçerli olduğunu açıkça göstermeli. Kredi değer yüzde yirmi görünüyor; dört yüz otuz bin lira kredi için bu, araç bedelinin yaklaşık iki milyon yüz elli bin lira olduğu anlamına gelir. Bu da bireysel kuralın üst sınırı olan iki milyon lirayı aşar. Bu örnek değerler, taslağın tutarlılığını sorgulamak için iyi bir alıştırma."
+  },
+  {
+   "baslik": "D05'ten kabul kriteri",
+   "maddeler": [
+    "Senaryo: Kampanya ödeme tipiyle uyumsuz",
+    "Diyelim ki kampanya yalnız Eşit Ödemeli tipte geçerli",
+    "Eğer ki bayi \"Balon Ödemeli\" seçip Hesapla'ya basarsa",
+    "O zaman ihlal edilen kural ve koşullar gösterilmeli",
+    "Ve önizleme gösterilmemeli · Ve \"Devam\" pasif olmalı"
+   ],
+   "anlatim": "Bu ekrandan yazılacak bir kabul kriteri örneği. Senaryo: kampanya ödeme tipiyle uyumsuz. Diyelim ki Model X yüzde sıfır faiz, on iki ay kampanyası yalnızca eşit ödemeli tipte geçerli. Eğer ki bayi bu kampanyayla balon ödemeli tipi seçip ödeme planını hesapla düğmesine basarsa, o zaman sistem ihlal edilen kuralı ve kampanya koşullarını gösteren hata mesajını göstermeli. Ve ödeme planı önizlemesi gösterilmemeli. Ve devam düğmesi pasif olmalı."
+  },
+  {
+   "baslik": "Diyagram envanteri: nasıl çalışmalı?",
+   "maddeler": [
+    "Çalışma Seti'ndeki diyagramları rehber konularıyla eşleştir",
+    "Her birini 7 adımla oku",
+    "Sonra ilgili bölümün laboratuvarında kendin çiz"
+   ],
+   "anlatim": "Son olarak Firma diyagram envanteri: hangi konuyu hangi dosyayla çalışmalısın? Çalışma setindeki diyagramları rehberin konularıyla eşleştirerek çalış. Her birini yedi adımla oku, sonra ilgili bölümün laboratuvarında kendin yeniden çiz.",
+   "bolum": "Atölye · Envanter ve kendini sına"
+  },
+  {
+   "baslik": "Envanter (1/3): UML",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Rehber konusu",
+     "Çalışma setindeki karşılığı"
+    ],
+    "satirlar": [
+     [
+      "UML – use case",
+      "U01 kanallar, U02 back-office ve IAM, U14 Sigorta"
+     ],
+     [
+      "UML – activity",
+      "U03 değerlendirme ve otomatik karar"
+     ],
+     [
+      "UML – sequence",
+      "U04, U05 (3D Secure), U06 erken kapama, U11, U16 IAM"
+     ],
+     [
+      "UML – class",
+      "U07 alan modeli, U15 sigorta alan modeli"
+     ],
+     [
+      "UML – state machine",
+      "U08 başvuru, U09 kredi hesabı, U12 poliçe, U13 hasar"
+     ]
+    ]
+   },
+   "anlatim": "UML {use case}: U01 müşteri ve bayi kanalları, U02 {back-office} ve IAM, U14 Firma sigorta. UML {activity}: U03 başvuru değerlendirme ve otomatik karar. UML {sequence}: U04 bayi başvurusu, U05 online taksit ödeme, yani {3D Secure}, U06 erken kapama ve rehin fekki, U11 sigorta teklif karşılaştırma, U16 IAM erişim talebi. UML {class}: U07 alan modeli ve U15 sigorta alan modeli. UML {state machine}: U08 başvuru, U09 kredi hesabı, U12 sigorta poliçesi ve U13 hasar dosyası."
+  },
+  {
+   "baslik": "Envanter (2/3): mimari, veri, BPMN",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Rehber konusu",
+     "Çalışma setindeki karşılığı"
+    ],
+    "satirlar": [
+     [
+      "UML – component / deployment",
+      "U10 mimari ve entegrasyonlar, U18 ağ bölgeleri"
+     ],
+     [
+      "Süreç – veri akışı",
+      "U17 kredi ve sigorta veri akışı"
+     ],
+     [
+      "BPMN – kredi ve tahsilat",
+      "P01, P02 gecikme, P04 vade değişikliği, P05 erken kapama, P13 kredi devri"
+     ],
+     [
+      "BPMN – sigorta",
+      "P03 kasko yenileme, P09, P10 hasar, P11 iptal, P12 kredi koruma"
+     ]
+    ]
+   },
+   "anlatim": "UML {component} ve {deployment}: U10 sistem mimarisi ve entegrasyonlar, U18 ağ bölgeleri ve dağıtım. Süreç diyagramlama, veri akışı: U17 kredi ve sigorta veri akışı. BPMN kredi ve tahsilat: P01 başvurudan kullandırıma, P02 gecikme ve tahsilat, P04 vade değişikliği talebi, P05 erken kapama ve rehin fekki, P13 kredi devri. BPMN sigorta: P03 kasko yenileme takibi, ki on beş gün kuralı burada; P09 tekliften poliçeye; P10 kasko hasar ihbarından ödemeye; P11 poliçe iptali ve prim iadesi; P12 kredi koruma tazminatı."
+  },
+  {
+   "baslik": "Envanter (3/3): IAM, Agile, yönetişim, ekranlar",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Rehber konusu",
+     "Çalışma setindeki karşılığı"
+    ],
+    "satirlar": [
+     [
+      "IAM",
+      "P06 Joiner-Mover-Leaver, U16, I01–I03 ekranları"
+     ],
+     [
+      "Agile, Jira, Confluence",
+      "P08 BA teslimat, P15 test ve UAT, US-01…US-10"
+     ],
+     [
+      "IT yönetişimi · şikayet",
+      "P07 ITIL değişiklik (CR), I04 · P14 şikayet ve kök neden"
+     ],
+     [
+      "Wireframe okuma",
+      "W01–W12 web, M01–M08 mobil, D01–D09 Portal, B01–B08, S01–S15, F01–F11"
+     ]
+    ]
+   },
+   "anlatim": "IAM: P06 {Joiner-Mover-Leaver} ve yetki gözden geçirme, U16, ve I01 ile I03 arası ekranlar; erişim talebi, rol ve yetki matrisi, yetki gözden geçirme. Agile, Jira ve Confluence: P08 BA teslimat süreci, P15 sistem testi ve UAT, ve çalışma setindeki US sıfır birden US ona kadar {user story}'ler. IT yönetişimi: P07 ITIL değişiklik yönetimi, yani CR, ve I04 değişiklik talebi ekranı. Şikayet ve kök neden: P14. {Wireframe} okuma: W01'den W12'ye web self servis, M01'den M08'e mobil, D01'den D09'a Portal, B01'den B08'e {back-office}, S01'den S15'e sigorta, F01'den F11'e ek senaryolar."
+  },
+  {
+   "baslik": "Kendini sına 1/5",
+   "tur": "soru",
+   "soru": {
+    "metin": "P01'de 7 numaralı kapı XOR yerine AND olsaydı ne olurdu?",
+    "secenekler": [
+     "Yalnız onay yolu çalışırdı",
+     "Üç yol birden başlardı",
+     "Süreç kilitlenirdi",
+     "Hiçbir şey değişmezdi"
+    ],
+    "dogru": 1,
+    "cevap_cumle": 6,
+    "bekle": 4
+   },
+   "anlatim": "Kendini sınayalım. Birinci soru: P01'de yedi numaralı kapı {XOR} yerine {AND} olsaydı ne olurdu? A, yalnız onay yolu çalışırdı. B, üç yol birden başlardı. C, süreç kilitlenirdi. D, hiçbir şey değişmezdi. Doğru cevap B. Onay, ret ve manuel yolların üçü birden başlardı; aynı başvuru hem reddedilir hem sözleşmeye giderdi."
+  },
+  {
+   "baslik": "Kendini sına 2/5",
+   "tur": "soru",
+   "soru": {
+    "metin": "U04'te KKB 6 saniyede yanıt verirse başvurunun durumu ne olur?",
+    "secenekler": [
+     "ONAY",
+     "RET",
+     "MANUEL_INCELEME",
+     "Taslak"
+    ],
+    "dogru": 2,
+    "cevap_cumle": 5,
+    "bekle": 4
+   },
+   "anlatim": "İkinci soru: U04'te KKB altı saniyede yanıt verirse başvurunun durumu ne olur? A, ONAY. B, RET. C, MANUEL_INCELEME. D, taslak. Doğru cevap C. Köşeli parantezde {timeout} beş saniyeden büyük dalı çalışır; durum MANUEL_INCELEME olur."
+  },
+  {
+   "baslik": "Kendini sına 3/5",
+   "tur": "soru",
+   "soru": {
+    "metin": "U07'ye göre bir başvuruda iki kampanya kullanılabilir mi?",
+    "secenekler": [
+     "Evet",
+     "Hayır, kampanya ucu 0..1",
+     "Yalnız kurumsalda",
+     "Bayiye bağlı"
+    ],
+    "dogru": 1,
+    "cevap_cumle": 5,
+    "bekle": 4
+   },
+   "anlatim": "Üçüncü soru: U07'ye göre bir başvuruda iki kampanya kullanılabilir mi? A, evet. B, hayır, kampanya ucu sıfır ya da bir. C, yalnız kurumsalda. D, bayiye bağlı. Doğru cevap B. İlişkinin kampanya ucu sıfır ya da bir."
+  },
+  {
+   "baslik": "Kendini sına 4/5",
+   "tur": "soru",
+   "soru": {
+    "metin": "U08'e göre Komitede durumundaki başvuru hangi durumlara geçebilir?",
+    "secenekler": [
+     "Onaylandı veya Taslak",
+     "Reddedildi veya Şartlı Onay",
+     "Kullandırıldı",
+     "Ek Belge Bekleniyor"
+    ],
+    "dogru": 1,
+    "cevap_cumle": 5,
+    "bekle": 4
+   },
+   "anlatim": "Dördüncü soru: U08'e göre komitede durumundaki bir başvuru hangi durumlara geçebilir? A, onaylandı ya da taslak. B, reddedildi ya da şartlı onay. C, kullandırıldı. D, ek belge bekleniyor. Doğru cevap B: reddedildi ya da şartlı onay."
+  },
+  {
+   "baslik": "Kendini sına 5/5",
+   "tur": "soru",
+   "soru": {
+    "metin": "D05'te faiz alanı neden gri?",
+    "secenekler": [
+     "Hata var",
+     "Pasif alan: kampanyadan / fiyat tablosundan gelir",
+     "Kampanya seçilmedi",
+     "Vade geçersiz"
+    ],
+    "dogru": 1,
+    "cevap_cumle": 5,
+    "bekle": 4
+   },
+   "anlatim": "Beşinci soru: D05'te faiz alanı neden gri? A, hata var. B, pasif alan; kampanyadan ya da fiyat tablosundan gelir. C, kampanya seçilmedi. D, vade geçersiz. Doğru cevap B. Pasif alan: faiz kullanıcı tarafından girilmez, kampanyadan ya da fiyat tablosundan gelir."
+  },
+  {
+   "baslik": "Bu videoda neler gördük?",
+   "maddeler": [
+    "7 adımlı okuma yöntemi",
+    "P01 BPMN: 21 numara, okunuş, 6 soru",
+    "U04 sequence: alt, opt, asenkron log",
+    "U07 class: çokluk, composition, kalıtım · U08 state: test senaryoları",
+    "D05 wireframe: tutarlılık, kabul kriteri · envanter"
+   ],
+   "anlatim": "Toparlayalım. Yedi adımlı okuma yöntemini öğrendik. P01 BPMN diyagramını yirmi bir numarasıyla okuduk ve altı soru çıkardık. U04'te {alt}, {opt} ve asenkron logu; U07'de çokluk, {composition} ve kalıtımı; U08'de durumları ve test senaryolarını gördük. D05 ekranında tutarlılık kontrolü yapıp bir kabul kriteri yazdık ve diyagram envanterini çıkardık. Bir sonraki videoda SQL ile veriyi kendimiz sorgulamaya başlıyoruz.",
+   "ton": "sakin"
+  }
+ ]
+}

@@ -73,6 +73,7 @@ def kod_mu(ln):
 def belge_satirlari(belge):
     sat = []
     for ln in belge.splitlines():
+        ln = re.sub(r"!\[([^\]]*)\]\([^)]*\)", r"\1", ln)     # görsel: yalnız alt yazısı sayılır
         if kod_mu(ln):
             continue
         t = re.sub(r"^[\s#>*\-|0-9.)]+", "", ln).strip(" |")
