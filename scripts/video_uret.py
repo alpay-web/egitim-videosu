@@ -17,6 +17,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 FPS, SR = 25, 24000
 KAR_OLCEK = 0.52  # çizim karakterin boyutu (1 = eski tam boy)
 CUMLE_ARASI, SAHNE_ARASI = 0.45, 1.2
+ES_CARPAN = 0.0    # noktalama esleri (senaryoda "es": 1.0 → virgül 0,22 sn, iki nokta 0,4 sn …)
 INTRO_SN, OUTRO_SN = 4.0, 4.5
 GECIS = 0.5        # sahne geçişi (sn)
 MADDE_ANIM = 0.6   # madde belirme animasyonu (sn)
@@ -363,13 +364,69 @@ def duraklama(c):
     if c.endswith("[dur]"):
         return 0.9
     if c.rstrip().endswith(("?", "!")):
-        return 0.5
+        return max(0.5, CUMLE_ARASI + 0.15)
     t = temiz(c).strip()
     if t.endswith(":") or len(t.split()) <= 3:       # "Soru 1." / "Kurallar:" → kısa geçiş
-        return 0.3
+        return max(0.3, CUMLE_ARASI * 0.65)
     # insan konuşmasında cümle araları eşit değildir: cümleye bağlı küçük, tekrarlanabilir sapma (±0,08 sn)
     import zlib
     return CUMLE_ARASI - 0.05 + (zlib.crc32(t.encode()) % 17 - 8) / 100
+
+
+ES_SURE = {",": 0.22, ";": 0.4, ":": 0.4, "—": 0.32, "–": 0.32, "?": 0.35, "!": 0.35, ".": 0.35}
+
+
+def _kel_norm(w):
+    return re.sub(r"[^\wçğıöşü]", "", w.lower())
+
+
+def noktalama_esleri(x, kelimeler, metin, carpan=1.0):
+    """Cümle içindeki virgül, iki nokta, noktalı virgül ve tirelerde duraklamayı tamamlar (konuşma hızı değişmez).
+    Kelime zamanları Whisper'dan gelir; noktalama senaryo metninden eşlenir. Var olan doğal boşluk hedefin
+    altındaysa yalnız eksik kadar sessizlik eklenir, kesme noktası boşluktaki en sessiz 10 ms'dir."""
+    import difflib
+    if not kelimeler or len(kelimeler) < 2 or carpan <= 0:
+        return x, kelimeler
+    ekran = re.findall(r"\S+", temiz(metin))
+    noktalama = {}
+    sm = difflib.SequenceMatcher(None, [_kel_norm(w) for w in ekran], [_kel_norm(w["w"]) for w in kelimeler],
+                                 autojunk=False)
+    for a, b, n in sm.get_matching_blocks():
+        for j in range(n):
+            m = re.search(r"([,;:—–?!.])[\"'”)]*$", ekran[a + j])
+            if m:
+                noktalama[b + j] = m.group(1)
+    for i, w in enumerate(kelimeler):
+        m = re.search(r"([,;:—–?!.])[\"'”)]*$", w["w"])
+        if m and i not in noktalama:
+            noktalama[i] = m.group(1)
+    kes = []
+    for i in sorted(noktalama):
+        if i >= len(kelimeler) - 1:
+            continue
+        hedef = ES_SURE[noktalama[i]] * carpan
+        e, s2 = kelimeler[i].get("e", kelimeler[i]["s"]), kelimeler[i + 1]["s"]
+        a_, b_ = int(max(0, e - 0.04) * SR), int(min(len(x) / SR, max(s2, e + 0.06) + 0.02) * SR)
+        if b_ - a_ < int(0.01 * SR):
+            continue
+        cer = int(0.01 * SR)
+        en = [(float(np.mean(x[k:k + cer] ** 2)), k) for k in range(a_, b_ - cer + 1, cer // 2)]
+        sessiz = sum(1 for v_, _ in en if v_ < 1e-5) * cer / 2 / SR
+        ek = hedef - sessiz
+        if ek > 0.04:
+            kes.append((min(en)[1] + cer // 2, ek))
+    if not kes:
+        return x, kelimeler
+    parca, son, kayma, yeni = [], 0, 0.0, [dict(w) for w in kelimeler]
+    for nokta, ek in kes:
+        parca += [x[son:nokta], np.zeros(int(ek * SR), np.float32)]; son = nokta
+    parca.append(x[son:])
+    for w in yeni:
+        top = sum(ek for nokta, ek in kes if nokta / SR <= w["s"] + 0.005)
+        w["s"] += top
+        if "e" in w:
+            w["e"] += sum(ek for nokta, ek in kes if nokta / SR < w["e"] - 0.005)
+    return np.concatenate(parca).astype(np.float32), yeni
 
 
 def tempo_uygula(x, tempo):
@@ -2157,7 +2214,7 @@ def main():
 
     H = args.cozunurluk; W = H * 16 // 9
     sen = json.loads(Path(args.senaryo).read_text(encoding="utf-8"))
-    global SES_MODELI, GORSEL_DIZIN, CUMLE_ARASI
+    global SES_MODELI, GORSEL_DIZIN, CUMLE_ARASI, ES_CARPAN, SAHNE_ARASI
     GORSEL_DIZIN = Path(args.senaryo).resolve().parent
     SES_MODELI = args.ses_modeli or sen.get("ses_modeli", "v3")
     if args.tempo is None:
@@ -2165,6 +2222,8 @@ def main():
     if args.hiz_tavani is None:
         args.hiz_tavani = float(sen.get("hiz_tavani", 0) or 0)
     CUMLE_ARASI = float(sen.get("cumle_arasi", CUMLE_ARASI))
+    SAHNE_ARASI = float(sen.get("sahne_arasi", SAHNE_ARASI))
+    ES_CARPAN = float(sen.get("es", 0) or 0)
     if args.ses_isleme is None:
         args.ses_isleme = "tam" if SES_MODELI == "v2" else "hafif"
     global KLIP_IC_KISMA
@@ -2409,6 +2468,8 @@ def main():
             kelime_z[(si, ci)] = ([dict(w, s=w["s"] / f_ - ofs, e=w.get("e", w["s"]) / f_ - ofs)
                                    for w in json.loads(kj.read_text())]
                                   if kj.exists() else None)
+            if ES_CARPAN > 0 and kelime_z.get((si, ci)):
+                x, kelime_z[(si, ci)] = noktalama_esleri(x, kelime_z[(si, ci)], c, ES_CARPAN)
             x = yumusat(x)
             cz.append((t, t + len(x) / SR, temiz(c)))
             dur_ = duraklama(c)

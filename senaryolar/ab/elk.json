@@ -1,0 +1,19 @@
+{
+ "baslik": "ELK okunuşu",
+ "ingilizce_mod": "sozluk",
+ "es": 1.0,
+ "cumle_arasi": 0.9,
+ "tema": 5,
+ "sahneler": [
+  {
+   "baslik": "ELK okunuşu: 4 seçenek",
+   "maddeler": [
+    "1. seçenek",
+    "2. seçenek",
+    "3. seçenek",
+    "4. seçenek"
+   ],
+   "anlatim": "Birinci seçenek. Hatanın izini e le ka ile, loglara bakarak sürersin. İkinci seçenek. Hatanın izini elk ile, loglara bakarak sürersin. Üçüncü seçenek. Hatanın izini i el kay ile, loglara bakarak sürersin. Dördüncü seçenek. Hatanın izini e, le, ka ile, loglara bakarak sürersin."
+  }
+ ]
+}

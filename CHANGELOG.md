@@ -5,7 +5,8 @@ Sürümleme: `ANA.ARA.YAMA` — ANA: senaryo biçimi geriye uyumsuz değişirse;
 
 
 ## 2.4.1 · 2026-11-22
-- Hız tavanı: model uzun cümlelerde hızlanıyordu (kısa 1,7, uzun 2,5 kelime/sn). Senaryoda `hiz_tavani` (yeni senaryolarda 1,9 kelime/sn) aşan cümleyi perde değişmeden yavaşlatır (en çok %20); kelime zamanları da ölçeklenir. `cumle_arasi` (yeni: 0,6 sn) ayarlanabilir.
+- Noktalama esleri (`es`): virgül, iki nokta, noktalı virgül ve tirede duraklama Whisper kelime zamanlarıyla tamamlanır; konuşma hızı değişmez. `cumle_arasi` 0,7, `sahne_arasi` 1,6 (yeni senaryolar). Soru ve iki nokta sonu araları cümle arasına göre ölçeklenir.
+- Hız tavanı (varsayılan kapalı; kullanıcı genel hızın düşmesini istemedi): model uzun cümlelerde hızlanıyordu (kısa 1,7, uzun 2,5 kelime/sn). Senaryoda `hiz_tavani` (yeni senaryolarda 1,9 kelime/sn) aşan cümleyi perde değişmeden yavaşlatır (en çok %20); kelime zamanları da ölçeklenir. `cumle_arasi` (yeni: 0,6 sn) ayarlanabilir.
 - Telaffuz A/B sonucu: kullanıcı B'yi (teknik terim sözlüğü) seçti; yeni senaryoların varsayılanı `sozluk`.
 
 ## 2.4.0 · 2026-11-22
