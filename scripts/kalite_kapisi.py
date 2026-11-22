@@ -66,6 +66,9 @@ def kapisi(senaryo, belge=None, ayar=None, ses_dizini=None, video=None, ses_puan
     # --- ses: yalnızca bu videoda GERÇEKTEN kullanılan cümle sesleri değerlendirilir (önbellekte eskisi kalabilir)
     if ses_dizini:
         depo = v.SesDeposu(ses_dizini)
+        v.ING_MOD = sen.get("ingilizce_mod", "cmu")          # anahtar, render ile aynı okunuşla hesaplanmalı
+        if v.ING_MOD == "sozluk":
+            v.teknik_yukle(ek=sen.get("teknik_terimler"))
         genel = json.loads((BURASI.parent / "telaffuz.json").read_text(encoding="utf-8")) \
             if (BURASI.parent / "telaffuz.json").exists() else {}
         tel = {**genel.get("telaffuz", {}), **sen.get("telaffuz", {})}

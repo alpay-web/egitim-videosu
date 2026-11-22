@@ -4,6 +4,9 @@ Sürümleme: `ANA.ARA.YAMA` — ANA: senaryo biçimi geriye uyumsuz değişirse;
 
 
 
+## 2.4.3 · 2026-11-22
+- Kalite kapısı ses anahtarlarını senaryonun `ingilizce_mod`'uyla (sözlük) hesaplar; önceden `sozluk` senaryolarında var olan sesleri "Ses yok" sayıyordu.
+
 ## 2.4.2 · 2026-11-22
 - Sadakat: görsel satırlarında yalnız alt metin sayılır; tırnaklar kelimeden ayrılır; belgedeki tüm sayı parçaları tanınır; markdown bağlantı adresleri kapsam hesabına girmez (yalnız bağlantı metni okunur).
 - Noktalı ve alt çizgili teknik tokenlar parça parça okunur (`ES|QL` → ESQL, `@` atılır).
