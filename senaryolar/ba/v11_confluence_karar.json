@@ -1,0 +1,43 @@
+{
+ "karar": "GEÇTİ",
+ "kritik": [],
+ "uyari": [
+  "senkron · sahne 3: ilk öğe 6 sn sonra (giriş yazısı otomatik gösterilir)",
+  "senkron · sahne 4: 21 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 9: 18 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 11: 15 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 14: 19 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 15: 20 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 17: ilk öğe 7 sn sonra (giriş yazısı otomatik gösterilir)",
+  "senkron · sahne 18: ilk öğe 4 sn sonra (giriş yazısı otomatik gösterilir)",
+  "senkron · sahne 18: 15 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 21: 14 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 22: 18 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 23: 15 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 24: ilk öğe 16 sn sonra (giriş yazısı otomatik gösterilir)",
+  "senkron · sahne 24: 16 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 25: ilk öğe 16 sn sonra (giriş yazısı otomatik gösterilir)",
+  "senkron · sahne 25: 16 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 26: 17 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 27: ilk öğe 8 sn sonra (giriş yazısı otomatik gösterilir)",
+  "senkron · sahne 37: ilk öğe 7 sn sonra (giriş yazısı otomatik gösterilir)",
+  "senkron · sahne 38: 16 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl"
+ ],
+ "hakem": [
+  "Sahne 2: belgede geçmeyen ad «Firma» — Bir: bir Firma projesi için Confluence alanı, yani space, sayfa ağacı kurmak.",
+  "Sahne 39: belgede geçmeyen ad «Miro» — Bir sonraki videoda Miro ile çalıştay ve beyin fırtınası yöneteceğiz."
+ ],
+ "olcum": {
+  "okunmayan": 0,
+  "yerlesim_senkron": 20,
+  "sadakat": {
+   "belge_satiri": 162,
+   "kapsam_orani": 1.0,
+   "eksik": 0,
+   "uydurma": 0,
+   "telaffuz": 0,
+   "kontrol": 2,
+   "eklenti": 0
+  }
+ }
+}

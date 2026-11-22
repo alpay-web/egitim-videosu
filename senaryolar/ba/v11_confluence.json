@@ -1,0 +1,938 @@
+{
+ "baslik": "Business Analyst Teknik Rehberi · 11: Confluence",
+ "alt_baslik": "Sayfa ağacı · şablon · Page Properties · karar kaydı · CQL",
+ "kapanis": "Sıradaki video: Miro",
+ "tema": 11,
+ "youtube_baslik": "Business Analyst Teknik Rehberi 11/14: Confluence (gereksinim sayfası, Page Properties, CQL)",
+ "etiketler": [
+  "business analyst",
+  "Confluence",
+  "gereksinim dokümanı",
+  "Page Properties",
+  "CQL",
+  "iş analisti"
+ ],
+ "ingilizce_mod": "sozluk",
+ "es": 1.0,
+ "cumle_arasi": 0.7,
+ "sahne_arasi": 1.6,
+ "telaffuz": {
+  "UML": "yu em el",
+  "BPMN": "bi pi em en",
+  "OMG": "o em ci",
+  "CMMN": "si em em en",
+  "DMN": "di em en",
+  "KKB": "ka ka be",
+  "KPS": "ka pe se",
+  "MERNİS": "mernis",
+  "MASAK": "masak",
+  "KVKK": "ka ve ka ka",
+  "BDDK": "be de de ka",
+  "ÖBF": "ö be fe",
+  "EFT": "e fe te",
+  "OTP": "o te pe",
+  "SMS": "es em es",
+  "STP": "es ti pi",
+  "XML": "eks em el",
+  "BPMNDI": "bi pi em en di ay",
+  "DMS": "di em es",
+  "CRM": "si ar em",
+  "ELK": "e le ka",
+  "LTV": "el ti vi",
+  "API": "ey pi ay",
+  "SOAP": "soup",
+  "GMY": "genel müdür yardımcısı",
+  "KPI": "key pi ay",
+  "XOR": "eks or",
+  "Camunda": "kamunda",
+  "Portal": "portal",
+  "Portal'da": "portalda",
+  "Portal'dan": "portaldan",
+  "Portal'a": "portala",
+  "Portal'ın": "portalın",
+  "BA": "be a",
+  "SoD": "es o di",
+  "SQL": "es kyu el",
+  "IAM": "ay ey em",
+  "Postman": "post men",
+  "Jira": "cira",
+  "Confluence": "konfluens",
+  "Miro": "miro",
+  "Visio": "vizyo",
+  "Agile": "ecayl",
+  "draw.io": "dro ay o",
+  "diagrams.net": "dayagrams nokta net",
+  "PNG": "pi en ci",
+  "SVG": "es vi ci",
+  "PDF": "pi di ef",
+  "VS Code": "vi es kod",
+  "Notepad++": "notped artı artı",
+  "ISO": "iso",
+  "BR": "be re",
+  "ID": "ay di",
+  "MANUEL_INCELEME": "manuel inceleme",
+  "Ctrl": "kontrol",
+  "Ctrl+S": "kontrol es",
+  "Ctrl+Z": "kontrol zed",
+  "CQL": "si kyu el",
+  "JQL": "cey kyu el",
+  "PRD": "pi ar di",
+  "BRD": "bi ar di",
+  "RACI": "reysi",
+  "EARS": "iırs",
+  "REST": "rest",
+  "KRD": "ka re de",
+  "KRD-120": "ka re de yüz yirmi",
+  "KRD-214": "ka re de iki yüz on dört",
+  "REQ-KRD-012": "rek ka re de sıfır on iki",
+  "REQ-KRD-013": "rek ka re de sıfır on üç",
+  "REQ-KRD-021": "rek ka re de sıfır yirmi bir",
+  "REQ-KRD-030": "rek ka re de sıfır otuz",
+  "REQ-KRD-031": "rek ka re de sıfır otuz bir",
+  "REQ-KRD": "rek ka re de",
+  "REQ-KRD-012'yi": "rek ka re de sıfır on ikiyi",
+  "MANUEL_INCELEME'ye": "manuel incelemeye",
+  "TASLAK": "taslak",
+  "İNCELEMEDE": "incelemede",
+  "ONAYLANDI": "onaylandı",
+  "IPTAL": "iptal",
+  "SOZLESME_IMZALANDI": "sözleşme imzalandı",
+  "AS-IS": "ez iz",
+  "TO-BE": "tu bi",
+  "2026.04": "iki bin yirmi altı nokta sıfır dört",
+  "Ctrl+Shift+S": "kontrol şift es",
+  "atlassian.com": "ıtlesiın nokta kom",
+  "P01": "pe sıfır bir",
+  "P01'de": "pe sıfır birde",
+  "P01'te": "pe sıfır birte",
+  "P01'deki": "pe sıfır birdeki",
+  "P01'teki": "pe sıfır birteki",
+  "P01'ye": "pe sıfır birye",
+  "P01'ya": "pe sıfır birya",
+  "P01'den": "pe sıfır birden",
+  "P01'ten": "pe sıfır birten",
+  "P01'da": "pe sıfır birda",
+  "P01'ta": "pe sıfır birta",
+  "U04": "u sıfır dört",
+  "U04'de": "u sıfır dörtde",
+  "U04'te": "u sıfır dörtte",
+  "U04'deki": "u sıfır dörtdeki",
+  "U04'teki": "u sıfır dörtteki",
+  "U04'ye": "u sıfır dörtye",
+  "U04'ya": "u sıfır dörtya",
+  "U04'den": "u sıfır dörtden",
+  "U04'ten": "u sıfır dörtten",
+  "U04'da": "u sıfır dörtda",
+  "U04'ta": "u sıfır dörtta",
+  "U08": "u sıfır sekiz",
+  "U08'de": "u sıfır sekizde",
+  "U08'te": "u sıfır sekizte",
+  "U08'deki": "u sıfır sekizdeki",
+  "U08'teki": "u sıfır sekizteki",
+  "U08'ye": "u sıfır sekizye",
+  "U08'ya": "u sıfır sekizya",
+  "U08'den": "u sıfır sekizden",
+  "U08'ten": "u sıfır sekizten",
+  "U08'da": "u sıfır sekizda",
+  "U08'ta": "u sıfır sekizta"
+ },
+ "sahneler": [
+  {
+   "baslik": "Confluence nedir?",
+   "maddeler": [
+    "Atlassian'ın bilgi tabanı ve dokümantasyon platformu",
+    "Jira \"ne yapılıyor\" · Confluence \"neden ve nasıl\"",
+    "BA için tek doğru kaynak (single source of truth)",
+    "Cloud: whiteboard, database, Live Docs, Rovo"
+   ],
+   "anlatim": "Confluence, {Atlassian}'ın ekip bilgi tabanı ve dokümantasyon platformudur. Jira ne yapılıyor sorusunu, Confluence neden ve nasıl sorusunu cevaplar. İş analisti için Confluence; gereksinim dokümanlarının, toplantı ve karar kayıtlarının, süreç ve arayüz tanımlarının tek doğru kaynağıdır, yani {single source of truth}. Cloud sürümünde sayfaların yanında {whiteboard}, {database}, {Live Docs} gibi içerik türleri ve {Rovo} yapay zeka özellikleri bulunur.",
+   "bolum": "Confluence: giriş ve hedefler",
+   "kanca": "Altı ay sonra bu kararı neden verdiğimizi kim hatırlayacak?",
+   "ton": "merakli"
+  },
+  {
+   "baslik": "Bu bölümün hedefleri",
+   "maddeler": [
+    "Firma projesi için space sayfa ağacı kurmak",
+    "Gereksinimleri Page Properties ile yapılandırıp tek raporda toplamak",
+    "Jira işlerini bağlayıp gereksinim → story izlenebilirliği",
+    "CQL ve etiketlerle doğru sayfayı saniyede bulmak"
+   ],
+   "anlatim": "Bu bölümü bitirdiğinde şunları yapabileceksin. Bir: bir Firma projesi için Confluence alanı, yani {space}, sayfa ağacı kurmak. İki: gereksinim sayfalarını {Page Properties} ile yapılandırıp tek bir özet tabloda, yani {Page Properties Report}'ta toplamak. Üç: Jira işlerini sayfaya bağlayıp gereksinimden {story}'ye izlenebilirlik kurmak. Dört: CQL ve etiketlerle doğru sayfayı saniyeler içinde bulmak."
+  },
+  {
+   "baslik": "Başlamadan önce gerekenler",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Gereken",
+     "Nereden",
+     "Hazır mısın?"
+    ],
+    "satirlar": [
+     [
+      "Confluence Cloud (ücretsiz plan)",
+      "atlassian.com → Confluence",
+      "Solda Spaces"
+     ],
+     [
+      "Jira bölümü",
+      "Bu rehber",
+      "KRD'de ≥ 3 story"
+     ],
+     [
+      "Sayfa düzenleme",
+      "Temel seviye",
+      "/ yazınca makro listesi"
+     ]
+    ]
+   },
+   "anlatim": "Başlamadan önce tablo üç sütun: gereken, nereden ve hazır olduğunu nasıl anlarsın. Confluence Cloud hesabı, küçük ekipler için ücretsiz plan; atlassian nokta com, Confluence. Sol menüde {Spaces} görünüyorsa tamam. Jira bölümü tamamlanmış olmalı; KRD projesinde en az üç {story} varsa tamam. Sayfa düzenleme: bu bölümün temel seviyesi; editörde bölü yazınca makro listesi açılıyorsa başlayabiliriz."
+  },
+  {
+   "baslik": "Yapı ve editör temelleri",
+   "maddeler": [
+    "Site → Space → sayfa ağacı (parent / child) → sayfa, blog, whiteboard, database",
+    "Her space: kendi izinleri, ana sayfası, şablonları",
+    "Editör: / makro · başlıklar · tablo · status (TASLAK / İNCELEMEDE / ONAYLANDI)",
+    "Panel, expand, @bahsetme, tarih, action item, sayfa ve Jira bağlantıları"
+   ],
+   "anlatim": "Temel seviye. Yapı: {Site}, {Space}, yani ekip, proje ya da ürün alanı; sayfa ağacı, yani {parent} ve {child} sayfalar; sonra sayfa, blog yazısı, {whiteboard} ya da {database}. Her {space}'in kendi izinleri, ana sayfası ve şablonları vardır. Editör temelleri: bölü ile makro ve eleman ekleme; başlık seviyeleri, ki navigasyon ve içindekiler buna dayanır; tablolar; durum etiketi, yani {status lozenge}: TASLAK, İNCELEMEDE, ONAYLANDI; panel, yani bilgi, uyarı, not; {expand}, açılır bölüm; et işaretiyle bahsetme; tarih; eylem maddesi, yani {action item}; ve sayfa ile Jira bağlantıları.",
+   "bolum": "Confluence · Temel seviye"
+  },
+  {
+   "baslik": "BA için sayfa türleri (1/2)",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Sayfa",
+     "İçerik"
+    ],
+    "satirlar": [
+     [
+      "Proje ana sayfası",
+      "Amaç, kapsam, paydaşlar, linkler, durum"
+     ],
+     [
+      "PRD / BRD",
+      "Hedefler, kapsam, hikayeler, varsayımlar, açık sorular"
+     ],
+     [
+      "Toplantı notu",
+      "Katılımcılar, gündem, kararlar, aksiyonlar"
+     ],
+     [
+      "Karar kaydı (decision log)",
+      "Bağlam, seçenekler, karar, gerekçe, karar veren, tarih"
+     ]
+    ]
+   },
+   "anlatim": "İş analisti için temel sayfa türleri. Proje ana sayfası: amaç, kapsam, paydaşlar, linkler ve durum. Ürün gereksinim dokümanı, yani PRD ya da BRD: hedefler, kapsam, kullanıcı hikayeleri, varsayımlar ve açık sorular. Toplantı notu: katılımcılar, gündem, kararlar ve aksiyonlar. Karar kaydı, yani {decision log}: bağlam, seçenekler, karar, gerekçe, karar veren ve tarih."
+  },
+  {
+   "baslik": "BA için sayfa türleri (2/2)",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Sayfa",
+     "İçerik"
+    ],
+    "satirlar": [
+     [
+      "Süreç dokümanı",
+      "BPMN/swimlane, adım tablosu, RACI"
+     ],
+     [
+      "Arayüz / API spesifikasyonu",
+      "Endpoint, alanlar, hata kodları, örnek mesaj"
+     ],
+     [
+      "Sözlük (glossary)",
+      "İş terimleri ve tanımları"
+     ],
+     [
+      "Sürüm notu",
+      "İçerik, etkiler, bilinen sorunlar"
+     ]
+    ]
+   },
+   "anlatim": "Süreç dokümanı: BPMN ya da {swimlane} diyagramı, adım tablosu ve RACI. Arayüz ya da API spesifikasyonu: {endpoint}, alanlar, hata kodları ve örnek mesajlar. Sözlük, yani {glossary}: iş terimleri ve tanımları. Sürüm notu: sürüm içeriği, etkiler ve bilinen sorunlar."
+  },
+  {
+   "baslik": "Sık kullanılan makrolar (1/2)",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Makro",
+     "Kullanım"
+    ],
+    "satirlar": [
+     [
+      "Jira work item / Jira filtre",
+      "Story listesini JQL ile canlı gömme"
+     ],
+     [
+      "Table of Contents",
+      "Uzun dokümanda gezinme"
+     ],
+     [
+      "Page Properties + Report",
+      "Her sayfanın özet tablosunu tek raporda toplama"
+     ],
+     [
+      "Excerpt / Excerpt Include",
+      "Bir metni tek yerde yazıp çok yerde kullanma"
+     ]
+    ]
+   },
+   "anlatim": "Orta seviye: iş analistinin sık kullandığı makrolar. {Jira work item} ya da Jira filtre: {story} listesini JQL ile sayfaya canlı gömme; gereksinim ile iş arasında izlenebilirlik. {Table of Contents}: uzun dokümanlarda gezinme. {Page Properties} artı {Page Properties Report}: her gereksinim sayfasındaki özet tabloyu, yani durum, sahip ve önceliği, tek bir raporda toplama. {Excerpt} ve {Excerpt Include}: bir metni, örneğin bir iş kuralı tanımını, tek yerde yazıp birçok sayfada yeniden kullanma.",
+   "bolum": "Confluence · Orta seviye"
+  },
+  {
+   "baslik": "Sık kullanılan makrolar (2/2)",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Makro",
+     "Kullanım"
+    ],
+    "satirlar": [
+     [
+      "Include Page",
+      "Ortak bölümü gömme (KVKK notu)"
+     ],
+     [
+      "Status, Panel, Expand",
+      "Okunabilirlik ve durum"
+     ],
+     [
+      "Draw.io / Gliffy / Lucidchart, Mermaid/PlantUML",
+      "Diyagramı sayfada düzenlenebilir tutma"
+     ],
+     [
+      "Children Display / Content by Label",
+      "Etiket bazlı listeler"
+     ],
+     [
+      "Code Block",
+      "JSON, SQL, XML örnekleri"
+     ]
+    ]
+   },
+   "anlatim": "{Include Page}: ortak bölümleri, örneğin KVKK notunu gömme. {Status}, {Panel} ve {Expand}: okunabilirlik ve durum gösterimi. draw.io, {Gliffy}, {Lucidchart}; ve Mermaid ya da PlantUML eklentileri: diyagramı sayfa içinde düzenlenebilir tutma. {Children Display} ve {Content by Label}: etiket bazlı içerik listeleri. {Code Block}: JSON, SQL ve XML örnekleri."
+  },
+  {
+   "baslik": "Şablon: gereksinim sayfası (1/2)",
+   "maddeler": [
+    "Space seviyesinde özel şablon → tüm BA'lar aynı yapıyla yazar",
+    "1. Page Properties: Gereksinim ID, Durum, Sahip, Öncelik, Kaynak kural, Jira, Hedef sürüm",
+    "2. Bağlam ve problem · 3. Hedefler, KPI · 4. Kapsam / kapsam dışı",
+    "5. Paydaşlar, RACI · 6. Süreç (as-is / to-be) · 7. Fonksiyonel gereksinimler"
+   ],
+   "anlatim": "Şablon oluşturma: {space} seviyesinde özel şablonlar tanımlanır; tüm iş analistleri aynı yapıyla yazar. Örnek gereksinim sayfası şablonu on üç başlık. Bir: {Page Properties} tablosu; gereksinim ID, durum, sahip, öncelik, kaynak kural, Jira ve hedef sürüm. Bu rehberin her yerinde aynı alan adları kullanılır. İki: bağlam ve problem tanımı. Üç: hedefler ve başarı ölçütleri, yani KPI. Dört: kapsam ve kapsam dışı. Beş: paydaşlar ve RACI. Altı: süreç, yani {as-is} ve {to-be} diyagramları. Yedi: fonksiyonel gereksinimler tablosu; ID, açıklama, iş kuralı, kabul kriteri, Jira linki."
+  },
+  {
+   "baslik": "Şablon: gereksinim sayfası (2/2)",
+   "maddeler": [
+    "8. Fonksiyonel olmayan: performans, güvenlik, loglama, erişilebilirlik, KVKK",
+    "9. Ekran tasarımları (Figma / Balsamiq) · 10. Entegrasyonlar, veri akışı",
+    "11. Varsayımlar, kısıtlar, riskler",
+    "12. Açık sorular (soru, soran, sorumlu, cevap, tarih) · 13. Onay geçmişi"
+   ],
+   "anlatim": "Sekiz: fonksiyonel olmayan gereksinimler; performans, güvenlik, loglama, erişilebilirlik ve KVKK. Dokuz: ekran tasarımları, {Figma} ya da {Balsamiq} gömme. On: entegrasyonlar ve veri akışı. On bir: varsayımlar, kısıtlar ve riskler. On iki: açık sorular; soru, soran, sorumlu, cevap ve tarih. On üç: onay geçmişi; onaylayan, rol, tarih ve versiyon."
+  },
+  {
+   "baslik": "Karar kaydı örneği",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Alan",
+     "İçerik"
+    ],
+    "satirlar": [
+     [
+      "Karar",
+      "Hata kodunda ret yok; ≤ 3 tekrar, sonra MANUEL_INCELEME"
+     ],
+     [
+      "Bağlam · seçenekler",
+      "Ret oranı yapay artıyor · A / B / C"
+     ],
+     [
+      "Seçilen · gerekçe",
+      "C · geçici hata ilk tekrarda çözülür"
+     ],
+     [
+      "Sonuçlar",
+      "Retry politikası, izleme alarmı"
+     ],
+     [
+      "Karar veren / tarih",
+      "Kredi Tahsis Müdürü / 2026-03-10"
+     ]
+    ]
+   },
+   "anlatim": "Karar kaydı, yani {decision record} örneği. Karar: KKB sorgusu hata kodu döndürürse başvuru otomatik reddedilmez; toplam süre beş saniyeyi aşmamak kaydıyla en fazla üç kez tekrar denenir, ardından MANUEL_INCELEME'ye alınır. Zaman aşımında, yani beş saniyede, tekrar yapılmaz; U04. Bağlam: servis kesintilerinde ret oranı yapay olarak artıyor, bayi şikayetleri var. Seçenekler: A, otomatik ret; B, manuel kuyruk; C, üç kez tekrar dene, sonra manuel. Seçilen: C. Gerekçe: geçici hataların çoğu ilk tekrarda çözülüyor; müşteri deneyimi korunuyor. Sonuçlar: {retry} politikası ve izleme alarmı gereksinimi eklenecek. Karar veren ve tarih: kredi tahsis müdürü, mimari kurul; 2026-03-10."
+  },
+  {
+   "baslik": "Jira ile entegrasyon",
+   "maddeler": [
+    "Sayfadaki metni seçip doğrudan Jira iş öğesi oluşturma",
+    "Jira epic'ine gereksinim sayfasını bağlama",
+    "Sürüm sayfasında fixVersion = \"2026.04\" filtresini canlı tablo"
+   ],
+   "anlatim": "Jira ile entegrasyon: Confluence sayfasındaki metni seçip doğrudan Jira iş öğesi oluşturma; Jira {epic}'ine gereksinim sayfasını bağlama; sürüm sayfasında {fixVersion} eşittir 2026.04 filtresini canlı tablo olarak gösterme."
+  },
+  {
+   "baslik": "Bilgi mimarisi",
+   "maddeler": [
+    "Space yapısı organizasyon şemasına değil, aramaya göre",
+    "Ana sayfa → vizyon ve yol haritası → gereksinimler → süreçler → API → veri ve sözlük → kararlar → toplantılar → sürüm → arşiv",
+    "Etiket standardı: gereksinim, karar, api, kvkk",
+    "Sayfa adı: [REQ-KRD-012] Kredi/değer kuralı"
+   ],
+   "anlatim": "İleri seviye: bilgi mimarisi. {Space} yapısını organizasyon şemasına değil, kullanıcının arama davranışına göre kur. Önerilen ağaç: ana sayfa; ürün vizyonu ve yol haritası; gereksinimler, {epic} bazında; süreçler; entegrasyonlar ve API; veri modeli ve sözlük; kararlar; toplantılar; sürüm notları; arşiv. Etiketleme standardı: gereksinim, karar, api, kvkk. Sayfa adlandırma kuralı: köşeli parantez içinde REQ-KRD-012, sonra kredi değer kuralı.",
+   "bolum": "Confluence · İleri seviye"
+  },
+  {
+   "baslik": "Database, versiyon, onay, otomasyon",
+   "maddeler": [
+    "Database: gereksinim envanteri, risk kaydı, API envanteri; Jira alanlarıyla bağlı",
+    "Whiteboard notları → Jira iş öğesi",
+    "Sayfa geçmişi, versiyon karşılaştırma, düzenleme kısıtı, onay akışı (Comala)",
+    "Automation: yayında bildirim · 6 ay güncellenmeyene hatırlatma · \"Onaylandı\"da kilitle"
+   ],
+   "anlatim": "{Database}'ler: Confluence {database} ile gereksinim envanteri, risk kaydı ya da API envanteri satır sütun yapısında tutulur; Jira alanlarıyla bağlantılı olabilir, sayfa ya da {whiteboard} içine gömülür. {Whiteboard}'da yapılan beyin fırtınası yapışkan notları Jira iş öğesine dönüştürülebilir. Versiyon ve onay yönetimi: sayfa geçmişi ve versiyon karşılaştırma, kritik sayfalar için düzenleme kısıtı, onay akışı, yani {Comala Document Management} gibi eklentiler ya da otomasyonla durum değişikliği; ve onaylanmış versiyon etiketi. Denetim için onayın kim tarafından, hangi versiyona verildiği kanıtlanabilir olmalıdır. {Confluence Automation}: sayfa yayımlanınca paydaşlara bildirim; altı aydır güncellenmeyen sayfaların sahibine hatırlatma, yani içerik bayatlaması; onaylandı etiketi eklenince sayfayı kilitleme."
+  },
+  {
+   "baslik": "Rovo, yönetişim, docs-as-code",
+   "maddeler": [
+    "Rovo: özetleme, aksiyon çıkarma, taslak, soru-cevap · BA doğrular · plan ve ayara bağlı",
+    "Space izinleri, sayfa kısıtı, misafir erişimi, ekran görüntüsünde kişisel veri maskeleme, arşiv",
+    "Data Center ↔ Cloud makro farkı → migration'da makro envanteri",
+    "Docs-as-code: Git (Markdown, OpenAPI) → Confluence; tek doğru kaynak net olmalı"
+   ],
+   "anlatim": "{Rovo} ve yapay zeka: sayfa ve {whiteboard} özetleme, toplantı notundan aksiyon çıkarma, taslak üretme, şirket içi bilgi üzerinde soru cevap. Üretilen içerik her zaman iş analisti tarafından doğrulanır; hassas veriler için kurum politikası kontrol edilir. Özellikler plan ve yönetici ayarlarına bağlıdır. Yönetişim ve güvenlik: {space} izinleri, yani görüntüle, ekle, sil, yönet; sayfa kısıtlamaları; misafir ve harici kullanıcı erişimi; kişisel veri içeren ekran görüntülerinin maskelenmesi; arşivleme politikası. {Data Center} ile Cloud arasında makro ve özellik farkları olabilir; {migration} projelerinde makro envanteri çıkarılır. {Docs-as-code} alternatifi: teknik ekipler API dokümantasyonunu Git'te, yani {Markdown} ve {OpenAPI} ile tutup Confluence'a otomatik yayımlayabilir. İş analisti için önemli olan tek doğru kaynağın hangisi olduğunun net olmasıdır."
+  },
+  {
+   "baslik": "Sık yapılan hatalar",
+   "maddeler": [
+    "Aynı gereksinim birden çok sayfada (kopyala-yapıştır yerine excerpt)",
+    "Sahip, durum, son güncelleme belirsiz",
+    "Kararlar toplantıda ya da e-postada kalıyor",
+    "Derin, karmaşık ağaçlar; aranamayan başlıklar",
+    "Diyagramı statik resim eklemek; kaynak kayboluyor"
+   ],
+   "anlatim": "Sık yapılan hatalar. Aynı gereksinimin birden çok sayfada farklı versiyonları; kopyala yapıştır yerine {excerpt} kullan. Sayfanın sahibi, durumu ve son güncelleme tarihinin belli olmaması. Kararların sadece toplantıda ya da e-postada kalması; karar kaydı tutulmaması. Derin ve karmaşık sayfa ağaçları; aranamayan başlıklar. Ve diyagramları statik resim olarak eklemek; kaynağın kaybolması.",
+   "bolum": "Confluence · Hatalar ve mülakat"
+  },
+  {
+   "baslik": "Mülakat soruları ve ipuçları",
+   "maddeler": [
+    "1. Space yapısı → aramaya göre ağaç",
+    "2. Jira senkronu → /jira makrosu",
+    "3. Page Properties Report → özet tablo",
+    "4. Karar kaydı alanları",
+    "5. Güncellik → sahip, hatırlatma"
+   ],
+   "anlatim": "Mülakat soruları ve bölümden ipuçları. Bir: bir projenin Confluence {space} yapısını nasıl kurarsınız? Aramaya göre bir ağaç ve numara önekleri. İki: gereksinim dokümanını Jira ile nasıl senkron tutarsınız? Jira makrosu ve {Page Properties}'teki Jira alanı. Üç: {Page Properties Report} ne işe yarar? Etiketli sayfaların özet tablosunu toplar. Dört: bir karar kaydında hangi alanlar olmalıdır? Bağlam, seçenekler, karar, gerekçe, karar veren ve tarih. Beş: dokümantasyonun güncel kalmasını nasıl sağlarsınız? Sahip atayarak, otomasyon hatırlatmasıyla ve etiketlerle."
+  },
+  {
+   "baslik": "Confluence ekranı nasıl okunur?",
+   "tur": "gorsel",
+   "gorsel": "gorseller/g31.png",
+   "odaklar": [
+    {
+     "kutu": [
+      0.02,
+      0.08,
+      0.33,
+      0.95
+     ],
+     "etiket": "1 · Space ve sayfa ağacı"
+    },
+    {
+     "kutu": [
+      0.33,
+      0.08,
+      1.0,
+      0.16
+     ],
+     "etiket": "2 · Editör araç çubuğu, Publish"
+    },
+    {
+     "kutu": [
+      0.33,
+      0.16,
+      1.0,
+      0.27
+     ],
+     "etiket": "3 · Sayfa başlığı"
+    },
+    {
+     "kutu": [
+      0.33,
+      0.24,
+      1.0,
+      0.44
+     ],
+     "etiket": "4 · Page Properties"
+    },
+    {
+     "kutu": [
+      0.33,
+      0.5,
+      0.75,
+      0.86
+     ],
+     "etiket": "5 · / menüsü"
+    },
+    {
+     "kutu": [
+      0.33,
+      0.86,
+      1.0,
+      0.95
+     ],
+     "etiket": "6 · Sayfa altı ve ••• menüsü"
+    }
+   ],
+   "anlatim": "Görsel rehber: Confluence ekran yerleşimi; şematik, numaralı bölgeler. Bir, {space} ve sayfa ağacı: {space}'in tüm içeriği hiyerarşik görünür. Bir sayfanın yanındaki artı alt sayfa ekler; üç nokta ile taşıma, kopyalama, arşivleme yapılır. Sayfaları sürükleyerek sıralayabilirsin. İki, editör araç çubuğu: başlık stili, kalın ve italik, liste, tablo, bağlantı, görsel, et işaretiyle bahsetme, eylem maddesi ve artı ekle, yani tüm makrolar. {Publish} yayımlar; yayımlanmamış değişiklikler taslak olarak kalır. Üç, sayfa başlığı: adı standarda göre ver; köşeli parantez içinde REQ-KRD-012, kredi değer kuralı. Arama başlığa ağırlık verir. Dört, {Page Properties} tablosu: sayfanın özet bilgileri; durum İNCELEMEDE, sahip, {epic} KRD-120. Başka bir sayfadaki {Page Properties Report} makrosu, aynı etiketi taşıyan tüm sayfaların tablolarını tek listede toplar. Beş, bölü menüsü: yazarken bölü ile makro eklersin. Bölü jira ile {story} listesi gömersin, bölü {status} ile renkli durum etiketi koyarsın. Altı, sayfa altı ve üç nokta menüsü: etiket ekleme, yorumlar, sayfa geçmişi yani {Page history}, kısıtlamalar yani kilit simgesi, ve dışa aktarma, PDF ya da Word.",
+   "bolum": "Confluence · Görsel rehber"
+  },
+  {
+   "baslik": "Menü rehberi (1/3)",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Yapmak istediğin",
+     "Yol"
+    ],
+    "satirlar": [
+     [
+      "Yeni space",
+      "Spaces → Create space → şablon → ad, anahtar"
+     ],
+     [
+      "Yeni sayfa",
+      "+ Create → Page (Live doc, Whiteboard, Database, Folder)"
+     ],
+     [
+      "Şablondan sayfa",
+      "+ Create → Templates (Meeting notes, Decision, Product requirements, Retrospective)"
+     ],
+     [
+      "Space şablonu",
+      "Space settings → Content → Templates → Create new template"
+     ]
+    ]
+   },
+   "anlatim": "Menü ve kısayol rehberi, Confluence Cloud. Yeni {space}: {Spaces}, {Create space}, şablon, yani {Knowledge base} ya da {Project}; ad ve anahtar. Yeni sayfa: üstteki artı {Create}, {Page}; ya da sayfa ağacında artı simgesi. Aynı menüde {Live doc}, {Whiteboard}, {Database} ve {Folder} seçenekleri. Şablondan sayfa: artı {Create}, {Templates}; şablonu ara: {Meeting notes}, {Decision}, {Product requirements}, {Retrospective}. {Space} şablonu oluşturmak: {Space settings}, {Content}, {Templates}, {Create new template}."
+  },
+  {
+   "baslik": "Menü rehberi (2/3)",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Yapmak istediğin",
+     "Yol"
+    ],
+    "satirlar": [
+     [
+      "Makro eklemek",
+      "/ → /jira, /toc, /status, /expand, /page properties"
+     ],
+     [
+      "Jira listesi",
+      "/jira → JQL → tablo, sütunlar"
+     ],
+     [
+      "Metinden Jira işi",
+      "Metni seç → Jira simgesi → Create work item"
+     ],
+     [
+      "Eylem maddesi · karar",
+      "[] + boşluk, @ kişi, // tarih · /decision"
+     ],
+     [
+      "Geçmiş ve karşılaştırma",
+      "••• → Page history → Compare"
+     ]
+    ]
+   },
+   "anlatim": "Makro eklemek: editörde bölü yaz, sonra makro adı; bölü jira, bölü {toc}, bölü {status}, bölü {expand}, bölü {page properties}. Jira listesi gömmek: bölü jira, JQL sekmesine sorguyu yapıştır; görünüm tablo, sütunları seç. Metinden Jira işi açmak: yayımlanmış sayfada metni seç; açılan küçük menüde Jira simgesi, {Create work item}. Eylem maddesi: yeni satırda köşeli parantez aç kapa ve boşluk; et işaretiyle kişi, çift bölü ile tarih. Karar kaydı: bölü {decision} makrosu ya da {Decision} şablonu. Sayfa geçmişi ve karşılaştırma: üç nokta, {Page history}, iki versiyonu seç, {Compare}."
+  },
+  {
+   "baslik": "Menü rehberi (3/3)",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Yapmak istediğin",
+     "Yol"
+    ],
+    "satirlar": [
+     [
+      "Düzenlemeyi kısıtla",
+      "Kilit → \"Anyone can view, only some can edit\""
+     ],
+     [
+      "Dışa aktar · etiket",
+      "••• → Export (PDF / Word) · Add label"
+     ],
+     [
+      "Takip · otomasyon",
+      "Watch · Space settings → Automation"
+     ],
+     [
+      "Kısayollar",
+      "/ · e · c · Ctrl+Shift+S · ["
+     ]
+    ]
+   },
+   "anlatim": "Düzenlemeyi kısıtlamak: sağ üst kilit simgesi, {Anyone can view, only some can edit}. Dışa aktarmak: üç nokta, {Export}, PDF ya da Word. Etiket eklemek: sayfa altı, {Add label}; ya da üç nokta, {Labels}. Takip etmek: göz simgesi, yani {Watch}; değişikliklerde bildirim. Otomasyon: {Space settings}, {Automation}, {Create rule}. Kısayollar: bölü arama ya da editörde makro; e düzenle; c yeni sayfa; Ctrl+Shift+S kaydet ve kapat; köşeli parantez sayfa ağacını gizle."
+  },
+  {
+   "baslik": "Laboratuvar (~60 dk): 1–5",
+   "maddeler": [
+    "1. Create space → \"Kredi Dijital\", KRD",
+    "2. Uygulama paketindeki ağacı kur (00 Başlangıç … 90 Arşiv)",
+    "3. Şablon \"Gereksinim sayfası\": /page properties (7 satır) + 13 başlık · Durum: /status gri TASLAK",
+    "4. [REQ-KRD-012] Kredi/değer kuralı · [REQ-KRD-013] KVKK onayı · etiket: gereksinim",
+    "5. İçerik: iş kuralı, Gherkin, açık sorular, draw.io BPMN (yoksa PNG + .bpmn ek)"
+   ],
+   "anlatim": "Laboratuvar: gereksinim {space}'ini kur; yaklaşık altmış dakika. Bir, {space}: {Spaces}, {Create space}, boş ya da {Project} şablonu; adı kredi dijital, anahtarı KRD. İki, ağaç: ana sayfa altına uygulama paketindeki ağacı kur; sıfır sıfır başlangıçtan doksan arşive. Üç, şablon: {Space settings}, {Content}, {Templates}, {Create new template}; adı gereksinim sayfası. İçerik: bölü {page properties} ile gereksinim ID, durum, sahip, öncelik, kaynak kural, Jira, hedef sürüm satırları; ardından on üç başlık. Durum hücresine bölü {status} ile gri TASLAK koy. Dört, iki gereksinim sayfası: gereksinimler altına şablondan REQ-KRD-012 kredi değer kuralı ve REQ-KRD-013 KVKK onayı oluştur; ikisine de gereksinim etiketini ekle. Beş, içerik: kredi değer sayfasına iş kuralını, {Gherkin} kabul kriterlerini ve bir açık soru tablosunu yaz. Süreç bölümüne BPMN diyagramını draw.io makrosuyla düzenlenebilir olarak ekle; eklenti yoksa PNG'yi koy ve kaynak nokta bpmn dosyasını sayfaya ek olarak yükle.",
+   "bolum": "Confluence · Laboratuvar"
+  },
+  {
+   "baslik": "Laboratuvar: 6–11",
+   "maddeler": [
+    "6. /jira → parent = KRD-120 → Key, Summary, Status",
+    "7. /page properties report → Label: gereksinim; bir sayfayı \"İNCELEMEDE\" yap",
+    "8. Decision şablonu: KKB kararı (3 tekrar, sonra MANUEL_INCELEME)",
+    "9. Meeting notes: refinement, ≥ 2 eylem maddesi",
+    "10. Değiştir → Page history → Compare · 11. Export → PDF"
+   ],
+   "anlatim": "Altı, Jira bağı: bölü jira, JQL {parent} eşittir KRD-120; tablo görünümü; {Key}, {Summary}, {Status}. Yedi, rapor sayfası: gereksinimler ana sayfasına bölü {page properties report} ekle; {Label}: gereksinim. İki sayfanın özet tablosu otomatik listelenir. Bir sayfada durumu İNCELEMEDE yapıp rapordaki değişikliği gör. Sekiz, karar kaydı: kararlar altına {Decision} şablonuyla şu kararı yaz: KKB hata verirse beş saniye içinde en fazla üç tekrar, sonra MANUEL_INCELEME; zaman aşımında tekrar yok; seçenekler, gerekçe, karar veren ve tarih. Dokuz, toplantı notu: {Meeting notes} şablonuyla bir {refinement} toplantısı notu; en az iki eylem maddesi, köşeli parantez, et işareti ve tarih. On, versiyon: kredi değer sayfasında bir değişiklik yap, yayımla; üç nokta, {Page history}, {Compare} ile farkı gör. On bir, dışa aktar: üç nokta, {Export}, PDF ile sayfayı indir ve düzenini kontrol et."
+  },
+  {
+   "baslik": "Bir BA alanının sayfa ağacı",
+   "maddeler": [
+    "KRD · Kredi Dijital (space)",
+    "00 Başlangıç · 10 Süreçler (P01 AS-IS, P01 TO-BE)",
+    "20 Gereksinimler: özet (Report), [REQ-KRD-012], [REQ-KRD-021]",
+    "30 Kararlar · 40 Toplantı notları · 50 Sözlük · 90 Arşiv"
+   ],
+   "anlatim": "Confluence uygulama paketi. Bir iş analisti alanının sayfa ağacı: sayfaları nereye koyacağını başta belirlemezsen altı ay sonra kimse bir şey bulamaz. Firma kredi dönüşüm projesi için örnek yapı; numara önekleri sıralamayı sabit tutar. KRD, kredi dijital {space}. Sıfır sıfır başlangıç: proje özeti, paydaşlar, kapsam. On süreçler: P01 kredi başvurusundan kullandırıma, AS-IS ve TO-BE. Yirmi gereksinimler: gereksinim özeti, yani {Page Properties Report}; REQ-KRD-012 kredi değer kuralı; REQ-KRD-021 KKB zaman aşımı davranışı. Otuz kararlar, karar kaydı. Kırk toplantı notları. Elli sözlük. Doksan arşiv.",
+   "bolum": "Confluence · Uygulama paketi"
+  },
+  {
+   "baslik": "Page Properties: adımlar",
+   "maddeler": [
+    "1. [REQ-KRD-021] sayfası → /page properties",
+    "2. İki sütunlu tablo: alan adı | değer",
+    "3. EARS: \"KKB yanıt süresi 5 saniyeyi aştığında, karar motoru başvuruyu MANUEL_INCELEME durumuna almalıdır.\" Doğrulama: Test",
+    "4. Etiket: gereksinim → Publish · 5. REQ-KRD-012'yi aynı alan adlarına getir",
+    "6. Özet sayfa: /page properties report → Label: gereksinim, Space: KRD"
+   ],
+   "anlatim": "{Page Properties}: gereksinimleri tabloya dönüştürmek. Her gereksinim sayfasının başına aynı alanları taşıyan küçük bir tablo konur; Confluence bunları toplayıp tek bir özet sayfada gösterir. Böylece elli gereksinimin durumunu tek ekranda görürsün. Bir: REQ-KRD-021 KKB zaman aşımı davranışı sayfasını oluştur; editörde bölü {page properties} yaz ve makroyu ekle. İki: makronun içine iki sütunlu bir tablo koy; sol sütun alan adı, sağ sütun değer. Üç: makronun altına gereksinimi {EARS} kalıbıyla yaz: KKB yanıt süresi beş saniyeyi aştığında, karar motoru başvuruyu MANUEL_INCELEME durumuna almalıdır. Doğrulama yöntemi: test. Dört: sayfaya gereksinim etiketini ekle ve yayımla. Beş: laboratuvardaki REQ-KRD-012 sayfasının tablosunu da bu alan adlarına göre güncelle; hedef sürüm satırını da ekle. Alan adları harfi harfine aynı olmalı. Altı: gereksinim özeti sayfasında bölü {page properties report} ekle; {Label}: gereksinim, {Space}: KRD; sütunları seç, yayımla."
+  },
+  {
+   "baslik": "Page Properties tablosu (REQ-KRD-021)",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Alan",
+     "Değer"
+    ],
+    "satirlar": [
+     [
+      "Gereksinim ID",
+      "REQ-KRD-021"
+     ],
+     [
+      "Durum",
+      "İNCELEMEDE"
+     ],
+     [
+      "Sahip",
+      "(kendi adını @ ile an)"
+     ],
+     [
+      "Kaynak kural",
+      "Firma Çalışma Seti §1.3 · U04"
+     ],
+     [
+      "Jira · Öncelik",
+      "KRD-214 (/jira ile) · Must"
+     ]
+    ]
+   },
+   "anlatim": "Tablonun içeriği: gereksinim ID, REQ-KRD-021. Durum, İNCELEMEDE. Sahip, kendi adını et işaretiyle an. Kaynak kural, Firma çalışma seti bir nokta üç ve U04. Jira, KRD-214; bölü jira ile ekle. Öncelik, {Must}. Beklenen: özet sayfada iki satırlık bir tablo; her satır bir gereksinim sayfası, sütunlar tablodaki alan adları. Bir gereksinim sayfasında durumu değiştirip yayımladığında özet tablo da değişir."
+  },
+  {
+   "baslik": "CQL: Confluence'ın sorgu dili",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "İhtiyaç",
+     "CQL"
+    ],
+    "satirlar": [
+     [
+      "KRD'deki gereksinim sayfaları",
+      "space = KRD AND label = \"gereksinim\" AND type = page"
+     ],
+     [
+      "Son 7 günde değişen",
+      "… AND lastmodified >= now(\"-7d\")"
+     ],
+     [
+      "Başlığında REQ-KRD",
+      "title ~ \"REQ-KRD\""
+     ],
+     [
+      "Benim oluşturduklarım",
+      "creator = currentUser()"
+     ],
+     [
+      "İçinde KKB geçen",
+      "space = KRD AND text ~ \"KKB\""
+     ]
+    ]
+   },
+   "anlatim": "CQL, Jira'daki JQL'in Confluence karşılığıdır; arama sayfasındaki filtrelerin arkasında, REST API'de ve bazı makroların filtre ayarlarında kullanılır. KRD alanındaki gereksinim sayfaları: {space} eşittir KRD {AND} {label} eşittir gereksinim {AND} {type} eşittir {page}. Son yedi günde değişen gereksinimler: aynı koşullar {AND} {lastmodified} büyük eşit {now} eksi yedi gün. Başlığında REQ-KRD geçenler: {title} dalga REQ-KRD. Benim oluşturduklarım: {creator} eşittir {currentUser}. İçinde KKB geçen sayfalar: {space} eşittir KRD {AND} {text} dalga KKB."
+  },
+  {
+   "baslik": "Etiket stratejisi",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Etiket",
+     "Ne için",
+     "Örnek kullanım"
+    ],
+    "satirlar": [
+     [
+      "gereksinim",
+      "Tüm gereksinim sayfaları",
+      "Page Properties Report kaynağı"
+     ],
+     [
+      "karar",
+      "Karar kayıtları",
+      "\"Ne karar vermiştik?\""
+     ],
+     [
+      "kvkk",
+      "Kişisel veri içeren süreç / gereksinim",
+      "KVKK denetiminde hızlı liste"
+     ],
+     [
+      "p01, u04",
+      "Çalışma seti diyagram kodları",
+      "Bir sürecin tüm sayfaları"
+     ]
+    ]
+   },
+   "anlatim": "Etiket stratejisi. Gereksinim: tüm gereksinim sayfaları; {Page Properties Report} kaynağı. Karar: karar kayıtları; bu konuda ne karar vermiştik araması. KVKK: kişisel veri içeren süreç ve gereksinimler; KVKK denetiminde hızlı liste. P01, U04: çalışma setindeki diyagram kodları; bir sürece ait tüm sayfalar."
+  },
+  {
+   "baslik": "Etiket tuzağı",
+   "tur": "ipucu",
+   "ipucu": {
+    "tip": "uyari",
+    "metin": "Küçük harf, tek kelime. \"gereksinim\" ≠ \"gereksinimler\": rapor birini kaçırır (çoğul eki yeni etiket yaratır)."
+   },
+   "anlatim": "Etiketler küçük harf ve tek kelime olmalı. Dikkat: gereksinim ve gereksinimler iki farklı etikettir; rapor birini kaçırır. Confluence etiketleri küçük harfe çevirir ama çoğul eki yeni bir etiket yaratır."
+  },
+  {
+   "baslik": "Bağımsız görev",
+   "maddeler": [
+    "1. Ağacı kendi deneme alanında kur",
+    "2. REQ-KRD-030 (taslakta 30 gün → iptal) · REQ-KRD-031 (onaydan 30 gün → iptal)",
+    "Page Properties, EARS, etiketler: gereksinim ve u08",
+    "3. 30 Kararlar: \"30. gün dahil mi?\" seçenekleri ve karar sahibi",
+    "4. Özet rapor 5 satır (012, 013, 021, 030, 031); lab yoksa 4"
+   ],
+   "anlatim": "Bağımsız görev. Bir: ağacı kendi deneme alanında kur. İki: U08 kuralı için iki gereksinim sayfası oluştur: REQ-KRD-030, taslakta otuz gün işlem yoksa iptal; ve REQ-KRD-031, onaydan otuz gün sonra iptal. Her biri {Page Properties}, {EARS} cümlesi, gereksinim ve u08 etiketi taşısın. Üç: otuz kararlar altına bir karar sayfası aç: otuzuncu gün dahil mi sorusu için seçenekleri ve kimin karar vereceğini yaz. Dört: gereksinim özeti raporunun beş satır gösterdiğini doğrula: 012, 013, 021, 030 ve 031. Laboratuvarı yapmadıysan 013 olmadan dört satır görürsün.",
+   "bolum": "Confluence · Bağımsız görev ve sorun giderme"
+  },
+  {
+   "baslik": "Sorun giderme",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Belirti",
+     "Olası neden",
+     "Çözüm"
+    ],
+    "satirlar": [
+     [
+      "Report boş",
+      "Etiket farklı ya da başka alan",
+      "Etiket ve Label/Space ayarı"
+     ],
+     [
+      "Bazı sütunlar boş",
+      "Alan adları farklı (Sahip / Sahibi)",
+      "Birebir aynı ad; şablon"
+     ],
+     [
+      "Jira makrosu \"Unable to render\"",
+      "Bağlantı yok ya da yetki yok",
+      "Jira'da işi açabiliyor musun?"
+     ],
+     [
+      "Arama sayfayı bulmuyor",
+      "Kısıtlı ya da taslak",
+      "Kilit ve yayın durumu"
+     ],
+     [
+      "\"Kim neyi değiştirdi?\"",
+      "—",
+      "Page history → Compare"
+     ]
+    ]
+   },
+   "anlatim": "Sorun giderme. {Page Properties Report} boşsa: etiket yazımı farklı ya da rapor başka alana bakıyor. Sayfalardaki etiketi ve raporun {Label} ve {Space} ayarlarını karşılaştır. Raporda bazı sütunlar boşsa: alan adları sayfalar arasında farklı, örneğin sahip ve sahibi. Alan adlarını birebir aynı yap; bir sayfa şablonu kullan. Jira makrosu {Unable to render} diyorsa: Confluence ile Jira bağlantısı yok ya da Jira projesine yetkin yok. Jira'da işi açabildiğini kontrol et; yöneticiye uygulama bağlantısını sor. Bir sayfayı arama bulmuyorsa: sayfa kısıtlı, yani {restriction}, ya da taslak olarak kalmış. Sayfanın kilit simgesine ve yayın durumuna bak. Kim neyi değiştirdi sorusu için: sayfa, üç nokta, {Page history}, iki sürümü seç, {Compare}."
+  },
+  {
+   "baslik": "Bilgi kontrolü 1/5",
+   "tur": "soru",
+   "soru": {
+    "metin": "40 gereksinimin durumunu tek tabloda görmek için hangi makro ikilisi?",
+    "secenekler": [
+     "Jira + Status",
+     "Excerpt + Excerpt Include",
+     "Table of Contents + Children",
+     "Page Properties + Page Properties Report"
+    ],
+    "dogru": 3,
+    "cevap_cumle": 6,
+    "bekle": 4
+   },
+   "anlatim": "Beş soruluk bilgi kontrolü. Birinci soru: kırk gereksinimin durumunu tek tabloda görmek için hangi makro ikilisi kullanılır? A, Jira ve {Status}. B, {Excerpt} ve {Excerpt Include}. C, {Table of Contents} ve {Children}. D, {Page Properties} ve {Page Properties Report}. Doğru cevap D.",
+   "bolum": "Confluence · Bilgi kontrolü ve çözümler"
+  },
+  {
+   "baslik": "Bilgi kontrolü 2/5",
+   "tur": "soru",
+   "soru": {
+    "metin": "Rapor bir sayfayı göstermiyor, diğerlerini gösteriyor. İlk kontrol?",
+    "secenekler": [
+     "Sayfanın etiketi",
+     "Sayfanın uzunluğu",
+     "Sayfanın rengi",
+     "Tarayıcı önbelleği"
+    ],
+    "dogru": 0,
+    "cevap_cumle": 6,
+    "bekle": 4
+   },
+   "anlatim": "İkinci soru: rapor bir sayfayı göstermiyor, diğerlerini gösteriyor. İlk neyi kontrol edersin? A, sayfanın etiketi. B, sayfanın uzunluğu. C, sayfanın rengi. D, tarayıcı önbelleği. Doğru cevap A: etiket."
+  },
+  {
+   "baslik": "Bilgi kontrolü 3/5",
+   "tur": "soru",
+   "soru": {
+    "metin": "CQL'de \"son 7 günde değişen\" koşulu?",
+    "secenekler": [
+     "updated > 7",
+     "lastmodified >= now(\"-7d\")",
+     "modified in last 7 days",
+     "date > -7"
+    ],
+    "dogru": 1,
+    "cevap_cumle": 5,
+    "bekle": 4
+   },
+   "anlatim": "Üçüncü soru: CQL'de son yedi günde değişen koşulu hangisi? A, {updated} büyüktür yedi. B, {lastmodified} büyük eşit {now} eksi yedi gün. C, {modified in last} yedi {days}. D, {date} büyüktür eksi yedi. Doğru cevap B."
+  },
+  {
+   "baslik": "Bilgi kontrolü 4/5",
+   "tur": "soru",
+   "soru": {
+    "metin": "Gereksinim sayfasının başlığına neden ID konur?",
+    "secenekler": [
+     "Görünüm için",
+     "Confluence zorunlu tutar",
+     "Jira, test ve notlarda tek kimlikle başvurulsun diye",
+     "Sayfa sırası için"
+    ],
+    "dogru": 2,
+    "cevap_cumle": 5,
+    "bekle": 4
+   },
+   "anlatim": "Dördüncü soru: gereksinim sayfasının başlığına neden ID konur? A, görünüm için. B, Confluence zorunlu tutar. C, Jira, test ve toplantı notlarında tek bir kimlikle başvurulabilsin diye. D, sayfa sırası için. Doğru cevap C."
+  },
+  {
+   "baslik": "Bilgi kontrolü 5/5",
+   "tur": "soru",
+   "soru": {
+    "metin": "Bir kararın gerekçesini altı ay sonra bulmak için en iyi yer?",
+    "secenekler": [
+     "Karar kaydı sayfası",
+     "Toplantı sohbet geçmişi",
+     "Jira yorumu",
+     "E-posta"
+    ],
+    "dogru": 0,
+    "cevap_cumle": 5,
+    "bekle": 4
+   },
+   "anlatim": "Beşinci soru: bir kararın gerekçesini altı ay sonra bulmak için en iyi yer? A, karar kaydı sayfası. B, toplantı sohbet geçmişi. C, Jira yorumu. D, e-posta. Doğru cevap A: karar kaydı sayfası."
+  },
+  {
+   "baslik": "Hızlı başvuru: editör komutları",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Yaz",
+     "Ne ekler"
+    ],
+    "satirlar": [
+     [
+      "/page properties · /page properties report",
+      "Alan tablosu · etiketli sayfalardan özet"
+     ],
+     [
+      "/jira · /status",
+      "İş ya da JQL tablosu · renkli durum"
+     ],
+     [
+      "/decision · /toc",
+      "Karar öğesi · içindekiler"
+     ],
+     [
+      "/excerpt · @",
+      "Yeniden kullanılabilir parça · kişi anma"
+     ]
+    ]
+   },
+   "anlatim": "Hızlı başvuru: sık kullanılan editör komutları. Bölü {page properties}: rapor için alan tablosu. Bölü {page properties report}: etiketli sayfalardan özet tablo. Bölü jira: tek iş ya da JQL sonucu tablosu. Bölü {status}: renkli durum etiketi. Bölü {decision}: karar öğesi. Bölü {toc}: içindekiler. Bölü {excerpt}: başka sayfada yeniden kullanılabilir parça. Et işareti: kişi anma."
+  },
+  {
+   "baslik": "Çözümler",
+   "maddeler": [
+    "REQ-KRD-030: TASLAK 30 gün → IPTAL",
+    "REQ-KRD-031: ONAYLANDI + 30 gün → IPTAL",
+    "031: sözleşmeye geçiş esas; açık soru",
+    "Karar: gün 30 mu, 31 mi?",
+    "Rapor: 5 sayfa (lab yoksa 4)"
+   ],
+   "anlatim": "Çözümler. REQ-KRD-030, {EARS}: bir başvuru TASLAK durumundayken son işlemden itibaren otuz gün geçtiğinde, sistem başvuruyu IPTAL durumuna almalı ve iptal nedenini kaydetmelidir. Doğrulama: test. REQ-KRD-031: bir başvuru ONAYLANDI durumuna geçtiği günden itibaren otuz gün içinde SOZLESME_IMZALANDI durumuna geçmediğinde, sistem başvuruyu IPTAL durumuna almalıdır. Çalışma seti onaydan otuz gün sonra iptal diyor ama otuz gün içinde neyin olması gerektiğini yazmıyor; bu eğitimde sözleşmeye geçiş esas alındı. Gerçek projede bu bir açık sorudur. Doğrulama: test. Karar sayfası: seçenek A, otuzuncu gün dolduğu gün iptal; seçenek B, otuz gün tamamlandıktan sonraki gün, yani otuz birinci gün iptal. Karar sahibi: kredi operasyon yöneticisi. Etki: bayi bildirim metni ve test verisi. Rapor: gereksinim etiketli beş sayfa görünür; laboratuvar yapılmadıysa dört sayfa."
+  },
+  {
+   "baslik": "Bu videoda neler gördük?",
+   "maddeler": [
+    "Yapı, editör, BA sayfa türleri",
+    "Makrolar, 13 başlıklı şablon, karar kaydı, Jira entegrasyonu",
+    "Bilgi mimarisi, database, onay, otomasyon, Rovo, yönetişim",
+    "Ekran, menüler, laboratuvar",
+    "Sayfa ağacı, Page Properties, CQL, etiketler, çözümler"
+   ],
+   "anlatim": "Toparlayalım. Confluence yapısını, editörü ve iş analistinin sayfa türlerini gördük. Makroları, on üç başlıklı şablonu, karar kaydını ve Jira entegrasyonunu öğrendik. Bilgi mimarisi, {database}, onay, otomasyon, {Rovo} ve yönetişime baktık. Ekranı, menüleri ve laboratuvarı çalıştık. Sayfa ağacı, {Page Properties}, CQL ve etiketlerle bitirdik. Bir sonraki videoda Miro ile çalıştay ve beyin fırtınası yöneteceğiz.",
+   "ton": "sakin"
+  }
+ ]
+}
