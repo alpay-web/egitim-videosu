@@ -1,0 +1,59 @@
+# Kalite kapısı: **GEÇTİ**
+
+Kritik: 0 · Uyarı: 20 · Hakem incelemesi: 15
+
+## Uyarılar
+- senkron · sahne 1: 14 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 2: ilk öğe 18 sn sonra (giriş yazısı otomatik gösterilir)
+- senkron · sahne 2: 18 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 16: 25 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 17: ilk öğe 6 sn sonra (giriş yazısı otomatik gösterilir)
+- senkron · sahne 21: ilk öğe 6 sn sonra (giriş yazısı otomatik gösterilir)
+- senkron · sahne 22: 17 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 23: ilk öğe 9 sn sonra (giriş yazısı otomatik gösterilir)
+- senkron · sahne 23: 14 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 25: 18 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 27: ilk öğe 7 sn sonra (giriş yazısı otomatik gösterilir)
+- senkron · sahne 28: ilk öğe 7 sn sonra (giriş yazısı otomatik gösterilir)
+- senkron · sahne 28: 16 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 29: ilk öğe 7 sn sonra (giriş yazısı otomatik gösterilir)
+- senkron · sahne 31: 16 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 32: ilk öğe 6 sn sonra (giriş yazısı otomatik gösterilir)
+- senkron · sahne 32: 18 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 33: ilk öğe 4 sn sonra (giriş yazısı otomatik gösterilir)
+- senkron · sahne 33: 24 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 34: 27 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+
+## Hakem için (anlam doğruluğu — bağımsız gözden geçirme)
+- Sahne 11: belgede geçmeyen ad «{manual task}» — C, manual task.
+- Sahne 16: belgede geçmeyen ad «{Edit}» — En üstte menü çubuğu: File, Edit, Window, Help.
+- Sahne 16: belgede geçmeyen ad «{Window}» — En üstte menü çubuğu: File, Edit, Window, Help.
+- Sahne 16: belgede geçmeyen ad «{Help}» — En üstte menü çubuğu: File, Edit, Window, Help.
+- Sahne 16: belgede geçmeyen ad «{data object}» — Solda palet, yani araç kutusu: el ve kement seçim araçları, boşluk aracı, global
+- Sahne 16: belgede geçmeyen ad «{store}» — Solda palet, yani araç kutusu: el ve kement seçim araçları, boşluk aracı, global
+- Sahne 16: belgede geçmeyen ad «{canvas}» — Ortada tuval, yani canvas.
+- Sahne 16: belgede geçmeyen ad «{General}» — Sağda özellikler paneli: General altında Name ve ID, Documentation, Implementati
+- Sahne 16: belgede geçmeyen ad «{Documentation}» — Sağda özellikler paneli: General altında Name ve ID, Documentation, Implementati
+- Sahne 16: belgede geçmeyen ad «{Inputs}» — Sağda özellikler paneli: General altında Name ve ID, Documentation, Implementati
+- Sahne 16: belgede geçmeyen ad «{Outputs}» — Sağda özellikler paneli: General altında Name ve ID, Documentation, Implementati
+- Sahne 16: belgede geçmeyen ad «{Deploy}» — En altta Problems, yani kural hataları; Deploy, roket simgesi; ve Start instance
+- Sahne 16: belgede geçmeyen ad «{Start instance}» — En altta Problems, yani kural hataları; Deploy, roket simgesi; ve Start instance
+- Sahne 54: belgede geçmeyen ad «{swimlane}» — Bir sonraki videoda süreç diyagramlama ile devam ediyoruz: swimlane, değer akışı
+- Sahne 10: belgede geçmeyen ad «Firma» — Sekizinci desen, Firma'da sık göreceğin anti-desenler.
+
+## Ölçümler
+```json
+{
+ "okunmayan": 0,
+ "yerlesim_senkron": 34,
+ "sadakat": {
+  "belge_satiri": 141,
+  "kapsam_orani": 1.0,
+  "eksik": 0,
+  "uydurma": 0,
+  "telaffuz": 0,
+  "kontrol": 15,
+  "eklenti": 0
+ }
+}
+```
