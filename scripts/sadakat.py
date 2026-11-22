@@ -38,7 +38,8 @@ def norm_sik(s):
 
 
 def kelimeler(s):
-    return [w for w in re.findall(r"[\wçğıöşüâî']+", norm(s)) if len(w) > 2 and w not in ETKISIZ]
+    ws = (w.strip("'") for w in re.findall(r"[\wçğıöşüâî']+", norm(s)))    # 'Ayse' gibi tırnaklı değerler
+    return [w for w in ws if len(w) > 2 and w not in ETKISIZ]
 
 
 def sayilar(s):
@@ -109,7 +110,7 @@ def denetle(sen, belge, ayar=None, esik_kapsam=0.6):
             rapor["eksik"].append({"satir": ln[:160], "kapsam": round(oran, 2)})
 
     # 2) UYDURMA: sayı ve İngilizce öbekler belgede geçiyor mu?
-    belge_sayi = sayilar(belge)
+    belge_sayi = sayilar(belge) | set(re.findall(r"\d+", belge))   # koddaki "(102,1,…" gibi dizilerin parçaları
     gorulen = set()
     for si, kaynak, m in metin:
         for s in sayilar(m) - belge_sayi:
