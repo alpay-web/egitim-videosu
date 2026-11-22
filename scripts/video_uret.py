@@ -142,9 +142,49 @@ def _en_sayi(n):
     return _en_sayi(n // 1000) + " thousand" + ("" if n % 1000 == 0 else " " + _en_sayi(n % 1000))
 
 
+ING_MOD = "cmu"     # cmu (eski): CMU okunuşu | sozluk: önce teknik_terimler.json, sonra CMU (W→u) | ayri: İngilizce motor
+TEKNIK = {}         # teknik terim → Türk BT ekiplerinin okunuşu (küçük harf anahtar)
+
+
+def teknik_yukle(kok_yol=None, ek=None):
+    TEKNIK.clear()
+    yol = Path(kok_yol) if kok_yol else Path(__file__).resolve().parent.parent / "teknik_terimler.json"
+    if yol.exists():
+        TEKNIK.update({k.lower(): v for k, v in json.loads(yol.read_text(encoding="utf-8")).get("terimler", {}).items()})
+    TEKNIK.update({k.lower(): v for k, v in (ek or {}).items()})
+
+
+def _sozluk_okunus(metin):
+    """Teknik terim sözlüğü: en uzun öbek eşleşmesi (en çok 4 kelime), kalan kelimeler CMU ile."""
+    kel = re.findall(r"[A-Za-z0-9][A-Za-z0-9'’.-]*[A-Za-z0-9]|[A-Za-z0-9]|[^A-Za-z0-9]+", metin)
+    out, i = [], 0
+    while i < len(kel):
+        if not re.match(r"[A-Za-z0-9]", kel[i]):
+            out.append(kel[i]); i += 1; continue
+        bulundu = False
+        for n in (4, 3, 2, 1):
+            parca = kel[i:i + 2 * n - 1]
+            if len(parca) < 2 * n - 1 or any(not re.match(r"[A-Za-z0-9]", parca[j]) for j in range(0, len(parca), 2)) \
+                    or any(parca[j].strip() not in ("", "-") for j in range(1, len(parca), 2)):
+                continue
+            anahtar = "".join(parca).lower().replace("’", "'")
+            anahtar_b = re.sub(r"\s+", " ", anahtar)
+            if anahtar_b in TEKNIK:
+                out.append(TEKNIK[anahtar_b]); i += 2 * n - 1; bulundu = True; break
+        if not bulundu:
+            out.append(_cmu_okunus(kel[i], w_u=True)); i += 1
+    return "".join(out)
+
+
 def ingilizce_okunus(metin):
     """'had better' → 'hed betır': Türkçe motorun İngilizceyi doğru vurgu ve akışla, cümleden kopmadan okuması için.
     Sözlükte olmayan kelime olduğu gibi kalır."""
+    if ING_MOD == "sozluk":
+        return _sozluk_okunus(metin)
+    return _cmu_okunus(metin)
+
+
+def _cmu_okunus(metin, w_u=False):
     d = _cmu()
     ozel = {"aren't": "arnt", "worth": "vörs"}          # Whisper denetiminde zayıf çıkanlar
     metin = re.sub(r"[A-Za-z][A-Za-z'’]*", lambda m: ozel.get(m.group(0).lower(), m.group(0)), metin)
@@ -161,6 +201,8 @@ def ingilizce_okunus(metin):
                 out.append("ı")
             elif ana == "ER" and vurgu == "0":
                 out.append("ır")
+            elif w_u and ana == "W":
+                out.append("u")                                  # sequence → sikuıns (v değil)
             else:
                 out.append(_ARPA.get(ana, ""))
         return "".join(out)
@@ -173,6 +215,8 @@ def _bagimsiz_mi(once, sonra, parca):
     sol = once.rstrip()[-1:] if once.strip() else ""
     sag = sonra.lstrip()[:1]
     kelime_say = len(re.findall(r"[A-Za-z0-9']+", parca))
+    if ING_MOD == "ayri":
+        return True
     return kelime_say >= 4 and (sol == "" or sol in ":;,—–(\"“") and (sag == "" or sag in ".,;:?!—–)\"”")
 
 
@@ -1792,40 +1836,73 @@ class Sahne:
         bb = im.getbbox()
         return im.crop(bb), bb
 
+    tema = None
+
     def kapak(self, baslik, alt, ilerleme, karakter=None):
-        """intro/outro kartı; ilerleme 0..1 animasyon için"""
+        """intro/outro kartı; ilerleme 0..1 animasyon için. Renk, yazı tipi ve düzen videonun temasından (tema.py)."""
+        import tema as tm
         W, H, k = self.W, self.H, self.k
+        T = self.tema or tm.tema(0)
         t = np.linspace(0, 1, H)[:, None, None]
-        a, b = np.array([24, 58, 52]), np.array([12, 30, 34])
+        a, b = np.array(T["ust"]), np.array(T["alt"])
         im = Image.fromarray(np.broadcast_to(a * (1 - t) + b * t, (H, W, 3)).astype(np.uint8).copy())
         d = ImageDraw.Draw(im, "RGBA")
-        e = 1 - (1 - min(1, ilerleme)) ** 3
-        fb = font(k(58), True); fa = font(k(28))
-        satirlar = [x for parca in re.split(r"\s+[–—-]\s+|\n", baslik) for x in satir_kir(parca, fb, k(1100), d)]
-        y = 280 - len(satirlar) * 34 + (1 - e) * 30
+        e = 1 - (1 - min(1, max(0, ilerleme))) ** 3
         al = int(255 * e)
-        for s in satirlar:
-            tw = d.textlength(s, font=fb)
-            d.text((W / 2 - tw / 2, k(y)), s, font=fb, fill=(255, 255, 255, al)); y += 72
+        vr = T["vurgu"]
+        if T["buyuk_harf"]:
+            baslik = baslik.replace("i", "İ").replace("ı", "I").upper()
+        boy = 76 if T["buyuk_harf"] else 58
+        genis = k(1000) if T["duzen"] == "sol" else k(1100)
+        parcalar = [x for x in re.split(r"\s+[–—-]\s+|\n|\s+·\s+", baslik) if x.strip()]
+        while True:
+            fb = tm.tema_fontu(T["yazi"], k(boy), font)
+            satirlar = [x for parca in parcalar for x in satir_kir(parca, fb, genis, d)]
+            if len(satirlar) <= 3 or boy <= 40:
+                break
+            boy -= 4
+        fa = font(k(28))
+        asc, desc = fb.getmetrics()
+        adim = (asc + desc) * 1.08 / k(1)
+        y = 335 - len(satirlar) * adim / 2 - 30 + (1 - e) * 30
+        if T["duzen"] == "cerceve":   # köşe çerçeveleri
+            c, m_ = k(70), k(48)
+            for (x0, y0, sx, sy) in ((m_, m_, 1, 1), (W - m_, m_, -1, 1), (m_, H - m_, 1, -1), (W - m_, H - m_, -1, -1)):
+                d.line((x0, y0, x0 + sx * c * e, y0), fill=vr + (al,), width=k(5))
+                d.line((x0, y0, x0, y0 + sy * c * e), fill=vr + (al,), width=k(5))
+        if T["duzen"] == "sol":
+            x0 = k(150)
+            d.rectangle((x0 - k(36), k(y), x0 - k(26), k(y + adim * len(satirlar) + 70) * e + k(y) * (1 - e)),
+                        fill=vr + (al,))
+            for s_ in satirlar:
+                d.text((x0, k(y)), s_, font=fb, fill=T["baslik_rengi"] + (al,)); y += adim
+            if alt:
+                d.text((x0, k(y + 26)), alt, font=fa, fill=T["alt_renk"] + (al,))
+            return im
+        for s_ in satirlar:
+            tw = d.textlength(s_, font=fb)
+            d.text((W / 2 - tw / 2, k(y)), s_, font=fb, fill=T["baslik_rengi"] + (al,)); y += adim
         lw = k(320) * e
-        d.rectangle((W / 2 - lw / 2, k(y + 12), W / 2 + lw / 2, k(y + 17)), fill=(255, 196, 80, al))
+        d.rectangle((W / 2 - lw / 2, k(y + 12), W / 2 + lw / 2, k(y + 17)), fill=vr + (al,))
         if alt:
             tw = d.textlength(alt, font=fa)
-            d.text((W / 2 - tw / 2, k(y + 40)), alt, font=fa, fill=(205, 225, 215, al))
+            d.text((W / 2 - tw / 2, k(y + 40)), alt, font=fa, fill=T["alt_renk"] + (al,))
         return im
 
 
 # ================================================================ YouTube kapak görseli
 def kapak_gorseli(sen, karakter_png, yol):
+    import tema as tm
+    T = tm.tema_sec(sen)
     W, H = 1280, 720
     t = np.linspace(0, 1, W)[None, :, None]
-    a, b = np.array([20, 62, 52]), np.array([10, 28, 32])
+    a, b = np.array(T["ust"]), np.array(T["alt"])
     im = Image.fromarray(np.broadcast_to(a * (1 - t) + b * t, (H, W, 3)).astype(np.uint8).copy()).convert("RGBA")
     d = ImageDraw.Draw(im)
     rnd = random.Random(9)
     for _ in range(14):
         x, y = rnd.randint(0, 700), rnd.randint(0, 680)
-        d.arc((x, y, x + rnd.randint(120, 300), y + rnd.randint(40, 120)), 0, rnd.randint(120, 300), fill=(40, 90, 75), width=5)
+        d.arc((x, y, x + rnd.randint(120, 300), y + rnd.randint(40, 120)), 0, rnd.randint(120, 300), fill=tuple(int(x * 0.8 + y * 0.2) for x, y in zip(T["ust"], T["vurgu"])), width=5)
     if karakter_png is None:
         k = karakter_ciz(0, False, 1.0, False, 1.15)
         im.alpha_composite(k, (W - k.width + 20, H - k.height + 40))
@@ -1842,7 +1919,7 @@ def kapak_gorseli(sen, karakter_png, yol):
     buyuk = vurgu.replace("i", "İ").replace("ı", "I").upper()  # Türkçe büyük harf
     fs_ = 118
     while fs_ > 60:
-        fb = font(fs_, True)
+        fb = tm.tema_fontu(T["yazi"], fs_, font)
         satirlar = satir_kir(buyuk, fb, 600, d)
         if len(satirlar) <= 3 and all(d.textlength(x, font=fb) <= 600 for x in satirlar):
             break
@@ -1853,12 +1930,12 @@ def kapak_gorseli(sen, karakter_png, yol):
         fu = font(40, True)
         us = satir_kir(ust, fu, 600, d)[:2]
         for i_, sat in enumerate(us):
-            d.text((60, y - 70 - (len(us) - 1 - i_) * 50), sat, font=fu, fill=(205, 230, 218))
+            d.text((60, y - 70 - (len(us) - 1 - i_) * 50), sat, font=fu, fill=T["alt_renk"])
     for sat in satirlar:
         for ox, oy in ((5, 6),):
-            d.text((60 + ox, y + oy), sat, font=fb, fill=(0, 0, 0, 160))
-        d.text((60, y), sat, font=fb, fill=(255, 210, 80)); y += fs_ * 1.12
-    d.rectangle((60, y + 8, 360, y + 18), fill=(255, 255, 255))
+            d.text((60 + ox, y + oy), sat, font=fb, fill=(0, 0, 0, 60 if T["acik"] else 160))
+        d.text((60, y), sat, font=fb, fill=T["vurgu"]); y += fs_ * 1.12
+    d.rectangle((60, y + 8, 360, y + 18), fill=T["baslik_rengi"])
     im.convert("RGB").save(yol, quality=92)
 
 
@@ -2118,6 +2195,10 @@ def main():
         genel = json.loads(gt.read_text(encoding="utf-8"))
     telaffuz = {**genel.get("telaffuz", {}), **sen.get("telaffuz", {})}
     kok = {**genel.get("telaffuz_kok", {}), **sen.get("telaffuz_kok", {})}
+    global ING_MOD
+    ING_MOD = sen.get("ingilizce_mod", "cmu")
+    if ING_MOD == "sozluk":
+        teknik_yukle(ek=sen.get("teknik_terimler"))
     ust = sen.get("baslik", "")
     # bölümler: sahnedeki "bolum" alanı yeni bölüm başlatır (YouTube bölümleri + tahta alt bilgisi)
     bolum_adi, b_ = [], None
@@ -2414,6 +2495,9 @@ def main():
 
     log("[3/4] Karakter ve sahneler hazırlanıyor...")
     S = Sahne(W, H); k = S.k
+    import tema as _tm
+    S.tema = _tm.tema_sec(sen)
+    log(f"Giriş teması: {S.tema['ad']}")
     foto = None
     if args.karakter != "cizim":
         from karakter_foto import FotoKarakter
