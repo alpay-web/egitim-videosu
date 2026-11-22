@@ -1,0 +1,1226 @@
+{
+ "baslik": "Business Analyst Teknik Rehberi · 4: Süreç diyagramlama",
+ "alt_baslik": "SIPOC · swimlane · değer akışı · israf · metrikler · process mining",
+ "kapanis": "Sıradaki video: Diyagram okuma atölyesi",
+ "tema": 4,
+ "youtube_baslik": "Business Analyst Teknik Rehberi 4/14: Süreç diyagramlama (SIPOC, swimlane, VSM, israf)",
+ "etiketler": [
+  "business analyst",
+  "süreç diyagramı",
+  "SIPOC",
+  "swimlane",
+  "value stream map",
+  "lean",
+  "iş analisti"
+ ],
+ "ingilizce_mod": "sozluk",
+ "es": 1.0,
+ "cumle_arasi": 0.7,
+ "sahne_arasi": 1.6,
+ "telaffuz": {
+  "UML": "yu em el",
+  "BPMN": "bi pi em en",
+  "OMG": "o em ci",
+  "CMMN": "si em em en",
+  "DMN": "di em en",
+  "KKB": "ka ka be",
+  "KPS": "ka pe se",
+  "MERNİS": "mernis",
+  "MASAK": "masak",
+  "KVKK": "ka ve ka ka",
+  "BDDK": "be de de ka",
+  "ÖBF": "ö be fe",
+  "EFT": "e fe te",
+  "OTP": "o te pe",
+  "SMS": "es em es",
+  "STP": "es ti pi",
+  "XML": "eks em el",
+  "BPMNDI": "bi pi em en di ay",
+  "DMS": "di em es",
+  "CRM": "si ar em",
+  "ELK": "e le ka",
+  "LTV": "el ti vi",
+  "API": "ey pi ay",
+  "SOAP": "soup",
+  "GMY": "genel müdür yardımcısı",
+  "KPI": "key pi ay",
+  "XOR": "eks or",
+  "Camunda": "kamunda",
+  "Portal": "portal",
+  "Portal'da": "portalda",
+  "Portal'dan": "portaldan",
+  "Portal'a": "portala",
+  "Portal'ın": "portalın",
+  "BA": "be a",
+  "SoD": "es o di",
+  "SQL": "es kyu el",
+  "IAM": "ay ey em",
+  "Postman": "post men",
+  "Jira": "cira",
+  "Confluence": "konfluens",
+  "Miro": "miro",
+  "Visio": "vizyo",
+  "Agile": "ecayl",
+  "draw.io": "dro ay o",
+  "diagrams.net": "dayagrams nokta net",
+  "PNG": "pi en ci",
+  "SVG": "es vi ci",
+  "PDF": "pi di ef",
+  "VS Code": "vi es kod",
+  "Notepad++": "notped artı artı",
+  "ISO": "iso",
+  "BR": "be re",
+  "ID": "ay di",
+  "MANUEL_INCELEME": "manuel inceleme",
+  "Ctrl": "kontrol",
+  "Ctrl+S": "kontrol es",
+  "Ctrl+Z": "kontrol zed",
+  "SIPOC": "sipok",
+  "VSM": "vi es em",
+  "DFD": "di ef di",
+  "EPC": "i pi si",
+  "APQC": "ey pi kyu si",
+  "PCF": "pi si ef",
+  "RCM": "ar si em",
+  "RACI": "reysi",
+  "RPA": "ar pi ey",
+  "BPM": "bi pi em",
+  "SLA": "es el ey",
+  "SBM": "es be me",
+  "TRAMER": "tramer",
+  "TIMWOODS": "timvuds",
+  "NNVA": "en en vi ey",
+  "UNVA": "yu en vi ey",
+  "VA": "vi ey",
+  "RFPY": "ar ef pi uay",
+  "PT": "pi ti",
+  "LT": "el ti",
+  "%C/A": "yüzde si bölü ey",
+  "BSV-1001": "be se ve bin bir",
+  "app.diagrams.net": "ap nokta dayagrams nokta net",
+  "Ishikawa": "işikava",
+  "ANSI": "ensi",
+  "PD": "pi di",
+  "TS": "ti es",
+  "EP": "i pi",
+  "EF": "i ef",
+  "L0": "el sıfır",
+  "L0'de": "el sıfırde",
+  "L0'te": "el sıfırte",
+  "L0'deki": "el sıfırdeki",
+  "L0'teki": "el sıfırteki",
+  "L0'ye": "el sıfırye",
+  "L0'ya": "el sıfırya",
+  "L0'den": "el sıfırden",
+  "L0'ten": "el sıfırten",
+  "L0'da": "el sıfırda",
+  "L0'ta": "el sıfırta",
+  "L1": "el bir",
+  "L1'de": "el birde",
+  "L1'te": "el birte",
+  "L1'deki": "el birdeki",
+  "L1'teki": "el birteki",
+  "L1'ye": "el birye",
+  "L1'ya": "el birya",
+  "L1'den": "el birden",
+  "L1'ten": "el birten",
+  "L1'da": "el birda",
+  "L1'ta": "el birta",
+  "L2": "el iki",
+  "L2'de": "el ikide",
+  "L2'te": "el ikite",
+  "L2'deki": "el ikideki",
+  "L2'teki": "el ikiteki",
+  "L2'ye": "el ikiye",
+  "L2'ya": "el ikiya",
+  "L2'den": "el ikiden",
+  "L2'ten": "el ikiten",
+  "L2'da": "el ikida",
+  "L2'ta": "el ikita",
+  "L3": "el üç",
+  "L3'de": "el üçde",
+  "L3'te": "el üçte",
+  "L3'deki": "el üçdeki",
+  "L3'teki": "el üçteki",
+  "L3'ye": "el üçye",
+  "L3'ya": "el üçya",
+  "L3'den": "el üçden",
+  "L3'ten": "el üçten",
+  "L3'da": "el üçda",
+  "L3'ta": "el üçta",
+  "L4": "el dört",
+  "L4'de": "el dörtde",
+  "L4'te": "el dörtte",
+  "L4'deki": "el dörtdeki",
+  "L4'teki": "el dörtteki",
+  "L4'ye": "el dörtye",
+  "L4'ya": "el dörtya",
+  "L4'den": "el dörtden",
+  "L4'ten": "el dörtten",
+  "L4'da": "el dörtda",
+  "L4'ta": "el dörtta",
+  "U08": "u sıfır sekiz",
+  "U08'de": "u sıfır sekizde",
+  "U08'te": "u sıfır sekizte",
+  "U08'deki": "u sıfır sekizdeki",
+  "U08'teki": "u sıfır sekizteki",
+  "U08'ye": "u sıfır sekizye",
+  "U08'ya": "u sıfır sekizya",
+  "U08'den": "u sıfır sekizden",
+  "U08'ten": "u sıfır sekizten",
+  "U08'da": "u sıfır sekizda",
+  "U08'ta": "u sıfır sekizta"
+ },
+ "sahneler": [
+  {
+   "baslik": "Süreç diyagramlama bir disiplindir",
+   "maddeler": [
+    "Doğru soruya doğru görünümü seçmek",
+    "Bilgiyi doğru kişilerden toplamak",
+    "Modeli karar almaya yarar hale getirmek",
+    "BPMN güçlü ama tek seçenek değil"
+   ],
+   "anlatim": "Süreç diyagramlama tek bir notasyon değil, bir disiplindir. Üç şeyi kapsar: doğru soruya doğru görünümü seçmek, bilgiyi doğru kişilerden toplamak ve modeli karar almaya yarayacak hale getirmek. BPMN bu disiplinin en güçlü notasyonlarından biri, ama tek seçenek değil. Bu videoda diğerlerini ve süreci sayıyla iyileştirmeyi öğreneceğiz.",
+   "bolum": "Süreç diyagramlama: giriş",
+   "kanca": "Altmış dakikalık iş neden üç gün sürer?",
+   "ton": "merakli"
+  },
+  {
+   "baslik": "Bu bölümün hedefleri",
+   "maddeler": [
+    "Bir Firma süreci için SIPOC ve 4–5 şeritli swimlane",
+    "Adımları sınıflamak: değer katan · gerekli · israf",
+    "İşlem süresi, toplam süre, aktivite oranı, zincirleme %C/A, devir sayısı",
+    "Darboğazı sayıyla gösterip tek iyileştirme önermek"
+   ],
+   "anlatim": "Bu bölümün sonunda dört şey yapabileceksin. Bir: bir Firma süreci için SIPOC tablosu ve dört beş şeritli bir {swimlane} diyagramı hazırlamak. İki: her adımı değer katan, gerekli ama değer katmayan ve israf diye sınıflandırmak. Üç: bir değer akışı için işlem süresini, toplam süreyi, aktivite oranını, zincirleme ilk seferde doğru oranını ve devir sayısını hesaplamak. Dört: sürecin darboğazını sayıyla gösterip tek bir iyileştirme önermek."
+  },
+  {
+   "baslik": "Başlamadan önce gerekenler",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Gereken",
+     "Nereden",
+     "Hazır mısın?"
+    ],
+    "satirlar": [
+     [
+      "Adımları bilen 1–2 kişi",
+      "Bayi satış temsilcisi, operasyon uzmanı",
+      "20 dk görüşme ayarladın"
+     ],
+     [
+      "draw.io (ücretsiz)",
+      "app.diagrams.net",
+      "Aramada pool yazınca havuz çıkıyor"
+     ],
+     [
+      "Hesap tablosu",
+      "Excel / Google Sheets",
+      "Toplam ve oran alabiliyorsun"
+     ],
+     [
+      "Kavramlar",
+      "Temel ve Orta seviye",
+      "İşlem ile bekleme farkını anlatabiliyorsun"
+     ]
+    ]
+   },
+   "anlatim": "Başlamadan önce dört şey gerekli. Sürecin adımlarını bilen bir iki kişi; örneğin bayi satış temsilcisi ve operasyon uzmanı. Yirmi dakikalık bir görüşme ayarladıysan hazırsın. Ücretsiz draw.io; adres app nokta diagrams nokta net. Arama kutusuna {pool} yazınca havuz şekli çıkıyorsa tamam. Bir hesap tablosu: Excel ya da Google Sheets. Bir sütunun toplamını ve iki hücrenin oranını alabiliyorsan yeterli. Ve kavramlar: bu bölümün temel ve orta seviyesi. İşlem süresi ile bekleme süresi farkını bir cümleyle anlatabiliyorsan başlayabiliriz."
+  },
+  {
+   "baslik": "Hangi soru, hangi diyagram? (1/2)",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Soru",
+     "Uygun teknik"
+    ],
+    "satirlar": [
+     [
+      "Sınırlar, girdi / çıktılar?",
+      "SIPOC"
+     ],
+     [
+      "Adımlar hangi sırayla, hangi kararlarla?",
+      "Basit akış şeması (flowchart)"
+     ],
+     [
+      "Kim ne yapıyor, devir teslimler nerede?",
+      "Swimlane (cross-functional)"
+     ],
+     [
+      "Zaman ve israf nerede?",
+      "Value Stream Map (VSM)"
+     ]
+    ]
+   },
+   "anlatim": "Temel soru şu: hangi soruya hangi diyagram? Sürecin sınırları, girdileri ve çıktıları neler diye soruyorsan: SIPOC. Adımlar hangi sırayla ve hangi kararlarla ilerliyor diye soruyorsan: basit akış şeması, yani {flowchart}. Kim ne yapıyor, devir teslimler nerede diye soruyorsan: {swimlane}, diğer adıyla {cross-functional} diyagram. Zaman ve israf nerede diye soruyorsan: değer akış haritası, yani {Value Stream Map}, kısaca VSM.",
+   "bolum": "Süreç · Temel seviye"
+  },
+  {
+   "baslik": "Hangi soru, hangi diyagram? (2/2)",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Soru",
+     "Uygun teknik"
+    ],
+    "satirlar": [
+     [
+      "Veri nereden nereye gidiyor?",
+      "Data Flow Diagram (DFD)"
+     ],
+     [
+      "Kurumlar arası standart, çalıştırılabilir model",
+      "BPMN 2.0"
+     ],
+     [
+      "Hiyerarşik süreç mimarisi",
+      "Process map / L0–L4, EPC (ARIS)"
+     ],
+     [
+      "Sistem durum değişikliği",
+      "UML state machine"
+     ]
+    ]
+   },
+   "anlatim": "Veri nereden gelip nereye gidiyor diye soruyorsan: veri akış diyagramı, yani {Data Flow Diagram}, kısaca DFD. Sistem ve kurumlar arası standart ve çalıştırılabilir bir model istiyorsan: BPMN iki nokta sıfır. Hiyerarşik bir süreç mimarisi istiyorsan: süreç haritası, yani {process map}, L sıfırdan L dörde seviyeler, ya da {ARIS} dünyasındaki EPC. Bir sistemin durum değişikliğini anlatacaksan: UML {state machine}."
+  },
+  {
+   "baslik": "Akış şeması sembolleri (ANSI/ISO 5807)",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Sembol",
+     "Şekil"
+    ],
+    "satirlar": [
+     [
+      "Terminal (başla / bitir)",
+      "Oval"
+     ],
+     [
+      "İşlem",
+      "Dikdörtgen"
+     ],
+     [
+      "Karar (Evet / Hayır)",
+      "Eşkenar dörtgen"
+     ],
+     [
+      "Belge",
+      "Altı dalgalı dikdörtgen"
+     ],
+     [
+      "Veri giriş / çıkış · Veri tabanı",
+      "Paralelkenar · Silindir"
+     ],
+     [
+      "Sayfa bağlayıcı · Önceden tanımlı işlem",
+      "Daire · Yanları çift çizgili dikdörtgen"
+     ]
+    ]
+   },
+   "anlatim": "Klasik akış şeması sembolleri ANSI ve ISO beş bin sekiz yüz yedi standardına dayanır. Terminal, yani başla ve bitir, ovaldir. İşlem dikdörtgendir. Karar eşkenar dörtgendir ve evet ile hayır çıkışları vardır. Belge, altı dalgalı bir dikdörtgendir. Veri giriş ve çıkışı paralelkenar, veri tabanı silindirdir. Sayfa bağlayıcı bir dairedir; önceden tanımlı işlem ise yanları çift çizgili bir dikdörtgendir."
+  },
+  {
+   "baslik": "SIPOC: kasko poliçesi tanzimi",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Sütun",
+     "İçerik"
+    ],
+    "satirlar": [
+     [
+      "Suppliers",
+      "Müşteri, Bayi, Sigorta şirketi, SBM/TRAMER"
+     ],
+     [
+      "Inputs",
+      "Ruhsat, kimlik, hasar geçmişi, teminat tercihi"
+     ],
+     [
+      "Process",
+      "Teklif al → Karşılaştır → Onay → Tahsilat → Poliçe üret → Gönder"
+     ],
+     [
+      "Outputs",
+      "Poliçe PDF, tahsilat kaydı, komisyon kaydı"
+     ],
+     [
+      "Customers",
+      "Müşteri, Finans, Sigorta şirketi"
+     ]
+    ]
+   },
+   "anlatim": "SIPOC örneği: kasko poliçesi tanzimi. Tedarikçiler, yani {Suppliers}: müşteri, bayi, sigorta şirketi, SBM ve TRAMER. Girdiler, yani {Inputs}: araç ruhsatı, kimlik, hasar geçmişi ve teminat tercihi. Süreç, yani {Process}: teklif al, karşılaştır, onay, tahsilat, poliçe üret, gönder. Çıktılar, yani {Outputs}: poliçe PDF'i, tahsilat kaydı ve komisyon kaydı. Müşteriler, yani {Customers}: müşteri, finans ve sigorta şirketi."
+  },
+  {
+   "baslik": "Bilgi toplama teknikleri",
+   "maddeler": [
+    "Doküman incelemesi: prosedür, talimat",
+    "Mülakat",
+    "İş başında gözlem (shadowing / gemba)",
+    "Workshop, anket",
+    "Sistem log ve rapor analizi"
+   ],
+   "anlatim": "Bilgiyi nasıl toplarsın? Doküman incelemesi: prosedürler ve talimatlar. Mülakat. İş başında gözlem, yani {shadowing}, yalın dünyadaki adıyla {gemba}. Çalıştay, yani {workshop}. Anket. Ve sistem log ve rapor analizi."
+  },
+  {
+   "baslik": "Prosedür ≠ gerçek",
+   "tur": "ipucu",
+   "ipucu": {
+    "tip": "uyari",
+    "metin": "Prosedür \"olması gereken\"i, gözlem \"gerçekte olan\"ı anlatır. As-is modeli gerçeğe dayanmalı."
+   },
+   "anlatim": "Buradaki ilke çok önemli. Prosedür dokümanı olması gerekeni anlatır; gözlem ise gerçekte olanı. Mevcut durum modeli, yani {as-is}, gerçeğe dayanmalıdır. Prosedürü kopyalayıp {as-is} diye sunarsan, sorunların asıl kaynağını hiç görmezsin."
+  },
+  {
+   "baslik": "Swimlane çizerken kurallar",
+   "maddeler": [
+    "Her lane bir rol veya sistem (kişi adı değil)",
+    "Lane değiştiren ok = devir teslim (handoff): gecikme ve hata riski",
+    "Adım adı fiil + nesne (\"Belgeleri kontrol et\")",
+    "Her kararın çıkışları etiketli, her yol bir bitişe",
+    "Sistem adımları ayrı lane'de → otomasyon fırsatı görünür"
+   ],
+   "anlatim": "Orta seviyede {swimlane} çizim kuralları. Bir: her şerit bir rol ya da sistemdir, kişi adı değil. İki: şerit değiştiren her ok bir devir tesliminin, yani {handoff}'un işaretidir; gecikme ve hata riski buralarda yoğunlaşır. Üç: adım isimleri fiil artı nesne; örneğin belgeleri kontrol et. Dört: her kararın tüm çıkışları etiketlidir ve her yol bir bitişe ulaşır. Beş: sistem adımları ayrı bir şeritte tutulursa otomasyon fırsatları görünür olur.",
+   "bolum": "Süreç · Orta seviye"
+  },
+  {
+   "baslik": "Süreç seviyeleri",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Seviye",
+     "İçerik",
+     "Örnek"
+    ],
+    "satirlar": [
+     [
+      "L0",
+      "Değer zinciri",
+      "Satış → Kredi → Operasyon → Tahsilat → Sigorta"
+     ],
+     [
+      "L1",
+      "Süreç grubu",
+      "Bireysel kredi yönetimi"
+     ],
+     [
+      "L2",
+      "Süreç",
+      "Taşıt kredisi başvuru ve tahsis"
+     ],
+     [
+      "L3",
+      "Alt süreç / aktivite akışı",
+      "Belge kontrolü ve manuel inceleme"
+     ],
+     [
+      "L4",
+      "Talimat / ekran adımı",
+      "\"Ruhsat fotokopisini sisteme yükle\""
+     ]
+    ]
+   },
+   "anlatim": "Süreç seviyeleri, yani süreç mimarisi. L sıfır değer zinciri: satış, kredi, operasyon, tahsilat, sigorta. L bir süreç grubu: bireysel kredi yönetimi. L iki süreç: taşıt kredisi başvuru ve tahsis. L üç alt süreç ya da aktivite akışı: belge kontrolü ve manuel inceleme. L dört talimat ya da ekran adımı: ruhsat fotokopisini sisteme yükle. APQC'nin süreç sınıflandırma çerçevesi, yani {Process Classification Framework}, kısaca PCF, gibi referans modeller L bir ile L üç arasındaki sınıflandırma için iyi bir başlangıç noktasıdır."
+  },
+  {
+   "baslik": "Value Stream Mapping (VSM)",
+   "maddeler": [
+    "Her adım için:",
+    "İşlem süresi (process time)",
+    "Bekleme süresi (wait time)",
+    "%C/A: complete & accurate, ilk seferde doğru oranı",
+    "Kuyruk miktarı"
+   ],
+   "anlatim": "Değer akış haritası, yani VSM. Her adım için dört şey yazılır: işlem süresi, yani {process time}; bekleme süresi, yani {wait time}; yüzde C bölü A, yani {complete} {and} {accurate}, ilk seferde doğru ve eksiksiz oranı; ve kuyruk miktarı."
+  },
+  {
+   "baslik": "VSM metrikleri",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Metrik",
+     "Formül",
+     "Örnek"
+    ],
+    "satirlar": [
+     [
+      "Toplam lead time",
+      "Σ (işlem + bekleme)",
+      "3 gün 4 saat"
+     ],
+     [
+      "Toplam işlem süresi",
+      "Σ işlem",
+      "52 dakika"
+     ],
+     [
+      "Process cycle efficiency",
+      "işlem / lead time",
+      "%1,1"
+     ],
+     [
+      "Rolled %C/A",
+      "Π (%C/A)",
+      "0,9 × 0,8 × 0,95 = %68"
+     ]
+    ]
+   },
+   "anlatim": "Dört metrik var. Toplam süre, yani {lead time}: işlem ve bekleme sürelerinin toplamı; örnekte üç gün dört saat. Toplam işlem süresi: yalnız işlem sürelerinin toplamı; örnekte elli iki dakika. Süreç verimliliği, yani {process cycle efficiency}: işlem süresinin toplam süreye oranı; örnekte yüzde bir virgül bir. Zincirleme ilk seferde doğru, yani {rolled} yüzde C bölü A: adımların oranlarının çarpımı. Örnekte sıfır virgül dokuz çarpı sıfır virgül sekiz çarpı sıfır virgül doksan beş; yaklaşık yüzde altmış sekiz."
+  },
+  {
+   "baslik": "Şikayeti bulguya çevir",
+   "tur": "ipucu",
+   "ipucu": {
+    "tip": "bilgi",
+    "metin": "\"Süreç yavaş\" → \"Bekleme süresinin %90'ı belge eksikliğinden geri dönmede\""
+   },
+   "anlatim": "Bu tablonun gücü şurada: süreç yavaş şikayetini ölçülebilir bir bulguya çevirir. Örneğin: bekleme süresinin yüzde doksanı belge eksikliğinden geri dönmede. Böyle bir cümleyle yönetime gidersen, iyileştirmenin nereye yapılacağı tartışma konusu olmaktan çıkar."
+  },
+  {
+   "baslik": "Lean israf türleri: TIMWOODS",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Harf",
+     "İsraf"
+    ],
+    "satirlar": [
+     [
+      "T · I · M",
+      "Transport · Inventory · Motion"
+     ],
+     [
+      "W · O · O",
+      "Waiting · Overproduction · Over-processing"
+     ],
+     [
+      "D · S",
+      "Defects · Skills (kullanılmayan yetenek)"
+     ],
+     [
+      "Örnek",
+      "Aynı belgeyi bayi, operasyon, tahsis 3 kez kontrol = over-processing"
+     ]
+    ]
+   },
+   "anlatim": "Yalın üretimdeki israf türleri TIMWOODS kısaltmasıyla hatırlanır. T taşıma, yani {Transport}. I stok, yani {Inventory}. M hareket, yani {Motion}. W bekleme, yani {Waiting}. O fazla üretim, yani {Overproduction}. İkinci O fazla işlem, yani {Over-processing}. D hata, yani {Defects}. S de kullanılmayan yetenek, yani {Skills}. Örnek: aynı belgeyi bayi, operasyon ve tahsis ekibinin üç kez kontrol etmesi; bu {over-processing}."
+  },
+  {
+   "baslik": "DFD (Data Flow Diagram)",
+   "maddeler": [
+    "Harici varlık: kare · Süreç: daire / yuvarlak dikdörtgen",
+    "Veri deposu: açık uçlu dikdörtgen · Veri akışı: etiketli ok",
+    "Seviye 0 (context diagram) → Seviye 1 → Seviye 2",
+    "KVKK veri envanteri: hangi veri, hangi sisteme, hangi amaçla, hangi üçüncü tarafa?"
+   ],
+   "anlatim": "Veri akış diyagramı, yani DFD. Harici varlık kare, süreç daire ya da yuvarlak köşeli dikdörtgen, veri deposu açık uçlu dikdörtgen, veri akışı ise etiketli bir oktur. Seviye sıfır, yani bağlam diyagramı, {context diagram}; ardından seviye bir ve seviye iki. KVKK veri envanteri ve veri akış haritası için çok değerlidir: kişisel veri hangi sisteme, hangi amaçla, hangi üçüncü tarafa aktarılıyor?"
+  },
+  {
+   "baslik": "As-is → to-be dönüşümü",
+   "maddeler": [
+    "As-is'te sorun noktaları (pain point) kırmızı",
+    "Kök neden: 5 Neden, balık kılçığı (Ishikawa), Pareto",
+    "To-be'de her değişiklik → bir gereksinim + bir KPI hedefi",
+    "Gap analizi: As-is | To-be | Fark | Etki | Gereksinim ID"
+   ],
+   "anlatim": "İleri seviyeye geçiyoruz. {As-is}'ten {to-be}'ye dönüşümde önce {as-is} diyagramındaki sorun noktaları, yani {pain point}'ler kırmızıyla işaretlenir. Sonra kök neden analizi yapılır: beş neden, balık kılçığı yani Ishikawa, ve Pareto. {To-be} diyagramında her değişiklik bir gereksinime ve bir KPI hedefine bağlanır. Bunu bir fark, yani gap analizi tablosunda toplarsın: {as-is}, {to-be}, fark, etki ve gereksinim ID'si.",
+   "bolum": "Süreç · İleri seviye"
+  },
+  {
+   "baslik": "Process mining",
+   "maddeler": [
+    "Sistem loglarından gerçek süreç: case ID, aktivite, zaman damgası",
+    "Celonis, Signavio Process Intelligence, Disco, PM4Py",
+    "Varyantlar, döngüler (rework), SLA ihlalleri",
+    "Conformance checking: modelden sapma"
+   ],
+   "anlatim": "Süreç madenciliği, yani {process mining}: sistem loglarından vaka kimliği, aktivite ve zaman damgasıyla gerçek süreç keşfedilir. {Celonis}, {Signavio} {Process Intelligence}, {Disco} ya da açık kaynak {PM4Py} ile varyantlar, döngüler yani yeniden işleme, {rework}, ve SLA ihlalleri bulunur. Uygunluk denetimi, yani {conformance checking}, modelden sapmayı gösterir."
+  },
+  {
+   "baslik": "Gereken log yapısı",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "case_id",
+     "activity",
+     "timestamp",
+     "resource"
+    ],
+    "satirlar": [
+     [
+      "BSV-1001",
+      "Başvuru alındı",
+      "2026-03-02 09:14",
+      "bayi_17"
+     ],
+     [
+      "BSV-1001",
+      "KKB sorgusu",
+      "2026-03-02 09:14",
+      "system"
+     ],
+     [
+      "BSV-1001",
+      "Manuel inceleme",
+      "2026-03-02 13:40",
+      "tahsis_04"
+     ],
+     [
+      "BSV-1001",
+      "Ek belge istendi",
+      "2026-03-02 13:52",
+      "tahsis_04"
+     ],
+     [
+      "BSV-1001",
+      "Manuel inceleme",
+      "2026-03-04 10:05",
+      "tahsis_02"
+     ],
+     [
+      "BSV-1001",
+      "Onaylandı",
+      "2026-03-04 10:20",
+      "tahsis_02"
+     ]
+    ]
+   },
+   "anlatim": "Gereken log yapısı dört alan: {case_id}, {activity}, {timestamp} ve {resource}. Örnek vaka BSV bin bir. İki Mart sabah dokuz on dörtte başvuru alındı, kaynak bayi on yedi. Aynı dakikada KKB sorgusu, kaynak {system}. On üç kırkta manuel inceleme, tahsis sıfır dört. On üç elli ikide ek belge istendi, yine tahsis sıfır dört. Dört Mart saat on sıfır beşte tekrar manuel inceleme, bu kez tahsis sıfır iki. On yirmide onaylandı, tahsis sıfır iki. Bu altı satırdan bile bir döngü görüyorsun: manuel inceleme iki kez yapılmış ve arada iki gün beklenmiş."
+  },
+  {
+   "baslik": "EPC, kontroller, yönetişim",
+   "maddeler": [
+    "EPC: ARIS'te olay → fonksiyon → olay; AND/OR/XOR bağlaçları",
+    "Kritik adıma kontrol noktası (önleyici/tespit edici, manuel/otomatik) + RACI",
+    "BDDK denetimi için süreç – risk – kontrol matrisi (RCM)",
+    "Yönetişim: sahip, versiyon, geçerlilik, onay akışı, merkezi depo, ortak alt süreç kütüphanesi"
+   ],
+   "anlatim": "Olay güdümlü süreç zinciri, yani {Event-driven Process Chain}, kısaca EPC: {ARIS} dünyasında olay, fonksiyon, olay zinciri; {AND}, {OR} ve {XOR} bağlaçlarıyla. Bazı kurumsal süreç kütüphaneleri hâlâ EPC kullanır. Süreç kontrolleri ve risk: her kritik adıma bir kontrol noktası eklenir; önleyici ya da tespit edici, manuel ya da otomatik; ve RACI. BDDK bilgi sistemleri denetimi ve iç kontrol için süreç, risk, kontrol matrisi, yani RCM üretilir. Model yönetişimi: süreç sahibi, versiyon, geçerlilik tarihi, onay akışı ve merkezi depo. Model tekrarını önlemek için ortak bir alt süreç kütüphanesi tutulur; örneğin kimlik doğrulama ya da müşteri onayı al."
+  },
+  {
+   "baslik": "Otomasyon fırsat analizi",
+   "maddeler": [
+    "Kural tabanlı, yüksek hacimli, yapılandırılmış veri → RPA / BPM / API adayı",
+    "Yargı gerektiren adım → karar destek ya da insan-döngüde (human-in-the-loop) yapay zeka"
+   ],
+   "anlatim": "Otomasyon fırsat analizi: kural tabanlı, yüksek hacimli ve yapılandırılmış veri kullanan adımlar RPA, BPM ya da {API} entegrasyonu için adaydır. Yargı gerektiren adımlar ise karar destek ya da insan döngüde, yani {human-in-the-loop} yapay zeka için adaydır."
+  },
+  {
+   "baslik": "Sık yapılan hatalar",
+   "maddeler": [
+    "Sadece mutlu yol (istisnalar işin %30–50'si olabilir)",
+    "As-is'i prosedürden kopyalamak",
+    "Tek diyagrama her şey; seviye ayrımı yok",
+    "Kişi adlarını lane yapmak",
+    "Tetikleyici ve sonuç tanımsız · diyagramı güncellememek"
+   ],
+   "anlatim": "Sık yapılan hatalar. Sadece mutlu yolu çizmek; oysa istisnalar gerçek işin yüzde otuz ile elli arasını oluşturabilir. {As-is}'i prosedürden kopyalamak, sahada doğrulamamak. Tek diyagrama her şeyi sığdırmak, seviye ayrımı yapmamak. Kişi adlarını şerit yapmak, rol yerine. Başlangıç tetikleyicisini ve bitiş sonucunu tanımlamamak. Ve diyagramı güncellememek: değişen süreç, eski diyagramla güvenilirliğini kaybeder.",
+   "bolum": "Süreç · Hatalar ve mülakat"
+  },
+  {
+   "baslik": "Mülakat soruları",
+   "maddeler": [
+    "1. As-is için kaynaklar; çelişki olursa?",
+    "2. Swimlane'de darboğaz nasıl bulunur?",
+    "3. SIPOC ne zaman?",
+    "4. Process mining için hangi alanlar?",
+    "5. İyileştirme başarısı hangi metriklerle?"
+   ],
+   "anlatim": "Mülakat soruları. Bir: {as-is} sürecini çıkarırken hangi kaynakları kullanırsınız, çelişki olursa ne yaparsınız? İki: {swimlane} diyagramında darboğazı nasıl tespit edersiniz? Üç: SIPOC ne zaman kullanılır? Dört: {process mining} için hangi veri alanları gerekir? Beş: bir süreç iyileştirmesinin başarısını hangi metriklerle ölçersiniz?"
+  },
+  {
+   "baslik": "Cevap ipuçları",
+   "maddeler": [
+    "Doküman + mülakat + gözlem + log; çelişkide gözlem ve log kazanır, farkı yaz",
+    "Şerit değiştiren oklar, kuyruk biriken insan adımı, bekleme süresi",
+    "Kapsam ve sınırı netleştirmek için, çizimden önce",
+    "case_id, activity, timestamp (+ resource)",
+    "Lead time, aktivite oranı, zincirleme %C/A, devir sayısı"
+   ],
+   "anlatim": "Kısa ipuçları, bu bölümün içeriğinden. Bir: doküman, mülakat, gözlem ve log; çelişkide gerçekte olanı gösteren gözlem ve log esas alınır, fark ayrıca not edilir. İki: şerit değiştiren oklara, kuyruğun biriktiği insan adımlarına ve bekleme sürelerine bakarsın. Üç: SIPOC, kapsamı ve sınırları netleştirmek için çizimden önce kullanılır. Dört: {case_id}, {activity}, {timestamp}; ve varsa {resource}. Beş: toplam süre, aktivite oranı, zincirleme ilk seferde doğru oranı ve devir sayısı; birazdan metrik kartında hepsini göreceğiz."
+  },
+  {
+   "baslik": "Swimlane nasıl okunur?",
+   "tur": "gorsel",
+   "gorsel": "gorseller/g14.png",
+   "odaklar": [
+    {
+     "kutu": [
+      0.0,
+      0.1,
+      0.2,
+      0.88
+     ],
+     "etiket": "1 · Şerit adları: kimler var?"
+    },
+    {
+     "kutu": [
+      0.15,
+      0.13,
+      0.75,
+      0.5
+     ],
+     "etiket": "2 · Başlangıçtan okları izle"
+    },
+    {
+     "kutu": [
+      0.45,
+      0.5,
+      0.75,
+      0.68
+     ],
+     "etiket": "Darboğaz adayı: manuel inceleme"
+    },
+    {
+     "kutu": [
+      0.0,
+      0.88,
+      1.0,
+      0.97
+     ],
+     "etiket": "5 devir teslim"
+    }
+   ],
+   "anlatim": "Görsel rehbere geçiyoruz. {Swimlane} diyagramı şöyle okunur. Bir: soldaki şerit adlarını oku; kimler var? Burada bayi, sistem, kredi tahsis ve operasyon. İki: başlangıç dairesini bul ve okları takip et. Bayi başvuru girer, sistem kontrolleri yapar, skor yeterli mi diye sorar. Üç: her ok bir şeritten diğerine geçtiğinde dur; burada iş el değiştiriyor. Bilgi eksiksiz geçiyor mu, ne kadar bekliyor diye sor. Dört: karar noktasının iki çıkışını ayrı ayrı izle. Evet ise otomatik onay ve sözleşme imzalat; hayır ise kredi tahsiste manuel inceleme. Beş: aynı şeritte arka arkaya çok adım varsa o rolün yüküne bak. Vurgulu manuel inceleme kutusu insan iş gücüne bağlı olduğu için tipik darboğaz adayıdır; kuyruk burada birikir. Alttaki not: bu akışta beş devir teslim var: bayiden sisteme, sistemden tahsise, tahsisten bayiye, sistemden bayiye ve bayiden operasyona.",
+   "bolum": "Süreç · Görsel rehber"
+  },
+  {
+   "baslik": "Bu çizim bilerek sade",
+   "tur": "ipucu",
+   "ipucu": {
+    "tip": "bilgi",
+    "metin": "Ret yolu yok; \"Sözleşme imzalat\"a iki ok doğrudan giriyor. BPMN'de: ret yolunu ekle, iki oku XOR birleşiminde topla."
+   },
+   "anlatim": "Bir not: bu çizim sade tutuldu. Manuel incelemenin ret yolu gösterilmedi ve sözleşme imzalat adımına iki ok doğrudan giriyor. Aynı süreci BPMN'de çizerken ret yolunu eklersin ve iki oku önce bir {XOR} birleşim kapısında toplarsın; bunu BPMN uygulama paketindeki hata kataloğunda görmüştük."
+  },
+  {
+   "baslik": "Value Stream Map nasıl okunur?",
+   "tur": "gorsel",
+   "gorsel": "gorseller/g15.png",
+   "odaklar": [
+    {
+     "kutu": [
+      0.0,
+      0.15,
+      1.0,
+      0.43
+     ],
+     "etiket": "Adım kutuları, veri kutuları, kuyruklar"
+    },
+    {
+     "kutu": [
+      0.0,
+      0.55,
+      1.0,
+      0.8
+     ],
+     "etiket": "Merdiven: üst bekleme, alt işlem"
+    },
+    {
+     "kutu": [
+      0.0,
+      0.8,
+      1.0,
+      0.95
+     ],
+     "etiket": "Toplam: 60 dk işlem, ≈ 3 gün 5 saat"
+    }
+   ],
+   "anlatim": "Değer akış haritası şöyle okunur. Üstte adım kutuları ve altlarında veri kutuları var: işlem süresi ve yüzde C bölü A. Başvuru girişi on beş dakika ve yüzde doksan beş; belge kontrolü yirmi dakika ve yüzde yetmiş; kredi inceleme on beş dakika ve yüzde doksan; sözleşme on dakika ve yüzde doksan sekiz. Aradaki üçgenler kuyruktur, yani bekleyen iş. En alttaki merdiven çizgisi zaman çizelgesidir: üst basamaklar beklemeyi, alt basamaklar gerçek işlemi gösterir. Beklemeler dört saat, bir gün ve iki gün. Basamakların üstündeki rakamları toplayınca müşterinin beklediği toplam süreyi bulursun. Toplam işlem altmış dakika; toplam süre yaklaşık üç gün beş saat. Süreç verimliliği altmış bölü dört bin altı yüz yirmi dakika, yaklaşık yüzde bir virgül üç. İlk seferde doğru oranı sıfır virgül doksan beş çarpı sıfır virgül yetmiş çarpı sıfır virgül doksan çarpı sıfır virgül doksan sekiz; yaklaşık yüzde elli dokuz. Bu resim öğretim amacıyla örnek değerler kullanıyor."
+  },
+  {
+   "baslik": "Önce neye dokunursun?",
+   "tur": "ipucu",
+   "ipucu": {
+    "tip": "uyari",
+    "metin": "%C/A'sı en düşük adım: belge kontrolü (%70). Eksik belge 1 günlük kuyruğu da besler → bayi portalında zorunlu belge kontrolü + otomatik belge okuma."
+   },
+   "anlatim": "Bu örnekte iyileştirme önceliği açık: yüzde C bölü A'sı en düşük adım belge kontrolü, yüzde yetmiş. Eksik belge, ardından gelen bir günlük kuyruğu da besler. Bu yüzden bayi portalında zorunlu belge kontrolü ve otomatik belge okuma ilk hedeftir."
+  },
+  {
+   "baslik": "Menü rehberi: swimlane hangi araçta?",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Araç",
+     "Swimlane nasıl açılır",
+     "İpucu"
+    ],
+    "satirlar": [
+     [
+      "draw.io",
+      "pool → Horizontal Pool · Lane",
+      "Arrange → Layout"
+     ],
+     [
+      "Visio",
+      "Cross-Functional Flowchart · Swimlane",
+      "Separator: aşama"
+     ],
+     [
+      "Miro",
+      "Templates → swimlane",
+      "Kenardan bağlayıcı çek"
+     ],
+     [
+      "PowerPoint / Excel",
+      "Tavsiye edilmez",
+      "Doğrulanamaz, ölçeklenmez"
+     ]
+    ]
+   },
+   "anlatim": "Hangi araçta nasıl çizilir? draw.io'da sol paneldeki arama kutusuna {pool} yaz ve {Horizontal Pool} şeklini sürükle. Şerit eklemek için havuz seçiliyken sağ panelde {Arrange}'dan şerit sayısını artır ya da {Lane} şeklini havuzun içine bırak. Kutu içine bırakılan şekiller şeritle birlikte taşınır; {Arrange}, {Layout} ile otomatik düzen yapılır. Visio'da {File}, {New}, {Cross-Functional Flowchart}, {Create}. Şerit için {Cross-Functional Flowchart} sekmesinde {Swimlane}, aşama için {Separator}. Ayrıntılar Visio videosunda. Miro'da sol araç çubuğunda {Templates}, aramaya {swimlane} ya da {flowchart} yaz, şablonu ekle. Kartları şeride sürükle; bağlayıcı için kartın kenarındaki noktadan çek. PowerPoint ya da Excel ise tavsiye edilmez: doğrulanamaz ve ölçeklenmez."
+  },
+  {
+   "baslik": "Laboratuvar: kasko as-is analizi (~60 dk)",
+   "maddeler": [
+    "1. SIPOC: örneği kendi cümlelerinle doldur, 5–7 ana adım",
+    "2. Bilgi topla: satış temsilcisi + operasyon uzmanı, 20'şer dk",
+    "\"Son poliçeyi adım adım anlatın\" · \"Nerede bekliyorsunuz?\" · \"En sık hangi hata?\"",
+    "3. Swimlane: Müşteri, Bayi, Sigorta Operasyonu, Sigorta Şirketi, Sistem"
+   ],
+   "anlatim": "Laboratuvar: kasko poliçesi tanzimi için {as-is} analizi; yaklaşık altmış dakika. Bir, SIPOC: bölümün başındaki örneği kopyala; tedarikçi, girdi, süreç, çıktı ve müşteri sütunlarını kendi cümlelerinle doldur. Süreci beş ile yedi ana adımla sınırla. İki, bilgi topla: bir satış temsilcisi ve bir operasyon uzmanıyla yirmişer dakikalık görüşme planla. Şunları sor: son yaptığınız poliçeyi adım adım anlatın; nerede bekliyorsunuz; en sık hangi hata oluyor? Üç, {swimlane} çiz: şeritler müşteri, bayi, sigorta operasyonu, sigorta şirketi, ki ayrı havuz olabilir, ve sistem. Adımları fiil artı nesne ile yaz.",
+   "bolum": "Süreç · Laboratuvar"
+  },
+  {
+   "baslik": "Laboratuvar: adım 4–8",
+   "maddeler": [
+    "4. Devir teslimleri say; her adıma işlem + bekleme (bilmiyorsan \"?\")",
+    "5. VSM tablosu: Adım | işlem | bekleme | %C/A → lead time, verimlilik",
+    "6. En büyük beklemeye 5 Neden; sonuç tek cümle",
+    "7. To-be: bir iyileştirme, hangi adım ve metrik",
+    "8. Gap: As-is | To-be | Fark | Gereksinim ID"
+   ],
+   "anlatim": "Dört, işaretle: her devir teslimi say. Her adımın yanına işlem süresini ve bekleme süresini yaz; süreyi bilmiyorsan soru işareti koy ve sor. Beş, VSM tablosu: adım, işlem süresi, bekleme ve yüzde C bölü A. Toplam süreyi ve süreç verimliliğini hesapla. Altı, kök neden: en büyük bekleme için beş neden uygula ve sonucu bir cümleyle yaz. Yedi, {to-be} taslak: bir iyileştirme öner; hangi adımı ve hangi metriği değiştirdiğini göster. Sekiz, gap analizi tablosu: {as-is}, {to-be}, fark ve gereksinim ID'si."
+  },
+  {
+   "baslik": "Her adımı üç renkten birine boya",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Sınıf",
+     "Firma örnekleri",
+     "Ne yapılır"
+    ],
+    "satirlar": [
+     [
+      "Değer katan (VA)",
+      "Kredi kararı vermek · krediyi kullandırmak",
+      "Korunur, hızlandırılır"
+     ],
+     [
+      "Gerekli ama değer katmayan (NNVA)",
+      "KKB sorgusu · rehin tesisi, dain-i mürtehin kontrolü",
+      "Otomatikleştirilir, kısaltılır"
+     ],
+     [
+      "İsraf (UNVA)",
+      "Aynı belgeyi 3 ekip kontrol · eksik belgeyle bayiye iade",
+      "Kaldırılır"
+     ]
+    ]
+   },
+   "anlatim": "Uygulama paketi. İlk başlık: her adımı üç renkten birine boya. VSM'de her adımın yanına bir sınıf yazılır; bu sınıf iyileştirmede hangi adıma dokunacağını belirler. Değer katan, yani VA: müşterinin para ödemeye razı olacağı iş. Firma örnekleri: kredi kararını vermek ve krediyi kullandırmak. Korunur ve hızlandırılır. Gerekli ama değer katmayan, yani NNVA: mevzuat ya da risk yüzünden zorunlu ama müşteri için değer üretmeyen iş. Örnekler: KKB sorgusu; rehin tesisi ve kaskoda dain-i mürtehin kontrolü. Otomatikleştirilir ve kısaltılır. İsraf, yani UNVA: kaldırılabilecek iş. Örnekler: aynı belgenin bayi, operasyon ve tahsis tarafından üç kez kontrol edilmesi; eksik belge yüzünden başvurunun bayiye geri gönderilmesi. Kaldırılır.",
+   "bolum": "Süreç · Uygulama paketi"
+  },
+  {
+   "baslik": "Ofiste 8 israf (1/2)",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Kod",
+     "İsraf",
+     "Firma örneği"
+    ],
+    "satirlar": [
+     [
+      "D",
+      "Hata (eksik, yanlış bilgi)",
+      "Fatura bedeli yanlış → kredi/değer oranı yanlış"
+     ],
+     [
+      "M",
+      "Manuel devir",
+      "Belge e-postayla geliyor, elle yükleniyor"
+     ],
+     [
+      "W",
+      "Bekleme",
+      "Manuel incelemede analist kuyruğu"
+     ],
+     [
+      "PD",
+      "Yarım iş",
+      "Onaylı ama imzasız başvurular (U08: 30 gün sonra iptal)"
+     ]
+    ]
+   },
+   "anlatim": "TIMWOODS listesi üretimden gelir; ofis ve yazılım süreçlerinde şu sekizli sınıflandırma daha kolay uygulanır. VSM'de israfı kırmızı harf koduyla işaretlersin. D, hata, yani eksik ya da yanlış bilgi: başvuruda araç fatura bedeli yanlış girilmiş, kredi değer oranı yanlış hesaplanıyor. M, manuel devir: belge bayiden e-postayla geliyor, operasyon sisteme elle yüklüyor. W, bekleme: manuel incelemeye düşen başvuru analist kuyruğunda bekliyor. PD, yarım iş: onaylanmış ama sözleşmesi imzalanmamış başvurular; U08'e göre otuz gün sonra iptal."
+  },
+  {
+   "baslik": "Ofiste 8 israf (2/2)",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Kod",
+     "İsraf",
+     "Firma örneği"
+    ],
+    "satirlar": [
+     [
+      "TS",
+      "Bağlam değiştirme",
+      "Analist kredi, muvafakat, rehin kaldırma arasında gidip geliyor"
+     ],
+     [
+      "EP",
+      "Fazla süreç",
+      "Düşük tutarlara da çift imza"
+     ],
+     [
+      "EF",
+      "Fazla özellik",
+      "Portal'da kullanılmayan rapor ekranları"
+     ],
+     [
+      "H",
+      "Kahramanlık",
+      "Ay sonu kampanyası gece mesaisiyle yetişiyor"
+     ]
+    ]
+   },
+   "anlatim": "TS, bağlam değiştirme: analist aynı anda kredi, hasar muvafakati ve rehin kaldırma işleri arasında gidip geliyor. EP, fazla süreç: tutarı düşük başvurular için de çift imza istenmesi. EF, fazla özellik: bayi portalında hiç kullanılmayan rapor ekranları. H, kahramanlık: ay sonu kampanyasında kullandırımların gece mesaisiyle yetiştirilmesi."
+  },
+  {
+   "baslik": "Metrik kartı (1/2)",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Metrik",
+     "Formül",
+     "Ne söyler"
+    ],
+    "satirlar": [
+     [
+      "İşlem süresi (PT)",
+      "Kesintisiz çalışıldığında süre",
+      "Gerçek iş yükü"
+     ],
+     [
+      "Toplam süre (LT)",
+      "Σ (işlem + bekleme)",
+      "Müşterinin hissettiği süre"
+     ],
+     [
+      "Aktivite oranı (%A)",
+      "PT ÷ LT × 100",
+      "Zamanın ne kadarında iş ilerliyor"
+     ]
+    ]
+   },
+   "anlatim": "Metrik kartı. İşlem süresi, PT: adımın kesintisiz çalışıldığında sürdüğü süre; gerçek iş yükünü söyler. Toplam süre, LT: işlem ve bekleme toplamı; müşterinin hissettiği süre. Aktivite oranı, yüzde A: PT bölü LT çarpı yüz; zamanın ne kadarında iş gerçekten ilerliyor. Orta seviyedeki VSM tablosunda bu, {process cycle efficiency} adıyla geçiyordu."
+  },
+  {
+   "baslik": "Metrik kartı (2/2)",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Metrik",
+     "Formül",
+     "Ne söyler"
+    ],
+    "satirlar": [
+     [
+      "%C/A",
+      "Sonraki adımın düzeltmeden kullanabildiği oran",
+      "Hangi adım sonrakine sorun gönderiyor"
+     ],
+     [
+      "Zincirleme %C/A (RFPY)",
+      "Π %C/A",
+      "Hiç geri dönmeden ilerleyen iş oranı"
+     ],
+     [
+      "Devir sayısı",
+      "Şeritten şeride geçiş sayısı",
+      "Her devir bir bekleme ve hata fırsatı"
+     ]
+    ]
+   },
+   "anlatim": "Yüzde C bölü A: bir sonraki adımın, gelen işi düzeltmeden kullanabildiği oran; hangi adımın kendinden sonrakine sorun gönderdiğini söyler. Zincirleme yüzde C bölü A, yani RFPY: tüm oranların çarpımı; baştan sona hiç geri dönmeden ilerleyen iş oranı. Devir sayısı: işin bir şeritten diğerine geçiş sayısı; her devir bir bekleme ve hata fırsatıdır."
+  },
+  {
+   "baslik": "Tek kısıt kuralı",
+   "tur": "ipucu",
+   "ipucu": {
+    "tip": "uyari",
+    "metin": "Throughput'u kapasitesi en düşük adım belirler. Darboğaz olmayanı hızlandırmak throughput'u değiştirmez, kuyruğu büyütür. Tek öneri: darboğaza ya da en büyük gecikme kaynağına."
+   },
+   "anlatim": "Şimdi en önemli kural: tek kısıt kuralı. Bir sürecin birim zamanda bitirebildiği iş sayısını, yani {throughput}'u, kapasitesi en düşük adım belirler. Darboğaz olmayan bir adımı hızlandırmak {throughput}'u değiştirmez; bu adım darboğazdan önceyse yalnızca darboğazın önündeki kuyruğu büyütür. VSM'de ayrıca en büyük gecikme kaynağına bakılır: kapasite darboğazı olmasa da en uzun beklemeyi ve en çok geri dönüşü üreten adım, toplam süreyi en çok uzatan adımdır. VSM sonunda tek bir öneri yap; o öneri darboğaza ya da en büyük gecikme kaynağına dokunsun."
+  },
+  {
+   "baslik": "Bağımsız görev: kasko yenileme",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "#",
+     "Adım (şerit)",
+     "Bekleme",
+     "İşlem",
+     "%C/A"
+    ],
+    "satirlar": [
+     [
+      "1",
+      "Hatırlatma gönder (Sigorta Op.)",
+      "240 dk",
+      "10 dk",
+      "%95"
+     ],
+     [
+      "2",
+      "Yeni poliçeyi ilet (Müşteri / Bayi)",
+      "2.880 dk",
+      "15 dk",
+      "%60"
+     ],
+     [
+      "3",
+      "Poliçeyi kontrol et (Sigorta Op.)",
+      "480 dk",
+      "10 dk",
+      "%90"
+     ],
+     [
+      "4",
+      "Sisteme kaydet (Sigorta Op.)",
+      "60 dk",
+      "5 dk",
+      "%98"
+     ]
+    ]
+   },
+   "anlatim": "Bağımsız görev: kasko yenileme değer akışı. Firma kuralı: kasko muafiyetsiz olmalı, dain-i mürtehin Firma olmalı; bitişten sonra on beş gün içinde yenilenmezse yasal süreç başlar. Aşağıdaki örnek değerlerle, ki gerçek Firma verisi değildir, metrik kartını doldur, adımları sınıflandır, darboğazı bul ve tek bir iyileştirme öner. Bir: yenileme hatırlatması gönder, sigorta operasyonu; öncesinde iki yüz kırk dakika bekleme, on dakika işlem, yüzde doksan beş. İki: yeni poliçeyi ilet, müşteri ya da bayi; iki bin sekiz yüz seksen dakika, yani iki gün bekleme, on beş dakika işlem, yüzde altmış. Üç: poliçeyi kontrol et, yani muafiyet ve dain-i mürtehin; sigorta operasyonu; dört yüz seksen dakika bekleme, on dakika işlem, yüzde doksan. Dört: poliçeyi sisteme kaydet, sigorta operasyonu; altmış dakika bekleme, beş dakika işlem, yüzde doksan sekiz. Doğru yaptığını nasıl anlarsın? Toplam işlem süresini ve toplam süreyi dakika cinsinden buldun; aktivite oranın yüzde ikinin altında; zincirleme oran yaklaşık yüzde elli. Çözüm videonun sonunda.",
+   "bolum": "Süreç · Bağımsız görev"
+  },
+  {
+   "baslik": "Sorun giderme (1/2)",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Belirti",
+     "Olası neden",
+     "Çözüm"
+    ],
+    "satirlar": [
+     [
+      "Herkes süreci farklı anlatıyor",
+      "Herkes kendi şeridini anlatıyor",
+      "\"Son yaptığınız işi anlatın\"; bir işi baştan sona izle"
+     ],
+     [
+      "Diyagram sayfaya sığmıyor",
+      "Seviyeler karışmış",
+      "Üstte 5–7 adım; ayrıntı alt sürece"
+     ],
+     [
+      "Bekleme sürelerini kimse bilmiyor",
+      "Süre ölçülmüyor",
+      "\"?\" yaz; durum değişikliği zamanlarından hesapla (SQL, Kibana)"
+     ]
+    ]
+   },
+   "anlatim": "Sorun giderme. Görüşmede herkes süreci farklı anlatıyorsa: herkes kendi şeridini anlatıyor, olması gereken ile olan karışıyordur. Son yaptığınız işi anlatın diye sor; mümkünse bir işi baştan sona izle. Diyagram bir sayfaya sığmıyorsa: tek diyagramda farklı seviyeler karışmıştır. Üst seviyede beş ile yedi adım bırak, ayrıntıyı alt süreç diyagramına taşı. Bekleme sürelerini kimse bilmiyorsa: süre ölçülmüyordur. Soru işareti yaz ve sistem kayıtlarındaki durum değişikliği zamanlarından hesapla; SQL ya da Kibana ile. İkisini de ilerideki videolarda göreceğiz.",
+   "bolum": "Süreç · Sorun giderme ve bilgi kontrolü"
+  },
+  {
+   "baslik": "Sorun giderme (2/2)",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Belirti",
+     "Olası neden",
+     "Çözüm"
+    ],
+    "satirlar": [
+     [
+      "Çok sayıda geri dönüş oku",
+      "Rework yüksek",
+      "Geri dönüşleri kırmızı çiz, %C/A olarak yaz"
+     ],
+     [
+      "İyileştirme listesi 10 madde",
+      "Darboğaz belirlenmedi",
+      "Toplam süreye en çok ekleyeni seç; tek öneri"
+     ]
+    ]
+   },
+   "anlatim": "Diyagramda çok sayıda geri dönüş oku varsa: yeniden işleme, yani {rework}, yüksektir. Geri dönüşleri kırmızı çiz ve sayısını yüzde C bölü A olarak adımın altına yaz. İyileştirme listesi on maddeyi bulduysa: darboğaz belirlenmemiştir. Toplam süreye en çok ekleyen adımı seç; bekleme ile düşük oranın yol açtığı tekrarı birlikte düşün. İki aday çıkarsa ikisini de yaz, gerekçesiyle birini seç ve tek öneri yap."
+  },
+  {
+   "baslik": "Bilgi kontrolü 1/5",
+   "tur": "soru",
+   "soru": {
+    "metin": "Toplam süre 3 gün, işlem süresi 1 saat. Müşteri neden yavaşlıktan şikayetçi?",
+    "secenekler": [
+     "Adımlar yavaş çalışıyor",
+     "İş zamanının çoğunu kuyrukta geçiriyor",
+     "Çalışan sayısı az",
+     "Sistem yavaş"
+    ],
+    "dogru": 1,
+    "cevap_cumle": 7,
+    "bekle": 4
+   },
+   "anlatim": "Beş soruluk bilgi kontrolü. Birinci soru: toplam süre üç gün, işlem süresi bir saat. Müşteri neden yavaşlıktan şikayetçi? A, adımlar yavaş çalışıyor. B, iş zamanının çoğunu kuyrukta geçiriyor. C, çalışan sayısı az. D, sistem yavaş. Doğru cevap B. Üç günün yalnız bir saati iş; geri kalanı kuyrukta bekleme."
+  },
+  {
+   "baslik": "Bilgi kontrolü 2/5",
+   "tur": "soru",
+   "soru": {
+    "metin": "KKB sorgusu hangi sınıfa girer?",
+    "secenekler": [
+     "Değer katan",
+     "Gerekli ama değer katmayan",
+     "İsraf",
+     "Yarım iş"
+    ],
+    "dogru": 1,
+    "cevap_cumle": 5,
+    "bekle": 4
+   },
+   "anlatim": "İkinci soru: KKB sorgusu hangi sınıfa girer? A, değer katan. B, gerekli ama değer katmayan. C, israf. D, yarım iş. Doğru cevap B: gerekli ama değer katmayan. Risk ve mevzuat gereği zorunlu; otomatikleştirilir ve kısaltılır."
+  },
+  {
+   "baslik": "Bilgi kontrolü 3/5",
+   "tur": "soru",
+   "soru": {
+    "metin": "%C/A değerleri %90, %80 ve %50 olan üç adımın zincirleme %C/A'sı?",
+    "secenekler": [
+     "%73",
+     "%50",
+     "%36",
+     "%220"
+    ],
+    "dogru": 2,
+    "cevap_cumle": 5,
+    "bekle": 4
+   },
+   "anlatim": "Üçüncü soru: yüzde C bölü A değerleri yüzde doksan, yüzde seksen ve yüzde elli olan üç adımın zincirleme oranı kaçtır? A, yüzde yetmiş üç. B, yüzde elli. C, yüzde otuz altı. D, yüzde iki yüz yirmi. Doğru cevap C: sıfır virgül dokuz çarpı sıfır virgül sekiz çarpı sıfır virgül beş, yani sıfır virgül otuz altı; yüzde otuz altı."
+  },
+  {
+   "baslik": "Bilgi kontrolü 4/5",
+   "tur": "soru",
+   "soru": {
+    "metin": "Onaylanıp sözleşmesi imzalanmayan başvurular hangi israf türüdür?",
+    "secenekler": [
+     "Bekleme",
+     "Yarım iş",
+     "Fazla özellik",
+     "Kahramanlık"
+    ],
+    "dogru": 1,
+    "cevap_cumle": 5,
+    "bekle": 4
+   },
+   "anlatim": "Dördüncü soru: onaylanıp sözleşmesi imzalanmayan başvurular hangi israf türüdür? A, bekleme. B, yarım iş. C, fazla özellik. D, kahramanlık. Doğru cevap B: yarım iş, kod PD."
+  },
+  {
+   "baslik": "Bilgi kontrolü 5/5",
+   "tur": "soru",
+   "soru": {
+    "metin": "Darboğaz olmayan bir adımı iki kat hızlandırırsan ne olur?",
+    "secenekler": [
+     "Toplam süre yarıya iner",
+     "Toplam süre değişmez, darboğaz önünde kuyruk büyür",
+     "%C/A artar",
+     "Devir sayısı azalır"
+    ],
+    "dogru": 1,
+    "cevap_cumle": 5,
+    "bekle": 4
+   },
+   "anlatim": "Beşinci soru: darboğaz olmayan bir adımı iki kat hızlandırırsan ne olur? A, toplam süre yarıya iner. B, toplam süre değişmez, darboğaz önünde kuyruk büyür. C, yüzde C bölü A artar. D, devir sayısı azalır. Doğru cevap B. Tek kısıt kuralı: {throughput}'u darboğaz belirler."
+  },
+  {
+   "baslik": "Hızlı başvuru: VSM yapma sırası",
+   "maddeler": [
+    "1. Sınır: ilk tetikleyici ve son çıktı",
+    "2. 5–7 ana adım ve sahibi (şerit)",
+    "3. İşlem, öncesindeki bekleme, %C/A; bilinmeyene \"?\"",
+    "4. VA / NNVA / İsraf + israf harf kodu",
+    "5. Metrik kartı · 6. Darboğaz + 5 Neden · 7. Tek iyileştirme ve beklenen metrik"
+   ],
+   "anlatim": "Hızlı başvuru: VSM yapma sırası, yedi adım. Bir: sürecin sınırını yaz; ilk tetikleyici ve son çıktı. İki: beş ile yedi ana adımı ve sahibini, yani şeridini listele. Üç: her adım için işlem süresi, öncesindeki bekleme ve yüzde C bölü A topla; bilinmeyene soru işareti yaz. Dört: her adımı VA, NNVA ya da israf diye işaretle, israflara harf kodunu yaz. Beş: metrik kartını hesapla. Altı: darboğazı seç, beş neden ile kök nedeni bul. Yedi: tek bir iyileştirme öner ve hangi metriği ne kadar değiştirmesini beklediğini yaz.",
+   "bolum": "Süreç · Çözümler"
+  },
+  {
+   "baslik": "Çözüm: metrikler",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Metrik",
+     "Hesap",
+     "Sonuç"
+    ],
+    "satirlar": [
+     [
+      "Toplam işlem",
+      "10 + 15 + 10 + 5",
+      "40 dk"
+     ],
+     [
+      "Toplam süre",
+      "40 + (240 + 2.880 + 480 + 60)",
+      "3.700 dk (≈ 61,7 saat)"
+     ],
+     [
+      "Aktivite oranı",
+      "40 ÷ 3.700",
+      "%1,1"
+     ],
+     [
+      "Zincirleme %C/A",
+      "0,95 × 0,60 × 0,90 × 0,98",
+      "%50,3"
+     ],
+     [
+      "Devir sayısı",
+      "Operasyon → Müşteri/Bayi → Operasyon",
+      "2"
+     ]
+    ]
+   },
+   "anlatim": "Bağımsız görevin çözümü. Toplam işlem süresi: on artı on beş artı on artı beş, kırk dakika. Toplam süre: kırk artı iki yüz kırk, iki bin sekiz yüz seksen, dört yüz seksen ve altmış; yani üç bin yedi yüz dakika, yaklaşık altmış bir virgül yedi saat. Aktivite oranı: kırk bölü üç bin yedi yüz, yüzde bir virgül bir. Zincirleme oran: sıfır virgül doksan beş çarpı sıfır virgül altmış çarpı sıfır virgül doksan çarpı sıfır virgül doksan sekiz, yüzde elli virgül üç. Yani her iki poliçeden biri en az bir kez geri dönüyor. Devir sayısı: operasyondan müşteri ya da bayiye, oradan tekrar operasyona; iki."
+  },
+  {
+   "baslik": "Çözüm: sınıflar, darboğaz, öneri",
+   "maddeler": [
+    "Sınıflar: 1–4 hepsi NNVA",
+    "En büyük gecikme: Adım 2 (2.880 dk, %60)",
+    "Öneri: kontrol listesi + Portal'da 2 zorunlu alan",
+    "Etki: Adım 2 ↑, Adım 3 geri gönderim ↓"
+   ],
+   "anlatim": "Sınıflar: dört adımın hepsi NNVA, yani gerekli ama değer katmayan; ikinci adım mevzuat ve sözleşme gereği. Bu süreçte müşteriye doğrudan değer katan adım yok; amaç süreyi ve geri dönüşü azaltmak. En büyük gecikme kaynağı ikinci adım: en uzun bekleme, iki bin sekiz yüz seksen dakika, ve en düşük oran, yüzde altmış, aynı adımda. Geri dönen poliçeler on beş günlük süreyi tüketir. Tek öneri: hatırlatma mesajına muafiyetsiz olmalı ve dain-i mürtehin Firma olmalı kontrol listesini ekle; bayi portalında poliçe yüklenirken bu iki alanı zorunlu yap. Beklenen etki: ikinci adımın oranı yükselir, üçüncü adımdaki geri gönderimler azalır. Hedef değeri tahminle yazma: önce mevcut oranı ölç, hedefi bu ölçüme göre öner; gerçek projede iş birimiyle birlikte kesinleşir."
+  },
+  {
+   "baslik": "Bu videoda neler gördük?",
+   "maddeler": [
+    "Hangi soruya hangi diyagram; akış şeması, SIPOC",
+    "Swimlane kuralları, seviyeler, VSM ve metrikler",
+    "TIMWOODS, DFD, as-is → to-be, process mining, EPC",
+    "Laboratuvar, 3 renk, 8 israf, metrik kartı, tek kısıt",
+    "Bağımsız görev ve çözüm"
+   ],
+   "anlatim": "Toparlayalım. Hangi soruya hangi diyagramın uyduğunu, akış şeması sembollerini ve SIPOC'u gördük. {Swimlane} kurallarını, süreç seviyelerini, VSM'i ve metriklerini öğrendik. TIMWOODS, DFD, {as-is}'ten {to-be}'ye dönüşüm, süreç madenciliği ve EPC'ye değindik. Laboratuvarı, üç renk sınıflamasını, sekiz israfı, metrik kartını ve tek kısıt kuralını çalıştık. Bağımsız görevi de çözdük. Bir sonraki videoda Firma diyagram okuma atölyesine geçiyoruz: beş gerçek diyagramı adım adım okuyacağız.",
+   "ton": "sakin"
+  }
+ ]
+}

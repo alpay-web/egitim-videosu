@@ -1,0 +1,46 @@
+# Kalite kapısı: **GEÇTİ**
+
+Kritik: 0 · Uyarı: 20 · Hakem incelemesi: 2
+
+## Uyarılar
+- senkron · sahne 6: ilk öğe 7 sn sonra (giriş yazısı otomatik gösterilir)
+- senkron · sahne 11: 17 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 12: 15 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 13: 14 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 19: ilk öğe 8 sn sonra (giriş yazısı otomatik gösterilir)
+- senkron · sahne 19: 19 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 20: 14 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 25: ilk öğe 4 sn sonra (giriş yazısı otomatik gösterilir)
+- senkron · sahne 25: 37 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 27: 28 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 29: 24 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 30: ilk öğe 5 sn sonra (giriş yazısı otomatik gösterilir)
+- senkron · sahne 32: ilk öğe 18 sn sonra (giriş yazısı otomatik gösterilir)
+- senkron · sahne 32: 18 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 33: ilk öğe 10 sn sonra (giriş yazısı otomatik gösterilir)
+- senkron · sahne 38: ilk öğe 22 sn sonra (giriş yazısı otomatik gösterilir)
+- senkron · sahne 38: 22 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 39: ilk öğe 8 sn sonra (giriş yazısı otomatik gösterilir)
+- senkron · sahne 40: 16 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 47: 16 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+
+## Hakem için (anlam doğruluğu — bağımsız gözden geçirme)
+- Sahne 2: belgede geçmeyen ad «Firma» — Bir: bir Firma süreci için SIPOC tablosu ve dört beş şeritli bir swimlane diyagr
+- Sahne 19: belgede geçmeyen ad «Mart» — İki Mart sabah dokuz on dörtte başvuru alındı, kaynak bayi on yedi.
+
+## Ölçümler
+```json
+{
+ "okunmayan": 0,
+ "yerlesim_senkron": 21,
+ "sadakat": {
+  "belge_satiri": 146,
+  "kapsam_orani": 1.0,
+  "eksik": 0,
+  "uydurma": 0,
+  "telaffuz": 0,
+  "kontrol": 2,
+  "eklenti": 0
+ }
+}
+```
