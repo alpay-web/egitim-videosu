@@ -1,0 +1,46 @@
+# Kalite kapısı: **GEÇTİ**
+
+Kritik: 0 · Uyarı: 20 · Hakem incelemesi: 2
+
+## Uyarılar
+- senkron · sahne 3: 15 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 5: 17 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 8: 19 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 9: 18 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 12: ilk öğe 7 sn sonra (giriş yazısı otomatik gösterilir)
+- senkron · sahne 15: ilk öğe 4 sn sonra (giriş yazısı otomatik gösterilir)
+- senkron · sahne 16: ilk öğe 6 sn sonra (giriş yazısı otomatik gösterilir)
+- senkron · sahne 18: ilk öğe 9 sn sonra (giriş yazısı otomatik gösterilir)
+- senkron · sahne 18: 22 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 21: 15 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 23: 15 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 27: 20 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 28: ilk öğe 16 sn sonra (giriş yazısı otomatik gösterilir)
+- senkron · sahne 28: 16 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 31: ilk öğe 8 sn sonra (giriş yazısı otomatik gösterilir)
+- senkron · sahne 31: 20 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 32: ilk öğe 7 sn sonra (giriş yazısı otomatik gösterilir)
+- senkron · sahne 32: 14 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+- senkron · sahne 34: ilk öğe 13 sn sonra (giriş yazısı otomatik gösterilir)
+- senkron · sahne 34: 24 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl
+
+## Hakem için (anlam doğruluğu — bağımsız gözden geçirme)
+- Sahne 57: belgede geçmeyen ad «{data association}» — D, data association.
+- Sahne 2: belgede geçmeyen ad «Firma» — Dördüncüsü: call activity, alt süreç ve sınır olayını Firma örnekleriyle birbiri
+
+## Ölçümler
+```json
+{
+ "okunmayan": 0,
+ "yerlesim_senkron": 36,
+ "sadakat": {
+  "belge_satiri": 146,
+  "kapsam_orani": 1.0,
+  "eksik": 0,
+  "uydurma": 0,
+  "telaffuz": 0,
+  "kontrol": 2,
+  "eklenti": 0
+ }
+}
+```

@@ -1,0 +1,612 @@
+#!/usr/bin/env python3
+"""BA Teknik Rehberi · Video 2: BPMN 1 (temel, orta, ileri, hatalar, mülakat, sembol sözlüğü, sembol sembol örnekler,
+pool ve lane). Belge satır 452–697. Anlatımlı, hiçbir bölüm atlanmadan. Çalıştır: python v02_bpmn_1.py"""
+import json
+import re
+from pathlib import Path
+
+S = []
+
+
+def m(baslik, maddeler, anlatim, **k):
+    S.append({"baslik": baslik, "maddeler": maddeler, "anlatim": anlatim, **k})
+
+
+def t(baslik, basliklar, satirlar, anlatim, **k):
+    S.append({"baslik": baslik, "tur": "tablo", "tablo": {"basliklar": basliklar, "satirlar": satirlar},
+              "anlatim": anlatim, **k})
+
+
+def dikkat(baslik, metin, anlatim, tip="uyari", **k):
+    S.append({"baslik": baslik, "tur": "ipucu", "ipucu": {"tip": tip, "metin": metin}, "anlatim": anlatim, **k})
+
+
+def g(baslik, dosya, odaklar, anlatim, **k):
+    S.append({"baslik": baslik, "tur": "gorsel", "gorsel": f"gorseller/{dosya}",
+              "odaklar": [{"kutu": b, "etiket": e} for b, e in odaklar], "anlatim": anlatim, **k})
+
+
+def soru(baslik, metin, secenekler, dogru, anlatim, cevap, **k):
+    import sys
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts"))
+    from video_uret import cumlelere_bol
+    S.append({"baslik": baslik, "tur": "soru", "soru": {"metin": metin, "secenekler": secenekler, "dogru": dogru,
+              "cevap_cumle": len(cumlelere_bol(anlatim)), "bekle": 4}, "anlatim": anlatim + " " + cevap, **k})
+
+
+# ───────────────────────────── Giriş
+m("BPMN nedir?", ["OMG standardı: iş birimi okur, süreç motoru çalıştırır", "Güncel sürüm: BPMN 2.0.2 (Ocak 2014)",
+                  "2.0.1 = ISO/IEC 19510:2013", "Üçlü: BPMN + CMMN (vaka) + DMN (karar)"],
+  "Önceki videoda UML ile sistemi anlattık. Bu videoda işin kendisini, yani süreci modelliyoruz. "
+  "BPMN, iş süreçlerini hem iş birimlerinin okuyabileceği hem de süreç motorlarının çalıştırabileceği şekilde modellemek için "
+  "OMG'nin yayımladığı standarttır. Güncel sürüm iki nokta sıfır nokta iki; Ocak iki bin on dörtte çıktı. "
+  "İki nokta sıfır nokta bir sürümü ayrıca ISO standardı olarak da yayımlandı. "
+  "BPMN yalnız değil: vaka yönetimi için CMMN, karar modelleme için DMN ile birlikte OMG'nin süreç standartları üçlüsünü oluşturur.",
+  bolum="BPMN: giriş ve hedefler", kanca="Bir süreci herkesin aynı şekilde okuyacağı tek bir dil.", ton="merakli")
+m("Bu bölümün hedefleri", ["P01 kredi sürecini pool, lane, 3 kapı ve sınır olaylarıyla çizmek",
+                           "Sembolü okumak: şekil → kenar kalınlığı → ikon", "11 kontrol akışı hatasını bulup düzeltmek",
+                           "Call activity, alt süreç ve sınır olayını ayırmak"],
+  "Bu bölümün sonunda dört şey yapabileceksin. Birincisi: Firma'nın P01 kredi sürecini havuz, şerit, üç kapı türü ve sınır olaylarıyla "
+  "{Camunda} {Modeler}'da çizmek. İkincisi: bir sembole bakıp türünü söylemek; sıra şöyle: önce şekil, sonra kenar kalınlığı, en son içindeki ikon. "
+  "Üçüncüsü: kilitlenme ve takılan {token} gibi on bir kontrol akışı hatasını tanımak, kendi diyagramında bulup düzeltmek. "
+  "Dördüncüsü: {call activity}, alt süreç ve sınır olayını Firma örnekleriyle birbirinden ayırmak.")
+t("Başlamadan önce gerekenler", ["Gereken", "Nereden", "Hazır mısın?"],
+  [["Süreç, adım, karar", "Süreç Diyagramlama, temel", "5–6 adıma dökebiliyorsun"],
+   ["Camunda Modeler", "camunda.com", "\"BPMN diagram\" seçeneği var"],
+   ["Tarayıcı alternatifi", "demo.bpmn.io", "Boş tuval, sembol paleti"],
+   ["Firma iş kuralları", "Çalışma Seti §1.3", "Vade 6–60 ay, KKB 5 sn"]],
+  "Başlamadan önce dört hazırlık var. Birincisi kavramlar: süreç, adım ve karar. Bunlar rehberin süreç diyagramlama bölümünün temel seviyesinde. "
+  "Bir süreci beş altı adımlık bir listeye dökebiliyorsan hazırsın. "
+  "İkincisi araç: {Camunda} {Modeler}, ücretsiz bir masaüstü programı; camunda nokta com'dan indirirsin. Açılış ekranında {BPMN diagram} seçeneğini görüyorsan tamam. "
+  "Kurulum yapamıyorsan üçüncü seçenek tarayıcı: demo nokta bpmn nokta io. Sayfada boş bir tuval ve solda sembol paleti açılıyorsa hazırsın. "
+  "Dördüncüsü Firma'nın iş kuralları, çalışma setinin bir nokta üç bölümünde. Vade aralığının altı ile altmış ay olduğunu "
+  "ve KKB için beş saniye kuralını ezbere söyleyebiliyorsan, başlayabiliriz.")
+
+# ───────────────────────────── Temel seviye
+t("Dört eleman ailesi", ["Aile", "Elemanlar", "Görünüm"],
+  [["Akış nesneleri", "Event, Activity, Gateway", "Daire, yuvarlak köşeli kutu, eşkenar dörtgen"],
+   ["Bağlayıcılar", "Sequence flow, Message flow, Association", "Düz ok, kesikli ok (başı boş daire), noktalı çizgi"],
+   ["Kulvarlar", "Pool (havuz), Lane (şerit)", "Büyük yatay/dikey dikdörtgenler"],
+   ["Artefaktlar", "Data object, Data store, Text annotation, Group", "Sayfa, silindir, köşeli parantez, kesikli kutu"]],
+  "BPMN'de her şey dört aileden birine girer. Birinci aile akış nesneleri: olay, yani {event}; aktivite, yani {activity}; ve kapı, yani {gateway}. "
+  "Olay bir daire, aktivite yuvarlak köşeli bir dikdörtgen, kapı ise eşkenar dörtgendir. "
+  "İkinci aile bağlayıcılar: {sequence flow} düz bir ok; {message flow} kesikli ve başında boş bir daire olan bir ok; {association} ise noktalı çizgi. "
+  "Üçüncü aile kulvarlar: havuz, yani {pool}, ve şerit, yani {lane}; yatay ya da dikey büyük dikdörtgenler. "
+  "Dördüncü aile artefaktlar: {data object} bir sayfa, {data store} bir silindir, {text annotation} köşeli parantez, {group} ise kesikli bir kutu.",
+  bolum="BPMN · Temel seviye")
+m("Olaylar: konum ve tetikleyici", ["Start: ince kenar", "Intermediate: çift ince kenar", "End: kalın kenar",
+                                     "İkon = tetikleyici: zarf, saat, sayfa, şimşek, üçgen…"],
+  "Olaylar konumlarına göre üçe ayrılır. Başlangıç olayı, yani {start}, ince kenarlıdır. Ara olay, yani {intermediate}, çift ince kenarlıdır. "
+  "Bitiş olayı, yani {end}, kalın kenarlıdır. Dairenin içindeki sembol ise olayı neyin tetiklediğini söyler. "
+  "Zarf mesajdır, yani {message}. Saat zamanlayıcıdır, yani {timer}. Sayfa koşuldur, yani {conditional}. Şimşek hatadır, yani {error}. "
+  "Üçgen sinyaldir, yani {signal}. Geri sarma işareti telafidir, yani {compensation}. Çarpı iptaldir, yani {cancel}. "
+  "Daire içinde dolu daire ise sonlandırmadır, yani {terminate}.")
+t("Aktivite türleri (1/2)", ["Tür", "Ne yapar"],
+  [["User task", "İnsan ekranda iş yapar"], ["Service task", "Sistem ya da API çağrısı"],
+   ["Script task", "Motorun içinde betik çalışır"], ["Business rule task", "Karar tablosu (DMN) çalışır"]],
+  "Şimdi aktivite türleri. {User task}'ta bir insan ekranda iş yapar. {Service task}'ta bir sistem ya da {API} çağrılır. "
+  "{Script task}'ta süreç motorunun içinde bir betik çalışır. {Business rule task}'ta ise bir karar tablosu, yani DMN çalışır.")
+t("Aktivite türleri (2/2)", ["Tür", "Ne yapar"],
+  [["Send / Receive task", "Mesaj gönderir / bekler"], ["Manual task", "Sistem dışı iş, ör. araç teslimi"],
+   ["Sub-process (+)", "İçinde adımlar olan alt süreç"], ["Call activity (kalın kenar)", "Tekrar kullanılabilir süreci çağırır"]],
+  "{Send task} mesaj gönderir, {receive task} mesaj bekler. {Manual task} sistem dışında yapılan iştir; örneğin aracın müşteriye teslimi. "
+  "Alt süreç, yani {sub-process}, kutunun altında artı işaretiyle gösterilir; içinde adımlar olan bir alt süreçtir. "
+  "{Call activity} ise kalın kenarlı bir kutudur ve başka yerde tanımlı, tekrar kullanılabilir bir süreci çağırır.")
+t("Kapı türleri (1/2)", ["Kapı", "Sembol", "Davranış", "Örnek"],
+  [["Exclusive (XOR)", "Çarpı / boş", "Koşula göre TEK yol", "Skor ≥ 1500 → otomatik onay, değilse manuel"],
+   ["Parallel (AND)", "Artı", "TÜM yollar aynı anda; birleşmede hepsini bekler", "KKB, MERNİS, kara liste paralel"],
+   ["Inclusive (OR)", "Daire", "Koşulu tutan BİR veya BİRKAÇ yol", "Kasko istendiyse kasko, trafik istendiyse trafik teklifi"]],
+  "Kapılara gelelim; burası BPMN'in kalbi. {Exclusive} kapı, kısaca {XOR}, çarpı işaretiyle ya da boş çizilir ve koşula göre yalnız tek bir yol açar. "
+  "Örnek: kredi skoru bin beş yüz ya da üstündeyse otomatik onay, değilse manuel inceleme. "
+  "{Parallel} kapı, kısaca {AND}, artı işaretiyle çizilir. Tüm yolları aynı anda açar; birleşmede de hepsini bekler. "
+  "Örnek: KKB, MERNİS ve kara liste kontrolü paralel yürür. "
+  "{Inclusive} kapı, kısaca {OR}, içinde bir daire olan kapıdır ve koşulu sağlayan bir ya da birkaç yolu açar. "
+  "Örnek: kasko istendiyse kasko teklifi, trafik sigortası istendiyse trafik teklifi; ikisi de istendiyse ikisi birden.")
+t("Kapı türleri (2/2)", ["Kapı", "Sembol", "Davranış", "Örnek"],
+  [["Event-based", "Çift daire içinde beşgen", "İlk gerçekleşen olaya göre yol", "İmza VEYA onaydan itibaren 30 gün (U08)"],
+   ["Complex", "Yıldız", "Özel birleşme kuralı", "3 onaydan 2'si gelince devam (nadir)"]],
+  "{Event-based} kapı, çift daire içinde bir beşgenle çizilir. Koşul sormaz; ilk gerçekleşen olaya göre yolu seçer. "
+  "Örnek: müşteri sözleşmeyi imzalar ya da onaydan itibaren otuz gün geçer; hangisi önce olursa. Bu, U08 yaşam döngüsündeki kuralın aynısı. "
+  "Son olarak {complex} kapı, yıldız işaretiyle çizilir ve özel bir birleşme kuralı taşır. "
+  "Örnek: üç onaydan ikisi gelince devam et. Nadiren kullanılır.")
+m("Pool ve lane", ["Pool = katılımcı: Firma, Müşteri, Bayi, Sigorta Şirketi", "Lane = pool içindeki rol / departman",
+                   "Kural: sequence flow pool sınırını geçemez", "Pool'lar arası iletişim: message flow"],
+  "Havuz, yani {pool}, bir katılımcıdır: Firma, müşteri, bayi ya da sigorta şirketi. "
+  "Şerit, yani {lane}, havuzun içindeki rol ya da departmandır: satış, kredi tahsis, operasyon gibi. "
+  "Ve unutulmaması gereken kural: düz ok, yani {sequence flow}, havuz sınırını geçemez. "
+  "Havuzlar arasındaki iletişim her zaman kesikli okla, yani {message flow} ile gösterilir.")
+dikkat("Havuz sınırı kuralı", "Sequence flow yalnız havuz İÇİNDE. Havuzlar arası = message flow (kesikli ok).",
+       "Buna özellikle dikkat et, çünkü mülakatta en çok sorulan ve diyagramlarda en sık yapılan hata bu. "
+       "Düz ok yalnız bir havuzun içinde kullanılır. İki ayrı kurum arasında, örneğin Firma ile bayi arasında, düz ok çizemezsin; "
+       "çünkü bir kurum diğerinin iş akışını yönetemez, yalnız ona mesaj gönderebilir. Havuzlar arası her zaman kesikli mesaj okudur.")
+
+# ───────────────────────────── Orta seviye
+t("Modelleme seviyeleri", ["Seviye", "Amaç", "Hedef kitle"],
+  [["Descriptive", "Mutlu yol + ana kararlar, az sembol", "İş birimi, yönetim"],
+   ["Analytic", "İstisnalar, zamanlayıcılar, mesajlaşma, alt süreçler", "BA, süreç sahipleri, test"],
+   ["Executable", "Veri, form, servis bağlantıları, XML", "Geliştirici, süreç motoru (Camunda, Flowable)"]],
+  "Orta seviyeye geçiyoruz. Bruce Silver'ın yaygın sınıflandırmasına göre üç modelleme seviyesi var. "
+  "Birincisi tanımlayıcı, yani {descriptive}: mutlu yol ve ana kararlar, az sembol. Hedef kitlesi iş birimi ve yönetim. "
+  "İkincisi analitik, yani {analytic}: istisnalar, zamanlayıcılar, mesajlaşma ve alt süreçler eklenir. Hedef kitlesi iş analisti, süreç sahipleri ve test ekibi. "
+  "Üçüncüsü çalıştırılabilir, yani {executable}: veri, form, servis bağlantıları ve {XML} detayları. "
+  "Hedef kitlesi geliştirici ve {Camunda} ya da {Flowable} gibi süreç motorları.", bolum="BPMN · Orta seviye")
+m("Sınır olayı (boundary event)", ["Aktivitenin kenarına yapışır", "Interrupting (düz çizgi): aktiviteyi keser",
+                                   "Non-interrupting (kesikli): aktivite sürerken paralel yol",
+                                   "Belge kontrolü + 48 saat timer (kesmeyen) → hatırlatma",
+                                   "KKB sorgula + error (kesen) → manuel inceleme kuyruğu"],
+  "Sınır olayı, yani {boundary event}, bir aktivitenin kenarına yapıştırılır. İki çeşidi var. "
+  "Kesen sınır olayı, yani {interrupting}, düz çizgiyle çizilir ve aktiviteyi keser. "
+  "Kesmeyen sınır olayı, yani {non-interrupting}, kesikli çizgiyle çizilir; aktivite sürerken paralel bir yol açar. "
+  "İki örnek: belge kontrolü görevine kırk sekiz saatlik, kesmeyen bir zamanlayıcı koyarsın; süre dolunca yöneticiye hatırlatma gider ama kontrol sürer. "
+  "KKB sorgula görevine ise kesen bir hata olayı koyarsın; servis hata verirse başvuru manuel inceleme kuyruğuna alınır.")
+t("Alt süreç türleri", ["Tür", "Görünüm", "Ne zaman"],
+  [["Embedded", "İnce kenar, [+]", "Ana sürecin parçası"],
+   ["Event sub-process", "Kesikli kenar", "Süreç içinde HERHANGİ bir anda tetiklenir: müşteri vazgeçti"],
+   ["Transaction", "Çift kenar", "Ya tamamı ya hiç; cancel / compensation ile"],
+   ["Ad-hoc", "~ işareti", "Sırasız görevler: hasar dosyasında ekspertiz belgeleri"]],
+  "Alt süreçlerin dört türü var. Gömülü alt süreç, yani {embedded}, ana sürecin parçasıdır. "
+  "Olay alt süreci, yani {event sub-process}, kesikli kenarlıdır ve sürecin içinde herhangi bir anda tetiklenebilir; "
+  "örneğin müşteri başvurudan vazgeçtiğinde. "
+  "{Transaction} alt süreci çift kenarlıdır ve ya tamamı ya hiç mantığıyla çalışır; iptal ya da telafi ile geri alınır. "
+  "{Ad-hoc} alt süreç dalga işaretiyle gösterilir; görevler sırasızdır. Örneğin hasar dosyasında ekspertiz belgeleri herhangi bir sırayla gelebilir.")
+m("Aktivite işaretleri", ["Loop: dönen ok", "Multi-instance paralel: üç dikey çizgi",
+                          "Örnek: borçlu ve kefil için ayrı KKB sorgusu aynı anda", "Multi-instance sıralı: üç yatay çizgi",
+                          "Compensation: geri sar"],
+  "Kutunun alt ortasındaki işaretler görevin nasıl tekrarlandığını söyler. Döngü, yani {loop}, dönen bir okla gösterilir. "
+  "Paralel çoklu örnek, yani {multi-instance}, üç dikey çizgidir; örneğin borçlu ve kefil için ayrı KKB sorgusu aynı anda yapılır. "
+  "Sıralı çoklu örnek üç yatay çizgidir. Telafi, yani {compensation}, ise geri sarma işaretidir.")
+m("Analitik süreç: başvurudan kullandırıma (1/2)",
+  ["1. Message start: bayi portalından başvuru geldi", "2. Parallel split: KKB | MERNİS | kara liste / MASAK",
+   "3. Parallel join", "4. Business rule task: DMN → Onay / Ret / Manuel", "5. XOR: Manuel ise tahsis incelemesi (48 sa timer → eskalasyon)"],
+  "Şimdi bunları bir arada görelim: taşıt kredisi başvurusundan kullandırıma uzanan analitik bir süreç. "
+  "Birinci adım bir mesaj başlangıç olayı: bayi portalından başvuru geldi. "
+  "İkinci adımda paralel kapı süreci üçe ayırır: KKB sorgusu, MERNİS doğrulama ve kara liste ile MASAK kontrolü; üçü de servis görevi. "
+  "Üçüncü adımda yine paralel bir kapı, yani {parallel join}, üç kolu birleştirir. "
+  "Dördüncü adım bir {business rule task}: DMN karar tablosu onay, ret ya da manuel sonucunu üretir. "
+  "Beşinci adımda {XOR} kapısı devreye girer: sonuç manuelse kredi tahsis incelemesi adlı kullanıcı görevi açılır; "
+  "bu göreve kırk sekiz saatlik bir zamanlayıcı bağlıdır ve süre dolunca eskalasyon yapılır.")
+m("Analitik süreç: başvurudan kullandırıma (2/2)",
+  ["6. Send task: sonucu bayiye ve müşteriye bildir", "7. Event-based: imza mesajı VEYA 30 gün → iptal",
+   "8. Inclusive: kasko / trafik / kredi hayat → call activity", "9. Service task: rehin tesisi, kullandırım",
+   "10. End: kullandırıldı · Error end: başarısız → poliçe iptali"],
+  "Altıncı adım bir {send task}: sonucu bayiye ve müşteriye bildir; bayi ayrı havuz olduğu için bu bir mesaj akışıdır. "
+  "Yedinci adımda olay tabanlı kapı bekler: sözleşme imzalandı mesajı mı gelecek, yoksa otuz günlük zamanlayıcı mı dolacak? "
+  "Süre önce dolarsa başvuru iptal edilir. "
+  "Sekizinci adımda kapsayıcı kapı, yani {OR}: kasko, trafik ya da kredi hayat sigortası istenmişse ilgili poliçe düzenlenir. "
+  "Bu bir {call activity}'dir ve sigorta poliçesi üret sürecini çağırır. "
+  "Dokuzuncu adım bir servis görevi: rehin tesisi ve kullandırım, yani bayiye ödeme. "
+  "Onuncu adımda iki bitiş var: {end}, yani kullandırıldı; ya da {error end}: kullandırım başarısız olursa telafi ile poliçe iptal edilir.")
+t("DMN karar tablosu (hit policy: FIRST)", ["#", "Kredi skoru", "LTV", "Gelir / taksit", "Karar"],
+  [["1", "< 900", "–", "–", "RET"], ["2", "≥ 1500", "≤ %70", "≥ 3", "OTOMATİK ONAY"],
+   ["3", "[900..1500)", "≤ %70", "≥ 2,5", "MANUEL İNCELEME"], ["4", "–", "> %70", "–", "MANUEL İNCELEME"],
+   ["5", "–", "–", "–", "MANUEL İNCELEME"]],
+  "Dördüncü adımdaki karar tablosuna bakalım. İsabet politikası, yani {hit policy}, {first}: yukarıdan aşağı okunur, ilk tutan satır kazanır. "
+  "Birinci satır: kredi skoru dokuz yüzün altındaysa ret. "
+  "İkinci satır: skor bin beş yüz ya da üstü, LTV, yani kredi tutarının araç bedeline oranı, yüzde yetmiş ya da altı, "
+  "gelirin taksite oranı da en az üçse otomatik onay. "
+  "Üçüncü satır: skor dokuz yüz ile bin beş yüz arasında, LTV yüzde yetmiş ya da altı, gelir taksit oranı en az iki buçuksa manuel inceleme. "
+  "Dördüncü satır: LTV yüzde yetmişin üstündeyse, skor ne olursa olsun manuel inceleme. "
+  "Beşinci satır her şeyi yakalar: hiçbiri tutmadıysa yine manuel inceleme.")
+dikkat("Eşikler örnektir", "Gerçek değerler kurumun kredi politikasından gelir. Hit policy: Unique, First, Priority, Any, Collect, Rule order, Output order.",
+       "Dikkat: bu tablodaki eşikler örnek. Gerçek değerler her zaman kurumun kredi politikasından gelir; tabloyu kendin uydurmazsın. "
+       "Bir de isabet politikası seçenekleri var: {Unique}, {First}, {Priority}, {Any}, {Collect}, {Rule order} ve {Output order}. "
+       "Son satırın her şeyi yakalaması bilinçli bir tercih: kural motorunun bilmediği bir durumda başvuru takılmaz, manuel incelemeye düşer.",
+       tip="bilgi")
+
+# ───────────────────────────── İleri seviye
+m("Collaboration ve compensation", ["Collaboration: birden çok pool + mesajlaşma (Firma ↔ Bayi ↔ Sigorta ↔ KKB)",
+                                                 "Choreography: yalnız katılımcılar arası mesaj sırası (B2B sözleşmeleri)",
+                                                 "Uzun işlemde ACID yok → compensation handler",
+                                                 "Poliçe üretildi ↔ poliçeyi iptal et (Saga deseni)"],
+  "İleri seviyeye geçiyoruz. İşbirliği diyagramı, yani {collaboration}, birden çok havuzu ve aralarındaki mesajlaşmayı gösterir: "
+  "Firma, bayi, sigorta şirketi ve KKB arasındaki trafik gibi. "
+  "Koreografi diyagramı, yani {choreography}, ise yalnız katılımcılar arası mesaj sırasına odaklanır; şirketler arası entegrasyon sözleşmelerinde kullanışlıdır. "
+  "Telafi ve {transaction} konusunda şunu bil: uzun süren işlemlerde veritabanındaki gibi {ACID} yoktur. "
+  "Sigorta poliçesi üretildi adımının telafi görevi poliçeyi iptal ettir. Kullandırım başarısız olursa bir telafi atan olayıyla geri alınır. "
+  "Buna {Saga} deseni denir.", bolum="BPMN · İleri seviye")
+m("Escalation, link, BPMN XML ve DI", ["Escalation: hata değil, üst seviyeye bildirim (limit aşımı → komite)",
+                                       "Link event: büyük diyagramda sayfalar arası \"git\"",
+                                       ".bpmn = süreç semantiği + diyagram yerleşimi (BPMNDI)",
+                                       "Araçlar arası taşınabilirlik buna dayanır"],
+  "Eskalasyon olayı, yani {escalation event}, bir hata değildir; üst seviyeye bildirimdir. Örneğin limit aşıldığında kredi komitesine haber verilir. "
+  "Bağlantı olayı, yani {link event}, büyük diyagramlarda sayfalar arası bir git bağlantısıdır. "
+  "Bir de dosya yapısı: nokta bpmn dosyası iki kısımdan oluşur. Birincisi süreç semantiği: {process}, {user task} gibi öğeler. "
+  "İkincisi diyagram yerleşimi, yani BPMNDI. Araçlar arasında taşınabilirlik bu ayrıma dayanır.")
+t("BPMN XML örneği", ["XML öğesi", "Ne anlatır"],
+  [["process · id KrediBasvuru · isExecutable true", "Çalıştırılabilir süreç"],
+   ["startEvent · id Start", "Başlangıç olayı"], ["serviceTask · id KKBSorgu · KKB sorgula", "Servis görevi"],
+   ["boundaryEvent · attachedToRef KKBSorgu · errorRef KKB_TIMEOUT", "Göreve yapışık hata olayı"],
+   ["sequenceFlow · sourceRef Start · targetRef KKBSorgu", "Başlangıçtan göreve ok"]],
+  "Küçük bir XML örneğiyle görelim. İlk öğe {process}: kimliği, yani {id}'si {KrediBasvuru}, {isExecutable} {true}; yani çalıştırılabilir süreç. "
+  "İçinde bir {startEvent} var, {id}'si {Start}: başlangıç olayı. Sonra bir {serviceTask}: {id}'si {KKBSorgu}, adı KKB sorgula; servis görevi. "
+  "Ardından bir {boundaryEvent}: {attachedToRef} {KKBSorgu}, {errorRef} {KKB_TIMEOUT}; yani göreve yapışık hata olayı. "
+  "Son öğe bir {sequenceFlow}: {sourceRef} {Start}, {targetRef} {KKBSorgu}; başlangıçtan göreve ok. "
+  "Gördüğün gibi XML'de sınır olayının hangi göreve yapıştığı açıkça yazılır.")
+m("Simülasyon, süreç madenciliği, stil", ["Signavio, Bizagi, ARIS: süre, maliyet, kaynak, olasılık → darboğaz",
+                                         "KPI: cycle time, bekleme, first-time-right, STP",
+                                         "Process mining: to-be ↔ loglardan gerçek süreç (conformance)",
+                                         "Stil: fiil + nesne · çıkışlar etiketli · split = join · bitiş adı sonuç"],
+  "Simülasyonda {Signavio}, {Bizagi} ya da {ARIS} gibi araçlarda aktivitelere süre, maliyet, kaynak ve olasılık atanır; böylece darboğaz bulunur. "
+  "Ölçüler şunlar: döngü süresi, yani {cycle time}; bekleme süresi; ilk seferde doğru oranı, yani {first-time-right}; "
+  "ve otomasyon oranı, yani STP. "
+  "Süreç madenciliğinde, yani {process mining}'de, modellenen hedef süreç sistem loglarından çıkarılan gerçek süreçle karşılaştırılır; "
+  "buna uygunluk denetimi, yani {conformance checking} denir. "
+  "Son olarak stil kuralları: aktivite adı fiil artı nesne olur; her kapının çıkışı etiketlidir; ayırma ve birleştirme kapıları eşleşir; "
+  "diyagram tek sayfayı geçerse alt sürece bölünür; bitiş olayının adı sonucu söyler, örneğin kredi reddedildi.")
+
+# ───────────────────────────── Sık hatalar, mülakat
+m("Sık yapılan hatalar", ["Pool'lar arası sequence flow", "AND split + XOR join · XOR split + AND join",
+                          "Gateway'e karar verdirmek", "Her departmanı ayrı pool yapmak",
+                          "Hata, timeout, iptal yok · 40–50 aktivite"],
+  "Şimdi sık yapılan hatalar. Birincisi havuzlar, yani {pool}'lar arasında {sequence flow} çizmek; orada {message flow} olmalı. "
+  "İkincisi kapı eşleştirme: {AND} {split} ile ayırıp {XOR} {join} ile birleştirirsen akış çoğalır; "
+  "{XOR} {split} ile ayırıp {AND} {join} ile birleştirirsen süreç kilitlenir, yani {deadlock}. "
+  "Üçüncüsü kapıya karar verdirmek: kararı önceki aktivite verir, kapı yalnız yönlendirir. "
+  "Dördüncüsü her departmanı ayrı havuz yapmak: aynı kurumun departmanları şerit olmalı. "
+  "Beşincisi hata, zaman aşımı ve iptal senaryolarını hiç modellememek. "
+  "Altıncısı da aynı diyagramda kırk elli aktivite: okunamaz; L sıfırdan L dörde seviyelendirme gerekir.",
+  bolum="BPMN · Hatalar ve mülakat")
+dikkat("Kapı ile kararı karıştırma", "Gateway karar VERMEZ. Önce \"Başvuruyu değerlendir\" görevi, sonra \"Onaylandı mı?\" kapısı.",
+       "Bu hatayı biraz açalım, çünkü çok yaygın. Kapı bir karar vermez; yalnız önceki adımın ürettiği sonuca göre yolu seçer. "
+       "Yani önce başvuruyu değerlendir gibi bir görev çizersin, sonra onaylandı mı diye soran kapıyı. "
+       "Kapının içine değerlendirme mantığı yazarsan, kararın kimin tarafından ve nasıl verildiği diyagramda kaybolur.")
+m("Mülakat soruları", ["1. XOR, AND, OR farkı (kredi sürecinden)", "2. Message flow mu, sequence flow mu?",
+                       "3. Interrupting / non-interrupting boundary event", "4. BPMN mi, UML activity mi?",
+                       "5. DMN'i BPMN'e bağlamak, hit policy", "6. As-is bilgisi nasıl toplanır?"],
+  "Mülakatta karşına çıkabilecek altı soru var. Birincisi: {exclusive}, {parallel} ve {inclusive} kapı farkını kredi sürecinden örneklerle açıklayın. "
+  "İkincisi: {message flow} mu, {sequence flow} mu; hangisi ne zaman kullanılır? "
+  "Üçüncüsü: {interrupting} ve {non-interrupting} {boundary event} farkı nedir? "
+  "Dördüncüsü: BPMN ile UML {activity} diyagramını hangi durumda tercih edersiniz? "
+  "Beşincisi: DMN'i BPMN sürecine nasıl bağlarsınız, {hit policy} ne işe yarar? "
+  "Altıncısı: bir {as-is} süreci modellerken bilgiyi hangi tekniklerle toplarsınız?")
+m("Cevap ipuçları", ["XOR tek yol (skor), AND hepsi (KKB+MERNİS), OR seçilenler (sigortalar)",
+                     "Aynı havuz = sequence · farklı kurum = message", "Kesen görevi iptal eder; kesmeyen paralel yol açar",
+                     "İş birimi + istisnalar + kurumlar arası → BPMN · tek sistem iç akışı → UML activity",
+                     "Business rule task → DMN karar ID · hit policy = çakışan satırların çözümü"],
+  "Kısa cevap ipuçları vereyim. Kapılar: {XOR} tek yol açar, örneğin skora göre karar; {AND} hepsini açar, örneğin KKB ve MERNİS; "
+  "{OR} seçilenleri açar, örneğin müşterinin istediği sigortalar. "
+  "Akışlar: aynı havuzun içindeysen sıra akışı, farklı kurumlar arasındaysan mesaj akışı. "
+  "Sınır olayı: kesen olay görevi iptal eder, kesmeyen olay görev sürerken paralel bir yol açar. "
+  "BPMN ile UML: iş birimi okuyacaksa, istisnalar ve kurumlar arası mesajlaşma varsa BPMN; tek bir sistemin iç akışıysa UML {activity}. "
+  "DMN: {business rule task}'ı DMN dosyasındaki karar ID'sine bağlarsın; {hit policy}, birden çok satır tuttuğunda, yani çakışan satırlarda hangisinin geçerli olacağını belirler. "
+  "Altıncı soru için de mülakat, gözlem, mevcut belge ve log incelemesi, çalıştay gibi teknikleri sayabilirsin; "
+  "bunları süreç diyagramlama videosunda ayrıntılı göreceğiz.")
+
+# ───────────────────────────── Sembol sözlüğü (görsel)
+g("BPMN sembol sözlüğü", "g07.png",
+  [([0.0, 0.07, 1.0, 0.2], "Olaylar: başlangıç, ara, bitiş, sonlandırma"),
+   ([0.0, 0.2, 1.0, 0.33], "Tetikleyiciler ve sınır olayı"),
+   ([0.0, 0.33, 1.0, 0.46], "Görev türleri: sol üst ikon"),
+   ([0.0, 0.46, 1.0, 0.59], "Alt ortadaki işaret: alt süreç, döngü, çoklu"),
+   ([0.0, 0.59, 1.0, 0.72], "Dört kapı"),
+   ([0.0, 0.72, 1.0, 0.85], "Akışlar ve not"),
+   ([0.0, 0.85, 1.0, 1.0], "Veri, havuz, grup")],
+  "Şimdi görsel rehbere geçiyoruz. Bir BPMN diyagramına baktığında önce şekle, sonra kenar kalınlığına, en son içindeki ikona bak. "
+  "Bu sözlük, bir modelde karşılaşacağın sembollerin neredeyse tamamını gösteriyor; yirmi sekiz sembol var. "
+  "İlk satır olaylar: başlangıç olayı ince kenarlı, ara olay çift kenarlı, bitiş olayı kalın kenarlı; sonlandırma ise tüm süreci anında bitirir. "
+  "İkinci satırda tetikleyiciler: saat zamanlayıcı, zarf mesaj, şimşek hata; sonda görev kenarına yapışık sınır olayı. "
+  "Üçüncü satırda görev türleri: insan ikonu kullanıcı görevi, dişli servis görevi, tablo iş kuralı görevi, dolu zarf gönderme görevi. "
+  "Dördüncü satırda kutunun altındaki işaretler: artı işaretli alt süreç, kalın kenarlı {call activity}, dönen okla döngü, üç çizgiyle çoklu örnek. "
+  "Beşinci satırda dört kapı: {XOR}, {AND}, {OR} ve olay tabanlı kapı. "
+  "Altıncı satırda akışlar: düz ok sıra akışı, kesikli ok mesaj akışı, noktalı çizgi ilişkilendirme, köşeli parantez de açıklama notu. "
+  "Son satırda veri nesnesi, veri deposu, havuz ve şerit, bir de kesikli kutuyla grup.",
+  bolum="BPMN · Görsel rehber")
+dikkat("Üç altın kural", "1) Daire = olay (ince başlar, çift ara, kalın biter). 2) Sol üst ikon = kim yapar. 3) Alt orta işaret = nasıl tekrarlanır.",
+       "Bu sözlüğü ezberlemene gerek yok; üç altın kuralı akılda tut. "
+       "Bir: daire her zaman olaydır. İnce kenar başlangıç, çift kenar ara olay, kalın kenar bitiştir. "
+       "İki: kutunun sol üst köşesindeki ikon işi kimin yaptığını söyler: insan, dişli yani sistem, ya da tablo yani kural. "
+       "Üç: kutunun alt ortasındaki işaret işin nasıl tekrarlandığını söyler: artı alt süreç, dönen ok döngü, üç çizgi çoklu örnek.",
+       tip="bilgi")
+
+# ───────────────────────────── Sembol sembol: olaylar
+m("Sembol sembol, Firma örnekleriyle", ["Ezber değil: \"Bunu Firma'da nerede kullanırım?\"",
+                                        "Her sembol: en az iki örnek + sık hata",
+                                        "Zor dört konuya ayrıca çizim: call activity, sınır olayı, pool-lane, kapılar"],
+  "Sözlükteki her sembolü ezberlemek yerine şu soruyla çalış: bunu Firma'da nerede kullanırım? "
+  "Şimdi her sembol için en az iki Firma örneği ve sık yapılan hatayı göreceğiz. "
+  "Zor olan dört konu için, yani {call activity}, sınır olayları, havuz ve şerit, ve kapılar için ayrıca birer çizim var.",
+  bolum="BPMN · Olaylar, Firma örnekleri")
+t("Olaylar (1/4): başlangıç", ["Sembol", "Firma örnekleri", "Sık hata"],
+  [["Başlangıç (boş): elle başlatılır", "Portal'da \"Yeni Başvuru\"; self-service talep (W09)", "Gerçek tetikleyiciyi gizlemek"],
+   ["Mesaj başlangıcı (zarf)", "Portal'dan başvuru; hasar ihbarı (P10); KVKK başvurusu (F07)", "Göndereni message flow ile göstermemek"]],
+  "Olaylarla başlıyoruz. Boş başlangıç olayını tetikleyici önemsizse ya da süreci bir kişi elle başlatıyorsa kullanırsın. "
+  "Örnek: bayi temsilcisi Portal'da yeni başvuru düğmesine basıyor; ya da müşteri self servis kanalında talep açıyor, bu da W09. "
+  "Sık hata: her sürece boş başlangıç koyup gerçek tetikleyiciyi gizlemek. "
+  "Mesaj başlangıcı, yani zarflı daire, süreç başka bir katılımcıdan gelen mesajla başlıyorsa kullanılır. "
+  "Örnekler: Firma havuzu açısından Portal'dan başvuru geldi; sigorta şirketinden hasar ihbarı geldi, bu P10; "
+  "KVKK kapsamında ilgili kişi başvurusu geldi, bu da F07. "
+  "Sık hata: mesajın kimden geldiğini bir mesaj akışıyla göstermemek.")
+t("Olaylar (2/4): zamanlayıcı başlangıcı", ["Sembol", "Firma örnekleri", "Sık hata"],
+  [["Zamanlayıcı başlangıcı (saat)", "Her gün 08:00 gecikme taraması (P02) · kasko bitişine 30 gün (P03)", "Periyodu yazmamak"],
+   ["", "Ay başı komisyon mutabakatı (S14) · 6 ayda bir yetki gözden geçirme (P06)", ""]],
+  "Zamanlayıcı başlangıcı, yani saatli daire, belli bir tarih, saat ya da periyot için kullanılır. "
+  "Firma'da dört örnek var: her gün sabah sekizde gecikme taraması, bu P02. Kasko bitişine otuz gün kala yenileme takibi, bu P03. "
+  "Her ay başı komisyon mutabakatı, bu S14. Altı ayda bir yetki gözden geçirme, bu da P06. "
+  "Sık hata: periyodu hiç yazmamak.")
+dikkat("Zamanı ISO 8601 ile yaz", "R/2026-12-01T08:00:00/P1D = 1 Aralık'tan başlayarak her gün 08:00 · P30D = 30 gün · başlangıç anı yoksa saat belirsiz",
+       "Periyodu yazarken {Camunda}'da {ISO} sekiz bin altı yüz bir biçimini kullanırsın. "
+       "Örneğin R, iki bin yirmi altı, on iki, bir, T, sekiz sıfır sıfır, P bir D: yani bir Aralık'tan başlayarak her gün sabah sekizde. "
+       "Başlangıç anını yazmazsan saat belirsiz kalır. Otuz gün için de P otuz D yazarsın. "
+       "Bu ifadeleri birazdan ileri seviyede tekrar göreceğiz.")
+t("Olaylar (3/4): ara olaylar", ["Sembol", "Firma örnekleri", "Sık hata"],
+  [["Yakalayan (içi boş): BEKLER", "İmza bekle · kasko bitişi + 15 gün (P03) · rehin tescil sonucu", "\"Bekle\" adlı user task"],
+   ["Atan (dolu): GÖNDERİR", "Bayiye ret · ödeme planı SMS'i · sigortaya iptal talebi (P11)", "Yakalayanla karıştırmak"]],
+  "Ara olaylar ikiye ayrılır. Yakalayan ara olay, çift kenarlı ve içi boş ikonludur; süreç bir şeyi bekler. "
+  "Örnekler: müşteri imzasını bekle, bu bir mesaj. Kasko bitişinden sonra on beş gün bekle, yenilenmediyse yasal sürece geç; bu P03'te bir zamanlayıcı. "
+  "Bir de rehin tescil sonucunu bekle. Sık hata: bekleme adımını Bekle adında bir kullanıcı görevi olarak çizmek. "
+  "Atan ara olay ise çift kenarlı ve içi dolu ikonludur; süreç bir şey gönderir ve devam eder. "
+  "Örnekler: bayiye ret bildirimi gönder, müşteriye ödeme planı SMS'i, sigorta şirketine iptal talebi gönder; bu P11. "
+  "Sık hata: ikisini karıştırmak. Kolay hatırlama yolu: içi boş zarf al, dolu zarf gönder.")
+t("Olaylar (4/4): bitişler", ["Sembol", "Firma örnekleri", "Sık hata"],
+  [["Bitiş (kalın)", "Kullandırıldı · Reddedildi · Süresi doldu", "Tek adsız bitiş"],
+   ["Hata bitişi (şimşek)", "Kasko \"tanzim edilemedi\" → P01 sınır olayıyla yakalar", "Sınır olayını çizmemek"],
+   ["Sonlandırma (dolu daire)", "Cayma hakkı (F04): tüm kollar durur", "Normal bitiş yerine kullanmak"]],
+  "Bitişler. Kalın kenarlı bitiş olayı, o yolun burada bittiğini söyler. "
+  "Firma'da kullandırıldı, reddedildi, süresi doldu gibi her sonuç için ayrı ve adlı bir bitiş çizersin. "
+  "Sık hata: tüm yolları tek bir adsız bitişte toplamak; o zaman raporlamada sürecin hangi sonuçla bittiği kaybolur. "
+  "Hata bitişi, kalın kenar ve şimşekle çizilir; alt süreç üst sürece hata fırlatır. "
+  "Örnek: kasko poliçesi düzenleme süreci, poliçe tanzim edilemedi hatasıyla biter; P01 bunu bir sınır olayıyla yakalar. "
+  "Sık hata: hatayı yakalayan sınır olayını çizmemek. "
+  "Sonlandırma olayı, kalın kenar ve içinde dolu daire. O anda tüm paralel kollar durur. "
+  "Örnek: müşteri cayma hakkını kullandı, bu F04; rehin tescili ve sigorta kolları da durur. "
+  "Sık hata: normal bitiş yerine sonlandırma kullanmak. Normal bitişte diğer kollar çalışmaya devam eder.")
+
+# ───────────────────────────── Sınır olayları
+m("Sınır olayı: neden ayrı sembol?", ["Görev çalışırken olabilecek istisna, kenara yapışır",
+                                      "Görev bitince dinleme de biter",
+                                      "Soru 1: Ne tetikler? Hata, zaman, mesaj, eskalasyon",
+                                      "Soru 2: Görev kesilir mi (düz) yoksa sürer mi (kesikli)?"],
+  "Sınır olayı neden ayrı bir sembol? Çünkü bir görev çalışırken olabilecek istisnaları o görevin kenarına yapıştırırsın. "
+  "Görev bitince sınır olayı da dinlemeyi bırakır. Bir sınır olayı çizerken iki soru sor. "
+  "Birincisi: ne olunca tetiklenir? Hata mı, zaman mı, mesaj mı, eskalasyon mu? "
+  "İkincisi: tetiklenince görev kesilir mi, yani düz çizgili daire; yoksa sürer mi, yani kesikli çizgili daire?",
+  bolum="BPMN · Sınır olayları")
+g("Sınır olayları: 3 örnek", "g08.png",
+  [([0.0, 0.1, 1.0, 0.37], "1 · Hata, kesen: KKB sorgula"),
+   ([0.0, 0.38, 1.0, 0.65], "2 · Zamanlayıcı, kesmeyen: manuel değerlendir"),
+   ([0.0, 0.66, 1.0, 0.93], "3 · Zamanlayıcı, kesen: imza bekle")],
+  "Bu çizimde üç örnek var. Birincisi hata, kesen: KKB sorgula görevinde {SOAP} hatası ya da beş saniyelik zaman aşımı olursa "
+  "görev iptal edilir ve akış yalnız alttaki yoldan, manuel incelemeye al görevinden devam eder. Bu, U04'teki kuralın aynısı. "
+  "İkincisi zamanlayıcı, kesmeyen: uzman manuel değerlendirmeyi belirlenen sürede, örneğin dört saatte bitirmezse yöneticiye hatırlatma gider; "
+  "görev uzmanda kalmaya devam eder. Hedef aynı gün onay. "
+  "Üçüncüsü zamanlayıcı, kesen: onaydan sonra otuz gün içinde imza gelmezse bekleme kesilir ve başvuru iptal durumuna geçer. Bu da U08 ile aynı. "
+  "Alttaki not şunu söylüyor: üst ok normal yol, alt ok sınır olayının yolu.")
+t("Daha fazla sınır olayı (1/2)", ["Görev", "Sınır olayı", "Kesen?", "Ne olur"],
+  [["Kredi komitesi", "Eskalasyon, 2 iş günü", "Hayır", "GMY'ye bildirim"],
+   ["Hasar dosyası (S08)", "Mesaj: ek fotoğraf", "Hayır", "Eksper bilgilenir"],
+   ["Bayiye EFT", "Hata: EFT reddi", "Evet", "Manuel ödeme görevi"]],
+  "Firma'dan daha fazla sınır olayı örneği. Kredi komitesi kararına iki iş günlük bir eskalasyon bağlanır; kesmeyen. "
+  "Süre dolunca genel müdür yardımcısına bildirim gider, komite kararı beklenmeye devam eder. "
+  "Hasar dosyası incele görevine, bu S08, müşteri ek fotoğraf yükledi mesajı bağlanır; yine kesmeyen. Eksper bilgilendirilir, inceleme sürer. "
+  "Bayiye EFT görevine ise banka EFT reddi hatası bağlanır; bu kesen. Operasyon kuyruğuna manuel ödeme görevi açılır.")
+t("Daha fazla sınır olayı (2/2)", ["Görev", "Sınır olayı", "Kesen mi?", "Ne olur"],
+  [["Rehin tescili", "Zamanlayıcı: 1 iş günü", "Kesmeyen", "Operasyona hatırlatma; tescil beklenir"],
+   ["Erken kapama sonrası rehin fekki (P05)", "Zamanlayıcı: 1 saat", "Kesmeyen", "Kural \"yaklaşık 1 saat\"; aşılırsa alarm + müşteriye bilgi"],
+   ["Online taksit ödeme 3D Secure (U05)", "Zamanlayıcı: 5 dakika", "Kesen", "Oturum iptal, \"tekrar deneyin\""]],
+  "Rehin tescili görevine bir iş günlük zamanlayıcı bağlanır; kesmeyen. Operasyona hatırlatma gider, tescil beklenmeye devam eder. "
+  "Erken kapama sonrası rehin fekki, bu P05, bir saatlik kesmeyen bir zamanlayıcı taşır. Firma kuralı yaklaşık bir saat; "
+  "aşılırsa operasyona alarm gider ve müşteri bilgilendirilir. "
+  "Online taksit ödemede {3D Secure} adımı, bu U05, beş dakikalık kesen bir zamanlayıcı taşır: süre dolunca ödeme oturumu iptal edilir "
+  "ve müşteriye tekrar deneyin denir.")
+dikkat("Kesen mi, kesmeyen mi?", "Kesmeyen: iş sürsün, birileri bilgilensin (hatırlatma, eskalasyon). Kesen: iş artık anlamsız (hata, zaman aşımı, oturum iptali).",
+       "Bu tabloların ortak dersi şu. İşin sürmesini ama birinin bilgilenmesini istiyorsan kesmeyen olay çizersin: hatırlatma ve eskalasyon böyledir. "
+       "İş artık anlamsızsa kesen olay çizersin: servis hatası, zaman aşımı, oturum iptali gibi. "
+       "Yanlış seçim gerçek hayatta ya işi gereksiz yere iptal eder, ya da süresi geçmiş bir işi sonsuza kadar açık bırakır.")
+
+# ───────────────────────────── Alt süreç, call activity
+t("Alt süreçler (1/3)", ["Sembol", "Firma örnekleri", "Ayırt etme sorusu"],
+  [["Gömülü ([+], ince)", "P01 \"Belge kontrolü\" · P10 \"Eksper süreci\"", "Başka yerde tekrar yok → gömülü"],
+   ["Call activity (kalın)", "\"Kasko poliçesi düzenle\": P01, P03, P09", "Tekrar ediyor → call activity"],
+   ["", "\"Rehin fekki\": P05, son taksit, F01, F02", ""]],
+  "Şimdi alt süreçler ve özel türleri. Gömülü alt süreç ince kenarlı ve artı işaretlidir. Adımlar yalnız bu sürece aittir; "
+  "diyagramı sadeleştirmek için kapatılır. Örnek: P01'deki belge kontrolü; kimlik, gelir belgesi, ruhsat ve fatura kontrolü. P10'daki eksper süreci de böyle. "
+  "Ayırt etme sorusu: bu adımlar başka bir süreçte aynen tekrar ediyor mu? Hayırsa gömülü. "
+  "{Call activity} kalın kenarlıdır; aynı süreç birden fazla yerden çağrılır ve bakımı tek yerde yapılır. "
+  "Örnek: kasko poliçesi düzenle; P01 yeni kredide, P03 yenilemede, P09 da sigorta satışında çağırır. "
+  "Rehin fekki ise P05 erken kapamada, son taksit ödemesinde, F01 pert ya da çalıntı kapanışında ve F02 kredi devrinde çağrılır. "
+  "Evet, tekrar ediyorsa {call activity}; bir kez değiştirdiğinde tüm çağıranlara yansır.", bolum="BPMN · Alt süreç ve call activity")
+t("Alt süreçler (2/3)", ["Sembol", "Firma örnekleri", "Ayırt etme sorusu"],
+  [["Call activity", "Kimlik doğrulama (KPS + OTP): web, mobil, Portal, çağrı merkezi", "Değişiklik herkese yansır"],
+   ["Event alt süreci (kesikli)", "Müşteri vazgeçti · KVKK silme talebi", "Her göreve sınır olayı mı?"],
+   ["Transaction (çift kenar)", "Ödeme emri + EFT + kredi aktif", "Yarım kalamaz mı?"]],
+  "Bir {call activity} örneği daha: müşteri kimlik doğrulama, yani KPS ve OTP. Web, mobil, Portal ve çağrı merkezi aynı süreci kullanır. "
+  "Olay alt süreci kesikli kenarlıdır ve akışa bağlı değildir; sürecin herhangi bir anında olabilecek olay içindir. "
+  "Örnekler: müşteri başvurudan vazgeçti, yani bayi iptal etti; hangi adımda olursa olsun başvuru kapanır. Ya da KVKK silme talebi geldi. "
+  "Ayırt etme sorusu: bu olayı her göreve ayrı sınır olayı olarak koymak zorunda kalıyor musun? Evetse olay alt süreci. "
+  "{Transaction} alt süreci çift kenarlıdır: ya hepsi ya hiçbiri. Örnek kullandırım: ödeme emri, bayiye EFT ve krediyi aktif etme. "
+  "Biri başarısız olursa öncekiler telafi edilir. Soru: yarım kalması kabul edilemez mi?")
+t("Alt süreçler (3/3)", ["Sembol", "Firma örnekleri", "Ayırt etme sorusu"],
+  [["Döngü (dönen ok)", "KKB en fazla 3 deneme · OTP en fazla 3", "Üst sınır yazılı mı?"],
+   ["Paralel çoklu (|||)", "Borçlu + kefil KKB · sigorta teklifleri (S02, U11)", "Liste nereden, hata olursa?"],
+   ["Sıralı çoklu (≡)", "İmza: borçlu, sonra kefil · filo (F08) rehin", "Sıra önemli mi?"]],
+  "Döngü, dönen okla çizilir; koşul sağlanana kadar tekrar eder. Örnek: KKB sorgusunu en fazla üç kez dene, SMS OTP'yi en fazla üç kez gönder. "
+  "Burada en fazla kaç kez olduğunu, yani üst sınırı yazmayı unutma. "
+  "Paralel çoklu örnek, üç dikey çizgi: bir liste için aynı iş aynı anda. Örnek: borçlu ve varsa kefil için KKB sorgusu; "
+  "karşılaştırmalı sigorta teklifinde her sigorta şirketine teklif isteği, bunlar S02 ve U11. Soru: liste nereden geliyor, biri hata verirse ne olur? "
+  "Sıralı çoklu örnek, üç yatay çizgi: aynı iş sırayla. Örnek: imza sırası, önce borçlu sonra kefil; "
+  "filo başvurusunda, yani F08'de, her araç için sırayla rehin. Soru: sıra önemli mi? Önemli değilse paralel daha hızlıdır.")
+m("Call activity'yi kafana oturt", ["Fonksiyon çağrısı gibi düşün", "\"Kasko poliçesi düzenle\" tek dosyada, bir kez modellenir",
+                                   "P01 ve P03 çağırır, bekler, sonucu alır (poliçe no veya hata)",
+                                   "Entegrasyon değişirse yalnız çağrılan süreç güncellenir",
+                                   "Gömülüde adımlar kopyalanır, her kopya ayrı güncellenir"],
+  "{Call activity}'yi kafana oturtmanın yolu: bir fonksiyon çağrısı gibi düşün. "
+  "Kasko poliçesi düzenle süreci tek bir dosyada, bir kez modellenir. P01 ve P03 onu çağırır, iş bitene kadar bekler "
+  "ve sonucu alır: poliçe numarası ya da hata. Yarın sigorta şirketi entegrasyonu değişirse yalnız çağrılan süreç güncellenir. "
+  "Gömülü alt süreçte ise adımları her yere kopyalamış olursun ve her kopyayı ayrı ayrı güncellemen gerekir.")
+g("Call activity: iki süreç aynı kaskoyu çağırır", "g09.png",
+  [([0.0, 0.1, 0.6, 0.4], "P01: sözleşmeden sonra kasko poliçesi"),
+   ([0.0, 0.5, 0.6, 0.85], "P03: yenileme takibi aynı süreci çağırır"),
+   ([0.6, 0.1, 1.0, 0.85], "Çağrılan süreç: ayrı dosya")],
+  "Çizimde bunu görüyorsun. Üstte P01, kredi başvurusundan kullandırıma: sözleşme imzalandıktan sonra kalın kenarlı kasko poliçesi kutusu geliyor, "
+  "ardından kullandırım kontrolü. Kesikli mavi ok şunu söylüyor: çağırır ve sonucu bekler. "
+  "Altta P03, kasko yenileme takibi: bitiş yaklaşınca tetiklenen bir zamanlayıcıdan sonra aynı kasko poliçesi kutusu, ardından poliçeyi krediye bağla. "
+  "Sağda çağrılan süreç, ayrı bir dosyada: sigorta şirketlerinden teklif al, dain-i mürtehin olarak Firma'yı ekle, poliçeyi tanzim et ve numara al. "
+  "Alttaki not: kalın kenar {call activity} demektir; süreç başka yerde tanımlıdır, değişince iki çağıran da yeni halini kullanır.")
+
+# ───────────────────────────── Görevler
+t("Görevler: sol üst ikon (1/2)", ["Sembol", "Kim", "Firma örnekleri"],
+  [["User task", "Kişi, ekranda", "Manuel değerlendirme (B02), kullandırım kontrolü (B03), B07, I01"],
+   ["Service task", "Sistem (API/SOAP)", "KPS, KKB, core'da taslak kredi, rehin tescil, 3D Secure (U05)"],
+   ["Business rule task", "Kural motoru / DMN", "Otomatik karar, kampanya (D05), kademe, ikinci el garanti"]],
+  "Görevlere geçiyoruz; kutunun sol üst ikonu kimin yaptığını söyler. "
+  "Kullanıcı görevi, insan ikonuyla: bir kişi sistem ekranında iş yapar. Firma örnekleri: manuel değerlendirme B02, kullandırım kontrolü B03, "
+  "müşteri talebini sonuçlandır B07, erişim talebini onayla I01. "
+  "Servis görevi, dişli ikonuyla: sistem otomatik çalışır, {API} ya da {SOAP} ile. Örnekler: KPS ve KKB sorgusu, ana sistemde taslak kredi açma, "
+  "rehin tescil servisi ve {3D Secure} ödeme, yani U05. "
+  "İş kuralı görevi, tablo ikonuyla: kural motoru ya da DMN. Örnekler: otomatik karar; kampanya uygunluğu, ki D05'teki ihlal mesajı buradan gelir; "
+  "bireysel kredi değer kademesi; ve ikinci el garanti uygunluğu: sekiz yaş ve yüz altmış bin kilometrenin altı.", bolum="BPMN · Görevler ve kapılar")
+t("Görevler: sol üst ikon (2/2)", ["Sembol", "Kim", "Firma örnekleri"],
+  [["Send task", "Mesaj gönderir", "Ödeme planı SMS, bayiye karar, poliçe iptal talebi"],
+   ["Receive task", "Mesaj bekler", "Poliçe numarası, EFT teyidi"],
+   ["Manual task", "Fiziksel iş", "Islak imza, araç teslimi, ruhsat teslimi"],
+   ["Script task", "Basit hesap", "Taksit tutarı, kredi/değer oranı"]],
+  "Gönderme görevi, dolu zarf: sistem mesaj gönderir. Örnekler: ödeme planı SMS'i ya da e-postası, bayiye karar bildirimi, sigorta şirketine poliçe iptal talebi. "
+  "Alma görevi, boş zarf: sistem mesaj bekler. Örnekler: sigorta şirketinden poliçe numarasını bekle, bankadan EFT teyidini bekle. "
+  "Elle yapılan görev, el ikonu: sistem dışı fiziksel iş. Örnekler: bayide ıslak imza, araç teslimi, ruhsatın bayiye teslimi. "
+  "Betik görevi: motorun içinde basit bir hesap; taksit tutarı ya da kredi değer oranı hesabı gibi.")
+
+# ───────────────────────────── Kapılar
+g("Kapı türleri: 4 Firma kararı", "g10.png",
+  [([0.0, 0.08, 0.5, 0.46], "XOR · otomatik karar"), ([0.5, 0.08, 1.0, 0.46], "AND · kullandırım hazırlığı"),
+   ([0.0, 0.5, 0.5, 0.9], "OR · isteğe bağlı sigortalar"), ([0.5, 0.5, 1.0, 0.9], "Event-based · ÖBF sonrası")],
+  "Kapılar çizimde dört Firma kararıyla. Sol üstte {XOR}, otomatik karar: ÖBF ve sözleşme, manuel inceleme ya da ret bildirimi; yalnız biri. "
+  "Kurallar çakışmamalı; eğik çizgili kol varsayılan yoldur. "
+  "Sağ üstte {AND}, kullandırım hazırlığı: rehin tescili ve dört göz kontrolü aynı anda başlar; sağdaki kapı ikisini de bekler. "
+  "Sol altta {OR}, D06'daki isteğe bağlı sigortalar: kasko teklifi, kredi koruma, uzatılmış garanti. Seçilen kadar kol açılır; "
+  "birleştirme yalnız açılanları bekler. "
+  "Sağ altta {event-based} kapı, ÖBF sonrası: imza geldiyse evrak, otuz gün dolduysa iptal. Koşul sorulmaz; hangi olay önce olursa o yol. "
+  "Alttaki kural çok önemli: hangi kapıyla açtıysan aynı türle kapat. {XOR} ile açıp {AND} ile kapatmak süreci sonsuza kadar bekletir.")
+t("Kapılar ve birleştirme (1/2)", ["Kapı", "Firma örnekleri", "Birleştirmede"],
+  [["XOR (X)", "Otomatik / manuel karar · gecikme günü (P02)", "Tek yolu geçirir"],
+   ["AND (+)", "Rehin + 4 göz · KPS ve KKB · fekki + sigorta", "Hepsini bekler"],
+   ["OR (O)", "D06 isteğe bağlı sigortalar · hasar belgeleri", "Açılanları bekler"]],
+  "Kapıları birleştirme davranışıyla birlikte tabloda toparlayalım. {XOR} örnekleri: otomatik karar; manuel karar, yani onay, şartlı onay, ek belge ya da komite; "
+  "taksit gecikme gününe göre aksiyon, P02'de bir ile otuz, otuz bir ile altmış ve altmışın üstü. Birleştirmede gelen tek yolu geçirir. "
+  "{AND} örnekleri: rehin tescili ile dört göz kontrolü; KPS ve KKB sorgusu aynı anda; kredi kapanışında rehin fekki ve sigorta bilgilendirmesi. "
+  "Birleştirmede tüm kolları bekler. "
+  "{OR} örnekleri: D06'da müşterinin seçtiği isteğe bağlı sigortalar; hasar dosyasında gerekli belgeler, yani kaza tutanağı, alkol raporu ve ekspertiz. "
+  "Birleştirmede yalnız açılan kolları bekler.")
+t("Kapılar ve birleştirme (2/2)", ["Kapı", "Firma örnekleri", "Birleştirmede"],
+  [["Event-based", "ÖBF sonrası imza veya 30 gün; ihtar sonrası ödeme geldi veya 15 gün doldu (P02)", "Birleştirme yok; ilk olay yolu seçer"],
+   ["Complex (yıldız)", "Kredi komitesinde 3 üyeden 2 onay yeterli", "Özel kural; az kullanılır, kuralı not olarak yaz"]],
+  "Olay tabanlı kapı örnekleri: ÖBF sonrası imza ya da otuz gün; ihtar sonrası ödeme geldi ya da on beş gün doldu, bu P02. "
+  "Bu kapıyla birleştirme yapılmaz; ilk gelen olay yolu seçer. "
+  "{Complex} kapı, yıldız: kredi komitesinde üç üyeden ikisinin onayı yeterli. Özel bir kuraldır, az kullanılır; kuralı mutlaka not olarak yaz.")
+dikkat("Varsayılan akış (default flow)", "Okun başında kısa çapraz çizgi = \"Hiçbir koşul tutmazsa bu yol\". Otomatik kararda varsayılan = MANUEL İNCELEME.",
+       "Varsayılan akışa dikkat et. {XOR} ya da {OR} kapısından çıkan oklardan birinin başında kısa bir çapraz çizgi varsa, o ok varsayılan yoldur: "
+       "diğer koşulların hiçbiri tutmazsa bu yol. Otomatik kararda varsayılan yol manuel inceleme olmalıdır. "
+       "Böylece kural motorunun bilmediği bir durumda başvuru takılıp kalmaz.")
+
+# ───────────────────────────── Akışlar, veri, yardımcılar
+t("Akışlar ve veri (1/2)", ["Sembol", "Firma örnekleri", "Dikkat"],
+  [["Sequence flow", "P01 adım sıraları", "Aynı havuz içinde"],
+   ["Message flow", "Firma ↔ bayi, sigorta, KKB/KPS, banka", "Havuzlar arası, mesaj adı yaz"],
+   ["Association", "Göreve KKB raporu · BDDK notu", "Sıra taşımaz"],
+   ["Data object", "ÖBF, sözleşme, KKB raporu, poliçe", "Süreçle yok olabilir"]],
+  "Akışlar, veri ve yardımcı semboller. Sıra akışı, düz ok: P01'deki tüm adım sıraları. Dikkat: yalnız aynı havuzun içinde. "
+  "Mesaj akışı, kesikli ve başında halka olan ok: Firma ile bayi, sigorta şirketi, KKB, KPS ve banka arasında. "
+  "Yalnız farklı havuzlar arasında kullanılır ve okun üstüne mesajın adı yazılır; örneğin KKB raporu. "
+  "İlişkilendirme, noktalı çizgi: başvuruyu değerlendir görevine KKB raporu veri nesnesini bağlamak, ya da bir göreve BDDK dört göz zorunlu notunu bağlamak. "
+  "Akış sırası taşımaz. "
+  "Veri nesnesi, sayfa sembolü: ön bilgilendirme formu, kredi sözleşmesi, KKB raporu, kasko poliçesi, ekspertiz raporu. "
+  "Bir belge ya da veri paketidir ve süreç bitince yok olabilir.", bolum="BPMN · Akışlar, veri, havuzlar")
+t("Akışlar ve veri (2/2)", ["Sembol", "Firma örnekleri", "Dikkat"],
+  [["Data store (silindir)", "Core system, DMS arşivi, CRM, ELK", "Kalıcı depo; süreç bitse de veri kalır"],
+   ["Text annotation", "\"Belgeler eksiksizse aynı gün onay\", \"Kasko: dain-i mürtehin Firma\"", "Kuralı diyagramda görünür tutar"],
+   ["Group (kesikli kutu)", "\"KVKK kapsamındaki adımlar\", \"BDDK dört göz kontrolleri\"", "Akışı etkilemez; denetim için işaretler"]],
+  "Veri deposu, silindir: ana sistem, DMS belge arşivi, CRM ve ELK. Kalıcı depodur; süreç bitse de veri kalır. "
+  "Açıklama notu: belgeler eksiksizse aynı gün onay; ya da kaskoda dain-i mürtehin Firma. Kuralı diyagramın içinde görünür tutar. "
+  "Grup, kesikli kutu: KVKK kapsamındaki adımlar ya da BDDK dört göz kontrolleri. Akışı etkilemez; denetim için işaretler.")
+
+# ───────────────────────────── Pool ve lane
+m("Pool ve lane: kim kimdir?", ["Havuz = bağımsız katılımcı, çoğunlukla ayrı kurum",
+                                 "Firma, bayi, sigorta, KKB, KPS, banka, müşteri: yalnız mesajla bağlanır",
+                                 "Şerit = aynı kurumda rol ya da sistem: Tahsis, Operasyon, Tahsilat, Sistem, Çağrı Merkezi",
+                                 "Kapalı havuz (kara kutu): iç işleyiş bilinmez, yalnız mesajlar"],
+  "Havuz ve şerit konusunu netleştirelim. Havuz bağımsız bir katılımcıdır, genellikle ayrı bir kurumdur: Firma, bayi, ki bayi ayrı bir şirkettir, "
+  "sigorta şirketi, KKB, KPS, banka ve müşteri. Havuzlar birbirine yalnız mesajla bağlanır, "
+  "çünkü birinin diğerinin iş akışını yönetme yetkisi yoktur. "
+  "Şerit ise aynı kurumun içindeki rol ya da sistemdir. Firma havuzunda tahsis, operasyon, tahsilat, sistem yani kural motoru, ve çağrı merkezi gibi. "
+  "Bir de kapalı havuz, yani kara kutu var: iç işleyişini bilmediğin ya da modellemediğin katılımcı. "
+  "KKB'nin raporu nasıl ürettiği seni ilgilendirmez; yalnız hangi mesajı gönderip aldığın önemlidir.")
+g("Pool ve lane: bayi, Firma ve KKB", "g11.png",
+  [([0.0, 0.08, 1.0, 0.26], "Bayi: ayrı havuz"), ([0.0, 0.28, 1.0, 0.78], "Firma havuzu: Sistem, Tahsis, Operasyon şeritleri"),
+   ([0.0, 0.8, 1.0, 0.9], "KKB: kapalı havuz")],
+  "Çizimde bunu görüyorsun. En üstte bayi, ayrı bir havuz: başvuruyu Portal'a gir, sonra sonucu gör. "
+  "Ortada Firma havuzu ve üç şerit: sistem, tahsis ve operasyon. Bayiden gelen başvuru mesajı sistem şeridindeki mesaj başlangıcına düşer. "
+  "KKB sorgula görevinden sonra bir {XOR} kapısı: otomatik ise sonucu bildir, manuel ise tahsis şeridindeki manuel değerlendirme. "
+  "Sonucu bildir görevinden bayiye karar mesajı gider; akış da operasyon şeridindeki kullandırım kontrolüne iner. "
+  "En altta KKB, kapalı havuz: iç süreci bilinmez, yalnız mesajlaşılır; istek gider, rapor döner. "
+  "Alttaki not özetliyor: düz ok yalnız havuz içinde, mavi kesikli ok havuzlar arasında, şerit değişimi de bir devir teslimdir.")
+dikkat("P01 neden bayiyi şerit yapmış?", "Tanımlayıcı seviyede bilinçli sadeleştirme. Analitik seviyede bayi ayrı havuz + message flow.",
+       "Çalışma setindeki P01 ile karşılaştır: orada müşteri ve bayi, Firma ile aynı havuzda şerit olarak çizilmiş. "
+       "Bu, süreci tek sayfada anlatmak için yapılmış bilinçli bir sadeleştirme; yani tanımlayıcı seviye. "
+       "Analitik seviyede bayi ayrı bir şirket olduğu için kendi havuzuna alınır ve Firma ile iletişimi mesaj akışlarıyla gösterilir. "
+       "Mülakatta bu farkı bilmek ve neden sadeleştirdiğini açıklayabilmek güçlü bir sinyaldir.", tip="bilgi")
+
+# ───────────────────────────── Bilgi kontrolü (bu videonun konularından)
+soru("Bilgi kontrolü 1/3", "Firma ile bayi arasındaki başvuru mesajını hangi okla çizersin?",
+     ["Sequence flow", "Message flow", "Association", "Data association"], 1,
+     "Kısa bir bilgi kontrolü yapalım. Firma ile bayi arasındaki başvuru mesajını hangi okla çizersin? "
+     "A, {sequence flow}. B, {message flow}. C, {association}. D, {data association}.",
+     "Doğru cevap B: {message flow}. Bayi ayrı bir kurum, ayrı havuz; havuzlar arasında yalnız mesaj akışı çizilir.",
+     bolum="BPMN · Bilgi kontrolü")
+soru("Bilgi kontrolü 2/3", "Uzman 4 saatte değerlendirmezse yöneticiye hatırlatma gitsin, görev uzmanda kalsın. Ne çizersin?",
+     ["Kesen hata olayı", "Kesen zamanlayıcı", "Kesmeyen zamanlayıcı", "Sonlandırma olayı"], 2,
+     "İkinci soru. Uzman dört saat içinde değerlendirmeyi bitirmezse yöneticiye hatırlatma gitsin ama görev uzmanda kalsın. Ne çizersin? "
+     "A, kesen hata olayı. B, kesen zamanlayıcı. C, kesmeyen zamanlayıcı. D, sonlandırma olayı.",
+     "Doğru cevap C: kesmeyen zamanlayıcı. Kesikli çizgili saat; görev sürer, paralel bir hatırlatma yolu açılır.")
+soru("Bilgi kontrolü 3/3", "AND ile ayırdığın iki kolu XOR ile birleştirirsen ne olur?",
+     ["Süreç kilitlenir", "Akış çoğalır, sonraki adım iki kez çalışır", "Hiçbir şey, doğru kullanım", "Yalnız ilk kol geçer"], 1,
+     "Son soru. {AND} kapısıyla ayırdığın iki kolu {XOR} kapısıyla birleştirirsen ne olur? "
+     "A, süreç kilitlenir. B, akış çoğalır, sonraki adım iki kez çalışır. C, hiçbir şey, bu doğru kullanım. D, yalnız ilk kol geçer.",
+     "Doğru cevap B. {XOR} birleştirmesi gelen her yolu ayrı ayrı geçirir; iki kol geldiği için sonraki adım iki kez çalışır. "
+     "Tersi, yani {XOR} ile açıp {AND} ile kapatmak ise kilitlenmedir.")
+m("Bu videoda neler gördük?", ["BPMN'in dört eleman ailesi, olaylar, görevler, 5 kapı", "Seviyeler, sınır olayı, alt süreç, DMN tablosu",
+                               "İleri: collaboration, compensation, XML, simülasyon", "Sık hatalar ve mülakat soruları",
+                               "Sembol sözlüğü ve Firma örnekleriyle her sembol"],
+  "Toparlayalım. BPMN'in dört eleman ailesini, olayları, görev türlerini ve beş kapıyı gördük. "
+  "Modelleme seviyelerini, sınır olaylarını, alt süreç türlerini ve DMN karar tablosunu konuştuk. "
+  "İleri seviyede işbirliği, telafi, XML yapısı ve simülasyona değindik. Sık hataları ve mülakat sorularını çalıştık. "
+  "Sonra sembol sözlüğünü ve her sembolü Firma örnekleriyle inceledik. "
+  "Bir sonraki videoda ileri seviye desenler, araçlar, P01 laboratuvarı ve BPMN uygulama paketiyle devam ediyoruz.", ton="sakin")
+
+# ───────────────────────────── Ayarlar
+TELAFFUZ = {
+    "UML": "yu em el", "BPMN": "bi pi em en", "OMG": "o em ci", "CMMN": "si em em en", "DMN": "di em en", "ISO": "iso",
+    "ISO/IEC": "iso, i i si", "KKB": "ka ka be", "KPS": "ka pe se", "MERNİS": "mernis", "MASAK": "masak", "KVKK": "ka ve ka ka",
+    "BDDK": "be de de ka", "ÖBF": "ö be fe", "EFT": "e fe te", "OTP": "o te pe", "SMS": "es em es", "STP": "es ti pi",
+    "ACID": "esid", "XML": "eks em el", "BPMNDI": "bi pi em en di ay", "DMS": "di em es", "CRM": "si ar em", "ELK": "e le ka",
+    "LTV": "el ti vi", "API": "ey pi ay", "SOAP": "soup", "GMY": "genel müdür yardımcısı", "KPI": "key pi ay",
+    "XOR": "eks or", "Camunda": "kamunda", "Flowable": "flouıbıl", "Signavio": "signavio",
+    "Bizagi": "bizagi", "ARIS": "aris", "Portal": "portal", "Portal'da": "portalda", "Portal'dan": "portaldan", "Portal'a": "portala",
+    "Bruce Silver": "brus silvır", "BA": "be a", "self service": "self sörvis", "self-service": "self sörvis",
+    "dain-i mürtehin": "dain-i mürtehin", "camunda.com": "kamunda nokta kom", "demo.bpmn.io": "demo nokta bi pi em en nokta io",
+    "L0": "el sıfır", "L4": "el dört", "SoD": "es o di",
+}
+
+
+def kod_okunus(k):
+    harf = {"P": "pe", "U": "u", "W": "dabılyu", "F": "fe", "S": "se", "B": "be", "D": "de", "I": "ı", "G": "ge"}
+    rakam = "sıfır bir iki üç dört beş altı yedi sekiz dokuz".split()
+    return harf[k[0]] + " " + " ".join(rakam[int(c)] for c in k[1:])
+
+
+metin = " ".join(json.dumps(s, ensure_ascii=False) for s in S)
+for k in sorted(set(re.findall(r"\b([PUWFSBDIG]\d\d)\b", metin))):
+    TELAFFUZ.setdefault(k, kod_okunus(k))
+    for ek, ok in (("'de", "de"), ("'te", "te"), ("'deki", "deki"), ("'teki", "teki"), ("'ye", "ye"), ("'ya", "ya")):
+        TELAFFUZ.setdefault(k + ek, kod_okunus(k) + ok)
+
+sen = {
+    "baslik": "Business Analyst Teknik Rehberi · 2: BPMN (1/2)",
+    "alt_baslik": "Temel, orta, ileri · semboller · sınır olayı · kapılar · havuz ve şerit",
+    "kapanis": "Sıradaki video: BPMN 2/2",
+    "tema": 2, "ingilizce_mod": "sozluk", "es": 1.0, "cumle_arasi": 0.7, "sahne_arasi": 1.6,
+    "youtube_baslik": "Business Analyst Teknik Rehberi 2/14: BPMN 1 (semboller, kapılar, sınır olayı, havuz ve şerit)",
+    "etiketler": ["business analyst", "BPMN", "BPMN 2.0", "gateway", "boundary event", "call activity", "iş analisti"],
+    "telaffuz": TELAFFUZ,
+}
+sen["sahneler"] = S
+Path(__file__).with_suffix(".json").write_text(json.dumps(sen, ensure_ascii=False, indent=1), encoding="utf-8")
+print(len(S), "sahne", sum(len(s["anlatim"].split()) for s in S), "kelime")
