@@ -1,0 +1,40 @@
+{
+ "karar": "GEÇTİ",
+ "kritik": [],
+ "uyari": [
+  "senkron · sahne 4: 16 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 6: 14 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 8: 15 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 9: ilk öğe 18 sn sonra (giriş yazısı otomatik gösterilir)",
+  "senkron · sahne 9: 18 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 10: 19 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 14: 17 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 15: 24 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 19: ilk öğe 5 sn sonra (giriş yazısı otomatik gösterilir)",
+  "senkron · sahne 19: 18 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 21: 40 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 25: ilk öğe 9 sn sonra (giriş yazısı otomatik gösterilir)",
+  "senkron · sahne 25: 18 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 26: 22 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 27: 14 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 28: ilk öğe 5 sn sonra (giriş yazısı otomatik gösterilir)",
+  "senkron · sahne 31: ilk öğe 6 sn sonra (giriş yazısı otomatik gösterilir)",
+  "senkron · sahne 38: 16 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 39: 20 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 40: ilk öğe 7 sn sonra (giriş yazısı otomatik gösterilir)"
+ ],
+ "hakem": [],
+ "olcum": {
+  "okunmayan": 0,
+  "yerlesim_senkron": 22,
+  "sadakat": {
+   "belge_satiri": 214,
+   "kapsam_orani": 1.0,
+   "eksik": 0,
+   "uydurma": 0,
+   "telaffuz": 0,
+   "kontrol": 0,
+   "eklenti": 0
+  }
+ }
+}
