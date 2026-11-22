@@ -28,6 +28,7 @@ ESIK = {"whisper": 0.8, "ses_kotu_oran": 0.02}
 def kapisi(senaryo, belge=None, ayar=None, ses_dizini=None, video=None, ses_puanla=False):
     sen = json.loads(Path(senaryo).read_text(encoding="utf-8"))
     v.SES_MODELI = sen.get("ses_modeli", "v3")
+    v.GORSEL_DIZIN = Path(senaryo).resolve().parent
     ayar_d = json.loads(Path(ayar).read_text(encoding="utf-8")) if ayar else {}
     kritik, uyari, hakem, olcum = [], [], [], {}
 

@@ -34,7 +34,7 @@ def norm(s):
 
 def norm_sik(s):
     """Noktalama da atılmış biçim (İngilizce öbek araması için; ı/i farkı yok sayılır: Izmir = İzmir)."""
-    return re.sub(r"\s+", " ", re.sub(r"[^\w' ]", " ", norm(s))).strip().replace("ı", "i")
+    return re.sub(r"\s+", " ", re.sub(r"[^\w' ]", " ", norm(s).replace("&", " and "))).strip().replace("ı", "i")
 
 
 def kelimeler(s):
@@ -57,9 +57,24 @@ def senaryo_metinleri(sen):
     return out
 
 
+KOD_IZ = re.compile(r"\s--\s|->|-->|::|<\|--|\*--|o--|\.\.>|@start|@end|^\s*(inv|implies|context|pre|post|participant|actor|class|"
+                    r"state|note for|Rel|Person|System|!include|par|alt|else|end|\[\\?\*\])\b|self\.|^\s*[}{]\s*$")
+
+
+def kod_mu(ln):
+    """Belgedeki kod satırı (PlantUML, Mermaid, OCL): anlatımda satır satır okunmaz, açıklanır."""
+    t = ln.strip()
+    if KOD_IZ.search(t):
+        return True
+    sembol = sum(1 for c in t if not (c.isalnum() or c.isspace() or c in ".,;:'\"()%-–—/?!"))
+    return len(t) > 0 and sembol / len(t) > 0.12
+
+
 def belge_satirlari(belge):
     sat = []
     for ln in belge.splitlines():
+        if kod_mu(ln):
+            continue
         t = re.sub(r"^[\s#>*\-|0-9.)]+", "", ln).strip(" |")
         if len(kelimeler(t)) >= 3 and not re.fullmatch(r"[-|: ]+", t):
             sat.append(ln.strip())
@@ -111,6 +126,9 @@ def denetle(sen, belge, ayar=None, esik_kapsam=0.6):
             # uzun öbek: belgede kelimelerinin çoğu yan yana geçiyorsa (küçük biçim farkı) kabul
             kk = e.split()
             if len(kk) >= 4 and any(" ".join(kk[i:i + 4]) in belge_s for i in range(len(kk) - 3)):
+                continue
+            if len(kk) <= 3:     # kısa terim / okunuş yardımı (ör. "static", "draw dot io"): hakem baksın
+                rapor["kontrol"].append({"sahne": si, "ad": "{" + en[:40] + "}", "baglam": v.temiz(m)[:120]})
                 continue
             rapor["uydurma"].append({"sahne": si, "tur": "ingilizce", "deger": en[:100], "baglam": v.temiz(m)[:120]})
 

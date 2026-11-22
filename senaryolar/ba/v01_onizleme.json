@@ -1,0 +1,187 @@
+{
+ "baslik": "Business Analyst Teknik Rehberi · 1: Rehber ve UML",
+ "alt_baslik": "Rehberin kullanımı · UML temel, orta, ileri · uygulama",
+ "kapanis": "Sıradaki video: BPMN",
+ "youtube_baslik": "Business Analyst Teknik Rehberi 1/14: UML (use case, class, sequence, state)",
+ "etiketler": [
+  "business analyst",
+  "UML",
+  "use case",
+  "sequence diagram",
+  "class diagram",
+  "iş analisti"
+ ],
+ "telaffuz": {
+  "UML": "yu em el",
+  "BPMN": "bi pi em en",
+  "OMG": "o em ci",
+  "OCL": "o si el",
+  "KKB": "ka ka be",
+  "KVKK": "ka ve ka ka",
+  "TCKN": "te ce ka en",
+  "API": "ey pi ay",
+  "API'ye": "ey pi aya",
+  "API'den": "ey pi aydan",
+  "API'si": "ey pi ayı",
+  "ECB": "i si bi",
+  "XMI": "eks em ay",
+  "PII": "pi ay ay",
+  "C4": "si for",
+  "LTV": "el ti vi",
+  "MERNİS": "mernis",
+  "OTP": "o ti pi",
+  "DMZ": "di em zi",
+  "MQ": "em kyu",
+  "SFTP": "es ef ti pi",
+  "HTTPS": "eyç ti ti pi es",
+  "PNG": "pi en ci",
+  "SVG": "es vi ci",
+  "PDF": "pi di ef",
+  "CRM": "si ar em",
+  "SQL": "es kü el",
+  "ELK": "elk",
+  "IAM": "ay ey em",
+  "SoD": "es o di",
+  "OAuth": "o of",
+  "OIDC": "o ay di si",
+  "JQL": "cey kyu el",
+  "CTE": "si ti i",
+  "CI": "si ay",
+  "DSL": "di es el",
+  "ES": "i es",
+  "ASCII": "aski",
+  "DB": "di bi",
+  "U04": "u sıfır dört",
+  "U07": "u sıfır yedi",
+  "U08": "u sıfır sekiz",
+  "U08'de": "u sıfır sekizde",
+  "U04'te": "u sıfır dörtte",
+  "U08'deki": "u sıfır sekizdeki",
+  "BR-12": "be re on iki",
+  "BR-15": "be re on beş",
+  "BR-21": "be re yirmi bir",
+  "Mermaid": "mörmeyd",
+  "Mermaid'de": "mörmeyd'de",
+  "Mermaid'in": "mörmeydin",
+  "PlantUML": "plant yu em el",
+  "Postman": "post men",
+  "Jira": "cira",
+  "Confluence": "konfluens",
+  "Miro": "miro",
+  "Visio": "vizyo",
+  "Agile": "ecayl",
+  "draw.io": "dro ay o",
+  "Git": "git",
+  "GitHub": "git hab",
+  "Enterprise": "entırprayz",
+  "Architect": "arkitekt",
+  "Visual": "vijuıl",
+  "Paradigm": "paradaym",
+  "Cameo": "kemio",
+  "e-Devlet": "e devlet"
+ },
+ "onizleme_kaynak": [
+  1,
+  17,
+  24,
+  40,
+  57
+ ],
+ "sahneler": [
+  {
+   "baslik": "Bu rehber ne öğretiyor?",
+   "maddeler": [
+    "Modelleme: UML, BPMN, süreç",
+    "Veri ve entegrasyon: SQL, ELK, Postman",
+    "Kimlik yönetimi: IAM",
+    "İş birliği: Jira, Confluence, Miro, Visio",
+    "Çalışma biçimi: Agile"
+   ],
+   "anlatim": "Bir iş analisti olarak teknik konuşmalarda geri kalmamak istiyorsan, bu seri tam sana göre. Rehber beş alanı kapsıyor. İlki modelleme: UML, BPMN ve süreç diyagramları. İkincisi veri ve entegrasyon: SQL, ELK ve Postman. Üçüncüsü kimlik yönetimi, yani IAM. Dördüncüsü iş birliği araçları: Jira, Confluence, Miro ve Visio. Beşincisi de çalışma biçimi: Agile.",
+   "bolum": "Rehberi nasıl kullanmalı?",
+   "kanca": "Bir analist, ekibin konuştuğu her teknik dili okuyabilmeli.",
+   "ton": "merakli"
+  },
+  {
+   "baslik": "En çok kullanılan beşli",
+   "tur": "ipucu",
+   "ipucu": {
+    "tip": "uyari",
+    "metin": "Use Case · Activity · Sequence · State Machine · Class"
+   },
+   "anlatim": "Şimdi önemli bir not. Günlük işte en çok kullanacağın beşli şunlar: {Use Case}, {Activity}, {Sequence}, {State Machine} ve {Class}. Hepsini her projede çizmen gerekmez. Soruya en küçük, ama yeterli görünümle cevap verirsin."
+  },
+  {
+   "baslik": "Combined fragment'lar (1/2)",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Fragment",
+     "Anlamı · örnek"
+    ],
+    "satirlar": [
+     [
+      "alt",
+      "if / else: skor yeterli → onay, değilse ret"
+     ],
+     [
+      "opt",
+      "Koşullu tek dal: kampanya kodu varsa indirim"
+     ],
+     [
+      "loop",
+      "Tekrar: borçlu ve kefil için KKB sorgusu"
+     ],
+     [
+      "par",
+      "Paralel: KKB ve MERNİS aynı anda"
+     ]
+    ]
+   },
+   "anlatim": "Mantığı taşıyan kutulara {combined fragment} denir. {alt}, if else demektir: skor yeterliyse onay, değilse ret. {opt}, koşullu tek bir daldır: kampanya kodu varsa indirim hesaplanır. {loop} tekrar demektir: borçlu ve varsa kefil için KKB sorgusu, kişi başına bir tur. {par} paralel demektir: KKB ve MERNİS sorgusu aynı anda yapılır."
+  },
+  {
+   "baslik": "Sequence diyagramı",
+   "tur": "gorsel",
+   "gorsel": "gorseller/g03.png",
+   "odaklar": [
+    {
+     "kutu": [
+      0.1,
+      0.25,
+      0.8,
+      0.5
+     ],
+     "etiket": "3–4: par kutusu"
+    },
+    {
+     "kutu": [
+      0.15,
+      0.5,
+      1.0,
+      0.85
+     ],
+     "etiket": "alt: onay (6–7) / ret (8–9)"
+    }
+   ],
+   "anlatim": "Üçüncü görsel bir {sequence} diyagramı. Numaraları sırayla takip et: bayi başvuruyu girer, portal API'ye gönderir. Üç ve dört numaralı mesajlar {par} kutusunun içinde. Dikkat: bu çizim sadeleştirilmiş. Gerçek bir {par} kutusu kesikli yatay bir çizgiyle en az iki bölmeye ayrılır ve bölmeler aynı anda çalışır; örneğin üstte KKB sorgusu, altta kimlik doğrulama. Aşağıdaki {alt} kutusuna gel: onay durumunda altı ve yedi, ret durumunda sekiz ve dokuz çalışır; ikisi asla birlikte çalışmaz. Aynı diyagramı test ekibi entegrasyon senaryosu olarak, geliştirici de API sözleşmesi olarak kullanır."
+  },
+  {
+   "baslik": "Bilgi kontrolü 2/5",
+   "tur": "soru",
+   "soru": {
+    "metin": "Taksit kaydı, sözleşme silinince anlamını yitiriyor. İlişki türü?",
+    "secenekler": [
+     "Association",
+     "Aggregation",
+     "Composition",
+     "Dependency"
+    ],
+    "dogru": 2,
+    "cevap_cumle": 2,
+    "bekle": 4
+   },
+   "anlatim": "İkinci soru: taksit kaydı, sözleşme silinince anlamını yitiriyor. İlişki türü nedir? A, {Association}. B, {Aggregation}. C, {Composition}. D, {Dependency}. Doğru cevap C: {Composition}. Bütün silinince parça da ölüyor, yani dolu elmas."
+  }
+ ]
+}
