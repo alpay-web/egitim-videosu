@@ -1883,10 +1883,10 @@ class Sahne:
             tw = d.textlength(s_, font=fb)
             d.text((W / 2 - tw / 2, k(y)), s_, font=fb, fill=T["baslik_rengi"] + (al,)); y += adim
         lw = k(320) * e
-        d.rectangle((W / 2 - lw / 2, k(y + 12), W / 2 + lw / 2, k(y + 17)), fill=vr + (al,))
+        d.rectangle((W / 2 - lw / 2, k(y + 24), W / 2 + lw / 2, k(y + 29)), fill=vr + (al,))
         if alt:
             tw = d.textlength(alt, font=fa)
-            d.text((W / 2 - tw / 2, k(y + 40)), alt, font=fa, fill=T["alt_renk"] + (al,))
+            d.text((W / 2 - tw / 2, k(y + 50)), alt, font=fa, fill=T["alt_renk"] + (al,))
         return im
 
 
