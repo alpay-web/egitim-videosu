@@ -572,7 +572,7 @@ sen = {
         "TCKN": "te ce ka en", "API": "ey pi ay", "API'ye": "ey pi aya", "API'den": "ey pi aydan", "API'si": "ey pi ayı",
         "ECB": "i si bi", "XMI": "eks em ay", "PII": "pi ay ay", "C4": "si for", "LTV": "el ti vi", "MERNİS": "mernis",
         "OTP": "o ti pi", "DMZ": "di em zi", "MQ": "em kyu", "SFTP": "es ef ti pi", "HTTPS": "eyç ti ti pi es", "PNG": "pi en ci",
-        "SVG": "es vi ci", "PDF": "pi di ef", "CRM": "si ar em", "SQL": "es kü el", "ELK": "elk", "IAM": "ay ey em",
+        "SVG": "es vi ci", "PDF": "pi di ef", "CRM": "si ar em", "SQL": "es kü el", "ELK": "e le ka", "IAM": "ay ey em",
         "SoD": "es o di", "OAuth": "o of", "OIDC": "o ay di si", "JQL": "cey kyu el", "CTE": "si ti i", "CI": "si ay",
         "DSL": "di es el", "ES": "i es", "ASCII": "aski", "DB": "di bi", "U04": "u sıfır dört", "U07": "u sıfır yedi",
         "U08": "u sıfır sekiz", "U08'de": "u sıfır sekizde", "U04'te": "u sıfır dörtte", "U08'deki": "u sıfır sekizdeki",
