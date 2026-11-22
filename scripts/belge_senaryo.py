@@ -514,6 +514,7 @@ def main():
            "youtube_baslik": ayar.get("youtube_baslik", ""), "etiketler": ayar.get("etiketler", []),
            "kapanis": ayar.get("kapanis", "Başarılar!"), "telaffuz": ayar.get("telaffuz", {}),
            "telaffuz_kok": ayar.get("telaffuz_kok", {}), "ingilizce_mod": ayar.get("ingilizce_mod", "sozluk"),
+           "hiz_tavani": ayar.get("hiz_tavani", 1.9), "cumle_arasi": ayar.get("cumle_arasi", 0.6),
            **({"tema": ayar["tema"]} if ayar.get("tema") else {}),
            **({"teknik_terimler": ayar["teknik_terimler"]} if ayar.get("teknik_terimler") else {}), "sahneler": sahneler}
     Path(a.cikti).write_text(json.dumps(sen, ensure_ascii=False, indent=1), encoding="utf-8")

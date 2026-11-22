@@ -3,6 +3,11 @@
 Sürümleme: `ANA.ARA.YAMA` — ANA: senaryo biçimi geriye uyumsuz değişirse; ARA: yeni özellik; YAMA: düzeltme.
 
 
+
+## 2.4.1 · 2026-11-22
+- Hız tavanı: model uzun cümlelerde hızlanıyordu (kısa 1,7, uzun 2,5 kelime/sn). Senaryoda `hiz_tavani` (yeni senaryolarda 1,9 kelime/sn) aşan cümleyi perde değişmeden yavaşlatır (en çok %20); kelime zamanları da ölçeklenir. `cumle_arasi` (yeni: 0,6 sn) ayarlanabilir.
+- Telaffuz A/B sonucu: kullanıcı B'yi (teknik terim sözlüğü) seçti; yeni senaryoların varsayılanı `sozluk`.
+
 ## 2.4.0 · 2026-11-22
 - Teknik terim telaffuzu: `teknik_terimler.json` (449 terim, Türk BT ekiplerinin okunuşu) + `ingilizce_mod` (`sozluk` | `cmu` | `ayri`); yeni modda CMU yedeğinde W → u. Yeni senaryolar `sozluk` ile üretilir; eski senaryolar değişmez.
 - Giriş kartı ve YouTube kapağı temalı (`scripts/tema.py`): 15 renk/yazı tipi/düzen teması, WCAG kontrast denetimi, OFL yazı tipleri ilk kullanımda indirilir. Senaryoda `"tema"`.

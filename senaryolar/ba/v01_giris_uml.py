@@ -564,7 +564,7 @@ sen = {
     "baslik": "Business Analyst Teknik Rehberi · 1: Rehber ve UML",
     "alt_baslik": "Rehberin kullanımı · UML temel, orta, ileri · uygulama",
     "kapanis": "Sıradaki video: BPMN",
-    "tema": 1, "ingilizce_mod": "sozluk",
+    "tema": 1, "ingilizce_mod": "sozluk", "hiz_tavani": 1.9, "cumle_arasi": 0.6,
     "youtube_baslik": "Business Analyst Teknik Rehberi 1/14: UML (use case, class, sequence, state)",
     "etiketler": ["business analyst", "UML", "use case", "sequence diagram", "class diagram", "iş analisti"],
     "telaffuz": {

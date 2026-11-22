@@ -2127,6 +2127,9 @@ def main():
     ap.add_argument("--dizin-olustur", metavar="KLASOR", help="eski ses klasörüne bu senaryoya göre dizin.json yaz (göç)")
     ap.add_argument("--ingilizce-isaretle", action="store_true",
                     help="anlatımdaki İngilizce öbekleri {…} ile işaretleyip senaryoya yaz (wordfreq gerekir); sonra gözden geçir")
+    ap.add_argument("--hiz-tavani", type=float, default=None,
+                    help="cümle başına en yüksek konuşma hızı (kelime/sn); aşan cümle yavaşlatılır. 0 = kapalı. "
+                         "Varsayılan: senaryodaki 'hiz_tavani', yoksa kapalı")
     ap.add_argument("--tempo", type=float, default=None,
                     help="anlatım hızı çarpanı (perdeyi bozmadan; 0.9 = %%10 daha yavaş). Ses yeniden üretilmez. "
                          "Varsayılan: v3 sesi 1.0 (zaten ~%%10 daha sakin), v2 sesi 0.9")
@@ -2154,11 +2157,14 @@ def main():
 
     H = args.cozunurluk; W = H * 16 // 9
     sen = json.loads(Path(args.senaryo).read_text(encoding="utf-8"))
-    global SES_MODELI, GORSEL_DIZIN
+    global SES_MODELI, GORSEL_DIZIN, CUMLE_ARASI
     GORSEL_DIZIN = Path(args.senaryo).resolve().parent
     SES_MODELI = args.ses_modeli or sen.get("ses_modeli", "v3")
     if args.tempo is None:
         args.tempo = 1.0 if SES_MODELI != "v2" else 0.9
+    if args.hiz_tavani is None:
+        args.hiz_tavani = float(sen.get("hiz_tavani", 0) or 0)
+    CUMLE_ARASI = float(sen.get("cumle_arasi", CUMLE_ARASI))
     if args.ses_isleme is None:
         args.ses_isleme = "tam" if SES_MODELI == "v2" else "hafif"
     global KLIP_IC_KISMA
@@ -2382,8 +2388,17 @@ def main():
                 yol = tmp / f"s{si}_{ci}.wav"
                 motor_al().sentezle(seslendirme_metni(c, telaffuz, kok), yol)
             x = oku_24k(yol)
-            if abs(args.tempo - 1.0) > 0.005:          # yavaşlat (perde aynı kalır)
-                x = tempo_uygula(x, args.tempo)
+            # hız tavanı: model uzun cümlelerde kendiliğinden hızlanır (ölçüm: kısa 1,7, uzun 2,5 kelime/sn).
+            # Konuşma hızı tavanı aşan cümle, perde değişmeden tavana yavaşlatılır (en çok %20).
+            f_ = args.tempo
+            if args.hiz_tavani:
+                nz0 = np.nonzero(np.abs(x) > 0.01)[0]
+                konusma = (nz0[-1] - nz0[0]) / SR if len(nz0) else 0
+                kel_ = len(temiz(c).split())
+                if konusma > 1.0 and kel_ >= 4:
+                    f_ = min(f_, max(0.8, args.hiz_tavani / (kel_ / (konusma / args.tempo))))
+            if abs(f_ - 1.0) > 0.005:                  # yavaşlat (perde aynı kalır)
+                x = tempo_uygula(x, f_)
             nz = np.nonzero(np.abs(x) > 0.01)[0]       # baş/son sessizliği kırp
             ofs = max(0, nz[0] - 600) / SR if len(nz) else 0.0
             if len(nz):
@@ -2391,7 +2406,8 @@ def main():
             if not args.temizleme_yok:                   # nefes / hışırtı kuyrukları
                 x, ofs2 = klip_temizle(x); ofs += ofs2
             kj = Path(yol).with_suffix(".json")
-            kelime_z[(si, ci)] = ([dict(w, s=w["s"] - ofs) for w in json.loads(kj.read_text())]
+            kelime_z[(si, ci)] = ([dict(w, s=w["s"] / f_ - ofs, e=w.get("e", w["s"]) / f_ - ofs)
+                                   for w in json.loads(kj.read_text())]
                                   if kj.exists() else None)
             x = yumusat(x)
             cz.append((t, t + len(x) / SR, temiz(c)))
