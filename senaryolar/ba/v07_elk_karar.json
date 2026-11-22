@@ -1,0 +1,43 @@
+{
+ "karar": "GEÇTİ",
+ "kritik": [],
+ "uyari": [
+  "senkron · sahne 2: 14 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 5: ilk öğe 4 sn sonra (giriş yazısı otomatik gösterilir)",
+  "senkron · sahne 8: 16 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 9: ilk öğe 4 sn sonra (giriş yazısı otomatik gösterilir)",
+  "senkron · sahne 14: 14 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 15: ilk öğe 4 sn sonra (giriş yazısı otomatik gösterilir)",
+  "senkron · sahne 16: 19 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 19: 18 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 20: 16 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 21: ilk öğe 7 sn sonra (giriş yazısı otomatik gösterilir)",
+  "senkron · sahne 22: 22 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 23: ilk öğe 5 sn sonra (giriş yazısı otomatik gösterilir)",
+  "senkron · sahne 27: ilk öğe 13 sn sonra (giriş yazısı otomatik gösterilir)",
+  "senkron · sahne 27: 15 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 28: ilk öğe 12 sn sonra (giriş yazısı otomatik gösterilir)",
+  "senkron · sahne 28: 15 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 29: ilk öğe 6 sn sonra (giriş yazısı otomatik gösterilir)",
+  "senkron · sahne 31: 20 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl",
+  "senkron · sahne 32: ilk öğe 5 sn sonra (giriş yazısı otomatik gösterilir)",
+  "senkron · sahne 33: 16 sn boyunca tahtada yeni bir şey yok (donuk ekran) — öğe ekle ya da cümleyi böl"
+ ],
+ "hakem": [
+  "Sahne 3: belgede geçmeyen ad «Firma» — İki: KQL ile Firma loglarını süzmek; KKB zaman aşımı, MANUEL_INCELEME kararları,",
+  "Sahne 11: belgede geçmeyen ad «Mart» — @timestamp: iki Mart iki bin yirmi altı, saat dokuz on dört."
+ ],
+ "olcum": {
+  "okunmayan": 0,
+  "yerlesim_senkron": 31,
+  "sadakat": {
+   "belge_satiri": 194,
+   "kapsam_orani": 1.0,
+   "eksik": 0,
+   "uydurma": 0,
+   "telaffuz": 0,
+   "kontrol": 2,
+   "eklenti": 0
+  }
+ }
+}

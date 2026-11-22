@@ -1,0 +1,1192 @@
+{
+ "baslik": "Business Analyst Teknik Rehberi · 7: ELK / Elastic Stack",
+ "alt_baslik": "Kibana Discover · KQL · ES|QL · log gereksinimi · alarm",
+ "kapanis": "Sıradaki video: Postman",
+ "tema": 7,
+ "youtube_baslik": "Business Analyst Teknik Rehberi 7/14: ELK / Kibana (KQL, ES|QL, trace.id, log gereksinimi)",
+ "etiketler": [
+  "business analyst",
+  "ELK",
+  "Kibana",
+  "KQL",
+  "ES|QL",
+  "Elasticsearch",
+  "iş analisti"
+ ],
+ "ingilizce_mod": "sozluk",
+ "es": 1.0,
+ "cumle_arasi": 0.7,
+ "sahne_arasi": 1.6,
+ "telaffuz": {
+  "UML": "yu em el",
+  "BPMN": "bi pi em en",
+  "OMG": "o em ci",
+  "CMMN": "si em em en",
+  "DMN": "di em en",
+  "KKB": "ka ka be",
+  "KPS": "ka pe se",
+  "MERNİS": "mernis",
+  "MASAK": "masak",
+  "KVKK": "ka ve ka ka",
+  "BDDK": "be de de ka",
+  "ÖBF": "ö be fe",
+  "EFT": "e fe te",
+  "OTP": "o te pe",
+  "SMS": "es em es",
+  "STP": "es ti pi",
+  "XML": "eks em el",
+  "BPMNDI": "bi pi em en di ay",
+  "DMS": "di em es",
+  "CRM": "si ar em",
+  "ELK": "e le ka",
+  "LTV": "el ti vi",
+  "API": "ey pi ay",
+  "SOAP": "soup",
+  "GMY": "genel müdür yardımcısı",
+  "KPI": "key pi ay",
+  "XOR": "eks or",
+  "Camunda": "kamunda",
+  "Portal": "portal",
+  "Portal'da": "portalda",
+  "Portal'dan": "portaldan",
+  "Portal'a": "portala",
+  "Portal'ın": "portalın",
+  "BA": "be a",
+  "SoD": "es o di",
+  "SQL": "es kyu el",
+  "IAM": "ay ey em",
+  "Postman": "post men",
+  "Jira": "cira",
+  "Confluence": "konfluens",
+  "Miro": "miro",
+  "Visio": "vizyo",
+  "Agile": "ecayl",
+  "draw.io": "dro ay o",
+  "diagrams.net": "dayagrams nokta net",
+  "PNG": "pi en ci",
+  "SVG": "es vi ci",
+  "PDF": "pi di ef",
+  "VS Code": "vi es kod",
+  "Notepad++": "notped artı artı",
+  "ISO": "iso",
+  "BR": "be re",
+  "ID": "ay di",
+  "MANUEL_INCELEME": "manuel inceleme",
+  "Ctrl": "kontrol",
+  "Ctrl+S": "kontrol es",
+  "Ctrl+Z": "kontrol zed",
+  "KQL": "ke kyu el",
+  "ECS": "i si es",
+  "JSON": "ceyson",
+  "GA": "ci ey",
+  "ILM": "ay el em",
+  "SAML": "semıl",
+  "OIDC": "o ay di si",
+  "SIEM": "sim",
+  "APM": "ey pi em",
+  "IBAN": "iban",
+  "UTC": "yu ti si",
+  "TCKN": "te ce ka en",
+  "L2": "el iki",
+  "p95": "pi doksan beş",
+  "BSV-1001": "be se ve bin bir",
+  "B-017": "be sıfır on yedi",
+  "A1001": "a bin bir",
+  "A1002": "a bin iki",
+  "A1003": "a bin üç",
+  "A1004": "a bin dört",
+  "A1005": "a bin beş",
+  "t-A1002": "te, a bin iki",
+  "B3": "be üç",
+  "B1": "be bir",
+  "B2": "be iki",
+  "B2'de": "be ikide",
+  "B2'nin": "be ikinin",
+  "KKB_SORGU": "ka ka be sorgu",
+  "BASVURU_ONAY": "başvuru onay",
+  "BASVURU_RED": "başvuru red",
+  "BASVURU_SONUC": "başvuru sonuç",
+  "INFO": "info",
+  "WARN": "vorn",
+  "ERROR": "eror",
+  "ONAY": "onay",
+  "RED": "red",
+  "basvuru_alindi": "başvuru alındı",
+  "basvuru-api": "başvuru ey pi ay",
+  "karar-motoru": "karar motoru",
+  "kkb_sorgu": "ka ka be sorgu",
+  "karar_verildi": "karar verildi",
+  "bayi_17": "bayi on yedi",
+  "bayi_ad": "bayi ad",
+  "README": "ridmi",
+  "GET": "get",
+  "US": "yu es",
+  "v1": "vi bir",
+  "B1'de": "be birde",
+  "B1'te": "be birte",
+  "B1'deki": "be birdeki",
+  "B1'teki": "be birteki",
+  "B1'ye": "be birye",
+  "B1'ya": "be birya",
+  "B1'den": "be birden",
+  "B1'ten": "be birten",
+  "B1'da": "be birda",
+  "B1'ta": "be birta",
+  "B2'te": "be ikite",
+  "B2'deki": "be ikideki",
+  "B2'teki": "be ikiteki",
+  "B2'ye": "be ikiye",
+  "B2'ya": "be ikiya",
+  "B2'den": "be ikiden",
+  "B2'ten": "be ikiten",
+  "B2'da": "be ikida",
+  "B2'ta": "be ikita",
+  "B3'de": "be üçde",
+  "B3'te": "be üçte",
+  "B3'deki": "be üçdeki",
+  "B3'teki": "be üçteki",
+  "B3'ye": "be üçye",
+  "B3'ya": "be üçya",
+  "B3'den": "be üçden",
+  "B3'ten": "be üçten",
+  "B3'da": "be üçda",
+  "B3'ta": "be üçta",
+  "L2'de": "el ikide",
+  "L2'te": "el ikite",
+  "L2'deki": "el ikideki",
+  "L2'teki": "el ikiteki",
+  "L2'ye": "el ikiye",
+  "L2'ya": "el ikiya",
+  "L2'den": "el ikiden",
+  "L2'ten": "el ikiten",
+  "L2'da": "el ikida",
+  "L2'ta": "el ikita",
+  "U04": "u sıfır dört",
+  "U04'de": "u sıfır dörtde",
+  "U04'te": "u sıfır dörtte",
+  "U04'deki": "u sıfır dörtdeki",
+  "U04'teki": "u sıfır dörtteki",
+  "U04'ye": "u sıfır dörtye",
+  "U04'ya": "u sıfır dörtya",
+  "U04'den": "u sıfır dörtden",
+  "U04'ten": "u sıfır dörtten",
+  "U04'da": "u sıfır dörtda",
+  "U04'ta": "u sıfır dörtta"
+ },
+ "sahneler": [
+  {
+   "baslik": "ELK nedir?",
+   "maddeler": [
+    "Elasticsearch: arama ve analiz motoru",
+    "Logstash: veri işleme hattı",
+    "Kibana: görselleştirme ve keşif arayüzü",
+    "+ Beats, Elastic Agent = Elastic Stack",
+    "Güncel: 9.x (9.0 ile Lucene 10; Kasım 2026 itibarıyla 9.5)"
+   ],
+   "anlatim": "ELK, üç bileşenin baş harfleridir: {Elasticsearch}, arama ve analiz motoru; {Logstash}, veri işleme hattı; ve {Kibana}, görselleştirme ve keşif arayüzü. {Beats} ve {Elastic Agent} eklenince ürün ailesi {Elastic Stack} adını alır. Güncel ana sürüm serisi dokuz nokta x; dokuz nokta sıfır ile {Lucene} ona geçildi ve Kasım iki bin yirmi altı itibarıyla dokuz nokta beş yayımlandı.",
+   "bolum": "ELK: giriş ve hedefler",
+   "kanca": "Başvurum takıldı diyen müşteriye, loglardan dakikalar içinde cevap.",
+   "ton": "merakli"
+  },
+  {
+   "baslik": "BA için ELK ne demek?",
+   "maddeler": [
+    "Uygulama ve entegrasyon loglarından iş olaylarını izlemek",
+    "Hataları kök nedenine kadar takip etmek",
+    "SLA ve iş KPI'larını dashboard'a dökmek",
+    "Alarm ve loglama gereksinimi yazmak"
+   ],
+   "anlatim": "İş analisti için ELK dört şey demek: uygulama ve entegrasyon loglarından iş olaylarını izlemek; hataları kök nedenine kadar takip etmek; SLA ve iş KPI'larını {dashboard}'a dökmek; ve alarm ile loglama gereksinimi yazmak."
+  },
+  {
+   "baslik": "Bu bölümün hedefleri",
+   "maddeler": [
+    "Kendi bilgisayarında Elasticsearch + Kibana, log dosyası yüklemek",
+    "KQL ile Firma loglarını süzmek: KKB zaman aşımı, MANUEL_INCELEME, hata kodları",
+    "Bir başvuruyu tek trace.id ile uçtan uca izlemek",
+    "Log alanları ve uyarı kuralları için ölçülebilir gereksinim"
+   ],
+   "anlatim": "Bu bölümü bitirdiğinde şunları yapabileceksin. Bir: kendi bilgisayarında {Elasticsearch} ve {Kibana}'yı çalıştırıp bir log dosyasını yüklemek. İki: KQL ile Firma loglarını süzmek; KKB zaman aşımı, MANUEL_INCELEME kararları, hata kodları. Üç: bir başvurunun tüm adımlarını tek bir izleme kimliğiyle, yani {trace.id} ile uçtan uca takip etmek. Dört: log alanları ve uyarı kuralları için ölçülebilir gereksinim yazmak."
+  },
+  {
+   "baslik": "Başlamadan önce gerekenler",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Gereken",
+     "Nereden",
+     "Hazır mısın?"
+    ],
+    "satirlar": [
+     [
+      "JSON okuma",
+      "Postman bölümü, temel",
+      "{\"karar\": \"ONAY\"}: alan ve değer"
+     ],
+     [
+      "Docker Desktop",
+      "docker.com",
+      "docker compose version → sürüm"
+     ],
+     [
+      "docker-elk deposu",
+      "github.com/deviantony/docker-elk",
+      "docker-compose.yml ve .env var"
+     ],
+     [
+      "Docker yoksa",
+      "Elastic Cloud deneme · kurum test Kibana'sı",
+      "Kibana ana sayfası açılıyor"
+     ]
+    ]
+   },
+   "anlatim": "Başlamadan önce dört hazırlık. JSON okuma: Postman bölümünün temel seviyesi. Karar ONAY ifadesinde alan adını ve değerini gösterebiliyorsan hazırsın. {Docker Desktop}, kişisel kullanımda ücretsiz; docker nokta com'dan. Terminalde {docker compose version} bir sürüm numarası yazıyorsa tamam. Açık kaynak {docker-elk} deposu: github nokta com bölü deviantony bölü docker-elk. Klasörde {docker-compose} nokta yml ve nokta env dosyaları varsa tamam. Docker kuramazsan {Elastic Cloud} deneme hesabı ya da kurumdaki test {Kibana}'sı; tarayıcıda {Kibana} ana sayfası açılıyorsa yeterli."
+  },
+  {
+   "baslik": "Veri akışı",
+   "maddeler": [
+    "Kaynak: uygulama logu, API gateway, veritabanı audit, sunucu metrikleri",
+    "Toplayıcı: Elastic Agent / Filebeat",
+    "İşleme: Logstash ya da ingest pipeline",
+    "Depolama ve indeksleme: Elasticsearch",
+    "Sorgulama ve görselleştirme: Kibana"
+   ],
+   "anlatim": "Temel seviye. Veri akışı beş adımdır. Kaynak: uygulama logu, {API gateway}, veritabanı {audit} kaydı ve sunucu metrikleri. Toplayıcı: {Elastic Agent} ya da {Filebeat}. İşleme: {Logstash} ya da {Elasticsearch} {ingest pipeline}. Depolama ve indeksleme: {Elasticsearch}. Sorgulama ve görselleştirme: {Kibana}.",
+   "bolum": "ELK · Temel seviye"
+  },
+  {
+   "baslik": "Temel kavramlar (1/2)",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Kavram",
+     "Açıklama",
+     "İlişkisel karşılığı"
+    ],
+    "satirlar": [
+     [
+      "Document",
+      "JSON formatında tek kayıt (bir log satırı)",
+      "Satır"
+     ],
+     [
+      "Field",
+      "Dokümandaki alan (http.response.status_code)",
+      "Kolon"
+     ],
+     [
+      "Index",
+      "Dokümanların topluğu",
+      "Tablo"
+     ],
+     [
+      "Data stream",
+      "Zaman serisinde indexleri yönetir (logs-app-default)",
+      "Bölümlenmiş tablo"
+     ]
+    ]
+   },
+   "anlatim": "Temel kavramlar ve ilişkisel veritabanındaki yaklaşık karşılıkları. {Document}: JSON formatında tek kayıt, yani bir log satırı; karşılığı satır. {Field}: dokümandaki alan, örneğin {http.response.status_code}; karşılığı kolon. {Index}: dokümanların topluğu; karşılığı tablo. {Data stream}: zaman serisi verisi için arka planda indexleri yöneten yapı, örneğin {logs-app-default}; karşılığı bölümlenmiş tablo."
+  },
+  {
+   "baslik": "Temel kavramlar (2/2)",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Kavram",
+     "Açıklama",
+     "İlişkisel karşılığı"
+    ],
+    "satirlar": [
+     [
+      "Mapping",
+      "Alanların veri tipleri",
+      "Şema"
+     ],
+     [
+      "Shard / replica",
+      "Index'in parçaları ve kopyaları",
+      "Bölüm / yedek"
+     ],
+     [
+      "Data view",
+      "Kibana'da sorgulanacak indexler (logs-*)",
+      "View"
+     ]
+    ]
+   },
+   "anlatim": "{Mapping}: alanların veri tipleri; karşılığı şema. {Shard} ve {replica}: index'in parçaları ve kopyaları; karşılığı bölüm ve yedek. {Data view}: {Kibana}'da hangi indexlerin sorgulanacağı, örneğin {logs} yıldız; karşılığı {view}."
+  },
+  {
+   "baslik": "Kibana'da ilk adımlar",
+   "maddeler": [
+    "Discover: ham log arama ve filtreleme",
+    "Zaman seçici: son 15 dakika / özel aralık",
+    "Alan listesi ve hızlı filtreler · saved search",
+    "Dashboard · Lens ile sürükle-bırak grafik"
+   ],
+   "anlatim": "{Kibana}'da ilk adımlar: {Discover}, ham log arama ve filtreleme; zaman seçici, son on beş dakika ya da özel aralık; alan listesi ve hızlı filtreler; kaydedilmiş arama, yani {saved search}; {Dashboard}; ve {Lens} ile sürükle bırak grafik."
+  },
+  {
+   "baslik": "KQL temel söz dizimi",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "KQL",
+     "Anlamı"
+    ],
+    "satirlar": [
+     [
+      "service.name : \"kredi-basvuru-api\" and log.level : \"error\"",
+      "Hata logları"
+     ],
+     [
+      "http.response.status_code >= 500",
+      "Sunucu hataları"
+     ],
+     [
+      "url.path : /api/v1/applications* and not …GET",
+      "GET dışı"
+     ],
+     [
+      "event.action : (\"BASVURU_ONAY\" or \"BASVURU_RED\")",
+      "Onay / ret"
+     ],
+     [
+      "labels.basvuru_id : \"BSV-1001\" · not error.message : *",
+      "Tek başvuru"
+     ]
+    ]
+   },
+   "anlatim": "KQL, yani {Kibana Query Language}, temel söz dizimi. {service.name} iki nokta kredi basvuru api {and} {log.level} iki nokta {error}: bu servisin hata logları. {http.response.status_code} beş yüze eşit ya da büyük: sunucu hataları. {url.path} iki nokta bölü api bölü v1 bölü {applications} yıldız, {and} {not} {http.request.method} iki nokta GET: başvuru {API}'sine GET dışı istekler. {event.action} iki nokta parantez içinde BASVURU_ONAY {or} BASVURU_RED: onay ya da ret olayları. {labels.basvuru_id} iki nokta BSV-1001: tek bir başvuru. Ve {not} {error.message} iki nokta yıldız: hata mesajı olmayanlar."
+  },
+  {
+   "baslik": "Yapılandırılmış loglama ve ECS",
+   "maddeler": [
+    "Serbest metin: aranabilir ama analiz edilemez",
+    "JSON + Elastic Common Schema (ECS) alan adları",
+    "BA'nın yazacağı önemli non-functional gereksinim"
+   ],
+   "anlatim": "Orta seviye: yapılandırılmış loglama ve ECS. Başvuru onaylandı id eşittir bin bir gibi serbest metin bir log aranabilir ama analiz edilemez. JSON ve {Elastic Common Schema}, kısaca ECS, alan adlarıyla loglama standardı, iş analistinin yazacağı önemli bir {non-functional} gereksinimdir.",
+   "bolum": "ELK · Orta seviye"
+  },
+  {
+   "baslik": "Örnek ECS log kaydı",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Alan",
+     "Değer"
+    ],
+    "satirlar": [
+     [
+      "@timestamp · log.level",
+      "2026-03-02T09:14:22.381Z · info"
+     ],
+     [
+      "service.name · trace.id",
+      "kredi-basvuru-api · 4bf92f3577b3…"
+     ],
+     [
+      "event.action · event.outcome · event.duration",
+      "KKB_SORGU · success · 842000000"
+     ],
+     [
+      "labels.basvuru_id · labels.bayi_id · user.id",
+      "BSV-1001 · B-017 · bayi_17"
+     ],
+     [
+      "http.response.status_code",
+      "200"
+     ]
+    ]
+   },
+   "anlatim": "Örnek bir ECS log kaydı. {@timestamp}: iki Mart iki bin yirmi altı, saat dokuz on dört. {log.level}: {info}. {service.name}: kredi basvuru api. {trace.id}: uzun bir izleme kimliği. {event.action}: KKB_SORGU; {event.outcome}: {success}; {event.duration}: 842000000, yani nanosaniye cinsinden yaklaşık sekiz yüz kırk iki milisaniye. {labels.basvuru_id}: BSV-1001; {labels.bayi_id}: B-017; {user.id}: bayi_17. {http.response.status_code}: iki yüz."
+  },
+  {
+   "baslik": "Loglama kuralları",
+   "tur": "ipucu",
+   "ipucu": {
+    "tip": "uyari",
+    "metin": "Kişisel/hassas veri (TCKN, telefon, kart) loga yazılmaz ya da maskelenir · her istek trace.id taşır · iş olayı event.action ile · süre sayısal."
+   },
+   "anlatim": "Loglama kuralları. TCKN, telefon, kart numarası gibi kişisel ve hassas veriler loga yazılmaz ya da maskelenir. Her istek bir {trace.id} ya da {correlation} ID taşır. İş olayları {event.action} ile standart adlandırılır. Süre alanları sayısal tutulur."
+  },
+  {
+   "baslik": "Mapping ve alan tipleri",
+   "maddeler": [
+    "keyword: tam eşleşme, toplama, sıralama (durum kodları, ID'ler)",
+    "text: tam metin arama (hata mesajı)",
+    "date, long/double, ip, boolean, geo_point",
+    "Yanlış tip → yanlış rapor (tutar keyword ise toplanamaz)"
+   ],
+   "anlatim": "Alan tipleri. {keyword}: tam eşleşme, toplama ve sıralama; durum kodları ve ID'ler için. {text}: tam metin arama; hata mesajı için. Ayrıca {date}, {long} ve {double}, {ip}, {boolean} ve {geo_point}. Yanlış tip raporun yanlış çıkmasına yol açar: örneğin tutar {keyword} ise toplama yapılamaz."
+  },
+  {
+   "baslik": "Ingest / Logstash işleme",
+   "maddeler": [
+    "Parse: grok, dissect, JSON",
+    "Zenginleştirme (enrich): bayi_id → bayi adı, GeoIP",
+    "Maskeleme · tarih düzeltme · alan yeniden adlandırma",
+    "Örnek: input beats 5044 → json · 11 haneli sayıları maskele · ISO8601 tarih → elasticsearch data_stream"
+   ],
+   "anlatim": "İşleme adımında neler yapılır? Ayrıştırma: {grok}, {dissect} ya da JSON. Zenginleştirme, yani {enrich}: bayi id'den bayi adı, ya da {GeoIP}. Maskeleme, tarih düzeltme ve alan yeniden adlandırma. Basit bir {Logstash} {pipeline} örneği: girdi {beats}, port beş bin kırk dört. Filtrede önce mesaj JSON olarak ayrıştırılır; sonra {mutate} {gsub} ile on bir haneli sayılar yıldızlarla maskelenir, ki bu TCKN'yi korur; sonra {date} ile {ISO8601} tarih eşlenir. Çıktı {elasticsearch}, {data_stream} açık."
+  },
+  {
+   "baslik": "Lucene söz dizimi",
+   "maddeler": [
+    "status:[500 TO 599]: aralık",
+    "message:\"zaman aşımı\"~3: yakınlık",
+    "bayi_ad*: joker",
+    "_exists_:error.message: alan var mı"
+   ],
+   "anlatim": "{Lucene} söz dizimi, eski ve gelişmiş aramalar için. {status} iki nokta köşeli parantez beş yüz {TO} beş yüz doksan dokuz: aralık. {message} iki nokta zaman aşımı tırnak içinde, dalga üç: yakınlık araması. bayi_ad yıldız: joker. Alt çizgi {exists} alt çizgi iki nokta {error.message}: alan var mı."
+  },
+  {
+   "baslik": "Dashboard tasarımı: BA bakışı",
+   "maddeler": [
+    "Önce soru, sonra grafik",
+    "Kredi başvuru operasyonu: dakikalık başvuru sayısı, onay/ret/manuel dağılımı",
+    "KKB yanıt süresi p95 · hata oranı (5xx / toplam)",
+    "En çok hata veren 10 bayi · son hatalar tablosu",
+    "Her panelde kontrol filtresi: bayi, ürün, kanal"
+   ],
+   "anlatim": "{Dashboard} tasarımı, iş analisti bakışıyla. Kural: önce soru, sonra grafik. Örnek kredi başvuru operasyonu panosu: dakikalık başvuru sayısı, bir zaman serisi; onay, ret ve manuel dağılımı; KKB servis yanıt süresi p doksan beş; hata oranı, yani beş yüzlü hatalar bölü toplam; en çok hata veren on bayi; ve son hatalar tablosu. Her panelde kontrol filtresi olur: bayi, ürün ve kanal."
+  },
+  {
+   "baslik": "ES|QL",
+   "maddeler": [
+    "Boru (|) ile zincirlenen, SQL'e yakın analitik dil",
+    "8.14'te GA; Discover içinde doğrudan",
+    "9.0: LOOKUP JOIN (teknik önizleme) · KQL() fonksiyonu"
+   ],
+   "anlatim": "İleri seviye. {ES|QL}, yani {Elasticsearch Query Language}: dikey çizgi, yani boru ile zincirlenen, SQL'e yakın analitik bir sorgu dili. Sekiz nokta on dört sürümünde genel kullanıma, yani GA'ya açıldı ve {Kibana} {Discover} içinde doğrudan kullanılabilir. Dokuz nokta sıfır ile {LOOKUP JOIN}, yani sorgu anında başka indeksten zenginleştirme, teknik önizleme olarak geldi; {ES|QL} içinde KQL parçaları da {KQL} fonksiyonuyla kullanılabilir hale geldi.",
+   "bolum": "ELK · İleri seviye"
+  },
+  {
+   "baslik": "ES|QL örneği 1: KKB saatlik",
+   "maddeler": [
+    "FROM logs-kredi-* · WHERE servis ve event.action == KKB_SORGU",
+    "EVAL sure_ms = event.duration / 1000000",
+    "STATS adet, hata (failure trace.id), p95_ms BY saat = BUCKET(@timestamp, 1 hour)",
+    "EVAL hata_orani · SORT saat DESC · LIMIT 48"
+   ],
+   "anlatim": "Birinci örnek: {FROM} {logs-kredi} yıldız; {WHERE} servis adı kredi basvuru api ve {event.action} eşittir KKB_SORGU. {EVAL} ile süre milisaniyeye çevrilir: {event.duration} bölü bir milyon. {STATS} ile adet, yani {COUNT} yıldız; hata, yani sonucu {failure} olan farklı {trace.id} sayısı; ve süre milisaniyenin yüzde doksan beşlik değeri. Hepsi saate göre: {BUCKET} {@timestamp}, bir saat. Sonra {EVAL} ile hata oranı, yüz çarpı hata bölü adet, iki basamağa yuvarlanır; saate göre azalan sıralanır, kırk sekiz satırla sınırlanır."
+  },
+  {
+   "baslik": "ES|QL örneği 2: bayi onay oranı",
+   "maddeler": [
+    "FROM logs-kredi-* · WHERE event.action == BASVURU_SONUC",
+    "LOOKUP JOIN bayi_lookup ON labels.bayi_id",
+    "STATS onay, toplam BY bayi_adi",
+    "EVAL onay_orani · SORT onay_orani ASC"
+   ],
+   "anlatim": "İkinci örnek: {FROM} {logs-kredi} yıldız; {WHERE} {event.action} eşittir BASVURU_SONUC; {LOOKUP JOIN} {bayi_lookup} {ON} {labels.bayi_id}; {STATS} ile onay ve toplam, bayi adına göre; {EVAL} onay oranı; ve onay oranına göre artan sıralama. En düşük onay oranlı bayi en üstte çıkar."
+  },
+  {
+   "baslik": "Query DSL ve aggregation",
+   "maddeler": [
+    "Uygulamalar Elasticsearch'ü JSON Query DSL ile sorgular",
+    "bool: must (puanlı), filter (puansız, önbellek), should, must_not",
+    "Örnek: son 24 saat, servis filtresi → saatlik date_histogram + outcome terms + p95 percentiles",
+    "bucket · metric · pipeline aggregation türleri"
+   ],
+   "anlatim": "{Query DSL} ve {aggregation}. Uygulamalar ve API'ler {Elasticsearch}'ü JSON {Query DSL} ile sorgular. {bool} sorgusunun dört parçası: {must}, puanlamalı eşleşme; {filter}, puansız ve önbelleklenebilir; {should}; ve {must_not}. Örnek: {GET} {logs-kredi} yıldız {_search}; {size} sıfır; filtrede servis adı {term} ve son yirmi dört saat {range}. {aggs} altında saatlik bir {date_histogram}, içinde {event.outcome} için {terms} ve süre için yüzde doksan beşlik {percentiles}. Toplama türleri: {bucket}, yani {terms}, {date_histogram}, {range}, {filters}; {metric}, yani {avg}, {sum}, {cardinality}, {percentiles}; ve {pipeline}, yani {derivative}, {moving_fn}, {bucket_script}."
+  },
+  {
+   "baslik": "Alerting ve izleme",
+   "maddeler": [
+    "Kurallar: Elasticsearch query, ES|QL, eşik, anomali · konektörler: e-posta, Teams/Slack, webhook, ServiceNow/Jira",
+    "Şablon: ne izlenir · eşik · zaman penceresi · kim · tekrar bastırma · runbook",
+    "Örnek: son 5 dk KKB hata oranı > %5 → kredi operasyon + L2 destek; 30 dk tekrar etmesin"
+   ],
+   "anlatim": "Alarm ve izleme. {Kibana} alarm kuralları: {Elasticsearch} {query}, {ES|QL}, eşik ve anomali tespiti. Konektörler: e-posta, {Teams} ya da {Slack}, {webhook}, {ServiceNow} ya da {Jira}. İş analistinin yazacağı alarm gereksinimi şablonu altı soru: ne izlenir, eşik ne, hangi zaman penceresi, kim bilgilendirilir, tekrarlanan alarm nasıl bastırılır, {runbook} linki ne? Örnek: son beş dakikada KKB sorgu hata oranı yüzde beşi geçerse kredi operasyon ekibine ve L2 destek kanalına alarm gönderilsin; otuz dakika içinde tekrar etmesin."
+  },
+  {
+   "baslik": "Yaşam döngüsü, güvenlik, gözlemlenebilirlik",
+   "maddeler": [
+    "ILM: hot → warm → cold → frozen → delete; saklama: BDDK, MASAK, KVKK, iç politika",
+    "Snapshot ile yedek · logsdb index modu maliyeti düşürür",
+    "RBAC (index, alan, doküman) · SSO (SAML/OIDC) · audit · Spaces · field-level security",
+    "APM / OpenTelemetry: trace → span, servis haritası · Elastic Security (SIEM)"
+   ],
+   "anlatim": "Yaşam döngüsü ve maliyet: {Index Lifecycle Management}, kısaca ILM, ile {hot}, {warm}, {cold}, {frozen} ve {delete} aşamaları. Saklama süreleri mevzuata, yani BDDK, MASAK ve KVKK'ya, ve iç politikaya göre belirlenir. {Snapshot} ile yedekleme; {logsdb} index modu log depolama maliyetini düşürür. Güvenlik: rol tabanlı erişim, index ve hatta alan ya da doküman seviyesinde; SSO, yani SAML ya da OIDC; {audit} loglama; ekip bazlı ayrım için {Kibana} {Spaces}; kişisel veri içeren alanlar için {field-level security}. Gözlemlenebilirlik: {Elastic APM} ya da {OpenTelemetry} ile dağıtık izleme, yani {trace} ve {span}; servis haritası ve hata gruplama. İş analisti uçtan uca iş akışını, bayi portalından başvuru {API}'sine, KKB'ye ve karar motoruna, {trace} üzerinden takip edebilir. {Elastic Security}, yani SIEM, aynı platformda güvenlik olayı tespiti sağlar."
+  },
+  {
+   "baslik": "Son gelişmeler (2025–2026)",
+   "maddeler": [
+    "9.4: Elastic Workflows (otomasyon) GA",
+    "Prometheus / PromQL desteği",
+    "Teknik önizleme: Dashboards as Code",
+    "Agent Builder: Elasticsearch verisi üzerinde yapay zeka ajanları",
+    "Kurumundaki sürümde açık mı, doğrula"
+   ],
+   "anlatim": "Son gelişmeler, iki bin yirmi beş ve yirmi altı. {Elastic} dokuz nokta dört ile {Elastic Workflows}, yani otomasyon, genel kullanıma açıldı; {Prometheus} ve {PromQL} desteği ve teknik önizlemede {Dashboards as Code} geldi. {Agent Builder} ile {Elasticsearch} verisi üzerinde yapay zeka ajanları kurulabiliyor. Bu özelliklerin kurumundaki sürümde açık olup olmadığını mutlaka doğrula."
+  },
+  {
+   "baslik": "Sık yapılan hatalar",
+   "maddeler": [
+    "Kişisel veriyi (TCKN, IBAN, telefon) maskelemeden loglamak",
+    "Correlation ID olmadan loglamak",
+    "text alanda toplama/sıralama; keyword alt alanını kullanmamak",
+    "Çok alarm (alert fatigue), sahipsiz alarm",
+    "Sorusuz dashboard · UTC ile Europe/Istanbul farkı"
+   ],
+   "anlatim": "Sık yapılan hatalar. Kişisel veriyi, yani TCKN, IBAN ve telefonu maskelemeden loglamak. {Correlation} ID olmadan loglamak; bir başvurunun sistemler arası izini sürememek. {text} alanda toplama ya da sıralama denemek; {keyword} alt alanını kullanmamak. Çok fazla alarm, yani {alert fatigue}, ve sahipsiz alarm kurmak. Dashboard'u soru tanımlamadan grafik yığını olarak tasarlamak. Ve zaman dilimi farkını unutmak: UTC ile {Europe/Istanbul}.",
+   "bolum": "ELK · Hatalar ve mülakat"
+  },
+  {
+   "baslik": "Mülakat soruları",
+   "maddeler": [
+    "1. \"Başvurum takıldı\": Kibana'da nasıl araştırırsınız?",
+    "2. Loglama için hangi non-functional gereksinimler?",
+    "3. KQL ile ES|QL farkı?",
+    "4. keyword ve text farkı?",
+    "5. Entegrasyon SLA dashboard'u: hangi metrikler?",
+    "6. Saklama süresine nasıl karar verilir?"
+   ],
+   "anlatim": "Mülakat soruları. Bir: bir müşteri başvurum takıldı diyor; {Kibana}'da nasıl araştırırsınız? İki: loglama için hangi {non-functional} gereksinimleri yazarsınız? Üç: KQL ile {ES|QL} arasındaki fark nedir? Dört: {keyword} ve {text} alan tiplerinin farkı nedir? Beş: bir entegrasyonun SLA'ini izleyen {dashboard}'da hangi metrikler olmalı? Altı: log saklama süresine nasıl karar verilir?"
+  },
+  {
+   "baslik": "Cevap ipuçları",
+   "maddeler": [
+    "Zamanı daralt → başvuru no → trace.id ile filtre → zincir → iş kuralı",
+    "ECS alanları, trace.id, maskeleme, event.action, sayısal süre",
+    "KQL süzer; ES|QL boru ile hesaplar, gruplar",
+    "keyword tam eşleşme ve toplama; text tam metin arama",
+    "Hacim, hata oranı, p95 süre, zaman aşımı sayısı · mevzuat + iç politika"
+   ],
+   "anlatim": "İpuçları, bölümün içeriğinden. Bir: zaman aralığını daralt, başvuru numarasıyla bul, {trace.id} ile filtre ekle, zinciri zaman sırasıyla oku, etkilenen iş kuralını yaz. İki: ECS alanları, {trace.id}, maskeleme, {event.action} adlandırması, sayısal süre alanları. Üç: KQL kayıtları süzer; {ES|QL} boru ile hesaplar ve gruplar. Dört: {keyword} tam eşleşme ve toplama içindir; {text} tam metin arama içindir. Beş: hacim, hata oranı, p doksan beş süre, zaman aşımı sayısı. Altı: mevzuat, yani BDDK, MASAK ve KVKK, ve iç politika."
+  },
+  {
+   "baslik": "Mimari: veri nereden nereye gider",
+   "tur": "gorsel",
+   "gorsel": "gorseller/g23.png",
+   "odaklar": [
+    {
+     "kutu": [
+      0.0,
+      0.18,
+      0.4,
+      0.75
+     ],
+     "etiket": "1–2 · Kaynaklar, toplama"
+    },
+    {
+     "kutu": [
+      0.4,
+      0.18,
+      0.8,
+      0.75
+     ],
+     "etiket": "3–4 · İşleme, depolama"
+    },
+    {
+     "kutu": [
+      0.78,
+      0.18,
+      1.0,
+      0.75
+     ],
+     "etiket": "5 · Kibana"
+    },
+    {
+     "kutu": [
+      0.0,
+      0.75,
+      1.0,
+      0.95
+     ],
+     "etiket": "BA'nın her adımda sorduğu"
+    }
+   ],
+   "anlatim": "Görsel rehber. İlk başlık: mimari, veri nereden nereye gider. Çizim Elastic Stack veri akışı, beş adım: log kaynaktan dashboard ve alarma beş adımda gelir. Bir kaynaklar: uygulama logu, {API gateway}, veritabanı {audit} kaydı ve sunucu metriği. İki toplama: {Elastic Agent}, {Filebeat} ve {OpenTelemetry}. Üç işleme: {Logstash} ya da {ingest pipeline}; ayrıştır, maskele, zenginleştir. Dört depolama: {Elasticsearch}; index, {data stream}, {mapping}, ILM; {hot}, {warm}, {cold}. Beş {Kibana}: {Discover} ile arama, {Dashboard} ve {Lens}, alarm kuralları ve {ES|QL} sorguları. Altta iş analistinin her adımda sorduğu soru: ne loglanmalı, hangi sunucular, KVKK maskeleme, saklama süresi, kim hangi alarmı alır?",
+   "bolum": "ELK · Görsel rehber"
+  },
+  {
+   "baslik": "Kibana Discover nasıl okunur?",
+   "tur": "gorsel",
+   "gorsel": "gorseller/g24.png",
+   "odaklar": [
+    {
+     "kutu": [
+      0.0,
+      0.15,
+      0.25,
+      0.26
+     ],
+     "etiket": "1 · Data view"
+    },
+    {
+     "kutu": [
+      0.23,
+      0.15,
+      0.76,
+      0.26
+     ],
+     "etiket": "2 · Sorgu çubuğu (KQL)"
+    },
+    {
+     "kutu": [
+      0.74,
+      0.15,
+      1.0,
+      0.26
+     ],
+     "etiket": "3 · Zaman seçici"
+    },
+    {
+     "kutu": [
+      0.0,
+      0.25,
+      1.0,
+      0.3
+     ],
+     "etiket": "4 · Filtre çipleri"
+    },
+    {
+     "kutu": [
+      0.0,
+      0.3,
+      0.28,
+      0.95
+     ],
+     "etiket": "5 · Alan listesi"
+    },
+    {
+     "kutu": [
+      0.28,
+      0.3,
+      1.0,
+      0.56
+     ],
+     "etiket": "6 · Histogram"
+    },
+    {
+     "kutu": [
+      0.28,
+      0.55,
+      1.0,
+      0.95
+     ],
+     "etiket": "7 · Doküman tablosu"
+    }
+   ],
+   "anlatim": "Görsel: {Kibana} {Discover} ekran yerleşimi; şematik, numaralı bölgeler. {Kibana}'da log aramak için kullanılan ana ekran {Discover}; soldan sağa ve yukarıdan aşağı şu sırayla kullanırsın. Bir {data view} seçici: hangi log grubunda arayacağını seçersin, örneğin {logs-kredi} yıldız. Yanlış {data view} boş sonuç demektir. İki sorgu çubuğu: KQL yazıp {Enter}'a basarsın; yazarken alan adları önerilir. Üç zaman seçici: en sık hata kaynağı. Aradığın olay seçili aralığın dışındaysa hiç sonuç görmezsin. Takvim simgesi, {Commonly used} ya da {Absolute}. Dört filtre çipleri: artı {Add filter}; alan, operatör, yani {is}, {is one of}, {exists}, {is between}, ve değer. Çipe tıklayıp geçici olarak devre dışı bırakabilir ya da tersine çevirebilirsin, yani {Exclude}. Beş alan listesi: bir alana tıklayınca en sık değerler ve yüzdeleri görünür; artı ile filtre, eksi ile hariç tutma eklenir. Altı histogram: logun zamana göre dağılımı. Bir sütunu fareyle seçmek zaman aralığını daraltır; ani sıçrama olayın başladığı andır. Yedi doküman tablosu: her satır bir log. Satır başındaki genişletme simgesi dokümanı açar; {Table} sekmesi alanları, JSON sekmesi ham kaydı gösterir. Alanın yanındaki büyüteç simgeleriyle doğrudan filtre eklenir."
+  },
+  {
+   "baslik": "Menü rehberi (1/2) · Kibana 9.x",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Yapmak istediğin",
+     "Yol"
+    ],
+    "satirlar": [
+     [
+      "Log aramak",
+      "☰ → Analytics → Discover"
+     ],
+     [
+      "Pano",
+      "☰ → Analytics → Dashboards → Create dashboard"
+     ],
+     [
+      "Grafik",
+      "Dashboard içinde Create visualization (Lens)"
+     ],
+     [
+      "Data view",
+      "Stack Management → Data Views → Create data view"
+     ],
+     [
+      "İndeks, yaşam döngüsü",
+      "Index Management / Index Lifecycle Policies"
+     ]
+    ]
+   },
+   "anlatim": "Menü rehberi, {Kibana} dokuz nokta x; menü adları sürüme göre küçük farklar gösterebilir. Log aramak: ana menü, {Analytics}, {Discover}. Hazır panoları açmak ya da yeni pano: {Analytics}, {Dashboards}, {Create dashboard}. Grafik oluşturmak: {Dashboard} içinde {Create visualization}; {Lens} editörü açılır. {Data view} oluşturmak: {Management}, {Stack Management}, {Data Views}, {Create data view}; ad, index deseni {logs-kredi} yıldız, zaman alanı {@timestamp}. İndeks ve yaşam döngüsü: {Stack Management}, {Index Management} ya da {Index Lifecycle Policies}."
+  },
+  {
+   "baslik": "Menü rehberi (2/2)",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Yapmak istediğin",
+     "Yol"
+    ],
+    "satirlar": [
+     [
+      "Alarm kuralı",
+      "Alerts and Insights → Rules → Create rule · Discover → Alerts"
+     ],
+     [
+      "Bildirim kanalı",
+      "Stack Management → Connectors"
+     ],
+     [
+      "API ile sorgu",
+      "Management → Dev Tools → Console"
+     ],
+     [
+      "Örnek veri",
+      "Try sample data → Sample web logs"
+     ],
+     [
+      "Uygulama izleme",
+      "Observability → APM / Applications"
+     ]
+    ]
+   },
+   "anlatim": "Alarm kuralı: {Stack Management}, {Alerts and Insights}, {Rules}, {Create rule}; ya da {Discover}'da üst menü {Alerts}, {Create search threshold rule}. Bildirim kanalı, yani e-posta, {Teams} ya da {webhook}: {Stack Management}, {Connectors}, {Create connector}. {API} ile sorgu denemek: {Management}, {Dev Tools}, {Console}; {Query DSL} ve {ES|QL} burada. Örnek veri yüklemek: ana sayfa, {Try sample data}; {Add data}, {Sample data}, {Sample web logs}, {Add data}. Uygulama izleme, yani {trace}: {Observability}, {APM} ya da {Applications}."
+  },
+  {
+   "baslik": "KQL kopya kağıdı",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "İhtiyaç",
+     "KQL"
+    ],
+    "satirlar": [
+     [
+      "Tam eşleşme · birkaç değer",
+      "response : 404 · response : (404 or 503)"
+     ],
+     [
+      "Ve / değil",
+      "response : 404 and not url : \"/login\""
+     ],
+     [
+      "Aralık · joker",
+      "bytes >= 10000 and bytes < 50000 · url : /api/*"
+     ],
+     [
+      "Alan var mı · iç içe",
+      "error.message : * · labels.basvuru_id : \"BSV-1001\""
+     ],
+     [
+      "Serbest metin",
+      "\"zaman aşımı\""
+     ]
+    ]
+   },
+   "anlatim": "KQL kopya kağıdı. Tam eşleşme: {response} iki nokta dört yüz dört. Birkaç değerden biri: parantez içinde dört yüz dört {or} beş yüz üç. Ve, değil: {response} dört yüz dört {and} {not} {url} iki nokta bölü {login}. Aralık: {bytes} on bine eşit ya da büyük {and} {bytes} elli binden küçük; sayı ve tarih alanlarında çalışır. Joker: {url} iki nokta bölü api bölü yıldız; yıldız herhangi bir karakter dizisi. Alan var mı: {error.message} iki nokta yıldız; alanı dolu olanlar. İç içe alan: {labels.basvuru_id} iki nokta BSV-1001; noktalı alan adları. Serbest metin: tırnak içinde zaman aşımı; alan belirtmeden tüm metin alanlarında arar."
+  },
+  {
+   "baslik": "Laboratuvar: örnek veri (~60 dk) · 1–4",
+   "maddeler": [
+    "Ortam: test Kibana'sı, Elastic Cloud deneme ya da Docker · \"Sample web logs\"",
+    "1. Try sample data → Other sample data sets → Sample web logs → Add data",
+    "2. Discover → Kibana Sample Data Logs · Last 7 days",
+    "3. response : 404 → histogram",
+    "4. url alanı: en sık 5 değer, en çok 404 alan URL"
+   ],
+   "anlatim": "Laboratuvar: {Kibana} örnek verisiyle araştırma ve pano; yaklaşık altmış dakika. Ortam: kurumundaki test {Kibana}'sı, {Elastic Cloud} deneme hesabı ya da {Docker} ile yerel kurulum. {Kibana}'nın hazır {Sample web logs} verisi kullanılır. Bir, veriyi yükle: ana sayfa, {Try sample data}, {Other sample data sets}, {Sample web logs}, {Add data}. İki, {Discover}'ı aç: {data view} olarak {Kibana Sample Data Logs} seç; zaman seçiciyi {Last 7 days} yap. Üç, ilk arama: sorgu çubuğuna {response} iki nokta dört yüz dört yaz, {Enter}. Histogramda sonuç dağılımına bak. Dört, alan keşfi: soldaki {url} alanına tıkla, en sık beş değeri oku; en çok dört yüz dört alan URL'yi not et.",
+   "bolum": "ELK · Laboratuvar"
+  },
+  {
+   "baslik": "Laboratuvar: 5–9",
+   "maddeler": [
+    "5. response, url, geo.src → + ile sütun",
+    "6. + Add filter → geo.src is US → Exclude results",
+    "7. Dokümanı aç → JSON: hangi alanlar kişisel veri? (clientip)",
+    "8. Save → \"404 hataları\"",
+    "9. ES|QL: FROM kibana_sample_data_logs | WHERE response.keyword == \"404\" | STATS adet BY url.keyword | SORT | LIMIT 10"
+   ],
+   "anlatim": "Beş, sütun ekle: {response}, {url} ve {geo.src} alanlarının üstüne gel, artı ile tabloya ekle. Altı, filtre çipi: {Add filter}, {geo.src} {is} US. Sonra çipe tıklayıp {Exclude results} seç; sonucun nasıl değiştiğine bak. Yedi, dokümanı aç: bir satırın başındaki genişletme simgesine tıkla, JSON sekmesinde ham kaydı incele. Hangi alanlar kişisel veri sayılabilir? Örneğin {clientip}. Sekiz, kaydet: üst menü {Save}, adı dört yüz dört hataları. Dokuz, {ES|QL} dene: sorgu dili düğmesinden {ES|QL}'e geç ve yaz: {FROM} {kibana_sample_data_logs}; {WHERE} {response.keyword} eşittir dört yüz dört; {STATS} adet eşittir {COUNT} yıldız, {BY} {url.keyword}; adete göre azalan sırala; on satırla sınırla."
+  },
+  {
+   "baslik": "Laboratuvar: 10–13",
+   "maddeler": [
+    "10. Dashboards → Create → Lens: Bar vertical stacked; @timestamp yatay, response.keyword Breakdown",
+    "11. Metric → Records: \"Toplam istek\" · pano: \"Web trafik izleme\"",
+    "12. response : 503 → Alerts → Create search threshold rule → 5 dk'da > 10 → Server log connector",
+    "13. BA çıktısı: 1 sayfa loglama ve izleme gereksinimi"
+   ],
+   "anlatim": "On, pano: {Dashboards}, {Create dashboard}, {Create visualization}. {Lens}'te sağ panelden {Bar vertical stacked} seç; {@timestamp} alanını yatay eksene, {response.keyword} alanını {Breakdown} alanına sürükle; {Save and return}. On bir, ikinci panel: {Create visualization}, {Metric}, {Records} sayısı; panel başlığı toplam istek. Panoyu web trafik izleme adıyla kaydet. On iki, alarm: {Discover}'da {response} iki nokta beş yüz üç sorgusu açıkken üst menü {Alerts}, {Create search threshold rule}; son beş dakikada ondan fazla koşulu; {Action} olarak bir {connector} seç; test ortamında {Server log} yeterli; {Save}. On üç, iş analisti çıktısı: bu deneyimden yola çıkarak kredi başvuru {API}'si için bir sayfalık loglama ve izleme gereksinimi yaz: zorunlu alanlar, maskelenecek alanlar, üç dashboard paneli, iki alarm kuralı ve sahipleri."
+  },
+  {
+   "baslik": "Kendi bilgisayarında Kibana (docker-elk)",
+   "maddeler": [
+    "1. git clone, cd docker-elk",
+    "2. docker compose up setup",
+    "3. docker compose up",
+    "4. localhost:5601 · elastic / changeme",
+    "5. 30 gün deneme → Basic lisans"
+   ],
+   "anlatim": "ELK uygulama paketi: Firma loglarıyla çalışma. Önce kendi bilgisayarında {Kibana}. Bir: terminali aç ve depoyu indir; {git clone}, deviantony bölü docker-elk nokta git; sonra {cd} {docker-elk}. Beklenen: klasörde {docker-compose} nokta yml var. İki: kullanıcıları hazırla; {docker compose up setup}. Beklenen: komut birkaç dakika sonra kendiliğinden biter. Üç: yığını başlat; {docker compose up}. Beklenen: terminalde {Elasticsearch} ve {Kibana} logları akmaya başlar. Dört: tarayıcıda {localhost} beş bin altı yüz bir adresini aç. Kullanıcı adı {elastic}; parola nokta env dosyasındaki {ELASTIC_PASSWORD} değeri, depodaki varsayılanı {changeme}. Beklenen: {Kibana} ana sayfası. Beş: depo ücretli özellikleri otuz günlük deneme olarak açar; süre bitince ücretsiz {Basic} lisansa kendiliğinden döner. Bu rehberdeki alıştırmalar {Basic} lisansla çalışır. Parolayı yalnız kendi bilgisayarında varsayılan bırak.",
+   "bolum": "ELK · Uygulama paketi"
+  },
+  {
+   "baslik": "Firma örnek log dosyası",
+   "maddeler": [
+    "13 satır → vdf_loglari.ndjson · her satır bir olay",
+    "5 başvuru: A1001 … A1005",
+    "A1002 ve A1005: KKB 5 sn'yi aşmış · A1004: hatalı istek, 400",
+    "kkb.sure_ms: karar motorunun beklediği toplam süre",
+    "Ölçülen değer 5.000 milisaniyenin üstüne taşabilir"
+   ],
+   "anlatim": "Firma örnek log dosyasını yükle. On üç satırı bir metin düzenleyiciye yapıştır ve {vdf_loglari} nokta {ndjson} adıyla kaydet. Her satır bir olaydır. Beş başvuru var: A1001'den A1005'e. A1002 ve A1005'te KKB beş saniyeyi aşmış; A1004 ise hatalı istek yüzünden dört yüz almış. Veriler temsilidir. {kkb.sure_ms}, karar motorunun yanıtı beklediği toplam süreyi ölçer. Zaman aşımı beş saniyede devreye girse de bağlantının kapanması ve kaydın yazılması ölçülen değeri beş bin milisaniyenin üstüne taşıyabilir."
+  },
+  {
+   "baslik": "Log dosyasının içeriği",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Başvuru (bayi)",
+     "Olaylar (saat, durum)"
+    ],
+    "satirlar": [
+     [
+      "A1001 (B1)",
+      "09:01:10 alındı 201 · KKB 200, 1200 ms · karar ONAY"
+     ],
+     [
+      "A1002 (B2)",
+      "09:05:40 alındı 201 · KKB 504 WARN, 6100 ms · MANUEL_INCELEME"
+     ],
+     [
+      "A1003 (B1)",
+      "10:12:03 alındı 201 · KKB 200, 1800 ms · karar RED"
+     ],
+     [
+      "A1004 (B3)",
+      "11:30:00 alındı 400 ERROR"
+     ],
+     [
+      "A1005 (B2)",
+      "11:42:19 alındı 201 · KKB 504 WARN, 5400 ms · MANUEL_INCELEME"
+     ]
+    ]
+   },
+   "anlatim": "Dosyanın içeriğini özetleyelim; tüm olaylar iki Kasım iki bin yirmi altı. Alanlar: {@timestamp}, {service.name}, yani basvuru-api ya da karar-motoru; {event.action}, yani basvuru_alindi, kkb_sorgu ya da karar_verildi; {basvuru.id}, {bayi.id}, {http.response.status_code}, {log.level}, {trace.id}; ve gerekirse {kkb.sure_ms} ile karar. A1001, B1 bayisi: dokuz sıfır bir on'da alındı, iki yüz bir; KKB iki yüz, bin iki yüz milisaniye; karar ONAY. A1002, B2: dokuz sıfır beş kırkta alındı; KKB beş yüz dört, WARN, altı bin yüz milisaniye; karar MANUEL_INCELEME. A1003, B1: on on iki sıfır üçte alındı; KKB iki yüz, bin sekiz yüz milisaniye; karar RED. A1004, B3: on bir otuzda alındı ama dört yüz, ERROR. A1005, B2: on bir kırk iki on dokuzda alındı; KKB beş yüz dört, WARN, beş bin dört yüz milisaniye; karar MANUEL_INCELEME. Her başvurunun {trace.id}'si t tire başvuru numarasıdır; örneğin t-A1002."
+  },
+  {
+   "baslik": "Dosyayı yükle",
+   "maddeler": [
+    "1. Arama çubuğuna Upload file (ya da Integrations / ML → Data Visualizer → File)",
+    "2. Dosyayı sürükle · önizlemede 13 satır",
+    "3. Import → index: vdf-loglari, Create data view işaretli",
+    "4. Discover → vdf-loglari, 2 Kasım 2026 → 13 hits / documents"
+   ],
+   "anlatim": "Yükleme adımları. Bir: {Kibana}'da üstteki arama çubuğuna {Upload file} yaz ve açılan sayfayı seç. {Integrations} altında da bulunur; bazı sürümlerde {Machine Learning}, {Data Visualizer}, {File} yolundadır. İki: dosyayı sürükle. Beklenen: önizlemede on üç satır ve alan listesi. Üç: {Import}; index adına {vdf-loglari} yaz, {Create data view} işaretli kalsın, {Import}. Dört: {Discover}'ı aç, soldan {vdf-loglari} veri görünümünü seç, zaman seçicide iki Kasım iki bin yirmi altıyı kapsayan bir aralık ayarla. Beklenen sonuç sayısı on üç; sürüme göre on üç {hits} ya da on üç {documents} yazar."
+  },
+  {
+   "baslik": "KQL alıştırmaları (1/2)",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "#",
+     "Soru",
+     "KQL",
+     "Beklenen"
+    ],
+    "satirlar": [
+     [
+      "1",
+      "KKB 5 sn'yi aşan",
+      "kkb.sure_ms > 5000",
+      "2 (A1002, A1005)"
+     ],
+     [
+      "2",
+      "Manuel incelemeye düşen",
+      "karar : \"MANUEL_INCELEME\"",
+      "2"
+     ],
+     [
+      "3",
+      "INFO dışı kayıtlar",
+      "not log.level : \"INFO\"",
+      "5 (4 WARN, 1 ERROR)"
+     ],
+     [
+      "4",
+      "B2'nin karar kayıtları",
+      "bayi.id : \"B2\" and karar : *",
+      "2"
+     ]
+    ]
+   },
+   "anlatim": "KQL alıştırmaları; beklenen sonuçlar hesaplanarak doğrulandı. Bir: KKB beş saniyeyi aşan sorgular; {kkb.sure_ms} beş binden büyük. Beklenen iki sonuç, A1002 ve A1005. İki: manuel incelemeye düşen kararlar; karar iki nokta MANUEL_INCELEME. İki sonuç. Üç: INFO dışındaki tüm kayıtlar; {not} {log.level} iki nokta INFO. Beş sonuç: dört WARN, bir ERROR. Dört: B2 bayisinin karar kayıtları; {bayi.id} iki nokta B2 {and} karar iki nokta yıldız. İki sonuç."
+  },
+  {
+   "baslik": "KQL alıştırmaları (2/2)",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "#",
+     "Soru",
+     "KQL",
+     "Beklenen"
+    ],
+    "satirlar": [
+     [
+      "5",
+      "KKB süresi alanı olan",
+      "kkb.sure_ms : *",
+      "4"
+     ],
+     [
+      "6",
+      "HTTP hata kodları",
+      "http.response.status_code >= 400",
+      "3 (504, 504, 400)"
+     ],
+     [
+      "7",
+      "A1002 uçtan uca iz",
+      "trace.id : \"t-A1002\"",
+      "3: alındı → KKB 6100 ms → MANUEL_INCELEME"
+     ]
+    ]
+   },
+   "anlatim": "Beş: KKB süresi alanı olan kayıtlar; {kkb.sure_ms} iki nokta yıldız. Dört sonuç. Altı: HTTP hata kodları; {http.response.status_code} dört yüze eşit ya da büyük. Üç sonuç: beş yüz dört, beş yüz dört ve dört yüz. Yedi: A1002 başvurusunun uçtan uca izi; {trace.id} iki nokta t-A1002. Üç sonuç: alındı, KKB altı bin yüz milisaniye, MANUEL_INCELEME."
+  },
+  {
+   "baslik": "7. sorgunun anlamı",
+   "tur": "ipucu",
+   "ipucu": {
+    "tip": "bilgi",
+    "metin": "Üç kaydı zaman sırasıyla oku: U04'teki zaman aşımı dalı loglarda. 09:05:40'ta başlayan başvuru, 6 sn sonra 504, aynı saniyede MANUEL_INCELEME."
+   },
+   "anlatim": "Yedinci sorgunun sonucunda üç kaydı zaman sırasıyla okuyunca, U04 diyagramındaki zaman aşımı dalını loglarda görmüş olursun. KKB sorgusu dokuz sıfır beş kırkta başlayan başvurudan altı saniye sonra beş yüz dört ile kapanmış ve aynı saniyede MANUEL_INCELEME kararı yazılmış. Diyagram ile log birebir örtüşüyor."
+  },
+  {
+   "baslik": "KQL ile Lucene'i karıştırma",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "İhtiyaç",
+     "KQL (varsayılan)",
+     "Lucene"
+    ],
+    "satirlar": [
+     [
+      "Eşitlik · büyüktür",
+      "karar : \"ONAY\" · kkb.sure_ms > 5000",
+      "karar:ONAY · kkb.sure_ms:>5000"
+     ],
+     [
+      "Aralık",
+      "kkb.sure_ms >= 1000 and kkb.sure_ms < 5000",
+      "kkb.sure_ms:[1000 TO 5000}"
+     ],
+     [
+      "Olumsuzlama · alan var mı",
+      "not log.level : \"INFO\" · kkb.sure_ms : *",
+      "NOT log.level:INFO · _exists_:kkb.sure_ms"
+     ],
+     [
+      "Joker",
+      "bayi.id : B*",
+      "bayi.id:B*"
+     ]
+    ]
+   },
+   "anlatim": "KQL ile {Lucene} yazımını karıştırma. Alan eşitliği: KQL'de karar iki nokta tırnak içinde ONAY; {Lucene}'de karar iki nokta ONAY, boşluksuz. Büyüktür: KQL'de {kkb.sure_ms} büyüktür beş bin; {Lucene}'de iki nokta büyüktür beş bin. Aralık: KQL'de bine eşit ya da büyük {and} beş binden küçük; {Lucene}'de köşeli parantez bin {TO} beş bin, süslü parantezle kapanır. Olumsuzlama: KQL'de {not} {log.level} iki nokta INFO; {Lucene}'de büyük harfle {NOT} {log.level} iki nokta INFO. Alan var mı: KQL'de {kkb.sure_ms} iki nokta yıldız; {Lucene}'de {_exists_} iki nokta {kkb.sure_ms}. Joker: KQL'de {bayi.id} iki nokta B yıldız; {Lucene}'de {bayi.id} iki nokta B yıldız, boşluksuz. Dil seçimi arama çubuğunun solundaki menüden yapılır; bir sorgu çalışmıyorsa önce hangi dilin seçili olduğuna bak."
+  },
+  {
+   "baslik": "Log gereksinimi yazmak (EARS)",
+   "maddeler": [
+    "Alan alan yazılır",
+    "KKB sorgusu: event.action, basvuru.id, trace.id, kkb.sure_ms",
+    "5.000 ms aşımı: MANUEL_INCELEME + WARN",
+    "Uyarı: eşik operasyonla belirlenir"
+   ],
+   "anlatim": "Log gereksinimi yazmak. İş analisti geliştiriciye logları düzgün tutalım demez; alan alan yazar. Örnekler, {EARS} kalıbıyla. Bir: KKB sorgusu tamamlandığında karar motoru {event.action} eşittir {kkb_sorgu}, {basvuru.id}, {trace.id} ve milisaniye cinsinden {kkb.sure_ms} alanlarını içeren bir log kaydı yazmalıdır. Doğrulama: test; {Discover}'da alan dolu mu. İki: KKB yanıt süresi beş bin milisaniyeyi aştığında karar motoru başvuruyu MANUEL_INCELEME durumuna almalı ve {log.level} eşittir WARN ile kaydetmelidir. Doğrulama: test. Üç, uyarı kuralı: son on beş dakikada {kkb.sure_ms} beş binden büyük olan kayıt sayısı bir eşiği aştığında operasyon ekibine bildirim gitmelidir. Eşik değerini operasyon ekibiyle belirle; tahminle yazma."
+  },
+  {
+   "baslik": "Bağımsız görev",
+   "maddeler": [
+    "1. Hangi başvuru hiç KKB sorgusuna ulaşmamış? Hangi KQL?",
+    "2. ONAY ya da RED kararlarını tek sorguyla listele",
+    "3. bayi.id'ye göre KKB zaman aşımı sayısı + bir cümlelik bulgu"
+   ],
+   "anlatim": "Bağımsız görev; aynı veriyle üç soru. Bir: hangi başvuru hiç KKB sorgusuna ulaşmadan kalmış? Hangi KQL ile buldun? İki: karar motorunun ONAY ya da RED verdiği kayıtları tek sorguyla listele. Üç: {Discover}'da {bayi.id} alanına göre KKB zaman aşımı sayısını göster ve bir cümlelik bulgu yaz. Çözüm videonun sonunda."
+  },
+  {
+   "baslik": "Sorun giderme (1/2)",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Belirti",
+     "Olası neden",
+     "Çözüm"
+    ],
+    "satirlar": [
+     [
+      "\"No results match your search criteria\"",
+      "Zaman seçici son 15 dakika",
+      "Verinin tarihine (2 Kasım 2026) ayarla"
+     ],
+     [
+      "kkb.sure_ms > 5000 yanlış sonuç",
+      "Alan keyword eşlenmiş",
+      "Index Management'ta eşleme; yüklerken long"
+     ],
+     [
+      "karar : MANUEL_INCELEME sonuç yok",
+      "Dil Lucene ya da yazım farklı",
+      "KQL seç; değeri alan listesinden ekle"
+     ]
+    ]
+   },
+   "anlatim": "Sorun giderme. {Discover} {No results match your search criteria} diyorsa: zaman seçici varsayılan olarak son on beş dakikayı gösteriyordur. Zaman seçiciyi verinin tarihine, iki Kasım iki bin yirmi altıya ayarla. {kkb.sure_ms} beş binden büyük yanlış ya da eksik sonuç veriyorsa: alan metin, yani {keyword} olarak eşlenmiştir; karşılaştırma sayı değil harf sırasıyla yapılır. {Stack Management}, {Index Management}'ta eşlemeye bak; yüklerken alan tipini {long} seç. Karar iki nokta MANUEL_INCELEME sonuç vermiyorsa: dil {Lucene}'e çevrilmiş ya da değerin yazımı farklıdır. Dil menüsünden KQL seç; değeri soldaki alan listesinden tıklayarak ekle.",
+   "bolum": "ELK · Sorun giderme ve bilgi kontrolü"
+  },
+  {
+   "baslik": "Sorun giderme (2/2)",
+   "tur": "tablo",
+   "tablo": {
+    "basliklar": [
+     "Belirti",
+     "Olası neden",
+     "Çözüm"
+    ],
+    "satirlar": [
+     [
+      "docker compose up bellek hatası",
+      "Docker belleği yetersiz",
+      "Settings → Resources: belleği artır"
+     ],
+     [
+      "\"Kibana server is not ready yet\" / giriş yok",
+      "setup çalıştırılmadı",
+      "docker compose up setup, sonra yeniden başlat"
+     ]
+    ]
+   },
+   "anlatim": "{docker compose up} bellek hatasıyla duruyorsa: {Docker}'a ayrılan bellek yetersizdir. {Docker Desktop}, {Settings}, {Resources}'tan belleği artır; depo {README}'sindeki gereksinime bak. {Kibana} {Kibana server is not ready yet} diyor ya da giriş başarısızsa: {setup} adımı çalıştırılmamıştır. {docker compose up setup} komutunu çalıştır, sonra yeniden başlat."
+  },
+  {
+   "baslik": "Bilgi kontrolü 1/5",
+   "tur": "soru",
+   "soru": {
+    "metin": "Bir başvurunun farklı servislerdeki tüm kayıtlarını birleştirmek için hangi alan?",
+    "secenekler": [
+     "@timestamp",
+     "trace.id",
+     "log.level",
+     "service.name"
+    ],
+    "dogru": 1,
+    "cevap_cumle": 6,
+    "bekle": 4
+   },
+   "anlatim": "Beş soruluk bilgi kontrolü. Birinci soru: bir başvurunun farklı servislerdeki tüm kayıtlarını birleştirmek için hangi alan kullanılır? A, {@timestamp}. B, {trace.id}. C, {log.level}. D, {service.name}. Doğru cevap B: {trace.id}."
+  },
+  {
+   "baslik": "Bilgi kontrolü 2/5",
+   "tur": "soru",
+   "soru": {
+    "metin": "not log.level : \"INFO\" ne döndürür?",
+    "secenekler": [
+     "Yalnız ERROR",
+     "INFO dışındaki tüm seviyeler",
+     "Boş sonuç",
+     "Yalnız WARN"
+    ],
+    "dogru": 1,
+    "cevap_cumle": 5,
+    "bekle": 4
+   },
+   "anlatim": "İkinci soru: {not} {log.level} iki nokta INFO ne döndürür? A, yalnız ERROR. B, INFO dışındaki tüm seviyeler. C, boş sonuç. D, yalnız WARN. Doğru cevap B: INFO dışındaki tüm seviyeler."
+  },
+  {
+   "baslik": "Bilgi kontrolü 3/5",
+   "tur": "soru",
+   "soru": {
+    "metin": "Sayısal alanda > 5000 sorgusu için alan tipi ne olmalı?",
+    "secenekler": [
+     "text",
+     "keyword",
+     "long",
+     "boolean"
+    ],
+    "dogru": 2,
+    "cevap_cumle": 5,
+    "bekle": 4
+   },
+   "anlatim": "Üçüncü soru: sayısal bir alanda büyüktür beş bin sorgusunun çalışması için alan tipi ne olmalı? A, {text}. B, {keyword}. C, {long}. D, {boolean}. Doğru cevap C: {long}."
+  },
+  {
+   "baslik": "Bilgi kontrolü 4/5",
+   "tur": "soru",
+   "soru": {
+    "metin": "Lucene'de \"alan dolu mu\" sorgusu nasıl yazılır?",
+    "secenekler": [
+     "alan : *",
+     "_exists_:alan",
+     "alan IS NOT NULL",
+     "exists(alan)"
+    ],
+    "dogru": 1,
+    "cevap_cumle": 5,
+    "bekle": 4
+   },
+   "anlatim": "Dördüncü soru: {Lucene}'de alan dolu mu sorgusu nasıl yazılır? A, alan iki nokta yıldız. B, {_exists_} iki nokta alan. C, alan {IS NOT NULL}. D, {exists} parantez içinde alan. Doğru cevap B. A seçeneği KQL yazımıdır."
+  },
+  {
+   "baslik": "Bilgi kontrolü 5/5",
+   "tur": "soru",
+   "soru": {
+    "metin": "Discover sonuç göstermiyor ama veri yüklendi. İlk neye bakarsın?",
+    "secenekler": [
+     "Index adına",
+     "Zaman seçiciye",
+     "Kullanıcı rolüne",
+     "Docker belleğine"
+    ],
+    "dogru": 1,
+    "cevap_cumle": 6,
+    "bekle": 4
+   },
+   "anlatim": "Beşinci soru: {Discover} sonuç göstermiyor ama veri yüklendi. İlk neye bakarsın? A, index adına. B, zaman seçiciye. C, kullanıcı rolüne. D, {Docker} belleğine. Doğru cevap B: zaman seçiciye."
+  },
+  {
+   "baslik": "Hızlı başvuru: bir olayı inceleme sırası",
+   "maddeler": [
+    "1. Zaman aralığını olayın saatine daralt",
+    "2. log.level : \"ERROR\" or http.response.status_code >= 500",
+    "3. Kaydı aç, trace.id yanındaki büyüteç (+) ile filtre",
+    "4. Zamana göre sırala, zinciri oku",
+    "5. Bulgu: ne oldu · kaç kayıt · zaman aralığı · etkilenen iş kuralı"
+   ],
+   "anlatim": "Hızlı başvuru: {Discover}'da bir olayı inceleme sırası. Bir: zaman aralığını olayın yaşandığı saate daralt. İki: hata kaydını bul; {log.level} iki nokta ERROR {or} {http.response.status_code} beş yüze eşit ya da büyük. Üç: kaydı aç, {trace.id} değerinin yanındaki büyüteç artı ile filtre ekle. Dört: sonuçları zamana göre sırala; olay zincirini oku. Beş: bulguyu şu biçimde yaz: ne oldu, kaç kayıt, hangi zaman aralığı, hangi iş kuralı etkilendi.",
+   "bolum": "ELK · Çözümler"
+  },
+  {
+   "baslik": "Çözümler",
+   "maddeler": [
+    "1. A1004: basvuru.id : \"A1004\" → 1 kayıt, 400 ERROR; karar motoruna hiç gitmemiş",
+    "Alternatif: event.action : \"basvuru_alindi\" and http.response.status_code >= 400",
+    "2. karar : (\"ONAY\" or \"RED\") → 2 (A1001 ONAY, A1003 RED)",
+    "3. kkb.sure_ms > 5000 → bayi.id: 2 zaman aşımının ikisi de B2"
+   ],
+   "anlatim": "Bağımsız görevin çözümü. Bir: A1004. {basvuru.id} iki nokta A1004 yalnız bir kayıt döndürür: basvuru_alindi, durum kodu dört yüz, ERROR. Başvuru {API}'de reddedildiği için karar motoruna hiç gitmemiş. Bulmak için {event.action} iki nokta basvuru_alindi {and} {http.response.status_code} dört yüze eşit ya da büyük de kullanılabilir. İki: karar iki nokta parantez içinde ONAY {or} RED; iki sonuç, A1001 ONAY ve A1003 RED. Üç: {kkb.sure_ms} beş binden büyük sorgusundan sonra soldaki alan listesinde {bayi.id}'ye tıkla. Sonuç: iki zaman aşımının ikisi de B2'de."
+  },
+  {
+   "baslik": "Bulguyu doğru yaz",
+   "tur": "ipucu",
+   "ipucu": {
+    "tip": "uyari",
+    "metin": "\"2 Kasım 2026'da KKB zaman aşımlarının tamamı (2/2) B2'de görüldü; B2'nin bağlantı yolu ya da başvuru saatleri incelenmeli.\" Az kayıtla genelleme yapma."
+   },
+   "anlatim": "Bulgu cümlesi şöyle: iki Kasım iki bin yirmi altıda KKB zaman aşımlarının tamamı, yani ikide iki, B2 bayisinin başvurularında görüldü; B2'nin bağlantı yolu ya da başvuru saatleri incelenmeli. Dikkat: az sayıda kayıtla genelleme yapma. Bu bir inceleme önerisidir, sonuç değil."
+  },
+  {
+   "baslik": "Bu videoda neler gördük?",
+   "maddeler": [
+    "ELK bileşenleri, veri akışı, temel kavramlar, KQL",
+    "ECS, alan tipleri, ingest, Lucene, dashboard tasarımı",
+    "ES|QL, Query DSL, alarm, ILM, güvenlik, APM",
+    "Discover, menüler, laboratuvar, docker-elk",
+    "Firma logları: 7 KQL, log gereksinimi, bulgu"
+   ],
+   "anlatim": "Toparlayalım. ELK bileşenlerini, veri akışını, temel kavramları ve KQL'i gördük. ECS'i, alan tiplerini, işlemeyi, {Lucene}'i ve dashboard tasarımını öğrendik. {ES|QL}, {Query DSL}, alarm, yaşam döngüsü, güvenlik ve APM'e geçtik. {Discover} ekranını, menüleri, laboratuvarı ve {docker-elk} kurulumunu çalıştık. Firma loglarıyla yedi KQL sorgusu yazdık, log gereksinimi ve bulgu yazmayı öğrendik. Bir sonraki videoda Postman ile API'leri deneyip test edeceğiz.",
+   "ton": "sakin"
+  }
+ ]
+}

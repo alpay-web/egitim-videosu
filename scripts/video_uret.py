@@ -157,11 +157,12 @@ def teknik_yukle(kok_yol=None, ek=None):
 
 def _sozluk_okunus(metin):
     """Teknik terim sözlüğü: en uzun öbek eşleşmesi (en çok 4 kelime), kalan kelimeler CMU ile."""
-    kel = re.findall(r"[A-Za-z0-9][A-Za-z0-9'’.-]*[A-Za-z0-9]|[A-Za-z0-9]|[^A-Za-z0-9]+", metin)
+    metin = re.sub(r"(?i)\bes\|ql\b", "ESQL", metin).replace("@", "")
+    kel = re.findall(r"[A-Za-z0-9][A-Za-z0-9'’._-]*[A-Za-z0-9]|[A-Za-z0-9]|[^A-Za-z0-9]+", metin)
     out, i = [], 0
     while i < len(kel):
         if not re.match(r"[A-Za-z0-9]", kel[i]):
-            out.append(kel[i]); i += 1; continue
+            out.append(kel[i].replace("_", " ")); i += 1; continue
         bulundu = False
         for n in (4, 3, 2, 1):
             parca = kel[i:i + 2 * n - 1]
@@ -173,7 +174,12 @@ def _sozluk_okunus(metin):
             if anahtar_b in TEKNIK:
                 out.append(TEKNIK[anahtar_b]); i += 2 * n - 1; bulundu = True; break
         if not bulundu:
-            out.append(_cmu_okunus(kel[i], w_u=True)); i += 1
+            w = kel[i]
+            if re.search(r"[._]", w) and w.lower() not in TEKNIK:     # trace.id, http.response.status_code, basvuru_id
+                out.append(" ".join(TEKNIK.get(p_.lower(), _cmu_okunus(p_, w_u=True)) for p_ in re.split(r"[._]+", w) if p_))
+            else:
+                out.append(_cmu_okunus(w, w_u=True))
+            i += 1
     return "".join(out)
 
 
