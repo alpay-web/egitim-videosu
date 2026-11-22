@@ -1,0 +1,484 @@
+#!/usr/bin/env python3
+"""BA Teknik Rehberi · Video 14: Agile + kendini değerlendirme ve kaynaklar. Belge satır 3955–4291."""
+from ortak import m, t, dikkat, g, soru, kaydet
+
+m("Agile: çevik yöntemler", ["Belirsizlikte kısa döngüler, sık geri bildirim, değişime uyum", "Tek yöntem değil: zihniyet + çerçeveler ailesi",
+                             "Scrum, Kanban, XP, Lean, ölçekli çerçeveler", "BA: sürekli keşif, backlog'u besler, köprü kurar"],
+  "{Agile}, belirsizliğin yüksek olduğu işlerde kısa döngülerle değer üretmeyi, sık geri bildirimi ve değişime uyumu esas alan bir yaklaşımdır. "
+  "Tek bir yöntem değil; bir zihniyet ve bu zihniyeti uygulayan çerçeveler ailesidir: {Scrum}, {Kanban}, XP, {Lean} ve ölçekli çerçeveler. "
+  "İş analisti, {agile} ortamda gereksinimi tek seferde yazıp devreden kişi değil; sürekli keşif yapan, {backlog}'u besleyen "
+  "ve ekip ile iş birimi arasında köprü kuran kişidir.",
+  bolum="Agile: giriş ve hedefler", kanca="Serinin son videosu: her şeyi bir sprintin içine yerleştiriyoruz.", ton="merakli")
+m("Bu bölümün hedefleri", ["Scrum Guide 2020: sorumluluk, olay, artefakt → Firma sprinti", "Büyük epic'i 8 bölme yöntemiyle değer üreten story'lere bölmek",
+                           "Sprint sağlığını üç göstergeyle ölçmek", "Kanban'da WIP sınırı ve akış metriklerini okumak"],
+  "Bu bölümü bitirdiğinde şunları yapabileceksin. Bir: {Scrum Guide} 2020'deki sorumlulukları, olayları ve artefaktları bir Firma sprintine yerleştirip "
+  "iş analistinin her olaydaki rolünü söylemek. İki: büyük bir Firma {epic}'ini sekiz bölme yönteminden uygun olanlarla, "
+  "her parçası tek başına değer üreten {story}'lere bölmek. Üç: sprint sağlığını üç göstergeyle ölçüp yorumlamak. "
+  "Dört: {Kanban}'da {WIP} sınırının ve akış metriklerinin ne söylediğini okumak.")
+t("Başlamadan önce gerekenler", ["Gereken", "Nereden", "Hazır olduğunu nasıl anlarsın"],
+  [["Scrum Guide 2020 (Türkçesi de var)", "scrumguides.org", "13 sayfayı bir kez okudun"], ["User story ve INVEST", "Jira uygulama paketi", "KRD-214'ü açıklayabiliyorsun"],
+   ["Hesap tablosu", "Excel veya Google Sheets", "Oranı yüzde hesaplıyorsun"]],
+  "Başlamadan önce tablo üç sütun: gereken, nereden ve hazır olduğunu nasıl anlarsın. "
+  "{Scrum Guide} 2020; Türkçe çevirisi de var, ücretsiz: {scrumguides.org}; on üç sayfalık metni bir kez okuduysan tamam. "
+  "{User story} ve {INVEST}: Jira bölümünün uygulama paketi; KRD-214 örneğini açıklayabiliyorsan tamam. "
+  "Hesap tablosu: Excel veya {Google Sheets}; bir oranı yüzde olarak hesaplayabiliyorsan hazırsın.")
+
+# ───────────────────────────── Temel
+m("Agile Manifesto (2001)", ["Bireyler ve etkileşimler > süreç ve araçlar", "Çalışan yazılım > kapsamlı dokümantasyon",
+                             "Müşteriyle iş birliği > sözleşme pazarlığı", "Değişime yanıt > plan izlemek", "Sağdakiler de değerli · 12 ilke"],
+  "Temel seviye. {Agile Manifesto}, 2001; dört değer, özetle. Bireyler ve etkileşimler, süreç ve araçlardan; çalışan yazılım, kapsamlı dokümantasyondan; "
+  "müşteri ile iş birliği, sözleşme pazarlığından; değişime yanıt vermek, bir planı izlemekten daha değerlidir. "
+  "Sağdakiler de değerlidir, ama soldakiler daha çok önemsenir. Manifestonun ayrıca on iki ilkesi vardır: erken ve sürekli teslimat, "
+  "değişen gereksinimleri karşılama, iş birimiyle günlük birlikte çalışma, sürdürülebilir tempo, basitlik, kendi kendini organize eden ekipler, "
+  "düzenli yansıtma ve benzerleri.", bolum="Agile · Temel seviye")
+t("Waterfall ve Agile (1/2)", ["Boyut", "Waterfall (şelale)", "Agile"],
+  [["Planlama", "Başta, detaylı", "Kademeli, sürekli"], ["Gereksinim", "Başta dondurulur (BRD)", "Backlog'da evrilir"],
+   ["Teslimat", "Proje sonunda", "Her iterasyonda çalışan artım"]],
+  "{Waterfall} ve {Agile} karşılaştırması; tablo boyut, {Waterfall} yani şelale, ve {Agile}. "
+  "Planlama: şelalede başta ve detaylı; {agile}'de kademeli ve sürekli. Gereksinim: şelalede başta dondurulur, BRD; {agile}'de {backlog}'da evrilir. "
+  "Teslimat: şelalede proje sonunda; {agile}'de her iterasyonda çalışan artım.")
+t("Waterfall ve Agile (2/2)", ["Boyut", "Waterfall (şelale)", "Agile"],
+  [["Değişiklik", "Change request maliyetli", "Beklenir ve yönetilir"], ["Risk", "Geç fark edilir", "Erken görünür"],
+   ["Uygun olduğu durum", "Kapsamı sabit, düzenleyici takvimli", "Belirsizliği yüksek ürün"]],
+  "Değişiklik: şelalede {change request} maliyetli; {agile}'de beklenir ve yönetilir. Risk: şelalede geç fark edilir; {agile}'de erken görünür. "
+  "Uygun olduğu durum: şelale kapsamı sabit, düzenleyici takvimli işler için; {agile} belirsizliği yüksek ürün geliştirme için.")
+t("Scrum (Scrum Guide 2020) 1/2", ["Unsur", "İçerik"],
+  [["Teori", "Ampirizm (şeffaflık, denetleme, uyarlama) ve yalın düşünce"], ["Değerler", "Bağlılık, odak, açıklık, saygı, cesaret"],
+   ["Scrum Team (tek takım)", "Product Owner · Scrum Master · Developers · self-managing, ≤ 10 kişi"]],
+  "{Scrum}; {Scrum Guide} 2020, hâlâ güncel resmi sürüm. Tablo unsur ve içerik. Teori: ampirizm, yani şeffaflık, denetleme, uyarlama; ve yalın düşünce. "
+  "Değerler: bağlılık, odak, açıklık, saygı, cesaret. {Scrum Team}, tek takım: {Product Owner}, değeri maksimize eder, {backlog}'dan sorumludur; "
+  "{Scrum Master}, {Scrum}'ın etkinliğinden sorumludur; {Developers}, her sprint kullanılabilir artım üretir. "
+  "Ekip kendi kendini yönetir, {self-managing}; genellikle on kişi veya daha azdır.")
+t("Scrum (Scrum Guide 2020) 2/2", ["Unsur", "İçerik"],
+  [["Etkinlikler", "Sprint (≤ 1 ay), Sprint Planning, Daily Scrum (15 dk), Sprint Review, Sprint Retrospective"],
+   ["Artefaktlar ve taahhütleri", "Product Backlog → Product Goal · Sprint Backlog → Sprint Goal · Increment → Definition of Done"]],
+  "Etkinlikler: {Sprint}, en fazla bir ay; {Sprint Planning}; {Daily Scrum}, on beş dakika; {Sprint Review}; {Sprint Retrospective}. "
+  "Artefaktlar ve taahhütleri: {Product Backlog}, {Product Goal}; {Sprint Backlog}, {Sprint Goal}; {Increment}, {Definition of Done}.")
+dikkat("Scrum Guide'da BA rolü yok", "BA: Developers'ın üyesi ya da PO'yu destekleyen kişi · backlog'un hesap verebilir sahibi PO",
+       "Not: {Scrum Guide}'da {Business Analyst} rolü yoktur. İş analisti genellikle {Developers}'ın bir üyesi olarak "
+       "ya da PO'yu destekleyen kişi olarak yer alır. {Backlog}'un hesap verebilir sahibi PO'dur.")
+m("Kanban temelleri", ["İşi görselleştir (board) · WIP limit", "Akışı yönet · politikaları açık yap (\"Testte\" geçiş kuralı)",
+                       "Geri bildirim döngüleri · iş birliğiyle iyileş", "Sprint zorunlu değil: operasyon, destek, bakım"],
+  "{Kanban} temelleri: işi görselleştir, yani {board}; devam eden işi sınırla, {WIP limit}; akışı yönet; politikaları açık yap, "
+  "örneğin testte sütununa geçiş kuralı; geri bildirim döngüleri kur; iş birliğiyle iyileş. "
+  "Sprint zorunlu değildir; operasyon, destek ve bakım ekipleri için uygundur.")
+
+# ───────────────────────────── Orta
+t("Agile ortamda BA'nın işi (1/2)", ["Etkinlik", "BA'nın katkısı"],
+  [["Discovery / keşif", "Problem, paydaş, süreç haritası, veri, hipotez ve başarı ölçütü"],
+   ["Backlog refinement", "Epic → story, kabul kriteri, iş kuralı, bağımlılık; DoR"], ["Sprint Planning", "Story anlaşılır; ekip sorularını yanıtla"],
+   ["Sprint süresince", "Geliştirici ve testerla \"just-in-time\" detay"]],
+  "Orta seviye: {agile} ortamda iş analistinin işi; tablo etkinlik ve BA'nın katkısı. "
+  "{Discovery}, yani keşif: problem tanımı, paydaş analizi, süreç haritası, veri analizi, hipotez ve başarı ölçütü. "
+  "{Backlog refinement}: {epic}'i {story}'lere bölme, kabul kriteri, iş kuralları, bağımlılık ve soruları netleştirme; {DoR}'a getirme. "
+  "{Sprint Planning}: {story}'lerin anlaşılır olduğunu sağlama, ekip sorularını yanıtlama. "
+  "Sprint süresince: geliştirici ve {tester}la sürekli netleştirme, {just-in-time} detaylandırma.", bolum="Agile · Orta seviye")
+t("Agile ortamda BA'nın işi (2/2)", ["Etkinlik", "BA'nın katkısı"],
+  [["Sprint Review", "Demo senaryosu, geri bildirim → backlog"], ["Retrospective", "Gereksinim kalitesi, iletişim sorunları"],
+   ["UAT ve yayın", "UAT senaryoları, kullanıcı eğitimi, sürüm notu"]],
+  "{Sprint Review}: demo senaryosu hazırlama, iş biriminden geri bildirimi {backlog}'a işleme. "
+  "{Retrospective}: gereksinim kalitesi ve iletişim sorunlarını gündeme getirme. {UAT} ve yayın: {UAT} senaryoları, kullanıcı eğitimi, sürüm notu.")
+m("Story bölme desenleri", ["İş akışı adımı · iş kuralı varyasyonu (bireysel/kurumsal) · veri varyasyonu", "Mutlu yol önce, istisnalar sonra · CRUD operasyonları",
+                            "Arayüz: web önce, mobil sonra · performansı sonraya bırak · spike", "Yatay (DB, API, UI) değil, dikey dilim (uçtan uca değer)"],
+  "{Story} bölme, yani {splitting} desenleri: iş akışı adımlarına göre; iş kuralı varyasyonlarına göre, bireysel ya da kurumsal müşteri; "
+  "veri varyasyonlarına göre; mutlu yol önce, sonra istisnalar; CRUD operasyonlarına göre; arayüze göre, web önce, mobil sonra; "
+  "performansı sonraya bırakma; {spike}, yani araştırma ayırma. "
+  "Yatay, yani katman bazlı, DB tablosu, API, UI değil; dikey dilim, yani uçtan uca değer hedeflenir.")
+m("Tahminleme", ["Story point: göreceli büyüklük, Fibonacci 1-2-3-5-8-13", "Planning Poker · T-shirt (S/M/L/XL)",
+                 "#NoEstimates: küçük benzer işler + throughput", "Story point zaman değildir, ekipler arası karşılaştırılmaz"],
+  "Tahminleme: {story point}, göreceli büyüklük; {Fibonacci} bir, iki, üç, beş, sekiz, on üç. {Planning Poker}. T-shirt boyutu: S, M, L, XL. "
+  "{NoEstimates} yaklaşımı: benzer boyutlu küçük işler ve {throughput} ile tahmin. "
+  "Dikkat: {story point} zaman değildir ve ekipler arası karşılaştırılmaz.")
+t("Önceliklendirme teknikleri", ["Teknik", "Mantık"],
+  [["MoSCoW", "Must / Should / Could / Won't (this time)"], ["WSJF", "(İş değeri + zaman kritikliği + risk/fırsat) / iş büyüklüğü"],
+   ["RICE", "(Reach × Impact × Confidence) / Effort"], ["Kano", "Temel, performans, heyecan verici"],
+   ["Değer / efor matrisi · Cost of Delay", "Hızlı kazanım · gecikmenin haftalık maliyeti"]],
+  "Önceliklendirme teknikleri; tablo teknik ve mantık. {MoSCoW}: {Must}, {Should}, {Could}, {Won't this time}. "
+  "WSJF: iş değeri, zaman kritikliği ve risk azaltma ya da fırsat toplamı, bölü iş büyüklüğü. "
+  "RICE: {Reach} çarpı {Impact} çarpı {Confidence}, bölü {Effort}. Kano: temel, performans ve heyecan verici özellikler. "
+  "Değer efor matrisi: hızlı kazanımları bulma. {Cost of Delay}: gecikmenin haftalık maliyeti.")
+m("XP ve Lean", ["XP: TDD, pair/mob programming, CI, refactoring, küçük sürüm, ortak kod sahipliği",
+                 "BA için: BDD, ATDD · Three Amigos ile Gherkin", "Example Mapping: kural mavi · örnek yeşil · soru kırmızı",
+                 "Lean: değer, değer akışı, akış, pull, mükemmellik · israfı azalt", "Lean Startup: Build–Measure–Learn, MVP, hipotez testi"],
+  "XP, yani {Extreme Programming} pratikleri: {Test-driven development}, {pair} ya da {mob programming}, {continuous integration}, {refactoring}, "
+  "küçük sürümler, ortak kod sahipliği. İş analisti için ilgili olanlar: BDD, yani {Behavior-Driven Development}, ve ATDD; "
+  "{Three Amigos}, yani BA ya da PO, geliştirici ve {tester} oturumlarında {Gherkin} senaryolarını birlikte yazmak; "
+  "ve {Example Mapping}: kural mavi, örnek yeşil, soru kırmızı kartlar. "
+  "{Lean} ilkeleri: değeri tanımla, değer akışını haritala, akışı sağla, çekme, yani {pull} sistemi, mükemmellik. "
+  "İsrafı azalt: yarım kalan iş, gereksiz özellik, devir teslim, bekleme, geçiş maliyeti, hata. "
+  "{Lean Startup}: {Build Measure Learn}, MVP, hipotez testi.")
+
+# ───────────────────────────── İleri
+t("Ölçekli agile çerçeveleri (1/2)", ["Çerçeve", "Özet", "BA açısından"],
+  [["SAFe 6.0 (Mart 2023)", "ART, PI Planning (8–12 hafta), Portfolio / Large Solution / Essential, LPM", "Feature, enabler, WSJF, PI hedefleri, Solution Intent"],
+   ["LeSS", "Tek PO, tek backlog, çok Scrum ekibi", "Ortak refinement"], ["Nexus", "3–9 Scrum ekibi, Nexus Integration Team", "Entegrasyon bağımlılıkları"]],
+  "İleri seviye: ölçekli {agile} çerçeveleri; tablo çerçeve, özet ve BA açısından. "
+  "{SAFe}, güncel sürüm 6.0, Mart 2023: {Agile Release Train}, yani ART; {PI Planning}, sekiz ile on iki haftalık {Program Increment}; "
+  "{Portfolio}, {Large Solution} ve {Essential} konfigürasyonları; {Lean Portfolio Management}. "
+  "İş analisti açısından: {feature} ve {enabler} yazma, WSJF, PI hedefleri, {Solution Intent}. "
+  "LeSS: tek {Product Owner} ve tek {backlog} altında birden çok {Scrum} ekibi; ortak {refinement}, ekipler arası netleştirme. "
+  "{Nexus}: üç ile dokuz {Scrum} ekibi, {Nexus Integration Team}; entegrasyon bağımlılıklarının yönetimi.", bolum="Agile · İleri seviye")
+t("Ölçekli agile çerçeveleri (2/2)", ["Çerçeve", "Özet", "BA açısından"],
+  [["Scrum@Scale", "Scrum of Scrums, MetaScrum", "Önceliklerin hizalanması"], ["Spotify modeli (ilham)", "Squad, tribe, chapter, guild", "BA chapter'ı"],
+   ["Disciplined Agile (PMI)", "Bağlama göre yol seçimi", "Hibrit kurumsal ortam"]],
+  "{Scrum at Scale}: {Scrum of Scrums}, {MetaScrum}; önceliklerin hizalanması. "
+  "{Spotify} modeli; ilham, çerçeve değil: {squad}, {tribe}, {chapter}, {guild}; BA {chapter}'ı ile yetkinlik paylaşımı. "
+  "{Disciplined Agile}, PMI: bağlama göre yol seçimi; hibrit kurumsal ortamlar.")
+m("Akış metrikleri ve ampirik yönetim", ["Lead time (talep → teslim) · cycle time (başla → bitir)", "Throughput · WIP · work item age · flow efficiency",
+                                         "Monte Carlo: \"%85 olasılıkla 30 iş kaç haftada biter?\"", "Little Yasası: cycle time = WIP / throughput"],
+  "Akış metrikleri ve ampirik yönetim: {lead time}, talepten teslime; {cycle time}, başlamadan bitişe; {throughput}, birim zamanda biten iş; "
+  "{WIP}; {work item age}; {flow efficiency}. {Monte Carlo} simülasyonu ile geçmiş {throughput}'tan tahmin: "
+  "yüzde seksen beş olasılıkla otuz iş kaç haftada biter? "
+  "{Little} Yasası: ortalama {cycle time} eşittir ortalama {WIP} bölü ortalama {throughput}. Yani {WIP}'i düşürmek süreyi kısaltır.")
+m("Çıktı değil sonuç odaklılık", ["OKR: Objective + ölçülebilir Key Results · North Star metriği",
+                                  "Hipotez: \"Otomatik belge okuma eklersek tamamlama süresi %30 azalır;",
+                                  "6 hafta içinde medyan süreyle ölçeceğiz.\""],
+  "Çıktı, yani {output} değil; sonuç, yani {outcome} odaklılık. OKR'lar: {Objective} ve ölçülebilir {Key Results}; {North Star} metriği. "
+  "Hipotez formu: bayi portalına otomatik belge okuma eklersek, başvuru tamamlama süresinin yüzde otuz azalmasını bekliyoruz; "
+  "bunu altı hafta içinde medyan süreyle ölçeceğiz.")
+m("Düzenlemeye tabi ortamda (finans) agile", ["Hibrit: yıllık bütçe, çeyrek plan, sprint", "DoD'de uyum: güvenlik, KVKK, 4 göz",
+                                             "Kanıt otomatik: Jira, CI/CD logları", "BDDK kuralları sürece tasarlanır", "Release ≠ deploy: feature toggle"],
+  "Düzenlemeye tabi ortamlarda, yani finansta {agile}: hibrit model yaygındır; yıllık bütçe ve yol haritası, çeyrek planlama, sprint teslimatı. "
+  "Uyum gereksinimleri {DoD}'ye gömülür: güvenlik testi, KVKK değerlendirmesi, değişiklik yönetimi kaydı, dört göz kod incelemesi, izlenebilirlik. "
+  "Denetim için kanıt otomatik üretilir: Jira ve Confluence geçmişi, CI/CD logları. "
+  "BDDK bilgi sistemleri düzenlemelerindeki değişiklik yönetimi, test ve görevler ayrılığı kuralları {agile} akışla çelişmez; sürecin içine tasarlanır. "
+  "{DevOps} ve sürekli teslimat bu ortamlarda da mümkündür; yayını, yani {release}'i, dağıtımdan, yani {deploy}'dan "
+  "{feature toggle}'larla ayırmak riski azaltır.")
+m("Agile'da dokümantasyon ve anti-pattern'ler", ["\"Yeterli ve zamanında\" dokümantasyon · kalıcı bilgi Confluence'ta",
+                                                 "Living documentation: Gherkin hem gereksinim hem test", "Cargo cult · proxy PO · sürekli kapsam değişimi",
+                                                 "Mini şelale · velocity hedef olur · retro aksiyonu uygulanmaz"],
+  "{Agile}'da dokümantasyon: dokümantasyon yok değil; yeterli ve zamanında dokümantasyon. Kalıcı bilgi, yani iş kuralları, arayüz sözleşmeleri, kararlar, "
+  "süreçler Confluence'ta; geçici konuşmalar {story}'lerde. Yaşayan dokümantasyon, {living documentation}: {Gherkin} senaryoları hem gereksinim "
+  "hem test olarak güncel kalır. "
+  "{Anti-pattern}'ler: {Scrum}'ın ritüeller listesine indirgenmesi, {cargo cult}; PO'nun {proxy} olması ve karar verememesi; "
+  "sprint içinde sürekli kapsam değişimi; mini şelale, yani sprint bir analiz, sprint iki geliştirme, sprint üç test; "
+  "{velocity}'nin hedef ve performans ölçüsü olması; retrospektif aksiyonlarının hiç uygulanmaması.")
+m("Sertifikalar (BA açısından)", ["PSM I / PSPO I (Scrum.org: 80 soru, 60 dk, %85)", "CSM / CSPO (Scrum Alliance) · IIBA-AAC · PMI-ACP",
+                                  "SAFe POPM · ICAgile ICP-ENT / ICP-APO", "BA temeli: IIBA ECBA / CCBA / CBAP, BABOK v3"],
+  "Sertifikalar, iş analisti açısından: PSM bir ve PSPO bir, {Scrum.org}; seksen soru, altmış dakika, geçme notu yüzde seksen beş. "
+  "CSM ve CSPO, {Scrum Alliance}. IIBA-AAC, {Agile Analysis Certification}. PMI-ACP. {SAFe} POPM. ICAgile ICP-ENT ve ICP-APO. "
+  "BA temeli için IIBA ECBA, CCBA, CBAP ve BABOK v3.")
+
+# ───────────────────────────── Hatalar, mülakat
+m("Sık yapılan hatalar", ["Sprintten önce tüm detay (big design up front) ya da hiç yazmamak", "Story'leri katmana göre bölmek (UI/API/DB)",
+                          "Kabul kriterini sprint başladıktan sonra değiştirmek", "\"Agile\" bahanesiyle güvenlik, performans, loglamayı atlamak",
+                          "Yalnız output ölçmek, iş sonucunu değil"],
+  "Sık yapılan hatalar. İş analistinin sprintten önce tüm detayı yazmaya çalışması, {big design up front}; veya hiç yazmaması. "
+  "{Story}'leri katman bazında bölmek: UI, API, DB. Kabul kriterlerini sprint başladıktan sonra değiştirmek. "
+  "{Agile} bahanesiyle fonksiyonel olmayan gereksinimleri, yani güvenlik, performans, loglamayı atlamak. "
+  "Sadece {output}, yani biten {story} sayısını ölçmek; iş sonucunu ölçmemek.", bolum="Agile · Hatalar ve mülakat")
+m("Mülakat soruları", ["1. Scrum'da BA'nın yeri, PO ile ayrım", "2. Scrum ve Kanban farkı, ne zaman hangisi", "3. Büyük epic'i bölmek: kredi örneği",
+                       "4. Sprint ortasında acil değişiklik", "5. Regülasyonlu finansta agile", "6. WSJF · 7. Agile olgunluk metrikleri"],
+  "Mülakat soruları. Bir: {Scrum}'da iş analistinin yeri nedir? PO ile sorumluluklar nasıl ayrılır? "
+  "İki: {Scrum} ve {Kanban} arasındaki fark nedir, hangisini ne zaman önerirsiniz? Üç: büyük bir {epic}'i nasıl bölersiniz? Kredi sürecinden örnek verin. "
+  "Dört: sprint ortasında iş birimi acil bir değişiklik isterse ne yaparsınız? Beş: regülasyona tabi bir finans kurumunda {agile} nasıl uygulanır? "
+  "Altı: WSJF ile önceliklendirme nasıl yapılır? Yedi: bir ekibin {agile} olgunluğunu hangi metriklerle değerlendirirsiniz?")
+
+# ───────────────────────────── Görsel rehber
+g("Scrum bir bakışta", "g35.png",
+  [([0.03, 0.17, 0.21, 0.41], "Product Backlog"), ([0.24, 0.23, 0.39, 0.34], "Sprint Planning"), ([0.43, 0.17, 0.59, 0.41], "Sprint Backlog"),
+   ([0.62, 0.16, 0.78, 0.43], "Sprint"), ([0.81, 0.17, 0.98, 0.41], "Increment"), ([0.53, 0.58, 0.98, 0.69], "Review → Retrospective"),
+   ([0.1, 0.69, 0.92, 0.82], "Kesikli ok: geri bildirim ve refinement"), ([0.03, 0.85, 0.98, 0.97], "Scrum Team")],
+  "Agile görsel rehber: {Scrum} bir bakışta; {Scrum} çerçevesi, {Scrum Guide} 2020. Üç artefakt, beş etkinlik; her sprint kullanılabilir bir artımla biter. "
+  "Okunuşu: soldan sağa bir sprint döngüsü. {Product Backlog}'dan, yani sıralı iş listesinden, {Sprint Planning}'de iş seçilir; "
+  "{Sprint Backlog} oluşur, seçilen iş artı plan. Sprint en fazla bir ay; sprint boyunca her gün on beş dakikalık {Daily Scrum} yapılır "
+  "ve sprint sonunda kullanılabilir bir artım, {Increment} çıkar. "
+  "{Review}'da artım paydaşlara gösterilir; {Retrospective}'de ekip çalışma biçimini iyileştirir; sonra yeni sprint başlar. "
+  "Kesikli ok, iş analistinin en çok zaman harcadığı yerdir: geri bildirimi ve keşifleri {backlog}'a işleyip {story}'leri {refinement} ile hazır hale getirmek. "
+  "Her artefaktın altındaki taahhüt, o artefaktın neye hizmet ettiğini söyler: {Product Goal}, {Sprint Goal}, {DoD}. "
+  "Altta {Scrum Team}: tek ekip, kendi kendini yönetir. {Product Owner} değer ve {backlog}; {Scrum Master} {Scrum}'ın etkinliği; "
+  "{Developers} artımı üretir; BA genellikle burada.", bolum="Agile · Görsel rehber")
+t("İki haftalık sprintte BA'nın takvimi (1/2)", ["Gün · etkinlik", "Süre (2 haftalık sprint için yaygın)", "BA'nın hazırlığı ve çıktısı"],
+  [["1. gün · Sprint Planning", "En fazla 4 saat (1 aylıkta 8)", "DoR'lu story'ler, bağımlılıklar, sprint hedefi önerisi"],
+   ["Her gün · Daily Scrum", "15 dakika", "Bloklayıcı sorulara toplantı sonrası netleştirme"],
+   ["3–8. günler · Refinement", "Kapasitenin ~%10'u", "1–2 sprintin story'leri, AC, Three Amigos"]],
+  "İki haftalık sprintte iş analistinin takvimi, örnek. Tablo gün, etkinlik, süre yani iki haftalık sprint için yaygın, ve BA'nın hazırlığı ve çıktısı. "
+  "Birinci gün, {Sprint Planning}: en fazla dört saat; bir aylık sprint için {Scrum Guide} üst sınırı sekiz saat. "
+  "Hazırlık: {DoR}'u karşılayan {story}'ler, bağımlılık listesi, sprint hedefi önerisi. "
+  "Her gün, {Daily Scrum}: on beş dakika; bloklayıcı soruları çözmek için toplantı sonrası kısa netleştirme. "
+  "Üç ile sekizinci günler, {refinement}, sürekli: ekip kapasitesinin yaklaşık yüzde onu yaygın bir pratik; "
+  "sonraki bir iki sprintin {story}'lerini bölme, kabul kriteri, {Three Amigos}.")
+t("İki haftalık sprintte BA'nın takvimi (2/2)", ["Gün · etkinlik", "Süre", "BA'nın hazırlığı ve çıktısı"],
+  [["3–9. günler · sprint içi destek", "—", "Geliştirici/tester soruları, kabul testi, UAT"], ["10. gün · Sprint Review", "En fazla 2 saat", "Demo, davet, geri bildirim → backlog"],
+   ["10. gün · Retrospective", "En fazla 1,5 saat", "Gereksinim kalitesi gözlemleri"]],
+  "Üç ile dokuzuncu günler, sprint içi destek: geliştirici ve {tester} soruları, kabul testi, {UAT} hazırlığı. "
+  "Onuncu gün, {Sprint Review}: en fazla iki saat; demo senaryosu, paydaş davetleri, geri bildirimi {backlog}'a işleme. "
+  "Onuncu gün, {Retrospective}: en fazla bir buçuk saat; gereksinim kalitesiyle ilgili gözlemler. "
+  "Süreler, {Scrum Guide}'ın bir aylık sprint için verdiği üst sınırların, yani {Planning} sekiz, {Review} dört, {Retro} üç saatin, "
+  "kısa sprintte orantılı kısaltılmış halidir.")
+g("Kanban bir bakışta", "g36.png",
+  [([0.03, 0.13, 0.21, 0.73], "Hazır"), ([0.22, 0.13, 0.4, 0.73], "Analiz · WIP 2"), ([0.42, 0.13, 0.59, 0.73], "Geliştirme · WIP 3"),
+   ([0.61, 0.13, 0.79, 0.73], "Test · 3 / 2 limit aşıldı"), ([0.8, 0.13, 0.98, 0.73], "Done"), ([0.03, 0.77, 0.98, 0.95], "Akış metrikleri, Little Yasası")],
+  "{Kanban} bir bakışta: {Kanban} {board}, {WIP} limitleri ve akış metrikleri. {WIP} limiti aşılan sütun darboğazı gösterir. "
+  "Sütunlar: hazır; analiz, {WIP} iki; geliştirme, {WIP} üç; test, {WIP} iki; {Done}. "
+  "Okunuşu: sütun başlıklarındaki sayılar aynı anda o sütunda bulunabilecek en fazla iş sayısıdır, yani {WIP} limiti. "
+  "Test sütununda üç iş var, limit iki: test darboğaz olmuş; üç bölü iki, limit aşıldı. "
+  "{Kanban}'ın kuralı: başlamayı bırak, bitirmeye başla. Geliştirme yeni iş çekmez, teste yardım eder. "
+  "Alttaki formül, devam eden iş sayısını azaltmanın neden teslim süresini kısalttığını gösterir: {lead time} talepten teslime; "
+  "{cycle time} işe başlamadan bitişe; {throughput} birim zamanda biten iş. "
+  "{Little} Yasası: ortalama {cycle time} eşittir ortalama {WIP} bölü ortalama {throughput}. "
+  "Örnek: yedi iş devam ediyor, haftada üç buçuk iş bitiyor; bir iş ortalama iki haftada biter.")
+t("Araçlarda agile ayarları (1/2)", ["Yapmak istediğin", "Jira Cloud", "Miro / Confluence"],
+  [["Scrum mu Kanban mı", "Space şablonu", "Kanban / Scrum board şablonu"],
+   ["WIP limiti", "Columns → Max", "Başlığa yaz, kontrol yok"], ["Sprint hedefi", "Start sprint → Sprint goal", "Sprint sayfası"],
+   ["Velocity, burndown", "Reports", "—"]],
+  "Araçlarda {agile} ayarları; tablo yapmak istediğin, {Jira Cloud}, ve {Miro} ya da Confluence. "
+  "{Scrum} mu {Kanban} mı: Jira'da {Space} oluştururken {Scrum} veya {Kanban} şablonu; {Miro}'da {Kanban framework} veya {Scrum board} şablonu. "
+  "{WIP} limiti: Jira'da {Board}, üç nokta, {Configure board} ya da {Board settings}, {Columns}, sütun için {Max}; sütun limit aşılınca renklenir. "
+  "{Miro}'da sütun başlığına limit yazılır; otomatik kontrol yoktur. "
+  "Sprint hedefi: Jira'da {Backlog}, {Start sprint}, {Sprint goal} alanı; Confluence'ta sprint sayfası. "
+  "{Velocity} ve {burndown}: Jira'da {Reports}, {Velocity chart}, {Burndown chart}.")
+t("Araçlarda agile ayarları (2/2)", ["Yapmak istediğin", "Jira Cloud", "Miro / Confluence"],
+  [["Akış metrikleri", "Cumulative flow diagram, Control chart", "—"], ["Retrospektif", "Confluence → Retrospective şablonu", "Miro → Retrospective / Start Stop Continue"],
+   ["DoR / DoD", "Confluence + Jira workflow validator", "Board'da kilitli not"]],
+  "Akış metrikleri: Jira'da {Reports}, {Cumulative flow diagram}, {Control chart}, yani {cycle time}. "
+  "Retrospektif: Confluence, {Retrospective} şablonu; {Miro}'da {Templates}, {Retrospective} ya da {Start Stop Continue}. "
+  "{DoR} ve {DoD}: Confluence sayfası artı Jira {workflow validator}; {Miro}'da {board}'da kilitli bir not.")
+m("Laboratuvar: sprint simülasyonu (1–4)", ["1. Backlog: 5 story · INVEST · ödeme planını ikiye böl",
+                                            "2. MoSCoW · WSJF = (değer + zaman + risk) ÷ büyüklük; 1–2–3–5–8", "3. Planning: kapasite 10 puan · sprint hedefi cümlesi",
+                                            "4. Kanban: Miro'da 5 sütun, WIP limitleri, başlama ve bitiş günü"],
+  "Laboratuvar: bir sprint simülasyonu ve metrik hesabı; yaklaşık kırk beş dakika. "
+  "Bir, {backlog}: Jira laboratuvarında oluşturduğun beş {story}'yi kullan. Her birini {INVEST} ile kontrol et; "
+  "büyük olanı, yani ödeme planını, bu bölümdeki bölme desenleriyle ikiye ayır. "
+  "İki, önceliklendir: {MoSCoW} etiketi ver. Sonra WSJF tablosu yap: iş değeri, zaman kritikliği, risk azaltma ve iş büyüklüğü için "
+  "bir, iki, üç, beş, sekiz değerleri ver; WSJF eşittir değer artı zaman artı risk, bölü büyüklük; sırala. "
+  "Üç, {planning} simülasyonu: ekip kapasitesi on puan. Sıradaki {story}'leri kapasite dolana kadar seç, bir sprint hedefi cümlesi yaz. "
+  "Dört, {Kanban} simülasyonu: {Miro}'da beş sütunlu {board} kur, çizimdeki gibi; {WIP} limitlerini yaz. "
+  "Her gün için kartları taşı ve kartın üstüne başlama ve bitiş gününü yaz.", bolum="Agile · Laboratuvar")
+m("Laboratuvar: metrik, review, retro (5–7)", ["5. Cycle time = bitiş − başlama + 1 · ortalama, throughput, WIP · Little Yasası tutuyor mu?",
+                                               "6. Biten story'ler için 5 dk demo: paydaş, senaryo, soru", "7. Start / Stop / Continue → \"gereksinim kalitesi\" iyileştirmesi → DoR"],
+  "Beş, metrik: her kart için {cycle time} eşittir bitiş günü eksi başlama günü artı bir. Ortalama {cycle time}, {throughput}, yani biten kart bölü gün, "
+  "ve ortalama {WIP}'i hesapla; {Little} Yasası'nın yaklaşık tuttuğunu kontrol et. "
+  "Altı, {review} hazırlığı: biten {story}'ler için beş dakikalık demo akışı yaz: hangi paydaş, hangi senaryo, hangi soru. "
+  "Yedi, retrospektif: {Start Stop Continue} şablonuyla en az bir gereksinim kalitesi iyileştirmesi öner ve {DoR}'a ekle.")
+
+# ───────────────────────────── Uygulama paketi
+dikkat("BA bir Scrum sprintinde nerede durur?", "BA: Developers içinde ya da PO'ya destek · süreler 1 aylık sprint üst sınırı · kısada orantılı kısalır (Daily Scrum hariç: 15 dk)",
+       "{Agile} uygulama paketi. İş analisti bir {Scrum} sprintinde nerede durur? {Scrum Guide}'da {Business Analyst} diye bir rol yoktur. "
+       "İş analisti genellikle {Developers} içinde yer alır ya da {Product Owner}'a {backlog} yönetiminde destek olur. "
+       "Aşağıdaki tablo süreleri bir aylık sprint için {Scrum Guide}'daki üst sınırlarla verir; kısa sprintlerde genellikle orantılı olarak kısalır. "
+       "{Daily Scrum} hariç: her sprintte on beş dakikadır.", bolum="Agile · Uygulama paketi")
+t("Olaylarda BA (1/2)", ["Olay · üst sınır (1 aylık sprint)", "BA'nın katkısı", "Firma örneği"],
+  [["Sprint Planning · 8 saat", "AC ve açık sorular hazır", "KRD-214 AC2 sınır sorusu önceden sorulmuş"],
+   ["Daily Scrum · 15 dakika", "Engelleri görünür kılar", "\"30. gün dahil mi?\" 2 gündür yanıtsız"],
+   ["Sprint Review · 4 saat", "Kuralların karşılandığını gösterir", "MANUEL_INCELEME akışı gösterilir"]],
+  "Tablo olay, üst sınır yani bir aylık sprint, BA'nın katkısı ve Firma örneği. "
+  "{Sprint Planning}, sekiz saat: {story}'lerin kabul kriterleri ve açık soruları hazır gelir. Örnek: KRD-214'ün AC2 sınır sorusu planlamadan önce iş birimine sorulmuş. "
+  "{Daily Scrum}, on beş dakika: engelleri, yani iş birimi yanıtı bekleyen soruları görünür kılar. Örnek: otuzuncu gün dahil mi sorusu iki gündür yanıtsız. "
+  "{Sprint Review}, dört saat: paydaşlara iş kurallarının nasıl karşılandığını gösterir, geri bildirimi {backlog}'a işler. "
+  "Örnek: kredi operasyon yöneticisine {MANUEL_INCELEME} akışı gösterilir.")
+t("Olaylarda BA (2/2)", ["Olay · üst sınır", "BA'nın katkısı", "Firma örneği"],
+  [["Sprint Retrospective · 3 saat", "Gereksinim kaynaklı sorunlar", "\"Üç story AC eksik diye geri döndü\""],
+   ["Backlog refinement (sürekli) · —", "Böler, netleştirir, INVEST", "Erken kapama epic'inin bölünmesi"]],
+  "{Sprint Retrospective}, üç saat: gereksinim kaynaklı sorunları getirir. Örnek: üç {story} kabul kriteri eksik olduğu için geri döndü. "
+  "{Backlog refinement}: olay değil, sürekli faaliyet; üst sınır yok. {Story}'leri böler, netleştirir, {INVEST}'e uydurur. Örnek: erken kapama {epic}'inin bölünmesi. "
+  "Artefaktlar ve bağlı taahhütleri: {Product Backlog}, {Product Goal}; {Sprint Backlog}, {Sprint Goal}; {Increment}, {Definition of Done}.")
+m("Story bölmenin 8 yöntemi", ["Kaynak: Richard Lawrence ve Peter Green'in kalıpları", "Amaç: tek başına değer veren dikey parçalar",
+                               "\"Ön yüz story'si\" + \"arka yüz story'si\" = yatay bölme", "Hiçbiri tek başına kullanılamaz"],
+  "{Story} bölmenin sekiz yöntemi. Bu liste {Richard Lawrence} ve {Peter Green}'in {story} bölme kalıplarından derlenmiştir. "
+  "Amacı, her biri tek başına kullanıcıya değer veren dikey parçalar elde etmektir. "
+  "Ön yüz {story}'si ve arka yüz {story}'si diye yatay bölme bu amaçla çelişir: hiçbiri tek başına kullanılamaz. "
+  "Tablo numara, yöntem, ne zaman, ve Firma örneği; {epic}: bayi portalından kredi başvurusu.")
+t("8 yöntem (1/3)", ["# Yöntem", "Ne zaman", "Firma örneği"],
+  [["1 İş akışı adımları", "Birden çok süreç adımı", "Başvuru gir / Belge yükle / Kararı gör"],
+   ["2 İş kuralı varyasyonları", "Aynı iş, farklı kurallar", "Bireysel kademeli kredi/değer / Kurumsal %90 fatura"],
+   ["3 Veri varyasyonları", "Farklı veri türü, kaynak", "Sıfır araç / İkinci el (8 yaş, 160.000 km, 75.000 ₺)"]],
+  "Bir, iş akışı adımları: {story} bir sürecin birden çok adımını kapsıyorsa. Örnek: başvuru gir, belge yükle, kararı gör. "
+  "İki, iş kuralı varyasyonları: aynı iş farklı kurallarla çalışıyorsa. Örnek: bireysel kademeli kredi değer oranı; kurumsal yüzde doksan fatura sınırı. "
+  "Üç, veri varyasyonları: farklı veri türleri ya da kaynakları varsa. Örnek: sıfır araç; ikinci el araç, sekiz yaş, yüz altmış bin kilometre, "
+  "yetmiş beş bin lira garanti sınırları.")
+t("8 yöntem (2/3)", ["# Yöntem", "Ne zaman", "Firma örneği"],
+  [["4 Kabul kriteri karmaşıklığı", "Birden çok \"When\" / \"Then\"", "Tek borçlu / Ortak araçta borçlu + kefil"],
+   ["5 Büyük efor", "İlk parça altyapıyı kurar", "İlk belge türü (kimlik) / Diğerleri"], ["6 Dış bağımlılık", "Bir parça dış sisteme bağlı", "KKB'siz manuel / KKB entegrasyonu"]],
+  "Dört, kabul kriteri karmaşıklığı: birden çok {When} ya da {Then} varsa. Örnek: tek borçlu başvuru; ortak araçta borçlu artı kefil. "
+  "Beş, büyük efor: ilk parça altyapıyı kurar, sonrakiler ucuzlar. Örnek: ilk belge türü, kimlik; diğer belge türleri. "
+  "Altı, dış bağımlılık: bir parça dış sisteme bağlıysa. Örnek: KKB'siz manuel değerlendirme; KKB entegrasyonu.")
+t("8 yöntem (3/3)", ["# Yöntem", "Ne zaman", "Firma örneği"],
+  [["7 DevOps adımları", "Dağıtım ya da ortam farklı", "Pilot bayilerde aç / Tüm bayilere aç"],
+   ["8 Keşif (küçük deney)", "Hiçbiri uymuyor, belirsizlik yüksek", "\"Bayilerin yüzde kaçı belge yüklerken takılıyor?\""]],
+  "Yedi, {DevOps} adımları: dağıtım ya da ortam gereksinimi farklıysa. Örnek: pilot bayilerde aç; tüm bayilere aç. "
+  "Sekiz, keşif, yani küçük deney: yukarıdakilerin hiçbiri uymuyor, belirsizlik yüksekse. Örnek: bayilerin yüzde kaçı belge yüklerken takılıyor ölçümü.")
+t("Sprint sağlığı: üç gösterge", ["Gösterge", "Formül", "Ne söyler"],
+  [["Taahhüt güvenilirliği", "Planlanandan tamamlanan puan ÷ planlanan puan", "Söz ne kadar tutuluyor"],
+   ["Kapsam değişimi", "Sprint ortası eklenen ÷ planlanan", "Sprint ne kadar korunuyor"], ["Engel çözüm süresi", "Engellerin açık kaldığı gün ortalaması", "Dış bağımlılık ne kadar yavaşlatıyor"]],
+  "Sprint sağlığını okumak: üç gösterge. Tablo gösterge, formül, ne söyler. "
+  "Taahhüt güvenilirliği: sprint başında planlanan {story}'lerden tamamlanan puan, bölü sprint başında planlanan puan; ekip söz verdiğini ne kadar tutuyor. "
+  "Kapsam değişimi: sprint ortasında eklenen puan bölü planlanan puan; sprint ne kadar korunuyor. "
+  "Engel çözüm süresi: engellerin açık kaldığı günlerin ortalaması; ekip dışındaki bağımlılıklar ne kadar yavaşlatıyor. "
+  "Bu göstergeler karşılaştırma için değil, ekibin kendi eğilimini görmesi içindir. "
+  "{Story} puanları ekipten ekibe farklı ölçeklidir; iki ekibin puanını karşılaştırmak yanıltır.")
+m("Bağımsız görev 1–2", ["1. \"Erken kapama ve rehin kaldırma\" → en az 5 story, en az 3 yöntem, numarasıyla",
+                         "Kural: rehin son taksitle ya da erken kapamada ~1 saatte kalkar", "2. Planlanan 34 · eklenen acil 5 · tamamlanan 29 (5'i acil)",
+                         "Engeller: 2, 4, 1, 5 gün → üç gösterge + bir retro konusu"],
+  "Bağımsız görev. Bir, {epic} bölme: erken kapama ve rehin kaldırma {epic}'ini en az beş {story}'ye böl. En az üç farklı bölme yöntemi kullan "
+  "ve her {story}'nin yanına yöntemin numarasını yaz. Firma kuralı: rehin son taksitle ya da erken kapamada yaklaşık bir saat içinde kaldırılır. "
+  "İki, sprint sağlığı, örnek veriler: sprint başında otuz dört puan planlandı. Sprint ortasında beş puanlık acil bir {story} eklendi. "
+  "Sprint sonunda toplam yirmi dokuz puan tamamlandı; bunun beş puanı sonradan eklenen acil {story}'dir. "
+  "Sprintte dört engel yaşandı ve sırasıyla iki, dört, bir ve beş gün açık kaldı. Üç göstergeyi hesapla ve retrospektif için tek bir konu öner.",
+  bolum="Agile · Bağımsız görev ve sorun giderme")
+m("Bağımsız görev 3: Kanban ve Little Yasası", ["\"Manuel inceleme\" sütununda ortalama 12 başvuru", "Ekip günde ortalama 4 başvuru bitiriyor",
+                                                "Ortalama süre = ortalama WIP ÷ throughput → kaç gün?", "WIP sınırı 8 olursa ne değişir?"],
+  "Üç, {Kanban} ve {Little} Yasası, örnek veriler: {Kanban} panosunda manuel inceleme sütununda ortalama on iki başvuru bekliyor "
+  "ve analist ekibi günde ortalama dört başvuru bitiriyor. {Little} Yasası'na göre ortalama süre eşittir ortalama {WIP} bölü {throughput}. "
+  "Bir başvurunun bu sütunda ortalama kaç gün kaldığını hesapla. {WIP} sınırı sekize indirilir ve ekip aynı hızla çalışırsa ne değişir?")
+t("Sorun giderme (1/2)", ["Belirti", "Olası neden", "Ne yapılır"],
+  [["Story'lerin yarısı sonraki sprinte", "Story büyük ya da AC sprintte değişiyor", "8 yöntem; AC'yi refinement'ta sabitle"],
+   ["Daily Scrum 40 dakika", "Problem çözme toplantıya taşınıyor", "Not al, sonra ilgililerle konuş"],
+   ["Review sunuma döndü", "Paydaş yalnızca izliyor", "Çalışan yazılım + \"Bu kural doğru mu?\""]],
+  "Sorun giderme: sık görülen sorunlar ve belirtileri. Tablo belirti, olası neden, ne yapılır. "
+  "Her sprintte {story}'lerin yarısı bir sonrakine taşınıyor: {story}'ler çok büyük ya da kabul kriterleri sprint içinde değişiyor; "
+  "sekiz bölme yöntemini uygula, {refinement}'ta AC'leri sabitle. "
+  "{Daily Scrum} kırk dakika sürüyor: problem çözme toplantıya taşınıyor; konuyu not al, ilgili kişilerle toplantıdan sonra konuş. "
+  "{Sprint Review} bir sunum toplantısına döndü: paydaşlar geri bildirim vermiyor, yalnızca izliyor; "
+  "çalışan yazılımı göster, paydaşa bu kural sizin için doğru mu diye sor.")
+t("Sorun giderme (2/2)", ["Belirti", "Olası neden", "Ne yapılır"],
+  [["\"Done\" iş UAT'de geri dönüyor", "DoD'de iş kuralı testi yok", "DoD'ye \"tüm AC test edildi\""],
+   ["BA son gün story yazıyor", "Refinement sürekli değil", "1–2 sprintlik hazır story tut"]],
+  "{Done} denen iş {UAT}'de geri dönüyor: {Definition of Done}'da iş kuralı testi yok; {DoD}'ye tüm kabul kriterleri test edildi maddesini ekle. "
+  "İş analisti her sprintte son gün {story} yazıyor: {refinement} sürekli yapılmıyor; {backlog}'un en üstünde bir iki sprintlik hazır {story} tut.")
+soru("Bilgi kontrolü 1/5", "Scrum Guide 2020'ye göre Increment'in taahhüdü?", ["Product Goal", "Sprint Goal", "Velocity", "Definition of Done"], 3,
+     "Beş soruluk bilgi kontrolü. Birinci soru: {Scrum Guide} 2020'ye göre {Increment}'in taahhüdü nedir? A, {Product Goal}. B, {Sprint Goal}. C, {Velocity}. "
+     "D, {Definition of Done}.", "Doğru cevap D.", bolum="Agile · Bilgi kontrolü ve çözümler")
+soru("Bilgi kontrolü 2/5", "\"Portal ekranı\" ve \"başvuru API'si\" diye bölmek neden zayıf?",
+     ["Yatay bölme; hiçbiri tek başına değer üretmez", "İki story fazla az", "API story'si yazılmaz", "Ekran story'si tahmin edilemez"], 0,
+     "İkinci soru: bayi portalı ekranı ve başvuru API'si diye iki {story}'ye bölmek neden zayıftır? A, yatay bölmedir; hiçbiri tek başına değer üretmez. "
+     "B, iki {story} fazla azdır. C, API {story}'si yazılmaz. D, ekran {story}'si tahmin edilemez.", "Doğru cevap A.")
+soru("Bilgi kontrolü 3/5", "Bireysel ve kurumsal kuralları ayrı story'lere ayırmak hangi yöntem?",
+     ["İş akışı adımları", "DevOps adımları", "İş kuralı varyasyonları", "Keşif"], 2,
+     "Üçüncü soru: bireysel ve kurumsal kredi kurallarını ayrı {story}'lere ayırmak hangi yöntemdir? A, iş akışı adımları. B, {DevOps} adımları. "
+     "C, iş kuralı varyasyonları. D, keşif.", "Doğru cevap C.")
+soru("Bilgi kontrolü 4/5", "Planlanan 40, tamamlanan 30 puan. Taahhüt güvenilirliği?", ["%133", "%75", "%25", "%70"], 1,
+     "Dördüncü soru: planlanan kırk, tamamlanan otuz puan. Taahhüt güvenilirliği? A, yüzde yüz otuz üç. B, yüzde yetmiş beş. C, yüzde yirmi beş. D, yüzde yetmiş.",
+     "Doğru cevap B: yüzde yetmiş beş.")
+soru("Bilgi kontrolü 5/5", "Bir aylık sprintte Daily Scrum'ın üst sınırı?", ["30 dakika", "1 saat", "15 dakika", "Sınır yok"], 2,
+     "Beşinci soru: bir aylık sprintte {Daily Scrum}'ın üst sınırı? A, otuz dakika. B, bir saat. C, on beş dakika. D, sınır yok.",
+     "Doğru cevap C. Cevaplar: bir D, iki A, üç C, dört B, beş C.")
+m("Hızlı başvuru: refinement öncesi", ["Persona belirli, \"so that\" gerçek fayda", "3–8 kabul kriteri: normal, uç, hatalı durum",
+                                       "Firma kuralı kaynağıyla (§1.3, U04)", "Açık sorular ve sahipleri yazılı", "Story dikey: tek başına test edilir, gösterilir",
+                                       "Büyükse bölme yöntemi önerildi"],
+  "Hızlı başvuru: {refinement}'a {story} getirmeden önce. Persona belirli; {so that} kısmı gerçek bir fayda. "
+  "En az üç, en fazla sekiz kabul kriteri; normal, uç ve hatalı durum var. Firma kuralı kaynağıyla yazılı; örneğin paragraf bir nokta üç, U04. "
+  "Açık sorular ve sahipleri yazılı. {Story} dikey: tek başına test edilip gösterilebilir. Büyükse hangi bölme yöntemiyle bölüneceği önerildi.")
+t("Çözüm 1: epic bölme (1/2)", ["Story", "Yöntem"],
+  [["Müşteri hizmetleri erken kapama tutarını hesaplayıp söyler", "1 (adım)"], ["Tahsilat erken kapama ödemesini kaydeder", "1 (adım)"],
+   ["Kalan borç 0 → rehin kaldırma talimatı (IAM yetki matrisi, SoD)", "1 (adım) + 2 (kural)"], ["Son taksit ödenince aynı talimat", "2 (kural)"]],
+  "Çözümler. Bir, {epic} bölme, örnek; tablo {story} ve yöntem. Müşteri hizmetleri erken kapama tutarını hesaplayıp müşteriye söyleyebilir: bir, adım. "
+  "Tahsilat erken kapama ödemesini kaydedebilir: bir, adım. "
+  "Kalan borç sıfır olduğunda rehin kaldırma talimatı oluşturulabilir; IAM bölümündeki yetki matrisi ve {SoD} kuralları geçerli: bir, adım, artı iki, kural. "
+  "Son taksit ödendiğinde aynı talimat oluşur: iki, kural; son taksit ve erken kapama ayrı tetikleyiciler.")
+t("Çözüm 1: epic bölme (2/2)", ["Story", "Yöntem"],
+  [["Ortak araçta talimat borçlu ve kefile bilgi verir", "4 (AC karmaşıklığı)"], ["Talimatın rehin kurumuna iletilmesi", "6 (dış bağımlılık)"],
+   ["İlk ay yalnızca pilot bölgede aç", "7 (DevOps)"]],
+  "Ortak araçta talimat borçlu ve kefile bilgi verir: dört, AC karmaşıklığı. Talimatın rehin kurumuna iletilmesi, dış sistem: altı, dış bağımlılık. "
+  "İlk ay yalnızca pilot bölgede aç: yedi, {DevOps}.")
+dikkat("\"Yaklaşık 1 saat\" ölçülebilir olmalı", "Ödeme kaydından talimatın iletilmesine kadar süre ve ölçümü yazılır · AC: \"ödeme kaydından itibaren en fazla 60 dakika\"",
+       "Yaklaşık bir saat hedefi ölçülebilir bir kabul kriterine dönüşmeli: ödeme kaydından talimatın iletilmesine kadar geçen süre "
+       "ve bu sürenin nasıl ölçüleceği yazılmalı. Bu eğitimde kabul kriteri olarak ödeme kaydından itibaren en fazla altmış dakika kullan; "
+       "çalışma setindeki yaklaşık bir saat ifadesinden.")
+m("Çözüm 2: sprint sağlığı", ["Taahhüt güvenilirliği: (29 − 5) ÷ 34 = 24 ÷ 34 = %70,6", "Kapsam değişimi: 5 ÷ 34 = %14,7",
+                              "Engel çözüm süresi: (2 + 4 + 1 + 5) ÷ 4 = 3 gün", "Retro: acil iş planlı 10 puanı (34 − 24) itmiş",
+                              "Engeller iş birimi yanıtıysa: ikinci konu"],
+  "İki, sprint sağlığı. Taahhüt güvenilirliği: yirmi dokuz eksi beş, bölü otuz dört; yirmi dört bölü otuz dört; yüzde yetmiş virgül altı. "
+  "Kapsam değişimi: beş bölü otuz dört; yüzde on dört virgül yedi. Engel çözüm süresi: iki artı dört artı bir artı beş, bölü dört; üç gün. "
+  "Retrospektif konusu: sonradan eklenen beş puanlık acil {story} tamamlandı ama başlangıçta planlanan işten on puan, yani otuz dört eksi yirmi dört, bitmedi; "
+  "acil iş planlı işi itmiş görünüyor. Sprint ortası acil talepler nasıl kabul edilsin sorusu tartışılabilir. "
+  "Engellerin çoğu iş birimi yanıtı bekliyorsa ikinci konu bu olur.")
+m("Çözüm 3: Kanban", ["12 ÷ 4 = 3 gün", "WIP 8 → 8 ÷ 4 = 2 gün", "Ama kabul edilmeyen iş bir önceki adımda bekler",
+                      "U04: manuel incelemedeki bekleme bayiye nasıl görünecek? → gereksinim sorusu"],
+  "Üç, {Kanban}: on iki bölü dört, üç gün. {WIP} sekiz olursa sekiz bölü dört, iki gün. Ancak bu yalnızca sütunun içindeki süreyi kısaltır; "
+  "sınır yüzünden kabul edilmeyen işler bir önceki adımda bekler. "
+  "U04'te manuel incelemeye düşen başvurular için bu bekleme yerinin bayiye nasıl görüneceği bir gereksinim sorusudur. "
+  "Bilgi kontrolü cevapları: bir D, iki A, üç C, dört B, beş C.")
+
+# ───────────────────────────── Kendini değerlendirme
+m("Kendini değerlendirme: seviye kontrol listesi", ["Her konu için: \"Bunu bir meslektaşıma 5 dakikada örnekle anlatabilir miyim?\"",
+                                                    "\"Evet\" diyemediğin maddeye geri dön", "Sütunlar: Temel (biliyorum) · Orta (uygulayabiliyorum) · İleri (tasarlayıp yönlendirebiliyorum)"],
+  "Kendini değerlendirme ve kaynaklar. Seviye kontrol listesi: her konu için kendinize sorun: bunu bir meslektaşıma beş dakikada örnekle anlatabilir miyim? "
+  "Evet diyemediğiniz maddeye geri dönün. Tablo konu, temel yani biliyorum, orta yani uygulayabiliyorum, ve ileri yani tasarlayıp yönlendirebiliyorum.",
+  bolum="Kendini değerlendirme ve kaynaklar")
+m("Seviye: UML, BPMN, süreç", ["UML · 14 diyagram ve grupları → use case anlatımı, sequence, state → OCL, profile, izlenebilirlik",
+                               "BPMN · event, activity, gateway, pool/lane → boundary event, alt süreç, message flow → DMN, compensation, simülasyon",
+                               "Süreç · SIPOC, swimlane → VSM metrikleri, as-is/to-be gap → process mining, süreç mimarisi, RCM"],
+  "UML: temel, on dört diyagramı ve gruplarını sayabilirim; orta, {use case} anlatımı, {sequence} ve {state} diyagramı çizebilirim; "
+  "ileri, OCL, {profile}, izlenebilirlik zinciri kurabilirim. "
+  "BPMN: temel, {event}, {activity}, {gateway}, {pool} ve {lane} ayırt ederim; orta, {boundary event}, alt süreç, {message flow} ile analitik model çizerim; "
+  "ileri, DMN, {compensation}, çalıştırılabilir model ve simülasyon. "
+  "Süreç diyagramlama: temel, SIPOC ve {swimlane} çizerim; orta, VSM metrikleri ve {as-is} {to-be} {gap} analizi yaparım; "
+  "ileri, {process mining}, süreç mimarisi ve RCM.")
+m("Seviye: SQL, ELK, Postman", ["SQL · SELECT, WHERE, JOIN, GROUP BY → CTE, alt sorgu, CASE, veri kalitesi → window, recursive CTE, EXPLAIN",
+                                "ELK · Discover'da KQL → dashboard, yapılandırılmış loglama → (belgede yarım: \"ES\")",
+                                "Postman · istek, durum kodu → test scripti, değişken, veri odaklı → Newman/CLI, mock, contract, güvenlik"],
+  "SQL: temel, {SELECT}, {WHERE}, {JOIN}, {GROUP BY}; orta, CTE, alt sorgu, {CASE}, veri kalitesi sorguları; "
+  "ileri, {window} fonksiyonları, {recursive} CTE, {EXPLAIN} okuma. "
+  "ELK: temel, {Discover}'da KQL ile log ararım; orta, {dashboard} ve yapılandırılmış loglama gereksinimi yazarım; "
+  "ileri hücresi belgede yarım kalmış, yalnızca ES yazıyor; dikkat, burayı kaynağından tamamlayın. "
+  "{Postman}: temel, istek gönderir, durum kodlarını yorumlarım; orta, test scripti, değişken, veri odaklı test; "
+  "ileri, {Newman} ya da CLI ile CI, {mock}, {contract} ve güvenlik testleri.")
+m("Seviye: IAM, Jira, Confluence", ["IAM · AuthN/AuthZ, MFA, least privilege → yetki matrisi, SoD, JML → OAuth2/OIDC, IGA/PAM, Zero Trust",
+                                    "Jira · story, epic, board → JQL, workflow, DoR/DoD → Automation, Plans, izlenebilirlik",
+                                    "Confluence · sayfa, tablo → şablon, Jira makroları, karar kaydı → bilgi mimarisi, onay, database, automation"],
+  "IAM: temel, {AuthN} ve {AuthZ}, MFA, {least privilege}; orta, yetki matrisi, {SoD}, JML süreci; ileri, OAuth2 ve OIDC akışları, IGA ve PAM, "
+  "{Zero Trust} gereksinimleri. "
+  "Jira: temel, {story}, {epic}, {board} kullanırım; orta, {JQL}, {workflow}, {DoR} ve {DoD}; ileri, {Automation}, {Plans}, izlenebilirlik ve yönetişim. "
+  "Confluence: temel, sayfa ve tablo oluştururum; orta, şablon, Jira makroları, karar kaydı; ileri, bilgi mimarisi, onay akışı, {database} ve {automation}.")
+m("Seviye: Miro, Visio, Agile", ["Miro · board, sticky not → story mapping, workshop → Event Storming, entegrasyon, AI akışları",
+                                 "Visio · akış şeması → cross-functional, BPMN şablonu, shape data → Data Visualizer, veri bağlantısı, kurumsal stencil",
+                                 "Agile · Manifesto, Scrum rolleri ve etkinlikleri → refinement, story bölme, önceliklendirme → ölçekli çerçeve, akış metrikleri, regüle ortam"],
+  "{Miro}: temel, {board} ve {sticky} not kullanırım; orta, {story mapping}, workshop yönetimi; ileri, {Event Storming}, entegrasyonlar, yapay zeka akışları. "
+  "{Visio}: temel, akış şeması çizerim; orta, {cross-functional flowchart}, BPMN şablonu, {shape data}; "
+  "ileri, {Data Visualizer}, veri bağlantılı diyagram, kurumsal {stencil}. "
+  "{Agile}: temel, {Manifesto}, {Scrum} rolleri ve etkinlikleri; orta, {refinement}, {story} bölme, önceliklendirme; "
+  "ileri, ölçekli çerçeveler, akış metrikleri, düzenlemeye tabi ortamda {agile}.")
+m("30 günlük uygulama planı", ["1. hafta · Süreç: SIPOC → swimlane → BPMN (analitik) + DMN karar tablosu",
+                               "2. hafta · Gereksinim: use case, sequence, 10 user story, Gherkin → Jira, Confluence",
+                               "3. hafta · Veri ve API: 15 SQL sorgusu · Postman collection, test, Newman",
+                               "4. hafta · İzleme ve güvenlik: loglama, Kibana, alarm · rol/yetki, SoD · son gün mülakat"],
+  "Otuz günlük uygulama planı. Birinci hafta, süreç: taşıt kredisi sürecini SIPOC, {swimlane}, BPMN analitik olarak çizin; bir DMN karar tablosu ekleyin. "
+  "İkinci hafta, gereksinim: aynı süreç için {use case} anlatımı, {sequence} diyagramı, on {user story} ve {Gherkin} kabul kriterleri yazın; "
+  "Jira ve Confluence'a yerleştirin. "
+  "Üçüncü hafta, veri ve API: örnek şema üzerinde on beş SQL sorgusu, veri kalitesi dahil, yazın; başvuru API'si için {Postman} {collection}, "
+  "testler ve {Newman} koşusu hazırlayın. "
+  "Dördüncü hafta, izleme ve güvenlik: loglama standardı ve {Kibana} {dashboard} taslağı, bir alarm gereksinimi; rol ve yetki matrisi ve {SoD} kurallarını çıkarın. "
+  "Son gün: mülakat sorularını sesli cevaplayın.")
+m("Önerilen sertifikalar ve okumalar", ["BA: ECBA, CCBA, CBAP, BABOK v3, IIBA-AAC", "Agile: Scrum Guide, PSPO I, PSM I, POPM", "Süreç: OCEB 2 · Bruce Silver (BPMN)",
+                                        "UML: Fowler, UML Distilled · SQL: PostgreSQL", "Atlassian, Postman, Elastic, Miro, MS Learn", "IAM: NIST SP 800-63, 800-207 · OAuth 2.0, OIDC"],
+  "Önerilen sertifikalar ve okumalar. BA: IIBA ECBA, CCBA, CBAP; {BABOK Guide} v3; IIBA-AAC, {agile} analiz. "
+  "{Agile}: {Scrum Guide} 2020, ücretsiz, kendisi sınav kaynağıdır; PSPO bir, PSM bir; {SAFe} POPM. "
+  "Süreç: OMG OCEB 2, BPM; {Bruce Silver}: {BPMN Quick and Easy} ve {BPMN Method and Style}. UML: {Martin Fowler}, {UML Distilled}. "
+  "SQL: {PostgreSQL} resmi dokümantasyonu, ücretsiz çevrim içi alıştırma ortamları. "
+  "Araçlar: {Atlassian University}, Jira ve Confluence; {Postman Academy} ve {Postman API Fundamentals Student Expert}; {Elastic} eğitimleri; "
+  "{Miro Academy}; {Microsoft Learn}, {Visio}. "
+  "IAM: NIST SP 800-63 ve 800-207; OAuth 2.0 ve OIDC spesifikasyonlarının genel bakış bölümleri.")
+m("Kaynaklar (1/2)", ["Kasım 2026 itibarıyla doğrulandı", "OMG – UML 2.5.1 · OMG – BPMN 2.0.2 · ISO/IEC 19510:2013 (BPMN)",
+                      "Elastic – Platform 9.0 yenilikleri (ES|QL Lookup Join, Lucene 10) · ES|QL genel kullanıma açıldı",
+                      "Elastic – 9.4 yenilikleri ve What's new", "Postman – Postman CLI ve Newman karşılaştırması · Postman CLI genel bakış"],
+  "Kaynaklar. Bu rehberdeki sürüm ve ürün bilgileri Kasım 2026 itibarıyla şu kaynaklardan doğrulanmıştır. "
+  "OMG, UML 2.5.1 spesifikasyonu; OMG, BPMN 2.0.2 spesifikasyonu; ISO IEC 19510, 2013, BPMN. "
+  "{Elastic}: {Platform} 9.0 yenilikleri, {ES|QL} {Lookup Join}, {Lucene} 10; {ES|QL} genel kullanıma açıldı; 9.4 yenilikleri ve {What's new}. "
+  "{Postman}: {Postman CLI} ve {Newman} karşılaştırması; {Postman CLI} genel bakış.")
+m("Kaynaklar (2/2)", ["Atlassian: \"Work\" terimi · JWM birleşmesi", "Confluence: What's new · Rovo whiteboards", "Microsoft: Visio karşılaştırma, Visio in M365",
+                      "Miro: Canvas 26 (Sidekicks, Flows)", "Scrum Guide 2020 · SAFe 6.0 hakkında"],
+  "{Atlassian}: {Work} yeni toplu terim; JWM, yani {Jira Work Management}'ın Jira ile birleşmesi. Confluence: {What's new} ve {Rovo in Confluence whiteboards}. "
+  "Microsoft: {Visio} seçeneklerini karşılaştır ve {Visio in Microsoft 365}, kısaca M365. {Miro}: {Canvas} 26 duyurusu; {Sidekicks}, {Flows}, {Connectors}. "
+  "{Scrum.org}: {Scrum Guide} 2020. {Scaled Agile}: {SAFe} 6.0 hakkında. Bağlantıların tamamı video açıklamasında.")
+m("Serinin sonu", ["14 videoda: UML, BPMN, süreç, atölye, SQL, ELK, Postman", "IAM, Jira, Confluence, Miro, Visio, Agile",
+                   "Seviye kontrol listesiyle eksiklerini bul", "30 günlük planla uygula"],
+  "Toparlayalım. {Agile} zihniyetini, {Scrum} ve {Kanban}'ı, iş analistinin sprintteki yerini, {story} bölmeyi, önceliklendirmeyi, ölçekli çerçeveleri "
+  "ve akış metriklerini gördük. Bu videoyla on dört videoluk seri tamamlandı: UML, BPMN, süreç, atölye, SQL, ELK, {Postman}, IAM, Jira, Confluence, "
+  "{Miro}, {Visio} ve {Agile}. Seviye kontrol listesiyle eksiklerini bul, otuz günlük planla uygula. Başarılar.", ton="sakin")
+
+kaydet(__file__, {
+    "baslik": "Business Analyst Teknik Rehberi · 14: Agile ve kaynaklar",
+    "alt_baslik": "Scrum · Kanban · story bölme · sprint sağlığı · seviye listesi · 30 günlük plan",
+    "kapanis": "Serinin sonu · başarılar",
+    "tema": 14,
+    "youtube_baslik": "Business Analyst Teknik Rehberi 14/14: Agile, Scrum, Kanban ve kaynaklar",
+    "etiketler": ["business analyst", "Agile", "Scrum", "Kanban", "story splitting", "iş analisti"],
+}, {"WSJF": "dabılyu es cey ef", "RICE": "rays", "XP": "eks pi", "BDD": "bi di di", "ATDD": "ey ti di di", "LeSS": "les", "ART": "ey ar ti",
+    "PI": "pi ay", "OKR": "o key ar", "PO": "pi o", "CI/CD": "si ay si di", "CI": "si ay", "PSM": "pi es em", "PSPO": "pi es pi o", "CSM": "si es em",
+    "CSPO": "si es pi o", "IIBA": "ay ay bi ey", "IIBA-AAC": "ay ay bi ey, ey ey si", "PMI": "pi em ay", "PMI-ACP": "pi em ay, ey si pi", "POPM": "pi o pi em",
+    "ICAgile": "ay si ecayl", "ICP-ENT": "ay si pi, i en ti", "ICP-APO": "ay si pi, ey pi o", "ECBA": "i si bi ey", "CCBA": "si si bi ey",
+    "CBAP": "si bi ey pi", "BABOK": "babok", "OCEB": "o si i bi", "NIST": "nist", "OIDC": "o ay di si", "OAuth2": "o of tu", "JML": "cey em el", "JWM": "cey dabılyu em", "M365": "em üç yüz altmış beş",
+    "IGA": "ay ci ey", "PAM": "pam", "SIPOC": "saypok", "VSM": "vi es em", "RCM": "ar si em", "OCL": "o si el", "CRUD": "krad", "UI": "yu ay",
+    "DB": "di bi", "BRD": "bi ar di", "AC": "ey si", "AC2": "ey si iki", "ES": "i es", "SP": "es pi", "OMG": "o em ci", "ISO": "iso", "IEC": "ay i si",
+    "TDD": "ti di di", "LPM": "el pi em", "KRD": "ka re de", "BA": "bi ey", "Kano": "kano"})

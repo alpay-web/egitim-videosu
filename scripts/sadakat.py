@@ -104,7 +104,9 @@ def denetle(sen, belge, ayar=None, esik_kapsam=0.6):
         n = norm(ln)
         if any(a and a in n for a in atla + yok_say):
             continue
-        kw = kelimeler(ln)
+        kw = kelimeler(re.sub(r"\]\([^)]*\)", "]", ln))    # bağlantı adresi okunmaz, yalnız metni
+        if not kw:
+            continue
         oran = sum(1 for w in kw if w in havuz_kel or (len(w) >= 5 and w[:5] in havuz_kok)) / len(kw)
         if oran < esik_kapsam and norm_sik(ln)[:40] not in havuz_s:
             rapor["eksik"].append({"satir": ln[:160], "kapsam": round(oran, 2)})
