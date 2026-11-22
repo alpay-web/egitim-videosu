@@ -2,6 +2,12 @@
 
 Sürümleme: `ANA.ARA.YAMA` — ANA: senaryo biçimi geriye uyumsuz değişirse; ARA: yeni özellik; YAMA: düzeltme.
 
+
+## 2.4.0 · 2026-11-22
+- Teknik terim telaffuzu: `teknik_terimler.json` (449 terim, Türk BT ekiplerinin okunuşu) + `ingilizce_mod` (`sozluk` | `cmu` | `ayri`); yeni modda CMU yedeğinde W → u. Yeni senaryolar `sozluk` ile üretilir; eski senaryolar değişmez.
+- Giriş kartı ve YouTube kapağı temalı (`scripts/tema.py`): 15 renk/yazı tipi/düzen teması, WCAG kontrast denetimi, OFL yazı tipleri ilk kullanımda indirilir. Senaryoda `"tema"`.
+- Araştırma raporları: `docs/telaffuz_arastirmasi.md`, `docs/giris_tasarim_arastirmasi.md` (her biri 100 depo).
+
 ## 2.3.0 — 2026-11-17
 **Ses modeli: Chatterbox Multilingual V3.** Açık kaynak TTS araştırması (VoxCPM2, FireRedTTS3, Chatterbox V2/V3;
 `tts_karsilastir.yml` ile aynı paragraf, aynı referans ses) sonrası kullanıcı V3'ü seçti.

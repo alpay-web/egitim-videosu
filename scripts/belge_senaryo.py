@@ -513,7 +513,9 @@ def main():
            "baslik": ayar.get("baslik", "Eğitim videosu"), "alt_baslik": ayar.get("alt_baslik", ""),
            "youtube_baslik": ayar.get("youtube_baslik", ""), "etiketler": ayar.get("etiketler", []),
            "kapanis": ayar.get("kapanis", "Başarılar!"), "telaffuz": ayar.get("telaffuz", {}),
-           "telaffuz_kok": ayar.get("telaffuz_kok", {}), "sahneler": sahneler}
+           "telaffuz_kok": ayar.get("telaffuz_kok", {}), "ingilizce_mod": ayar.get("ingilizce_mod", "sozluk"),
+           **({"tema": ayar["tema"]} if ayar.get("tema") else {}),
+           **({"teknik_terimler": ayar["teknik_terimler"]} if ayar.get("teknik_terimler") else {}), "sahneler": sahneler}
     Path(a.cikti).write_text(json.dumps(sen, ensure_ascii=False, indent=1), encoding="utf-8")
     n_soru = sum(1 for s in sahneler if s.get("tur") == "soru")
     kel = sum(len(v.temiz(s["anlatim"]).split()) for s in sahneler)
