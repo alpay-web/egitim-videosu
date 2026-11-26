@@ -48,7 +48,7 @@ jobs:
           cache: pip
       - name: Kurulum
         run: |
-          sudo apt-get -qq install -y ffmpeg > /dev/null
+          sudo apt-get -qq update && sudo apt-get -qq install -y ffmpeg > /dev/null
           pip install -q -r requirements.txt
           if [ "${{ inputs.motor }}" = "chatterbox" ]; then pip install -q "chatterbox-tts @ git+https://github.com/resemble-ai/chatterbox@ab55923c27757c90cfcc407baa57dc25a7d25217" piper-tts==1.8.0; fi
           if [ "${{ inputs.kalite }}" != "0" ]; then pip install -q faster-whisper==1.2.1; fi
@@ -104,7 +104,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          sudo apt-get -qq install -y ffmpeg > /dev/null
+          sudo apt-get -qq update && sudo apt-get -qq install -y ffmpeg > /dev/null
           mkdir -p sesler && mv parcalar/[0-9]*.wav sesler/ && ([ -d parcalar/ham ] && mv parcalar/ham sesler/ || true) && (mv parcalar/_referans.wav sesler/ 2>/dev/null || true) && cat parcalar/log_*.txt > seslendirme.log || true
           python3 -c "import json,glob,os,shutil; d={}
           [d.update(json.load(open(f))) for f in glob.glob('parcalar/**/dizin*.json', recursive=True)]
