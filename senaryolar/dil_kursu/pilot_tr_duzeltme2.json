@@ -1,0 +1,26 @@
+{
+ "baslik": "dil kursu düzeltme 2",
+ "telaffuz": {
+  "A1": "a bir",
+  "A2": "a iki",
+  "B1": "be bir",
+  "B2": "be iki",
+  "C1": "ce bir",
+  "IELTS": "ayelts",
+  "YDS": "ye de se"
+ },
+ "sahneler": [
+  {
+   "baslik": "c1",
+   "tur": "metin",
+   "metin": "Şimdi cümleyi ve seçenekleri dinleyin, doğru seçeneği sesli söyleyin.",
+   "anlatim": "Şimdi cümleyi ve seçenekleri dinleyin, doğru seçeneği sesli söyleyin."
+  },
+  {
+   "baslik": "c2",
+   "tur": "metin",
+   "metin": "Bu bağlaç genellikle cümle başında gelir ve ardından virgül kullanılır.",
+   "anlatim": "Bu bağlaç genellikle cümle başında gelir ve ardından virgül kullanılır."
+  }
+ ]
+}
