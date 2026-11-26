@@ -1,0 +1,188 @@
+{
+ "baslik": "dil kursu düzeltme",
+ "telaffuz": {
+  "A1": "a bir",
+  "A2": "a iki",
+  "B1": "be bir",
+  "B2": "be iki",
+  "C1": "ce bir",
+  "IELTS": "ayelts",
+  "YDS": "ye de se"
+ },
+ "sahneler": [
+  {
+   "baslik": "c1",
+   "tur": "metin",
+   "metin": "Bu ders, A1 seviyesi, birinci ders.",
+   "anlatim": "Bu ders, A1 seviyesi, birinci ders."
+  },
+  {
+   "baslik": "c2",
+   "tur": "metin",
+   "metin": "ad, isim.",
+   "anlatim": "ad, isim."
+  },
+  {
+   "baslik": "c3",
+   "tur": "metin",
+   "metin": "Emre benim en iyi arkadaşım.",
+   "anlatim": "Emre benim en iyi arkadaşım."
+  },
+  {
+   "baslik": "c4",
+   "tur": "metin",
+   "metin": "Bu ders, A2 seviyesi, birinci ders.",
+   "anlatim": "Bu ders, A2 seviyesi, birinci ders."
+  },
+  {
+   "baslik": "c5",
+   "tur": "metin",
+   "metin": "Bu ders, B1 seviyesi, birinci ders.",
+   "anlatim": "Bu ders, B1 seviyesi, birinci ders."
+  },
+  {
+   "baslik": "c6",
+   "tur": "metin",
+   "metin": "azaltmak, düşürmek.",
+   "anlatim": "azaltmak, düşürmek."
+  },
+  {
+   "baslik": "c7",
+   "tur": "metin",
+   "metin": "Bu ders, B2 seviyesi, birinci ders.",
+   "anlatim": "Bu ders, B2 seviyesi, birinci ders."
+  },
+  {
+   "baslik": "c8",
+   "tur": "metin",
+   "metin": "Bu ders, C1 seviyesi, birinci ders.",
+   "anlatim": "Bu ders, C1 seviyesi, birinci ders."
+  },
+  {
+   "baslik": "c9",
+   "tur": "metin",
+   "metin": "Önce karşıtlık bildiren bağlaçlarla başlıyoruz.",
+   "anlatim": "Önce karşıtlık bildiren bağlaçlarla başlıyoruz."
+  },
+  {
+   "baslik": "c10",
+   "tur": "metin",
+   "metin": "Karşıtlık grubuna iki bağlaç daha ekliyoruz.",
+   "anlatim": "Karşıtlık grubuna iki bağlaç daha ekliyoruz."
+  },
+  {
+   "baslik": "c11",
+   "tur": "metin",
+   "metin": "Sonra iki cümle arasındaki ilişkiyi bulun: karşıtlık mı, sonuç mu, ekleme mi, yoksa koşul mu?",
+   "anlatim": "Sonra iki cümle arasındaki ilişkiyi bulun: karşıtlık mı, sonuç mu, ekleme mi, yoksa koşul mu?"
+  },
+  {
+   "baslik": "c12",
+   "tur": "metin",
+   "metin": "Beklenmedik bir sonuç var, yani karşıtlık.",
+   "anlatim": "Beklenmedik bir sonuç var, yani karşıtlık."
+  },
+  {
+   "baslik": "c13",
+   "tur": "metin",
+   "metin": "hava kirliliği.",
+   "anlatim": "hava kirliliği."
+  },
+  {
+   "baslik": "c14",
+   "tur": "metin",
+   "metin": "savunmasız, kırılgan.",
+   "anlatim": "savunmasız, kırılgan."
+  },
+  {
+   "baslik": "c15",
+   "tur": "metin",
+   "metin": "Cümleyi ve seçenekleri dinleyin, doğru seçeneği sesli söyleyin.",
+   "anlatim": "Cümleyi ve seçenekleri dinleyin, doğru seçeneği sesli söyleyin."
+  },
+  {
+   "baslik": "c16",
+   "tur": "metin",
+   "metin": "Genellikle cümle başında gelir ve ardından virgül kullanılır.",
+   "anlatim": "Genellikle cümle başında gelir ve ardından virgül kullanılır."
+  },
+  {
+   "baslik": "c17",
+   "tur": "metin",
+   "metin": "Uçuşu ne zaman ayırttılar?",
+   "anlatim": "Uçuşu ne zaman ayırttılar?"
+  },
+  {
+   "baslik": "c18",
+   "tur": "metin",
+   "metin": "Bu konu IELTS sınavında en sık çıkan konulardan biridir.",
+   "anlatim": "Bu konu IELTS sınavında en sık çıkan konulardan biridir."
+  },
+  {
+   "baslik": "c19",
+   "tur": "metin",
+   "metin": "Bu, IELTS dinleme bölümüne benzer bir anlatım.",
+   "anlatim": "Bu, IELTS dinleme bölümüne benzer bir anlatım."
+  },
+  {
+   "baslik": "c20",
+   "tur": "metin",
+   "metin": "Şimdi IELTS konuşma sınavında sık sorulan bir soru geliyor.",
+   "anlatim": "Şimdi IELTS konuşma sınavında sık sorulan bir soru geliyor."
+  },
+  {
+   "baslik": "c21",
+   "tur": "metin",
+   "metin": "Hem IELTS hem de YDS okuma metinlerinde çok sık karşınıza çıkacak bir konu.",
+   "anlatim": "Hem IELTS hem de YDS okuma metinlerinde çok sık karşınıza çıkacak bir konu."
+  },
+  {
+   "baslik": "c22",
+   "tur": "metin",
+   "metin": "Bu metin YDS ve IELTS okuma parçalarına benzer.",
+   "anlatim": "Bu metin YDS ve IELTS okuma parçalarına benzer."
+  },
+  {
+   "baslik": "c23",
+   "tur": "metin",
+   "metin": "Şimdi IELTS konuşma sınavının üçüncü bölümüne benzer bir soru geliyor.",
+   "anlatim": "Şimdi IELTS konuşma sınavının üçüncü bölümüne benzer bir soru geliyor."
+  },
+  {
+   "baslik": "c24",
+   "tur": "metin",
+   "metin": "Bu kelimeler IELTS'te yüksek bant puanı, YDS'de ise zor kelime sorularını çözmek için kritik.",
+   "anlatim": "Bu kelimeler IELTS'te yüksek bant puanı, YDS'de ise zor kelime sorularını çözmek için kritik."
+  },
+  {
+   "baslik": "c25",
+   "tur": "metin",
+   "metin": "Bu, IELTS dinleme sınavının dördüncü bölümündeki kısa derslere benzer.",
+   "anlatim": "Bu, IELTS dinleme sınavının dördüncü bölümündeki kısa derslere benzer."
+  },
+  {
+   "baslik": "c26",
+   "tur": "metin",
+   "metin": "Şimdi IELTS konuşma sınavının üçüncü bölümünden bir soru.",
+   "anlatim": "Şimdi IELTS konuşma sınavının üçüncü bölümünden bir soru."
+  },
+  {
+   "baslik": "c27",
+   "tur": "metin",
+   "metin": "Bu ders, IELTS ve YDS akademik kelime dizisi, birinci ders.",
+   "anlatim": "Bu ders, IELTS ve YDS akademik kelime dizisi, birinci ders."
+  },
+  {
+   "baslik": "c28",
+   "tur": "metin",
+   "metin": "Bu liste akademik metinlerde en sık geçen kelimelerden oluşur; IELTS okuma ve dinleme ile YDS paragraflarının temelidir.",
+   "anlatim": "Bu liste akademik metinlerde en sık geçen kelimelerden oluşur; IELTS okuma ve dinleme ile YDS paragraflarının temelidir."
+  },
+  {
+   "baslik": "c29",
+   "tur": "metin",
+   "metin": "Şimdi IELTS dinleme sınavının dördüncü bölümüne benzer kısa bir üniversite dersi dinleyeceksiniz.",
+   "anlatim": "Şimdi IELTS dinleme sınavının dördüncü bölümüne benzer kısa bir üniversite dersi dinleyeceksiniz."
+  }
+ ]
+}
