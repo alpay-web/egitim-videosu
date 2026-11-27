@@ -82,7 +82,7 @@ def bip():
 
 def tr_dizini():
     out = {}
-    for d in [TR_DIZIN, TR_DIZIN.parent / "tr_ses_duzeltme", TR_DIZIN.parent / "tr_ses_d2", TR_DIZIN.parent / "tr_ses_ba", TR_DIZIN.parent / "tr_ses_ba_d"]:      # sonraki klasör öncekini ezer
+    for d in [TR_DIZIN, TR_DIZIN.parent / "tr_ses_duzeltme", TR_DIZIN.parent / "tr_ses_d2", TR_DIZIN.parent / "tr_ses_ba", TR_DIZIN.parent / "tr_ses_ba_d", TR_DIZIN.parent / "tr_ses_ba_d2"]:      # sonraki klasör öncekini ezer
         if (d / "dizin.json").exists():
             for k, v in json.load(open(d / "dizin.json")).items():
                 out[v["metin"]] = d / f"{k}.wav"
