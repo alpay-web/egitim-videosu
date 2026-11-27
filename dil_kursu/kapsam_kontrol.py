@@ -1,17 +1,19 @@
 """A1 hikâye ve İngilizce dinleme kapsamı: bilinen = önceki + bugünkü kelimeler + yapı kelimeleri + temel işlev kelimeleri (spaCy lemma)."""
 import sys, spacy
 sys.path.insert(0, "/home/claude/kurs")
-import parti1_a, parti2_a, icerik
+import parti1_a, parti2_a, parti3_a, icerik
 from degerlendir import FONKSIYON
 nlp = spacy.load("en_core_web_sm")
 def lem(m): return [t for t in nlp(m) if t.is_alpha]
-dersler = [icerik._ID["A1-01"]] + parti1_a.A1 + parti2_a.A1
+dersler = [icerik._ID["A1-01"]] + parti1_a.A1 + parti2_a.A1 + [icerik._ID["A2-01"]] + parti3_a.A2
 bil = set(FONKSIYON); hedef = float(sys.argv[1]) if len(sys.argv) > 1 else 0.95
 for d in dersler:
     for k in d["kelimeler"]:
         bil |= {t.lemma_.lower() for t in nlp(k["en"]) if t.is_alpha} | {k["en"].lower()}
     bil |= set((d.get("yapi") or {}).get("bilinen", []))
-    if d.get("ders_no", 1) < 14: continue
+    for en, _ in d.get("on_kelimeler", []):
+        bil |= {t.lemma_.lower() for t in nlp(en) if t.is_alpha} | {en.lower()}
+    if d["id"] < "A1-14" or (d["id"].startswith("A2") and d.get("ders_no", 1) < 2) or (len(sys.argv) > 2 and not d["id"].startswith(sys.argv[2])): continue
     for ad, ml in (("hikaye", d["hikaye"]), ("dinleme_en", d.get("dinleme_en", []))):
         ml = [c.split("|", 1)[1] if "|" in c and c.split("|",1)[0].isupper() else c for c in ml]
         tok = [t for m in ml for t in lem(m)]

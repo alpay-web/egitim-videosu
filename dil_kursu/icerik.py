@@ -485,14 +485,18 @@ from parti1_a import A1 as _A1
 from parti1_b import B as _B
 from parti2_a import A1 as _A1b
 from parti2_b import B as _Bb
+from parti3_a import A2 as _A2c
+from parti3_b import B as _Bc
 PILOT = list(DERSLER)
-DERSLER = PILOT + _A1 + _B + _A1b + _Bb
+DERSLER = PILOT + _A1 + _B + _A1b + _Bb + _A2c + _Bc
 _ID = {d["id"]: d for d in DERSLER}
+for _d in _A2c + _Bc + [_ID["A2-01"]]:
+    _d["isinma_adet"] = 5
 DIZILER = {
-    "genel": ["A1-01"] + [d["id"] for d in _A1 + _A1b],
+    "genel": ["A1-01"] + [d["id"] for d in _A1 + _A1b] + ["A2-01"] + [d["id"] for d in _A2c],
     "sinav_is": ["B1-01", "B2-01", "C1-01", "AWL-01", "YDS-01", "BA-01",
                  "AWL-02", "YDS-02", "BA-02", "B1-02", "B2-02", "C1-02",
-                 "AWL-03", "YDS-03", "BA-03", "B1-03", "B2-03", "C1-03", "AWL-04"] + [d["id"] for d in _Bb],
+                 "AWL-03", "YDS-03", "BA-03", "B1-03", "B2-03", "C1-03", "AWL-04"] + [d["id"] for d in _Bb + _Bc],
 }
 
 
@@ -508,6 +512,8 @@ def isinma_icin(d):
 
 def sira_no(d):
     """Genel kurs dosya sırası: diziye göre önek."""
+    if d.get("sira"):
+        return d["sira"]
     for ad, dizi in DIZILER.items():
         if d["id"] in dizi:
             return ("G" if ad == "genel" else "S") + f"{dizi.index(d['id']) + 1:03d}"

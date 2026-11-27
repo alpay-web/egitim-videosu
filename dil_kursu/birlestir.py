@@ -122,7 +122,7 @@ def dosya_adi(s):
 
 
 def birlestir(d, no, trd, cache={}, gunluk=False):
-    ev = motor.plan_gunluk(d) if gunluk else motor.plan(d, icerik.isinma_icin(d))
+    ev = d["_plan"] if "_plan" in d else motor.plan_gunluk(d) if gunluk else motor.plan(d, icerik.isinma_icin(d))
     parcalar, son_sure, t, bolumler = [], 0.0, 0.0, []
     for x in ev:
         if x[0] == "BOLUM":

@@ -54,6 +54,7 @@ SABIT = {
     "bitis4": "Görüşmek üzere.",
     "yapi_kur": "Şimdi bir cümleyi sondan başlayarak parça parça kuralım. Her parçayı duraklamada tekrar edin.",
     "yapi_ceviri": "Şimdi sıra sizde. Türkçesini duyunca cümlenin İngilizcesini kurun ve sesli söyleyin.",
+    "on_kelime": "Metinde birkaç yardımcı kelime daha geçiyor. Önce bunları dinleyip tekrar edin.",
     "yavas_ilk": "Önce metni yavaş okuyacağım. Sadece dinleyin.",
     "sadece_en": "Şimdi Türkçe ara vermeden, sadece İngilizce kısa bir anlatım dinleyeceksiniz. Her kelimeyi anlamanız gerekmiyor; genel anlamı yakalamaya çalışın.",
     "sadece_en_bitti": "Güzel. Bu anlatımı yarınki günlük tekrarda yeniden dinleyeceksiniz.",
@@ -147,7 +148,8 @@ def plan(d, isinma=None):
     # --- ısınma: FSRS'ye göre vadesi gelen önceki derslerin kelimeleri (4, 12, 31 ders önce)
     if isinma:
         ev += [("BOLUM", "Isınma tekrarı"), T(SABIT["isinma"]), S(0.6)]
-        eski = [k for od in isinma for k in od["kelimeler"]]
+        n_ = d.get("isinma_adet")          # parti 3'ten itibaren: her vadesi gelen dersten en fazla n kelime (ders süresi)
+        eski = [k for od in isinma for k in ([od["kelimeler"][j] for j in karisik(range(len(od["kelimeler"])), d["id"] + od["id"])[:n_]] if n_ else od["kelimeler"])]
         for i in karisik(range(len(eski)), d["id"] + "isinma"):
             k = eski[i]
             ev += [T(k["tr"]), S(bek), ("E", k["en"], v2, hz), R(1.5, 0.9), S(0.4)]
@@ -215,6 +217,11 @@ def plan(d, isinma=None):
     # --- dinleme (anlaşılır girdi) + gölgeleme + sorular
     hs = d["hikaye_sesi"]; hh = 0.92 if d["seviye"] in ("A1", "A2") else 1.0
     ev += [("BOLUM", "Dinleme"), T(d["hikaye_giris"]), S(1.0)]
+    if d.get("on_kelimeler"):           # metinde geçen birkaç yardımcı kelimeyi önceden öğret (pre-teaching)
+        ev += [T(SABIT["on_kelime"]), S(0.6)]
+        for en, tr in d["on_kelimeler"]:
+            ev += [e(en, v1, hz), R(1.5, 0.9), T(tr), S(0.6)]
+        ev += [S(0.6)]
     if d.get("ilk_hiz"):
         ev += [T(SABIT["yavas_ilk"]), S(0.8)]
     def konusmaci(c):            # diyalog satırı: "ses|metin" → o sesle; aksi halde anlatıcı sesi
