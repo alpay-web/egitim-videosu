@@ -14,7 +14,7 @@ def konusma(baslik, talimat, soru, model, bekle=30, giris="Süre doldu. Şimdi �
 
 
 def bosluk(baslik, talimat, cumle, secenekler, dogru, aciklama):
-    return {"tur": "bosluk", "baslik": baslik, "talimat": ["T|" + t for t in talimat], "cumle": cumle,
+    return {"tur": "bosluk", "baslik": baslik, "talimat": [t if t[:2] in ("T|", "E|") else "T|" + t for t in talimat], "cumle": cumle,
             "secenekler": secenekler, "dogru": dogru, "aciklama": aciklama}
 
 
@@ -81,10 +81,10 @@ ders("YDS-02", "YDS", "YDS bağlaç ve geçiş ifadeleri", 2, "Bağlaçlar 2: ne
  KN("due to", "nedeniyle, sebebiyle.", "Ardından isim gelir; daha resmîdir.", "The delay was due to technical problems.", "Gecikme teknik sorunlar nedeniyleydi."),
  KN("owing to", "sayesinde ya da yüzünden, nedeniyle.", "Ardından isim gelir; resmî metinlerde sık görülür.", "Owing to heavy rain, the match was postponed.", "Şiddetli yağmur nedeniyle maç ertelendi."),
  KN("since", "çünkü, madem ki.", "Bu anlamda ardından tam bir cümle gelir.", "Since you are tired, we can stop here.", "Madem yorgunsun, burada durabiliriz."),
- KN("as", "çünkü, -diği için.", "Ardından tam cümle gelir; çok anlamlıdır, bağlama dikkat edin.", "As it was late, we took a taxi.", "Geç olduğu için taksiye bindik."),
- KN("so that", "-sin diye, -mesi için.", ["T|Ardından tam cümle gelir; genellikle şu yardımcı fiillerden biriyle:", "E|can, could, would."], "Speak louder so that everyone can hear you.", "Herkes seni duyabilsin diye daha yüksek sesle konuş."),
- KN("in order to", "-mek için, -mek amacıyla.", "Ardından fiilin yalın hâli gelir.", "She moved to London in order to study law.", "Hukuk okumak için Londra'ya taşındı."),
- KN("so as to", "-mek için.", "Anlamı bir önceki bağlaçla aynıdır; ardından fiilin yalın hâli gelir.", "We left early so as to avoid the traffic.", "Trafiğe yakalanmamak için erken çıktık."),
+ KN("as", "çünkü, olduğu için.", "Ardından tam cümle gelir; çok anlamlıdır, bağlama dikkat edin.", "As it was late, we took a taxi.", "Geç olduğu için taksiye bindik."),
+ KN("so that", "olsun diye, yapabilmesi için.", ["T|Ardından tam cümle gelir; genellikle şu yardımcı fiillerden biriyle:", "E|can, could, would."], "Speak louder so that everyone can hear you.", "Herkes seni duyabilsin diye daha yüksek sesle konuş."),
+ KN("in order to", "yapmak için, amacıyla.", "Ardından fiilin yalın hâli gelir.", "She moved to London in order to study law.", "Hukuk okumak için Londra'ya taşındı."),
+ KN("so as to", "yapmak üzere.", "Anlamı bir önceki bağlaçla aynıdır; ardından fiilin yalın hâli gelir.", "We left early so as to avoid the traffic.", "Trafiğe yakalanmamak için erken çıktık."),
  KN("so", "o kadar ki.", ["T|Kalıp şöyle: bu kelime, ardından bir sıfat, ardından", "E|that."], "The film was so boring that I fell asleep.", "Film o kadar sıkıcıydı ki uyuyakaldım."),
  KN("such", "öyle, o kadar ki.", ["T|Kalıp şöyle: bu kelime, ardından bir isim öbeği, ardından", "E|that."], "It was such a nice day that we went to the beach.", "O kadar güzel bir gündü ki plaja gittik."),
  KN("as a result", "sonuç olarak, bunun sonucunda.", "Genellikle cümle başında gelir ve virgül alır.", "Prices rose sharply. As a result, sales fell.", "Fiyatlar keskin bir şekilde arttı. Bunun sonucunda satışlar düştü."),
@@ -329,18 +329,18 @@ ders("AWL-03", "IELTS-AWL", "Academic Word List · Alt liste 1", 3, "Akademik ke
 ders("YDS-03", "YDS", "YDS bağlaç ve geçiş ifadeleri", 3, "Bağlaçlar 3: zaman ve koşul",
  "YDS özel dizisi", "Zaman ve koşul bildiren bağlaçlar. YDS'de özellikle cümle tamamlama sorularında sık çıkarlar.",
  ["am_michael", "bf_emma"], "bm_lewis", [
- K("as soon as", "-er -mez, yapar yapmaz.", "Call me as soon as you arrive.", "Varır varmaz beni ara."),
- KN("by the time", "-diği zamana kadar, -diğinde çoktan.", ["T|Ana cümlede genellikle daha önce tamamlanmış bir olay anlatılır; şu yardımcı fiille:", "E|had."], "By the time we got there, the film had started.", "Biz oraya vardığımızda film çoktan başlamıştı."),
- K("until", "-e kadar, -ene kadar.", "Wait here until I come back.", "Ben dönene kadar burada bekle."),
- K("once", "-diği anda, bir kez … olunca.", "Once you understand the rule, it's easy.", "Kuralı bir kez anladığında kolay."),
- K("whenever", "ne zaman … olursa, her … olduğunda.", "Whenever I travel, I take a book.", "Ne zaman seyahat etsem yanıma bir kitap alırım."),
- K("while", "-iken; oysa.", "While I was cooking, the phone rang.", "Ben yemek yaparken telefon çaldı."),
- KN("in case", "olur da … diye, ihtimaline karşı.", "Dikkat: bu bağlaç koşul değil, önlem bildirir.", "Take an umbrella in case it rains.", "Olur da yağmur yağar diye bir şemsiye al."),
- K("as long as", "-diği sürece.", "You can stay as long as you are quiet.", "Sessiz olduğun sürece kalabilirsin."),
+ K("as soon as", "yapar yapmaz, olur olmaz.", "Call me as soon as you arrive.", "Varır varmaz beni ara."),
+ KN("by the time", "o zamana kadar, olduğunda çoktan.", ["T|Ana cümlede genellikle daha önce tamamlanmış bir olay anlatılır; şu yardımcı fiille:", "E|had."], "By the time we got there, the film had started.", "Biz oraya vardığımızda film çoktan başlamıştı."),
+ K("until", "kadar, olana kadar.", "Wait here until I come back.", "Ben dönene kadar burada bekle."),
+ K("once", "bir kez olunca, olduğu anda.", "Once you understand the rule, it's easy.", "Kuralı bir kez anladığında kolay."),
+ K("whenever", "ne zaman olursa, her seferinde.", "Whenever I travel, I take a book.", "Ne zaman seyahat etsem yanıma bir kitap alırım."),
+ K("while", "iken, sırasında; oysa.", "While I was cooking, the phone rang.", "Ben yemek yaparken telefon çaldı."),
+ KN("in case", "olur diye, ihtimaline karşı.", "Dikkat: bu bağlaç koşul değil, önlem bildirir.", "Take an umbrella in case it rains.", "Olur da yağmur yağar diye bir şemsiye al."),
+ K("as long as", "olduğu sürece.", "You can stay as long as you are quiet.", "Sessiz olduğun sürece kalabilirsin."),
  K("otherwise", "aksi takdirde, yoksa.", "Hurry up; otherwise, we'll miss the bus.", "Acele et, yoksa otobüsü kaçıracağız."),
- K("even if", "-se bile.", "I'll go even if it rains.", "Yağmur yağsa bile gideceğim."),
- KN("only if", "ancak … olursa, yalnızca … olursa.", "Cümle başında gelirse devrik yapı kullanılır.", "You will get a refund only if you keep the receipt.", "Ancak fişi saklarsanız para iadesi alırsınız."),
- K("whether", "-ip -mediği; ister … ister.", "I don't know whether he will come.", "Gelip gelmeyeceğini bilmiyorum."),
+ K("even if", "olsa bile.", "I'll go even if it rains.", "Yağmur yağsa bile gideceğim."),
+ KN("only if", "ancak o durumda, yalnızca olursa.", "Cümle başında gelirse devrik yapı kullanılır.", "You will get a refund only if you keep the receipt.", "Ancak fişi saklarsanız para iadesi alırsınız."),
+ K("whether", "olup olmadığı; ister o, ister bu.", "I don't know whether he will come.", "Gelip gelmeyeceğini bilmiyorum."),
  ], [], "Şimdi yeni bir işe başlayan çalışanlara yapılan bir bilgilendirme konuşmasını dinleyeceksiniz. Zaman ve koşul bağlaçlarına dikkat edin.",
  ["Welcome to your first day. As soon as you get your badge, please go to the second floor.",
   "Once you log in, the system will ask you to change your password.",

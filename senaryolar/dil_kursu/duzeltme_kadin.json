@@ -1,0 +1,266 @@
+{
+ "baslik": "dil kursu düzeltme kadın",
+ "telaffuz": {
+  "A1": "a bir",
+  "A2": "a iki",
+  "B1": "be bir",
+  "B2": "be iki",
+  "C1": "ce bir",
+  "IELTS": "ayelts",
+  "YDS": "ye de se"
+ },
+ "sahneler": [
+  {
+   "baslik": "c1",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: erken.",
+   "anlatim": "Türkçesi şöyle: erken."
+  },
+  {
+   "baslik": "c2",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: oda.",
+   "anlatim": "Türkçesi şöyle: oda."
+  },
+  {
+   "baslik": "c3",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: sağ, sağa.",
+   "anlatim": "Türkçesi şöyle: sağ, sağa."
+  },
+  {
+   "baslik": "c4",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: harita.",
+   "anlatim": "Türkçesi şöyle: harita."
+  },
+  {
+   "baslik": "c5",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: para.",
+   "anlatim": "Türkçesi şöyle: para."
+  },
+  {
+   "baslik": "c6",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: Mont giy.",
+   "anlatim": "Türkçesi şöyle: Mont giy."
+  },
+  {
+   "baslik": "c7",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: ilkbahar.",
+   "anlatim": "Türkçesi şöyle: ilkbahar."
+  },
+  {
+   "baslik": "c8",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: okul.",
+   "anlatim": "Türkçesi şöyle: okul."
+  },
+  {
+   "baslik": "c9",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: et.",
+   "anlatim": "Türkçesi şöyle: et."
+  },
+  {
+   "baslik": "c10",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: kahve.",
+   "anlatim": "Türkçesi şöyle: kahve."
+  },
+  {
+   "baslik": "c11",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: aç.",
+   "anlatim": "Türkçesi şöyle: aç."
+  },
+  {
+   "baslik": "c12",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: bağımlılık.",
+   "anlatim": "Türkçesi şöyle: bağımlılık."
+  },
+  {
+   "baslik": "c13",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: başarı.",
+   "anlatim": "Türkçesi şöyle: başarı."
+  },
+  {
+   "baslik": "c14",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: gelir.",
+   "anlatim": "Türkçesi şöyle: gelir."
+  },
+  {
+   "baslik": "c15",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: kulvar.",
+   "anlatim": "Türkçesi şöyle: kulvar."
+  },
+  {
+   "baslik": "c16",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: randevu.",
+   "anlatim": "Türkçesi şöyle: randevu."
+  },
+  {
+   "baslik": "c17",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: ruh sağlığı.",
+   "anlatim": "Türkçesi şöyle: ruh sağlığı."
+  },
+  {
+   "baslik": "c18",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: baskı, sayı.",
+   "anlatim": "Türkçesi şöyle: baskı, sayı."
+  },
+  {
+   "baslik": "c19",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: savunmasız, kırılgan.",
+   "anlatim": "Türkçesi şöyle: savunmasız, kırılgan."
+  },
+  {
+   "baslik": "c20",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: bağlılık, taahhüt.",
+   "anlatim": "Türkçesi şöyle: bağlılık, taahhüt."
+  },
+  {
+   "baslik": "c21",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: taahhüt, söz; söz vermek.",
+   "anlatim": "Türkçesi şöyle: taahhüt, söz; söz vermek."
+  },
+  {
+   "baslik": "c22",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: tehdit.",
+   "anlatim": "Türkçesi şöyle: tehdit."
+  },
+  {
+   "baslik": "c23",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: çünkü, olduğu için.",
+   "anlatim": "Türkçesi şöyle: çünkü, olduğu için."
+  },
+  {
+   "baslik": "c24",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: yapmak için, amacıyla.",
+   "anlatim": "Türkçesi şöyle: yapmak için, amacıyla."
+  },
+  {
+   "baslik": "c25",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: yapmak üzere.",
+   "anlatim": "Türkçesi şöyle: yapmak üzere."
+  },
+  {
+   "baslik": "c26",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: kadar, olana kadar.",
+   "anlatim": "Türkçesi şöyle: kadar, olana kadar."
+  },
+  {
+   "baslik": "c27",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: iken, sırasında; oysa.",
+   "anlatim": "Türkçesi şöyle: iken, sırasında; oysa."
+  },
+  {
+   "baslik": "c28",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: olduğu sürece.",
+   "anlatim": "Türkçesi şöyle: olduğu sürece."
+  },
+  {
+   "baslik": "c29",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: olsa bile.",
+   "anlatim": "Türkçesi şöyle: olsa bile."
+  },
+  {
+   "baslik": "c30",
+   "tur": "metin",
+   "metin": "Hükümet bütçe açığını azaltmaya çalışıyor.",
+   "anlatim": "Hükümet bütçe açığını azaltmaya çalışıyor."
+  },
+  {
+   "baslik": "c31",
+   "tur": "metin",
+   "metin": "Bu gereksinim finans ekibinden geldi.",
+   "anlatim": "Bu gereksinim finans ekibinden geldi."
+  },
+  {
+   "baslik": "c32",
+   "tur": "metin",
+   "metin": "olsun diye, yapabilmesi için.",
+   "anlatim": "olsun diye, yapabilmesi için."
+  },
+  {
+   "baslik": "c33",
+   "tur": "metin",
+   "metin": "yapar yapmaz, olur olmaz.",
+   "anlatim": "yapar yapmaz, olur olmaz."
+  },
+  {
+   "baslik": "c34",
+   "tur": "metin",
+   "metin": "o zamana kadar, olduğunda çoktan.",
+   "anlatim": "o zamana kadar, olduğunda çoktan."
+  },
+  {
+   "baslik": "c35",
+   "tur": "metin",
+   "metin": "bir kez olunca, olduğu anda.",
+   "anlatim": "bir kez olunca, olduğu anda."
+  },
+  {
+   "baslik": "c36",
+   "tur": "metin",
+   "metin": "ne zaman olursa, her seferinde.",
+   "anlatim": "ne zaman olursa, her seferinde."
+  },
+  {
+   "baslik": "c37",
+   "tur": "metin",
+   "metin": "olur diye, ihtimaline karşı.",
+   "anlatim": "olur diye, ihtimaline karşı."
+  },
+  {
+   "baslik": "c38",
+   "tur": "metin",
+   "metin": "ancak o durumda, yalnızca olursa.",
+   "anlatim": "ancak o durumda, yalnızca olursa."
+  },
+  {
+   "baslik": "c39",
+   "tur": "metin",
+   "metin": "olup olmadığı; ister o, ister bu.",
+   "anlatim": "olup olmadığı; ister o, ister bu."
+  },
+  {
+   "baslik": "c40",
+   "tur": "metin",
+   "metin": "Bu konu ayelts sınavında çok sık çıkar.",
+   "anlatim": "Bu konu ayelts sınavında çok sık çıkar."
+  },
+  {
+   "baslik": "c41",
+   "tur": "metin",
+   "metin": "Bu konu ay elts sınavında çok sık çıkar.",
+   "anlatim": "Bu konu ay elts sınavında çok sık çıkar."
+  },
+  {
+   "baslik": "c42",
+   "tur": "metin",
+   "metin": "Bu konu ayılts sınavında çok sık çıkar.",
+   "anlatim": "Bu konu ayılts sınavında çok sık çıkar."
+  }
+ ]
+}
