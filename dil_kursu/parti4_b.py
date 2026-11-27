@@ -185,7 +185,7 @@ ders("YDS-09", "YDS", "YDS deyimsel fiiller (phrasal verbs)", 9, "Deyimsel fiill
  "YDS özel dizisi", "Günlük ve akademik metinlerde sık geçen deyimsel fiiller.",
  ["bf_emma", "am_michael"], "bm_lewis", [
  K("break down", "bozulmak; çökmek.", "Our car broke down on the motorway.", "Arabamız otoyolda bozuldu."),
- K("bring up", "yetiştirmek (çocuk); gündeme getirmek.", "She was brought up by her grandparents.", "Büyükanne ve büyükbabası tarafından yetiştirildi."),
+ K("bring up", "yetiştirmek (çocuk); gündeme getirmek.", "She was brought up by her grandparents.", "Ninesi ve dedesi tarafından yetiştirildi."),
  K("call off", "iptal etmek.", "The match was called off because of the rain.", "Maç yağmur yüzünden iptal edildi."),
  K("carry on", "devam etmek.", "Carry on with your work.", "İşine devam et."),
  K("cut down on", "azaltmak.", "I'm trying to cut down on sugar.", "Şekeri azaltmaya çalışıyorum."),
@@ -370,7 +370,7 @@ ders("C1-09", "C1", "Oxford 5000 · C1 · IELTS konusu: sanat ve kültür", 9, "
  "C1 seviyesi", "Sanat, edebiyat ve eleştiri. IELTS konuşma sınavının üçüncü bölümünde sık çıkan bir konu.",
  ["bf_emma", "bm_lewis"], "af_heart", [
  K("aesthetic", "estetik.", "The building has a strong aesthetic appeal.", "Binanın güçlü bir estetik çekiciliği var."),
- K("genre", "tür (sanat, edebiyat).", "Science fiction is my favourite genre.", "Bilimkurgu en sevdiğim tür."),
+ K("genre", "sanat ya da edebiyat türü.", "Science fiction is my favourite genre.", "Bilimkurgu en sevdiğim tür."),
  K("masterpiece", "başyapıt, şaheser.", "Many critics consider it a masterpiece.", "Pek çok eleştirmen onu bir başyapıt olarak görüyor."),
  K("curator", "küratör, sergi sorumlusu.", "The curator chose every painting herself.", "Küratör her tabloyu kendisi seçti."),
  K("abstract", "soyut.", "I find abstract art hard to understand.", "Soyut sanatı anlamakta zorlanıyorum."),

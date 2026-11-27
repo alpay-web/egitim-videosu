@@ -1,0 +1,33 @@
+{
+"baslik": "dil kursu parti 4 kadın ses",
+"telaffuz": {
+"A1": "a bir",
+"A2": "a iki",
+"B1": "be bir",
+"B2": "be iki",
+"C1": "ce bir",
+"IELTS": "ayelts",
+"YDS": "ye de se",
+"Green": "Grin",
+"Kate": "Keyt",
+"Scrum": "Skram",
+"podcast'inden": "podkestinden",
+"Mr Brown": "Mister Braun",
+"Jack": "Cek",
+"Tom'un": "Tomun"
+},
+"sahneler": [
+{
+"baslik": "c1",
+"tur": "metin",
+"metin": "Ninesi ve dedesi tarafından yetiştirildi.",
+"anlatim": "Ninesi ve dedesi tarafından yetiştirildi."
+},
+{
+"baslik": "c2",
+"tur": "metin",
+"metin": "sanat ya da edebiyat türü.",
+"anlatim": "sanat ya da edebiyat türü."
+}
+]
+}
