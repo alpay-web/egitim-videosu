@@ -29,6 +29,33 @@ def sentez(metin, ses, hiz):
     return x.astype(np.float32)
 
 
+ESSESLI = [{"meat", "meet"}, {"eye", "i"}, {"write", "right"}, {"role", "roll"}, {"practise", "practice"},
+           {"whether", "weather"}, {"principle", "principal"}, {"labour", "labor"}, {"buy", "bye", "by"},
+           {"soar", "sore", "saw"}, {"source", "sauce"}, {"floor", "flaw"}, {"tea", "t"}, {"workaround", "work"},
+           {"swimlane", "swim"}, {"vary", "very"}, {"week", "weak"}, {"hour", "our"}, {"right", "write"}]
+_TASIYICI = {}
+
+
+def _es(a, b):
+    return a == b or any(a in g and b in g for g in ESSESLI)
+
+
+def dogru_duyuldu(a, metin, x, v):
+    """Kısa kelimeyi tek başına değil, 'The next word is ...' taşıyıcısının ardından dinlet (Whisper bağlamla daha güvenilir)."""
+    if v not in _TASIYICI:
+        _TASIYICI[v] = sentez("The next word is", v, 1.0)
+    z = np.zeros(int(0.25 * motor.SR), np.float32)
+    duy = a.n(a.duy(np.concatenate([_TASIYICI[v], z, x])))
+    hedef = a.n(metin)
+    if duy[:4] == ["the", "next", "word", "is"]:
+        duy = duy[4:]
+    elif "is" in duy[:5]:
+        duy = duy[duy.index("is") + 1:]
+    if len(duy) != len(hedef):
+        return duy == hedef or (len(hedef) == 1 and len(duy) >= 1 and "".join(duy) == hedef[0])
+    return all(_es(p, q) for p, q in zip(hedef, duy))
+
+
 def uret(metin, ses, hiz):
     key = motor.anahtar(metin, ses, round(hiz, 3))
     yol = CACHE / f"{key}.wav"
@@ -38,13 +65,13 @@ def uret(metin, ses, hiz):
     if not kisa:
         sf.write(yol, sentez(metin, ses, hiz), motor.SR); return yol
     a = asr()
-    adaylar = [(ses, hiz), (ses, 0.95)] + [(v, 1.0) for v in YEDEK[ses[0]] if v != ses]
+    diger = "a" if ses[0] == "b" else "b"
+    adaylar = [(ses, hiz), (ses, 0.95)] + [(v, 1.0) for v in YEDEK[ses[0]] if v != ses] + [(v, 1.0) for v in YEDEK[diger]]
     ilk = None
     for v, h in adaylar:
         x = sentez(metin, v, h)
         ilk = ilk if ilk is not None else x
-        duyulan = a.duy(x)
-        if a.n(duyulan) == a.n(metin):
+        if dogru_duyuldu(a, metin, x, v):
             sf.write(yol, x, motor.SR); secim[key] = {"metin": metin, "ses": v, "hiz": h, "ok": True}; return yol
     sf.write(yol, ilk, motor.SR); secim[key] = {"metin": metin, "ses": ses, "hiz": hiz, "ok": False}
     return yol

@@ -1,0 +1,38 @@
+{
+ "baslik": "düzeltme 2",
+ "telaffuz": {
+  "A1": "a bir",
+  "A2": "a iki",
+  "B1": "be bir",
+  "B2": "be iki",
+  "C1": "ce bir",
+  "IELTS": "ayelts",
+  "YDS": "ye de se"
+ },
+ "sahneler": [
+  {
+   "baslik": "c1",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: sağ, sağ tarafa.",
+   "anlatim": "Türkçesi şöyle: sağ, sağ tarafa."
+  },
+  {
+   "baslik": "c2",
+   "tur": "metin",
+   "metin": "Geçen yıl gıda fiyatları keskin bir şekilde arttı ve yakıt fiyatları fırlamaya başladı.",
+   "anlatim": "Geçen yıl gıda fiyatları keskin bir şekilde arttı ve yakıt fiyatları fırlamaya başladı."
+  },
+  {
+   "baslik": "c3",
+   "tur": "metin",
+   "metin": "Demek ki petrol fiyatları hızla yükselmeye başladı.",
+   "anlatim": "Demek ki petrol fiyatları hızla yükselmeye başladı."
+  },
+  {
+   "baslik": "c4",
+   "tur": "metin",
+   "metin": "Türkçesi şöyle: kulvar, şerit.",
+   "anlatim": "Türkçesi şöyle: kulvar, şerit."
+  }
+ ]
+}

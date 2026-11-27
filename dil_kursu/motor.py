@@ -228,7 +228,7 @@ def plan(d, isinma=None):
             a, b = s["cumle"]
             if a:
                 ev += [e(a, v1, ohz), S(0.15)]
-            ev += [("B",), S(0.15), e(b, v1, ohz), S(0.6), T(SABIT["secenekler"]), S(0.3)]
+            ev += [("B",), S(0.15)] + ([e(b, v1, ohz)] if any(ch.isalpha() for ch in b) else []) + [S(0.6), T(SABIT["secenekler"]), S(0.3)]
             for j, o in enumerate(s["secenekler"]):
                 ev += [e(f"{HARF[j]}. {o}.", v2, hz), S(0.35)]
             ev += [S(0.3), T(SABIT["cevap_soyle"]), S(7.0)]

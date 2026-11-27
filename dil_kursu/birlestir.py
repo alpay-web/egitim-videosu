@@ -91,6 +91,27 @@ def tr_dizini():
     return out
 
 
+TASIYICI = "Türkçesi şöyle:"
+
+
+def tr_klip(c, trd):
+    """Kısa ifadeler taşıyıcı cümleyle üretildiyse ("Türkçesi şöyle: oda.") kelime zamanlamasından kesilir."""
+    t = f"{TASIYICI} {c}"
+    if t in trd:
+        js = trd[t].with_suffix(".json")
+        x = oku(trd[t])
+        if js.exists():
+            w = json.load(open(js)); n = len(TASIYICI.split())
+            if len(w) > n:
+                bas = max(0.0, w[n]["s"] - 0.05)
+                # önceki kelimenin bitişi ile hedefin başı arasındaki sessizliğin ortası daha temiz bir kesim verir
+                if w[n - 1]["e"] < w[n]["s"]:
+                    bas = max(bas - 0.02, (w[n - 1]["e"] + w[n]["s"]) / 2)
+                return x[int(bas * SR):]
+        return x
+    return oku(trd[c])
+
+
 def sessiz(s):
     return np.zeros(int(round(s * SR)), np.float32)
 
@@ -110,7 +131,7 @@ def birlestir(d, no, trd, cache={}, gunluk=False):
             cs = motor.cumlelere_bol(x[1])
             for j, c in enumerate(cs):
                 if c not in cache:
-                    cache[c] = esitle(kirp(oku(trd[c])))
+                    cache[c] = esitle(kirp(tr_klip(c, trd)))
                 a = cache[c]
                 parcalar.append(a); t += len(a) / SR; son_sure = len(a) / SR
                 if j < len(cs) - 1:
