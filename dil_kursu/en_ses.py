@@ -24,7 +24,19 @@ def asr():
     return _asr[0]
 
 
+ISIM = {"Elif": "Eleef", "Deniz": "Deneez"}           # yalnız ses için yazım; kurs sadece ses olduğu için görünmez
+DEGIS = {  # Whisper'ın sonda fazladan ses duyduğu klipler: aynı aksanda başka sese geç
+    ("We are a happy family.", "bf_emma"): "bf_isabella", ("I love my family.", "bf_emma"): "bf_isabella",
+    ("I have one brother.", "bf_emma"): "bf_isabella", ("Can I have your phone number?", "bf_emma"): "bf_isabella",
+    ("I finish work at six.", "bf_emma"): "bf_isabella", ("At half past six.", "bf_emma"): "bf_isabella",
+    ("I get up at half past six.", "bf_emma"): "bf_isabella"}
+
+
 def sentez(metin, ses, hiz):
+    if ses != "bf_emma":
+        for a, b in ISIM.items():
+            metin = metin.replace(a, b)
+    ses = DEGIS.get((metin, ses), ses)
     x, sr = k.create(metin, voice=ses, speed=hiz, lang="en-gb" if ses.startswith("b") else "en-us")
     return x.astype(np.float32)
 

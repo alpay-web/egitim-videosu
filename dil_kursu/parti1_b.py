@@ -442,7 +442,7 @@ ders("B1-03", "B1", "Oxford 3000 · B1 · IELTS konusu: sağlık", 3, "Sağlık"
   "The good news is that small changes can reduce the risk of serious problems.",
   "Regular exercise builds muscle and improves fitness, and it is also good for your mental health.",
   "If you are a beginner, start slowly, so that you don't injure yourself.",
-  "Simple breathing exercises can also help: breathe in for four seconds, and out for six.",
+  "Simple breathing exercises can also help: breathe in for four seconds, and out for six seconds.",
   "And remember, if your symptoms are not mild, don't wait. Make an appointment with your doctor and ask about treatment."],
  [Q("What are the most common symptoms of stress, according to doctors?", "Headaches and poor sleep."),
   Q("Why should beginners start slowly?", "So that they don't injure themselves."),
