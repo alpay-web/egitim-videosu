@@ -1,0 +1,350 @@
+{
+ "baslik": "dil kursu BA ve günlük tekrar",
+ "telaffuz": {
+  "A1": "a bir",
+  "A2": "a iki",
+  "B1": "be bir",
+  "B2": "be iki",
+  "C1": "ce bir",
+  "IELTS": "ayelts",
+  "YDS": "ye de se"
+ },
+ "sahneler": [
+  {
+   "baslik": "c1",
+   "tur": "metin",
+   "metin": "Bu, dünkü dersin günlük tekrar kaydı.",
+   "anlatim": "Bu, dünkü dersin günlük tekrar kaydı."
+  },
+  {
+   "baslik": "c2",
+   "tur": "metin",
+   "metin": "Ders: Kendini ve aileni tanıtmak.",
+   "anlatim": "Ders: Kendini ve aileni tanıtmak."
+  },
+  {
+   "baslik": "c3",
+   "tur": "metin",
+   "metin": "Türkçesini duyunca İngilizcesini söyleyin, sonra örnek cümleyi konuşmacıyla birlikte tekrar edin.",
+   "anlatim": "Türkçesini duyunca İngilizcesini söyleyin, sonra örnek cümleyi konuşmacıyla birlikte tekrar edin."
+  },
+  {
+   "baslik": "c4",
+   "tur": "metin",
+   "metin": "Şimdi dünkü metni bir kez daha, bu kez kesintisiz dinleyin.",
+   "anlatim": "Şimdi dünkü metni bir kez daha, bu kez kesintisiz dinleyin."
+  },
+  {
+   "baslik": "c5",
+   "tur": "metin",
+   "metin": "Tekrar tamamlandı.",
+   "anlatim": "Tekrar tamamlandı."
+  },
+  {
+   "baslik": "c6",
+   "tur": "metin",
+   "metin": "Şimdi yeni derse geçebilirsiniz.",
+   "anlatim": "Şimdi yeni derse geçebilirsiniz."
+  },
+  {
+   "baslik": "c7",
+   "tur": "metin",
+   "metin": "Ders: Yurt dışına seyahat.",
+   "anlatim": "Ders: Yurt dışına seyahat."
+  },
+  {
+   "baslik": "c8",
+   "tur": "metin",
+   "metin": "Ders: Çevre ve iklim.",
+   "anlatim": "Ders: Çevre ve iklim."
+  },
+  {
+   "baslik": "c9",
+   "tur": "metin",
+   "metin": "Ders: Teknoloji ve toplum.",
+   "anlatim": "Ders: Teknoloji ve toplum."
+  },
+  {
+   "baslik": "c10",
+   "tur": "metin",
+   "metin": "Ders: Toplum, sağlık ve araştırma.",
+   "anlatim": "Ders: Toplum, sağlık ve araştırma."
+  },
+  {
+   "baslik": "c11",
+   "tur": "metin",
+   "metin": "Ders: Akademik kelimeler 1.",
+   "anlatim": "Ders: Akademik kelimeler 1."
+  },
+  {
+   "baslik": "c12",
+   "tur": "metin",
+   "metin": "Ders: Bağlaçlar 1: karşıtlık, sonuç, ekleme ve koşul.",
+   "anlatim": "Ders: Bağlaçlar 1: karşıtlık, sonuç, ekleme ve koşul."
+  },
+  {
+   "baslik": "c13",
+   "tur": "metin",
+   "metin": "Bu ders, kıdemli iş analisti dizisi, birinci ders.",
+   "anlatim": "Bu ders, kıdemli iş analisti dizisi, birinci ders."
+  },
+  {
+   "baslik": "c14",
+   "tur": "metin",
+   "metin": "Konu: Gereksinim toplama toplantısı.",
+   "anlatim": "Konu: Gereksinim toplama toplantısı."
+  },
+  {
+   "baslik": "c15",
+   "tur": "metin",
+   "metin": "Bu dizide bir iş analistinin toplantılarda, dokümanlarda ve paydaş görüşmelerinde her gün kullandığı İngilizceyi çalışıyoruz.",
+   "anlatim": "Bu dizide bir iş analistinin toplantılarda, dokümanlarda ve paydaş görüşmelerinde her gün kullandığı İngilizceyi çalışıyoruz."
+  },
+  {
+   "baslik": "c16",
+   "tur": "metin",
+   "metin": "paydaş.",
+   "anlatim": "paydaş."
+  },
+  {
+   "baslik": "c17",
+   "tur": "metin",
+   "metin": "Toplantıdan önce her paydaşı belirlememiz gerekiyor.",
+   "anlatim": "Toplantıdan önce her paydaşı belirlememiz gerekiyor."
+  },
+  {
+   "baslik": "c18",
+   "tur": "metin",
+   "metin": "gereksinim.",
+   "anlatim": "gereksinim."
+  },
+  {
+   "baslik": "c19",
+   "tur": "metin",
+   "metin": "Bu gereksinim finans ekibinden geldi.",
+   "anlatim": "Bu gereksinim finans ekibinden geldi."
+  },
+  {
+   "baslik": "c20",
+   "tur": "metin",
+   "metin": "bilgi almak, ortaya çıkarmak.",
+   "anlatim": "bilgi almak, ortaya çıkarmak."
+  },
+  {
+   "baslik": "c21",
+   "tur": "metin",
+   "metin": "İş analizinde gereksinimleri paydaşlardan soru sorarak toplamak anlamında kullanılır.",
+   "anlatim": "İş analizinde gereksinimleri paydaşlardan soru sorarak toplamak anlamında kullanılır."
+  },
+  {
+   "baslik": "c22",
+   "tur": "metin",
+   "metin": "İyi sorular gizli gereksinimleri ortaya çıkarmanıza yardım eder.",
+   "anlatim": "İyi sorular gizli gereksinimleri ortaya çıkarmanıza yardım eder."
+  },
+  {
+   "baslik": "c23",
+   "tur": "metin",
+   "metin": "kapsam.",
+   "anlatim": "kapsam."
+  },
+  {
+   "baslik": "c24",
+   "tur": "metin",
+   "metin": "Mobil ödemeler bu sürümün kapsamı dışında.",
+   "anlatim": "Mobil ödemeler bu sürümün kapsamı dışında."
+  },
+  {
+   "baslik": "c25",
+   "tur": "metin",
+   "metin": "sorunlu nokta, en çok sıkıntı yaratan konu.",
+   "anlatim": "sorunlu nokta, en çok sıkıntı yaratan konu."
+  },
+  {
+   "baslik": "c26",
+   "tur": "metin",
+   "metin": "Elle veri girişi onların en büyük sorunlu noktası.",
+   "anlatim": "Elle veri girişi onların en büyük sorunlu noktası."
+  },
+  {
+   "baslik": "c27",
+   "tur": "metin",
+   "metin": "geçici çözüm.",
+   "anlatim": "geçici çözüm."
+  },
+  {
+   "baslik": "c28",
+   "tur": "metin",
+   "metin": "Ekip geçici çözüm olarak bir hesap tablosu kullanıyor.",
+   "anlatim": "Ekip geçici çözüm olarak bir hesap tablosu kullanıyor."
+  },
+  {
+   "baslik": "c29",
+   "tur": "metin",
+   "metin": "kabul kriterleri.",
+   "anlatim": "kabul kriterleri."
+  },
+  {
+   "baslik": "c30",
+   "tur": "metin",
+   "metin": "Her kullanıcı hikâyesinin net kabul kriterleri olmalı.",
+   "anlatim": "Her kullanıcı hikâyesinin net kabul kriterleri olmalı."
+  },
+  {
+   "baslik": "c31",
+   "tur": "metin",
+   "metin": "önceliklendirmek.",
+   "anlatim": "önceliklendirmek."
+  },
+  {
+   "baslik": "c32",
+   "tur": "metin",
+   "metin": "En yüksek iş değeri taşıyan özellikleri önceliklendirmeliyiz.",
+   "anlatim": "En yüksek iş değeri taşıyan özellikleri önceliklendirmeliyiz."
+  },
+  {
+   "baslik": "c33",
+   "tur": "metin",
+   "metin": "ödünleşim, bir şeyden vazgeçip diğerini seçmek.",
+   "anlatim": "ödünleşim, bir şeyden vazgeçip diğerini seçmek."
+  },
+  {
+   "baslik": "c34",
+   "tur": "metin",
+   "metin": "Hız ile kalite arasında her zaman bir ödünleşim vardır.",
+   "anlatim": "Hız ile kalite arasında her zaman bir ödünleşim vardır."
+  },
+  {
+   "baslik": "c35",
+   "tur": "metin",
+   "metin": "uzlaşmak, aynı noktada buluşmak.",
+   "anlatim": "uzlaşmak, aynı noktada buluşmak."
+  },
+  {
+   "baslik": "c36",
+   "tur": "metin",
+   "metin": "Başlamadan önce öncelikler konusunda uzlaşalım.",
+   "anlatim": "Başlamadan önce öncelikler konusunda uzlaşalım."
+  },
+  {
+   "baslik": "c37",
+   "tur": "metin",
+   "metin": "resmî onay.",
+   "anlatim": "resmî onay."
+  },
+  {
+   "baslik": "c38",
+   "tur": "metin",
+   "metin": "Geliştirme başlamadan önce sponsorun resmî onayına ihtiyacımız var.",
+   "anlatim": "Geliştirme başlamadan önce sponsorun resmî onayına ihtiyacımız var."
+  },
+  {
+   "baslik": "c39",
+   "tur": "metin",
+   "metin": "takip etmek, sonradan dönüş yapmak.",
+   "anlatim": "takip etmek, sonradan dönüş yapmak."
+  },
+  {
+   "baslik": "c40",
+   "tur": "metin",
+   "metin": "Yarın hukuk ekibiyle konuyu takip edeceğim.",
+   "anlatim": "Yarın hukuk ekibiyle konuyu takip edeceğim."
+  },
+  {
+   "baslik": "c41",
+   "tur": "metin",
+   "metin": "Mevcut süreci bana adım adım anlatır mısınız?",
+   "anlatim": "Mevcut süreci bana adım adım anlatır mısınız?"
+  },
+  {
+   "baslik": "c42",
+   "tur": "metin",
+   "metin": "Doğru anladım mı diye size özetleyeyim.",
+   "anlatim": "Doğru anladım mı diye size özetleyeyim."
+  },
+  {
+   "baslik": "c43",
+   "tur": "metin",
+   "metin": "Bu olmazsa olmaz mı, yoksa olsa iyi olur mu?",
+   "anlatim": "Bu olmazsa olmaz mı, yoksa olsa iyi olur mu?"
+  },
+  {
+   "baslik": "c44",
+   "tur": "metin",
+   "metin": "Bunu şimdilik bir kenara koyalım.",
+   "anlatim": "Bunu şimdilik bir kenara koyalım."
+  },
+  {
+   "baslik": "c45",
+   "tur": "metin",
+   "metin": "Bunu kimin onaylaması gerekiyor?",
+   "anlatim": "Bunu kimin onaylaması gerekiyor?"
+  },
+  {
+   "baslik": "c46",
+   "tur": "metin",
+   "metin": "Yapılacak işlerle birlikte bir özet göndereceğim.",
+   "anlatim": "Yapılacak işlerle birlikte bir özet göndereceğim."
+  },
+  {
+   "baslik": "c47",
+   "tur": "metin",
+   "metin": "Şimdi bir finansman şirketinde geçen gereksinim toplama toplantısını dinleyeceksiniz.",
+   "anlatim": "Şimdi bir finansman şirketinde geçen gereksinim toplama toplantısını dinleyeceksiniz."
+  },
+  {
+   "baslik": "c48",
+   "tur": "metin",
+   "metin": "İş analisti bir kadın, operasyon müdürü bir erkek.",
+   "anlatim": "İş analisti bir kadın, operasyon müdürü bir erkek."
+  },
+  {
+   "baslik": "c49",
+   "tur": "metin",
+   "metin": "Bugünkü kelimelerin ve kalıpların hepsi bu konuşmada geçiyor.",
+   "anlatim": "Bugünkü kelimelerin ve kalıpların hepsi bu konuşmada geçiyor."
+  },
+  {
+   "baslik": "c50",
+   "tur": "metin",
+   "metin": "Şimdi bir toplantı simülasyonu.",
+   "anlatim": "Şimdi bir toplantı simülasyonu."
+  },
+  {
+   "baslik": "c51",
+   "tur": "metin",
+   "metin": "Bir paydaş, kapsam dışında kalan yeni bir özellik istiyor.",
+   "anlatim": "Bir paydaş, kapsam dışında kalan yeni bir özellik istiyor."
+  },
+  {
+   "baslik": "c52",
+   "tur": "metin",
+   "metin": "Kibarca hayır deyin ve bir sonraki adımı önerin.",
+   "anlatim": "Kibarca hayır deyin ve bir sonraki adımı önerin."
+  },
+  {
+   "baslik": "c53",
+   "tur": "metin",
+   "metin": "On beş saniyeniz var.",
+   "anlatim": "On beş saniyeniz var."
+  },
+  {
+   "baslik": "c54",
+   "tur": "metin",
+   "metin": "Şimdi kıdemli iş analisti mülakatlarında çok sık sorulan bir soru.",
+   "anlatim": "Şimdi kıdemli iş analisti mülakatlarında çok sık sorulan bir soru."
+  },
+  {
+   "baslik": "c55",
+   "tur": "metin",
+   "metin": "Gerçek bir örnek vermeye çalışın.",
+   "anlatim": "Gerçek bir örnek vermeye çalışın."
+  },
+  {
+   "baslik": "c56",
+   "tur": "metin",
+   "metin": "Ders: İş analizi 1: Gereksinim toplama toplantısı.",
+   "anlatim": "Ders: İş analizi 1: Gereksinim toplama toplantısı."
+  }
+ ]
+}

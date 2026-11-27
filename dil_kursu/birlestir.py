@@ -25,11 +25,36 @@ def oku(yol):
     return x
 
 
+_VAD = []
+
+
+def vad_sinirlari(x):
+    """Silero VAD (snakers4/silero-vad, MIT): konuşmanın gerçek başı ve sonu (örnek indeksi, SR'de)."""
+    try:
+        import torch
+        from silero_vad import load_silero_vad, get_speech_timestamps
+        if not _VAD:
+            _VAD.append(load_silero_vad())
+        n16 = int(len(x) * 16000 / SR)
+        y = np.interp(np.linspace(0, len(x) - 1, n16), np.arange(len(x)), x).astype(np.float32)
+        ts = get_speech_timestamps(torch.from_numpy(y), _VAD[0], sampling_rate=16000, threshold=0.35,
+                                   min_silence_duration_ms=250, speech_pad_ms=40)
+        if ts:
+            return int(ts[0]["start"] * SR / 16000), int(ts[-1]["end"] * SR / 16000)
+    except Exception:
+        pass
+    return None
+
+
 def kirp(x, esik=0.012, bas=0.06, son=0.10):
+    v = vad_sinirlari(x)
     nz = np.nonzero(np.abs(x) > esik)[0]
     if not len(nz):
         return x
-    x = x[max(0, nz[0] - int(bas * SR)): nz[-1] + int(son * SR)]
+    a, b = nz[0], nz[-1]
+    if v:                                   # VAD ile eşiği birleştir: yumuşak başlangıç ünsüzleri kesilmesin
+        a, b = min(a, v[0]), max(min(b, v[1] + int(0.25 * SR)), v[1])
+    x = x[max(0, a - int(bas * SR)): b + int(son * SR)]
     f = min(len(x) // 4, int(0.012 * SR))
     if f:
         x = x.copy(); x[:f] *= np.linspace(0, 1, f); x[-f:] *= np.linspace(1, 0, f)

@@ -165,12 +165,19 @@ def plan(d):
     # --- dinleme (anlaşılır girdi) + gölgeleme + sorular
     hs = d["hikaye_sesi"]; hh = 0.92 if d["seviye"] in ("A1", "A2") else 1.0
     ev += [("BOLUM", "Dinleme"), T(d["hikaye_giris"]), S(1.0)]
+    def konusmaci(c):            # diyalog satırı: "ses|metin" → o sesle; aksi halde anlatıcı sesi
+        if "|" in c and c.split("|", 1)[0] in d.get("konusmacilar", {}):
+            k, m = c.split("|", 1); return d["konusmacilar"][k], m
+        return hs, c
+    onceki = None
     for c in d["hikaye"]:
-        ev += [("E", c, hs, hh), S(0.45)]
+        v, m = konusmaci(c)
+        ev += [S(0.35 if v != onceki and onceki else 0.0), ("E", m, v, hh), S(0.45)]; onceki = v
     ev += [S(1.2), T(SABIT["hikaye_tekrar"]), S(0.2), T(SABIT["golge"]), S(1.0)]
     for c in d["hikaye"]:
-        for p in parcala(c):
-            ev += [("E", p, hs, hh * 0.95), R(1.15, 1.0)]
+        v, m = konusmaci(c)
+        for p in parcala(m):
+            ev += [("E", p, v, hh * 0.95), R(1.15, 1.0)]
     ev += [S(0.8), ("BOLUM", "Sorular"), T(SABIT["soru_en"] if d.get("sorular_dil") == "en" else SABIT["soru_tr"]), S(0.8)]
     for q in d["sorular"]:
         if q.get("tr"):
@@ -224,3 +231,53 @@ def tr_cumleler(ev):
 
 def anahtar(*a):
     return hashlib.sha1("|".join(map(str, a)).encode()).hexdigest()[:16]
+
+
+# ---------------------------------------------------------------- aralıklı tekrar (FSRS) ve günlük tekrar kaydı
+# FSRS (open-spaced-repetition/py-fsrs, MIT), hedef hatırlama %95, her tekrarda "iyi" varsayımıyla şu aralıkları verir:
+# 1, 4, 12, 31, 74, 163 gün. Kursta: +1 gün = o dersin "günlük tekrar" kaydı; +4, +12, +31 = sonraki derslerin
+# başındaki ısınma bölümü; +74 ve +163 = her yedinci dersten sonra gelen haftalık genel tekrar kaydı.
+def fsrs_araliklari(hedef=0.95, adet=6):
+    from datetime import datetime, timezone
+    from fsrs import Scheduler, Card, Rating
+    s = Scheduler(enable_fuzzing=False, desired_retention=hedef)
+    t0 = datetime(2026, 1, 1, tzinfo=timezone.utc); c = Card()
+    for r in (Rating.Good, Rating.Good):
+        c, _ = s.review_card(c, r, t0)
+    out = []
+    for _ in range(adet):
+        now = c.due; out.append(round((now - t0).total_seconds() / 86400)); c, _ = s.review_card(c, Rating.Good, now)
+    return out
+
+
+def isinma_dersleri(n, araliklar=None):
+    """n. dersin (1'den başlar) ısınma bölümünde kelimeleri sorulacak önceki derslerin numaraları."""
+    a = araliklar or fsrs_araliklari()
+    return [n - g for g in a[1:4] if n - g >= 1]
+
+
+SABIT.update({
+    "gunluk1": "Bu, dünkü dersin günlük tekrar kaydı.",
+    "gunluk2": "Türkçesini duyunca İngilizcesini söyleyin, sonra örnek cümleyi konuşmacıyla birlikte tekrar edin.",
+    "gunluk3": "Şimdi dünkü metni bir kez daha, bu kez kesintisiz dinleyin.",
+    "gunluk4": "Tekrar tamamlandı. Şimdi yeni derse geçebilirsiniz.",
+})
+
+
+def plan_gunluk(d):
+    """Glossika/Natibo tarzı kısa günlük tekrar: ertesi gün dinlenir (FSRS'nin ilk aralığı: 1 gün)."""
+    v1, v2 = d["sesler"]; bek = d["bekle"]; K = d["kelimeler"]
+    ev = [("BOLUM", "Günlük tekrar"), S(0.5), T(SABIT["gunluk1"]), S(0.3), T(f"Ders: {d['baslik']}."), S(0.3),
+          T(SABIT["gunluk2"]), S(1.0)]
+    for i in karisik(range(len(K)), d["id"] + "gunluk"):
+        k = K[i]
+        ev += [T(k["tr"]), S(bek), ("E", k["en"], v2, d["en_hiz"]), S(0.6),
+               ("E", k["ex"], v1, d["ornek_hiz"]), R(1.15, 1.0), S(0.4)]
+    ev += [("BOLUM", "Metin"), S(0.6), T(SABIT["gunluk3"]), S(0.8)]
+    for c in d["hikaye"]:
+        if "|" in c and c.split("|", 1)[0] in d.get("konusmacilar", {}):
+            k, m = c.split("|", 1); ev += [("E", m, d["konusmacilar"][k], 1.0), S(0.45)]
+        else:
+            ev += [("E", c, d["hikaye_sesi"], 1.0), S(0.45)]
+    ev += [S(1.0), T(SABIT["gunluk4"]), S(1.2)]
+    return ev
