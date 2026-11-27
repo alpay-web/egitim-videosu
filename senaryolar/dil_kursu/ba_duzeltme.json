@@ -1,0 +1,32 @@
+{
+ "baslik": "BA düzeltme",
+ "telaffuz": {
+  "A1": "a bir",
+  "A2": "a iki",
+  "B1": "be bir",
+  "B2": "be iki",
+  "C1": "ce bir",
+  "IELTS": "ayelts",
+  "YDS": "ye de se"
+ },
+ "sahneler": [
+  {
+   "baslik": "c1",
+   "tur": "metin",
+   "metin": "paydaş.",
+   "anlatim": "paydaş."
+  },
+  {
+   "baslik": "c2",
+   "tur": "metin",
+   "metin": "Bu gereksinim finans ekibinden geldi.",
+   "anlatim": "Bu gereksinim finans ekibinden geldi."
+  },
+  {
+   "baslik": "c3",
+   "tur": "metin",
+   "metin": "Doğru anladım mı diye size özetleyeyim.",
+   "anlatim": "Doğru anladım mı diye size özetleyeyim."
+  }
+ ]
+}
