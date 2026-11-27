@@ -1,11 +1,11 @@
 """A1 hikâye ve İngilizce dinleme kapsamı: bilinen = önceki + bugünkü kelimeler + yapı kelimeleri + temel işlev kelimeleri (spaCy lemma)."""
 import sys, spacy
 sys.path.insert(0, "/home/claude/kurs")
-import parti1_a, parti2_a, parti3_a, icerik
+import parti1_a, parti2_a, parti3_a, parti4_a, icerik
 from degerlendir import FONKSIYON
 nlp = spacy.load("en_core_web_sm")
 def lem(m): return [t for t in nlp(m) if t.is_alpha]
-dersler = [icerik._ID["A1-01"]] + parti1_a.A1 + parti2_a.A1 + [icerik._ID["A2-01"]] + parti3_a.A2
+dersler = [icerik._ID["A1-01"]] + parti1_a.A1 + parti2_a.A1 + [icerik._ID["A2-01"]] + parti3_a.A2 + parti4_a.A2
 bil = set(FONKSIYON); hedef = float(sys.argv[1]) if len(sys.argv) > 1 else 0.95
 for d in dersler:
     for k in d["kelimeler"]:
