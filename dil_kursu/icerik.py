@@ -483,14 +483,16 @@ DERSLER = [
 # ---------------------------------------------------------------- parti 1 ve diziler
 from parti1_a import A1 as _A1
 from parti1_b import B as _B
+from parti2_a import A1 as _A1b
+from parti2_b import B as _Bb
 PILOT = list(DERSLER)
-DERSLER = PILOT + _A1 + _B
+DERSLER = PILOT + _A1 + _B + _A1b + _Bb
 _ID = {d["id"]: d for d in DERSLER}
 DIZILER = {
-    "genel": ["A1-01"] + [d["id"] for d in _A1],
+    "genel": ["A1-01"] + [d["id"] for d in _A1 + _A1b],
     "sinav_is": ["B1-01", "B2-01", "C1-01", "AWL-01", "YDS-01", "BA-01",
                  "AWL-02", "YDS-02", "BA-02", "B1-02", "B2-02", "C1-02",
-                 "AWL-03", "YDS-03", "BA-03", "B1-03", "B2-03", "C1-03", "AWL-04"],
+                 "AWL-03", "YDS-03", "BA-03", "B1-03", "B2-03", "C1-03", "AWL-04"] + [d["id"] for d in _Bb],
 }
 
 

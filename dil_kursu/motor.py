@@ -52,6 +52,13 @@ SABIT = {
     "isinma": "Önce önceki derslerden bazı kelimeleri hatırlayalım. Türkçesini duyunca İngilizcesini sesli söyleyin.",
     "isinma_bitti": "Güzel. Şimdi bugünkü yeni kelimelere geçiyoruz.",
     "bitis4": "Görüşmek üzere.",
+    "yapi_kur": "Şimdi bir cümleyi sondan başlayarak parça parça kuralım. Her parçayı duraklamada tekrar edin.",
+    "yapi_ceviri": "Şimdi sıra sizde. Türkçesini duyunca cümlenin İngilizcesini kurun ve sesli söyleyin.",
+    "yavas_ilk": "Önce metni yavaş okuyacağım. Sadece dinleyin.",
+    "sadece_en": "Şimdi Türkçe ara vermeden, sadece İngilizce kısa bir anlatım dinleyeceksiniz. Her kelimeyi anlamanız gerekmiyor; genel anlamı yakalamaya çalışın.",
+    "sadece_en_bitti": "Güzel. Bu anlatımı yarınki günlük tekrarda yeniden dinleyeceksiniz.",
+    "gunluk_en2": "Şimdi bu dersin konusunda, Türkçe ara vermeden kısa bir İngilizce anlatım dinleyeceksiniz. Genel anlamı yakalamaya çalışın.",
+    "gunluk_en": "Şimdi dersin sonundaki İngilizce anlatımı bir kez daha dinleyin.",
 }
 HARF = "ABCDE"
 
@@ -189,9 +196,27 @@ def plan(d, isinma=None):
         for k in d["kaliplar"]:
             ev += [e(k["en"], v1, ohz), R(1.4, 1.0), T(k["tr"]), S(0.4), e(k["en"], v2, ohz), R(1.4, 1.0), S(0.4)]
 
+    # --- yapı: kısa dilbilgisi açıklaması + geriye doğru kurma (Pimsleur) + TR→EN cümle kurma
+    y = d.get("yapi")
+    if y:
+        ev += [("BOLUM", "Cümle yapısı")]
+        for a in y["aciklama"]:
+            ev += karma([a], d) + [S(0.35)]
+        ev += [S(0.5), T(SABIT["yapi_kur"]), S(0.6)]
+        for zincir in y["kurma"]:
+            for p in zincir:
+                ev += [e(p, v1, ohz), R(1.3, 1.0)]
+            ev += [e(zincir[-1], v2, ohz), R(1.2, 1.0), S(0.6)]
+        ev += [T(SABIT["yapi_ceviri"]), S(0.6)]
+        for tr, en in y["ceviri"]:
+            ev += [T(tr), S(bek + 2.0), e(en, v2, ohz), R(1.15, 1.0), S(0.5)]
+        ev += [S(0.8)]
+
     # --- dinleme (anlaşılır girdi) + gölgeleme + sorular
     hs = d["hikaye_sesi"]; hh = 0.92 if d["seviye"] in ("A1", "A2") else 1.0
     ev += [("BOLUM", "Dinleme"), T(d["hikaye_giris"]), S(1.0)]
+    if d.get("ilk_hiz"):
+        ev += [T(SABIT["yavas_ilk"]), S(0.8)]
     def konusmaci(c):            # diyalog satırı: "ses|metin" → o sesle; aksi halde anlatıcı sesi
         if "|" in c and c.split("|", 1)[0] in d.get("konusmacilar", {}):
             k, m = c.split("|", 1); return d["konusmacilar"][k], m
@@ -199,7 +224,7 @@ def plan(d, isinma=None):
     onceki = None
     for c in d["hikaye"]:
         v, m = konusmaci(c)
-        ev += [S(0.35 if v != onceki and onceki else 0.0), ("E", m, v, hh), S(0.45)]; onceki = v
+        ev += [S(0.35 if v != onceki and onceki else 0.0), ("E", m, v, d.get("ilk_hiz", hh)), S(0.45)]; onceki = v
     ev += [S(1.2), T(SABIT["hikaye_tekrar"]), S(0.2), T(SABIT["golge"]), S(1.0)]
     for c in d["hikaye"]:
         v, m = konusmaci(c)
@@ -234,6 +259,13 @@ def plan(d, isinma=None):
             ev += [S(0.3), T(SABIT["cevap_soyle"]), S(7.0)]
             ev += [e(f"{HARF[s['dogru']]}.", v2, hz), S(0.4)]
             ev += karma(s["aciklama"], d, 0) + [S(1.2)]
+
+    # --- sadece İngilizce dinleme (Türkçe ara yok; daha fazla girdi)
+    if d.get("dinleme_en") and not d.get("dinleme_en_gunlukte"):
+        ev += [("BOLUM", "Sadece İngilizce"), T(SABIT["sadece_en"]), S(1.0)]
+        for c in d["dinleme_en"]:
+            ev += [("E", c, d.get("dinleme_en_sesi", hs), 1.0), S(0.4)]
+        ev += [S(0.8), T(SABIT["sadece_en_bitti"]), S(1.0)]
 
     # --- son tekrar (~10+ dk sonra) ve tanıma
     ev += [("BOLUM", "Son tekrar"), T(SABIT["karisik"]), S(0.6)]
@@ -306,5 +338,9 @@ def plan_gunluk(d):
             k, m = c.split("|", 1); ev += [("E", m, d["konusmacilar"][k], 1.0), S(0.45)]
         else:
             ev += [("E", c, d["hikaye_sesi"], 1.0), S(0.45)]
+    if d.get("dinleme_en"):
+        ev += [("BOLUM", "Sadece İngilizce"), S(0.8), T(SABIT["gunluk_en2" if d.get("dinleme_en_gunlukte") else "gunluk_en"]), S(0.8)]
+        for c in d["dinleme_en"]:
+            ev += [("E", c, d.get("dinleme_en_sesi", d["hikaye_sesi"]), 1.0), S(0.4)]
     ev += [S(1.0), T(SABIT["gunluk4"]), S(1.2)]
     return ev
