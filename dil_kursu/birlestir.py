@@ -81,8 +81,10 @@ def bip():
 
 
 def tr_dizini():
+    """Seçilen anlatıcı: Chatterbox V3 + Ahenk kadın referansı. Klasörler ada göre sırayla okunur; sonraki öncekini ezer
+    (tr_kadin = pilot, tr_kadin_p1 = parti 1, tr_kadin_z* = düzeltmeler)."""
     out = {}
-    for d in [TR_DIZIN, TR_DIZIN.parent / "tr_ses_duzeltme", TR_DIZIN.parent / "tr_ses_d2", TR_DIZIN.parent / "tr_ses_ba", TR_DIZIN.parent / "tr_ses_ba_d", TR_DIZIN.parent / "tr_ses_ba_d2"]:      # sonraki klasör öncekini ezer
+    for d in sorted(TR_DIZIN.parent.glob("tr_kadin*")):
         if (d / "dizin.json").exists():
             for k, v in json.load(open(d / "dizin.json")).items():
                 out[v["metin"]] = d / f"{k}.wav"
@@ -99,7 +101,7 @@ def dosya_adi(s):
 
 
 def birlestir(d, no, trd, cache={}, gunluk=False):
-    ev = motor.plan_gunluk(d) if gunluk else motor.plan(d)
+    ev = motor.plan_gunluk(d) if gunluk else motor.plan(d, icerik.isinma_icin(d))
     parcalar, son_sure, t, bolumler = [], 0.0, 0.0, []
     for x in ev:
         if x[0] == "BOLUM":
@@ -126,12 +128,14 @@ def birlestir(d, no, trd, cache={}, gunluk=False):
         elif x[0] == "B":
             b = bip(); parcalar.append(b); t += len(b) / SR
     ses = np.concatenate(parcalar)
-    ad = f"{no:02d}_{d['id']}_{dosya_adi(d['baslik'])}" + ("_gunluk_tekrar" if gunluk else "")
+    sn = icerik.sira_no(d)
+    ad = f"{sn}_{d['id']}_{dosya_adi(d['baslik'])}" + ("_gunluk_tekrar" if gunluk else "")
+    album = "İngilizce Sesli Kurs · " + ("Genel İngilizce" if sn[0] == "G" else "Sınav ve İş" if sn[0] == "S" else "Ek")
     wav = CIKTI / f"{ad}.wav"; sf.write(wav, ses, SR)
     # bölümler (ffmetadata → ID3 CHAP)
     meta = CIKTI / f"{ad}.meta"
     sat = [";FFMETADATA1", f"title={d['id']} · {d['baslik']}" + (" · günlük tekrar" if gunluk else ""), "artist=İngilizce Sesli Kurs (YDS · IELTS · İş Analizi)",
-           "album=İngilizce Sesli Kurs · Pilot", f"track={no}", "genre=Speech"]
+           f"album={album}", f"track={int(sn[1:])}", "genre=Speech"]
     bit = [b[0] for b in bolumler[1:]] + [len(ses) / SR]
     for (bas, isim), son in zip(bolumler, bit):
         sat += ["[CHAPTER]", "TIMEBASE=1/1000", f"START={int(bas * 1000)}", f"END={int(son * 1000)}", f"title={isim}"]

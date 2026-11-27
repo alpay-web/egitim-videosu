@@ -48,7 +48,9 @@ SABIT = {
     "ters": "Şimdi tersini yapalım. İngilizce kelimeyi duyacaksınız; Türkçe anlamını sesli söyleyin.",
     "bitis1": "Harika bir iş çıkardınız. Bugünkü dersi tamamladınız.",
     "bitis2": "En iyi sonuç için bu dersi yarın bir kez daha dinleyin.",
-    "bitis3": "Bir sonraki dersin başında bu kelimeleri yeniden soracağım. Böylece kalıcı hafızanıza yerleşecekler.",
+    "bitis3": "Bu kelimeleri yarınki günlük tekrarda ve sonraki derslerin başında yeniden soracağım. Böylece kalıcı hafızanıza yerleşecekler.",
+    "isinma": "Önce önceki derslerden bazı kelimeleri hatırlayalım. Türkçesini duyunca İngilizcesini sesli söyleyin.",
+    "isinma_bitti": "Güzel. Şimdi bugünkü yeni kelimelere geçiyoruz.",
     "bitis4": "Görüşmek üzere.",
 }
 HARF = "ABCDE"
@@ -98,7 +100,23 @@ def karma(seq, d, ses=0):
     return out
 
 
-def plan(d):
+ON = ["", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"]
+ONLAR = ["", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"]
+SIRA_SON = {"bir": "birinci", "iki": "ikinci", "üç": "üçüncü", "dört": "dördüncü", "beş": "beşinci", "altı": "altıncı",
+            "yedi": "yedinci", "sekiz": "sekizinci", "dokuz": "dokuzuncu", "on": "onuncu", "yirmi": "yirminci",
+            "otuz": "otuzuncu", "kırk": "kırkıncı", "elli": "ellinci", "altmış": "altmışıncı", "yetmiş": "yetmişinci",
+            "seksen": "sekseninci", "doksan": "doksanıncı", "yüz": "yüzüncü"}
+
+
+def sira_tr(n):
+    """1 → birinci, 13 → on üçüncü, 120 → yüz yirminci."""
+    y, k = divmod(n, 100); o, b = divmod(k, 10)
+    parca = ([(ON[y] + " " if y > 1 else "") + "yüz"] if y else []) + ([ONLAR[o]] if o else []) + ([ON[b]] if b else [])
+    parca[-1] = SIRA_SON[parca[-1].split()[-1]] if " " not in parca[-1] else parca[-1].rsplit(" ", 1)[0] + " " + SIRA_SON[parca[-1].split()[-1]]
+    return " ".join(parca)
+
+
+def plan(d, isinma=None):
     v1, v2 = d["sesler"]
     hz, ohz, bek = d["en_hiz"], d["ornek_hiz"], d["bekle"]
     K = d["kelimeler"]
@@ -115,9 +133,18 @@ def plan(d):
 
     # --- giriş
     ev += [("BOLUM", "Giriş"), S(0.6), T(SABIT["hosgeldin"]), S(0.3),
-           T(f"Bu ders, {d['seviye_ad']}, birinci ders."), S(0.2), T(f"Konu: {d['konu_tr']}"), S(0.3),
+           T(f"Bu ders, {d['seviye_ad']}, {sira_tr(d.get('ders_no', 1))} ders."), S(0.2), T(f"Konu: {d['konu_tr']}"), S(0.3),
            T(SABIT["on_iki"]), S(0.4), T(SABIT["kural1"]), S(0.2), T(SABIT["kural2"]), S(0.2),
            T(SABIT["kural3"]), S(0.4), T(SABIT["basla"]), S(1.0)]
+
+    # --- ısınma: FSRS'ye göre vadesi gelen önceki derslerin kelimeleri (4, 12, 31 ders önce)
+    if isinma:
+        ev += [("BOLUM", "Isınma tekrarı"), T(SABIT["isinma"]), S(0.6)]
+        eski = [k for od in isinma for k in od["kelimeler"]]
+        for i in karisik(range(len(eski)), d["id"] + "isinma"):
+            k = eski[i]
+            ev += [T(k["tr"]), S(bek), ("E", k["en"], v2, hz), R(1.5, 0.9), S(0.4)]
+        ev += [S(0.4), T(SABIT["isinma_bitti"]), S(1.0)]
 
     # --- yeni kelimeler (gruplar halinde, ders içi aralıklı hatırlama)
     gr = gruplar(d)

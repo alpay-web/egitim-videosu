@@ -478,3 +478,35 @@ DERSLER = [
  ],
 },
 ]
+
+
+# ---------------------------------------------------------------- parti 1 ve diziler
+from parti1_a import A1 as _A1
+from parti1_b import B as _B
+PILOT = list(DERSLER)
+DERSLER = PILOT + _A1 + _B
+_ID = {d["id"]: d for d in DERSLER}
+DIZILER = {
+    "genel": ["A1-01"] + [d["id"] for d in _A1],
+    "sinav_is": ["B1-01", "B2-01", "C1-01", "AWL-01", "YDS-01", "BA-01",
+                 "AWL-02", "YDS-02", "BA-02", "B1-02", "B2-02", "C1-02",
+                 "AWL-03", "YDS-03", "BA-03", "B1-03", "B2-03", "C1-03", "AWL-04"],
+}
+
+
+def isinma_icin(d):
+    """Dersin dizideki sırasına göre FSRS vadesi gelen önceki dersler (4, 12, 31 ders önce)."""
+    import motor
+    for dizi in DIZILER.values():
+        if d["id"] in dizi:
+            n = dizi.index(d["id"]) + 1
+            return [_ID[dizi[k - 1]] for k in motor.isinma_dersleri(n)]
+    return []
+
+
+def sira_no(d):
+    """Genel kurs dosya sırası: diziye göre önek."""
+    for ad, dizi in DIZILER.items():
+        if d["id"] in dizi:
+            return ("G" if ad == "genel" else "S") + f"{dizi.index(d['id']) + 1:03d}"
+    return "X001"
