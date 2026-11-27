@@ -1,0 +1,63 @@
+{
+"baslik": "dil kursu parti 3 kadın ses",
+"telaffuz": {
+"A1": "a bir",
+"A2": "a iki",
+"B1": "be bir",
+"B2": "be iki",
+"C1": "ce bir",
+"IELTS": "ayelts",
+"YDS": "ye de se",
+"Green": "Grin",
+"Kate": "Keyt",
+"Scrum": "Skram",
+"podcast'inden": "podkestinden",
+"Mr Brown": "Mister Braun",
+"Jack": "Cek",
+"Tom'un": "Tomun"
+},
+"sahneler": [
+{
+"baslik": "c1",
+"tur": "metin",
+"metin": "eczane, ilaç satılan yer.",
+"anlatim": "eczane, ilaç satılan yer."
+},
+{
+"baslik": "c2",
+"tur": "metin",
+"metin": "Müze hangi binanın karşısında?",
+"anlatim": "Müze hangi binanın karşısında?"
+},
+{
+"baslik": "c3",
+"tur": "metin",
+"metin": "son teslim tarihi, bitiş tarihi.",
+"anlatim": "son teslim tarihi, bitiş tarihi."
+},
+{
+"baslik": "c4",
+"tur": "metin",
+"metin": "tek tip, birbirine benzer.",
+"anlatim": "tek tip, birbirine benzer."
+},
+{
+"baslik": "c5",
+"tur": "metin",
+"metin": "intihal, başkasının yazısını kopyalamak.",
+"anlatim": "intihal, başkasının yazısını kopyalamak."
+},
+{
+"baslik": "c6",
+"tur": "metin",
+"metin": "Başkasının yazısını kopyalamak çok ciddiye alınır.",
+"anlatim": "Başkasının yazısını kopyalamak çok ciddiye alınır."
+},
+{
+"baslik": "c7",
+"tur": "metin",
+"metin": "Türkçesi şöyle: unsur, öğe.",
+"anlatim": "Türkçesi şöyle: unsur, öğe."
+}
+]
+}
