@@ -29,13 +29,17 @@ DEGIS = {  # Whisper'ın sonda fazladan ses duyduğu klipler: aynı aksanda baş
     ("We are a happy family.", "bf_emma"): "bf_isabella", ("I love my family.", "bf_emma"): "bf_isabella",
     ("I have one brother.", "bf_emma"): "bf_isabella", ("Can I have your phone number?", "bf_emma"): "bf_isabella",
     ("I finish work at six.", "bf_emma"): "bf_isabella", ("At half past six.", "bf_emma"): "bf_isabella",
-    ("I get up at half past six.", "bf_emma"): "bf_isabella"}
+    ("I get up at half past six.", "bf_emma"): "bf_isabella",
+    # Amerikan seslerinde "out of" çok kaynaşıyor (Whisper "our" duyuyor): netlik için İngiliz erkek sesi
+    ("That's out of scope for the MVP.", "am_michael"): "bm_lewis", ("we may not run out of solutions.", "am_michael"): "bm_lewis",
+    ("If we make use of such methods, and take into account the full life cycle of products, we may not run out of solutions.", "am_michael"): "bm_lewis"}
 
 
 def sentez(metin, ses, hiz):
     if ses != "bf_emma":
         for a, b in ISIM.items():
             metin = metin.replace(a, b)
+    metin = re.sub(r"\bCan(?=( was| is|,| isn't| good))", "Jahn", metin).replace("Ayşe", "Eye-sheh")   # Türkçe adlar (A2-23)
     ses = DEGIS.get((metin, ses), ses)
     x, sr = k.create(metin, voice=ses, speed=hiz, lang="en-gb" if ses.startswith("b") else "en-us")
     return x.astype(np.float32)
