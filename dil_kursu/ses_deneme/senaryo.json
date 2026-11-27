@@ -1,0 +1,83 @@
+{
+ "baslik": "anlatıcı denemesi",
+ "sahneler": [
+  {
+   "baslik": "c1",
+   "tur": "metin",
+   "metin": "İngilizce sesli kursa hoş geldiniz.",
+   "anlatim": "İngilizce sesli kursa hoş geldiniz."
+  },
+  {
+   "baslik": "c2",
+   "tur": "metin",
+   "metin": "Bu ders, be bir seviyesi, birinci ders.",
+   "anlatim": "Bu ders, be bir seviyesi, birinci ders."
+  },
+  {
+   "baslik": "c3",
+   "tur": "metin",
+   "metin": "Konu: çevre ve iklim.",
+   "anlatim": "Konu: çevre ve iklim."
+  },
+  {
+   "baslik": "c4",
+   "tur": "metin",
+   "metin": "Kural basit: İngilizce bir kelime ya da cümle duyduğunuzda, duraklamada yüksek sesle tekrar edin.",
+   "anlatim": "Kural basit: İngilizce bir kelime ya da cümle duyduğunuzda, duraklamada yüksek sesle tekrar edin."
+  },
+  {
+   "baslik": "c5",
+   "tur": "metin",
+   "metin": "İlk kelime.",
+   "anlatim": "İlk kelime."
+  },
+  {
+   "baslik": "c6",
+   "tur": "metin",
+   "metin": "kirlilik.",
+   "anlatim": "kirlilik."
+  },
+  {
+   "baslik": "c7",
+   "tur": "metin",
+   "metin": "Örnek cümle.",
+   "anlatim": "Örnek cümle."
+  },
+  {
+   "baslik": "c8",
+   "tur": "metin",
+   "metin": "Hava kirliliği büyük şehirlerde ciddi bir sorun.",
+   "anlatim": "Hava kirliliği büyük şehirlerde ciddi bir sorun."
+  },
+  {
+   "baslik": "c9",
+   "tur": "metin",
+   "metin": "Şimdi siz tekrar edin.",
+   "anlatim": "Şimdi siz tekrar edin."
+  },
+  {
+   "baslik": "c10",
+   "tur": "metin",
+   "metin": "Hatırlayalım.",
+   "anlatim": "Hatırlayalım."
+  },
+  {
+   "baslik": "c11",
+   "tur": "metin",
+   "metin": "İngilizcesi nedir?",
+   "anlatim": "İngilizcesi nedir?"
+  },
+  {
+   "baslik": "c12",
+   "tur": "metin",
+   "metin": "Yüksek puan almak için fikrinizi söyleyin ve bir örnekle destekleyin.",
+   "anlatim": "Yüksek puan almak için fikrinizi söyleyin ve bir örnekle destekleyin."
+  },
+  {
+   "baslik": "c13",
+   "tur": "metin",
+   "metin": "Harika bir iş çıkardınız. Bugünkü dersi tamamladınız.",
+   "anlatim": "Harika bir iş çıkardınız. Bugünkü dersi tamamladınız."
+  }
+ ]
+}

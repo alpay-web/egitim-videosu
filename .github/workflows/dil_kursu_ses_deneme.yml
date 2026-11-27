@@ -1,0 +1,89 @@
+name: Dil kursu - Türkçe anlatıcı karşılaştırması
+# Yalnızca dil-kursu-pilot dalında, tetik dosyası değişince çalışır; ana dalı etkilemez.
+on:
+  push:
+    branches: [dil-kursu-pilot]
+    paths: ["dil_kursu/ses_deneme/tetik.txt"]
+permissions:
+  contents: write
+jobs:
+  motor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    strategy:
+      fail-fast: false
+      matrix:
+        motor: [ema, ahenk_cep, freya, seslen_ayse, seslen_emre, trendyol, edge_emel, edge_ahmet]
+    steps:
+      - run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL || true
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Kurulum
+        run: |
+          sudo apt-get -qq update && sudo apt-get -qq install -y ffmpeg espeak-ng > /dev/null
+          pip install -q soundfile numpy huggingface_hub faster-whisper==1.2.1
+          CPU="--extra-index-url https://download.pytorch.org/whl/cpu"
+          case "${{ matrix.motor }}" in
+            ema) pip install -q ema-lightning $CPU ;;
+            ahenk_cep) pip install -q torch $CPU && pip install -q ema-lightning==1.1.2 "git+https://github.com/ozguradmin/ahenk-turkish-tts" $CPU ;;
+            freya) git clone -q --depth 1 https://github.com/freyavoiceai/FreyaTTS && pip install -q torch torchaudio $CPU && pip install -q -r FreyaTTS/requirements.txt $CPU ;;
+            seslen_*) pip install -q seslen-tts ;;
+            trendyol) pip install -q torch torchaudio $CPU && pip install -q "git+https://github.com/Boran-Sert/Turkish-TTS" $CPU ;;
+            edge_*) pip install -q edge-tts ;;
+          esac
+      - name: Üret ve denetle
+        run: python dil_kursu/ses_deneme/uret.py ${{ matrix.motor }} cikti/${{ matrix.motor }} 2>&1 | grep -v -E "it/s\]|s/it\]" | tail -40
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: "ses-${{ matrix.motor }}", path: cikti/}
+  chatterbox:
+    needs: motor
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        ref: [fahrettin, fettah, kadin]
+    steps:
+      - run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL || true
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11', cache: pip}
+      - uses: actions/download-artifact@v4
+        if: matrix.ref == 'kadin'
+        with: {name: ses-ahenk_cep, path: ahenk}
+      - name: Kurulum
+        run: |
+          sudo apt-get -qq update && sudo apt-get -qq install -y ffmpeg > /dev/null
+          pip install -q -r requirements.txt
+          pip install -q "chatterbox-tts @ git+https://github.com/resemble-ai/chatterbox@ab55923c27757c90cfcc407baa57dc25a7d25217" piper-tts==1.8.0 faster-whisper==1.2.1
+      - name: Üret
+        run: |
+          set -o pipefail
+          case "${{ matrix.ref }}" in
+            fahrettin) REF="" ;;
+            fettah) REF="--referans dil_kursu/ses_deneme/ref_fettah.wav" ;;
+            kadin) REF="--referans $(ls ahenk/*/referans.wav ahenk/referans.wav 2>/dev/null | head -1)" ;;
+          esac
+          echo "referans: $REF"
+          python scripts/video_uret.py dil_kursu/ses_deneme/senaryo.json --sadece-ses cikti/chatterbox_${{ matrix.ref }} \
+            --ses chatterbox --kalite 3 $REF --abarti 0.5 --cfg 0.5 --hiz 1.0 2>&1 | grep -v -E "it/s\]|s/it\]" | tail -30
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: "ses-chatterbox_${{ matrix.ref }}", path: cikti/}
+  yayinla:
+    needs: [motor, chatterbox]
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with: {path: hepsi}
+      - name: Yayınla
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: |
+          cd hepsi && zip -q -r ../anlatici_deneme.zip . && cd ..
+          gh release delete ses-deneme-anlatici --yes --cleanup-tag -R "$GITHUB_REPOSITORY" || true
+          gh release create ses-deneme-anlatici anlatici_deneme.zip --prerelease -R "$GITHUB_REPOSITORY" \
+            --title "Dil kursu: Türkçe anlatıcı karşılaştırması" --notes "dil-kursu-pilot dalından" --target dil-kursu-pilot
