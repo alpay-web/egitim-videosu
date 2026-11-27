@@ -1,0 +1,16 @@
+{
+ "baslik": "BA düzeltme 2",
+ "telaffuz": {
+  "A1": "a bir",
+  "IELTS": "ayelts",
+  "YDS": "ye de se"
+ },
+ "sahneler": [
+  {
+   "baslik": "c1",
+   "tur": "metin",
+   "metin": "Anladığım kadarıyla size bir özetleyeyim.",
+   "anlatim": "Anladığım kadarıyla size bir özetleyeyim."
+  }
+ ]
+}

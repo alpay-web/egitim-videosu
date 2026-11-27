@@ -433,7 +433,7 @@ DERSLER = [
  ],
  "kaliplar": [
   {"en": "Could you walk me through the current process?", "tr": "Mevcut süreci bana adım adım anlatır mısınız?"},
-  {"en": "Let me play that back to you.", "tr": "Doğru anladım mı diye size özetleyeyim."},
+  {"en": "Let me play that back to you.", "tr": "Anladığım kadarıyla size bir özetleyeyim."},
   {"en": "Is this a must-have or a nice-to-have?", "tr": "Bu olmazsa olmaz mı, yoksa olsa iyi olur mu?"},
   {"en": "Let's park that for now.", "tr": "Bunu şimdilik bir kenara koyalım."},
   {"en": "Who needs to sign off on this?", "tr": "Bunu kimin onaylaması gerekiyor?"},

@@ -82,7 +82,7 @@ def bip():
 
 def tr_dizini():
     out = {}
-    for d in [TR_DIZIN, TR_DIZIN.parent / "tr_ses_duzeltme", TR_DIZIN.parent / "tr_ses_d2"]:      # sonraki klasör öncekini ezer
+    for d in [TR_DIZIN, TR_DIZIN.parent / "tr_ses_duzeltme", TR_DIZIN.parent / "tr_ses_d2", TR_DIZIN.parent / "tr_ses_ba", TR_DIZIN.parent / "tr_ses_ba_d"]:      # sonraki klasör öncekini ezer
         if (d / "dizin.json").exists():
             for k, v in json.load(open(d / "dizin.json")).items():
                 out[v["metin"]] = d / f"{k}.wav"
@@ -98,8 +98,8 @@ def dosya_adi(s):
     return re.sub(r"[^A-Za-z0-9]+", "_", s).strip("_")
 
 
-def birlestir(d, no, trd, cache={}):
-    ev = motor.plan(d)
+def birlestir(d, no, trd, cache={}, gunluk=False):
+    ev = motor.plan_gunluk(d) if gunluk else motor.plan(d)
     parcalar, son_sure, t, bolumler = [], 0.0, 0.0, []
     for x in ev:
         if x[0] == "BOLUM":
@@ -126,11 +126,11 @@ def birlestir(d, no, trd, cache={}):
         elif x[0] == "B":
             b = bip(); parcalar.append(b); t += len(b) / SR
     ses = np.concatenate(parcalar)
-    ad = f"{no:02d}_{d['id']}_{dosya_adi(d['baslik'])}"
+    ad = f"{no:02d}_{d['id']}_{dosya_adi(d['baslik'])}" + ("_gunluk_tekrar" if gunluk else "")
     wav = CIKTI / f"{ad}.wav"; sf.write(wav, ses, SR)
     # bölümler (ffmetadata → ID3 CHAP)
     meta = CIKTI / f"{ad}.meta"
-    sat = [";FFMETADATA1", f"title={d['id']} · {d['baslik']}", "artist=İngilizce Sesli Kurs (YDS · IELTS)",
+    sat = [";FFMETADATA1", f"title={d['id']} · {d['baslik']}" + (" · günlük tekrar" if gunluk else ""), "artist=İngilizce Sesli Kurs (YDS · IELTS · İş Analizi)",
            "album=İngilizce Sesli Kurs · Pilot", f"track={no}", "genre=Speech"]
     bit = [b[0] for b in bolumler[1:]] + [len(ses) / SR]
     for (bas, isim), son in zip(bolumler, bit):

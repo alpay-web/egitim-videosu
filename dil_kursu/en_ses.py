@@ -52,7 +52,7 @@ def uret(metin, ses, hiz):
 
 if __name__ == "__main__":
     for d in icerik.DERSLER:
-        for x in motor.plan(d):
+        for x in motor.plan(d) + motor.plan_gunluk(d):
             if x[0] == "E":
                 uret(x[1], x[2], x[3])
         json.dump(secim, open(SECIM, "w"), ensure_ascii=False, indent=0)
