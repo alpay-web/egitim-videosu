@@ -493,16 +493,18 @@ from parti5_a import A2 as _A2e
 from parti5_b import B as _Be
 from parti6_a import A2 as _A2f
 from parti6_b import B as _Bf
+from parti7_a import A2 as _A2g
+from parti7_b import B as _Bg
 PILOT = list(DERSLER)
-DERSLER = PILOT + _A1 + _B + _A1b + _Bb + _A2c + _Bc + _A2d + _Bd + _A2e + _Be + _A2f + _Bf
+DERSLER = PILOT + _A1 + _B + _A1b + _Bb + _A2c + _Bc + _A2d + _Bd + _A2e + _Be + _A2f + _Bf + _A2g + _Bg
 _ID = {d["id"]: d for d in DERSLER}
 for _d in _A2c + _Bc + _A2d + _Bd + [_ID["A2-01"]]:
     _d["isinma_adet"] = 5
 DIZILER = {
-    "genel": ["A1-01"] + [d["id"] for d in _A1 + _A1b] + ["A2-01"] + [d["id"] for d in _A2c + _A2d + _A2e + _A2f],
+    "genel": ["A1-01"] + [d["id"] for d in _A1 + _A1b] + ["A2-01"] + [d["id"] for d in _A2c + _A2d + _A2e + _A2f + _A2g],
     "sinav_is": ["B1-01", "B2-01", "C1-01", "AWL-01", "YDS-01", "BA-01",
                  "AWL-02", "YDS-02", "BA-02", "B1-02", "B2-02", "C1-02",
-                 "AWL-03", "YDS-03", "BA-03", "B1-03", "B2-03", "C1-03", "AWL-04"] + [d["id"] for d in _Bb + _Bc + _Bd + _Be + _Bf],
+                 "AWL-03", "YDS-03", "BA-03", "B1-03", "B2-03", "C1-03", "AWL-04"] + [d["id"] for d in _Bb + _Bc + _Bd + _Be + _Bf + _Bg],
 }
 
 

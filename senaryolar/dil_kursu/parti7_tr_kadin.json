@@ -1,0 +1,5877 @@
+{
+"baslik": "dil kursu parti 7 kadın ses",
+"telaffuz": {
+"A1": "a bir",
+"A2": "a iki",
+"B1": "be bir",
+"B2": "be iki",
+"C1": "ce bir",
+"IELTS": "ayelts",
+"YDS": "ye de se",
+"Green": "Grin",
+"Kate": "Keyt",
+"Scrum": "Skram",
+"podcast'inden": "podkestinden",
+"Mr Brown": "Mister Braun",
+"Jack": "Cek",
+"Tom'un": "Tomun"
+},
+"sahneler": [
+{
+"baslik": "c1",
+"tur": "metin",
+"metin": "Bu ders, A2 seviyesi, ellinci ders.",
+"anlatim": "Bu ders, A2 seviyesi, ellinci ders."
+},
+{
+"baslik": "c2",
+"tur": "metin",
+"metin": "Konu: Sanat, fotoğraf ve görünüş bildiren fiiller.",
+"anlatim": "Konu: Sanat, fotoğraf ve görünüş bildiren fiiller."
+},
+{
+"baslik": "c3",
+"tur": "metin",
+"metin": "Türkçesi şöyle: resim, fotoğraf.",
+"anlatim": "Türkçesi şöyle: resim, fotoğraf."
+},
+{
+"baslik": "c4",
+"tur": "metin",
+"metin": "Duvarda ailemin bir resmi var.",
+"anlatim": "Duvarda ailemin bir resmi var."
+},
+{
+"baslik": "c5",
+"tur": "metin",
+"metin": "fotoğraf; fotoğrafını çekmek.",
+"anlatim": "fotoğraf; fotoğrafını çekmek."
+},
+{
+"baslik": "c6",
+"tur": "metin",
+"metin": "Bu fotoğraf 1950'de çekildi.",
+"anlatim": "Bu fotoğraf 1950'de çekildi."
+},
+{
+"baslik": "c7",
+"tur": "metin",
+"metin": "Türkçesi şöyle: sanat.",
+"anlatim": "Türkçesi şöyle: sanat."
+},
+{
+"baslik": "c8",
+"tur": "metin",
+"metin": "Modern sanata ilgi duyuyorum.",
+"anlatim": "Modern sanata ilgi duyuyorum."
+},
+{
+"baslik": "c9",
+"tur": "metin",
+"metin": "Türkçesi şöyle: tasarım; tasarlamak.",
+"anlatim": "Türkçesi şöyle: tasarım; tasarlamak."
+},
+{
+"baslik": "c10",
+"tur": "metin",
+"metin": "Bu sandalyenin tasarımına bayılıyorum.",
+"anlatim": "Bu sandalyenin tasarımına bayılıyorum."
+},
+{
+"baslik": "c11",
+"tur": "metin",
+"metin": "Türkçesi şöyle: tarz, üslup.",
+"anlatim": "Türkçesi şöyle: tarz, üslup."
+},
+{
+"baslik": "c12",
+"tur": "metin",
+"metin": "Çok sade bir tarzı var.",
+"anlatim": "Çok sade bir tarzı var."
+},
+{
+"baslik": "c13",
+"tur": "metin",
+"metin": "Türkçesi şöyle: görüntü, imaj.",
+"anlatim": "Türkçesi şöyle: görüntü, imaj."
+},
+{
+"baslik": "c14",
+"tur": "metin",
+"metin": "Ekrandaki görüntü çok net.",
+"anlatim": "Ekrandaki görüntü çok net."
+},
+{
+"baslik": "c15",
+"tur": "metin",
+"metin": "Türkçesi şöyle: çizim.",
+"anlatim": "Türkçesi şöyle: çizim."
+},
+{
+"baslik": "c16",
+"tur": "metin",
+"metin": "Oğlum evimizin bir çizimini yaptı.",
+"anlatim": "Oğlum evimizin bir çizimini yaptı."
+},
+{
+"baslik": "c17",
+"tur": "metin",
+"metin": "Türkçesi şöyle: afiş, poster.",
+"anlatim": "Türkçesi şöyle: afiş, poster."
+},
+{
+"baslik": "c18",
+"tur": "metin",
+"metin": "Konserin bir afişi var.",
+"anlatim": "Konserin bir afişi var."
+},
+{
+"baslik": "c19",
+"tur": "metin",
+"metin": "Türkçesi şöyle: ressam; boyacı.",
+"anlatim": "Türkçesi şöyle: ressam; boyacı."
+},
+{
+"baslik": "c20",
+"tur": "metin",
+"metin": "En sevdiğim ressam Van Gogh.",
+"anlatim": "En sevdiğim ressam Van Gogh."
+},
+{
+"baslik": "c21",
+"tur": "metin",
+"metin": "Türkçesi şöyle: tasarımcı.",
+"anlatim": "Türkçesi şöyle: tasarımcı."
+},
+{
+"baslik": "c22",
+"tur": "metin",
+"metin": "Bir moda tasarımcısı.",
+"anlatim": "Bir moda tasarımcısı."
+},
+{
+"baslik": "c23",
+"tur": "metin",
+"metin": "Türkçesi şöyle: yaratıcı.",
+"anlatim": "Türkçesi şöyle: yaratıcı."
+},
+{
+"baslik": "c24",
+"tur": "metin",
+"metin": "Çocuklar çok yaratıcıdır.",
+"anlatim": "Çocuklar çok yaratıcıdır."
+},
+{
+"baslik": "c25",
+"tur": "metin",
+"metin": "orijinal, özgün; asıl.",
+"anlatim": "orijinal, özgün; asıl."
+},
+{
+"baslik": "c26",
+"tur": "metin",
+"metin": "Bu orijinal tablo.",
+"anlatim": "Bu orijinal tablo."
+},
+{
+"baslik": "c27",
+"tur": "metin",
+"metin": "Bugünkü yapı: bir şeyin nasıl göründüğünü ya da nasıl hissettirdiğini anlatmak.",
+"anlatim": "Bugünkü yapı: bir şeyin nasıl göründüğünü ya da nasıl hissettirdiğini anlatmak."
+},
+{
+"baslik": "c28",
+"tur": "metin",
+"metin": "Bu fiillerden sonra zarf değil, sıfat gelir:",
+"anlatim": "Bu fiillerden sonra zarf değil, sıfat gelir:"
+},
+{
+"baslik": "c29",
+"tur": "metin",
+"metin": "Bir şeye benzediğini söylemek için şu kalıp kullanılır:",
+"anlatim": "Bir şeye benzediğini söylemek için şu kalıp kullanılır:"
+},
+{
+"baslik": "c30",
+"tur": "metin",
+"metin": "Bu resim çok eski görünüyor.",
+"anlatim": "Bu resim çok eski görünüyor."
+},
+{
+"baslik": "c31",
+"tur": "metin",
+"metin": "Bu çizim bir fotoğrafa benziyor.",
+"anlatim": "Bu çizim bir fotoğrafa benziyor."
+},
+{
+"baslik": "c32",
+"tur": "metin",
+"metin": "Fikrin harika görünüyor.",
+"anlatim": "Fikrin harika görünüyor."
+},
+{
+"baslik": "c33",
+"tur": "metin",
+"metin": "Tasarım çok modern görünüyor.",
+"anlatim": "Tasarım çok modern görünüyor."
+},
+{
+"baslik": "c34",
+"tur": "metin",
+"metin": "Şimdi Kate'in bir sanat sergisine yaptığı ziyareti anlattığı kısa bir metin dinleyeceksiniz.",
+"anlatim": "Şimdi Kate'in bir sanat sergisine yaptığı ziyareti anlattığı kısa bir metin dinleyeceksiniz."
+},
+{
+"baslik": "c35",
+"tur": "metin",
+"metin": "Türkçesi şöyle: trilyon.",
+"anlatim": "Türkçesi şöyle: trilyon."
+},
+{
+"baslik": "c36",
+"tur": "metin",
+"metin": "Birinci odada ne vardı?",
+"anlatim": "Birinci odada ne vardı?"
+},
+{
+"baslik": "c37",
+"tur": "metin",
+"metin": "Genç ressamın tarzı nasıldı?",
+"anlatim": "Genç ressamın tarzı nasıldı?"
+},
+{
+"baslik": "c38",
+"tur": "metin",
+"metin": "Kate dükkândan ne aldı?",
+"anlatim": "Kate dükkândan ne aldı?"
+},
+{
+"baslik": "c39",
+"tur": "metin",
+"metin": "Evinizdeki bir resmi ya da fotoğrafı İngilizce anlatın.",
+"anlatim": "Evinizdeki bir resmi ya da fotoğrafı İngilizce anlatın."
+},
+{
+"baslik": "c40",
+"tur": "metin",
+"metin": "Nasıl göründüğünü söyleyin.",
+"anlatim": "Nasıl göründüğünü söyleyin."
+},
+{
+"baslik": "c41",
+"tur": "metin",
+"metin": "Ders: Sanat ve fotoğraf.",
+"anlatim": "Ders: Sanat ve fotoğraf."
+},
+{
+"baslik": "c42",
+"tur": "metin",
+"metin": "Bu ders, A2 seviyesi, elli birinci ders.",
+"anlatim": "Bu ders, A2 seviyesi, elli birinci ders."
+},
+{
+"baslik": "c43",
+"tur": "metin",
+"metin": "Konu: Uzunluk, ağırlık, mesafe ve ölçü soruları.",
+"anlatim": "Konu: Uzunluk, ağırlık, mesafe ve ölçü soruları."
+},
+{
+"baslik": "c44",
+"tur": "metin",
+"metin": "Türkçesi şöyle: metre.",
+"anlatim": "Türkçesi şöyle: metre."
+},
+{
+"baslik": "c45",
+"tur": "metin",
+"metin": "Oda beş metre uzunluğunda.",
+"anlatim": "Oda beş metre uzunluğunda."
+},
+{
+"baslik": "c46",
+"tur": "metin",
+"metin": "Türkçesi şöyle: kilometre.",
+"anlatim": "Türkçesi şöyle: kilometre."
+},
+{
+"baslik": "c47",
+"tur": "metin",
+"metin": "Havaalanı yirmi kilometre uzakta.",
+"anlatim": "Havaalanı yirmi kilometre uzakta."
+},
+{
+"baslik": "c48",
+"tur": "metin",
+"metin": "Türkçesi şöyle: mil.",
+"anlatim": "Türkçesi şöyle: mil."
+},
+{
+"baslik": "c49",
+"tur": "metin",
+"metin": "İngiltere'de mesafeler mil cinsinden.",
+"anlatim": "İngiltere'de mesafeler mil cinsinden."
+},
+{
+"baslik": "c50",
+"tur": "metin",
+"metin": "Türkçesi şöyle: boy, yükseklik.",
+"anlatim": "Türkçesi şöyle: boy, yükseklik."
+},
+{
+"baslik": "c51",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Boyun kaç?",
+"anlatim": "Türkçesi şöyle: Boyun kaç?"
+},
+{
+"baslik": "c52",
+"tur": "metin",
+"metin": "Türkçesi şöyle: ağırlık, kilo.",
+"anlatim": "Türkçesi şöyle: ağırlık, kilo."
+},
+{
+"baslik": "c53",
+"tur": "metin",
+"metin": "Çantanın ağırlığını kontrol et.",
+"anlatim": "Çantanın ağırlığını kontrol et."
+},
+{
+"baslik": "c54",
+"tur": "metin",
+"metin": "Türkçesi şöyle: mesafe, uzaklık.",
+"anlatim": "Türkçesi şöyle: mesafe, uzaklık."
+},
+{
+"baslik": "c55",
+"tur": "metin",
+"metin": "Buradan İzmir'e mesafe ne kadar?",
+"anlatim": "Buradan İzmir'e mesafe ne kadar?"
+},
+{
+"baslik": "c56",
+"tur": "metin",
+"metin": "Türkçesi şöyle: çeyrek.",
+"anlatim": "Türkçesi şöyle: çeyrek."
+},
+{
+"baslik": "c57",
+"tur": "metin",
+"metin": "Saat üçü çeyrek geçiyor.",
+"anlatim": "Saat üçü çeyrek geçiyor."
+},
+{
+"baslik": "c58",
+"tur": "metin",
+"metin": "çift, iki kat; ikiye katlamak.",
+"anlatim": "çift, iki kat; ikiye katlamak."
+},
+{
+"baslik": "c59",
+"tur": "metin",
+"metin": "Çift kişilik bir oda istiyorum, lütfen.",
+"anlatim": "Çift kişilik bir oda istiyorum, lütfen."
+},
+{
+"baslik": "c60",
+"tur": "metin",
+"metin": "Türkçesi şöyle: miktar.",
+"anlatim": "Türkçesi şöyle: miktar."
+},
+{
+"baslik": "c61",
+"tur": "metin",
+"metin": "Bol miktarda su için.",
+"anlatim": "Bol miktarda su için."
+},
+{
+"baslik": "c62",
+"tur": "metin",
+"metin": "Türkçesi şöyle: ortalama.",
+"anlatim": "Türkçesi şöyle: ortalama."
+},
+{
+"baslik": "c63",
+"tur": "metin",
+"metin": "Ortalama yaş otuz.",
+"anlatim": "Ortalama yaş otuz."
+},
+{
+"baslik": "c64",
+"tur": "metin",
+"metin": "Öğrencilerin yüzde ellisi kadın.",
+"anlatim": "Öğrencilerin yüzde ellisi kadın."
+},
+{
+"baslik": "c65",
+"tur": "metin",
+"metin": "Türkçesi şöyle: santimetre.",
+"anlatim": "Türkçesi şöyle: santimetre."
+},
+{
+"baslik": "c66",
+"tur": "metin",
+"metin": "Oğlum yüz yirmi santimetre boyunda.",
+"anlatim": "Oğlum yüz yirmi santimetre boyunda."
+},
+{
+"baslik": "c67",
+"tur": "metin",
+"metin": "Bugünkü yapı: ölçü soruları.",
+"anlatim": "Bugünkü yapı: ölçü soruları."
+},
+{
+"baslik": "c68",
+"tur": "metin",
+"metin": "Önce şu soru kelimesi, ardından bir sıfat gelir:",
+"anlatim": "Önce şu soru kelimesi, ardından bir sıfat gelir:"
+},
+{
+"baslik": "c69",
+"tur": "metin",
+"metin": "Cevap verirken sayı, ölçü birimi ve sıfat bu sırayla gelir:",
+"anlatim": "Cevap verirken sayı, ölçü birimi ve sıfat bu sırayla gelir:"
+},
+{
+"baslik": "c70",
+"tur": "metin",
+"metin": "Mesafe için şu kalıp da çok kullanılır:",
+"anlatim": "Mesafe için şu kalıp da çok kullanılır:"
+},
+{
+"baslik": "c71",
+"tur": "metin",
+"metin": "Buradan istasyon ne kadar uzak?",
+"anlatim": "Buradan istasyon ne kadar uzak?"
+},
+{
+"baslik": "c72",
+"tur": "metin",
+"metin": "Bu çanta ne kadar ağır?",
+"anlatim": "Bu çanta ne kadar ağır?"
+},
+{
+"baslik": "c73",
+"tur": "metin",
+"metin": "Nehir yaklaşık beş yüz kilometre uzunluğunda.",
+"anlatim": "Nehir yaklaşık beş yüz kilometre uzunluğunda."
+},
+{
+"baslik": "c74",
+"tur": "metin",
+"metin": "Şimdi Sam'in yeni bisiklet yarışına hazırlanmasını anlatan kısa bir metin dinleyeceksiniz.",
+"anlatim": "Şimdi Sam'in yeni bisiklet yarışına hazırlanmasını anlatan kısa bir metin dinleyeceksiniz."
+},
+{
+"baslik": "c75",
+"tur": "metin",
+"metin": "Türkçesi şöyle: litre.",
+"anlatim": "Türkçesi şöyle: litre."
+},
+{
+"baslik": "c76",
+"tur": "metin",
+"metin": "Türkçesi şöyle: ayak (ölçü).",
+"anlatim": "Türkçesi şöyle: ayak (ölçü)."
+},
+{
+"baslik": "c77",
+"tur": "metin",
+"metin": "uzay aracı, sonda.",
+"anlatim": "uzay aracı, sonda."
+},
+{
+"baslik": "c78",
+"tur": "metin",
+"metin": "Yarışın mesafesi ne kadar?",
+"anlatim": "Yarışın mesafesi ne kadar?"
+},
+{
+"baslik": "c79",
+"tur": "metin",
+"metin": "Bisikleti ne kadar ağır?",
+"anlatim": "Bisikleti ne kadar ağır?"
+},
+{
+"baslik": "c80",
+"tur": "metin",
+"metin": "Her gün ortalama ne kadar sürüyor?",
+"anlatim": "Her gün ortalama ne kadar sürüyor?"
+},
+{
+"baslik": "c81",
+"tur": "metin",
+"metin": "Evinizden işinize ya da okulunuza mesafeyi ve oraya nasıl gittiğinizi İngilizce anlatın.",
+"anlatim": "Evinizden işinize ya da okulunuza mesafeyi ve oraya nasıl gittiğinizi İngilizce anlatın."
+},
+{
+"baslik": "c82",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Ders: Ölçüler.",
+"anlatim": "Türkçesi şöyle: Ders: Ölçüler."
+},
+{
+"baslik": "c83",
+"tur": "metin",
+"metin": "Bu ders, A2 seviyesi, elli ikinci ders.",
+"anlatim": "Bu ders, A2 seviyesi, elli ikinci ders."
+},
+{
+"baslik": "c84",
+"tur": "metin",
+"metin": "Konu: Müzik ve onay soruları.",
+"anlatim": "Konu: Müzik ve onay soruları."
+},
+{
+"baslik": "c85",
+"tur": "metin",
+"metin": "müzik grubu; bant.",
+"anlatim": "müzik grubu; bant."
+},
+{
+"baslik": "c86",
+"tur": "metin",
+"metin": "Erkek kardeşim bir rock grubunda çalıyor.",
+"anlatim": "Erkek kardeşim bir rock grubunda çalıyor."
+},
+{
+"baslik": "c87",
+"tur": "metin",
+"metin": "Türkçesi şöyle: caz.",
+"anlatim": "Türkçesi şöyle: caz."
+},
+{
+"baslik": "c88",
+"tur": "metin",
+"metin": "Caz dinlemeye bayılırım.",
+"anlatim": "Caz dinlemeye bayılırım."
+},
+{
+"baslik": "c89",
+"tur": "metin",
+"metin": "Türkçesi şöyle: klasik.",
+"anlatim": "Türkçesi şöyle: klasik."
+},
+{
+"baslik": "c90",
+"tur": "metin",
+"metin": "Çalışırken klasik müzik dinler.",
+"anlatim": "Çalışırken klasik müzik dinler."
+},
+{
+"baslik": "c91",
+"tur": "metin",
+"metin": "Türkçesi şöyle: çalgı, enstrüman.",
+"anlatim": "Türkçesi şöyle: çalgı, enstrüman."
+},
+{
+"baslik": "c92",
+"tur": "metin",
+"metin": "Bir çalgı çalar mısın?",
+"anlatim": "Bir çalgı çalar mısın?"
+},
+{
+"baslik": "c93",
+"tur": "metin",
+"metin": "Türkçesi şöyle: müzisyen.",
+"anlatim": "Türkçesi şöyle: müzisyen."
+},
+{
+"baslik": "c94",
+"tur": "metin",
+"metin": "Profesyonel bir müzisyen.",
+"anlatim": "Profesyonel bir müzisyen."
+},
+{
+"baslik": "c95",
+"tur": "metin",
+"metin": "müzikal; müzikle ilgili.",
+"anlatim": "müzikal; müzikle ilgili."
+},
+{
+"baslik": "c96",
+"tur": "metin",
+"metin": "Londra'da bir müzikal izledik.",
+"anlatim": "Londra'da bir müzikal izledik."
+},
+{
+"baslik": "c97",
+"tur": "metin",
+"metin": "Türkçesi şöyle: şarkı söyleme.",
+"anlatim": "Türkçesi şöyle: şarkı söyleme."
+},
+{
+"baslik": "c98",
+"tur": "metin",
+"metin": "Duşta şarkı söylemeye bayılırım.",
+"anlatim": "Duşta şarkı söylemeye bayılırım."
+},
+{
+"baslik": "c99",
+"tur": "metin",
+"metin": "Türkçesi şöyle: kayıt.",
+"anlatim": "Türkçesi şöyle: kayıt."
+},
+{
+"baslik": "c100",
+"tur": "metin",
+"metin": "Bu, 1965'ten bir kayıt.",
+"anlatim": "Bu, 1965'ten bir kayıt."
+},
+{
+"baslik": "c101",
+"tur": "metin",
+"metin": "Türkçesi şöyle: pop (müzik).",
+"anlatim": "Türkçesi şöyle: pop (müzik)."
+},
+{
+"baslik": "c102",
+"tur": "metin",
+"metin": "Kızım pop müzik seviyor.",
+"anlatim": "Kızım pop müzik seviyor."
+},
+{
+"baslik": "c103",
+"tur": "metin",
+"metin": "ses (insan sesi).",
+"anlatim": "ses (insan sesi)."
+},
+{
+"baslik": "c104",
+"tur": "metin",
+"metin": "Çok güzel bir sesi var.",
+"anlatim": "Çok güzel bir sesi var."
+},
+{
+"baslik": "c105",
+"tur": "metin",
+"metin": "Türkçesi şöyle: dinleyici.",
+"anlatim": "Türkçesi şöyle: dinleyici."
+},
+{
+"baslik": "c106",
+"tur": "metin",
+"metin": "Radyo programının bir milyon dinleyicisi var.",
+"anlatim": "Radyo programının bir milyon dinleyicisi var."
+},
+{
+"baslik": "c107",
+"tur": "metin",
+"metin": "ses; kulağa gelmek.",
+"anlatim": "ses; kulağa gelmek."
+},
+{
+"baslik": "c108",
+"tur": "metin",
+"metin": "Denizin sesine bayılırım.",
+"anlatim": "Denizin sesine bayılırım."
+},
+{
+"baslik": "c109",
+"tur": "metin",
+"metin": "Bugünkü yapı: onay soruları.",
+"anlatim": "Bugünkü yapı: onay soruları."
+},
+{
+"baslik": "c110",
+"tur": "metin",
+"metin": "Cümlenin sonuna kısa bir soru eklenir; değil mi anlamı taşır.",
+"anlatim": "Cümlenin sonuna kısa bir soru eklenir; değil mi anlamı taşır."
+},
+{
+"baslik": "c111",
+"tur": "metin",
+"metin": "Olumlu cümleden sonra olumsuz soru gelir:",
+"anlatim": "Olumlu cümleden sonra olumsuz soru gelir:"
+},
+{
+"baslik": "c112",
+"tur": "metin",
+"metin": "Olumsuz cümleden sonra ise olumlu soru gelir:",
+"anlatim": "Olumsuz cümleden sonra ise olumlu soru gelir:"
+},
+{
+"baslik": "c113",
+"tur": "metin",
+"metin": "Bu sorular sohbeti canlı tutar ve karşınızdakinden onay ister.",
+"anlatim": "Bu sorular sohbeti canlı tutar ve karşınızdakinden onay ister."
+},
+{
+"baslik": "c114",
+"tur": "metin",
+"metin": "Caz seviyorsun, değil mi?",
+"anlatim": "Caz seviyorsun, değil mi?"
+},
+{
+"baslik": "c115",
+"tur": "metin",
+"metin": "Piyano çalmıyorsun, değil mi?",
+"anlatim": "Piyano çalmıyorsun, değil mi?"
+},
+{
+"baslik": "c116",
+"tur": "metin",
+"metin": "Konser harikaydı, değil mi?",
+"anlatim": "Konser harikaydı, değil mi?"
+},
+{
+"baslik": "c117",
+"tur": "metin",
+"metin": "Onun sesi çok güzel, değil mi?",
+"anlatim": "Onun sesi çok güzel, değil mi?"
+},
+{
+"baslik": "c118",
+"tur": "metin",
+"metin": "Şimdi iki arkadaşın, Anna ve Tom'un bir konserden sonra konuşmasını dinleyeceksiniz.",
+"anlatim": "Şimdi iki arkadaşın, Anna ve Tom'un bir konserden sonra konuşmasını dinleyeceksiniz."
+},
+{
+"baslik": "c119",
+"tur": "metin",
+"metin": "Türkçesi şöyle: salgılamak, salıvermek.",
+"anlatim": "Türkçesi şöyle: salgılamak, salıvermek."
+},
+{
+"baslik": "c120",
+"tur": "metin",
+"metin": "Türkçesi şöyle: kimyasal madde.",
+"anlatim": "Türkçesi şöyle: kimyasal madde."
+},
+{
+"baslik": "c121",
+"tur": "metin",
+"metin": "Türkçesi şöyle: hafıza.",
+"anlatim": "Türkçesi şöyle: hafıza."
+},
+{
+"baslik": "c122",
+"tur": "metin",
+"metin": "Tom hangi çalgıyı çalıyor?",
+"anlatim": "Tom hangi çalgıyı çalıyor?"
+},
+{
+"baslik": "c123",
+"tur": "metin",
+"metin": "Tom üniversitede ne yapardı?",
+"anlatim": "Tom üniversitede ne yapardı?"
+},
+{
+"baslik": "c124",
+"tur": "metin",
+"metin": "Anna hangi müziği tercih ediyor?",
+"anlatim": "Anna hangi müziği tercih ediyor?"
+},
+{
+"baslik": "c125",
+"tur": "metin",
+"metin": "Sevdiğiniz müziği ve bir çalgı çalıp çalmadığınızı İngilizce anlatın.",
+"anlatim": "Sevdiğiniz müziği ve bir çalgı çalıp çalmadığınızı İngilizce anlatın."
+},
+{
+"baslik": "c126",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Ders: Müzik.",
+"anlatim": "Türkçesi şöyle: Ders: Müzik."
+},
+{
+"baslik": "c127",
+"tur": "metin",
+"metin": "Bu ders, A2 seviyesi, elli üçüncü ders.",
+"anlatim": "Bu ders, A2 seviyesi, elli üçüncü ders."
+},
+{
+"baslik": "c128",
+"tur": "metin",
+"metin": "Konu: Doğru, yanlış, emin olmak ve tahmin etmek.",
+"anlatim": "Konu: Doğru, yanlış, emin olmak ve tahmin etmek."
+},
+{
+"baslik": "c129",
+"tur": "metin",
+"metin": "Türkçesi şöyle: doğru; düzeltmek.",
+"anlatim": "Türkçesi şöyle: doğru; düzeltmek."
+},
+{
+"baslik": "c130",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Cevabın doğru.",
+"anlatim": "Türkçesi şöyle: Cevabın doğru."
+},
+{
+"baslik": "c131",
+"tur": "metin",
+"metin": "Türkçesi şöyle: yanlış.",
+"anlatim": "Türkçesi şöyle: yanlış."
+},
+{
+"baslik": "c132",
+"tur": "metin",
+"metin": "Yanlış otobüse bindim.",
+"anlatim": "Yanlış otobüse bindim."
+},
+{
+"baslik": "c133",
+"tur": "metin",
+"metin": "Türkçesi şöyle: yanlış, sahte.",
+"anlatim": "Türkçesi şöyle: yanlış, sahte."
+},
+{
+"baslik": "c134",
+"tur": "metin",
+"metin": "Bu cümle doğru mu yanlış mı?",
+"anlatim": "Bu cümle doğru mu yanlış mı?"
+},
+{
+"baslik": "c135",
+"tur": "metin",
+"metin": "Türkçesi şöyle: hata.",
+"anlatim": "Türkçesi şöyle: hata."
+},
+{
+"baslik": "c136",
+"tur": "metin",
+"metin": "Raporda bir hata var.",
+"anlatim": "Raporda bir hata var."
+},
+{
+"baslik": "c137",
+"tur": "metin",
+"metin": "Türkçesi şöyle: kontrol etmek.",
+"anlatim": "Türkçesi şöyle: kontrol etmek."
+},
+{
+"baslik": "c138",
+"tur": "metin",
+"metin": "Lütfen cevaplarınızı kontrol edin.",
+"anlatim": "Lütfen cevaplarınızı kontrol edin."
+},
+{
+"baslik": "c139",
+"tur": "metin",
+"metin": "Türkçesi şöyle: emin.",
+"anlatim": "Türkçesi şöyle: emin."
+},
+{
+"baslik": "c140",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Emin misin?",
+"anlatim": "Türkçesi şöyle: Emin misin?"
+},
+{
+"baslik": "c141",
+"tur": "metin",
+"metin": "Yaşımı tahmin edebilir misin?",
+"anlatim": "Yaşımı tahmin edebilir misin?"
+},
+{
+"baslik": "c142",
+"tur": "metin",
+"metin": "Türkçesi şöyle: mümkün, olası.",
+"anlatim": "Türkçesi şöyle: mümkün, olası."
+},
+{
+"baslik": "c143",
+"tur": "metin",
+"metin": "Tarihi değiştirmek mümkün mü?",
+"anlatim": "Tarihi değiştirmek mümkün mü?"
+},
+{
+"baslik": "c144",
+"tur": "metin",
+"metin": "Türkçesi şöyle: imkânsız.",
+"anlatim": "Türkçesi şöyle: imkânsız."
+},
+{
+"baslik": "c145",
+"tur": "metin",
+"metin": "Bugün bitirmek imkânsız.",
+"anlatim": "Bugün bitirmek imkânsız."
+},
+{
+"baslik": "c146",
+"tur": "metin",
+"metin": "kesin, emin; belirli.",
+"anlatim": "kesin, emin; belirli."
+},
+{
+"baslik": "c147",
+"tur": "metin",
+"metin": "Onun haklı olduğundan eminim.",
+"anlatim": "Onun haklı olduğundan eminim."
+},
+{
+"baslik": "c148",
+"tur": "metin",
+"metin": "Türkçesi şöyle: tam, kesin.",
+"anlatim": "Türkçesi şöyle: tam, kesin."
+},
+{
+"baslik": "c149",
+"tur": "metin",
+"metin": "Saat tam olarak kaç?",
+"anlatim": "Saat tam olarak kaç?"
+},
+{
+"baslik": "c150",
+"tur": "metin",
+"metin": "Türkçesi şöyle: kesinlikle.",
+"anlatim": "Türkçesi şöyle: kesinlikle."
+},
+{
+"baslik": "c151",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Kesinlikle geleceğim.",
+"anlatim": "Türkçesi şöyle: Kesinlikle geleceğim."
+},
+{
+"baslik": "c152",
+"tur": "metin",
+"metin": "Bugünkü yapı: ne kadar emin olduğunuzu söylemek.",
+"anlatim": "Bugünkü yapı: ne kadar emin olduğunuzu söylemek."
+},
+{
+"baslik": "c153",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Çok eminseniz:",
+"anlatim": "Türkçesi şöyle: Çok eminseniz:"
+},
+{
+"baslik": "c154",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Biraz eminseniz:",
+"anlatim": "Türkçesi şöyle: Biraz eminseniz:"
+},
+{
+"baslik": "c155",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Emin değilseniz:",
+"anlatim": "Türkçesi şöyle: Emin değilseniz:"
+},
+{
+"baslik": "c156",
+"tur": "metin",
+"metin": "Emin olmadığınız bir soruyu sormak için şu kelime kullanılır:",
+"anlatim": "Emin olmadığınız bir soruyu sormak için şu kelime kullanılır:"
+},
+{
+"baslik": "c157",
+"tur": "metin",
+"metin": "Gelip gelmeyeceğinden emin değilim.",
+"anlatim": "Gelip gelmeyeceğinden emin değilim."
+},
+{
+"baslik": "c158",
+"tur": "metin",
+"metin": "Sanırım otuz yaşında.",
+"anlatim": "Sanırım otuz yaşında."
+},
+{
+"baslik": "c159",
+"tur": "metin",
+"metin": "Bu kesinlikle doğru.",
+"anlatim": "Bu kesinlikle doğru."
+},
+{
+"baslik": "c160",
+"tur": "metin",
+"metin": "Şimdi bir radyo bilgi yarışmasından kısa bir bölüm dinleyeceksiniz.",
+"anlatim": "Şimdi bir radyo bilgi yarışmasından kısa bir bölüm dinleyeceksiniz."
+},
+{
+"baslik": "c161",
+"tur": "metin",
+"metin": "Türkçesi şöyle: hapşırmak.",
+"anlatim": "Türkçesi şöyle: hapşırmak."
+},
+{
+"baslik": "c162",
+"tur": "metin",
+"metin": "Türkçesi şöyle: japon balığı.",
+"anlatim": "Türkçesi şöyle: japon balığı."
+},
+{
+"baslik": "c163",
+"tur": "metin",
+"metin": "Türkçesi şöyle: boğa.",
+"anlatim": "Türkçesi şöyle: boğa."
+},
+{
+"baslik": "c164",
+"tur": "metin",
+"metin": "Çin Seddi uzaydan görülebilir mi?",
+"anlatim": "Çin Seddi uzaydan görülebilir mi?"
+},
+{
+"baslik": "c165",
+"tur": "metin",
+"metin": "Everest'in tam yüksekliği ne?",
+"anlatim": "Everest'in tam yüksekliği ne?"
+},
+{
+"baslik": "c166",
+"tur": "metin",
+"metin": "Sam ikinci soruya ne kadar emindi?",
+"anlatim": "Sam ikinci soruya ne kadar emindi?"
+},
+{
+"baslik": "c167",
+"tur": "metin",
+"metin": "Gelecek yıl hakkında emin olduğunuz ve emin olmadığınız şeyleri İngilizce anlatın.",
+"anlatim": "Gelecek yıl hakkında emin olduğunuz ve emin olmadığınız şeyleri İngilizce anlatın."
+},
+{
+"baslik": "c168",
+"tur": "metin",
+"metin": "Ders: Doğru ya da yanlış.",
+"anlatim": "Ders: Doğru ya da yanlış."
+},
+{
+"baslik": "c169",
+"tur": "metin",
+"metin": "Bu ders, A2 seviyesi, elli dördüncü ders.",
+"anlatim": "Bu ders, A2 seviyesi, elli dördüncü ders."
+},
+{
+"baslik": "c170",
+"tur": "metin",
+"metin": "Konu: Yazı türleri, metinler ve süregelen eylemler.",
+"anlatim": "Konu: Yazı türleri, metinler ve süregelen eylemler."
+},
+{
+"baslik": "c171",
+"tur": "metin",
+"metin": "Türkçesi şöyle: paragraf.",
+"anlatim": "Türkçesi şöyle: paragraf."
+},
+{
+"baslik": "c172",
+"tur": "metin",
+"metin": "İlk paragrafı okuyun.",
+"anlatim": "İlk paragrafı okuyun."
+},
+{
+"baslik": "c173",
+"tur": "metin",
+"metin": "Türkçesi şöyle: ifade, deyiş.",
+"anlatim": "Türkçesi şöyle: ifade, deyiş."
+},
+{
+"baslik": "c174",
+"tur": "metin",
+"metin": "Bu kullanışlı bir ifade.",
+"anlatim": "Bu kullanışlı bir ifade."
+},
+{
+"baslik": "c175",
+"tur": "metin",
+"metin": "Türkçesi şöyle: yazılış, imla.",
+"anlatim": "Türkçesi şöyle: yazılış, imla."
+},
+{
+"baslik": "c176",
+"tur": "metin",
+"metin": "Yazım hatalarını kontrol et.",
+"anlatim": "Yazım hatalarını kontrol et."
+},
+{
+"baslik": "c177",
+"tur": "metin",
+"metin": "diyalog, karşılıklı konuşma.",
+"anlatim": "diyalog, karşılıklı konuşma."
+},
+{
+"baslik": "c178",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Diyaloğu dinleyin.",
+"anlatim": "Türkçesi şöyle: Diyaloğu dinleyin."
+},
+{
+"baslik": "c179",
+"tur": "metin",
+"metin": "Türkçesi şöyle: başlık; unvan.",
+"anlatim": "Türkçesi şöyle: başlık; unvan."
+},
+{
+"baslik": "c180",
+"tur": "metin",
+"metin": "Kitabın adı ne?",
+"anlatim": "Kitabın adı ne?"
+},
+{
+"baslik": "c181",
+"tur": "metin",
+"metin": "Türkçesi şöyle: konu.",
+"anlatim": "Türkçesi şöyle: konu."
+},
+{
+"baslik": "c182",
+"tur": "metin",
+"metin": "Kompozisyonun konusu iklim.",
+"anlatim": "Kompozisyonun konusu iklim."
+},
+{
+"baslik": "c183",
+"tur": "metin",
+"metin": "Türkçesi şöyle: tanım, betimleme.",
+"anlatim": "Türkçesi şöyle: tanım, betimleme."
+},
+{
+"baslik": "c184",
+"tur": "metin",
+"metin": "Kasabanın kısa bir tanımını yaz.",
+"anlatim": "Kasabanın kısa bir tanımını yaz."
+},
+{
+"baslik": "c185",
+"tur": "metin",
+"metin": "ifade, açıklama, beyan.",
+"anlatim": "ifade, açıklama, beyan."
+},
+{
+"baslik": "c186",
+"tur": "metin",
+"metin": "Bu ifade doğru mu?",
+"anlatim": "Bu ifade doğru mu?"
+},
+{
+"baslik": "c187",
+"tur": "metin",
+"metin": "Türkçesi şöyle: günlük, ajanda.",
+"anlatim": "Türkçesi şöyle: günlük, ajanda."
+},
+{
+"baslik": "c188",
+"tur": "metin",
+"metin": "Her gece günlüğüme yazarım.",
+"anlatim": "Her gece günlüğüme yazarım."
+},
+{
+"baslik": "c189",
+"tur": "metin",
+"metin": "Türkçesi şöyle: roman.",
+"anlatim": "Türkçesi şöyle: roman."
+},
+{
+"baslik": "c190",
+"tur": "metin",
+"metin": "İlk romanını yazıyor.",
+"anlatim": "İlk romanını yazıyor."
+},
+{
+"baslik": "c191",
+"tur": "metin",
+"metin": "Bu kitabın yazarı kim?",
+"anlatim": "Bu kitabın yazarı kim?"
+},
+{
+"baslik": "c192",
+"tur": "metin",
+"metin": "kurgu, roman türü.",
+"anlatim": "kurgu, roman türü."
+},
+{
+"baslik": "c193",
+"tur": "metin",
+"metin": "Kurguyu tarih kitaplarına tercih ederim.",
+"anlatim": "Kurguyu tarih kitaplarına tercih ederim."
+},
+{
+"baslik": "c194",
+"tur": "metin",
+"metin": "Bugünkü yapı: geçmişte başlayıp hâlâ süren eylemler.",
+"anlatim": "Bugünkü yapı: geçmişte başlayıp hâlâ süren eylemler."
+},
+{
+"baslik": "c195",
+"tur": "metin",
+"metin": "Bir eylemin ne zamandır devam ettiğini anlatır.",
+"anlatim": "Bir eylemin ne zamandır devam ettiğini anlatır."
+},
+{
+"baslik": "c196",
+"tur": "metin",
+"metin": "Önce şu yardımcı fiiller gelir, ardından fiil bir ek alır:",
+"anlatim": "Önce şu yardımcı fiiller gelir, ardından fiil bir ek alır:"
+},
+{
+"baslik": "c197",
+"tur": "metin",
+"metin": "Durum bildiren fiillerle bu yapı kullanılmaz; o zaman yakın geçmiş zaman kullanılır:",
+"anlatim": "Durum bildiren fiillerle bu yapı kullanılmaz; o zaman yakın geçmiş zaman kullanılır:"
+},
+{
+"baslik": "c198",
+"tur": "metin",
+"metin": "İki saattir okuyorum.",
+"anlatim": "İki saattir okuyorum."
+},
+{
+"baslik": "c199",
+"tur": "metin",
+"metin": "Bu romanı üç yıldır yazıyor.",
+"anlatim": "Bu romanı üç yıldır yazıyor."
+},
+{
+"baslik": "c200",
+"tur": "metin",
+"metin": "Sabahtan beri yağmur yağıyor.",
+"anlatim": "Sabahtan beri yağmur yağıyor."
+},
+{
+"baslik": "c201",
+"tur": "metin",
+"metin": "Şimdi Elif'in yazar olma hayalini anlattığı kısa bir metin dinleyeceksiniz.",
+"anlatim": "Şimdi Elif'in yazar olma hayalini anlattığı kısa bir metin dinleyeceksiniz."
+},
+{
+"baslik": "c202",
+"tur": "metin",
+"metin": "Türkçesi şöyle: bölüm.",
+"anlatim": "Türkçesi şöyle: bölüm."
+},
+{
+"baslik": "c203",
+"tur": "metin",
+"metin": "Türkçesi şöyle: önermek.",
+"anlatim": "Türkçesi şöyle: önermek."
+},
+{
+"baslik": "c204",
+"tur": "metin",
+"metin": "Elif ne zamandır günlük tutuyor?",
+"anlatim": "Elif ne zamandır günlük tutuyor?"
+},
+{
+"baslik": "c205",
+"tur": "metin",
+"metin": "Romanının konusu ne?",
+"anlatim": "Romanının konusu ne?"
+},
+{
+"baslik": "c206",
+"tur": "metin",
+"metin": "Ünlü yazar ne dedi?",
+"anlatim": "Ünlü yazar ne dedi?"
+},
+{
+"baslik": "c207",
+"tur": "metin",
+"metin": "Ne zamandır yaptığınız bir şeyi İngilizce anlatın.",
+"anlatim": "Ne zamandır yaptığınız bir şeyi İngilizce anlatın."
+},
+{
+"baslik": "c208",
+"tur": "metin",
+"metin": "Süregelen yapıyı kullanın.",
+"anlatim": "Süregelen yapıyı kullanın."
+},
+{
+"baslik": "c209",
+"tur": "metin",
+"metin": "Ders: Yazı ve okuma.",
+"anlatim": "Ders: Yazı ve okuma."
+},
+{
+"baslik": "c210",
+"tur": "metin",
+"metin": "Bu ders, A2 seviyesi, elli beşinci ders.",
+"anlatim": "Bu ders, A2 seviyesi, elli beşinci ders."
+},
+{
+"baslik": "c211",
+"tur": "metin",
+"metin": "Konu: Şans, duygular ve yorum bildiren zarflar.",
+"anlatim": "Konu: Şans, duygular ve yorum bildiren zarflar."
+},
+{
+"baslik": "c212",
+"tur": "metin",
+"metin": "Türkçesi şöyle: korku; korkmak.",
+"anlatim": "Türkçesi şöyle: korku; korkmak."
+},
+{
+"baslik": "c213",
+"tur": "metin",
+"metin": "Uçma korkusu var.",
+"anlatim": "Uçma korkusu var."
+},
+{
+"baslik": "c214",
+"tur": "metin",
+"metin": "Türkçesi şöyle: şans.",
+"anlatim": "Türkçesi şöyle: şans."
+},
+{
+"baslik": "c215",
+"tur": "metin",
+"metin": "Sınavında bol şans!",
+"anlatim": "Sınavında bol şans!"
+},
+{
+"baslik": "c216",
+"tur": "metin",
+"metin": "Türkçesi şöyle: şanslı.",
+"anlatim": "Türkçesi şöyle: şanslı."
+},
+{
+"baslik": "c217",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Çok şanslısın.",
+"anlatim": "Türkçesi şöyle: Çok şanslısın."
+},
+{
+"baslik": "c218",
+"tur": "metin",
+"metin": "ne yazık ki; üzgün bir şekilde.",
+"anlatim": "ne yazık ki; üzgün bir şekilde."
+},
+{
+"baslik": "c219",
+"tur": "metin",
+"metin": "Ne yazık ki dükkân kapandı.",
+"anlatim": "Ne yazık ki dükkân kapandı."
+},
+{
+"baslik": "c220",
+"tur": "metin",
+"metin": "mutlu bir şekilde; neyse ki.",
+"anlatim": "mutlu bir şekilde; neyse ki."
+},
+{
+"baslik": "c221",
+"tur": "metin",
+"metin": "Birlikte mutlu yaşadılar.",
+"anlatim": "Birlikte mutlu yaşadılar."
+},
+{
+"baslik": "c222",
+"tur": "metin",
+"metin": "neyse ki, bereket versin.",
+"anlatim": "neyse ki, bereket versin."
+},
+{
+"baslik": "c223",
+"tur": "metin",
+"metin": "Neyse ki kimse yaralanmadı.",
+"anlatim": "Neyse ki kimse yaralanmadı."
+},
+{
+"baslik": "c224",
+"tur": "metin",
+"metin": "Türkçesi şöyle: mutsuz.",
+"anlatim": "Türkçesi şöyle: mutsuz."
+},
+{
+"baslik": "c225",
+"tur": "metin",
+"metin": "Eski işinde mutsuzdu.",
+"anlatim": "Eski işinde mutsuzdu."
+},
+{
+"baslik": "c226",
+"tur": "metin",
+"metin": "Türkçesi şöyle: sürpriz; şaşırtmak.",
+"anlatim": "Türkçesi şöyle: sürpriz; şaşırtmak."
+},
+{
+"baslik": "c227",
+"tur": "metin",
+"metin": "Bir sürpriz parti planladık.",
+"anlatim": "Bir sürpriz parti planladık."
+},
+{
+"baslik": "c228",
+"tur": "metin",
+"metin": "Türkçesi şöyle: stres.",
+"anlatim": "Türkçesi şöyle: stres."
+},
+{
+"baslik": "c229",
+"tur": "metin",
+"metin": "Çok stres altındayım.",
+"anlatim": "Çok stres altındayım."
+},
+{
+"baslik": "c230",
+"tur": "metin",
+"metin": "Türkçesi şöyle: sorun, dert.",
+"anlatim": "Türkçesi şöyle: sorun, dert."
+},
+{
+"baslik": "c231",
+"tur": "metin",
+"metin": "Oteli bulmakta zorlandım.",
+"anlatim": "Oteli bulmakta zorlandım."
+},
+{
+"baslik": "c232",
+"tur": "metin",
+"metin": "Türkçesi şöyle: korkutucu.",
+"anlatim": "Türkçesi şöyle: korkutucu."
+},
+{
+"baslik": "c233",
+"tur": "metin",
+"metin": "Film gerçekten korkutucuydu.",
+"anlatim": "Film gerçekten korkutucuydu."
+},
+{
+"baslik": "c234",
+"tur": "metin",
+"metin": "Türkçesi şöyle: rahat.",
+"anlatim": "Türkçesi şöyle: rahat."
+},
+{
+"baslik": "c235",
+"tur": "metin",
+"metin": "Bu kanepe çok rahat.",
+"anlatim": "Bu kanepe çok rahat."
+},
+{
+"baslik": "c236",
+"tur": "metin",
+"metin": "Bugünkü yapı: cümlenin başında yorum bildiren zarflar.",
+"anlatim": "Bugünkü yapı: cümlenin başında yorum bildiren zarflar."
+},
+{
+"baslik": "c237",
+"tur": "metin",
+"metin": "Konuşanın duygusunu gösterirler.",
+"anlatim": "Konuşanın duygusunu gösterirler."
+},
+{
+"baslik": "c238",
+"tur": "metin",
+"metin": "Bu zarflardan sonra genellikle virgül gelir ve cümlenin tamamını nitelerler.",
+"anlatim": "Bu zarflardan sonra genellikle virgül gelir ve cümlenin tamamını nitelerler."
+},
+{
+"baslik": "c239",
+"tur": "metin",
+"metin": "Karşılaştırın: bir eylemin nasıl yapıldığını anlatan zarf ise fiilden sonra gelir:",
+"anlatim": "Karşılaştırın: bir eylemin nasıl yapıldığını anlatan zarf ise fiilden sonra gelir:"
+},
+{
+"baslik": "c240",
+"tur": "metin",
+"metin": "Ne yazık ki gelemiyorum.",
+"anlatim": "Ne yazık ki gelemiyorum."
+},
+{
+"baslik": "c241",
+"tur": "metin",
+"metin": "Şaşırtıcı bir şekilde sınav kolaydı.",
+"anlatim": "Şaşırtıcı bir şekilde sınav kolaydı."
+},
+{
+"baslik": "c242",
+"tur": "metin",
+"metin": "Şanslıyım ki iyi bir işim var.",
+"anlatim": "Şanslıyım ki iyi bir işim var."
+},
+{
+"baslik": "c243",
+"tur": "metin",
+"metin": "Şimdi Deniz'in şanslı ve şanssız bir gününü anlattığı kısa bir metin dinleyeceksiniz.",
+"anlatim": "Şimdi Deniz'in şanslı ve şanssız bir gününü anlattığı kısa bir metin dinleyeceksiniz."
+},
+{
+"baslik": "c244",
+"tur": "metin",
+"metin": "çalar saat, alarm.",
+"anlatim": "çalar saat, alarm."
+},
+{
+"baslik": "c245",
+"tur": "metin",
+"metin": "Türkçesi şöyle: arabayla bırakma.",
+"anlatim": "Türkçesi şöyle: arabayla bırakma."
+},
+{
+"baslik": "c246",
+"tur": "metin",
+"metin": "Türkçesi şöyle: iş görüşmesi.",
+"anlatim": "Türkçesi şöyle: iş görüşmesi."
+},
+{
+"baslik": "c247",
+"tur": "metin",
+"metin": "Sabah ne ters gitti?",
+"anlatim": "Sabah ne ters gitti?"
+},
+{
+"baslik": "c248",
+"tur": "metin",
+"metin": "Şehir merkezine nasıl gitti?",
+"anlatim": "Şehir merkezine nasıl gitti?"
+},
+{
+"baslik": "c249",
+"tur": "metin",
+"metin": "Sonunda ne oldu?",
+"anlatim": "Sonunda ne oldu?"
+},
+{
+"baslik": "c250",
+"tur": "metin",
+"metin": "Şanslı ya da şanssız olduğunuz bir günü İngilizce anlatın.",
+"anlatim": "Şanslı ya da şanssız olduğunuz bir günü İngilizce anlatın."
+},
+{
+"baslik": "c251",
+"tur": "metin",
+"metin": "Neyse ki ve ne yazık ki gibi zarflar kullanın.",
+"anlatim": "Neyse ki ve ne yazık ki gibi zarflar kullanın."
+},
+{
+"baslik": "c252",
+"tur": "metin",
+"metin": "Ders: Şans ve duygular.",
+"anlatim": "Ders: Şans ve duygular."
+},
+{
+"baslik": "c253",
+"tur": "metin",
+"metin": "Bu ders, A2 seviyesi, elli altıncı ders.",
+"anlatim": "Bu ders, A2 seviyesi, elli altıncı ders."
+},
+{
+"baslik": "c254",
+"tur": "metin",
+"metin": "Konu: Hareket fiilleri ve iki kelimeli fiiller.",
+"anlatim": "Konu: Hareket fiilleri ve iki kelimeli fiiller."
+},
+{
+"baslik": "c255",
+"tur": "metin",
+"metin": "Türkçesi şöyle: atmak, fırlatmak.",
+"anlatim": "Türkçesi şöyle: atmak, fırlatmak."
+},
+{
+"baslik": "c256",
+"tur": "metin",
+"metin": "Topu bana at!",
+"anlatim": "Topu bana at!"
+},
+{
+"baslik": "c257",
+"tur": "metin",
+"metin": "Türkçesi şöyle: yakalamak.",
+"anlatim": "Türkçesi şöyle: yakalamak."
+},
+{
+"baslik": "c258",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Topu yakaladım.",
+"anlatim": "Türkçesi şöyle: Topu yakaladım."
+},
+{
+"baslik": "c259",
+"tur": "metin",
+"metin": "Türkçesi şöyle: çekmek.",
+"anlatim": "Türkçesi şöyle: çekmek."
+},
+{
+"baslik": "c260",
+"tur": "metin",
+"metin": "Açmak için kapıyı çek.",
+"anlatim": "Açmak için kapıyı çek."
+},
+{
+"baslik": "c261",
+"tur": "metin",
+"metin": "Türkçesi şöyle: itmek.",
+"anlatim": "Türkçesi şöyle: itmek."
+},
+{
+"baslik": "c262",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Düğmeye bas.",
+"anlatim": "Türkçesi şöyle: Düğmeye bas."
+},
+{
+"baslik": "c263",
+"tur": "metin",
+"metin": "Türkçesi şöyle: zıplamak, atlamak.",
+"anlatim": "Türkçesi şöyle: zıplamak, atlamak."
+},
+{
+"baslik": "c264",
+"tur": "metin",
+"metin": "Kedi masanın üstüne zıpladı.",
+"anlatim": "Kedi masanın üstüne zıpladı."
+},
+{
+"baslik": "c265",
+"tur": "metin",
+"metin": "Türkçesi şöyle: kaldırmak; asansör.",
+"anlatim": "Türkçesi şöyle: kaldırmak; asansör."
+},
+{
+"baslik": "c266",
+"tur": "metin",
+"metin": "Bu kutu kaldırılamayacak kadar ağır.",
+"anlatim": "Bu kutu kaldırılamayacak kadar ağır."
+},
+{
+"baslik": "c267",
+"tur": "metin",
+"metin": "Türkçesi şöyle: sallamak, titremek.",
+"anlatim": "Türkçesi şöyle: sallamak, titremek."
+},
+{
+"baslik": "c268",
+"tur": "metin",
+"metin": "Açmadan önce şişeyi salla.",
+"anlatim": "Açmadan önce şişeyi salla."
+},
+{
+"baslik": "c269",
+"tur": "metin",
+"metin": "kapıyı çalmak, vurmak.",
+"anlatim": "kapıyı çalmak, vurmak."
+},
+{
+"baslik": "c270",
+"tur": "metin",
+"metin": "Biri kapıyı çalıyor.",
+"anlatim": "Biri kapıyı çalıyor."
+},
+{
+"baslik": "c271",
+"tur": "metin",
+"metin": "Türkçesi şöyle: saklamak, saklanmak.",
+"anlatim": "Türkçesi şöyle: saklamak, saklanmak."
+},
+{
+"baslik": "c272",
+"tur": "metin",
+"metin": "Çocuklar bahçede saklanıyor.",
+"anlatim": "Çocuklar bahçede saklanıyor."
+},
+{
+"baslik": "c273",
+"tur": "metin",
+"metin": "Türkçesi şöyle: bağırmak.",
+"anlatim": "Türkçesi şöyle: bağırmak."
+},
+{
+"baslik": "c274",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Lütfen bağırma.",
+"anlatim": "Türkçesi şöyle: Lütfen bağırma."
+},
+{
+"baslik": "c275",
+"tur": "metin",
+"metin": "Türkçesi şöyle: ağlamak; bağırmak.",
+"anlatim": "Türkçesi şöyle: ağlamak; bağırmak."
+},
+{
+"baslik": "c276",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Bebek ağlıyor.",
+"anlatim": "Türkçesi şöyle: Bebek ağlıyor."
+},
+{
+"baslik": "c277",
+"tur": "metin",
+"metin": "yerden almak; birini arabayla almak.",
+"anlatim": "yerden almak; birini arabayla almak."
+},
+{
+"baslik": "c278",
+"tur": "metin",
+"metin": "Beni altıda alabilir misin?",
+"anlatim": "Beni altıda alabilir misin?"
+},
+{
+"baslik": "c279",
+"tur": "metin",
+"metin": "Bugünkü yapı: iki kelimeli fiiller.",
+"anlatim": "Bugünkü yapı: iki kelimeli fiiller."
+},
+{
+"baslik": "c280",
+"tur": "metin",
+"metin": "Fiile eklenen küçük bir kelime anlamı değiştirir.",
+"anlatim": "Fiile eklenen küçük bir kelime anlamı değiştirir."
+},
+{
+"baslik": "c281",
+"tur": "metin",
+"metin": "Nesne bir zamirse, ikinci kelimeden önce gelir:",
+"anlatim": "Nesne bir zamirse, ikinci kelimeden önce gelir:"
+},
+{
+"baslik": "c282",
+"tur": "metin",
+"metin": "Nesne bir isimse, iki yerde de olabilir:",
+"anlatim": "Nesne bir isimse, iki yerde de olabilir:"
+},
+{
+"baslik": "c283",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Lütfen otur.",
+"anlatim": "Türkçesi şöyle: Lütfen otur."
+},
+{
+"baslik": "c284",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Telefonu aç.",
+"anlatim": "Türkçesi şöyle: Telefonu aç."
+},
+{
+"baslik": "c285",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Işığı kapat.",
+"anlatim": "Türkçesi şöyle: Işığı kapat."
+},
+{
+"baslik": "c286",
+"tur": "metin",
+"metin": "Onu yerden al.",
+"anlatim": "Onu yerden al."
+},
+{
+"baslik": "c287",
+"tur": "metin",
+"metin": "Şimdi bir parkta geçen kısa bir olayı anlatan metin dinleyeceksiniz.",
+"anlatim": "Şimdi bir parkta geçen kısa bir olayı anlatan metin dinleyeceksiniz."
+},
+{
+"baslik": "c288",
+"tur": "metin",
+"metin": "uzanıp yetişmek, ulaşmak.",
+"anlatim": "uzanıp yetişmek, ulaşmak."
+},
+{
+"baslik": "c289",
+"tur": "metin",
+"metin": "Türkçesi şöyle: aramak.",
+"anlatim": "Türkçesi şöyle: aramak."
+},
+{
+"baslik": "c290",
+"tur": "metin",
+"metin": "Türkçesi şöyle: denge.",
+"anlatim": "Türkçesi şöyle: denge."
+},
+{
+"baslik": "c291",
+"tur": "metin",
+"metin": "Türkçesi şöyle: geliştirmek.",
+"anlatim": "Türkçesi şöyle: geliştirmek."
+},
+{
+"baslik": "c292",
+"tur": "metin",
+"metin": "Top nereye gitti?",
+"anlatim": "Top nereye gitti?"
+},
+{
+"baslik": "c293",
+"tur": "metin",
+"metin": "Topu kim indirdi?",
+"anlatim": "Topu kim indirdi?"
+},
+{
+"baslik": "c294",
+"tur": "metin",
+"metin": "Kızı nerede saklandı?",
+"anlatim": "Kızı nerede saklandı?"
+},
+{
+"baslik": "c295",
+"tur": "metin",
+"metin": "Çocukken oynadığınız bir oyunu İngilizce anlatın.",
+"anlatim": "Çocukken oynadığınız bir oyunu İngilizce anlatın."
+},
+{
+"baslik": "c296",
+"tur": "metin",
+"metin": "Hareket fiillerini kullanın.",
+"anlatim": "Hareket fiillerini kullanın."
+},
+{
+"baslik": "c297",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Ders: Hareketler.",
+"anlatim": "Türkçesi şöyle: Ders: Hareketler."
+},
+{
+"baslik": "c298",
+"tur": "metin",
+"metin": "Bu ders, A2 seviyesi, elli yedinci ders.",
+"anlatim": "Bu ders, A2 seviyesi, elli yedinci ders."
+},
+{
+"baslik": "c299",
+"tur": "metin",
+"metin": "Konu: Giysiler, aksesuarlar ve giyinmeyle ilgili fiiller.",
+"anlatim": "Konu: Giysiler, aksesuarlar ve giyinmeyle ilgili fiiller."
+},
+{
+"baslik": "c300",
+"tur": "metin",
+"metin": "pantolon (Amerikan); külot (İngiliz).",
+"anlatim": "pantolon (Amerikan); külot (İngiliz)."
+},
+{
+"baslik": "c301",
+"tur": "metin",
+"metin": "Bu pantolon çok uzun.",
+"anlatim": "Bu pantolon çok uzun."
+},
+{
+"baslik": "c302",
+"tur": "metin",
+"metin": "Türkçesi şöyle: cep.",
+"anlatim": "Türkçesi şöyle: cep."
+},
+{
+"baslik": "c303",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Anahtarlarım cebimde.",
+"anlatim": "Türkçesi şöyle: Anahtarlarım cebimde."
+},
+{
+"baslik": "c304",
+"tur": "metin",
+"metin": "Türkçesi şöyle: kemer.",
+"anlatim": "Türkçesi şöyle: kemer."
+},
+{
+"baslik": "c305",
+"tur": "metin",
+"metin": "Yeni bir kemere ihtiyacım var.",
+"anlatim": "Yeni bir kemere ihtiyacım var."
+},
+{
+"baslik": "c306",
+"tur": "metin",
+"metin": "Türkçesi şöyle: bot, çizme.",
+"anlatim": "Türkçesi şöyle: bot, çizme."
+},
+{
+"baslik": "c307",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Botlarını giy.",
+"anlatim": "Türkçesi şöyle: Botlarını giy."
+},
+{
+"baslik": "c308",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Kar yağıyor.",
+"anlatim": "Türkçesi şöyle: Kar yağıyor."
+},
+{
+"baslik": "c309",
+"tur": "metin",
+"metin": "Türkçesi şöyle: tişört.",
+"anlatim": "Türkçesi şöyle: tişört."
+},
+{
+"baslik": "c310",
+"tur": "metin",
+"metin": "Hep tişört ve kot giyer.",
+"anlatim": "Hep tişört ve kot giyer."
+},
+{
+"baslik": "c311",
+"tur": "metin",
+"metin": "Türkçesi şöyle: ceket.",
+"anlatim": "Türkçesi şöyle: ceket."
+},
+{
+"baslik": "c312",
+"tur": "metin",
+"metin": "Bir ceket al.",
+"anlatim": "Bir ceket al."
+},
+{
+"baslik": "c313",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Hava soğuyabilir.",
+"anlatim": "Türkçesi şöyle: Hava soğuyabilir."
+},
+{
+"baslik": "c314",
+"tur": "metin",
+"metin": "Türkçesi şöyle: üniforma.",
+"anlatim": "Türkçesi şöyle: üniforma."
+},
+{
+"baslik": "c315",
+"tur": "metin",
+"metin": "Bu okulda öğrenciler üniforma giyer.",
+"anlatim": "Bu okulda öğrenciler üniforma giyer."
+},
+{
+"baslik": "c316",
+"tur": "metin",
+"metin": "Türkçesi şöyle: giyim, giysiler.",
+"anlatim": "Türkçesi şöyle: giyim, giysiler."
+},
+{
+"baslik": "c317",
+"tur": "metin",
+"metin": "Dükkân spor giyim satıyor.",
+"anlatim": "Dükkân spor giyim satıyor."
+},
+{
+"baslik": "c318",
+"tur": "metin",
+"metin": "Türkçesi şöyle: mücevher, takı.",
+"anlatim": "Türkçesi şöyle: mücevher, takı."
+},
+{
+"baslik": "c319",
+"tur": "metin",
+"metin": "Çok fazla takı takmaz.",
+"anlatim": "Çok fazla takı takmaz."
+},
+{
+"baslik": "c320",
+"tur": "metin",
+"metin": "takım elbise; yakışmak.",
+"anlatim": "takım elbise; yakışmak."
+},
+{
+"baslik": "c321",
+"tur": "metin",
+"metin": "Düğüne koyu renk bir takım elbise giydi.",
+"anlatim": "Düğüne koyu renk bir takım elbise giydi."
+},
+{
+"baslik": "c322",
+"tur": "metin",
+"metin": "Türkçesi şöyle: kravat; bağlamak.",
+"anlatim": "Türkçesi şöyle: kravat; bağlamak."
+},
+{
+"baslik": "c323",
+"tur": "metin",
+"metin": "İşte kravat takmak zorunda mısın?",
+"anlatim": "İşte kravat takmak zorunda mısın?"
+},
+{
+"baslik": "c324",
+"tur": "metin",
+"metin": "Türkçesi şöyle: kep, şapka.",
+"anlatim": "Türkçesi şöyle: kep, şapka."
+},
+{
+"baslik": "c325",
+"tur": "metin",
+"metin": "Bir beyzbol şapkası takıyor.",
+"anlatim": "Bir beyzbol şapkası takıyor."
+},
+{
+"baslik": "c326",
+"tur": "metin",
+"metin": "Bugünkü yapı: giyinmeyle ilgili fiiller.",
+"anlatim": "Bugünkü yapı: giyinmeyle ilgili fiiller."
+},
+{
+"baslik": "c327",
+"tur": "metin",
+"metin": "Bir giysiyi üzerinize geçirirken:",
+"anlatim": "Bir giysiyi üzerinize geçirirken:"
+},
+{
+"baslik": "c328",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Çıkarırken:",
+"anlatim": "Türkçesi şöyle: Çıkarırken:"
+},
+{
+"baslik": "c329",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Üzerinizde taşıdığınızda:",
+"anlatim": "Türkçesi şöyle: Üzerinizde taşıdığınızda:"
+},
+{
+"baslik": "c330",
+"tur": "metin",
+"metin": "Bir giysiyi denerken:",
+"anlatim": "Bir giysiyi denerken:"
+},
+{
+"baslik": "c331",
+"tur": "metin",
+"metin": "Bir giysi size yakışıyorsa:",
+"anlatim": "Bir giysi size yakışıyorsa:"
+},
+{
+"baslik": "c332",
+"tur": "metin",
+"metin": "Montunu giy, hava soğuk.",
+"anlatim": "Montunu giy, hava soğuk."
+},
+{
+"baslik": "c333",
+"tur": "metin",
+"metin": "Ayakkabılarını çıkar, lütfen.",
+"anlatim": "Ayakkabılarını çıkar, lütfen."
+},
+{
+"baslik": "c334",
+"tur": "metin",
+"metin": "Bu ceket sana çok yakışıyor.",
+"anlatim": "Bu ceket sana çok yakışıyor."
+},
+{
+"baslik": "c335",
+"tur": "metin",
+"metin": "Bu botları deneyebilir miyim?",
+"anlatim": "Bu botları deneyebilir miyim?"
+},
+{
+"baslik": "c336",
+"tur": "metin",
+"metin": "Şimdi Deniz'in iş görüşmesine hazırlandığı kısa bir konuşma dinleyeceksiniz.",
+"anlatim": "Şimdi Deniz'in iş görüşmesine hazırlandığı kısa bir konuşma dinleyeceksiniz."
+},
+{
+"baslik": "c337",
+"tur": "metin",
+"metin": "Türkçesi şöyle: girişim şirketi.",
+"anlatim": "Türkçesi şöyle: girişim şirketi."
+},
+{
+"baslik": "c338",
+"tur": "metin",
+"metin": "Türkçesi şöyle: kol saati.",
+"anlatim": "Türkçesi şöyle: kol saati."
+},
+{
+"baslik": "c339",
+"tur": "metin",
+"metin": "Türkçesi şöyle: katı, sıkı.",
+"anlatim": "Türkçesi şöyle: katı, sıkı."
+},
+{
+"baslik": "c340",
+"tur": "metin",
+"metin": "Deniz görüşmeye ne giyecek?",
+"anlatim": "Deniz görüşmeye ne giyecek?"
+},
+{
+"baslik": "c341",
+"tur": "metin",
+"metin": "Kız kardeşi botlar hakkında ne diyor?",
+"anlatim": "Kız kardeşi botlar hakkında ne diyor?"
+},
+{
+"baslik": "c342",
+"tur": "metin",
+"metin": "Eski işinde ne giyerlerdi?",
+"anlatim": "Eski işinde ne giyerlerdi?"
+},
+{
+"baslik": "c343",
+"tur": "metin",
+"metin": "İşe ya da özel bir güne ne giydiğinizi İngilizce anlatın.",
+"anlatim": "İşe ya da özel bir güne ne giydiğinizi İngilizce anlatın."
+},
+{
+"baslik": "c344",
+"tur": "metin",
+"metin": "Ders: Giysiler 2.",
+"anlatim": "Ders: Giysiler 2."
+},
+{
+"baslik": "c345",
+"tur": "metin",
+"metin": "Bu ders, A2 seviyesi, elli sekizinci ders.",
+"anlatim": "Bu ders, A2 seviyesi, elli sekizinci ders."
+},
+{
+"baslik": "c346",
+"tur": "metin",
+"metin": "Konu: Ev eşyaları, temizlik ve belgisiz zamirler.",
+"anlatim": "Konu: Ev eşyaları, temizlik ve belgisiz zamirler."
+},
+{
+"baslik": "c347",
+"tur": "metin",
+"metin": "Türkçesi şöyle: sabun.",
+"anlatim": "Türkçesi şöyle: sabun."
+},
+{
+"baslik": "c348",
+"tur": "metin",
+"metin": "Ellerini sabunla yıka.",
+"anlatim": "Ellerini sabunla yıka."
+},
+{
+"baslik": "c349",
+"tur": "metin",
+"metin": "Türkçesi şöyle: fırça; fırçalamak.",
+"anlatim": "Türkçesi şöyle: fırça; fırçalamak."
+},
+{
+"baslik": "c350",
+"tur": "metin",
+"metin": "Yeni bir diş fırçasına ihtiyacım var.",
+"anlatim": "Yeni bir diş fırçasına ihtiyacım var."
+},
+{
+"baslik": "c351",
+"tur": "metin",
+"metin": "Türkçesi şöyle: çamaşır; yıkama.",
+"anlatim": "Türkçesi şöyle: çamaşır; yıkama."
+},
+{
+"baslik": "c352",
+"tur": "metin",
+"metin": "Çamaşırları asabilir misin?",
+"anlatim": "Çamaşırları asabilir misin?"
+},
+{
+"baslik": "c353",
+"tur": "metin",
+"metin": "çarşaf; sayfa, yaprak.",
+"anlatim": "çarşaf; sayfa, yaprak."
+},
+{
+"baslik": "c354",
+"tur": "metin",
+"metin": "Yataktaki çarşafları değiştirdim.",
+"anlatim": "Yataktaki çarşafları değiştirdim."
+},
+{
+"baslik": "c355",
+"tur": "metin",
+"metin": "Türkçesi şöyle: çöp kutusu.",
+"anlatim": "Türkçesi şöyle: çöp kutusu."
+},
+{
+"baslik": "c356",
+"tur": "metin",
+"metin": "Onu çöp kutusuna at.",
+"anlatim": "Onu çöp kutusuna at."
+},
+{
+"baslik": "c357",
+"tur": "metin",
+"metin": "bahçe kapısı; kapı (havaalanı).",
+"anlatim": "bahçe kapısı; kapı (havaalanı)."
+},
+{
+"baslik": "c358",
+"tur": "metin",
+"metin": "Bahçe kapısını kapat.",
+"anlatim": "Bahçe kapısını kapat."
+},
+{
+"baslik": "c359",
+"tur": "metin",
+"metin": "Türkçesi şöyle: merdiven.",
+"anlatim": "Türkçesi şöyle: merdiven."
+},
+{
+"baslik": "c360",
+"tur": "metin",
+"metin": "Merdivenlerde dikkatli ol.",
+"anlatim": "Merdivenlerde dikkatli ol."
+},
+{
+"baslik": "c361",
+"tur": "metin",
+"metin": "Türkçesi şöyle: kilit; kilitlemek.",
+"anlatim": "Türkçesi şöyle: kilit; kilitlemek."
+},
+{
+"baslik": "c362",
+"tur": "metin",
+"metin": "Kapıyı kilitlemeyi unutma.",
+"anlatim": "Kapıyı kilitlemeyi unutma."
+},
+{
+"baslik": "c363",
+"tur": "metin",
+"metin": "Türkçesi şöyle: delik.",
+"anlatim": "Türkçesi şöyle: delik."
+},
+{
+"baslik": "c364",
+"tur": "metin",
+"metin": "Çorabımda bir delik var.",
+"anlatim": "Çorabımda bir delik var."
+},
+{
+"baslik": "c365",
+"tur": "metin",
+"metin": "Türkçesi şöyle: yer, zemin.",
+"anlatim": "Türkçesi şöyle: yer, zemin."
+},
+{
+"baslik": "c366",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Yer ıslak.",
+"anlatim": "Türkçesi şöyle: Yer ıslak."
+},
+{
+"baslik": "c367",
+"tur": "metin",
+"metin": "Türkçesi şöyle: tahta, ahşap.",
+"anlatim": "Türkçesi şöyle: tahta, ahşap."
+},
+{
+"baslik": "c368",
+"tur": "metin",
+"metin": "Ahşap bir masamız var.",
+"anlatim": "Ahşap bir masamız var."
+},
+{
+"baslik": "c369",
+"tur": "metin",
+"metin": "örtmek, kapatmak; örtü.",
+"anlatim": "örtmek, kapatmak; örtü."
+},
+{
+"baslik": "c370",
+"tur": "metin",
+"metin": "Yemeğin üstünü ört.",
+"anlatim": "Yemeğin üstünü ört."
+},
+{
+"baslik": "c371",
+"tur": "metin",
+"metin": "Bugünkü yapı: belgisiz zamirler.",
+"anlatim": "Bugünkü yapı: belgisiz zamirler."
+},
+{
+"baslik": "c372",
+"tur": "metin",
+"metin": "Bir şey, hiçbir şey, her şey anlamlarına gelir.",
+"anlatim": "Bir şey, hiçbir şey, her şey anlamlarına gelir."
+},
+{
+"baslik": "c373",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Olumlu cümlede:",
+"anlatim": "Türkçesi şöyle: Olumlu cümlede:"
+},
+{
+"baslik": "c374",
+"tur": "metin",
+"metin": "Soru ve olumsuz cümlede:",
+"anlatim": "Soru ve olumsuz cümlede:"
+},
+{
+"baslik": "c375",
+"tur": "metin",
+"metin": "Hiçbir şey ve her şey için:",
+"anlatim": "Hiçbir şey ve her şey için:"
+},
+{
+"baslik": "c376",
+"tur": "metin",
+"metin": "Yerde bir şey var.",
+"anlatim": "Yerde bir şey var."
+},
+{
+"baslik": "c377",
+"tur": "metin",
+"metin": "Anahtarlarımı hiçbir yerde bulamıyorum.",
+"anlatim": "Anahtarlarımı hiçbir yerde bulamıyorum."
+},
+{
+"baslik": "c378",
+"tur": "metin",
+"metin": "Buzdolabında hiçbir şey yok.",
+"anlatim": "Buzdolabında hiçbir şey yok."
+},
+{
+"baslik": "c379",
+"tur": "metin",
+"metin": "Her şey temiz.",
+"anlatim": "Her şey temiz."
+},
+{
+"baslik": "c380",
+"tur": "metin",
+"metin": "Şimdi Kate'in evi temizlerken yaşadığı küçük bir sorunu anlatan metin dinleyeceksiniz.",
+"anlatim": "Şimdi Kate'in evi temizlerken yaşadığı küçük bir sorunu anlatan metin dinleyeceksiniz."
+},
+{
+"baslik": "c381",
+"tur": "metin",
+"metin": "Türkçesi şöyle: bant.",
+"anlatim": "Türkçesi şöyle: bant."
+},
+{
+"baslik": "c382",
+"tur": "metin",
+"metin": "Türkçesi şöyle: sünger.",
+"anlatim": "Türkçesi şöyle: sünger."
+},
+{
+"baslik": "c383",
+"tur": "metin",
+"metin": "Türkçesi şöyle: bakteri.",
+"anlatim": "Türkçesi şöyle: bakteri."
+},
+{
+"baslik": "c384",
+"tur": "metin",
+"metin": "Kate banyoyu neyle temizledi?",
+"anlatim": "Kate banyoyu neyle temizledi?"
+},
+{
+"baslik": "c385",
+"tur": "metin",
+"metin": "Anahtarlarını nerede aradı?",
+"anlatim": "Anahtarlarını nerede aradı?"
+},
+{
+"baslik": "c386",
+"tur": "metin",
+"metin": "Anahtarlar neden düşmüştü?",
+"anlatim": "Anahtarlar neden düşmüştü?"
+},
+{
+"baslik": "c387",
+"tur": "metin",
+"metin": "Evinizde temizliği nasıl yaptığınızı İngilizce anlatın.",
+"anlatim": "Evinizde temizliği nasıl yaptığınızı İngilizce anlatın."
+},
+{
+"baslik": "c388",
+"tur": "metin",
+"metin": "Ders: Evde temizlik.",
+"anlatim": "Ders: Evde temizlik."
+},
+{
+"baslik": "c389",
+"tur": "metin",
+"metin": "Bu ders, A2 seviyesi, elli dokuzuncu ders.",
+"anlatim": "Bu ders, A2 seviyesi, elli dokuzuncu ders."
+},
+{
+"baslik": "c390",
+"tur": "metin",
+"metin": "Konu: İnsanları tanımlamak ve sahiplik bildiren ilgi zamiri.",
+"anlatim": "Konu: İnsanları tanımlamak ve sahiplik bildiren ilgi zamiri."
+},
+{
+"baslik": "c391",
+"tur": "metin",
+"metin": "Türkçesi şöyle: hanımefendi, bayan.",
+"anlatim": "Türkçesi şöyle: hanımefendi, bayan."
+},
+{
+"baslik": "c392",
+"tur": "metin",
+"metin": "Masadaki hanımefendi size yardım edecek.",
+"anlatim": "Masadaki hanımefendi size yardım edecek."
+},
+{
+"baslik": "c393",
+"tur": "metin",
+"metin": "adam, herif (günlük dil).",
+"anlatim": "adam, herif (günlük dil)."
+},
+{
+"baslik": "c394",
+"tur": "metin",
+"metin": "Gerçekten iyi bir adam.",
+"anlatim": "Gerçekten iyi bir adam."
+},
+{
+"baslik": "c395",
+"tur": "metin",
+"metin": "Türkçesi şöyle: kahraman.",
+"anlatim": "Türkçesi şöyle: kahraman."
+},
+{
+"baslik": "c396",
+"tur": "metin",
+"metin": "İtfaiyeci yerel bir kahraman.",
+"anlatim": "İtfaiyeci yerel bir kahraman."
+},
+{
+"baslik": "c397",
+"tur": "metin",
+"metin": "Türkçesi şöyle: lider.",
+"anlatim": "Türkçesi şöyle: lider."
+},
+{
+"baslik": "c398",
+"tur": "metin",
+"metin": "Doğuştan bir lider.",
+"anlatim": "Doğuştan bir lider."
+},
+{
+"baslik": "c399",
+"tur": "metin",
+"metin": "Türkçesi şöyle: muhabir.",
+"anlatim": "Türkçesi şöyle: muhabir."
+},
+{
+"baslik": "c400",
+"tur": "metin",
+"metin": "Muhabir bir sürü soru sordu.",
+"anlatim": "Muhabir bir sürü soru sordu."
+},
+{
+"baslik": "c401",
+"tur": "metin",
+"metin": "Türkçesi şöyle: dedektif.",
+"anlatim": "Türkçesi şöyle: dedektif."
+},
+{
+"baslik": "c402",
+"tur": "metin",
+"metin": "Dedektif davayı çözdü.",
+"anlatim": "Dedektif davayı çözdü."
+},
+{
+"baslik": "c403",
+"tur": "metin",
+"metin": "Türkçesi şöyle: hırsız.",
+"anlatim": "Türkçesi şöyle: hırsız."
+},
+{
+"baslik": "c404",
+"tur": "metin",
+"metin": "Hırsız telefonumu aldı.",
+"anlatim": "Hırsız telefonumu aldı."
+},
+{
+"baslik": "c405",
+"tur": "metin",
+"metin": "Türkçesi şöyle: ikiz.",
+"anlatim": "Türkçesi şöyle: ikiz."
+},
+{
+"baslik": "c406",
+"tur": "metin",
+"metin": "Kız kardeşlerim ikiz.",
+"anlatim": "Kız kardeşlerim ikiz."
+},
+{
+"baslik": "c407",
+"tur": "metin",
+"metin": "Türkçesi şöyle: ünlü kişi.",
+"anlatim": "Türkçesi şöyle: ünlü kişi."
+},
+{
+"baslik": "c408",
+"tur": "metin",
+"metin": "Bu sokakta pek çok ünlü yaşıyor.",
+"anlatim": "Bu sokakta pek çok ünlü yaşıyor."
+},
+{
+"baslik": "c409",
+"tur": "metin",
+"metin": "Türkçesi şöyle: misafir, konuk.",
+"anlatim": "Türkçesi şöyle: misafir, konuk."
+},
+{
+"baslik": "c410",
+"tur": "metin",
+"metin": "Bu akşam yemeğe misafirlerimiz var.",
+"anlatim": "Bu akşam yemeğe misafirlerimiz var."
+},
+{
+"baslik": "c411",
+"tur": "metin",
+"metin": "Türkçesi şöyle: üye.",
+"anlatim": "Türkçesi şöyle: üye."
+},
+{
+"baslik": "c412",
+"tur": "metin",
+"metin": "Bir kitap kulübünün üyesiyim.",
+"anlatim": "Bir kitap kulübünün üyesiyim."
+},
+{
+"baslik": "c413",
+"tur": "metin",
+"metin": "memur, polis memuru; subay.",
+"anlatim": "memur, polis memuru; subay."
+},
+{
+"baslik": "c414",
+"tur": "metin",
+"metin": "Bir polis memuru bize yardım etti.",
+"anlatim": "Bir polis memuru bize yardım etti."
+},
+{
+"baslik": "c415",
+"tur": "metin",
+"metin": "Bugünkü yapı: sahiplik bildiren ilgi zamiri.",
+"anlatim": "Bugünkü yapı: sahiplik bildiren ilgi zamiri."
+},
+{
+"baslik": "c416",
+"tur": "metin",
+"metin": "Bir kişiyi, ona ait bir şeyle tanımlamak için şu kelime kullanılır:",
+"anlatim": "Bir kişiyi, ona ait bir şeyle tanımlamak için şu kelime kullanılır:"
+},
+{
+"baslik": "c417",
+"tur": "metin",
+"metin": "Yani: arabası çalınan adam polisi aradı.",
+"anlatim": "Yani: arabası çalınan adam polisi aradı."
+},
+{
+"baslik": "c418",
+"tur": "metin",
+"metin": "Bu kelimeden sonra hep bir isim gelir.",
+"anlatim": "Bu kelimeden sonra hep bir isim gelir."
+},
+{
+"baslik": "c419",
+"tur": "metin",
+"metin": "Babası doktor olan çocuk benim arkadaşım.",
+"anlatim": "Babası doktor olan çocuk benim arkadaşım."
+},
+{
+"baslik": "c420",
+"tur": "metin",
+"metin": "Bu, kitabı ödül alan yazar.",
+"anlatim": "Bu, kitabı ödül alan yazar."
+},
+{
+"baslik": "c421",
+"tur": "metin",
+"metin": "Şimdi küçük bir kasabada yaşanan bir hırsızlığı anlatan kısa bir haber dinleyeceksiniz.",
+"anlatim": "Şimdi küçük bir kasabada yaşanan bir hırsızlığı anlatan kısa bir haber dinleyeceksiniz."
+},
+{
+"baslik": "c422",
+"tur": "metin",
+"metin": "Türkçesi şöyle: çözmek.",
+"anlatim": "Türkçesi şöyle: çözmek."
+},
+{
+"baslik": "c423",
+"tur": "metin",
+"metin": "Türkçesi şöyle: doğal, doğuştan.",
+"anlatim": "Türkçesi şöyle: doğal, doğuştan."
+},
+{
+"baslik": "c424",
+"tur": "metin",
+"metin": "Tablo kime aitti?",
+"anlatim": "Tablo kime aitti?"
+},
+{
+"baslik": "c425",
+"tur": "metin",
+"metin": "Partideki ünlü kimdi?",
+"anlatim": "Partideki ünlü kimdi?"
+},
+{
+"baslik": "c426",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Hırsız kimdi?",
+"anlatim": "Türkçesi şöyle: Hırsız kimdi?"
+},
+{
+"baslik": "c427",
+"tur": "metin",
+"metin": "Hayatınızda örnek aldığınız bir kişiyi İngilizce anlatın.",
+"anlatim": "Hayatınızda örnek aldığınız bir kişiyi İngilizce anlatın."
+},
+{
+"baslik": "c428",
+"tur": "metin",
+"metin": "Ders: İnsanlar ve roller.",
+"anlatim": "Ders: İnsanlar ve roller."
+},
+{
+"baslik": "c429",
+"tur": "metin",
+"metin": "Bu ders, A2 seviyesi, altmışıncı ders.",
+"anlatim": "Bu ders, A2 seviyesi, altmışıncı ders."
+},
+{
+"baslik": "c430",
+"tur": "metin",
+"metin": "Konu: Yönler, konum ve hareket bildiren edatlar.",
+"anlatim": "Konu: Yönler, konum ve hareket bildiren edatlar."
+},
+{
+"baslik": "c431",
+"tur": "metin",
+"metin": "Türkçesi şöyle: doğu.",
+"anlatim": "Türkçesi şöyle: doğu."
+},
+{
+"baslik": "c432",
+"tur": "metin",
+"metin": "Güneş doğudan doğar.",
+"anlatim": "Güneş doğudan doğar."
+},
+{
+"baslik": "c433",
+"tur": "metin",
+"metin": "Türkçesi şöyle: batı.",
+"anlatim": "Türkçesi şöyle: batı."
+},
+{
+"baslik": "c434",
+"tur": "metin",
+"metin": "İzmir Türkiye'nin batısında.",
+"anlatim": "İzmir Türkiye'nin batısında."
+},
+{
+"baslik": "c435",
+"tur": "metin",
+"metin": "Türkçesi şöyle: orta.",
+"anlatim": "Türkçesi şöyle: orta."
+},
+{
+"baslik": "c436",
+"tur": "metin",
+"metin": "Bahçenin ortasında bir ağaç var.",
+"anlatim": "Bahçenin ortasında bir ağaç var."
+},
+{
+"baslik": "c437",
+"tur": "metin",
+"metin": "Türkçesi şöyle: tepe, üst.",
+"anlatim": "Türkçesi şöyle: tepe, üst."
+},
+{
+"baslik": "c438",
+"tur": "metin",
+"metin": "Tepenin zirvesine tırmandık.",
+"anlatim": "Tepenin zirvesine tırmandık."
+},
+{
+"baslik": "c439",
+"tur": "metin",
+"metin": "Türkçesi şöyle: dip, alt.",
+"anlatim": "Türkçesi şöyle: dip, alt."
+},
+{
+"baslik": "c440",
+"tur": "metin",
+"metin": "Adını sayfanın altına yaz.",
+"anlatim": "Adını sayfanın altına yaz."
+},
+{
+"baslik": "c441",
+"tur": "metin",
+"metin": "Türkçesi şöyle: dışarıda, dışarı.",
+"anlatim": "Türkçesi şöyle: dışarıda, dışarı."
+},
+{
+"baslik": "c442",
+"tur": "metin",
+"metin": "Türkçesi şöyle: yukarısında, üstünde.",
+"anlatim": "Türkçesi şöyle: yukarısında, üstünde."
+},
+{
+"baslik": "c443",
+"tur": "metin",
+"metin": "Kapının üstünde bir lamba var.",
+"anlatim": "Kapının üstünde bir lamba var."
+},
+{
+"baslik": "c444",
+"tur": "metin",
+"metin": "Türkçesi şöyle: aşağısında, altında.",
+"anlatim": "Türkçesi şöyle: aşağısında, altında."
+},
+{
+"baslik": "c445",
+"tur": "metin",
+"metin": "Sıcaklık sıfırın altında.",
+"anlatim": "Sıcaklık sıfırın altında."
+},
+{
+"baslik": "c446",
+"tur": "metin",
+"metin": "karşıdan karşıya, bir uçtan diğerine.",
+"anlatim": "karşıdan karşıya, bir uçtan diğerine."
+},
+{
+"baslik": "c447",
+"tur": "metin",
+"metin": "Köprüden karşıya yürüdük.",
+"anlatim": "Köprüden karşıya yürüdük."
+},
+{
+"baslik": "c448",
+"tur": "metin",
+"metin": "doğru, -e doğru.",
+"anlatim": "doğru, -e doğru."
+},
+{
+"baslik": "c449",
+"tur": "metin",
+"metin": "Köpek bana doğru koştu.",
+"anlatim": "Köpek bana doğru koştu."
+},
+{
+"baslik": "c450",
+"tur": "metin",
+"metin": "Türkçesi şöyle: ada.",
+"anlatim": "Türkçesi şöyle: ada."
+},
+{
+"baslik": "c451",
+"tur": "metin",
+"metin": "Küçük bir adada bir hafta geçirdik.",
+"anlatim": "Küçük bir adada bir hafta geçirdik."
+},
+{
+"baslik": "c452",
+"tur": "metin",
+"metin": "Türkçesi şöyle: kıta.",
+"anlatim": "Türkçesi şöyle: kıta."
+},
+{
+"baslik": "c453",
+"tur": "metin",
+"metin": "Afrika çok büyük bir kıta.",
+"anlatim": "Afrika çok büyük bir kıta."
+},
+{
+"baslik": "c454",
+"tur": "metin",
+"metin": "Bugünkü yapı: hareket bildiren edatlar.",
+"anlatim": "Bugünkü yapı: hareket bildiren edatlar."
+},
+{
+"baslik": "c455",
+"tur": "metin",
+"metin": "Bir şeyin nereye doğru hareket ettiğini anlatır.",
+"anlatim": "Bir şeyin nereye doğru hareket ettiğini anlatır."
+},
+{
+"baslik": "c456",
+"tur": "metin",
+"metin": "Yer bildiren edatlarla karşılaştırın; onlar hareketi değil, konumu anlatır:",
+"anlatim": "Yer bildiren edatlarla karşılaştırın; onlar hareketi değil, konumu anlatır:"
+},
+{
+"baslik": "c457",
+"tur": "metin",
+"metin": "Ormanın içinden yürüdük.",
+"anlatim": "Ormanın içinden yürüdük."
+},
+{
+"baslik": "c458",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Tepeye tırmandık.",
+"anlatim": "Türkçesi şöyle: Tepeye tırmandık."
+},
+{
+"baslik": "c459",
+"tur": "metin",
+"metin": "Kapının üstünde bir saat var.",
+"anlatim": "Kapının üstünde bir saat var."
+},
+{
+"baslik": "c460",
+"tur": "metin",
+"metin": "Şimdi bir gezginin yürüyüş rotasını anlattığı kısa bir metin dinleyeceksiniz.",
+"anlatim": "Şimdi bir gezginin yürüyüş rotasını anlattığı kısa bir metin dinleyeceksiniz."
+},
+{
+"baslik": "c461",
+"tur": "metin",
+"metin": "Türkçesi şöyle: liman.",
+"anlatim": "Türkçesi şöyle: liman."
+},
+{
+"baslik": "c462",
+"tur": "metin",
+"metin": "Türkçesi şöyle: kıyı.",
+"anlatim": "Türkçesi şöyle: kıyı."
+},
+{
+"baslik": "c463",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Antarktika.",
+"anlatim": "Türkçesi şöyle: Antarktika."
+},
+{
+"baslik": "c464",
+"tur": "metin",
+"metin": "Yürüyüşe nereden başladı?",
+"anlatim": "Yürüyüşe nereden başladı?"
+},
+{
+"baslik": "c465",
+"tur": "metin",
+"metin": "Tepenin zirvesinden ne gördü?",
+"anlatim": "Tepenin zirvesinden ne gördü?"
+},
+{
+"baslik": "c466",
+"tur": "metin",
+"metin": "Tepenin altında ne vardı?",
+"anlatim": "Tepenin altında ne vardı?"
+},
+{
+"baslik": "c467",
+"tur": "metin",
+"metin": "Yaşadığınız şehrin ya da ülkenin coğrafyasını İngilizce anlatın.",
+"anlatim": "Yaşadığınız şehrin ya da ülkenin coğrafyasını İngilizce anlatın."
+},
+{
+"baslik": "c468",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Yönleri kullanın.",
+"anlatim": "Türkçesi şöyle: Yönleri kullanın."
+},
+{
+"baslik": "c469",
+"tur": "metin",
+"metin": "Ders: Haritada yönler.",
+"anlatim": "Ders: Haritada yönler."
+},
+{
+"baslik": "c470",
+"tur": "metin",
+"metin": "Bu ders, A2 seviyesi, altmış birinci ders.",
+"anlatim": "Bu ders, A2 seviyesi, altmış birinci ders."
+},
+{
+"baslik": "c471",
+"tur": "metin",
+"metin": "Konu: Yiyecek ve içecekler; vurgu yapmak.",
+"anlatim": "Konu: Yiyecek ve içecekler; vurgu yapmak."
+},
+{
+"baslik": "c472",
+"tur": "metin",
+"metin": "Türkçesi şöyle: kafe.",
+"anlatim": "Türkçesi şöyle: kafe."
+},
+{
+"baslik": "c473",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Kafede buluşalım.",
+"anlatim": "Türkçesi şöyle: Kafede buluşalım."
+},
+{
+"baslik": "c474",
+"tur": "metin",
+"metin": "bar, birahane (İngiltere).",
+"anlatim": "bar, birahane (İngiltere)."
+},
+{
+"baslik": "c475",
+"tur": "metin",
+"metin": "İşten sonra bara gittiler.",
+"anlatim": "İşten sonra bara gittiler."
+},
+{
+"baslik": "c476",
+"tur": "metin",
+"metin": "Türkçesi şöyle: şarap.",
+"anlatim": "Türkçesi şöyle: şarap."
+},
+{
+"baslik": "c477",
+"tur": "metin",
+"metin": "Bir kadeh şarap ister misiniz?",
+"anlatim": "Bir kadeh şarap ister misiniz?"
+},
+{
+"baslik": "c478",
+"tur": "metin",
+"metin": "Türkçesi şöyle: bira.",
+"anlatim": "Türkçesi şöyle: bira."
+},
+{
+"baslik": "c479",
+"tur": "metin",
+"metin": "Bir bira sipariş etti.",
+"anlatim": "Bir bira sipariş etti."
+},
+{
+"baslik": "c480",
+"tur": "metin",
+"metin": "Türkçesi şöyle: krema; krem.",
+"anlatim": "Türkçesi şöyle: krema; krem."
+},
+{
+"baslik": "c481",
+"tur": "metin",
+"metin": "Kahvene krema ister misin?",
+"anlatim": "Kahvene krema ister misin?"
+},
+{
+"baslik": "c482",
+"tur": "metin",
+"metin": "Türkçesi şöyle: reçel.",
+"anlatim": "Türkçesi şöyle: reçel."
+},
+{
+"baslik": "c483",
+"tur": "metin",
+"metin": "Tereyağlı ve reçelli ekmeğe bayılırım.",
+"anlatim": "Tereyağlı ve reçelli ekmeğe bayılırım."
+},
+{
+"baslik": "c484",
+"tur": "metin",
+"metin": "fasulye; çekirdek (kahve).",
+"anlatim": "fasulye; çekirdek (kahve)."
+},
+{
+"baslik": "c485",
+"tur": "metin",
+"metin": "Bu kahve çekirdekleri Brezilya'dan.",
+"anlatim": "Bu kahve çekirdekleri Brezilya'dan."
+},
+{
+"baslik": "c486",
+"tur": "metin",
+"metin": "Türkçesi şöyle: bisküvi.",
+"anlatim": "Türkçesi şöyle: bisküvi."
+},
+{
+"baslik": "c487",
+"tur": "metin",
+"metin": "Çayınla bisküvi ister misin?",
+"anlatim": "Çayınla bisküvi ister misin?"
+},
+{
+"baslik": "c488",
+"tur": "metin",
+"metin": "patates kızartması (İngiltere); cips (Amerika).",
+"anlatim": "patates kızartması (İngiltere); cips (Amerika)."
+},
+{
+"baslik": "c489",
+"tur": "metin",
+"metin": "Balık ve patates kızartması bir İngiliz yemeğidir.",
+"anlatim": "Balık ve patates kızartması bir İngiliz yemeğidir."
+},
+{
+"baslik": "c490",
+"tur": "metin",
+"metin": "Türkçesi şöyle: tatlı; şeker.",
+"anlatim": "Türkçesi şöyle: tatlı; şeker."
+},
+{
+"baslik": "c491",
+"tur": "metin",
+"metin": "Bu pasta çok tatlı.",
+"anlatim": "Bu pasta çok tatlı."
+},
+{
+"baslik": "c492",
+"tur": "metin",
+"metin": "Türkçesi şöyle: taze.",
+"anlatim": "Türkçesi şöyle: taze."
+},
+{
+"baslik": "c493",
+"tur": "metin",
+"metin": "Ekmek bu sabah taze.",
+"anlatim": "Ekmek bu sabah taze."
+},
+{
+"baslik": "c494",
+"tur": "metin",
+"metin": "tat; tadına bakmak.",
+"anlatim": "tat; tadına bakmak."
+},
+{
+"baslik": "c495",
+"tur": "metin",
+"metin": "Bu çorbanın tadı nefis.",
+"anlatim": "Bu çorbanın tadı nefis."
+},
+{
+"baslik": "c496",
+"tur": "metin",
+"metin": "Bugünkü yapı: vurgu için iki kelime.",
+"anlatim": "Bugünkü yapı: vurgu için iki kelime."
+},
+{
+"baslik": "c497",
+"tur": "metin",
+"metin": "İkisi de çok, öyle anlamı katar.",
+"anlatim": "İkisi de çok, öyle anlamı katar."
+},
+{
+"baslik": "c498",
+"tur": "metin",
+"metin": "Sıfatlardan önce şu kelime gelir:",
+"anlatim": "Sıfatlardan önce şu kelime gelir:"
+},
+{
+"baslik": "c499",
+"tur": "metin",
+"metin": "Bir sıfat ve ismin önüne ise şu kelime gelir:",
+"anlatim": "Bir sıfat ve ismin önüne ise şu kelime gelir:"
+},
+{
+"baslik": "c500",
+"tur": "metin",
+"metin": "Sonucu anlatmak için ikisinin ardından şu kelime eklenebilir:",
+"anlatim": "Sonucu anlatmak için ikisinin ardından şu kelime eklenebilir:"
+},
+{
+"baslik": "c501",
+"tur": "metin",
+"metin": "Bu kahve çok güzel!",
+"anlatim": "Bu kahve çok güzel!"
+},
+{
+"baslik": "c502",
+"tur": "metin",
+"metin": "Ne güzel bir kafe!",
+"anlatim": "Ne güzel bir kafe!"
+},
+{
+"baslik": "c503",
+"tur": "metin",
+"metin": "Pasta o kadar tatlıydı ki bitiremedim.",
+"anlatim": "Pasta o kadar tatlıydı ki bitiremedim."
+},
+{
+"baslik": "c504",
+"tur": "metin",
+"metin": "Çok güzel bir gündü.",
+"anlatim": "Çok güzel bir gündü."
+},
+{
+"baslik": "c505",
+"tur": "metin",
+"metin": "Şimdi Kate ve Anna'nın Londra'da bir kafede geçirdikleri öğleden sonrayı anlatan kısa bir konuşma dinleyeceksiniz.",
+"anlatim": "Şimdi Kate ve Anna'nın Londra'da bir kafede geçirdikleri öğleden sonrayı anlatan kısa bir konuşma dinleyeceksiniz."
+},
+{
+"baslik": "c506",
+"tur": "metin",
+"metin": "Türkçesi şöyle: kavurmak.",
+"anlatim": "Türkçesi şöyle: kavurmak."
+},
+{
+"baslik": "c507",
+"tur": "metin",
+"metin": "Türkçesi şöyle: geleneksel.",
+"anlatim": "Türkçesi şöyle: geleneksel."
+},
+{
+"baslik": "c508",
+"tur": "metin",
+"metin": "Türkçesi şöyle: lokum.",
+"anlatim": "Türkçesi şöyle: lokum."
+},
+{
+"baslik": "c509",
+"tur": "metin",
+"metin": "Kate ne önermiş?",
+"anlatim": "Kate ne önermiş?"
+},
+{
+"baslik": "c510",
+"tur": "metin",
+"metin": "Anna pasta hakkında ne düşünüyor?",
+"anlatim": "Anna pasta hakkında ne düşünüyor?"
+},
+{
+"baslik": "c511",
+"tur": "metin",
+"metin": "Akşam nereye gidecekler?",
+"anlatim": "Akşam nereye gidecekler?"
+},
+{
+"baslik": "c512",
+"tur": "metin",
+"metin": "En sevdiğiniz kafeyi ya da restoranı İngilizce anlatın.",
+"anlatim": "En sevdiğiniz kafeyi ya da restoranı İngilizce anlatın."
+},
+{
+"baslik": "c513",
+"tur": "metin",
+"metin": "Vurgu kelimelerini kullanın.",
+"anlatim": "Vurgu kelimelerini kullanın."
+},
+{
+"baslik": "c514",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Ders: Kafede.",
+"anlatim": "Türkçesi şöyle: Ders: Kafede."
+},
+{
+"baslik": "c515",
+"tur": "metin",
+"metin": "Bu ders, IELTS ve YDS akademik kelime dizisi, on beşinci ders.",
+"anlatim": "Bu ders, IELTS ve YDS akademik kelime dizisi, on beşinci ders."
+},
+{
+"baslik": "c516",
+"tur": "metin",
+"metin": "Konu: Durum, statü ve sonuç bildiren akademik kelimeler.",
+"anlatim": "Konu: Durum, statü ve sonuç bildiren akademik kelimeler."
+},
+{
+"baslik": "c517",
+"tur": "metin",
+"metin": "Türkçesi şöyle: etiket; etiketlemek.",
+"anlatim": "Türkçesi şöyle: etiket; etiketlemek."
+},
+{
+"baslik": "c518",
+"tur": "metin",
+"metin": "İlacı almadan önce etiketi okuyun.",
+"anlatim": "İlacı almadan önce etiketi okuyun."
+},
+{
+"baslik": "c519",
+"tur": "metin",
+"metin": "işgal etmek, kaplamak.",
+"anlatim": "işgal etmek, kaplamak."
+},
+{
+"baslik": "c520",
+"tur": "metin",
+"metin": "Ormanlar ülkenin üçte birini kaplıyor.",
+"anlatim": "Ormanlar ülkenin üçte birini kaplıyor."
+},
+{
+"baslik": "c521",
+"tur": "metin",
+"metin": "Türkçesi şöyle: üretim, çıktı.",
+"anlatim": "Türkçesi şöyle: üretim, çıktı."
+},
+{
+"baslik": "c522",
+"tur": "metin",
+"metin": "Fabrika üretimi yüzde beş arttı.",
+"anlatim": "Fabrika üretimi yüzde beş arttı."
+},
+{
+"baslik": "c523",
+"tur": "metin",
+"metin": "Türkçesi şöyle: paralel, benzer.",
+"anlatim": "Türkçesi şöyle: paralel, benzer."
+},
+{
+"baslik": "c524",
+"tur": "metin",
+"metin": "İki durum arasında açık benzerlikler var.",
+"anlatim": "İki durum arasında açık benzerlikler var."
+},
+{
+"baslik": "c525",
+"tur": "metin",
+"metin": "Türkçesi şöyle: başlıca, ana.",
+"anlatim": "Türkçesi şöyle: başlıca, ana."
+},
+{
+"baslik": "c526",
+"tur": "metin",
+"metin": "Başlıca neden maliyetti.",
+"anlatim": "Başlıca neden maliyetti."
+},
+{
+"baslik": "c527",
+"tur": "metin",
+"metin": "Türkçesi şöyle: rejim, düzen.",
+"anlatim": "Türkçesi şöyle: rejim, düzen."
+},
+{
+"baslik": "c528",
+"tur": "metin",
+"metin": "Yeni vergi düzeni ocakta başlıyor.",
+"anlatim": "Yeni vergi düzeni ocakta başlıyor."
+},
+{
+"baslik": "c529",
+"tur": "metin",
+"metin": "çözmek, çözüme kavuşturmak.",
+"anlatim": "çözmek, çözüme kavuşturmak."
+},
+{
+"baslik": "c530",
+"tur": "metin",
+"metin": "İki taraf anlaşmazlıklarını çözdü.",
+"anlatim": "İki taraf anlaşmazlıklarını çözdü."
+},
+{
+"baslik": "c531",
+"tur": "metin",
+"metin": "elinde tutmak, korumak.",
+"anlatim": "elinde tutmak, korumak."
+},
+{
+"baslik": "c532",
+"tur": "metin",
+"metin": "Şirket en iyi çalışanlarını elinde tutmak istiyor.",
+"anlatim": "Şirket en iyi çalışanlarını elinde tutmak istiyor."
+},
+{
+"baslik": "c533",
+"tur": "metin",
+"metin": "Türkçesi şöyle: istatistik.",
+"anlatim": "Türkçesi şöyle: istatistik."
+},
+{
+"baslik": "c534",
+"tur": "metin",
+"metin": "İstatistikler açık bir eğilim gösteriyor.",
+"anlatim": "İstatistikler açık bir eğilim gösteriyor."
+},
+{
+"baslik": "c535",
+"tur": "metin",
+"metin": "Türkçesi şöyle: durum, statü.",
+"anlatim": "Türkçesi şöyle: durum, statü."
+},
+{
+"baslik": "c536",
+"tur": "metin",
+"metin": "Projenin durumu ne?",
+"anlatim": "Projenin durumu ne?"
+},
+{
+"baslik": "c537",
+"tur": "metin",
+"metin": "sonraki, ardından gelen.",
+"anlatim": "sonraki, ardından gelen."
+},
+{
+"baslik": "c538",
+"tur": "metin",
+"metin": "Sonraki çalışmalar sonuçları doğruladı.",
+"anlatim": "Sonraki çalışmalar sonuçları doğruladı."
+},
+{
+"baslik": "c539",
+"tur": "metin",
+"metin": "Türkçesi şöyle: üstlenmek, girişmek.",
+"anlatim": "Türkçesi şöyle: üstlenmek, girişmek."
+},
+{
+"baslik": "c540",
+"tur": "metin",
+"metin": "Üniversite büyük bir çalışma üstlendi.",
+"anlatim": "Üniversite büyük bir çalışma üstlendi."
+},
+{
+"baslik": "c541",
+"tur": "metin",
+"metin": "bir sorunu çözmek.",
+"anlatim": "bir sorunu çözmek."
+},
+{
+"baslik": "c542",
+"tur": "metin",
+"metin": "çalışanları elde tutmak.",
+"anlatim": "çalışanları elde tutmak."
+},
+{
+"baslik": "c543",
+"tur": "metin",
+"metin": "Türkçesi şöyle: başlıca amaç.",
+"anlatim": "Türkçesi şöyle: başlıca amaç."
+},
+{
+"baslik": "c544",
+"tur": "metin",
+"metin": "Türkçesi şöyle: sonraki yıllarda.",
+"anlatim": "Türkçesi şöyle: sonraki yıllarda."
+},
+{
+"baslik": "c545",
+"tur": "metin",
+"metin": "Konu: dört günlük çalışma haftası.",
+"anlatim": "Konu: dört günlük çalışma haftası."
+},
+{
+"baslik": "c546",
+"tur": "metin",
+"metin": "İki ülke anlaşmazlığı barışçıl görüşmelerle sona erdirmiş.",
+"anlatim": "İki ülke anlaşmazlığı barışçıl görüşmelerle sona erdirmiş."
+},
+{
+"baslik": "c547",
+"tur": "metin",
+"metin": "Çözmek anlamındaki kelime:",
+"anlatim": "Çözmek anlamındaki kelime:"
+},
+{
+"baslik": "c548",
+"tur": "metin",
+"metin": "Ders: Akademik kelimeler 15: durum ve sonuç.",
+"anlatim": "Ders: Akademik kelimeler 15: durum ve sonuç."
+},
+{
+"baslik": "c549",
+"tur": "metin",
+"metin": "Bu ders, YDS özel dizisi, on beşinci ders.",
+"anlatim": "Bu ders, YDS özel dizisi, on beşinci ders."
+},
+{
+"baslik": "c550",
+"tur": "metin",
+"metin": "Konu: Belirli edatlarla kullanılan sıfatlar.",
+"anlatim": "Konu: Belirli edatlarla kullanılan sıfatlar."
+},
+{
+"baslik": "c551",
+"tur": "metin",
+"metin": "YDS'de edat sorularının en sık geldiği alanlardan biri.",
+"anlatim": "YDS'de edat sorularının en sık geldiği alanlardan biri."
+},
+{
+"baslik": "c552",
+"tur": "metin",
+"metin": "Önce sorumluluk, farkındalık ve bağımlılık bildiren sıfatlar.",
+"anlatim": "Önce sorumluluk, farkındalık ve bağımlılık bildiren sıfatlar."
+},
+{
+"baslik": "c553",
+"tur": "metin",
+"metin": "bir şeyden sorumlu.",
+"anlatim": "bir şeyden sorumlu."
+},
+{
+"baslik": "c554",
+"tur": "metin",
+"metin": "Müdür bütçeden sorumlu.",
+"anlatim": "Müdür bütçeden sorumlu."
+},
+{
+"baslik": "c555",
+"tur": "metin",
+"metin": "bir şeyin farkında.",
+"anlatim": "bir şeyin farkında."
+},
+{
+"baslik": "c556",
+"tur": "metin",
+"metin": "Risklerin farkında mısın?",
+"anlatim": "Risklerin farkında mısın?"
+},
+{
+"baslik": "c557",
+"tur": "metin",
+"metin": "bir şeyi yapabilecek durumda.",
+"anlatim": "bir şeyi yapabilecek durumda."
+},
+{
+"baslik": "c558",
+"tur": "metin",
+"metin": "Şirketi yönetebilecek kapasitede.",
+"anlatim": "Şirketi yönetebilecek kapasitede."
+},
+{
+"baslik": "c559",
+"tur": "metin",
+"metin": "bir şeye bağımlı.",
+"anlatim": "bir şeye bağımlı."
+},
+{
+"baslik": "c560",
+"tur": "metin",
+"metin": "Ülke ithal petrole bağımlı.",
+"anlatim": "Ülke ithal petrole bağımlı."
+},
+{
+"baslik": "c561",
+"tur": "metin",
+"metin": "Şimdi tutarlılık, hak ve yatkınlık bildiren sıfatlar.",
+"anlatim": "Şimdi tutarlılık, hak ve yatkınlık bildiren sıfatlar."
+},
+{
+"baslik": "c562",
+"tur": "metin",
+"metin": "bir şeyle tutarlı.",
+"anlatim": "bir şeyle tutarlı."
+},
+{
+"baslik": "c563",
+"tur": "metin",
+"metin": "Sonuçlar önceki çalışmalarla tutarlı.",
+"anlatim": "Sonuçlar önceki çalışmalarla tutarlı."
+},
+{
+"baslik": "c564",
+"tur": "metin",
+"metin": "bir şeye hak kazanan.",
+"anlatim": "bir şeye hak kazanan."
+},
+{
+"baslik": "c565",
+"tur": "metin",
+"metin": "Öğrenciler indirime hak kazanıyor.",
+"anlatim": "Öğrenciler indirime hak kazanıyor."
+},
+{
+"baslik": "c566",
+"tur": "metin",
+"metin": "bir şeye maruz kalan.",
+"anlatim": "bir şeye maruz kalan."
+},
+{
+"baslik": "c567",
+"tur": "metin",
+"metin": "İşçiler tehlikeli kimyasallara maruz kaldı.",
+"anlatim": "İşçiler tehlikeli kimyasallara maruz kaldı."
+},
+{
+"baslik": "c568",
+"tur": "metin",
+"metin": "bir şeye yatkın.",
+"anlatim": "bir şeye yatkın."
+},
+{
+"baslik": "c569",
+"tur": "metin",
+"metin": "Bu bölge sele yatkın.",
+"anlatim": "Bu bölge sele yatkın."
+},
+{
+"baslik": "c570",
+"tur": "metin",
+"metin": "Son grup: isteklilik, tabi olma ve uyum bildiren sıfatlar.",
+"anlatim": "Son grup: isteklilik, tabi olma ve uyum bildiren sıfatlar."
+},
+{
+"baslik": "c571",
+"tur": "metin",
+"metin": "bir şeyi yapmaya gönülsüz.",
+"anlatim": "bir şeyi yapmaya gönülsüz."
+},
+{
+"baslik": "c572",
+"tur": "metin",
+"metin": "Planlarını değiştirmeye gönülsüzdü.",
+"anlatim": "Planlarını değiştirmeye gönülsüzdü."
+},
+{
+"baslik": "c573",
+"tur": "metin",
+"metin": "bir şeye tabi.",
+"anlatim": "bir şeye tabi."
+},
+{
+"baslik": "c574",
+"tur": "metin",
+"metin": "Tüm fiyatlar değişikliğe tabidir.",
+"anlatim": "Tüm fiyatlar değişikliğe tabidir."
+},
+{
+"baslik": "c575",
+"tur": "metin",
+"metin": "bir şeyle uyumlu.",
+"anlatim": "bir şeyle uyumlu."
+},
+{
+"baslik": "c576",
+"tur": "metin",
+"metin": "Uygulama eski telefonlarla uyumlu.",
+"anlatim": "Uygulama eski telefonlarla uyumlu."
+},
+{
+"baslik": "c577",
+"tur": "metin",
+"metin": "bir şeye eğilimli.",
+"anlatim": "bir şeye eğilimli."
+},
+{
+"baslik": "c578",
+"tur": "metin",
+"metin": "Sana katılmaya eğilimliyim.",
+"anlatim": "Sana katılmaya eğilimliyim."
+},
+{
+"baslik": "c579",
+"tur": "metin",
+"metin": "Şimdi sağlık üzerine bir radyo programından kısa bir bölüm dinleyeceksiniz.",
+"anlatim": "Şimdi sağlık üzerine bir radyo programından kısa bir bölüm dinleyeceksiniz."
+},
+{
+"baslik": "c580",
+"tur": "metin",
+"metin": "Sıfatlardan sonra gelen edatlara dikkat edin.",
+"anlatim": "Sıfatlardan sonra gelen edatlara dikkat edin."
+},
+{
+"baslik": "c581",
+"tur": "metin",
+"metin": "Dört soru çözeceğiz.",
+"anlatim": "Dört soru çözeceğiz."
+},
+{
+"baslik": "c582",
+"tur": "metin",
+"metin": "İpucu: bu sorularda anlamdan çok sıfatla edatın eşleşmesi önemlidir.",
+"anlatim": "İpucu: bu sorularda anlamdan çok sıfatla edatın eşleşmesi önemlidir."
+},
+{
+"baslik": "c583",
+"tur": "metin",
+"metin": "Eşleşmeleri ikili olarak ezberleyin.",
+"anlatim": "Eşleşmeleri ikili olarak ezberleyin."
+},
+{
+"baslik": "c584",
+"tur": "metin",
+"metin": "Yalnızca tam zamanlı çalışanlar ikramiyeye hak kazanıyor.",
+"anlatim": "Yalnızca tam zamanlı çalışanlar ikramiyeye hak kazanıyor."
+},
+{
+"baslik": "c585",
+"tur": "metin",
+"metin": "Bu sıfat şu edatla kullanılır:",
+"anlatim": "Bu sıfat şu edatla kullanılır:"
+},
+{
+"baslik": "c586",
+"tur": "metin",
+"metin": "Yeni yazılım eski bilgisayarlarla uyumlu değil.",
+"anlatim": "Yeni yazılım eski bilgisayarlarla uyumlu değil."
+},
+{
+"baslik": "c587",
+"tur": "metin",
+"metin": "Uyumlu anlamındaki sıfatın edatı:",
+"anlatim": "Uyumlu anlamındaki sıfatın edatı:"
+},
+{
+"baslik": "c588",
+"tur": "metin",
+"metin": "Plan hâlâ yönetim kurulunun onayına tabi.",
+"anlatim": "Plan hâlâ yönetim kurulunun onayına tabi."
+},
+{
+"baslik": "c589",
+"tur": "metin",
+"metin": "Tabi anlamındaki ifade:",
+"anlatim": "Tabi anlamındaki ifade:"
+},
+{
+"baslik": "c590",
+"tur": "metin",
+"metin": "Küçük adalar yükselen deniz seviyesine özellikle yatkın.",
+"anlatim": "Küçük adalar yükselen deniz seviyesine özellikle yatkın."
+},
+{
+"baslik": "c591",
+"tur": "metin",
+"metin": "Ardından gelen edat:",
+"anlatim": "Ardından gelen edat:"
+},
+{
+"baslik": "c592",
+"tur": "metin",
+"metin": "Ders: Sıfat ve edat eşleşmeleri.",
+"anlatim": "Ders: Sıfat ve edat eşleşmeleri."
+},
+{
+"baslik": "c593",
+"tur": "metin",
+"metin": "Bu ders, kıdemli iş analisti dizisi, on beşinci ders.",
+"anlatim": "Bu ders, kıdemli iş analisti dizisi, on beşinci ders."
+},
+{
+"baslik": "c594",
+"tur": "metin",
+"metin": "Konu: Kullanıcı deneyimi ve kullanılabilirlik: testler, ölçümler ve erişilebilirlik.",
+"anlatim": "Konu: Kullanıcı deneyimi ve kullanılabilirlik: testler, ölçümler ve erişilebilirlik."
+},
+{
+"baslik": "c595",
+"tur": "metin",
+"metin": "Türkçesi şöyle: kullanılabilirlik testi.",
+"anlatim": "Türkçesi şöyle: kullanılabilirlik testi."
+},
+{
+"baslik": "c596",
+"tur": "metin",
+"metin": "Kullanılabilirlik testi üç ciddi sorun gösterdi.",
+"anlatim": "Kullanılabilirlik testi üç ciddi sorun gösterdi."
+},
+{
+"baslik": "c597",
+"tur": "metin",
+"metin": "Türkçesi şöyle: erişilebilirlik.",
+"anlatim": "Türkçesi şöyle: erişilebilirlik."
+},
+{
+"baslik": "c598",
+"tur": "metin",
+"metin": "Erişilebilirlik bankalar için yasal bir zorunluluk.",
+"anlatim": "Erişilebilirlik bankalar için yasal bir zorunluluk."
+},
+{
+"baslik": "c599",
+"tur": "metin",
+"metin": "Türkçesi şöyle: kullanıcı arayüzü.",
+"anlatim": "Türkçesi şöyle: kullanıcı arayüzü."
+},
+{
+"baslik": "c600",
+"tur": "metin",
+"metin": "Kullanıcı arayüzü eski görünüyor.",
+"anlatim": "Kullanıcı arayüzü eski görünüyor."
+},
+{
+"baslik": "c601",
+"tur": "metin",
+"metin": "Türkçesi şöyle: kullanıcı deneyimi.",
+"anlatim": "Türkçesi şöyle: kullanıcı deneyimi."
+},
+{
+"baslik": "c602",
+"tur": "metin",
+"metin": "İyi bir kullanıcı deneyimi güven oluşturur.",
+"anlatim": "İyi bir kullanıcı deneyimi güven oluşturur."
+},
+{
+"baslik": "c603",
+"tur": "metin",
+"metin": "gezinme, menü yapısı.",
+"anlatim": "gezinme, menü yapısı."
+},
+{
+"baslik": "c604",
+"tur": "metin",
+"metin": "Menü yapısı kafa karıştırıcı.",
+"anlatim": "Menü yapısı kafa karıştırıcı."
+},
+{
+"baslik": "c605",
+"tur": "metin",
+"metin": "eylem çağrısı düğmesi ya da metni.",
+"anlatim": "eylem çağrısı düğmesi ya da metni."
+},
+{
+"baslik": "c606",
+"tur": "metin",
+"metin": "Eylem çağrısı açık olmalı.",
+"anlatim": "Eylem çağrısı açık olmalı."
+},
+{
+"baslik": "c607",
+"tur": "metin",
+"metin": "iki farklı tasarımı karşılaştırma testi.",
+"anlatim": "iki farklı tasarımı karşılaştırma testi."
+},
+{
+"baslik": "c608",
+"tur": "metin",
+"metin": "Yeni tasarımı seçmek için iki seçenekli test kullandık.",
+"anlatim": "Yeni tasarımı seçmek için iki seçenekli test kullandık."
+},
+{
+"baslik": "c609",
+"tur": "metin",
+"metin": "Türkçesi şöyle: dönüşüm oranı.",
+"anlatim": "Türkçesi şöyle: dönüşüm oranı."
+},
+{
+"baslik": "c610",
+"tur": "metin",
+"metin": "Dönüşüm oranı yüzde altıya yükseldi.",
+"anlatim": "Dönüşüm oranı yüzde altıya yükseldi."
+},
+{
+"baslik": "c611",
+"tur": "metin",
+"metin": "Türkçesi şöyle: terk oranı.",
+"anlatim": "Türkçesi şöyle: terk oranı."
+},
+{
+"baslik": "c612",
+"tur": "metin",
+"metin": "Terk oranı en çok ödeme sayfasında.",
+"anlatim": "Terk oranı en çok ödeme sayfasında."
+},
+{
+"baslik": "c613",
+"tur": "metin",
+"metin": "Türkçesi şöyle: ısı haritası.",
+"anlatim": "Türkçesi şöyle: ısı haritası."
+},
+{
+"baslik": "c614",
+"tur": "metin",
+"metin": "Isı haritası kullanıcıların nereye tıkladığını gösteriyor.",
+"anlatim": "Isı haritası kullanıcıların nereye tıkladığını gösteriyor."
+},
+{
+"baslik": "c615",
+"tur": "metin",
+"metin": "sürtünme, kullanıcıyı yavaşlatan engel.",
+"anlatim": "sürtünme, kullanıcıyı yavaşlatan engel."
+},
+{
+"baslik": "c616",
+"tur": "metin",
+"metin": "Her fazladan adım sürtünme yaratır.",
+"anlatim": "Her fazladan adım sürtünme yaratır."
+},
+{
+"baslik": "c617",
+"tur": "metin",
+"metin": "Türkçesi şöyle: ekran okuyucu.",
+"anlatim": "Türkçesi şöyle: ekran okuyucu."
+},
+{
+"baslik": "c618",
+"tur": "metin",
+"metin": "Görme engelli kullanıcılar ekran okuyucu kullanır.",
+"anlatim": "Görme engelli kullanıcılar ekran okuyucu kullanır."
+},
+{
+"baslik": "c619",
+"tur": "metin",
+"metin": "Kullanıcılar nerede vazgeçiyor?",
+"anlatim": "Kullanıcılar nerede vazgeçiyor?"
+},
+{
+"baslik": "c620",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Engelleri kaldıralım.",
+"anlatim": "Türkçesi şöyle: Engelleri kaldıralım."
+},
+{
+"baslik": "c621",
+"tur": "metin",
+"metin": "Veri ne gösteriyor?",
+"anlatim": "Veri ne gösteriyor?"
+},
+{
+"baslik": "c622",
+"tur": "metin",
+"metin": "Gerçek kullanıcılarla test edelim.",
+"anlatim": "Gerçek kullanıcılarla test edelim."
+},
+{
+"baslik": "c623",
+"tur": "metin",
+"metin": "Şimdi iş analistinin bir tasarımcıyla, kredi başvuru ekranının sonuçlarını konuştuğu bir toplantıyı dinleyeceksiniz.",
+"anlatim": "Şimdi iş analistinin bir tasarımcıyla, kredi başvuru ekranının sonuçlarını konuştuğu bir toplantıyı dinleyeceksiniz."
+},
+{
+"baslik": "c624",
+"tur": "metin",
+"metin": "Bir yönetici, kullanıcı testi yapmadan yeni tasarımı hemen yayına almak istiyor.",
+"anlatim": "Bir yönetici, kullanıcı testi yapmadan yeni tasarımı hemen yayına almak istiyor."
+},
+{
+"baslik": "c625",
+"tur": "metin",
+"metin": "Kibarca kısa bir test önerin.",
+"anlatim": "Kibarca kısa bir test önerin."
+},
+{
+"baslik": "c626",
+"tur": "metin",
+"metin": "Ders: İş analizi 15: Kullanıcı deneyimi.",
+"anlatim": "Ders: İş analizi 15: Kullanıcı deneyimi."
+},
+{
+"baslik": "c627",
+"tur": "metin",
+"metin": "Bu ders, B1 seviyesi, on beşinci ders.",
+"anlatim": "Bu ders, B1 seviyesi, on beşinci ders."
+},
+{
+"baslik": "c628",
+"tur": "metin",
+"metin": "Konu: Televizyon, diziler ve programlar.",
+"anlatim": "Konu: Televizyon, diziler ve programlar."
+},
+{
+"baslik": "c629",
+"tur": "metin",
+"metin": "IELTS konuşma sınavının birinci bölümünde sık sorulur.",
+"anlatim": "IELTS konuşma sınavının birinci bölümünde sık sorulur."
+},
+{
+"baslik": "c630",
+"tur": "metin",
+"metin": "Türkçesi şöyle: belgesel.",
+"anlatim": "Türkçesi şöyle: belgesel."
+},
+{
+"baslik": "c631",
+"tur": "metin",
+"metin": "Balinalar hakkında bir belgesel izledim.",
+"anlatim": "Balinalar hakkında bir belgesel izledim."
+},
+{
+"baslik": "c632",
+"tur": "metin",
+"metin": "Son bölüm muhteşemdi.",
+"anlatim": "Son bölüm muhteşemdi."
+},
+{
+"baslik": "c633",
+"tur": "metin",
+"metin": "Türkçesi şöyle: kanal.",
+"anlatim": "Türkçesi şöyle: kanal."
+},
+{
+"baslik": "c634",
+"tur": "metin",
+"metin": "Diğer kanalda ne var?",
+"anlatim": "Diğer kanalda ne var?"
+},
+{
+"baslik": "c635",
+"tur": "metin",
+"metin": "Türkçesi şöyle: sunucu.",
+"anlatim": "Türkçesi şöyle: sunucu."
+},
+{
+"baslik": "c636",
+"tur": "metin",
+"metin": "Sunucu zor sorular sordu.",
+"anlatim": "Sunucu zor sorular sordu."
+},
+{
+"baslik": "c637",
+"tur": "metin",
+"metin": "Türkçesi şöyle: izleyici.",
+"anlatim": "Türkçesi şöyle: izleyici."
+},
+{
+"baslik": "c638",
+"tur": "metin",
+"metin": "Programın on milyon izleyicisi var.",
+"anlatim": "Programın on milyon izleyicisi var."
+},
+{
+"baslik": "c639",
+"tur": "metin",
+"metin": "uzun soluklu aile dizisi.",
+"anlatim": "uzun soluklu aile dizisi."
+},
+{
+"baslik": "c640",
+"tur": "metin",
+"metin": "Büyükannem uzun aile dizilerine bayılır.",
+"anlatim": "Büyükannem uzun aile dizilerine bayılır."
+},
+{
+"baslik": "c641",
+"tur": "metin",
+"metin": "Türkçesi şöyle: gerçeklik şovu.",
+"anlatim": "Türkçesi şöyle: gerçeklik şovu."
+},
+{
+"baslik": "c642",
+"tur": "metin",
+"metin": "Gerçeklik şovlarını sevmem.",
+"anlatim": "Gerçeklik şovlarını sevmem."
+},
+{
+"baslik": "c643",
+"tur": "metin",
+"metin": "Türkçesi şöyle: yayın; yayınlamak.",
+"anlatim": "Türkçesi şöyle: yayın; yayınlamak."
+},
+{
+"baslik": "c644",
+"tur": "metin",
+"metin": "Türkçesi şöyle: canlı.",
+"anlatim": "Türkçesi şöyle: canlı."
+},
+{
+"baslik": "c645",
+"tur": "metin",
+"metin": "Konseri televizyonda canlı izledik.",
+"anlatim": "Konseri televizyonda canlı izledik."
+},
+{
+"baslik": "c646",
+"tur": "metin",
+"metin": "olay örgüsü, konu.",
+"anlatim": "olay örgüsü, konu."
+},
+{
+"baslik": "c647",
+"tur": "metin",
+"metin": "Konusu çok basit.",
+"anlatim": "Konusu çok basit."
+},
+{
+"baslik": "c648",
+"tur": "metin",
+"metin": "Türkçesi şöyle: altyazı.",
+"anlatim": "Türkçesi şöyle: altyazı."
+},
+{
+"baslik": "c649",
+"tur": "metin",
+"metin": "İngilizce filmleri altyazılı izliyorum.",
+"anlatim": "İngilizce filmleri altyazılı izliyorum."
+},
+{
+"baslik": "c650",
+"tur": "metin",
+"metin": "Türkçesi şöyle: oyuncu kadrosu.",
+"anlatim": "Türkçesi şöyle: oyuncu kadrosu."
+},
+{
+"baslik": "c651",
+"tur": "metin",
+"metin": "Oyuncu kadrosunda birkaç ünlü oyuncu var.",
+"anlatim": "Oyuncu kadrosunda birkaç ünlü oyuncu var."
+},
+{
+"baslik": "c652",
+"tur": "metin",
+"metin": "Bu akşam ne var?",
+"anlatim": "Bu akşam ne var?"
+},
+{
+"baslik": "c653",
+"tur": "metin",
+"metin": "Bu diziye bağımlı oldum.",
+"anlatim": "Bu diziye bağımlı oldum."
+},
+{
+"baslik": "c654",
+"tur": "metin",
+"metin": "art arda çok bölüm izlemek.",
+"anlatim": "art arda çok bölüm izlemek."
+},
+{
+"baslik": "c655",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Sonunu söyleme!",
+"anlatim": "Türkçesi şöyle: Sonunu söyleme!"
+},
+{
+"baslik": "c656",
+"tur": "metin",
+"metin": "İki arkadaş izledikleri dizileri konuşuyor.",
+"anlatim": "İki arkadaş izledikleri dizileri konuşuyor."
+},
+{
+"baslik": "c657",
+"tur": "metin",
+"metin": "Yarışmanın finali kırktan fazla ülkeye canlı aktarılmış.",
+"anlatim": "Yarışmanın finali kırktan fazla ülkeye canlı aktarılmış."
+},
+{
+"baslik": "c658",
+"tur": "metin",
+"metin": "Yayınlamak anlamındaki fiil:",
+"anlatim": "Yayınlamak anlamındaki fiil:"
+},
+{
+"baslik": "c659",
+"tur": "metin",
+"metin": "Ders: Televizyon ve diziler.",
+"anlatim": "Ders: Televizyon ve diziler."
+},
+{
+"baslik": "c660",
+"tur": "metin",
+"metin": "Bu ders, B2 seviyesi, on beşinci ders.",
+"anlatim": "Bu ders, B2 seviyesi, on beşinci ders."
+},
+{
+"baslik": "c661",
+"tur": "metin",
+"metin": "Konu: Atık, geri dönüşüm ve tek kullanımlık ürünler.",
+"anlatim": "Konu: Atık, geri dönüşüm ve tek kullanımlık ürünler."
+},
+{
+"baslik": "c662",
+"tur": "metin",
+"metin": "IELTS yazma ve konuşma sınavlarında çok sık çıkar.",
+"anlatim": "IELTS yazma ve konuşma sınavlarında çok sık çıkar."
+},
+{
+"baslik": "c663",
+"tur": "metin",
+"metin": "çöp depolama alanı.",
+"anlatim": "çöp depolama alanı."
+},
+{
+"baslik": "c664",
+"tur": "metin",
+"metin": "Çöplerimizin çoğu çöp depolama alanına gidiyor.",
+"anlatim": "Çöplerimizin çoğu çöp depolama alanına gidiyor."
+},
+{
+"baslik": "c665",
+"tur": "metin",
+"metin": "Kâğıt ve camı geri dönüştürüyoruz.",
+"anlatim": "Kâğıt ve camı geri dönüştürüyoruz."
+},
+{
+"baslik": "c666",
+"tur": "metin",
+"metin": "kompost, organik gübre; kompost yapmak.",
+"anlatim": "kompost, organik gübre; kompost yapmak."
+},
+{
+"baslik": "c667",
+"tur": "metin",
+"metin": "Yemek artıklarımızdan kompost yapıyoruz.",
+"anlatim": "Yemek artıklarımızdan kompost yapıyoruz."
+},
+{
+"baslik": "c668",
+"tur": "metin",
+"metin": "Türkçesi şöyle: ambalaj.",
+"anlatim": "Türkçesi şöyle: ambalaj."
+},
+{
+"baslik": "c669",
+"tur": "metin",
+"metin": "Bu ürünün ambalajı çok fazla.",
+"anlatim": "Bu ürünün ambalajı çok fazla."
+},
+{
+"baslik": "c670",
+"tur": "metin",
+"metin": "tek kullanımlık, atılabilir.",
+"anlatim": "tek kullanımlık, atılabilir."
+},
+{
+"baslik": "c671",
+"tur": "metin",
+"metin": "Tek kullanımlık bardaklar çevreye zararlı.",
+"anlatim": "Tek kullanımlık bardaklar çevreye zararlı."
+},
+{
+"baslik": "c672",
+"tur": "metin",
+"metin": "Türkçesi şöyle: doğada çözünebilen.",
+"anlatim": "Türkçesi şöyle: doğada çözünebilen."
+},
+{
+"baslik": "c673",
+"tur": "metin",
+"metin": "Bu poşetler doğada çözünüyor.",
+"anlatim": "Bu poşetler doğada çözünüyor."
+},
+{
+"baslik": "c674",
+"tur": "metin",
+"metin": "Türkçesi şöyle: yeniden kullanmak.",
+"anlatim": "Türkçesi şöyle: yeniden kullanmak."
+},
+{
+"baslik": "c675",
+"tur": "metin",
+"metin": "Cam kavanozları yeniden kullanabilirsiniz.",
+"anlatim": "Cam kavanozları yeniden kullanabilirsiniz."
+},
+{
+"baslik": "c676",
+"tur": "metin",
+"metin": "yerlere atılan çöp; çöp atmak.",
+"anlatim": "yerlere atılan çöp; çöp atmak."
+},
+{
+"baslik": "c677",
+"tur": "metin",
+"metin": "Kumsal çöplerle kaplıydı.",
+"anlatim": "Kumsal çöplerle kaplıydı."
+},
+{
+"baslik": "c678",
+"tur": "metin",
+"metin": "Türkçesi şöyle: döngüsel ekonomi.",
+"anlatim": "Türkçesi şöyle: döngüsel ekonomi."
+},
+{
+"baslik": "c679",
+"tur": "metin",
+"metin": "Döngüsel ekonomide hiçbir şey israf edilmez.",
+"anlatim": "Döngüsel ekonomide hiçbir şey israf edilmez."
+},
+{
+"baslik": "c680",
+"tur": "metin",
+"metin": "Türkçesi şöyle: tek kullanımlık.",
+"anlatim": "Türkçesi şöyle: tek kullanımlık."
+},
+{
+"baslik": "c681",
+"tur": "metin",
+"metin": "Ülke tek kullanımlık plastik poşetleri yasakladı.",
+"anlatim": "Ülke tek kullanımlık plastik poşetleri yasakladı."
+},
+{
+"baslik": "c682",
+"tur": "metin",
+"metin": "Türkçesi şöyle: elektronik atık.",
+"anlatim": "Türkçesi şöyle: elektronik atık."
+},
+{
+"baslik": "c683",
+"tur": "metin",
+"metin": "Eski telefonlar önemli bir elektronik atık kaynağı.",
+"anlatim": "Eski telefonlar önemli bir elektronik atık kaynağı."
+},
+{
+"baslik": "c684",
+"tur": "metin",
+"metin": "Türkçesi şöyle: plastik atık.",
+"anlatim": "Türkçesi şöyle: plastik atık."
+},
+{
+"baslik": "c685",
+"tur": "metin",
+"metin": "Plastik atıklar okyanusları kirletiyor.",
+"anlatim": "Plastik atıklar okyanusları kirletiyor."
+},
+{
+"baslik": "c686",
+"tur": "metin",
+"metin": "azalt, yeniden kullan, geri dönüştür.",
+"anlatim": "azalt, yeniden kullan, geri dönüştür."
+},
+{
+"baslik": "c687",
+"tur": "metin",
+"metin": "çöp alanında son bulmak.",
+"anlatim": "çöp alanında son bulmak."
+},
+{
+"baslik": "c688",
+"tur": "metin",
+"metin": "bir şeye yasak.",
+"anlatim": "bir şeye yasak."
+},
+{
+"baslik": "c689",
+"tur": "metin",
+"metin": "Türkçesi şöyle: çöpe atmak.",
+"anlatim": "Türkçesi şöyle: çöpe atmak."
+},
+{
+"baslik": "c690",
+"tur": "metin",
+"metin": "Şimdi bir çevre semineri konuşmasından kısa bir bölüm dinleyeceksiniz.",
+"anlatim": "Şimdi bir çevre semineri konuşmasından kısa bir bölüm dinleyeceksiniz."
+},
+{
+"baslik": "c691",
+"tur": "metin",
+"metin": "Yemek artıkları bahçede kullanılan bir şeye dönüştürülebiliyor.",
+"anlatim": "Yemek artıkları bahçede kullanılan bir şeye dönüştürülebiliyor."
+},
+{
+"baslik": "c692",
+"tur": "metin",
+"metin": "Organik gübre anlamındaki kelime:",
+"anlatim": "Organik gübre anlamındaki kelime:"
+},
+{
+"baslik": "c693",
+"tur": "metin",
+"metin": "Ders: Atık ve geri dönüşüm.",
+"anlatim": "Ders: Atık ve geri dönüşüm."
+},
+{
+"baslik": "c694",
+"tur": "metin",
+"metin": "Bu ders, C1 seviyesi, on beşinci ders.",
+"anlatim": "Bu ders, C1 seviyesi, on beşinci ders."
+},
+{
+"baslik": "c695",
+"tur": "metin",
+"metin": "Konu: Genetik, biyoteknoloji ve tıp etiği.",
+"anlatim": "Konu: Genetik, biyoteknoloji ve tıp etiği."
+},
+{
+"baslik": "c696",
+"tur": "metin",
+"metin": "IELTS yazma sınavında ve YDS okuma parçalarında sık geçer.",
+"anlatim": "IELTS yazma sınavında ve YDS okuma parçalarında sık geçer."
+},
+{
+"baslik": "c697",
+"tur": "metin",
+"metin": "Türkçesi şöyle: gen.",
+"anlatim": "Türkçesi şöyle: gen."
+},
+{
+"baslik": "c698",
+"tur": "metin",
+"metin": "Bu gen göz rengini etkiliyor.",
+"anlatim": "Bu gen göz rengini etkiliyor."
+},
+{
+"baslik": "c699",
+"tur": "metin",
+"metin": "genom, bir canlının tüm genetik bilgisi.",
+"anlatim": "genom, bir canlının tüm genetik bilgisi."
+},
+{
+"baslik": "c700",
+"tur": "metin",
+"metin": "Bilim insanları insan genomunu çıkardı.",
+"anlatim": "Bilim insanları insan genomunu çıkardı."
+},
+{
+"baslik": "c701",
+"tur": "metin",
+"metin": "Türkçesi şöyle: klonlama.",
+"anlatim": "Türkçesi şöyle: klonlama."
+},
+{
+"baslik": "c702",
+"tur": "metin",
+"metin": "Klonlama ciddi etik sorular doğuruyor.",
+"anlatim": "Klonlama ciddi etik sorular doğuruyor."
+},
+{
+"baslik": "c703",
+"tur": "metin",
+"metin": "Türkçesi şöyle: kök hücre.",
+"anlatim": "Türkçesi şöyle: kök hücre."
+},
+{
+"baslik": "c704",
+"tur": "metin",
+"metin": "Kök hücreler hasarlı dokuyu onarabilir.",
+"anlatim": "Kök hücreler hasarlı dokuyu onarabilir."
+},
+{
+"baslik": "c705",
+"tur": "metin",
+"metin": "Türkçesi şöyle: ötanazi.",
+"anlatim": "Türkçesi şöyle: ötanazi."
+},
+{
+"baslik": "c706",
+"tur": "metin",
+"metin": "Ötanazi birkaç ülkede yasal.",
+"anlatim": "Ötanazi birkaç ülkede yasal."
+},
+{
+"baslik": "c707",
+"tur": "metin",
+"metin": "Türkçesi şöyle: organ bağışçısı.",
+"anlatim": "Türkçesi şöyle: organ bağışçısı."
+},
+{
+"baslik": "c708",
+"tur": "metin",
+"metin": "Organ bağışçısı olarak kayıt yaptırdı.",
+"anlatim": "Organ bağışçısı olarak kayıt yaptırdı."
+},
+{
+"baslik": "c709",
+"tur": "metin",
+"metin": "Türkçesi şöyle: klinik deney.",
+"anlatim": "Türkçesi şöyle: klinik deney."
+},
+{
+"baslik": "c710",
+"tur": "metin",
+"metin": "İlaç son klinik deney aşamasında.",
+"anlatim": "İlaç son klinik deney aşamasında."
+},
+{
+"baslik": "c711",
+"tur": "metin",
+"metin": "plasebo, etkisiz ilaç.",
+"anlatim": "plasebo, etkisiz ilaç."
+},
+{
+"baslik": "c712",
+"tur": "metin",
+"metin": "Hastaların yarısına etkisiz ilaç verildi.",
+"anlatim": "Hastaların yarısına etkisiz ilaç verildi."
+},
+{
+"baslik": "c713",
+"tur": "metin",
+"metin": "Türkçesi şöyle: uzun ömür.",
+"anlatim": "Türkçesi şöyle: uzun ömür."
+},
+{
+"baslik": "c714",
+"tur": "metin",
+"metin": "Beslenme uzun ömürde rol oynar.",
+"anlatim": "Beslenme uzun ömürde rol oynar."
+},
+{
+"baslik": "c715",
+"tur": "metin",
+"metin": "Türkçesi şöyle: gen düzenleme.",
+"anlatim": "Türkçesi şöyle: gen düzenleme."
+},
+{
+"baslik": "c716",
+"tur": "metin",
+"metin": "Gen düzenleme bazı hastalıkları tedavi edebilir.",
+"anlatim": "Gen düzenleme bazı hastalıkları tedavi edebilir."
+},
+{
+"baslik": "c717",
+"tur": "metin",
+"metin": "Türkçesi şöyle: bilgilendirilmiş onam.",
+"anlatim": "Türkçesi şöyle: bilgilendirilmiş onam."
+},
+{
+"baslik": "c718",
+"tur": "metin",
+"metin": "Hastalar bilgilendirilmiş onam vermeli.",
+"anlatim": "Hastalar bilgilendirilmiş onam vermeli."
+},
+{
+"baslik": "c719",
+"tur": "metin",
+"metin": "Türkçesi şöyle: biyoteknoloji.",
+"anlatim": "Türkçesi şöyle: biyoteknoloji."
+},
+{
+"baslik": "c720",
+"tur": "metin",
+"metin": "Biyoteknoloji hızla büyüyen bir sektör.",
+"anlatim": "Biyoteknoloji hızla büyüyen bir sektör."
+},
+{
+"baslik": "c721",
+"tur": "metin",
+"metin": "etik sorular doğurmak.",
+"anlatim": "etik sorular doğurmak."
+},
+{
+"baslik": "c722",
+"tur": "metin",
+"metin": "bilgilendirilmiş onam vermek.",
+"anlatim": "bilgilendirilmiş onam vermek."
+},
+{
+"baslik": "c723",
+"tur": "metin",
+"metin": "klinik bir deneyde.",
+"anlatim": "klinik bir deneyde."
+},
+{
+"baslik": "c724",
+"tur": "metin",
+"metin": "Tanrı'yı oynamak, doğaya müdahale etmek.",
+"anlatim": "Tanrı'yı oynamak, doğaya müdahale etmek."
+},
+{
+"baslik": "c725",
+"tur": "metin",
+"metin": "Şimdi biyoteknoloji ve etik üzerine bir panel tartışmasından kısa bir bölüm dinleyeceksiniz.",
+"anlatim": "Şimdi biyoteknoloji ve etik üzerine bir panel tartışmasından kısa bir bölüm dinleyeceksiniz."
+},
+{
+"baslik": "c726",
+"tur": "metin",
+"metin": "Çalışmaya katılmadan önce her katılımcıdan onay istenmiş.",
+"anlatim": "Çalışmaya katılmadan önce her katılımcıdan onay istenmiş."
+},
+{
+"baslik": "c727",
+"tur": "metin",
+"metin": "Bilgilendirilmiş onam anlamındaki ifade:",
+"anlatim": "Bilgilendirilmiş onam anlamındaki ifade:"
+},
+{
+"baslik": "c728",
+"tur": "metin",
+"metin": "Ders: Biyoteknoloji ve etik.",
+"anlatim": "Ders: Biyoteknoloji ve etik."
+},
+{
+"baslik": "c729",
+"tur": "metin",
+"metin": "Bu ders, IELTS ve YDS akademik kelime dizisi, on altıncı ders.",
+"anlatim": "Bu ders, IELTS ve YDS akademik kelime dizisi, on altıncı ders."
+},
+{
+"baslik": "c730",
+"tur": "metin",
+"metin": "Konu: Değişim, uyum ve kapasite bildiren akademik kelimeler.",
+"anlatim": "Konu: Değişim, uyum ve kapasite bildiren akademik kelimeler."
+},
+{
+"baslik": "c731",
+"tur": "metin",
+"metin": "uyum sağlamak, ayarlamak.",
+"anlatim": "uyum sağlamak, ayarlamak."
+},
+{
+"baslik": "c732",
+"tur": "metin",
+"metin": "Yeni bir ülkeye uyum sağlamak zaman alır.",
+"anlatim": "Yeni bir ülkeye uyum sağlamak zaman alır."
+},
+{
+"baslik": "c733",
+"tur": "metin",
+"metin": "Türkçesi şöyle: değiştirmek.",
+"anlatim": "Türkçesi şöyle: değiştirmek."
+},
+{
+"baslik": "c734",
+"tur": "metin",
+"metin": "Yol manzarayı değiştirdi.",
+"anlatim": "Yol manzarayı değiştirdi."
+},
+{
+"baslik": "c735",
+"tur": "metin",
+"metin": "değişiklik yapmak, düzeltmek.",
+"anlatim": "değişiklik yapmak, düzeltmek."
+},
+{
+"baslik": "c736",
+"tur": "metin",
+"metin": "Meclis yasada değişiklik yaptı.",
+"anlatim": "Meclis yasada değişiklik yaptı."
+},
+{
+"baslik": "c737",
+"tur": "metin",
+"metin": "Türkçesi şöyle: kapasite.",
+"anlatim": "Türkçesi şöyle: kapasite."
+},
+{
+"baslik": "c738",
+"tur": "metin",
+"metin": "Stadyumun kapasitesi elli bin.",
+"anlatim": "Stadyumun kapasitesi elli bin."
+},
+{
+"baslik": "c739",
+"tur": "metin",
+"metin": "Türkçesi şöyle: danışmak.",
+"anlatim": "Türkçesi şöyle: danışmak."
+},
+{
+"baslik": "c740",
+"tur": "metin",
+"metin": "Bir doktora danışmalısın.",
+"anlatim": "Bir doktora danışmalısın."
+},
+{
+"baslik": "c741",
+"tur": "metin",
+"metin": "düşüş; azalmak; reddetmek.",
+"anlatim": "düşüş; azalmak; reddetmek."
+},
+{
+"baslik": "c742",
+"tur": "metin",
+"metin": "Satışlarda düşüş oldu.",
+"anlatim": "Satışlarda düşüş oldu."
+},
+{
+"baslik": "c743",
+"tur": "metin",
+"metin": "Türkçesi şöyle: olanak sağlamak.",
+"anlatim": "Türkçesi şöyle: olanak sağlamak."
+},
+{
+"baslik": "c744",
+"tur": "metin",
+"metin": "Yeni sistem daha hızlı ödemelere olanak sağlıyor.",
+"anlatim": "Yeni sistem daha hızlı ödemelere olanak sağlıyor."
+},
+{
+"baslik": "c745",
+"tur": "metin",
+"metin": "Türkçesi şöyle: dış, harici.",
+"anlatim": "Türkçesi şöyle: dış, harici."
+},
+{
+"baslik": "c746",
+"tur": "metin",
+"metin": "Dışarıdan bir danışman tuttuk.",
+"anlatim": "Dışarıdan bir danışman tuttuk."
+},
+{
+"baslik": "c747",
+"tur": "metin",
+"metin": "Türkçesi şöyle: eşdeğer.",
+"anlatim": "Türkçesi şöyle: eşdeğer."
+},
+{
+"baslik": "c748",
+"tur": "metin",
+"metin": "On avro aşağı yukarı on bir dolara eşdeğer.",
+"anlatim": "On avro aşağı yukarı on bir dolara eşdeğer."
+},
+{
+"baslik": "c749",
+"tur": "metin",
+"metin": "Türkçesi şöyle: evrimleşmek, gelişmek.",
+"anlatim": "Türkçesi şöyle: evrimleşmek, gelişmek."
+},
+{
+"baslik": "c750",
+"tur": "metin",
+"metin": "Şirket yıllar içinde gelişti.",
+"anlatim": "Şirket yıllar içinde gelişti."
+},
+{
+"baslik": "c751",
+"tur": "metin",
+"metin": "Türkçesi şöyle: genişlemek, büyümek.",
+"anlatim": "Türkçesi şöyle: genişlemek, büyümek."
+},
+{
+"baslik": "c752",
+"tur": "metin",
+"metin": "İşletme Asya'ya genişledi.",
+"anlatim": "İşletme Asya'ya genişledi."
+},
+{
+"baslik": "c753",
+"tur": "metin",
+"metin": "Türkçesi şöyle: temel, köklü.",
+"anlatim": "Türkçesi şöyle: temel, köklü."
+},
+{
+"baslik": "c754",
+"tur": "metin",
+"metin": "Aralarında temel bir fark var.",
+"anlatim": "Aralarında temel bir fark var."
+},
+{
+"baslik": "c755",
+"tur": "metin",
+"metin": "bir şeye uyum sağlamak.",
+"anlatim": "bir şeye uyum sağlamak."
+},
+{
+"baslik": "c756",
+"tur": "metin",
+"metin": "bir şeyde düşüş.",
+"anlatim": "bir şeyde düşüş."
+},
+{
+"baslik": "c757",
+"tur": "metin",
+"metin": "bir alana genişlemek.",
+"anlatim": "bir alana genişlemek."
+},
+{
+"baslik": "c758",
+"tur": "metin",
+"metin": "köklü bir değişim.",
+"anlatim": "köklü bir değişim."
+},
+{
+"baslik": "c759",
+"tur": "metin",
+"metin": "Konu: kentler ve iklim değişikliği.",
+"anlatim": "Konu: kentler ve iklim değişikliği."
+},
+{
+"baslik": "c760",
+"tur": "metin",
+"metin": "Yeni yasa küçük işletmelerin daha kolay borç almasını sağlayacak.",
+"anlatim": "Yeni yasa küçük işletmelerin daha kolay borç almasını sağlayacak."
+},
+{
+"baslik": "c761",
+"tur": "metin",
+"metin": "Olanak sağlamak anlamındaki fiil:",
+"anlatim": "Olanak sağlamak anlamındaki fiil:"
+},
+{
+"baslik": "c762",
+"tur": "metin",
+"metin": "Ders: Akademik kelimeler 16: değişim ve uyum.",
+"anlatim": "Ders: Akademik kelimeler 16: değişim ve uyum."
+},
+{
+"baslik": "c763",
+"tur": "metin",
+"metin": "Bu ders, YDS özel dizisi, on altıncı ders.",
+"anlatim": "Bu ders, YDS özel dizisi, on altıncı ders."
+},
+{
+"baslik": "c764",
+"tur": "metin",
+"metin": "Konu: Belirli edatlarla kullanılan isimler.",
+"anlatim": "Konu: Belirli edatlarla kullanılan isimler."
+},
+{
+"baslik": "c765",
+"tur": "metin",
+"metin": "YDS okuma parçalarında ve edat sorularında çok sık geçer.",
+"anlatim": "YDS okuma parçalarında ve edat sorularında çok sık geçer."
+},
+{
+"baslik": "c766",
+"tur": "metin",
+"metin": "Önce erişim, alternatif, yaklaşım ve katkı bildiren isimler.",
+"anlatim": "Önce erişim, alternatif, yaklaşım ve katkı bildiren isimler."
+},
+{
+"baslik": "c767",
+"tur": "metin",
+"metin": "bir şeye erişim.",
+"anlatim": "bir şeye erişim."
+},
+{
+"baslik": "c768",
+"tur": "metin",
+"metin": "Milyonlarca insanın temiz suya erişimi yok.",
+"anlatim": "Milyonlarca insanın temiz suya erişimi yok."
+},
+{
+"baslik": "c769",
+"tur": "metin",
+"metin": "bir şeye alternatif.",
+"anlatim": "bir şeye alternatif."
+},
+{
+"baslik": "c770",
+"tur": "metin",
+"metin": "Bisiklet, araba kullanmaya sağlıklı bir alternatif.",
+"anlatim": "Bisiklet, araba kullanmaya sağlıklı bir alternatif."
+},
+{
+"baslik": "c771",
+"tur": "metin",
+"metin": "bir şeye yaklaşım.",
+"anlatim": "bir şeye yaklaşım."
+},
+{
+"baslik": "c772",
+"tur": "metin",
+"metin": "Soruna yeni bir yaklaşım gerekiyor.",
+"anlatim": "Soruna yeni bir yaklaşım gerekiyor."
+},
+{
+"baslik": "c773",
+"tur": "metin",
+"metin": "bir şeye katkı.",
+"anlatim": "bir şeye katkı."
+},
+{
+"baslik": "c774",
+"tur": "metin",
+"metin": "Bilime büyük katkı yaptı.",
+"anlatim": "Bilime büyük katkı yaptı."
+},
+{
+"baslik": "c775",
+"tur": "metin",
+"metin": "Şimdi talep, vurgu, etki ve artış bildiren isimler.",
+"anlatim": "Şimdi talep, vurgu, etki ve artış bildiren isimler."
+},
+{
+"baslik": "c776",
+"tur": "metin",
+"metin": "bir şeye talep.",
+"anlatim": "bir şeye talep."
+},
+{
+"baslik": "c777",
+"tur": "metin",
+"metin": "Elektrikli arabalara talep artıyor.",
+"anlatim": "Elektrikli arabalara talep artıyor."
+},
+{
+"baslik": "c778",
+"tur": "metin",
+"metin": "bir şeye verilen önem, vurgu.",
+"anlatim": "bir şeye verilen önem, vurgu."
+},
+{
+"baslik": "c779",
+"tur": "metin",
+"metin": "Okul dillere önem veriyor.",
+"anlatim": "Okul dillere önem veriyor."
+},
+{
+"baslik": "c780",
+"tur": "metin",
+"metin": "bir şey üzerindeki etki.",
+"anlatim": "bir şey üzerindeki etki."
+},
+{
+"baslik": "c781",
+"tur": "metin",
+"metin": "Sosyal medyanın gençler üzerinde büyük etkisi var.",
+"anlatim": "Sosyal medyanın gençler üzerinde büyük etkisi var."
+},
+{
+"baslik": "c782",
+"tur": "metin",
+"metin": "bir şeydeki artış.",
+"anlatim": "bir şeydeki artış."
+},
+{
+"baslik": "c783",
+"tur": "metin",
+"metin": "Fiyatlarda artış oldu.",
+"anlatim": "Fiyatlarda artış oldu."
+},
+{
+"baslik": "c784",
+"tur": "metin",
+"metin": "Son grup: neden, çözüm, tehdit ve avantaj bildiren isimler.",
+"anlatim": "Son grup: neden, çözüm, tehdit ve avantaj bildiren isimler."
+},
+{
+"baslik": "c785",
+"tur": "metin",
+"metin": "bir şeyin nedeni.",
+"anlatim": "bir şeyin nedeni."
+},
+{
+"baslik": "c786",
+"tur": "metin",
+"metin": "Gecikmenin nedeni neydi?",
+"anlatim": "Gecikmenin nedeni neydi?"
+},
+{
+"baslik": "c787",
+"tur": "metin",
+"metin": "bir şeye çözüm.",
+"anlatim": "bir şeye çözüm."
+},
+{
+"baslik": "c788",
+"tur": "metin",
+"metin": "Bu soruna kolay bir çözüm yok.",
+"anlatim": "Bu soruna kolay bir çözüm yok."
+},
+{
+"baslik": "c789",
+"tur": "metin",
+"metin": "bir şey için tehdit.",
+"anlatim": "bir şey için tehdit."
+},
+{
+"baslik": "c790",
+"tur": "metin",
+"metin": "Kirlilik yaban hayatı için bir tehdit.",
+"anlatim": "Kirlilik yaban hayatı için bir tehdit."
+},
+{
+"baslik": "c791",
+"tur": "metin",
+"metin": "bir şeyin avantajı.",
+"anlatim": "bir şeyin avantajı."
+},
+{
+"baslik": "c792",
+"tur": "metin",
+"metin": "Planın bir avantajı düşük maliyeti.",
+"anlatim": "Planın bir avantajı düşük maliyeti."
+},
+{
+"baslik": "c793",
+"tur": "metin",
+"metin": "Şimdi enerji üzerine bir haber programından kısa bir bölüm dinleyeceksiniz.",
+"anlatim": "Şimdi enerji üzerine bir haber programından kısa bir bölüm dinleyeceksiniz."
+},
+{
+"baslik": "c794",
+"tur": "metin",
+"metin": "İsimlerden sonra gelen edatlara dikkat edin.",
+"anlatim": "İsimlerden sonra gelen edatlara dikkat edin."
+},
+{
+"baslik": "c795",
+"tur": "metin",
+"metin": "İpucu: isimden sonraki edat genellikle anlamı değiştirmez, ama yanlış edat seçeneği eler.",
+"anlatim": "İpucu: isimden sonraki edat genellikle anlamı değiştirmez, ama yanlış edat seçeneği eler."
+},
+{
+"baslik": "c796",
+"tur": "metin",
+"metin": "Kalıbı bir bütün olarak öğrenin.",
+"anlatim": "Kalıbı bir bütün olarak öğrenin."
+},
+{
+"baslik": "c797",
+"tur": "metin",
+"metin": "Rapor evden çalışanların sayısında keskin bir artış bulmuş.",
+"anlatim": "Rapor evden çalışanların sayısında keskin bir artış bulmuş."
+},
+{
+"baslik": "c798",
+"tur": "metin",
+"metin": "Artış anlamındaki ismin edatı:",
+"anlatim": "Artış anlamındaki ismin edatı:"
+},
+{
+"baslik": "c799",
+"tur": "metin",
+"metin": "İklim değişikliği kıyı şehirleri için ciddi bir tehdit oluşturuyor.",
+"anlatim": "İklim değişikliği kıyı şehirleri için ciddi bir tehdit oluşturuyor."
+},
+{
+"baslik": "c800",
+"tur": "metin",
+"metin": "Tehdit anlamındaki ismin edatı:",
+"anlatim": "Tehdit anlamındaki ismin edatı:"
+},
+{
+"baslik": "c801",
+"tur": "metin",
+"metin": "Yeni müfredat eleştirel düşünmeye daha çok önem veriyor.",
+"anlatim": "Yeni müfredat eleştirel düşünmeye daha çok önem veriyor."
+},
+{
+"baslik": "c802",
+"tur": "metin",
+"metin": "Vurgu anlamındaki ismin edatı:",
+"anlatim": "Vurgu anlamındaki ismin edatı:"
+},
+{
+"baslik": "c803",
+"tur": "metin",
+"metin": "Birçok Avrupa ülkesinde hemşirelere ihtiyaç artıyor.",
+"anlatim": "Birçok Avrupa ülkesinde hemşirelere ihtiyaç artıyor."
+},
+{
+"baslik": "c804",
+"tur": "metin",
+"metin": "Talep anlamındaki kelime:",
+"anlatim": "Talep anlamındaki kelime:"
+},
+{
+"baslik": "c805",
+"tur": "metin",
+"metin": "Ders: İsim ve edat eşleşmeleri.",
+"anlatim": "Ders: İsim ve edat eşleşmeleri."
+},
+{
+"baslik": "c806",
+"tur": "metin",
+"metin": "Bu ders, kıdemli iş analisti dizisi, on altıncı ders.",
+"anlatim": "Bu ders, kıdemli iş analisti dizisi, on altıncı ders."
+},
+{
+"baslik": "c807",
+"tur": "metin",
+"metin": "Konu: Mevzuata uyum, risk ve iç kontrol.",
+"anlatim": "Konu: Mevzuata uyum, risk ve iç kontrol."
+},
+{
+"baslik": "c808",
+"tur": "metin",
+"metin": "Finans sektöründeki iş analistleri için temel kavramlar.",
+"anlatim": "Finans sektöründeki iş analistleri için temel kavramlar."
+},
+{
+"baslik": "c809",
+"tur": "metin",
+"metin": "Türkçesi şöyle: düzenleyici kurum.",
+"anlatim": "Türkçesi şöyle: düzenleyici kurum."
+},
+{
+"baslik": "c810",
+"tur": "metin",
+"metin": "Düzenleyici kurum bankaya ceza kesti.",
+"anlatim": "Düzenleyici kurum bankaya ceza kesti."
+},
+{
+"baslik": "c811",
+"tur": "metin",
+"metin": "müşterini tanı süreci.",
+"anlatim": "müşterini tanı süreci."
+},
+{
+"baslik": "c812",
+"tur": "metin",
+"metin": "Her yeni hesap için müşteriyi tanıma kontrolleri gerekli.",
+"anlatim": "Her yeni hesap için müşteriyi tanıma kontrolleri gerekli."
+},
+{
+"baslik": "c813",
+"tur": "metin",
+"metin": "kara para aklamayı önleme.",
+"anlatim": "kara para aklamayı önleme."
+},
+{
+"baslik": "c814",
+"tur": "metin",
+"metin": "Kara para aklamayı önleme kuralları çok katı.",
+"anlatim": "Kara para aklamayı önleme kuralları çok katı."
+},
+{
+"baslik": "c815",
+"tur": "metin",
+"metin": "kişisel verilerin korunması.",
+"anlatim": "kişisel verilerin korunması."
+},
+{
+"baslik": "c816",
+"tur": "metin",
+"metin": "Kişisel verilerin korunması yasaları tüm müşteri verileri için geçerli.",
+"anlatim": "Kişisel verilerin korunması yasaları tüm müşteri verileri için geçerli."
+},
+{
+"baslik": "c817",
+"tur": "metin",
+"metin": "veri ihlali, veri sızıntısı.",
+"anlatim": "veri ihlali, veri sızıntısı."
+},
+{
+"baslik": "c818",
+"tur": "metin",
+"metin": "Veri ihlali iki milyon müşteriyi etkiledi.",
+"anlatim": "Veri ihlali iki milyon müşteriyi etkiledi."
+},
+{
+"baslik": "c819",
+"tur": "metin",
+"metin": "Türkçesi şöyle: iç denetim.",
+"anlatim": "Türkçesi şöyle: iç denetim."
+},
+{
+"baslik": "c820",
+"tur": "metin",
+"metin": "İç denetim süreci inceledi.",
+"anlatim": "İç denetim süreci inceledi."
+},
+{
+"baslik": "c821",
+"tur": "metin",
+"metin": "kontrol, denetim mekanizması.",
+"anlatim": "kontrol, denetim mekanizması."
+},
+{
+"baslik": "c822",
+"tur": "metin",
+"metin": "Her ödemeyi kontrol eden bir mekanizma gerekiyor.",
+"anlatim": "Her ödemeyi kontrol eden bir mekanizma gerekiyor."
+},
+{
+"baslik": "c823",
+"tur": "metin",
+"metin": "Türkçesi şöyle: dolandırıcılık tespiti.",
+"anlatim": "Türkçesi şöyle: dolandırıcılık tespiti."
+},
+{
+"baslik": "c824",
+"tur": "metin",
+"metin": "Dolandırıcılık tespit sistemi ödemeyi durdurdu.",
+"anlatim": "Dolandırıcılık tespit sistemi ödemeyi durdurdu."
+},
+{
+"baslik": "c825",
+"tur": "metin",
+"metin": "risk iştahı, kabul edilebilir risk düzeyi.",
+"anlatim": "risk iştahı, kabul edilebilir risk düzeyi."
+},
+{
+"baslik": "c826",
+"tur": "metin",
+"metin": "Risk iştahımız düşük.",
+"anlatim": "Risk iştahımız düşük."
+},
+{
+"baslik": "c827",
+"tur": "metin",
+"metin": "Türkçesi şöyle: görevler ayrılığı.",
+"anlatim": "Türkçesi şöyle: görevler ayrılığı."
+},
+{
+"baslik": "c828",
+"tur": "metin",
+"metin": "Görevler ayrılığı, kimsenin kendi ödemesini onaylayamaması demek.",
+"anlatim": "Görevler ayrılığı, kimsenin kendi ödemesini onaylayamaması demek."
+},
+{
+"baslik": "c829",
+"tur": "metin",
+"metin": "Türkçesi şöyle: yasal raporlama.",
+"anlatim": "Türkçesi şöyle: yasal raporlama."
+},
+{
+"baslik": "c830",
+"tur": "metin",
+"metin": "Yasal raporlama her ay yapılmalı.",
+"anlatim": "Yasal raporlama her ay yapılmalı."
+},
+{
+"baslik": "c831",
+"tur": "metin",
+"metin": "Türkçesi şöyle: denetim bulgusu.",
+"anlatim": "Türkçesi şöyle: denetim bulgusu."
+},
+{
+"baslik": "c832",
+"tur": "metin",
+"metin": "Denetim bulgusunu hazirana kadar kapatmalıyız.",
+"anlatim": "Denetim bulgusunu hazirana kadar kapatmalıyız."
+},
+{
+"baslik": "c833",
+"tur": "metin",
+"metin": "Bu mevzuata uygun mu?",
+"anlatim": "Bu mevzuata uygun mu?"
+},
+{
+"baslik": "c834",
+"tur": "metin",
+"metin": "Yapmazsak risk ne?",
+"anlatim": "Yapmazsak risk ne?"
+},
+{
+"baslik": "c835",
+"tur": "metin",
+"metin": "Türkçesi şöyle: Kim onaylıyor?",
+"anlatim": "Türkçesi şöyle: Kim onaylıyor?"
+},
+{
+"baslik": "c836",
+"tur": "metin",
+"metin": "Bir denetim izi gerekiyor.",
+"anlatim": "Bir denetim izi gerekiyor."
+},
+{
+"baslik": "c837",
+"tur": "metin",
+"metin": "Şimdi iş analistinin uyum birimi yöneticisiyle yaptığı, bir denetim bulgusu üzerine toplantıyı dinleyeceksiniz.",
+"anlatim": "Şimdi iş analistinin uyum birimi yöneticisiyle yaptığı, bir denetim bulgusu üzerine toplantıyı dinleyeceksiniz."
+},
+{
+"baslik": "c838",
+"tur": "metin",
+"metin": "Bir ürün yöneticisi, uyum kontrollerini atlayarak yeni ürünü hızla çıkarmak istiyor.",
+"anlatim": "Bir ürün yöneticisi, uyum kontrollerini atlayarak yeni ürünü hızla çıkarmak istiyor."
+},
+{
+"baslik": "c839",
+"tur": "metin",
+"metin": "Riski açıklayıp kibarca bir çözüm önerin.",
+"anlatim": "Riski açıklayıp kibarca bir çözüm önerin."
+},
+{
+"baslik": "c840",
+"tur": "metin",
+"metin": "Ders: İş analizi 16: Uyum ve risk.",
+"anlatim": "Ders: İş analizi 16: Uyum ve risk."
+},
+{
+"baslik": "c841",
+"tur": "metin",
+"metin": "Bu ders, B1 seviyesi, on altıncı ders.",
+"anlatim": "Bu ders, B1 seviyesi, on altıncı ders."
+},
+{
+"baslik": "c842",
+"tur": "metin",
+"metin": "Konu: Hobiler, kulüpler ve gönüllülük.",
+"anlatim": "Konu: Hobiler, kulüpler ve gönüllülük."
+},
+{
+"baslik": "c843",
+"tur": "metin",
+"metin": "IELTS konuşma sınavının ilk bölümünde en sık sorulan konulardan biri.",
+"anlatim": "IELTS konuşma sınavının ilk bölümünde en sık sorulan konulardan biri."
+},
+{
+"baslik": "c844",
+"tur": "metin",
+"metin": "gönüllü; gönüllü olmak.",
+"anlatim": "gönüllü; gönüllü olmak."
+},
+{
+"baslik": "c845",
+"tur": "metin",
+"metin": "Bir hayvan barınağında gönüllü çalışıyor.",
+"anlatim": "Bir hayvan barınağında gönüllü çalışıyor."
+},
+{
+"baslik": "c846",
+"tur": "metin",
+"metin": "bahçe işleri, bahçıvanlık.",
+"anlatim": "bahçe işleri, bahçıvanlık."
+},
+{
+"baslik": "c847",
+"tur": "metin",
+"metin": "Babam bahçe işlerini çok sever.",
+"anlatim": "Babam bahçe işlerini çok sever."
+},
+{
+"baslik": "c848",
+"tur": "metin",
+"metin": "Türkçesi şöyle: fotoğrafçılık.",
+"anlatim": "Türkçesi şöyle: fotoğrafçılık."
+},
+{
+"baslik": "c849",
+"tur": "metin",
+"metin": "Fotoğrafçılığa geçen yıl başladım.",
+"anlatim": "Fotoğrafçılığa geçen yıl başladım."
+},
+{
+"baslik": "c850",
+"tur": "metin",
+"metin": "Türkçesi şöyle: el sanatı.",
+"anlatim": "Türkçesi şöyle: el sanatı."
+},
+{
+"baslik": "c851",
+"tur": "metin",
+"metin": "El sanatı ürünlerini pazarda satıyor.",
+"anlatim": "El sanatı ürünlerini pazarda satıyor."
+},
+{
+"baslik": "c852",
+"tur": "metin",
+"metin": "acemi, yeni başlayan.",
+"anlatim": "acemi, yeni başlayan."
+},
+{
+"baslik": "c853",
+"tur": "metin",
+"metin": "Bu kurs yeni başlayanlar için.",
+"anlatim": "Bu kurs yeni başlayanlar için."
+},
+{
+"baslik": "c854",
+"tur": "metin",
+"metin": "Türkçesi şöyle: üyelik.",
+"anlatim": "Türkçesi şöyle: üyelik."
+},
+{
+"baslik": "c855",
+"tur": "metin",
+"metin": "Üyelik yılda yirmi sterlin.",
+"anlatim": "Üyelik yılda yirmi sterlin."
+},
+{
+"baslik": "c856",
+"tur": "metin",
+"metin": "boş zaman, eğlence.",
+"anlatim": "boş zaman, eğlence."
+},
+{
+"baslik": "c857",
+"tur": "metin",
+"metin": "Boş zamanında ne yaparsın?",
+"anlatim": "Boş zamanında ne yaparsın?"
+},
+{
+"baslik": "c858",
+"tur": "metin",
+"metin": "Türkçesi şöyle: hevesli, istekli.",
+"anlatim": "Türkçesi şöyle: hevesli, istekli."
+},
+{
+"baslik": "c859",
+"tur": "metin",
+"metin": "Öğrenciler çok hevesliydi.",
+"anlatim": "Öğrenciler çok hevesliydi."
+},
+{
+"baslik": "c860",
+"tur": "metin",
+"metin": "Yarışa herkes katılabilir.",
+"anlatim": "Yarışa herkes katılabilir."
+},
+{
+"baslik": "c861",
+"tur": "metin",
+"metin": "Boş zamanımda çok okurum.",
+"anlatim": "Boş zamanımda çok okurum."
+},
+{
+"baslik": "c862",
+"tur": "metin",
+"metin": "Balık tutmak popüler bir uğraştır.",
+"anlatim": "Balık tutmak popüler bir uğraştır."
+},
+{
+"baslik": "c863",
+"tur": "metin",
+"metin": "Türkçesi şöyle: kulüp.",
+"anlatim": "Türkçesi şöyle: kulüp."
+},
+{
+"baslik": "c864",
+"tur": "metin",
+"metin": "Bir yürüyüş kulübüne katıldım.",
+"anlatim": "Bir yürüyüş kulübüne katıldım."
+},
+{
+"baslik": "c865",
+"tur": "metin",
+"metin": "bir şeyle ilgileniyorum.",
+"anlatim": "bir şeyle ilgileniyorum."
+},
+{
+"baslik": "c866",
+"tur": "metin",
+"metin": "bir şeye başladım.",
+"anlatim": "bir şeye başladım."
+},
+{
+"baslik": "c867",
+"tur": "metin",
+"metin": "Henüz pek iyi değilim.",
+"anlatim": "Henüz pek iyi değilim."
+},
+{
+"baslik": "c868",
+"tur": "metin",
+"metin": "Rahatlamama yardım ediyor.",
+"anlatim": "Rahatlamama yardım ediyor."
+},
+{
+"baslik": "c869",
+"tur": "metin",
+"metin": "Bir semt merkezinin kursları anlatılıyor.",
+"anlatim": "Bir semt merkezinin kursları anlatılıyor."
+},
+{
+"baslik": "c870",
+"tur": "metin",
+"metin": "Fırtınadan sonra kumsalı temizlemeye iki yüzden fazla kişi karşılıksız yardım etmiş.",
+"anlatim": "Fırtınadan sonra kumsalı temizlemeye iki yüzden fazla kişi karşılıksız yardım etmiş."
+},
+{
+"baslik": "c871",
+"tur": "metin",
+"metin": "Gönüllü anlamındaki kelime:",
+"anlatim": "Gönüllü anlamındaki kelime:"
+},
+{
+"baslik": "c872",
+"tur": "metin",
+"metin": "Ders: Boş zaman ve hobiler.",
+"anlatim": "Ders: Boş zaman ve hobiler."
+},
+{
+"baslik": "c873",
+"tur": "metin",
+"metin": "Bu ders, B2 seviyesi, on altıncı ders.",
+"anlatim": "Bu ders, B2 seviyesi, on altıncı ders."
+},
+{
+"baslik": "c874",
+"tur": "metin",
+"metin": "Konu: Turizm türleri ve turizmin etkileri.",
+"anlatim": "Konu: Turizm türleri ve turizmin etkileri."
+},
+{
+"baslik": "c875",
+"tur": "metin",
+"metin": "IELTS konuşma ve yazma sınavlarında sık çıkar.",
+"anlatim": "IELTS konuşma ve yazma sınavlarında sık çıkar."
+},
+{
+"baslik": "c876",
+"tur": "metin",
+"metin": "gezi programı, güzergâh.",
+"anlatim": "gezi programı, güzergâh."
+},
+{
+"baslik": "c877",
+"tur": "metin",
+"metin": "Gezi programımızda üç şehir var.",
+"anlatim": "Gezi programımızda üç şehir var."
+},
+{
+"baslik": "c878",
+"tur": "metin",
+"metin": "Türkçesi şöyle: tatil köyü.",
+"anlatim": "Türkçesi şöyle: tatil köyü."
+},
+{
+"baslik": "c879",
+"tur": "metin",
+"metin": "Bir sahil tatil köyünde kaldık.",
+"anlatim": "Bir sahil tatil köyünde kaldık."
+},
+{
+"baslik": "c880",
+"tur": "metin",
+"metin": "her şey dahil paket tur.",
+"anlatim": "her şey dahil paket tur."
+},
+{
+"baslik": "c881",
+"tur": "metin",
+"metin": "Paket turlar genellikle daha ucuz.",
+"anlatim": "Paket turlar genellikle daha ucuz."
+},
+{
+"baslik": "c882",
+"tur": "metin",
+"metin": "sırt çantalı gezgin.",
+"anlatim": "sırt çantalı gezgin."
+},
+{
+"baslik": "c883",
+"tur": "metin",
+"metin": "Hostel sırt çantalı gezginlerle doluydu.",
+"anlatim": "Hostel sırt çantalı gezginlerle doluydu."
+},
+{
+"baslik": "c884",
+"tur": "metin",
+"metin": "Türkçesi şöyle: ekolojik turizm.",
+"anlatim": "Türkçesi şöyle: ekolojik turizm."
+},
+{
+"baslik": "c885",
+"tur": "metin",
+"metin": "Ekolojik turizm yerel doğayı korur.",
+"anlatim": "Ekolojik turizm yerel doğayı korur."
+},
+{
+"baslik": "c886",
+"tur": "metin",
+"metin": "abartılmış, olduğundan fazla övülen.",
+"anlatim": "abartılmış, olduğundan fazla övülen."
+},
+{
+"baslik": "c887",
+"tur": "metin",
+"metin": "Bence o yer abartılıyor.",
+"anlatim": "Bence o yer abartılıyor."
+},
+{
+"baslik": "c888",
+"tur": "metin",
+"metin": "pitoresk, resim gibi güzel.",
+"anlatim": "pitoresk, resim gibi güzel."
+},
+{
+"baslik": "c889",
+"tur": "metin",
+"metin": "Resim gibi güzel bir köyü gezdik.",
+"anlatim": "Resim gibi güzel bir köyü gezdik."
+},
+{
+"baslik": "c890",
+"tur": "metin",
+"metin": "Türkçesi şöyle: yüksek sezon.",
+"anlatim": "Türkçesi şöyle: yüksek sezon."
+},
+{
+"baslik": "c891",
+"tur": "metin",
+"metin": "Yüksek sezonda fiyatlar ikiye katlanıyor.",
+"anlatim": "Yüksek sezonda fiyatlar ikiye katlanıyor."
+},
+{
+"baslik": "c892",
+"tur": "metin",
+"metin": "Türkçesi şöyle: gemi turu.",
+"anlatim": "Türkçesi şöyle: gemi turu."
+},
+{
+"baslik": "c893",
+"tur": "metin",
+"metin": "Akdeniz'de bir gemi turuna çıktılar.",
+"anlatim": "Akdeniz'de bir gemi turuna çıktılar."
+},
+{
+"baslik": "c894",
+"tur": "metin",
+"metin": "konukseverlik; konaklama sektörü.",
+"anlatim": "konukseverlik; konaklama sektörü."
+},
+{
+"baslik": "c895",
+"tur": "metin",
+"metin": "Türk konukseverliği ünlüdür.",
+"anlatim": "Türk konukseverliği ünlüdür."
+},
+{
+"baslik": "c896",
+"tur": "metin",
+"metin": "turistlerin pek gitmediği yerde.",
+"anlatim": "turistlerin pek gitmediği yerde."
+},
+{
+"baslik": "c897",
+"tur": "metin",
+"metin": "Turistlerin pek gitmediği bir kafe bulduk.",
+"anlatim": "Turistlerin pek gitmediği bir kafe bulduk."
+},
+{
+"baslik": "c898",
+"tur": "metin",
+"metin": "simge yapı, önemli yer.",
+"anlatim": "simge yapı, önemli yer."
+},
+{
+"baslik": "c899",
+"tur": "metin",
+"metin": "Kule şehrin en ünlü simge yapısı.",
+"anlatim": "Kule şehrin en ünlü simge yapısı."
+},
+{
+"baslik": "c900",
+"tur": "metin",
+"metin": "Türkçesi şöyle: gezip görmek.",
+"anlatim": "Türkçesi şöyle: gezip görmek."
+},
+{
+"baslik": "c901",
+"tur": "metin",
+"metin": "Türkçesi şöyle: turist tuzağı.",
+"anlatim": "Türkçesi şöyle: turist tuzağı."
+},
+{
+"baslik": "c902",
+"tur": "metin",
+"metin": "Türkçesi şöyle: kalabalıktan uzaklaşmak.",
+"anlatim": "Türkçesi şöyle: kalabalıktan uzaklaşmak."
+},
+{
+"baslik": "c903",
+"tur": "metin",
+"metin": "kısıtlı bütçeyle seyahat etmek.",
+"anlatim": "kısıtlı bütçeyle seyahat etmek."
+},
+{
+"baslik": "c904",
+"tur": "metin",
+"metin": "Şimdi bir seyahat programından kısa bir bölüm dinleyeceksiniz.",
+"anlatim": "Şimdi bir seyahat programından kısa bir bölüm dinleyeceksiniz."
+},
+{
+"baslik": "c905",
+"tur": "metin",
+"metin": "İki sunucu farklı tatil türlerini konuşuyor.",
+"anlatim": "İki sunucu farklı tatil türlerini konuşuyor."
+},
+{
+"baslik": "c906",
+"tur": "metin",
+"metin": "Uçuş saatleri, oteller ve turlar içeren ayrıntılı bir belge gönderilmiş.",
+"anlatim": "Uçuş saatleri, oteller ve turlar içeren ayrıntılı bir belge gönderilmiş."
+},
+{
+"baslik": "c907",
+"tur": "metin",
+"metin": "Gezi programı anlamındaki kelime:",
+"anlatim": "Gezi programı anlamındaki kelime:"
+},
+{
+"baslik": "c908",
+"tur": "metin",
+"metin": "Ders: Turizm ve seyahat.",
+"anlatim": "Ders: Turizm ve seyahat."
+},
+{
+"baslik": "c909",
+"tur": "metin",
+"metin": "Bu ders, C1 seviyesi, on altıncı ders.",
+"anlatim": "Bu ders, C1 seviyesi, on altıncı ders."
+},
+{
+"baslik": "c910",
+"tur": "metin",
+"metin": "Konu: Otomasyon, yapay zekâ ve iş gücünün geleceği.",
+"anlatim": "Konu: Otomasyon, yapay zekâ ve iş gücünün geleceği."
+},
+{
+"baslik": "c911",
+"tur": "metin",
+"metin": "IELTS yazma sınavının en sık konularından biri.",
+"anlatim": "IELTS yazma sınavının en sık konularından biri."
+},
+{
+"baslik": "c912",
+"tur": "metin",
+"metin": "Otomasyon imalatı değiştirdi.",
+"anlatim": "Otomasyon imalatı değiştirdi."
+},
+{
+"baslik": "c913",
+"tur": "metin",
+"metin": "işten çıkarılmış; gereksiz.",
+"anlatim": "işten çıkarılmış; gereksiz."
+},
+{
+"baslik": "c914",
+"tur": "metin",
+"metin": "İki yüz işçi işten çıkarıldı.",
+"anlatim": "İki yüz işçi işten çıkarıldı."
+},
+{
+"baslik": "c915",
+"tur": "metin",
+"metin": "kısa süreli ve parça başı iş ekonomisi.",
+"anlatim": "kısa süreli ve parça başı iş ekonomisi."
+},
+{
+"baslik": "c916",
+"tur": "metin",
+"metin": "Pek çok genç parça başı iş ekonomisinde çalışıyor.",
+"anlatim": "Pek çok genç parça başı iş ekonomisinde çalışıyor."
+},
+{
+"baslik": "c917",
+"tur": "metin",
+"metin": "Türkçesi şöyle: serbest çalışan.",
+"anlatim": "Türkçesi şöyle: serbest çalışan."
+},
+{
+"baslik": "c918",
+"tur": "metin",
+"metin": "Serbest tasarımcı olarak çalışıyor.",
+"anlatim": "Serbest tasarımcı olarak çalışıyor."
+},
+{
+"baslik": "c919",
+"tur": "metin",
+"metin": "Türkçesi şöyle: becerilerini geliştirmek.",
+"anlatim": "Türkçesi şöyle: becerilerini geliştirmek."
+},
+{
+"baslik": "c920",
+"tur": "metin",
+"metin": "Şirketlerin çalışanlarının becerilerini geliştirmesi gerekiyor.",
+"anlatim": "Şirketlerin çalışanlarının becerilerini geliştirmesi gerekiyor."
+},
+{
+"baslik": "c921",
+"tur": "metin",
+"metin": "yeni bir meslek için yeniden eğitmek.",
+"anlatim": "yeni bir meslek için yeniden eğitmek."
+},
+{
+"baslik": "c922",
+"tur": "metin",
+"metin": "Devlet işçilerin yeni beceriler kazanmasına yardım ediyor.",
+"anlatim": "Devlet işçilerin yeni beceriler kazanmasına yardım ediyor."
+},
+{
+"baslik": "c923",
+"tur": "metin",
+"metin": "evrensel temel gelir.",
+"anlatim": "evrensel temel gelir."
+},
+{
+"baslik": "c924",
+"tur": "metin",
+"metin": "Finlandiya evrensel temel geliri denedi.",
+"anlatim": "Finlandiya evrensel temel geliri denedi."
+},
+{
+"baslik": "c925",
+"tur": "metin",
+"metin": "Türkçesi şöyle: iş gücü.",
+"anlatim": "Türkçesi şöyle: iş gücü."
+},
+{
+"baslik": "c926",
+"tur": "metin",
+"metin": "Kadınlar iş gücünün yarısını oluşturuyor.",
+"anlatim": "Kadınlar iş gücünün yarısını oluşturuyor."
+},
+{
+"baslik": "c927",
+"tur": "metin",
+"metin": "eskimiş, artık kullanılmayan.",
+"anlatim": "eskimiş, artık kullanılmayan."
+},
+{
+"baslik": "c928",
+"tur": "metin",
+"metin": "Bazı beceriler yakında eskiyecek.",
+"anlatim": "Bazı beceriler yakında eskiyecek."
+},
+{
+"baslik": "c929",
+"tur": "metin",
+"metin": "yerinden edilme; işini kaybetme.",
+"anlatim": "yerinden edilme; işini kaybetme."
+},
+{
+"baslik": "c930",
+"tur": "metin",
+"metin": "Otomasyon iş kaybına neden olabilir.",
+"anlatim": "Otomasyon iş kaybına neden olabilir."
+},
+{
+"baslik": "c931",
+"tur": "metin",
+"metin": "Türkçesi şöyle: güçlendirmek, artırmak.",
+"anlatim": "Türkçesi şöyle: güçlendirmek, artırmak."
+},
+{
+"baslik": "c932",
+"tur": "metin",
+"metin": "Teknoloji insan becerilerini güçlendirebilir.",
+"anlatim": "Teknoloji insan becerilerini güçlendirebilir."
+},
+{
+"baslik": "c933",
+"tur": "metin",
+"metin": "Türkçesi şöyle: verimlilik.",
+"anlatim": "Türkçesi şöyle: verimlilik."
+},
+{
+"baslik": "c934",
+"tur": "metin",
+"metin": "Yeni araçlar verimliliği artırdı.",
+"anlatim": "Yeni araçlar verimliliği artırdı."
+},
+{
+"baslik": "c935",
+"tur": "metin",
+"metin": "Türkçesi şöyle: işten çıkarılmak.",
+"anlatim": "Türkçesi şöyle: işten çıkarılmak."
+},
+{
+"baslik": "c936",
+"tur": "metin",
+"metin": "Türkçesi şöyle: iş kaybı.",
+"anlatim": "Türkçesi şöyle: iş kaybı."
+},
+{
+"baslik": "c937",
+"tur": "metin",
+"metin": "sosyal güvenlik ağı.",
+"anlatim": "sosyal güvenlik ağı."
+},
+{
+"baslik": "c938",
+"tur": "metin",
+"metin": "yaşam boyu öğrenme.",
+"anlatim": "yaşam boyu öğrenme."
+},
+{
+"baslik": "c939",
+"tur": "metin",
+"metin": "Şimdi işin geleceği üzerine bir panel tartışmasından kısa bir bölüm dinleyeceksiniz.",
+"anlatim": "Şimdi işin geleceği üzerine bir panel tartışmasından kısa bir bölüm dinleyeceksiniz."
+},
+{
+"baslik": "c940",
+"tur": "metin",
+"metin": "Dijital fotoğraf makineleri gelince filmli makineler neredeyse hiç kullanılmaz olmuş.",
+"anlatim": "Dijital fotoğraf makineleri gelince filmli makineler neredeyse hiç kullanılmaz olmuş."
+},
+{
+"baslik": "c941",
+"tur": "metin",
+"metin": "Eskimiş anlamındaki kelime:",
+"anlatim": "Eskimiş anlamındaki kelime:"
+},
+{
+"baslik": "c942",
+"tur": "metin",
+"metin": "Dikkat: işten çıkarılmış anlamındaki kelime insanlar için kullanılır.",
+"anlatim": "Dikkat: işten çıkarılmış anlamındaki kelime insanlar için kullanılır."
+},
+{
+"baslik": "c943",
+"tur": "metin",
+"metin": "Ders: Otomasyon ve işin geleceği.",
+"anlatim": "Ders: Otomasyon ve işin geleceği."
+},
+{
+"baslik": "c944",
+"tur": "metin",
+"metin": "Bu ders, IELTS ve YDS akademik kelime dizisi, on yedinci ders.",
+"anlatim": "Bu ders, IELTS ve YDS akademik kelime dizisi, on yedinci ders."
+},
+{
+"baslik": "c945",
+"tur": "metin",
+"metin": "Konu: Amaç, mantık ve bakış açısı bildiren akademik kelimeler.",
+"anlatim": "Konu: Amaç, mantık ve bakış açısı bildiren akademik kelimeler."
+},
+{
+"baslik": "c946",
+"tur": "metin",
+"metin": "Türkçesi şöyle: üretmek, oluşturmak.",
+"anlatim": "Türkçesi şöyle: üretmek, oluşturmak."
+},
+{
+"baslik": "c947",
+"tur": "metin",
+"metin": "Rüzgâr çiftlikleri temiz elektrik üretiyor.",
+"anlatim": "Rüzgâr çiftlikleri temiz elektrik üretiyor."
+},
+{
+"baslik": "c948",
+"tur": "metin",
+"metin": "Türkçesi şöyle: mantık.",
+"anlatim": "Türkçesi şöyle: mantık."
+},
+{
+"baslik": "c949",
+"tur": "metin",
+"metin": "Bu kararın mantığını anlamıyorum.",
+"anlatim": "Bu kararın mantığını anlamıyorum."
+},
+{
+"baslik": "c950",
+"tur": "metin",
+"metin": "marj, kâr payı; fark.",
+"anlatim": "marj, kâr payı; fark."
+},
+{
+"baslik": "c951",
+"tur": "metin",
+"metin": "Şirketin kâr marjı yüzde on.",
+"anlatim": "Şirketin kâr marjı yüzde on."
+},
+{
+"baslik": "c952",
+"tur": "metin",
+"metin": "Türkçesi şöyle: değiştirmek, uyarlamak.",
+"anlatim": "Türkçesi şöyle: değiştirmek, uyarlamak."
+},
+{
+"baslik": "c953",
+"tur": "metin",
+"metin": "Testten sonra tasarımı değiştirdik.",
+"anlatim": "Testten sonra tasarımı değiştirdik."
+},
+{
+"baslik": "c954",
+"tur": "metin",
+"metin": "izlemek, takip etmek.",
+"anlatim": "izlemek, takip etmek."
+},
+{
+"baslik": "c955",
+"tur": "metin",
+"metin": "Doktorlar hastanın kalbini izliyor.",
+"anlatim": "Doktorlar hastanın kalbini izliyor."
+},
+{
+"baslik": "c956",
+"tur": "metin",
+"metin": "Türkçesi şöyle: kavram, fikir.",
+"anlatim": "Türkçesi şöyle: kavram, fikir."
+},
+{
+"baslik": "c957",
+"tur": "metin",
+"metin": "Mahremiyet kavramı değişiyor.",
+"anlatim": "Mahremiyet kavramı değişiyor."
+},
+{
+"baslik": "c958",
+"tur": "metin",
+"metin": "Türkçesi şöyle: hedef; nesnel.",
+"anlatim": "Türkçesi şöyle: hedef; nesnel."
+},
+{
+"baslik": "c959",
+"tur": "metin",
+"metin": "Ana hedefimiz maliyetleri düşürmek.",
+"anlatim": "Ana hedefimiz maliyetleri düşürmek."
+},
+{
+"baslik": "c960",
+"tur": "metin",
+"metin": "Türkçesi şöyle: bakış açısı.",
+"anlatim": "Türkçesi şöyle: bakış açısı."
+},
+{
+"baslik": "c961",
+"tur": "metin",
+"metin": "Bir de benim bakış açımdan bakmaya çalış.",
+"anlatim": "Bir de benim bakış açımdan bakmaya çalış."
+},
+{
+"baslik": "c962",
+"tur": "metin",
+"metin": "kesin, tam, hassas.",
+"anlatim": "kesin, tam, hassas."
+},
+{
+"baslik": "c963",
+"tur": "metin",
+"metin": "Bana kesin rakamları verebilir misin?",
+"anlatim": "Bana kesin rakamları verebilir misin?"
+},
+{
+"baslik": "c964",
+"tur": "metin",
+"metin": "peşinden gitmek, sürdürmek.",
+"anlatim": "peşinden gitmek, sürdürmek."
+},
+{
+"baslik": "c965",
+"tur": "metin",
+"metin": "Hukuk alanında kariyer yapmaya karar verdi.",
+"anlatim": "Hukuk alanında kariyer yapmaya karar verdi."
+},
+{
+"baslik": "c966",
+"tur": "metin",
+"metin": "Türkçesi şöyle: oran.",
+"anlatim": "Türkçesi şöyle: oran."
+},
+{
+"baslik": "c967",
+"tur": "metin",
+"metin": "Öğretmen öğrenci oranı yirmide bir.",
+"anlatim": "Öğretmen öğrenci oranı yirmide bir."
+},
+{
+"baslik": "c968",
+"tur": "metin",
+"metin": "Yönetim kurulu öneriyi reddetti.",
+"anlatim": "Yönetim kurulu öneriyi reddetti."
+},
+{
+"baslik": "c969",
+"tur": "metin",
+"metin": "farklı bir bakış açısından.",
+"anlatim": "farklı bir bakış açısından."
+},
+{
+"baslik": "c970",
+"tur": "metin",
+"metin": "bir hedefin peşinden gitmek.",
+"anlatim": "bir hedefin peşinden gitmek."
+},
+{
+"baslik": "c971",
+"tur": "metin",
+"metin": "kıl payı farkla.",
+"anlatim": "kıl payı farkla."
+},
+{
+"baslik": "c972",
+"tur": "metin",
+"metin": "Türkçesi şöyle: ana hedef.",
+"anlatim": "Türkçesi şöyle: ana hedef."
+},
+{
+"baslik": "c973",
+"tur": "metin",
+"metin": "Konu: giyilebilir sağlık cihazları.",
+"anlatim": "Konu: giyilebilir sağlık cihazları."
+},
+{
+"baslik": "c974",
+"tur": "metin",
+"metin": "Komite öneriyi çok pahalı olduğu için kabul etmemiş.",
+"anlatim": "Komite öneriyi çok pahalı olduğu için kabul etmemiş."
+},
+{
+"baslik": "c975",
+"tur": "metin",
+"metin": "Reddetmek anlamındaki fiil:",
+"anlatim": "Reddetmek anlamındaki fiil:"
+},
+{
+"baslik": "c976",
+"tur": "metin",
+"metin": "Ders: Akademik kelimeler 17: amaç ve bakış açısı.",
+"anlatim": "Ders: Akademik kelimeler 17: amaç ve bakış açısı."
+}
+]
+}
