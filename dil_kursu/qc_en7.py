@@ -3,7 +3,7 @@ import numpy as np, soundfile as sf
 sys.path.insert(0,'/home/claude/kurs')
 import icerik, motor, asr, en_ses
 seen={}; kotu=[]
-for d in icerik._A2f+icerik._Bf:
+for d in icerik._A2g+icerik._Bg:
     for x in motor.plan(d, icerik.isinma_icin(d))+motor.plan_gunluk(d):
         if x[0]=="E" and len(x[1].split())>3:
             seen[(x[1],x[2],x[3])]=1
