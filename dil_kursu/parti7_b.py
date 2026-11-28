@@ -464,7 +464,7 @@ ders("B1-16", "B1", "Oxford 3000 · B1 · IELTS konusu: boş zaman ve hobiler", 
 ders("B2-16", "B2", "Oxford 5000 · B2 · IELTS konusu: turizm", 16, "Turizm ve seyahat",
  "B2 seviyesi", "Turizm türleri ve turizmin etkileri. IELTS konuşma ve yazma sınavlarında sık çıkar.",
  ["bm_lewis", "bf_emma"], "af_heart", [
- K("itinerary", "gezi programı, güzergâh.", "Our itinerary includes three cities.", "Gezi programımızda üç şehir var."),
+ K("itinerary", "gezi programı, rota.", "Our itinerary includes three cities.", "Gezi programımızda üç şehir var."),
  K("resort", "tatil köyü.", "We stayed at a beach resort.", "Bir sahil tatil köyünde kaldık."),
  K("package holiday", "her şey dahil paket tur.", "Package holidays are often cheaper.", "Paket turlar genellikle daha ucuz."),
  K("backpacker", "sırt çantalı gezgin.", "The hostel was full of backpackers.", "Hostel sırt çantalı gezginlerle doluydu."),
@@ -557,7 +557,7 @@ ders("AWL-17", "IELTS-AWL", "Academic Word List · Alt liste 5", 17, "Akademik k
  ["am_michael", "af_heart"], "bf_emma", [
  K("generate", "üretmek, oluşturmak.", "Wind farms generate clean electricity.", "Rüzgâr çiftlikleri temiz elektrik üretiyor."),
  K("logic", "mantık.", "I don't understand the logic of this decision.", "Bu kararın mantığını anlamıyorum."),
- K("margin", "marj, kâr payı; fark.", "The company has a profit margin of ten percent.", "Şirketin kâr marjı yüzde on."),
+ K("margin", "kâr payı; fark.", "The company has a profit margin of ten percent.", "Şirketin kâr payı yüzde on."),
  K("modify", "değiştirmek, uyarlamak.", "We modified the design after testing.", "Testten sonra tasarımı değiştirdik."),
  K("monitor", "izlemek, takip etmek.", "Doctors monitor the patient's heart.", "Doktorlar hastanın kalbini izliyor."),
  K("notion", "kavram, fikir.", "The notion of privacy is changing.", "Mahremiyet kavramı değişiyor."),

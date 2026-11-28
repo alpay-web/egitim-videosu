@@ -52,7 +52,7 @@ _a2(50, "Sanat ve fotoğraf", "Sanat, fotoğraf ve görünüş bildiren fiiller.
 _a2(51, "Ölçüler", "Uzunluk, ağırlık, mesafe ve ölçü soruları.", ["am_michael", "af_heart"], "bf_emma", "bm_lewis", [
  ("metre", "metre.", "The room is five metres long.", "Oda beş metre uzunluğunda."),
  ("kilometre", "kilometre.", "The airport is twenty kilometres away.", "Havaalanı yirmi kilometre uzakta."),
- ("mile", "mil.", "In Britain, distances are in miles.", "İngiltere'de mesafeler mil cinsinden."),
+ ("mile", "mil, bir uzunluk birimi.", "In Britain, distances are in miles.", "İngiltere'de mesafeler mille ölçülür."),
  ("height", "boy, yükseklik.", "What's your height?", "Boyun kaç?"),
  ("weight", "ağırlık, kilo.", "Check the weight of your bag.", "Çantanın ağırlığını kontrol et."),
  ("distance", "mesafe, uzaklık.", "What's the distance from here to Izmir?", "Buradan İzmir'e mesafe ne kadar?"),
@@ -184,7 +184,7 @@ _a2(53, "Doğru ya da yanlış", "Doğru, yanlış, emin olmak ve tahmin etmek."
 # ------------------------------------------------------------------ A2-54
 _a2(54, "Yazı ve okuma", "Yazı türleri, metinler ve süregelen eylemler.", ["af_heart", "am_michael"], "bf_emma", "bm_lewis", [
  ("paragraph", "paragraf.", "Read the first paragraph.", "İlk paragrafı okuyun."),
- ("phrase", "ifade, deyiş.", "This is a useful phrase.", "Bu kullanışlı bir ifade."),
+ ("phrase", "ifade, söz öbeği.", "This is a useful phrase.", "Bu kullanışlı bir ifade."),
  ("spelling", "yazılış, imla.", "Check your spelling.", "Yazım hatalarını kontrol et."),
  ("dialogue", "diyalog, karşılıklı konuşma.", "Listen to the dialogue.", "Diyaloğu dinleyin."),
  ("title", "başlık; unvan.", "What's the title of the book?", "Kitabın adı ne?"),
@@ -283,7 +283,7 @@ _a2(56, "Hareketler", "Hareket fiilleri ve iki kelimeli fiiller.", ["am_michael"
  ("shake", "sallamak, titremek.", "Shake the bottle before you open it.", "Açmadan önce şişeyi salla."),
  ("knock", "kapıyı çalmak, vurmak.", "Someone is knocking on the door.", "Biri kapıyı çalıyor."),
  ("hide", "saklamak, saklanmak.", "The children are hiding in the garden.", "Çocuklar bahçede saklanıyor."),
- ("shout", "bağırmak.", "Please don't shout.", "Lütfen bağırma."),
+ ("shout", "yüksek sesle bağırmak.", "Please don't shout.", "Lütfen bağırma."),
  ("cry", "ağlamak; bağırmak.", "The baby is crying.", "Bebek ağlıyor."),
  ("pick up", "yerden almak; birini arabayla almak.", "Can you pick me up at six?", "Beni altıda alabilir misin?"),
 ], Y([
@@ -496,7 +496,7 @@ _a2(60, "Haritada yönler", "Yönler, konum ve hareket bildiren edatlar.", ["af_
 # ------------------------------------------------------------------ A2-61
 _a2(61, "Kafede", "Yiyecek ve içecekler; vurgu yapmak.", ["bm_lewis", "bf_emma"], "af_heart", "am_michael", [
  ("cafe", "kafe.", "Let's meet at the cafe.", "Kafede buluşalım."),
- ("pub", "bar, birahane (İngiltere).", "They went to the pub after work.", "İşten sonra bara gittiler."),
+ ("pub", "İngiliz barı.", "They went to the pub after work.", "İşten sonra bara gittiler."),
  ("wine", "şarap.", "Would you like a glass of wine?", "Bir kadeh şarap ister misiniz?"),
  ("beer", "bira.", "He ordered a beer.", "Bir bira sipariş etti."),
  ("cream", "krema; krem.", "Do you want cream in your coffee?", "Kahvene krema ister misin?"),

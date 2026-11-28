@@ -1,0 +1,117 @@
+{
+"baslik": "dil kursu parti 7 düzeltme",
+"telaffuz": {
+"A1": "a bir",
+"A2": "a iki",
+"B1": "be bir",
+"B2": "be iki",
+"C1": "ce bir",
+"IELTS": "ayelts",
+"YDS": "ye de se",
+"Green": "Grin",
+"Kate": "Keyt",
+"Scrum": "Skram",
+"podcast'inden": "podkestinden",
+"Mr Brown": "Mister Braun",
+"Jack": "Cek",
+"Tom'un": "Tomun"
+},
+"sahneler": [
+{
+"baslik": "c1",
+"tur": "metin",
+"metin": "mil, bir uzunluk birimi.",
+"anlatim": "mil, bir uzunluk birimi."
+},
+{
+"baslik": "c2",
+"tur": "metin",
+"metin": "İngiltere'de mesafeler mille ölçülür.",
+"anlatim": "İngiltere'de mesafeler mille ölçülür."
+},
+{
+"baslik": "c3",
+"tur": "metin",
+"metin": "ifade, söz öbeği.",
+"anlatim": "ifade, söz öbeği."
+},
+{
+"baslik": "c4",
+"tur": "metin",
+"metin": "yüksek sesle bağırmak.",
+"anlatim": "yüksek sesle bağırmak."
+},
+{
+"baslik": "c5",
+"tur": "metin",
+"metin": "Bir ceket al.",
+"anlatim": "Bir ceket al."
+},
+{
+"baslik": "c6",
+"tur": "metin",
+"metin": "Onu çöp kutusuna at.",
+"anlatim": "Onu çöp kutusuna at."
+},
+{
+"baslik": "c7",
+"tur": "metin",
+"metin": "Türkçesi şöyle: İngiliz barı.",
+"anlatim": "Türkçesi şöyle: İngiliz barı."
+},
+{
+"baslik": "c8",
+"tur": "metin",
+"metin": "Türkçesi şöyle: reçel.",
+"anlatim": "Türkçesi şöyle: reçel."
+},
+{
+"baslik": "c9",
+"tur": "metin",
+"metin": "Bu ders, kıdemli iş analisti dizisi, on altıncı ders.",
+"anlatim": "Bu ders, kıdemli iş analisti dizisi, on altıncı ders."
+},
+{
+"baslik": "c10",
+"tur": "metin",
+"metin": "Bu ders, B1 seviyesi, on altıncı ders.",
+"anlatim": "Bu ders, B1 seviyesi, on altıncı ders."
+},
+{
+"baslik": "c11",
+"tur": "metin",
+"metin": "gezi programı, rota.",
+"anlatim": "gezi programı, rota."
+},
+{
+"baslik": "c12",
+"tur": "metin",
+"metin": "Türkçesi şöyle: gezip görmek.",
+"anlatim": "Türkçesi şöyle: gezip görmek."
+},
+{
+"baslik": "c13",
+"tur": "metin",
+"metin": "Bu ders, C1 seviyesi, on altıncı ders.",
+"anlatim": "Bu ders, C1 seviyesi, on altıncı ders."
+},
+{
+"baslik": "c14",
+"tur": "metin",
+"metin": "kâr payı; fark.",
+"anlatim": "kâr payı; fark."
+},
+{
+"baslik": "c15",
+"tur": "metin",
+"metin": "Şirketin kâr payı yüzde on.",
+"anlatim": "Şirketin kâr payı yüzde on."
+},
+{
+"baslik": "c16",
+"tur": "metin",
+"metin": "kıl payı farkla.",
+"anlatim": "kıl payı farkla."
+}
+]
+}
