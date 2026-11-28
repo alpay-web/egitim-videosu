@@ -142,7 +142,7 @@ ders("AWL-11", "IELTS-AWL", "Academic Word List · Alt liste 3", 11, "Akademik k
 ders("YDS-11", "YDS", "YDS kipler (modals)", 11, "Kipler: olasılık ve geçmiş",
  "YDS özel dizisi", "Olasılık, çıkarım ve geçmişe dönük kipler. YDS dilbilgisi sorularında her sınavda çıkar.",
  ["bf_emma", "am_michael"], "bm_lewis", [
- KN("must have", "yapmış olmalı; güçlü bir tahmin.", "Geçmişle ilgili güçlü bir tahmin bildirir. Ardından fiilin üçüncü hâli gelir.", "The roads are wet. It must have rained.", "Yollar ıslak. Yağmur yağmış olmalı."),
+ KN("must have", "yapmış olmalı; güçlü bir tahmin.", "Geçmişle ilgili güçlü bir tahmin bildirir. Ardından fiilin üçüncü hâli gelir.", "The roads are wet. It must have rained.", "Yollar ıslak. Demek ki yağmur yağmış."),
  KN("can't have", "yapmış olamaz.", "Geçmişte bir şeyin olmasının imkânsız olduğunu bildirir.", "He can't have left. His car is still here.", "Gitmiş olamaz. Arabası hâlâ burada."),
  KN("might have", "yapmış olabilir.", "Geçmişle ilgili zayıf bir olasılık bildirir.", "She might have missed the train.", "Treni kaçırmış olabilir."),
  KN("should have", "yapmalıydı, ama yapmadı.", "Geçmişte yapılması gereken ama yapılmayan bir şey için pişmanlık ya da eleştiri bildirir.", "You should have told me earlier.", "Bana daha önce söylemeliydin."),
@@ -201,7 +201,7 @@ ders("BA-11", "BA", "BABOK v3 kavramları · İş İngilizcesi", 11, "İş anali
  K("requirements repository", "gereksinim deposu.", "All approved requirements are stored in the repository.", "Onaylanan bütün gereksinimler depoda saklanıyor."),
  K("dependency", "bağımlılık.", "This feature has a dependency on the payment system.", "Bu özelliğin ödeme sistemine bağımlılığı var."),
  K("conflict", "çatışma, çelişki.", "There's a conflict between these two requirements.", "Bu iki gereksinim arasında bir çelişki var."),
- K("approval workflow", "onay akışı.", "The approval workflow has three steps.", "Onay akışında üç adım var."),
+ K("approval workflow", "onay süreci, onay adımları.", "The approval workflow has three steps.", "Onay sürecinde üç adım var."),
  K("audit trail", "denetim izi.", "The system keeps an audit trail of every change.", "Sistem her değişikliğin denetim izini tutuyor."),
  K("scope creep", "kapsam kayması.", "Without change control, scope creep is inevitable.", "Değişiklik kontrolü olmadan kapsam kayması kaçınılmaz."),
  K("freeze", "dondurmak; dondurma.", "We freeze the requirements two weeks before testing.", "Gereksinimleri testten iki hafta önce donduruyoruz."),

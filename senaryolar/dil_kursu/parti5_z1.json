@@ -34,6 +34,24 @@
 "tur": "metin",
 "metin": "Türkçesi şöyle: kadın oyuncu.",
 "anlatim": "Türkçesi şöyle: kadın oyuncu."
+},
+{
+"baslik": "c4",
+"tur": "metin",
+"metin": "Demek ki yağmur yağmış.",
+"anlatim": "Demek ki yağmur yağmış."
+},
+{
+"baslik": "c5",
+"tur": "metin",
+"metin": "onay süreci, onay adımları.",
+"anlatim": "onay süreci, onay adımları."
+},
+{
+"baslik": "c6",
+"tur": "metin",
+"metin": "Onay sürecinde üç adım var.",
+"anlatim": "Onay sürecinde üç adım var."
 }
 ]
 }
