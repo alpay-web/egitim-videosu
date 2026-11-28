@@ -1,3 +1,4 @@
+import re
 # -*- coding: utf-8 -*-
 """Sesli ders motoru.
 Yöntem: Pimsleur'un kademeli aralıklı hatırlama + beklenti ilkesi (sor → duraklama → doğru cevap),
@@ -227,6 +228,7 @@ def plan(d, isinma=None):
     def konusmaci(c):            # diyalog satırı: "ses|metin" → o sesle; aksi halde anlatıcı sesi
         if "|" in c and c.split("|", 1)[0] in d.get("konusmacilar", {}):
             k, m = c.split("|", 1); return d["konusmacilar"][k], m
+        assert not re.match(r"^[A-Z0-9]+\|", c), f"{d['id']}: konuşmacı sesi tanımlı değil: {c[:30]}"
         return hs, c
     onceki = None
     for c in d["hikaye"]:

@@ -309,6 +309,7 @@ ders("C1-13", "C1", "Oxford 5000 · C1 · IELTS konusu: küresel ticaret", 13, "
            "However, trying to produce everything at home would be very inefficient and would raise prices for consumers.",
            "Free trade allows each country to focus on what it does best.",
            "So I'd argue for a balance: strong trade links, but secure supply chains for the most critical products."])],
+ konusmacilar={"HOST": "bf_emma", "EXP": "am_michael"},
  dinleme_en=["In 2021, a giant container ship called the Ever Given became stuck in the Suez Canal.", "For six days, one of the world's busiest trade routes was completely blocked.",
              "Hundreds of ships waited at both ends, carrying goods worth billions of dollars every day.",
              "The incident showed how fragile global supply chains can be.", "Many companies began to keep larger stocks and to look for alternative suppliers."],

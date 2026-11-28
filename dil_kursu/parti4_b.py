@@ -359,6 +359,7 @@ ders("B2-09", "B2", "Oxford 5000 · B2 · IELTS konusu: spor ve rekabet", 9, "Sp
            "However, top athletes have very short careers, and they generate enormous revenue through sponsorship and ticket sales.",
            "So in a way, their pay reflects the market.",
            "Personally, I'd like to see more of that money invested in amateur sport and in young athletes."])],
+ konusmacilar={"HOST": "bf_emma", "GUEST": "am_michael"},
  dinleme_en=["The modern Olympic Games began in Athens in 1896.", "Only fourteen countries competed, and there were no women athletes.",
              "Today, more than two hundred countries send teams, and almost half of the competitors are women.",
              "The Games have also become very expensive.", "Some host cities have spent billions on stadiums that are rarely used afterwards,",
