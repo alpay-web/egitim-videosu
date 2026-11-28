@@ -150,7 +150,7 @@ _a2(41, "İlişkiler", "İlişkiler ve dönüşlü zamirler.", ["bm_lewis", "bf_
  ("joke", "şaka; şaka yapmak.", "He told a funny joke.", "Komik bir şaka yaptı."),
  ("laughter", "kahkaha, gülüş.", "The room was full of laughter.", "Oda kahkahalarla doluydu."),
  ("partner", "eş, sevgili; ortak.", "Bring your partner to the party.", "Partiye eşini de getir."),
- ("secret", "sır; gizli.", "Can you keep a secret?", "Sır tutabilir misin?"),
+ ("secret", "sır; gizli.", "Can you keep a secret?", "Bir sırrı saklayabilir misin?"),
  ("trust", "güvenmek; güven.", "I trust my best friend.", "En iyi arkadaşıma güvenirim."),
 ], Y([
   "T|Bugünkü yapı: dönüşlü zamirler ve birbirini anlamı.",
@@ -315,7 +315,7 @@ _a2(44, "Doğal afetler", "Doğa ve doğal afetler; geçmişte daha önce olan o
 
 # ------------------------------------------------------------------ A2-45
 _a2(45, "Mutfakta 2", "Mutfak eşyaları, yemek yapma ve sıfır koşul cümlesi.", ["af_heart", "bm_lewis"], "bf_emma", "am_michael", [
- ("bowl", "kâse.", "A bowl of soup, please.", "Bir kâse çorba, lütfen."),
+ ("bowl", "kâse, çorba kâsesi.", "A bowl of soup, please.", "Bir kâse çorba, lütfen."),
  ("plate", "tabak.", "Put the food on a plate.", "Yemeği bir tabağa koy."),
  ("knife", "bıçak.", "Be careful with that knife.", "O bıçağa dikkat et."),
  ("fork", "çatal.", "I need a fork, please.", "Bir çatala ihtiyacım var, lütfen."),
@@ -324,7 +324,7 @@ _a2(45, "Mutfakta 2", "Mutfak eşyaları, yemek yapma ve sıfır koşul cümlesi
  ("boil", "kaynamak, kaynatmak; haşlamak.", "Boil the eggs for ten minutes.", "Yumurtaları on dakika haşla."),
  ("cooker", "ocak, fırınlı ocak.", "We bought a new cooker.", "Yeni bir ocak aldık."),
  ("sauce", "sos.", "This tomato sauce is delicious.", "Bu domates sosu çok lezzetli."),
- ("beef", "sığır eti.", "I don't eat beef.", "Sığır eti yemem."),
+ ("beef", "dana eti, sığır eti.", "I don't eat beef.", "Sığır eti yemem."),
  ("nut", "kuruyemiş, fındık türü.", "She's allergic to nuts.", "Kuruyemişe alerjisi var."),
  ("lemon", "limon.", "Add a little lemon juice.", "Biraz limon suyu ekle."),
 ], Y([
@@ -336,7 +336,7 @@ _a2(45, "Mutfakta 2", "Mutfak eşyaları, yemek yapma ve sıfır koşul cümlesi
   ["a little water.", "add a little water.", "If the sauce is too thick, add a little water."]],
  [("Suyu ısıtırsan kaynar.", "If you heat water, it boils."),
   ("Sos çok koyuysa biraz su ekle.", "If the sauce is too thick, add a little water."),
-  ("Buzu ısıtırsan erir.", "If you heat ice, it melts."),
+  ("Buzu ısıtırsan buz erir.", "If you heat ice, it melts."),
   ("Yemeği fırında çok bırakırsan yanar.", "If you leave food in the oven too long, it burns.")],
  bilinen=["heat", "melt", "thick", "stir", "allergic", "burns"]),
  "Şimdi Tom'un bir yemek kursunda anlattıklarını dinleyeceksiniz.",
