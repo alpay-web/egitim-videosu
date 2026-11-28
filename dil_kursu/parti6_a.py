@@ -324,7 +324,7 @@ _a2(45, "Mutfakta 2", "Mutfak eşyaları, yemek yapma ve sıfır koşul cümlesi
  ("boil", "kaynamak, kaynatmak; haşlamak.", "Boil the eggs for ten minutes.", "Yumurtaları on dakika haşla."),
  ("cooker", "ocak, fırınlı ocak.", "We bought a new cooker.", "Yeni bir ocak aldık."),
  ("sauce", "sos.", "This tomato sauce is delicious.", "Bu domates sosu çok lezzetli."),
- ("beef", "dana eti, sığır eti.", "I don't eat beef.", "Sığır eti yemem."),
+ ("beef", "sığır eti; inekten elde edilen et.", "I don't eat beef.", "Sığır eti yemem."),
  ("nut", "kuruyemiş, fındık türü.", "She's allergic to nuts.", "Kuruyemişe alerjisi var."),
  ("lemon", "limon.", "Add a little lemon juice.", "Biraz limon suyu ekle."),
 ], Y([
@@ -336,7 +336,7 @@ _a2(45, "Mutfakta 2", "Mutfak eşyaları, yemek yapma ve sıfır koşul cümlesi
   ["a little water.", "add a little water.", "If the sauce is too thick, add a little water."]],
  [("Suyu ısıtırsan kaynar.", "If you heat water, it boils."),
   ("Sos çok koyuysa biraz su ekle.", "If the sauce is too thick, add a little water."),
-  ("Buzu ısıtırsan buz erir.", "If you heat ice, it melts."),
+  ("Buzu ısıtırsan erir ve su olur.", "If you heat ice, it melts."),
   ("Yemeği fırında çok bırakırsan yanar.", "If you leave food in the oven too long, it burns.")],
  bilinen=["heat", "melt", "thick", "stir", "allergic", "burns"]),
  "Şimdi Tom'un bir yemek kursunda anlattıklarını dinleyeceksiniz.",
